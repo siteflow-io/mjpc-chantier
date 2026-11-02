@@ -1433,3 +1433,24 @@ MEMO
 - **22:30 — l'exécutant de l'appel (message)** : la base (`a6a63afc`) mesurée par le geste (`sonde-appel.mjs`) : 67 vérifications, 32 échecs — un absent marqué au clic droit du pilote n'arrive jamais au hub ni dans la case d'un autre ordinateur ; un absent coché dans la case pendant l'heure arrive au pilote en 5,8 à 7,8 s, un absent défait n'est jamais défait au pilote (17 s) ; le défaut 6 mesuré (un absent coché pendant la relecture du paquet est effacé au hub par le PUT ; la lecture retardée de 2,5 s pour provoquer le croisement) ; pas d'appel à la case d'une heure à venir, pas de bouton « Appel » à la télécommande ; l'appel fait après coup absent de la Relecture ; une heure jouée en 8.79 : la case n'en montre que 3 absents sur 4. Tient déjà : rien de l'appel au tableau ; en mode test, le clic droit sur un second ordinateur passe par l'état vivant. Le code écrit, les sondes partielles vertes, les sondes complètes en cours.
 - **22:30 — la conscience** : à l'exécutant (message) — 284 et 287 ajoutés au mandat (la diapo de la télécommande dessinée comme au pilote, aucun geste dessus ; « A− » / « A+ » pour le texte au tableau), avec leurs preuves et captures, dans la même livraison.
 - **22:43 — l'exécutant de l'appel (message)** : les deux ajouts à la télécommande codés ; sa partie Q verte, 20 / 20 (vraie heure et mode test) : la diapo est le dessin du pilote lui-même (`#murcadre` dans la boîte, 390 × 219 px), 2 éléments en gris (opacité 0,45) comme au pilote, ▶ en retire un, trois appuis sur la diapo ne changent rien ; « A− · 32 pt · A+ » : la taille change au pilote et au tableau en moins de 0,5 s, grisés avec leur raison quand l'ordinateur a la main. Un défaut vu en route et corrigé : un écart de 6 px laissait voir le pilote caché (le même que sur la capture de 16:46 et de 21:36). La sonde de l'appel : 68 / 0 sur le code d'avant ces ajouts ; la base 68 / 33. La chaîne finale tourne sur `f53bf32c` (sa sonde complète, la partie Q sur la base, la sonde de ㉞, le parcours P0-P12 avec K15, vraie heure et mode test) ; il pousse quand tout est vert.
+- **23:05 — Paul, mot pour mot** : « il faut aussi faire le chantier de l'edt qui ne fait pas glisser les choses non faites, et faire les diapos restantes aussi, tu te souviens? Demain je lance mes heures en 3e, il faut que ce soit ok. »
+- **23:06 — la conscience** : relu, le rapport de l'audit de la fin d'heure (`audit/fin-heure`, 14:47) : `edtSeanceJouee` compte les heures, pas les décisions ; « reporter » n'est lu par personne pour la séance suivante (ni `ordreHeureCalc0`, ni la réactivation, ni l'emploi du temps) ; l'étape 2 décide par activité, le bouton à 1 769 px ; « Le bilan » sans décision ; la case dit « activités » pour des diapos.
+- **23:06 — message à Paul, mot pour mot :**
+
+  > 288. Oui : c'est ㊲ (le glissé dans l'emploi du temps) et ㊳ (compter en diapos non faites), mesurés à 14:47. Voici ce que je propose pour demain ; ce que tu ne commentes pas est acquis. Je lance l'exécutant dès que celui de l'appel a livré, cette nuit.
+  >
+  > 289. À la fin de l'heure, l'étape « ce qui n'a pas été fait » liste les diapos non faites une par une, « Le bilan » compris, et plus les activités. En haut, sans défiler, un seul bouton : « Reporter les n diapos non faites au début de la prochaine heure de cette classe ». Chaque diapo peut encore recevoir un autre choix (à la maison, en réserve, non fait).
+  >
+  > 290. Une heure close avec des diapos reportées laisse la séance ouverte : l'emploi du temps dit « pas finie : n diapos reportées », et la case suivante de la classe propose la suite de cette séance, qui commence par les diapos reportées puis reprend le plan. Les séances suivantes glissent d'autant. La case compte en diapos, plus en « activités ».
+  >
+  > 291. Ce que tu as fait ce matin avec les 3 Franklin Aretha (9 diapos « reportées » au hub) est relu tel quel : leur prochaine case proposera la suite de la séance 1, à partir de « Groupe 1 : l'hypothèse », avec « Le bilan ».
+  >
+  > 292. Cette nuit : l'exécutant code et prouve par le geste ; je passe le banc complet sur l'ensemble (l'appel et la fin d'heure) ; je te demande le « promeus » demain matin avant tes heures, avec les captures. Ce qui n'est pas prouvé ne part pas, et je te le dis. Le reste de la refonte des 7 étapes de la fin d'heure (㉚) vient après.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 23:06
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) · ouvert : 289, 290, 291
+  >
+  > MEMO

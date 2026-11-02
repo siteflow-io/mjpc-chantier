@@ -1,0 +1,23 @@
+C16 · sonde du retour sûr à la 8.77.1-⑩ · parties T X · 2026-11-02 02:58 UTC · nouvelle version md5 70f1f957b8f1d21e32ae3b6d736d005f · 8.77.1-⑩ md5 09a19419011c2a09ebeae21d4c4d41f0
+
+══ T · 1536×864 · les retraits : la nouvelle version retire, la 8.77.1-⑩ fait ses gestes ordinaires dans l’Atelier, la nouvelle relit ══
+  ÉCHEC  T · T1 · la nouvelle version « Retire » les compétences du chapitre et le parcours : au hub, « retraits » ["competences-chapitre","plan","canon"] et « ouvRetraits » undefined
+  ok     T · T1 · la nouvelle version : aucune erreur JS, aucune boîte système
+  ok     T · T2 · la 8.77.1-⑩ fait ses gestes ordinaires dans l’Atelier (Alt + ↓, Alt + ↑ sur « Analyse d'images : la routine », une frappe « (en silence) ») et réécrit le déroulé (8 écriture(s)) : au hub, « retraits » ["plan"], « ouvRetraits » null
+  ok     T · T2 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ÉCHEC  T · T3 · la nouvelle version relit : les compétences du chapitre et le parcours toujours retirés (le début de séance est là) — ["inv-presentation-chapitre-s0","inv-competences-chapitre-s0","inv-presentation-seance-s0","inv-problematique-s0"]
+  ok     T · T3 · la nouvelle version : aucune erreur JS, aucune boîte système
+  ok     T · T4 · la nouvelle version retire les compétences du chapitre : aucune erreur JS, aucune boîte système
+  ok     T · T4 · la 8.77.1-⑩ retire le parcours puis le remet (Ctrl + Z), retire le début de séance : au hub, « retraits » ["presentation-seance"], « ouvRetraits » null
+  ok     T · T4 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ÉCHEC  T · T5 · la nouvelle version relit : les compétences du chapitre toujours retirées, le parcours remis, le début de séance retiré (les quatre rôles de la 8.77.1-⑩ se lisent dans « retraits ») — ["inv-presentation-chapitre-s0","inv-competences-chapitre-s0","inv-plan-s0","inv-problematique-s0"]
+  ok     T · T5 · la nouvelle version : aucune erreur JS, aucune boîte système
+
+══ X · 1536×864 · la taxonomie retardée : une diapo d’ouverture intacte renommée ne part jamais avec des libellés manquants ══
+      X · à l’heure : 1 écriture(s) du début de séance · retardée de 7 s : 1 écriture(s), aux temps 6.2 s
+  ok     X · X1 · la taxonomie à l’heure : le début de séance renommé part au hub avec les textes de l’ancien calcul, complets (la référence) — [{"t":"texte","id":"binv-presentation-seance-s0","txt":"Ce que nous travaillons","el":["Notions rencontrées : Dire ce qu’on voit, avec les mots justes · Savoir si l’on voit de près ou de loin, et ce qui est choisi · D’où l’on regarde la scène","Aussi travaillées : Lire des textes non littéraires, de
+  ok     X · X2 · la taxonomie retardée de 7 s : Paul renomme le début de séance AVANT qu’elle arrive (« ✎ Préparer » de la case ouvre l’Atelier sans l’attendre) — {"avantTaxo":true}
+  ÉCHEC  X · X3 · aucune écriture du début de séance avec des libellés manquants : chacune porte les textes complets de la référence ; le nom que Paul a donné est au hub (rien de perdu) — [{"t":6204,"act":"S1 : le Romantisme en question","complet":false,"blocs":"[{\"t\":\"texte\",\"id\":\"binv-presentation-seance-s0\",\"txt\":\"Ce que nous travaillons\",\"el\":[]}]"}]
+  ok     X · X · aucune erreur JS, aucune boîte système
+
+— fin : 15 vérifications, 4 échec(s) · ROUGE

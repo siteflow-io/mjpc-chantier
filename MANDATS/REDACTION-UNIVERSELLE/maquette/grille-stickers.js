@@ -190,27 +190,8 @@ function stGardeExport() {
   if (!P.ok) { const m = /\(([^)]*)\)\s*$/.exec(stPretTexte()); return "ta grille de stickers n’est pas prête" + (m ? " : " + m[1] : "") + " (Réglages → « ✓ Valider ligne par ligne »)"; }
   return null;
 }
-function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet || !!r.redemande; }   // [C14 632] redemandée : elle repart pour ses stickers
-/* [C14 632, 656] (Paul 07:56 : « donc tu as fait un bouton patch en fait? […] il faut absolument que son infobulle contextualise ce qu'il fait et surtout qu'il y ait
-   une garde sur les conséquences de son utilisation ») : un rattrapage, une seule fois, pour les copies dont les stickers ont été jugés avant que l'IA voie les
-   paragraphes (leur dernier envoi n'avait pas « par ») ; la fenêtre dit d'abord ce que ça change ; le bouton disparaît quand il n'y en a plus */
-function stRedemandables() { return SC.copies.filter(k => { const rec = scCopie(k).recopie || {}, r = rec.stickersIA; return r && r.complet && !r.redemande && !(rec.envoi && rec.envoi.par) && rcLignesEcrites(k).length; }); }
-function stRedemandeesN() { return SC.copies.filter(k => !!(((scCopie(k).recopie || {}).stickersIA) || {}).redemande).length; }
-function stRedemanderDemander() {
-  if (!stEnvoiGrille()) { toast("Pas encore : ta grille de stickers n’est pas prête."); return; } const K = stRedemandables(); if (!K.length) return;
-  const finies = K.filter(k => typeof svCopieCorrigee === "function" && svCopieCorrigee(k)), rq = K.filter(k => { const r = stRq(k); return r && r.relu; }), pl = (n, s, p) => n + " " + (n > 1 ? p : s);
-  if (typeof rcFluxFermer === "function") rcFluxFermer();
-  scModale('<h3>↻ Les paragraphes : redemander les stickers</h3><p>Les stickers de ' + pl(K.length, "copie ont été jugés", "copies ont été jugés") + ' par l’IA avant qu’elle voie les paragraphes : les stickers de paragraphes n’y pouvaient pas être trouvés. ' + (K.length > 1 ? "Elles repartiront" : "Elle repartira") + ' pour leurs seuls stickers, avec leurs paragraphes, au prochain « ⇪ Exporter pour l’IA » (8 copies par fichier).</p>'
-    + '<p><b>Ce qui reste :</b> tes décisions, fautes et stickers, gardés ou non ; tes cadres ; ta recopie.</p>'
-    + '<p><b>Ce qui change :</b> le retour de l’IA remplace leurs remarques' + (rq.length ? " (" + pl(rq.length, "copie les a déjà relues", "copies les ont déjà relues") + ")" : "") + ' : tu les reliras au bout de leur bande, et leur bande s’arrêtera sur les stickers nouveaux. ' + (finies.length ? pl(finies.length, "copie est", "copies sont") + " « ✓ Copie corrigée » aujourd’hui : " + (finies.length > 1 ? "elles repasseront" : "elle repassera") + " à 99 % jusqu’à ta relecture. " : "") + 'Leur note peut changer. Leurs fichiers École Directe déjà téléchargés ne seront plus à jour : refais-les après « ✓ Copie corrigée ».</p>'
-    + '<button class="sc-btn" id="stRedemanderOui" title="' + escapeAttr("Les " + K.length + " copies repartent pour leurs seuls stickers au prochain export. Rien ne part tant que tu n’as pas exporté.") + '">↻ Oui, redemander (' + K.length + ')</button>');
-  const b = document.getElementById("stRedemanderOui"); if (b) b.onclick = () => { scModaleFermer(); stRedemander(); };
-}
-function stRedemander() {
-  if (!stEnvoiGrille()) { toast("Pas encore : ta grille de stickers n’est pas prête."); return; } const K = stRedemandables(); if (!K.length) return;
-  const le = new Date().toISOString(); K.forEach(k => { scCopie(k).recopie.stickersIA.redemande = le; }); saveState(); rcEtatIA();
-  toast(K.length + " copie" + (K.length > 1 ? "s" : "") + " repart" + (K.length > 1 ? "ent" : "") + " pour leurs seuls stickers au prochain « ⇪ Exporter pour l’IA ». Tes décisions restent.");
-}   // une copie dont les réussites ne sont pas encore revenues entières
+function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet; }   // une copie dont les réussites ne sont pas encore revenues entières
+  // une copie dont les réussites ne sont pas encore revenues entières
 function stEnonce() { const v = typeof SUJET === "object" && SUJET ? (SUJET.enonce || (SUJET.variantes || []).map(x => x.enonce || x.libelle).filter(Boolean).join("\n\n")) : ""; return String(v || "").slice(0, 6000); }
 /* les mots rendus par l'IA, retrouvés dans la ligne recopiée : la plus longue suite de mots qui se suivent (sans accents ni majuscules) */
 function stNorm(w) { return String(w || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[’']/g, "'"); }
@@ -226,7 +207,7 @@ function stIAReussites(o, copiesOk) {
   copiesOk.forEach(k => { const c = state.copies[k] || {}, L = R[c.id]; if (!Array.isArray(L)) return; const ici = {}; rcLignesEcrites(k).forEach(x => { ici[x.id] = x; });
     const liste = [], vu = new Set(); let complet = false;
     L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; } const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } if (vu.has(st.id)) return; vu.add(st.id);
-      const p = e.p ? { p: String(e.p).slice(0, 500) } : {};   // [C14 1.4.17, proposé, C14 493] pourquoi c'est réussi, dit à l'élève
+      const p = Object.assign(e.p ? { p: String(e.p).slice(0, 500) } : {}, e.manque ? { manque: String(e.manque).slice(0, 400) } : {});   // [C14 1.4.17, proposé, C14 493] pourquoi c'est réussi, dit à l'élève ; [C14 669] ce qui manquait à l'IA, pour toi seul
       if (st.portee === "lettre" || !e.l) { liste.push(Object.assign({ st: st.id, num: st.num, lettre: true }, p)); return; }
       const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = stTrouverMots(x.l.texte, e.m); liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, mots: String(e.m || "").slice(0, 200) }, t ? { de: t.de, a: t.a } : { sansPlace: true }, p, e.l2 && ici[e.l2] ? { l2: e.l2 } : {})); });
     const s = scCopie(k); s.recopie = s.recopie || {}; const prof = (((s.recopie.stickersIA || {}).liste) || []).filter(e => e.par === "prof");   // ce que tu as posé de ta main reste
@@ -237,7 +218,7 @@ function stIAReussites(o, copiesOk) {
 function stArrets(k) {
   const r = (scCopie(k).recopie || {}).stickersIA; if (!r || !Array.isArray(r.liste)) return []; const L = rcLignesEcrites(k), ordre = stSujetLignes().map(l => l.id), A = [];
   r.liste.forEach(e => { const st = stTous().find(x => x.id === e.st); if (!st) return; const x = e.l && L.find(y => y.id === e.l), i = x ? L.indexOf(x) : -1;
-    const a = { st: true, k, sticker: st, stId: st.id, cle: "stk:" + st.id, lettre: !x || e.lettre || e.sansPlace, mots: e.mots || "", p: e.p || "", l2: e.l2 || null };
+    const a = { st: true, k, sticker: st, stId: st.id, cle: "stk:" + st.id, lettre: !x || e.lettre || e.sansPlace, mots: e.mots || "", p: e.p || "", l2: e.l2 || null, manque: e.manque || "" };
     if (x && !e.lettre && !e.sansPlace && e.a > e.de) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l, g: { de: e.de, a: e.a, de2: e.de, a2: e.a, eleve: e.mots || "", corrige: e.mots || "" } });
     else if (x) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l });
     A.push(a); });
@@ -299,7 +280,8 @@ function stBandeCarte(B, a, ctx, carte, touches) {
   else ctx.innerHTML = '<div class="rc-st-lettre">' + (a.l && a.mots ? "« " + escapeHtml(a.mots) + " » · " : "") + "toute la lettre</div>";
   carte.innerHTML = '<div class="rc-bande-mot rc-st-mot" style="color:' + c + '">★ ' + escapeHtml(a.sticker.texteEleve) + '</div><div class="rc-bande-pied"><b class="rc-bande-type" style="background:' + c + "22;color:" + c + ";border-color:" + c + '">' + escapeHtml((a.sticker.num || "") + " · " + (l ? l.titre : "")) + "</b> "
     + (a.lettre ? "Toute la lettre : gardé seulement si rien ne le contredit." : a.mots ? "L’IA l’a vu dans « " + escapeHtml(a.mots) + " »" + (a.sticker.taille === "phrase" ? " : le cadre prendra toute la phrase." : a.sticker.taille === "paragraphe" ? " : l’accolade prendra tout le paragraphe." : ".") : "") + (d === "o" ? " · ✓ gardé" : d === "n" ? " · ✗ non" : "") + '</div>'
-    + (a.p ? '<div class="rc-bande-pied rc-st-pourquoi" title="La phrase que l’élève lira sous ce qu’il a écrit. Entrée la garde avec le sticker.">Pour l’élève : ' + escapeHtml(a.p) + "</div>" : "") + '<div class="rc-bande-pied rc-st-compte">' + stBandeApport(B.k, a, d) + " · sa note, avec les stickers déjà gardés avant celui-ci : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
+    + (a.p ? '<div class="rc-bande-pied rc-st-pourquoi" title="La phrase que l’élève lira sous ce qu’il a écrit. Entrée la garde avec le sticker.">Pour l’élève : ' + escapeHtml(a.p) + "</div>" : "")
+    + (a.manque ? '<div class="rc-bande-pied rc-st-manque" title="L’IA a proposé quand même : à toi de décider. L’élève ne lit jamais cette ligne.">L’IA doutait, il lui manquait : ' + escapeHtml(a.manque) + "</div>" : "")   /* [C14 669] (Paul 12:52 : « il faut quand même qu'elle propose, et que je dispose ») */ + '<div class="rc-bande-pied rc-st-compte">' + stBandeApport(B.k, a, d) + " · sa note, avec les stickers déjà gardés avant celui-ci : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
   touches.innerHTML = '<b class="rc-bande-mode">Les stickers</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> gardé</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span>' + (a.g && !zone ? "<span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser · double clic sur le cadre : sa longueur</span>" : "") + (a.g ? "" : "<span><kbd>←</kbd> <kbd>→</kbd> : faire défiler la copie</span>") + "<span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   if (a.g) rcBandePhoto(a); else rcBandeLettre();   // [C14 626] toute la lettre : toute la copie dans la bande
 }
@@ -396,11 +378,27 @@ function stIARemarques(o, copiesOk) {
     L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; }
       const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } const r = String(e.r || "").trim(); if (!r || vu.has(st.id)) return;
       if (reussi(st.id)) { refusReussi++; return; } vu.add(st.id); const longue = r.split(/\s+/).length > 40; if (longue) longues++;
-      if (!e.l) { liste.push({ st: st.id, num: st.num, r, grille: true, longue }); return; }
+      const mq = e.manque ? { manque: String(e.manque).slice(0, 400) } : {};   // [C14 669] ce qui manquait à l'IA, pour toi seul
+      if (!e.l) { liste.push(Object.assign({ st: st.id, num: st.num, r, grille: true, longue }, mq)); return; }
       const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = e.m ? stTrouverMots(x.l.texte, e.m) : null;
-      liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, r, mots: String(e.m || "").slice(0, 200), longue }, t ? { de: t.de, a: t.a } : { sansPlace: true })); });
+      liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, r, mots: String(e.m || "").slice(0, 200), longue }, mq, t ? { de: t.de, a: t.a } : { sansPlace: true })); });
     s.recopie = s.recopie || {}; s.recopie.remarquesIA = { le: quand, complet, relu: null, liste }; copies++; n += liste.length; });
   return { copies, n, refusReussi, horsCopie, inconnus, longues };
+}
+/* [C14 669] (Paul 12:46 : « Quand j'envoie à l'IA elle doit me demander les textes lus, etc. Tout ce dont elle n'a pas connaissance en termes de contenus. Il y a donc une
+   discussion préalable avec moi ») : ce que tu as donné à l'IA pendant cette discussion revient dans son fichier (« contexte ») ; l'app le garde avec la rédaction
+   et l'envoie avec chaque paquet suivant : l'IA ne redemande que ce qui manque encore */
+function stContexte() { const c = typeof SUJET === "object" && SUJET && SUJET.contexteIA; return c && c.texte ? c : null; }
+function stContexteGarder(o) {
+  const v = o && o.contexte; if (!v) return ""; const texte = (typeof v === "string" ? v : JSON.stringify(v, null, 1)).trim().slice(0, 60000); if (!texte) return "";
+  const anc = stContexte(); if (anc && anc.texte === texte) return " Le contexte de ta discussion avec l’IA : le même qu’avant, gardé.";
+  const c = { texte, le: new Date().toISOString() }; SUJET.contexteIA = c; ruEcrire(["redactions", RU.id, "config", "contexteIA"], c, "le contexte donné à l’IA");
+  return " Le contexte de ta discussion avec l’IA (" + texte.length + " signes) : gardé avec la rédaction, il partira avec les paquets suivants.";
+}
+function stContexteVoir() {
+  const c = stContexte(); if (!c) { scModale("<h3>Le contexte donné à l’IA</h3><p>Rien encore : au premier envoi, l’IA te pose ses questions (les textes lus, ce que la grille cite) ; ce que tu lui donnes revient avec son fichier, et l’app le garde ici.</p>"); return; }
+  scModale("<h3>Le contexte donné à l’IA</h3><p>Gardé le " + escapeHtml(rcHeure(c.le)) + ", " + c.texte.length + " signes. Il part avec chaque paquet de cette rédaction : l’IA ne te redemande que ce qui manque encore.</p><pre class=\"st-contexte\">" + escapeHtml(c.texte) + "</pre><button class=\"sc-btn\" id=\"stContexteEffacer\" title=\"L’IA te reposera ses questions au prochain envoi. Rien d’autre ne change.\">🗑 Effacer ce contexte</button>");
+  const b = document.getElementById("stContexteEffacer"); if (b) b.onclick = () => { delete SUJET.contexteIA; ruEcrire(["redactions", RU.id, "config", "contexteIA"], null, "le contexte donné à l’IA, effacé"); scModaleFermer(); toast("Contexte effacé : l’IA te reposera ses questions au prochain envoi."); };
 }
 function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r && Array.isArray(r.liste) ? r : null; }
 function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}; return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o"); }
@@ -417,7 +415,7 @@ function stRqRelecture(k) {
   return '<div class="st-rq-tete"><b>Les remarques de l’IA · ' + r.liste.length + "</b> <span>" + (r.relu ? "✓ relues à " + escapeHtml(rcHeure(r.relu)) + " : l’élève lit celles qui restent." : "À relire : l’élève ne les lit qu’après ton <kbd>Entrée</kbd>.") + "</span>"
     + (r.relu ? "" : '<button class="sc-btn" onclick="this.blur();rcBandeGarderRq()" title="Garder toutes les remarques qui restent : l’élève les lira dans son fichier (Entrée).">✓ Je les garde (Entrée)</button>') + "</div>"
     + r.liste.map((e, i) => { const st = stTous().find(x => x.id === e.st), x = e.l && L.find(y => y.id === e.l), reussi = (D[e.st] || {}).v === "o", c = st ? stCouleur(st) : "#6b7280";
-      return '<div class="st-rq' + (e.etat === "retire" || reussi ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + "</small>"
+      return '<div class="st-rq' + (e.etat === "retire" || reussi ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + "</small>" + (e.manque ? '<em class="st-rq-manque" title="L’élève ne lit jamais cette ligne.">L’IA doutait, il lui manquait : ' + escapeHtml(e.manque) + "</em>" : "")
         + '<button class="sc-btn" onclick="stRqRetirer(RC.bd.k,' + i + ')" title="' + (e.etat === "retire" ? "Remettre cette remarque : l’élève la lira." : "Retirer cette remarque : l’élève ne la lira pas. Rien n’est effacé.") + '">' + (e.etat === "retire" ? "↺ Remettre" : "✕ Retirer") + "</button></div>"
         + '<textarea rows="2" onchange="stRqTexte(RC.bd.k,' + i + ',this.value)" title="La remarque que l’élève lira. Corrige-la ici : ton texte remplace celui de l’IA.">' + escapeHtml(e.r) + "</textarea></div>"; }).join("");
 }

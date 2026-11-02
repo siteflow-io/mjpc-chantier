@@ -65,14 +65,27 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const parEtat = id => pg.evaluate(id => ({ classe: !!document.querySelector('#rcFeuille .rc-ligne[data-ligne="' + id + '"].rc-par'), presse: document.getElementById("rcPar").getAttribute("aria-pressed") === "true", vu: getComputedStyle(document.querySelector('#rcFeuille .rc-ligne[data-ligne="' + id + '"]'), "::before").content }), id);
   const parVoulu = async (id, voulu) => { await pg.locator('#rcFeuille .rc-saisie[data-ligne="' + id + '"]').click(); await att(200); let e = await parEtat(id), n = 0; while (e.classe !== voulu && n++ < 2) { await pg.click("#rcPar"); await att(250); e = await parEtat(id); } return Object.assign(e, { clics: n }); };
   const pA = await parVoulu(kE.l[2], true), pB = await parVoulu(kE.l[1], false); await cap("C14-632-paragraphe");
+  /* [C14 669] (Paul 12:46 : « Pour ce qui est de la géographie de la copie, là pour le coup il faut des solutions techniques ») : la marge de l'élève, recopiée à gauche de sa ligne ;
+     la ligne de la date laissée vide au-dessus de la lettre dit « en-tête : la date, le lieu » */
+  await pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[2] + '"]').click(); await att(150);
+  const mg = pg.locator('#rcFeuille .rc-marge[data-ligne="' + kE.l[2] + '"]'); const mgVu = await mg.isVisible(); await mg.click(); await att(100); await pg.keyboard.type("1"); await att(200); await pg.keyboard.press("Enter"); await att(200);
+  const mgEtat = await pg.evaluate(id => ({ focus: document.activeElement.classList.contains("rc-saisie") && document.activeElement.dataset.ligne === id, garde: (rcDocument(RC.page).lignes[id] || {}).marge || "" }), kE.l[2]);
+  const c0l = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[0] + '"]'); await c0l.fill(""); await att(400);
+  const tete = await pg.evaluate(id => (document.querySelector('#rcFeuille .rc-saisie[data-ligne="' + id + '"]') || {}).placeholder || "", kE.l[0]); await cap("C14-669-marge-en-tete");
+  await c0l.fill(ENTETE[0]); await att(300);
+  const tete2 = await pg.evaluate(id => (document.querySelector('#rcFeuille .rc-saisie[data-ligne="' + id + '"]') || {}).placeholder || "", kE.l[0]);
   const dl = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const fichier = await (await dl).path(); const ex = JSON.parse(fs.readFileSync(fichier, "utf8"));
   const nCop = ex.copies.length, seul = ex.copies.filter(c => c.seulementStickers).length, sansId = ex.copies.filter(c => !c.copie).length;
   const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);
   const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, ENTETE.length).map(l => l.texte).join(" / ");
+  verif("669 : la case de la marge, devant « " + ENTETE[2].slice(0, 25) + " » (visible sur la ligne en cours : " + mgVu + ") : « 1 » tapé, gardé (« " + mgEtat.garde + " »), Entrée revient à la ligne (" + mgEtat.focus + ") ; l’export le dit à l’IA (marge « " + (L0[2] || {}).marge + " »), sur cette ligne seule ; la ligne de la date vidée dit « " + tete + " », remplie elle ne dit plus rien",
+    mgVu && mgEtat.garde === "1" && mgEtat.focus && !!L0[2] && L0[2].marge === "1" && L0.filter(l => l.marge).length === 1 && /^en-tête : la date, le lieu/.test(tete) && tete2 === "" && /Une ligne qui porte \\?"marge\\?" a, dans la marge à sa hauteur/.test(ex.consigne));
+  verif("669 : la consigne (Paul 12:46, 12:52) : avant de corriger, l’IA demande au professeur tout ce qui lui manque en contenu (« " + ex.consigne.slice(0, 90) + "… ») ; elle propose toujours, son doute dans « manque », jamais dit à l’élève ; elle rend le « contexte » donné",
+    /^Avant toute correction : lis le sujet, la grille et ces copies/.test(ex.consigne) && /les textes lus en classe/.test(ex.consigne) && /attends ses réponses avant de corriger/.test(ex.consigne) && /Propose toujours/.test(ex.consigne) && /ne te tais jamais par prudence/.test(ex.consigne) && /N'écris jamais dans « p » ni dans « r » ce qui te manquait/.test(ex.consigne) && /Ajoute enfin au JSON \\?"contexte\\?"/.test(ex.consigne) && !ex.contexte);
   verif("632 : « ¶ Paragraphe » pose le ¶ devant « " + ENTETE[2].slice(0, 30) + " » (" + pA.vu + ", bouton enfoncé : " + pA.presse + ") et l’enlève de « " + ENTETE[1] + " » (" + pB.classe + ") ; l’export le dit à l’IA (" + L0.slice(0, 4).map((l, i) => (i + 1) + (l.par ? " ¶" : "")).join(", ") + ") et sa consigne le lui explique",
     pA.classe && pA.presse && /¶/.test(pA.vu) && !pB.classe && !pB.presse && !!L0[2] && L0[2].par === true && !L0[1].par && /une ligne qui porte \\?"par\\?": true commence un nouveau paragraphe/.test(ex.consigne));
   verif("stickers (1.4.16) : « ⇪ Exporter pour l’IA » : la grille part avec la correction (" + (ex.grille || []).length + " stickers, le sujet : " + (ex.sujet || "").length + " signes, la consigne demande les réussites : " + /reussites/.test(ex.consigne) + ") ; " + nCop + " copies, " + seul + " déjà corrigée(s) pour leurs seules réussites ; chaque copie avec son identité interne (" + (nCop - sansId) + " sur " + nCop + "), aucun nom ; la copie recopiée à l’instant part avec ses lignes (« " + entete + " »)",
-    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && seul === 0 && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
+    (ex.grille || []).length === 44 && (ex.sujet || "").length > 100 && /reussites/.test(ex.consigne) && /\{"s":"fin"\}/.test(ex.consigne.replace(/\\"/g, '"')) && nCop >= 2 && ex.copies.filter(c => c.seulementStickers).every(c => c.copie !== idE) /* [C14 669] une copie déjà corrigée part pour ses seules réussites ; la copie recopiée à l'instant, jamais */ && sansId === 0 && !!c0 && !c0.seulementStickers && entete === ENTETE.join(" / ") && !JSON.stringify(ex).includes(await pg.evaluate(() => nomEleveDe(SC.copies[0]))));
   if (!c0 || L0.length < 2) return;
   verif("remarques (1.4.17) : la consigne de l’export demande les remarques, au format de C14 451 (une par sticker non réussi, deux phrases, quarante mots au plus, jamais la phrase corrigée ; « aReprendre » : " + /aReprendre/.test(ex.consigne) + ")",
     /pour chaque sticker de la grille qui n'est pas réussi, écris une remarque/.test(ex.consigne) && /sans jamais écrire la phrase corrigée/.test(ex.consigne) && /aReprendre/.test(ex.consigne));
@@ -80,14 +93,19 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const c1 = ex.copies.find(c => c !== c0);
   const ret = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {} };
   ex.copies.filter(c => !c.seulementStickers).forEach(c => c.pages.flatMap(p => p.lignes).forEach(l => { ret.lignes[l.id] = l.texte; }));
-  ret.reussites[c0.copie] = [{ s: "S2", l: L0[0].id, m: "Tranchée de la cote 304, près de Verdun" }, { s: "S36", l: L0[1].id, m: "Ma chère Louise" }, { s: "S38" }, { s: "fin" }];
+  const MQ36 = "la photo : je ne vois pas si « Ma chère Louise » est seule sur sa ligne, en tête de la lettre", MQ7 = "la mise en page : je ne sais pas si l'élève est allé à la ligne", CX = "Textes lus en classe : la lettre de Jean Déléage à sa femme (la boue des tranchées, les rats) ; le chapitre 3 du manuel. Les modèles du cahier d'entraînement : ceux de l'énoncé.";   // [C14 669]
+  ret.reussites[c0.copie] = [{ s: "S2", l: L0[0].id, m: "Tranchée de la cote 304, près de Verdun" }, { s: "S36", l: L0[1].id, m: "Ma chère Louise", manque: MQ36 }, { s: "S38" }, { s: "fin" }];
+  ret.contexte = CX;
   if (c1) ret.reussites[c1.copie] = [{ s: "S8", l: L0[0].id, m: "Tranchée de la cote 304" }];   /* [C14 1.4.18] sa liste est coupée (pas de « fin ») : elle repart au prochain export, pour ses seuls stickers */
   // [C14 1.4.17] les remarques de l'IA : une sur une ligne, une pour la grille, une pour un sticker que tu poseras de ta main ; une sur un sticker réussi et une sur la ligne d'une autre copie, refusées
   const RQ4 = "Tu dis où tu es (« Tranchée de la cote 304 »), pas depuis quand tu as quitté Louise. Ajoute depuis combien de temps vous êtes séparés.", RQ7 = "Ta lettre est écrite d'un seul bloc. Va à la ligne quand tu passes à une autre partie.", RQ43 = "Ta lettre n'emploie aucun mot de 14-18 comme « poilu » ou « permission ». Ajoute-en un là où tu racontes ta vie au front.";
-  ret.aReprendre = { [c0.copie]: [{ s: "S4", l: L0[0].id, m: "Tranchée de la cote 304", r: RQ4 }, { s: "S7", r: RQ7 }, { s: "S43", r: RQ43 }, { s: "S2", l: L0[0].id, r: "Tu dis où tu es." }, { s: "fin" }] };
+  ret.aReprendre = { [c0.copie]: [{ s: "S4", l: L0[0].id, m: "Tranchée de la cote 304", r: RQ4 }, { s: "S7", r: RQ7, manque: MQ7 }, { s: "S43", r: RQ43 }, { s: "S2", l: L0[0].id, r: "Tu dis où tu es." }, { s: "fin" }] };
   if (c1) ret.aReprendre[c1.copie] = [{ s: "S5", l: L0[0].id, r: "Dis qui tu es." }, { s: "fin" }];
   await pg.click("#rcImportIA"); await att(200); await pg.locator("#rcIATexte").fill(JSON.stringify(ret)); await pg.click("#rcIAValider"); await att(900);
   const msg = await pg.evaluate(() => document.getElementById("rcIAMessage").textContent); await pg.keyboard.press("Escape"); await att(200);
+  const cxGarde = await pg.evaluate(() => ({ local: (SUJET.contexteIA || {}).texte || "", hub: JSON.stringify((window.__HUB_ETAT || {}).cx || null) }));
+  verif("669 : le retour de l’IA porte le « contexte » donné avant la correction : gardé avec la rédaction (« " + cxGarde.local.slice(0, 60) + "… »), et le message le dit (« " + (msg.match(/Le contexte[^.]*\./) || [""])[0] + " »)",
+    cxGarde.local === CX && /Le contexte de ta discussion avec l’IA \(\d+ signes\) : gardé avec la rédaction, il partira avec les paquets suivants\./.test(msg));
   const k0 = await pg.evaluate(id => Object.keys(state.copies).find(k => state.copies[k].id === id), c0.copie);
   const ia0 = await pg.evaluate(k => { const r = (scCopie(k).recopie || {}).stickersIA; return r ? { n: r.liste.length, complet: r.complet, places: r.liste.filter(e => e.a > e.de).length } : null; }, k0);
   verif("stickers (1.4.16, 1.4.17) : le retour de l’IA chargé : « " + msg.slice(0, 330) + " » ; sur la copie : " + (ia0 ? ia0.n + " réussites, " + ia0.places + " avec leur passage retrouvé dans la ligne, liste entière : " + ia0.complet : "rien"),
@@ -97,6 +115,9 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await pg.click("#rcBandeOuvrir"); await att(600); if (await pg.evaluate(() => RC.bd && RC.bd.attente)) { await pg.keyboard.press("Enter"); await att(300); }
   /* [C14 633] (Paul 02/11 06:59 : « sa carte dit 99 pourcent ») : un arrêt sauté — un clic sur S36 dans la liste, S2 reste derrière */
   await pg.locator("#rcBandeListe li.rc-st-li").nth(1).click(); await att(300);
+  const doute36 = await pg.evaluate(() => document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ")); await cap("C14-669-doute");   // [C14 669] S36 : l'IA doutait
+  verif("669 : l’IA propose S36 même sans être sûre ; la bande te dit son doute (« " + (doute36.match(/L’IA doutait[^»]*»[^.]*/) || [""])[0].slice(0, 120) + " »), pour toi seul : tu décides",
+    /S36/.test(doute36) && doute36.includes("L’IA doutait, il lui manquait : " + MQ36));
   await pg.keyboard.press("n"); await att(250);
   /* [C14 626] (Paul 02/11 06:48 : « il n'y a plus la bande, je ne vois plus la copie ») : un sticker de toute la lettre, la bande montre la copie ; ← → la font défiler */
   const encre = () => pg.evaluate(() => { const cv = document.getElementById("rcBandePhoto"), d = cv.getContext("2d").getImageData(0, 0, cv.width, cv.height).data; let n = 0, s = 0;
@@ -117,10 +138,10 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   const apres = await pg.evaluate(k => { const D = scCopie(k).stickers || {}, M = Object.values(scCopie(k).marques).filter(m => m.forme === "sticker"); return { d: Object.values(D).map(x => x.num + x.v).sort().join(" "), marques: M.length, fin: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") }; }, k0);
   verif("stickers (1.4.16) : dans la bande, après les fautes, le sticker proposé (« " + carte.t.slice(0, 110) + " »), son cadre sur la photo (" + carte.cadre + ") ; Entrée, N, Entrée : " + apres.d + " ; posé sur la photo de l’élève (" + apres.marques + " marque) ; la fin : « " + apres.fin.slice(0, 120) + " »",
     /★ Tu dis où tu es/.test(carte.t) && /sa note, avec les stickers déjà gardés avant celui-ci/.test(carte.t) && /Si tu le gardes : Le thème tenu, \d sur 6/.test(carte.t) && /Les stickers/.test(carte.touches) && carte.cadre && apres.d === "S2o S36n S38o" && apres.marques === 1 && /1 sticker|2 stickers gardés sur 3/.test(apres.fin) && /note : /.test(apres.fin));
-  const rq1 = await pg.evaluate(() => { const q = document.getElementById("rcRqListe"); return { vu: !!q && !q.hidden, n: q ? q.querySelectorAll(".st-rq").length : 0, tete: q ? q.querySelector(".st-rq-tete").innerText.replace(/\s+/g, " ") : "", carte: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") }; });
+  const rq1 = await pg.evaluate(() => { const q = document.getElementById("rcRqListe"); return { manque: ((q && q.querySelector(".st-rq-manque")) || {}).textContent || "", vu: !!q && !q.hidden, n: q ? q.querySelectorAll(".st-rq").length : 0, tete: q ? q.querySelector(".st-rq-tete").innerText.replace(/\s+/g, " ") : "", carte: document.getElementById("rcBandeCarte").innerText.replace(/\s+/g, " ") }; });
   await cap("C14-62-relecture-remarques");
   verif("remarques (1.4.17) : au bout de la bande, la liste des remarques à relire (" + rq1.n + ", « " + rq1.tete.slice(0, 90) + " ») ; la fin de la bande sans l’ancienne note (« " + rq1.carte.slice(0, 100) + " »)",
-    rq1.vu && rq1.n === 3 && /À relire/.test(rq1.tete) && /Il reste les remarques à relire/.test(rq1.carte) && !/Bande finie/.test(rq1.carte) && !/note avant/.test(rq1.carte));
+    rq1.vu && rq1.n === 3 && /À relire/.test(rq1.tete) && rq1.manque === "L’IA doutait, il lui manquait : " + MQ7 && /Il reste les remarques à relire/.test(rq1.carte) && !/Bande finie/.test(rq1.carte) && !/note avant/.test(rq1.carte));
   // 7. ＋ un sticker que l'IA n'a pas vu, posé de ta main depuis la bande
   await pg.click("#rcStPlus"); await att(300); await pg.click('#scModale >> text=S43'); await att(400);
   const prof = await pg.evaluate(k => { const d = (scCopie(k).stickers || {}); return Object.values(d).filter(x => x.de === "prof").map(x => x.num + x.v).join(" "); }, k0);
@@ -161,7 +182,8 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   await w.click("#gr"); await w.waitForTimeout(200); const formule = await w.evaluate(() => document.querySelector("#pan [data-l] span").textContent);
   await w.click("#gc"); await w.waitForTimeout(300); const gc = await w.evaluate(() => ({ lignes: document.querySelectorAll(".gc table tr").length, on: document.querySelectorAll(".gc td.on").length, th: Array.from(document.querySelectorAll(".gc th")).map(e => e.textContent).join("|") }));
   await w.screenshot({ path: path.join(out, "C14-64-eleve-grille-complete.png") }).catch(() => {}); await w.click("#gcF"); await w.waitForTimeout(200);
-  const tout = await w.evaluate(() => document.body.innerText);
+  const tout = await w.evaluate(() => document.body.innerText), source = await w.content();
+  verif("669 : le fichier de l’élève ne dit jamais le doute de l’IA (ni à l’écran, ni dans le fichier : " + !source.includes("manque\":") + ")", !tout.includes(MQ7) && !tout.includes(MQ36) && !source.includes(MQ7) && !source.includes(MQ36) && !/copie transmise/.test(tout));
   verif("remarques (1.4.17) : dans le fichier de l’élève, " + nq + " numéro dans la marge ; au clic : « " + q1.slice(0, 200) + " »",
     nq === 1 && /À reprendre · 1/i.test(q1) && /Dis depuis quand vous êtes séparés/.test(q1) && /Ta phrase/i.test(q1) && /Tranchée de la cote 304/.test(q1) && q1.includes(RQ4) && !tout.includes(RQ43));
   verif("grille (1.4.17) : une ligne formulée pour l’élève (« " + formule.slice(0, 70) + " ») ; son échelle et la remarque de la grille sous « Pas encore réussi » (« " + q2.slice(0, 160) + " ») ; « 🪟 Voir ma grille complète » : " + gc.lignes + " rangs, " + gc.on + " cases à elle (" + gc.th.slice(0, 80) + ")",
@@ -238,7 +260,8 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
       /^Redaction-1-[A-Za-z0-9-]+_[a-z0-9-]+_envoi-1-sur-1_\d+-copies?(-stickers-seuls)?_\d{4}-\d\d-\d\d_\d\dh\d\d\.json$/.test(nom3) && ex3.fichier === nom3 && /« corrige_ » suivi exactement du nom donné dans « fichier »/.test(ex3.consigne)
       && !dl4b && /en attente de leur retour/.test(att3.flux) && att3.rv && /_renvoi_/.test(nomR) && memes);
     const id2 = await pg.evaluate(k => (state.copies[k] || {}).id, k2.k), c2 = ex3.copies.find(c => c.copie === id2), L2 = c2 ? c2.pages.flatMap(p => p.lignes) : [];
-    const seul3 = ex3.copies.filter(c => c.seulementStickers).length;   /* la copie dont la liste était coupée repart pour ses seuls stickers */
+    const seul3 = ex3.copies.filter(c => c.seulementStickers).length;
+    verif("669 : l’export suivant emporte le contexte gardé (« " + String(ex3.contexte || "").slice(0, 50) + "… ») : l’IA ne redemande que ce qui manque", ex3.contexte === CX && /Si le fichier contient « contexte »/.test(ex3.consigne));   /* la copie dont la liste était coupée repart pour ses seuls stickers */
     const ret3 = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {}, aReprendre: {} };
     L2.forEach(l => { const i = k2.l.indexOf(l.id); ret3.lignes[l.id] = i >= 0 ? CORR[i] : l.texte; });
     ret3.reussites[id2] = [{ s: "fin" }];
@@ -273,25 +296,4 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
     await tel.screenshot({ path: path.join(out, "C14-71-eleve-telephone-marge-chargee.png") }); await tel.context().close();
     verif("l’export suivant : " + seul3 + " copie déjà corrigée, partie pour ses seuls stickers (sa liste était coupée) ; fichier de l’élève (1.4.17, C14 546) : une marge chargée au téléphone — le retour de l’IA (« " + m3.slice(0, 90) + " »), la bande jusqu’au bout (" + g3.fautes + " fautes gardées, " + g3.rq + " remarques) ; dans la marge : " + mm.n + " pastilles et numéros (" + mm.numeros + " numéros) sur " + mm.rangs + " rangs, à la hauteur d’une ligne de la copie (" + mm.h + "), " + mm.x + " chevauchement, " + mm.ecran + " hors de l’écran, photo décalée de " + mm.decalage + ", pas de défilement de côté : " + mm.large,
       (!c1 || seul3 >= 1) && g3.fautes >= 6 && g3.rq >= 2 && mm.n >= 8 && mm.numeros >= 2 && mm.rangs >= 4 && mm.x === 0 && mm.ecran === 0 && /px$/.test(mm.h) && mm.large); }
-  /* [C14 632, 656] (Paul 07:56 : « donc tu as fait un bouton patch en fait? […] il faut absolument que son infobulle contextualise ce qu'il fait et surtout qu'il y ait
-     une garde sur les conséquences de son utilisation ») : un rattrapage pour les copies envoyées avant la 1.4.22 ; toutes celles du banc sont parties avec leurs paragraphes */
-  { if (await pg.evaluate(() => document.getElementById("scModale").classList.contains("show"))) { await pg.keyboard.press("Escape"); await att(200); }
-    if (!(await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert))) { await pg.click("#btnRecopier"); await att(600); }
-    await pg.click("#rcFluxOuvrir"); await att(300); const cache0 = await pg.evaluate(() => document.getElementById("rcStRedemander").hidden); await pg.click("#rcFluxFermer"); await att(200);
-    /* comme sur le vrai site ce matin : deux copies dont les stickers sont revenus d'un envoi de la 1.4.20, sans paragraphes (leur envoi n'a pas « par ») ; l'une est entièrement corrigée */
-    const P = await pg.evaluate(() => { const K = SC.copies.filter(k => { const r = (scCopie(k).recopie || {}).stickersIA; return r && r.complet && rcLignesEcrites(k).length; }).slice(0, 2); K.forEach(k => { const e = scCopie(k).recopie.envoi; if (e) delete e.par; }); return K; });
-    const avant = await pg.evaluate(P => ({ aEnv: SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || stAEnvoyer(k))).length, deja: P.filter(k => rcCopieACorriger(k)).length, D: JSON.stringify(SC.copies.map(k => scCopie(k).stickers || {})), finies: P.filter(k => svCopieCorrigee(k)).length }), P);
-    await pg.click("#rcFluxOuvrir"); await att(300); const b0 = await pg.evaluate(() => { const b = document.getElementById("rcStRedemander"); return { cache: b.hidden, gris: b.disabled, titre: b.title, texte: b.textContent }; });
-    await pg.click("#rcStRedemander"); await att(400);
-    const g = await pg.evaluate(() => ({ vu: document.getElementById("scModale").classList.contains("show"), t: document.querySelector("#scModale .sc-modale-c").innerText.replace(/\s+/g, " ") }));
-    await cap("C14-656-garde"); await pg.keyboard.press("Escape"); await att(300);
-    const rien = await pg.evaluate(P => P.every(k => !((scCopie(k).recopie.stickersIA || {}).redemande)), P);
-    await pg.click("#rcFluxOuvrir"); await att(300); await pg.click("#rcStRedemander"); await att(400); await pg.click("#stRedemanderOui"); await att(500);
-    const apres = await pg.evaluate(P => ({ toutes: P.every(k => stAEnvoyer(k)), aEnv: SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || stAEnvoyer(k))).length, D: JSON.stringify(SC.copies.map(k => scCopie(k).stickers || {})) }), P);
-    await pg.click("#rcFluxOuvrir"); await att(300); const b1 = await pg.evaluate(() => { const b = document.getElementById("rcStRedemander"); return { cache: b.hidden, gris: b.disabled, pq: document.getElementById("rcStRedemanderPq").textContent }; });
-    await cap("C14-632-redemander"); await pg.click("#rcFluxFermer"); await att(200);
-    verif("656 : « ↻ Les paragraphes : redemander les stickers » est caché tant que toutes les copies sont parties avec leurs paragraphes (" + cache0 + ") ; avec " + P.length + " copies envoyées avant (une entièrement corrigée : " + avant.finies + "), il paraît, son infobulle dit le rattrapage (« " + b0.titre.slice(0, 70) + "… ») ; un clic ouvre d’abord la garde (« " + g.t.slice(0, 160) + "… ») ; Échap : rien ne change (" + rien + ")",
-      cache0 && !b0.cache && !b0.gris && /Un rattrapage, une seule fois/.test(b0.titre) && /avant la 1\.4\.22/.test(b0.titre) && g.vu && /avant qu’elle voie les paragraphes/.test(g.t) && /Ce qui reste : tes décisions/.test(g.t) && /remplace leurs remarques/.test(g.t) && /99 %/.test(g.t) === (avant.finies > 0) && /fichiers École Directe déjà téléchargés ne seront plus à jour/.test(g.t) && rien);
-    verif("656 : « ↻ Oui, redemander » : elles repartiront pour leurs seuls stickers au prochain export (à exporter : " + avant.aEnv + " → " + apres.aEnv + "), tes décisions n’ont pas bougé (" + (apres.D === avant.D) + ") ; le bouton grisé dit pourquoi (« " + b1.pq + " »)",
-      apres.toutes && apres.aEnv === avant.aEnv + P.length - avant.deja && apres.D === avant.D && !b1.cache && b1.gris && /repartent pour leurs stickers, avec leurs paragraphes/.test(b1.pq)); }
 }

@@ -4272,3 +4272,31 @@ Je n'ai rien compris à ton message.
 02/11/2026 16:02
 
 MEMO
+
+---
+
+## Tour 153 — 02/11/2026 16:03
+
+**Paul (16:03) :**
+
+déjà l'élève corrige dans son html. Il faut relier ce html au site, afin que j'ai un suivi de la correction. pour 14. 15 ok. 16. quelles questions?
+
+**Ce qui a été fait (C14) :** lu la banque de questions de la dictée (`correction_dictee.html`, 1786-1792 : validée par Paul le 28/09, 40 G, 40 L, 15 P, 10 E) ; écrit au sas (`A-CODER-CORRECTION-ELEVE.md`) : où l'élève corrige, et 13 à 16.
+
+**Claude (16:06) :**
+
+À jouer : ton mot sur 18 et 20 · en cours : rien · ouvert : ce qu'on reprend tel quel, un peu, beaucoup, les sujets suivants de ce cadrage, le test iPhone École Directe (17), 738 (après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+17. Compris : l'élève corrige dans son fichier, celui que tu lui rends par École Directe. Ce fichier enverra chacune de ses réponses au site, et tu suivras sa correction en direct, comme en dictée. Sur ordinateur, un fichier ouvert depuis le disque parle bien au site : vérifié le 30/10. Sur téléphone, je ne sais pas : c'est ton test iPhone École Directe, encore à faire, avant de lancer la correction.
+
+18. 14 : ton message dit « pour 14. », sans plus. Je le prends comme un oui ?
+
+19. 15 : noté.
+
+20. Les questions de la dictée : après le stylo vert, l'app lui pose une question par essai raté, sauf le premier. Ce sont des questions à choix, prises dans ta banque validée le 28/09 : 40 de grammaire, 40 de lexique, 15 de ponctuation, 10 d'élision ; le type de la faute ratée choisit la série. Exemple : « Dans la forêt ___ des loups affamés. » : rôdent, rôde, rôdes. Chaque bonne réponse lui rend les points de son raté. Pour la rédaction, je propose la même banque et la même règle.
+
+À tester : rien de neuf.
+
+02/11/2026 16:06
+
+MEMO

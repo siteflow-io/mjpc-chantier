@@ -1219,3 +1219,4 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la perte quand plusieurs appareils agissent dans la même seconde) · ouvert : rien
   >
   > MEMO
+- **18:23 — la conscience** : le réveil de 18:11 est arrivé à 18:23 ; le point à Paul a déjà été envoyé à 18:02 (262-264). L'exécutant n'a pas envoyé le résultat de sa sonde complète : demandé (message), en une ligne.

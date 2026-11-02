@@ -181,12 +181,12 @@ await K('K6', 'la diapo trop pleine se lit en pages, jamais hors du cadre (n°13
   verif('K6', pareil(pp, tt) && tt.hors === 0, `${W} px · la fenêtre du tableau montre la même page que le pilote après un geste`, `pilote « ${pp.page} » ${pp.lignes.length} l. · tableau « ${tt.page} » ${tt.lignes.length} l., hors ${tt.hors}`);
   await fen.close(); await finK('K6', o); } });
 
-// K7 — la fenêtre du tableau reçoit les pages dès son ouverture (p8-5g, point 1 : à l'ouverture comme à chaque ▶, même page, même compteur, aussitôt ; page suivie ou choisie à la molette)
+// K7 — la fenêtre du tableau reçoit les pages dès son ouverture (p8-5g, point 1 : à l'ouverture comme à chaque ▶, même page, même compteur, aussitôt ; page suivie ou choisie par Maj + → — la molette, en jeu, ne la choisit plus : ⑱, C16 02/11)
 await K('K7', 'la fenêtre du tableau reçoit les pages dès son ouverture (n°13 · 17)', async () => { for (const cas of [{ nDev: 0 }, { nDev: 9 }, { nDev: 13 }, { nDev: 9, molette: true }]) { const o = await ouvrir(); const pg = o.pg; await atelier(pg); await huitLignes(pg);
   await ongPilotage(pg); await pg.waitForTimeout(300); await lancer(pg); for (let i = 0; i < cas.nDev; i++) { await pg.click('#bdev'); await pg.waitForTimeout(60); }
-  if (cas.molette) { const m = await rect(pg, '#mur'); await pg.mouse.move(m.x + m.w / 2, m.y + m.h / 2); await pg.mouse.wheel(0, 300); await pg.waitForTimeout(500); } await pg.waitForTimeout(300);
-  const pil = await lireMur(pg); const fen = await ouvrirTableau(pg); const t0 = await lireMur(fen); const nom = `ouvert à ${cas.nDev} dévoilés${cas.molette ? ', page 2 choisie à la molette' : ''}`;
-  if (cas.molette) verif('K7', /page 2/.test(pil.page), 'la molette a choisi la page 2 au pilote', `« ${pil.page} »`);
+  if (cas.molette) { await pg.keyboard.press('Shift+ArrowRight'); await pg.waitForTimeout(500); } await pg.waitForTimeout(300);   /* C16 (02/11, ⑱ — Paul, 07:48 : « Dès qu'un diapo est lancé, la façon d'avancer c'est soit dévoiler, soit gel. pas de scroll ou autre, qui sert en préparation, jamais en jeu en classe, ni en répétition ») : en jeu, la molette ne choisit plus la page ; la page 2 se choisit par Maj + → (lisait : un cran de molette) */
+  const pil = await lireMur(pg); const fen = await ouvrirTableau(pg); const t0 = await lireMur(fen); const nom = `ouvert à ${cas.nDev} dévoilés${cas.molette ? ', page 2 choisie par Maj + →' : ''}`;
+  if (cas.molette) verif('K7', /page 2/.test(pil.page), 'Maj + → a choisi la page 2 au pilote', `« ${pil.page} »`);
   verif('K7', pareil(pil, t0) && t0.hors === 0, `${nom} : dans la seconde, même compteur et mêmes lignes que le pilote, rien hors du cadre`, `pilote « ${pil.page} » ${pil.lignes.length} l. · tableau « ${t0.page} » ${t0.lignes.length} l., hors ${t0.hors}`);
   await pg.click('#bdev'); await pg.waitForTimeout(500); const p1 = await lireMur(pg), t1 = await lireMur(fen);
   verif('K7', pareil(p1, t1), `${nom}, puis un ▶ : toujours la même page des deux côtés`, `pilote « ${p1.page} » · tableau « ${t1.page} »`);

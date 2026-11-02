@@ -3543,3 +3543,35 @@ Promeus
 02/11/2026 06:14
 
 MEMO
+
+---
+
+## Tour 133 — 02/11/2026 06:44 → 06:48
+
+**Paul (06:44, avec une capture : la bande d'une copie de la 3 Dylan Bob, l'arrêt « S21 bis · Toutes les phrases sont complexes », « toute la lettre », ✓ gardé ; la zone de la photo vide) :**
+
+plantage? et 621 si, j'ai bien chargé ma grille, je l'ai même fait hier soir
+
+**Paul (06:48, pendant que je mesurais) :**
+
+en fait il n'y a plus la bande, je ne vois plus la copie de [l'élève], c'est ça le problème
+
+**Ce qui a été fait (C14) :** le vrai site lu, en lecture seule, par la page en ligne (aucune écriture partie) : deux rédactions, celle de la 3 Franklin Aretha (sans grille de stickers : c'est elle que tous mes essais ouvraient) et celle de la 3 Dylan Bob (la grille de stickers chargée). La copie de la capture rouverte sur le fichier en ligne : elle s'ouvre à sa bande, sur S21 bis (arrêt 63 sur 67) ; Entrée passe à S22, puis S38 et deux autres stickers de toute la lettre, puis « Bande finie » ; aucune erreur. Cause mesurée dans le code : pour un sticker de toute la lettre, `stBandeCarte` appelle `rcBandePhoto(null)`, qui vide la bande ; `rcBandePhoto`, `stBandeCarte` et `rcBandeRendre` sont les mêmes en 1.4.19 et en 1.4.20. Inscrit au registre des dettes.
+
+**Claude (06:52) :**
+
+À jouer : ton mot sur 626 · en cours : rien · ouvert : 626, 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+624. Ce n'est pas un plantage. S21 bis est un sticker de toute la lettre : il n'a pas de place dans la copie, alors l'app vide la bande. Ce n'est pas la 1.4.20 : ce code est le même qu'en 1.4.19. J'ai rouvert cette copie sur ton vrai site, en lecture seule : Entrée garde S21 bis et passe à la suite. Les quatre arrêts suivants sont aussi de toute la lettre, la bande y reste vide, puis vient « Bande finie ». Aucune erreur.
+
+625. Pour voir la copie maintenant : Échap revient à la recopie, où la photo est à côté de ta feuille. « ▶ La bande » te ramène à S21 bis.
+
+626. Ma proposition : sur un sticker de toute la lettre, la bande montre toute la copie, ses lignes bout à bout depuis la première, et ← → la font défiler ligne par ligne, sans cadre. Je le code, banc complet, et je te le donne à promouvoir ?
+
+627. 621 était faux, tu as raison. J'avais mesuré ta rédaction de la 3 Franklin Aretha, où aucune grille n'est chargée. Sur celle de la 3 Dylan Bob, ta grille est bien là. Mes essais en ligne de ce matin n'ont porté que sur la 3 Franklin Aretha ; la 3 Dylan Bob, je viens de l'ouvrir : la copie s'ouvre à sa bande, sans erreur.
+
+À tester : sur cette copie, Retour jusqu'à S43 (ligne 10) : la bande remontre la copie. Puis Entrée ou N jusqu'à « Bande finie ».
+
+02/11/2026 06:52
+
+MEMO

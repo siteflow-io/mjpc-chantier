@@ -1454,3 +1454,4 @@ MEMO
   > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) · ouvert : 289, 290, 291
   >
   > MEMO
+- **23:08 — un incident de la conscience** : pour voir où en était l'exécutant de l'appel, elle a lu la fin de son fichier de sortie par le shell (`tail`), ce qui est interdit (la même faute qu'à 15:11). Ce qu'elle a vu : l'exécutant attend la sonde de ㉞ sur son code et sur la base. Elle ne le refait pas : elle attend la notification de l'exécutant.

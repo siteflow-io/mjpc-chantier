@@ -932,14 +932,19 @@ MEMO
 - **15:09 — Paul, mot pour mot** : « tout, tout fini à 16h15. 16h15 c'est mon promeus. »
 - **15:11 — incident de la conscience** : pour voir où en était l'exécutant de ㉞, j'ai lu la fin de son fichier de sortie par le shell (`tail`). La règle l'interdit (ne jamais lire la sortie d'un agent par le shell). Je ne le refais plus : je lui demande par message.
 - **15:11 — la conscience** : à l'exécutant de ㉞ (message) — nouveau délai : le code prouvé et poussé, avec les captures, à 15:40 au lieu de 16:00 (plus de point à 15:35) ; même ordre (la vraie heure et le mode test, avec le parcours de 14:59 en preuve ; puis la télécommande par le QR ; puis la répétition) ; il ne pousse que ce qui est prouvé et dit en une ligne ce qui manque ; après 15:40, aucun navigateur, mon banc a la machine seule ; il répond tout de suite où il en est.
-- **15:12 — message à Paul, mot pour mot :**
+- **15:12 — l'exécutant de ㉞ (message)** : « dossier prêt (worktree clairsemé, le disque est à 97 %), code lu et dessin arrêté (un module dr-session.js : annonce au hub, bandeau abonné aux trois pointeurs, état vivant `vif` partagé entre pilotes avec fusion, mode test à /site/tableau_test, clôture partout) ; je code maintenant l'heure et le mode test, puis la sonde du parcours de 14:59 ; à 15:40 je pousse ce qui est prouvé et je dis en une ligne ce qui manque (le QR et la répétition seront probablement hors délai). »
+- **15:13 — la conscience** : à l'exécutant (message) — on garde ce plan ; à 15:40, deux lignes de plus : ce qu'il reste à faire pour la télécommande par le QR et pour la répétition, avec les minutes estimées ; la fonction de dr-session.js qu'une télécommande appelle pour piloter (nom, arguments).
+- **15:14 — la conscience** : le disque était plein à 97 % (1,6 Go libres). Dix dossiers de travail finis et poussés retirés (ex-audit-fin, ex-correctifs, ex-dettes, ex-fil, ex-fin, ex-ouverture, ex-reprise, ex-reprise-sondes, ex-retour, wt-ouv) ; mes deux sondes non versées gardées au brouillon. 18 Go libres. `sas-integration` laissé (je ne sais pas à qui il sert).
+- **15:16 — message à Paul, mot pour mot :**
 
-  > 230. Compris : tout est fini à 16:15, et 16:15 est l'heure de ton « promeus ». Pour que mon banc complet (35 minutes) finisse avant, l'exécutant livre son code et ses captures à 15:40 au lieu de 16:00. Je te montre les captures dès qu'elles arrivent. Pendant le banc, je prépare toute la mise en ligne, pour qu'elle ne prenne que quelques minutes après ton « promeus ». Si une partie n'est pas prouvée à 15:40, elle n'entre pas dans le fichier, et je te le dis à ce moment-là.
+  > 230. Compris : tout fini à 16:15, et 16:15 est l'heure de ton « promeus ». Pour que mon banc complet (35 minutes) finisse avant, l'exécutant livre son code et ses captures à 15:40 au lieu de 16:00. Pendant le banc, je prépare toute la mise en ligne, pour qu'elle ne prenne que quelques minutes après ton « promeus ».
   >
-  > À jouer : rien · en cours : l'exécutant de ㉞ (code et captures à 15:40), puis mon banc complet (15:40 à 16:15) · ouvert : rien
+  > 231. L'exécutant m'a répondu à 15:12. À 15:40, la vraie heure et le mode test seront prouvés, avec ton parcours de 14:59 réparé. La télécommande par le QR et la répétition ne tiendront probablement pas dans le délai. Ma proposition : à 16:15, je te demande le « promeus » pour ce qui est prouvé, banc complet passé, et rien d'autre n'entre dans le fichier. La télécommande et la répétition continuent juste après, avec leur propre banc et un second « promeus ». À 15:40, je te donne l'heure de ce second envoi.
+  >
+  > À jouer : rien · en cours : l'exécutant de ㉞ (code et captures à 15:40), puis mon banc complet (15:40 à 16:15) · ouvert : 231
   >
   > À tester : la liste de 14:34.
   >
-  > 02/11/2026 15:12
+  > 02/11/2026 15:16
   >
   > MEMO

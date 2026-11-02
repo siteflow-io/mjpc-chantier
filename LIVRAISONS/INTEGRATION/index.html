@@ -9615,7 +9615,7 @@ function chSommaireSeance(som){
   if(som.entree)h+='<div class="ch-som-l"><b>Entr\u00e9e du programme :</b> '+e(som.entree)+'</div>';
   if(som.majeures.length)h+='<div class="ch-som-l"><b>Comp\u00e9tence(s) principale(s) :</b> '+som.majeures.map(e).join(' \u00b7 ')+'</div>';
   if(som.mineures.length)h+='<div class="ch-som-l"><b>Aussi travaill\u00e9es :</b> '+som.mineures.map(e).join(' \u00b7 ')+'</div>';
-  if(som.problematique)h+='<div class="ch-som-l"><b>Notre question :</b> '+e(som.problematique)+'</div>';
+  if(som.problematique)h+='<div class="ch-som-l"><b>Notre problématique :</b> '+e(som.problematique)+'</div>';
   if(som.plan.length){
     h+='<div class="ch-som-l"><b>Le plan du chapitre</b><ol class="ch-som-plan">';
     som.plan.forEach(function(p){h+='<li>'+e(p.titre)+(p.type?(' <span class="ch-som-type">'+e(p.type)+'</span>'):'')+(p.evaluee?' <span class="ch-som-type ch-som-ev">\u00e9valu\u00e9e</span>':'')+(p.objectif?('<div class="ch-som-obj">'+e(p.objectif)+'</div>'):'')+'</li>';});   /* C16 */

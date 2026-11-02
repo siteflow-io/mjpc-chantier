@@ -3996,3 +3996,27 @@ pas compris S30. pour le reste, non j'attendrai la fin de la livraison pour enfi
 02/11/2026 14:04
 
 MEMO
+
+---
+
+## Tour 145 — 02/11/2026 14:09
+
+**Paul (14:09) :**
+
+708. Je ne sais pas ce que veut dire "ranger". Tu l'enlèves de la grille, c'est tout.
+
+**Ce qui a été fait (C14) :** lu : un sticker « rangé » ne part plus à l'IA, mais une remarque déjà rendue sur lui reste dans la bande et dans le fichier de l'élève (à corriger, avec 710).
+
+**Claude (14:11) :**
+
+À jouer : ton mot sur 711 · en cours : 704, 702, 642, le fichier d'essai, la version à promouvoir · ouvert : la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+710. Compris : je l'enlève de tes deux grilles, c'est tout, à la mise en ligne. Ensuite, S30 ne part plus à l'IA, ne s'arrête plus dans la bande, et l'élève ne le lit plus nulle part.
+
+711. « Ranger », c'est le nom du bouton de l'app qui fait ça. Puisque ce mot ne te parle pas, je renomme ce bouton « 🗑 Enlever de la grille » ?
+
+À tester : rien de neuf.
+
+02/11/2026 14:11
+
+MEMO

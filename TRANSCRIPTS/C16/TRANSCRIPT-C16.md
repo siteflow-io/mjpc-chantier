@@ -1222,3 +1222,17 @@ MEMO
 - **18:23 — la conscience** : le réveil de 18:11 est arrivé à 18:23 ; le point à Paul a déjà été envoyé à 18:02 (262-264). L'exécutant n'a pas envoyé le résultat de sa sonde complète : demandé (message), en une ligne.
 - **18:26 — l'exécutant de ㉞ (message)** : la sonde complète (lancée 17:59, assemblé `12740348…`) : 105 vérifications, 6 échecs, tous dans la course à trois pilotes (en T et H : le texte du second ordinateur ; la participation au téléphone ; « qui a la main : rien de perdu ») ; le reste vert, « Hors de l'heure 1 » à la télécommande compris ; poussé sur `travail/session-2` (`89367369b`). La course : quatre causes trouvées et corrigées (chaque appareil gardait sa fusion sous la clé de l'état d'un autre et s'en servait comme base ; la main n'avait pas d'heure à elle, un appareil en retard la reprenait à chaque lettre ; une base inconnue : la fusion garde maintenant les deux côtés ; les lettres tapées après la fermeture du champ déclenchaient les raccourcis — g, l, Espace…). La course seule en T, deux passages : le premier perd encore la participation, le second vert : pas prouvé. H et la sonde complète pas encore passés.
 - **18:25 — la conscience** : à l'exécutant (message) — la perte restante d'abord (une prise de main attend l'état en vol si besoin) ; la course seule, 3 passages verts de suite en T et en H ; la sonde complète deux fois de suite verte ; poussées sur `travail/session-2` et NOTE tenue à jour pour qu'un autre puisse reprendre ; une ligne à 19:00.
+- **18:57 — l'exécutant de ㉞ (message)** : (1) la perte de la participation trouvée et corrigée (le second ordinateur, en pleine frappe, n'avait jamais posé l'état où la participation était entrée ; la base de la fusion le contenait déjà ; « rien n'a changé là-bas » effaçait la participation chez les trois ; la base est maintenant le plus récent ancêtre de l'état reçu que cet appareil connaît vraiment) : verte 3 fois de suite dans la course seule en T ; corrigés aussi des échos sans fin (ce que chaque appareil calcule pour son écran repartait) ; le dévoilement vert 3 / 3 (comparés : la diapo et le dévoilement, pas la page, qui dépend de l'écran). (2) Rouge 3 / 3 : le texte du second ordinateur — quand il prend la main à sa première lettre, son champ perd le focus juste après le « L », la suite part dans un autre champ ; cause pas encore trouvée, il trace. Poussé sur `travail/session-2` (`baac29551`), NOTE à jour ; `deroule/session-partout` toujours `7fa7af22b`.
+- **18:55 — message à Paul, mot pour mot :**
+
+  > 265. Il ne reste qu'un défaut. Quand quelqu'un commence à écrire une réponse sur un second ordinateur, cet ordinateur prend la main à la première lettre, et son champ perd le curseur juste après : seule la première lettre est gardée, la suite part ailleurs. L'exécutant cherche ce qui retire le curseur. Corrigés depuis 18:25 : la participation qui se perdait, et des allers-retours sans fin entre trois appareils.
+  >
+  > 266. Si ce dernier défaut tombe vite : les passages répétés de la sonde vers 19:45, mon banc complet ensuite, le « promeus » vers 20:35. Je te redis à 19:30 si cela tient.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 18:55
+  >
+  > À jouer : rien · en cours : l'exécutant (le curseur perdu au second ordinateur) · ouvert : rien
+  >
+  > MEMO

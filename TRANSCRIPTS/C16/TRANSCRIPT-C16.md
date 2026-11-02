@@ -691,3 +691,22 @@ MEMO
   > 02/11/2026 13:28
   >
   > MEMO
+- **13:33 — Paul, mot pour mot** : « 149 j'ai dit que tu ne devais plus t'en occuper! ça t'apporte quoi de savoir? C'est pour pouvoir me livrer des choses dégradées et me faire promouvoir sur dettes? 174. ok, car le retard tableau et la frappe ne sont pas de vraies dettes bloquantes, mais il faudra quand me^me les traiter car c'est important. 182. ok. ok pour 183 »
+- **13:34 — une faute de lecture de la conscience, consignée** : à 12:40, « Pour 168 ne t'en occupe pas » visait la question 149 (l'heure de sa prochaine classe), pas le point 168 ; la conscience l'a lu comme portant sur 168 (point 170) et a reposé 149 à 12:42, 13:01 (en tête), 13:19 (en tête) et 13:28. 149 est retirée. Règle rappelée par Paul : une version part en ligne sans dette et sur son « promeus », jamais réglée sur son emploi du temps. Registre : le choix B (prod `659fa27`).
+- **13:34 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : mon banc sur les six correctifs (étape 10 sur 12) ; le mandat de ㉞ · ouvert : rien
+  >
+  > 184. 149 : c'est retiré, et je ne la reposerai plus. À 12:40, j'ai lu ton « Pour 168 ne t'en occupe pas » comme portant sur mon point 168, et non sur la question 149 : c'est ma faute de lecture. À ta question « ça t'apporte quoi ? », la réponse est rien. Je voulais régler l'ordre des mises en ligne sur l'heure de ta classe. Or une version part en ligne quand elle est sans dette et que tu dis « promeus », jamais à cause de ton emploi du temps. C'est consigné.
+  >
+  > 185. 174 : B, noté au registre avec tes mots. Le retard du tableau et la frappe ne bloquent pas, mais ils seront traités. L'exécutant les reprend dès que mon banc a rendu la machine, et ils partiront dans la version suivante.
+  >
+  > 186. Au banc, les étapes 1 à 7 et 9 sont vertes. L'étape 8 (le délai du tableau distant, limite 0,5 s) est rouge sur une feuille du site en vraie heure : 516 ms. C'est le délai du point 172, au même niveau que la version en ligne. Je rejouerai l'étape 8 seule à la fin, comme d'habitude, et je te dirai le chiffre tel quel.
+  >
+  > 187. Le mandat de ㉞ : je l'écris maintenant et je te l'envoie pour relecture.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:34
+  >
+  > MEMO

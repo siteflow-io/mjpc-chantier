@@ -1,0 +1,30 @@
+C16 · sonde du fil de la séance, des flèches de la colonne et de la molette · parties B2 C · 2026-11-02 00:00 UTC · fichier md5 47347c9aad3977d3df95200a9552e9aa · 2806416 o · tableaux : l’image 16/9 du canon 1
+
+══ B · 1536×864 · l’Atelier, la séance 1 (ses trois heures) — B2 ══
+  ok     B · la colonne de l’Atelier montre les diapos des trois heures de la séance 1 (26 lignes) — [{"di":0,"eid":"inv-presentation-chapitre-s0","t":"08:57Présentation du chapitre0 min"},{"di":1,"eid":"inv-competences-chapitre-s0","t":"08:57Les compétences du chapitre0 min"},{"di":2,"eid":"inv-plan-s0","t":"08:57Le parcours du chapitre0 min"}]
+  ok     B · un clic sur la 6e ligne, puis ↓ ↓ ↑ → ← : la 7e, la 8e, la 7e, la 8e, la 7e (l’ordre de la colonne) — {"lu":[6,7,6,7,6],"attendu":[6,7,6,7,6]}
+  ok     B · la ligne courante se voit (dans la colonne, son trait d’or) et la colonne la garde visible — {"dedans":true,"main":true,"trait":"solid 2px"}
+  ok     B · la colonne ayant la main, Alt + ↓ déplace la diapo d’un cran vers le bas (elle reste la courante) — {"avant":6,"apres":7}
+  ok     B · Alt + ↑ la remet à sa place
+  ok     B · aucune erreur JS
+  ok     B · aucune boîte système
+
+══ C · 1536×864 · en classe : les flèches de la colonne et la garde ══
+  ok     C · l’heure lancée par la case de l’emploi du temps
+  ok     C · un clic sur la vignette courante : rien ne bouge, la colonne a la main — 2
+  ok     C · ↓ → la garde « La classe te suivrait » (le premier saut se demande) — {"vig":"2","ligne":null,"eid":null,"compte":"0 / 9 dévoilés","garde":true,"page":"","numero":"Diapo 3 sur 13 · heure 1 · parcours du chapitre"}
+  ok     C · « Rester » ne change rien (le pilote et le tableau restent sur la diapo) — {"pilote":"2","tableau":"3/26"}
+  ok     C · ↓ de nouveau → de nouveau la garde
+  ok     C · « Y aller devant la classe » → la diapo suivante de la colonne, au pilote et au tableau — {"vig":"3","tableau":"4/26","pilote":"4/26"}
+  ok     C · ↓ ↓ ensuite : plus de garde, le tableau suit à chaque diapo — [{"vig":"4","garde":false,"t":"5/26","p":"5/26"},{"vig":"5","garde":false,"t":"6/26","p":"6/26"}]
+  ok     C · un clic sur la diapo, puis → : la ligne suivante se dévoile (la colonne n’a plus la main) — {"avant":"0 / 6 dévoilés","apres":"1 / 6 dévoilés"}
+  ok     C · après le clic sur la diapo, le saut suivant redemande la garde
+  ok     C · ↑ (la diapo d’avant) : la garde aussi
+  ok     C · Espace dévoile, même quand la colonne a la main (elle la garde) — {"avant":"0 / 1 dévoilés","apres":"1 / 1 dévoilés","main":true}
+  ok     C · ▶ (Espace) reprend le fil : le saut suivant redemande la garde
+  ok     C · « ❄ Geler, puis y aller » : Paul avance (↓ sans garde), la classe ne voit rien bouger (le tableau reste sur sa diapo) — {"pilote":["5","6","7/26"],"tableau":["5/26","5/26","5/26"]}
+  ok     C · mode test : aucune écriture au hub hors de /site/tableau_test (21 écritures) — []
+  ok     C · aucune erreur JS
+  ok     C · aucune boîte système
+
+— fin : 23 vérifications, 0 échec(s) · VERT

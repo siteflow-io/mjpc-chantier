@@ -653,3 +653,6 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .legsur{left:5.2cqw}
 .mur .alertes-diapo{left:5.2cqw}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .bandeau.on{z-index:2}
+/* C16 64 : la colonne a la main (un clic dedans) — ← → ↑ ↓ sont à elle ; la vignette ou la ligne courante le dit d'un trait d'or plus franc */
+:is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .vig.cour{outline:2px solid var(--or);outline-offset:-1px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .dr-d.on{outline:2px solid var(--or);outline-offset:-2px}

@@ -1,0 +1,74 @@
+banc d'intégration · 2026-11-02 00:00 UTC · branche fil-local · commit 07c714d
+— 1. assemblage
+assemblé : /home/claude/ex-fil/LIVRAISONS/INTEGRATION/assemble/index.html
+  inline  dr/dr.css (139129 o)
+  inline  dr/dr-gabarit.js (22196 o)
+  inline  dr/dr-socle.js (289334 o)
+  inline  dr/dr-ouverture.js (42913 o)
+  inline  dr/dr-atelier.js (220248 o)
+  inline  dr/dr-classe.js (270348 o)
+  inline  dr/dr-tableau.js (51516 o)
+  inline  dr/dr-recit.js (155541 o)
+  inline  dr/dr-recyclage.js (38247 o)
+  inline  dr/dr-fil.js (10735 o)
+  modules : 10 · manquants/refusés : 0 · taille : 2752560 o · md5 47347c9aad3977d3df95200a9552e9aa
+— 2. collisions
+modules lus : dr/dr.css dr/dr-gabarit.js dr/dr-socle.js dr/dr-ouverture.js dr/dr-atelier.js dr/dr-classe.js dr/dr-tableau.js dr/dr-recit.js dr/dr-recyclage.js dr/dr-fil.js
+  ids en collision : 0
+  classes CSS en collision : 0
+  globales en collision : 0
+— 3. parcours
+  ok     P10 · les faces de la maquette (E4)
+
+P11 — le Papier
+  ok     P11 · la face Papier de la Relecture (E4)
+
+P12 — la clôture
+  ok     P12 · clôture demandée (voir la capture) — étape 7 : « Clore l’heure » — garde passée
+  ok     P12 · au hub, H.clos et H.finReel après la clôture (E2) — {"clos":true,"finReel":true}
+
+K15 — les écritures au hub pendant le parcours
+      PUT /corbeille/<heure>/edt-mise-a-niveau-grille_090000
+      PUT /site/edt/grille/2026-2027
+      PUT /site/edt/photos/2026-2027
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      PUT /site/cours_actif
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<heure>
+  ok     K15 · 23 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 4. parcours en mode test
+      PUT /site/tableau_test/scene
+      PUT /site/tableau_test/ecrans
+      PUT /site/tableau_test/pointeur
+  ok     K15-test · mode test : aucune écriture au hub hors de /site/tableau_test (l'image du tableau, §12.66) — 7 écriture(s), dont 0 hors de /site/tableau_test
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+
+PARCOURS VERT
+— 5. contrôles K1-K13 par l'entrée du site
+  ok     K9 · aucune boîte système
+
+106 vérifications, 0 échec(s)
+--- fin : 0 défaut(s)
+
+— 6. la sonde de l'Atelier (§12.62, la ⑨)
+
+BILAN : 53/53 ok · VERT
+— 7. la sonde du tableau distant en mode test et de la clôture (§12.66, la ⑨)
+
+sonde §12.66 · 27 vérifications · 0 échec · VERT
+— 8. la sonde de la ⑩ (§12.74, §12.70, §12.71, §12.68)
+
+sonde ⑩ · 51 vérifications · 0 échec · VERT
+— 9. la sonde du bloc question (C16, 8.77.1-⑩)
+vérifications ok : 33
+— 10. la sonde des diapos d'ouverture (C16)
+sonde des diapos d’ouverture · 126 vérifications · 0 échec · VERT
+— résultat : VERT · sorties dans /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/fil-proto/banc-e3

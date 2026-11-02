@@ -4612,3 +4612,41 @@ alors là j'ai un cas : j'ai fait tout l'import export des dylan, corrigé tout 
 02/11/2026 20:22
 
 MEMO
+
+---
+
+## Tour 164 — 02/11/2026 20:37
+
+**Paul (20:37) :**
+
+64 alors. et ce principe doit être tenu pour tout. si je modifie après un import, et que je veux réexport, c'est le nouvel export qui part avec les modifications et après je n'ai plus que ces nouvelles choses à revérifier dans la bande (ça passe dans la fonctionnalité du "il reste"). C'est le moment aussi de me coder le bouton "la bande" afin que je puisse passer les élèves en continu sans devoir toujours repasser par les scans etc.
+
+**Ce qui a été fait (C14) :** relu le code du retour de l'IA (`rcIAChargerSuite` : pour une copie chargée, toutes ses lignes reçoivent le nouveau corrigé ; les décisions sont rangées par la place des mots de l'écart, `rcCle`), de la retouche d'une ligne (`rcRetroactif`, seuil 0,6), du bout de la bande (« Il reste… », « ✓ Copie corrigée »), de la recopie (« ← Copie », « Copie → ») et du haut des scans (« ✍ Recopier ») ; relu la demande de Paul du 02/11 (C14 638 : « la bande doit devenir un onglet à part entière, comme "recopier" »).
+
+**Claude (20:39) :**
+
+À jouer : ton mot sur 66 à 74 · en cours : rien · ouvert : 66 à 74, le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+66. Le principe, pour tout ce que tu changes après un retour de l'IA : la copie redevient « à envoyer » ; l'export part avec tes changements ; au retour, seul ce qui a changé bouge ; la bande ne s'arrête que là, et « Il reste » le dit ; sa carte redescend sous 100 % jusqu'à ce que tu l'aies revu.
+
+67. Une ligne retapée. Si elle ressemble encore à l'ancienne, rien ne part, comme aujourd'hui : l'ancien corrigé la suit, et une nouvelle différence devient un arrêt à revoir. Si elle a trop changé, ou si c'est une ligne ajoutée, elle repart à l'IA, avec les stickers posés sur elle. Au retour, seul son corrigé change. Aujourd'hui, le retour réécrit toutes les lignes de la copie : si l'IA corrige autrement une ligne que tu n'as pas touchée, ta décision peut sauter.
+
+68. Un ¶ changé : 64, tel que tu l'as dit oui (les 8 stickers des paragraphes, leurs remarques, le commentaire général).
+
+69. Un sticker ajouté à ta grille, ou dont tu changes la question, après le retour : il part seul, pour toutes les copies déjà revenues. Un sticker enlevé de la grille : rien ne part, comme aujourd'hui (710).
+
+70. Au retour d'un sticker : si l'IA dit la même chose qu'avant, ta décision reste, sans arrêt ; si elle change d'avis, la bande s'y arrête. Une remarque nouvelle est à relire ; une remarque déjà gardée qui revient pareille reste gardée. Le commentaire général : au bout de la bande, le tien et sa nouvelle proposition côte à côte ; Entrée garde celui du champ.
+
+71. « ⇪ Exporter » dit toujours pourquoi rien ne part (« Tout est revenu : rien à envoyer »), et le compteur d'en haut dit combien de copies ont changé depuis leur retour.
+
+72. « ▶ La bande » devient un bouton à part entière, comme « ✍ Recopier » : en haut des scans, en haut de la recopie, et sur l'accueil de la classe à côté de « Corriger le paquet scanné ». Il ouvre la bande sur la première copie du paquet où il reste quelque chose à revoir. En haut de la bande : « Copie 5 sur 24 · 3 à revoir », avec « ← Copie » et « Copie → ».
+
+73. Au bout d'une copie, « ✓ Copie corrigée » : Entrée ouvre la bande de la copie suivante où il reste quelque chose, sans repasser par les scans ni par la recopie. Quand il ne reste rien nulle part : « Toutes les copies sont corrigées ». Échap, pendant la bande : la recopie de la copie où tu es, comme aujourd'hui.
+
+74. Tout part ensemble en 1.4.28, avec 55 : un banc pour chaque cas de 66 à 73, sur des copies réalistes, puis le banc complet, puis les captures pour ton promeus. Pour les Dylan, les 14 copies de 63 repartent en deux envois (8 puis 6).
+
+À tester : rien de neuf en ligne. Ne touche plus aux ¶ des Dylan d'ici la 1.4.28.
+
+02/11/2026 20:39
+
+MEMO

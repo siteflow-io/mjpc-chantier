@@ -598,6 +598,20 @@ function dr_versHub(x){
   });
   return o;
 }
+/* C16 (les quatre dettes, §3.2) — LE VRAI HUB (Firebase Realtime Database) ne range ni une valeur nulle, ni une liste vide, ni un objet vide : relu, l'état
+   d'une heure n'a plus ses `lum: []`, `ecr: []`, `reps: {}`… (par diapo), ni ses `parts: []`, `travail.terminer: []`, `gel: null`… — mesuré par le geste
+   sur un faux hub rangé comme le vrai : la reprise s'arrêtait sur « Cannot read properties of undefined (reading 'slice') » (etatComplet0) et la diapo ne
+   se dessinait plus. Relu, l'état reprend ce qui manque : par diapo, l'état d'une diapo neuve (etatDiapo) ; pour S, l'état d'une heure neuve
+   (DR_S_DEFAUT : les listes, les objets et les valeurs nulles, jamais ce que l'écriture retire exprès — DR_ETAT_HORS). Rien d'autre ne change. */
+const dr_estObjet = x => !!x && typeof x === 'object' && !Array.isArray(x);
+function dr_etatRempli(s){ if (!dr_estObjet(s)) return s; const hors = ['mur', 'attente', 'anim', 'coupure', 'di', 'ordres', 'repSnap', 'blocActif', 'cand'];
+  const rem = (d, o) => { Object.keys(d).forEach(k => { const v = d[k]; if (o[k] === undefined) { if (v === null || typeof v === 'object') o[k] = JSON.parse(JSON.stringify(v)); } else if (dr_estObjet(v) && dr_estObjet(o[k])) rem(v, o[k]); }); };
+  try { const d = typeof DR_S_DEFAUT !== 'undefined' ? DR_S_DEFAUT : {}; const d2 = {}; Object.keys(d).forEach(k => { if (hors.indexOf(k) < 0) d2[k] = d[k]; }); rem(d2, s); } catch (e) {} return s; }
+function dr_parDiapoRempli(pd){ if (!dr_estObjet(pd)) return {}; Object.keys(pd).forEach(k => { const x = dr_estObjet(pd[k]) ? pd[k] : {};
+  pd[k] = Object.assign({ nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} }, x);
+  ['lum', 'ecr'].forEach(n => { if (!Array.isArray(pd[k][n])) pd[k][n] = dr_estObjet(pd[k][n]) ? Object.keys(pd[k][n]).sort((a, b) => a - b).map(i => pd[k][n][i]).filter(v => v != null) : []; else pd[k][n] = pd[k][n].filter(v => v != null); });
+  ['reps', 'tailles', 'textes', 'fsBloc'].forEach(n => { if (pd[k][n] == null || typeof pd[k][n] !== 'object') pd[k][n] = {}; }); });
+  return pd; }
 function dr_duHub(x){
   if (Array.isArray(x)) return x.map(dr_duHub);
   if (!x || typeof x !== 'object') return x;
@@ -865,7 +879,7 @@ function dr_reprendre(cb){
     dr_finAvecCahier();
     if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
-    dr_restaurer({ S: dr_copieEtatDuHub(dr_duHub(etat.S), seance().ecrans), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
+    dr_restaurer({ S: dr_copieEtatDuHub(dr_etatRempli(dr_duHub(etat.S)), seance().ecrans), parDiapo: dr_parDiapoRempli(dr_duHub(etat.parDiapo || {})), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     try { if (typeof dr_invConvertirCopie === 'function') dr_invConvertirCopie(); } catch (e) {}   /* C16 (§4.11) : le journal relu, une ancienne diapo d'ouverture jamais montrée prend le canon ; une montrée ne change pas */
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
@@ -926,7 +940,7 @@ function dr_lireJoue(cb, chemin){
   dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
     if (!et && !jr) { cb(null); return; }
     if (Array.isArray(ecr)) dr_copieDuHub(ecr);   /* C16 (retour sûr) : le canon des diapos d'ouverture, ce que la classe a écrit (dr-socle.js) */
-    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_copieEtatDuHub(dr_duHub((et || {}).S || {}), Array.isArray(ecr) ? ecr : []), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
+    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_copieEtatDuHub(dr_etatRempli(dr_duHub((et || {}).S || {})), Array.isArray(ecr) ? ecr : []), parDiapo: dr_parDiapoRempli(dr_duHub((et || {}).parDiapo || {})), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
   })));
 }
 

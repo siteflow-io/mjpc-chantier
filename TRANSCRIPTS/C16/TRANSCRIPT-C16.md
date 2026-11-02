@@ -1035,3 +1035,17 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
   >
   > MEMO
+- **16:14 — Paul, mot pour mot** (citant de 238 « ne revient en arrière. ») : « c'est à dire? »
+- **16:14 — message à Paul, mot pour mot :**
+
+  > 239. Voici le risque. Tu tapes une réponse à l'ordinateur et, au même moment, tu dévoiles la ligne suivante au téléphone. Tant que le curseur est dans le champ de la réponse, l'ordinateur ne prend pas ton geste du téléphone, pour ne pas abîmer ce que tu tapes. Mais il continue d'envoyer au tableau sa propre image, celle d'avant ton geste. La ligne que tu viens de dévoiler au téléphone disparaît alors du tableau : le tableau revient en arrière d'un geste, jusqu'à ce que tu quittes le champ. Avec le correctif, l'ordinateur n'envoie jamais une image plus ancienne que ton dernier geste au téléphone : la ligne dévoilée reste au tableau.
+  >
+  > 240. Ce qui reste vrai dans ce cas précis (deux gestes en même temps), et je te le dis tel quel : tant que tu ne quittes pas le champ de l'ordinateur, les lettres tapées après ton geste au téléphone arrivent au tableau d'un coup, à la sortie du champ. Dans ton parcours de 16:10 (le téléphone d'abord, puis la réponse à l'ordinateur), ça n'arrive pas : chaque lettre part aussitôt.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:14
+  >
+  > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

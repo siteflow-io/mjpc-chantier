@@ -4755,3 +4755,29 @@ promeus
 02/11/2026 22:59
 
 MEMO
+
+**Suite du tour 168, sans nouveau message de Paul (la 1.4.29, annoncée à 22:59) — 22:59 → 02/11/2026 23:46**
+
+**Ce qui a été fait (C14) :** banc court de 80 et 81 (`banc/points.mjs`, joué après la bande) : la vérification de la note cherchait « Ta note » alors que l'écran l'écrit en capitales ; corrigée, vert, 0 erreur. Premier banc complet : 1 défaut, dans le banc (la vérification de l'ancienne coche « Ouvrir la correction par l'élève » lisait la première coche de la fenêtre, désormais celle de la note) ; corrigé. Vrai site, en lecture seule (`prive/enquete/vrai-1429.mjs`, écritures interceptées) : « ⚖ Les points » puis « Garder » sans rien changer sur « Trente lignes » changeait des notes chez les Dylan (la grille du site dit 1-1,3334 pour 30 à 40 lignes ; l'app réécrivait 1,3333 : une lettre de 40 lignes devenait trop longue) ; les mots de « Orthographe et grammaire » étaient réécrits. Corrigé : une case dont la plage ne change pas reste telle quelle, mots compris ; les seuils réécrits tombent entre deux nombres de lignes ; « Garder » sans changement n'écrit rien et le dit ; le banc rejoue « Garder » sans changement sur les 12 lignes et les bords des seuils. Banc complet : 194 vérifications, 0 défaut. Vrai site, avec la candidate : sur les deux classes, 12 lignes sur 12 « Rien n'a changé » ; exemple puis Annuler : Dylan, « Les trois paragraphes », niveau 2 de 2,5 à 3,5 : 10 notes, moyenne 13,2 → 13,6 / 40 ; Franklin, 12 notes, 12,1 → 12,8 / 40 ; la case décochée : le fichier d'un élève, 12 lignes de grille, aucun point, la note absente du fichier ; 0 erreur. Maquette `df6b2bb6` (branche `c14-poignees`). Au sas : `LIVRAISONS/REDACTION/redaction-1.4.29-RU-candidat.html` (954 555 o, md5 `e089934e71a2e6c02ca940495277835e`, le même que construit depuis `df6b2bb6`), `NOTE-1.4.29-RU.md`, `captures-1.4.29/` (5). Dettes (prod `34f2204`) : 80 et 81 en candidate.
+
+**Claude (23:46) :**
+
+À jouer : 89 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+86. La 1.4.29 est prête au sas, pas en ligne. Elle contient 80 (« ⚖ Les points », dans Réglages → la grille) et 81 (la case « Afficher la note dans les fichiers des élèves », en haut de « 📨 Fichiers École Directe »). Banc complet : 194 vérifications, 0 défaut. Les captures sont jointes.
+
+87. Essayée sur ton site, sans rien y écrire. Sur tes deux classes, « Garder » sans rien toucher ne change aucune note. Un essai chez les Dylan, puis annulé : « Les trois paragraphes », niveau 2 de 2,5 à 3,5 points ; 10 notes montent, la moyenne passe de 13,2 à 13,6 / 40. Case décochée : le fichier d'un élève garde ses 12 lignes de grille, sans aucun point, et la note n'est même pas dans le fichier.
+
+88. Trouvé en l'essayant sur ton site, et corrigé avant le sas : sur « Trente lignes », « Garder » sans rien toucher faisait passer une lettre de 40 lignes pour trop longue. Maintenant, un seuil que tu ne touches pas reste tel quel, ses mots aussi. Le banc le rejoue.
+
+89. Promeus ?
+
+À tester, après ton promeus et un rechargement :
+- Réglages → la grille → « Le thème tenu » → « ⚖ Les points » : monte le niveau 2 d'un point, puis « Garder ». La fenêtre liste les notes qui changent et la moyenne avant et après ; « Annuler » ne change rien.
+- « Orthographe et grammaire » → « ⚖ Les points » : les seuils en erreurs pour dix lignes (aujourd'hui 1 ; 2,3 ; 4,7).
+- Chez les Dylan, « ⧉ Mêmes points pour une autre classe » : les Franklin, « déjà les mêmes points » tant que tu n'as rien changé.
+- Scans → « 📨 Fichiers École Directe » : décoche la case, puis « 🧪 Tester comme l'élève » sur une copie corrigée : ni note ni points. Recoche ensuite.
+
+02/11/2026 23:46
+
+MEMO

@@ -4432,3 +4432,41 @@ MEMO
 02/11/2026 16:50
 
 MEMO
+
+---
+
+## Tour 158 — 02/11/2026 16:53
+
+**Paul (16:53) :**
+
+promeus. Par ailleurs, pourquoi systématiquement après une relecture de bande j'ai encore des choses non validées? ? et par ailleurs [l'élève], j'étais persuadé d'avoir fini sa correction et quand je retourne sur les cartes, je ne la vois pas complète! C'est absurde: le principe devrait être presqu'en gardant le doigt appuyé sur entrée je puisse valider l'intégralité de la correction. mesure et réponds moi
+
+**(16:54, Paul interrompt ma commande de mise en ligne, en cours.)**
+
+**Paul (16:54) :**
+
+je sais ce qui fait casser: ce sont les erreurs que je refuse (celles qui n'en sont pas: quand je fais N, l'erreur reste dans la liste).
+
+**Ce qui a été fait (C14) :** relu après l'interruption : la commande avait tout fait (1.4.25 copiée au sas `afd301d4` ; 1.4.26 en production, commit `fa9b122`, poussée) ; vérifiée en ligne bit à bit à 16:55 ; docs faits (point de retour, journal, où trouver quoi, `&v=1.4.26-RU`). Mesuré au vrai site, en lecture seule : à 16:56, deux copies à 96 et 98 %, chacune avec deux fautes non décidées, l'une avec deux refus (N), l'autre sans ; le commentaire de la première gardé à 16:48:33 ; vers 17:00, les deux finies par Paul. Rejoué sur ses vraies copies (écritures interceptées) : N, puis 40 Entrée : tout décidé, « ✓ Copie corrigée ». Mesuré : la signature que l'app garde de sa propre écriture (`RU.sig`) ne ressemble jamais à ce que le site renvoie (`RU.miroir`) : 24 copies sur 24 (le site range les champs par ordre alphabétique, « nom » n'est pas à la même place) ; lu dans le code (`ruAbonner`) : un écho non reconnu remplace la copie dans `state` ; `rcLigneMaj` écrit la décision à la fois dans `state` et dans la page ouverte (`RC.documents`), que la bande lit. Dette consignée au registre.
+
+**Claude (17:08) :**
+
+À jouer : ton mot sur 43 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+39. La 1.4.26 est en ligne, vérifiée bit à bit à 16:55. Ta coupure est arrivée quand ma commande avait déjà tout fait ; j'ai vérifié, puis fini les docs.
+
+40. Mesuré à 16:56 : la copie de [l'élève] avait 2 fautes non décidées, une virgule à ajouter et « magnifiques » → « magnifique ». Une autre copie en avait 2 aussi. Tu les as finies depuis : les deux sont à 100 %.
+
+41. Ton idée, N : ce n'est pas ça. Une faute refusée reste dans la liste avec sa croix, et elle compte comme décidée. Rejoué sur tes vraies copies, sans rien écrire sur ton site : N, puis Entrée tenue : tout est décidé, « ✓ Copie corrigée ». Et la seconde copie n'avait aucun refus.
+
+42. La cause, mesurée en partie : quand l'app enregistre ta copie, le site la lui renvoie aussitôt. L'app devrait reconnaître sa propre écriture ; elle ne la reconnaît jamais (mesuré : 24 copies sur 24, parce que le site range les champs dans un autre ordre). Elle croit à un changement venu d'ailleurs, et remet la copie enregistrée comme au moment de l'envoi. Une décision prise pendant cet aller-retour, une fraction de seconde, disparaît de la copie enregistrée. La bande, elle, la garde à l'écran : tu vois « ✓ Copie corrigée », la carte ne l'a pas. Ce que je n'ai pas pu rejouer : l'aller-retour lui-même, puisque je n'écris jamais sur ton site.
+
+43. Ma proposition : l'app reconnaît sa propre écriture, quel que soit l'ordre des champs ; et la copie que tu corriges n'est jamais remplacée par ce qui revient du site tant que ta dernière décision n'est pas enregistrée. Le banc apprend à renvoyer chaque écriture comme le fait le site, pour le prouver. Je le code ?
+
+44. En attendant : à la fin d'une copie, regarde sa carte. Si elle n'est pas à 100 %, rouvre sa bande : au bout, Entrée t'emmène aux arrêts qui restent.
+
+À tester : la 1.4.26 : rouvre la copie de ta capture de 16:40 : plus aucune ligne grise au-dessus de « 14 juin 1915 ».
+
+02/11/2026 17:08
+
+MEMO

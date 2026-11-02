@@ -804,3 +804,29 @@ MEMO
   > 02/11/2026 14:23
   >
   > MEMO
+- **14:22-14:25 — la vérification de ⑭ au tableau distant** (la partie L qui attend la page, 1366 et 1920 ; `scratchpad/apres-banc/sonde-L-attend.txt`) : 22 vérifications, 0 échec ; l'attente du tableau distant après la lecture du pilote : 6 à 311 ms — les 2 échecs de l'étape 13 venaient de la sonde (elle lisait trop tôt), pas du code. **L'étape 13 sur `cf7bb57` est donc VERTE** ; la base (production, l'avant) : 82 vérifications, 42 échecs. La maquette de la télécommande refaite avec la liste de la classe (lue au faux hub, en lecture seule) : 29 initiales (deux paires en double : LC, RD). Le candidat de production préparé : `scratchpad/promo-8790/index.html` (l'assemblé de `cf7bb57` + `APP_VERSION="8.79.0-⑫"`, md5 `126b2a6a0183b025c108d80ef5722d99`, 2 872 521 o). **L'exécutant des correctifs a été arrêté depuis l'interface** (constaté à 14:24 : « stopped by the user ») ; son travail poussé est gardé (`deroule/correctifs` jusqu'à `3d3b6e3`) ; 7, 8, 9 restent à mesurer ; pas relancé sans le mot de Paul. Captures envoyées à Paul : 5 planches avant / après, 2 captures de « L'Albatros », 3 de la télécommande.
+- **14:26 — message à Paul, mot pour mot :**
+
+  > 204. « L'Albatros » au tableau distant : le défaut venait de la sonde. Elle lisait le tableau distant moins d'une seconde après le geste. Je l'ai rejouée en attendant le tableau, à 1366 et à 1920 : chaque page arrive au plus 0,3 s plus tard, 22 vérifications et 0 échec.
+  >
+  > 205. La version B est prête : 8.79.0-⑫. Elle porte les six correctifs (㉘, ㉙, ㉛, ㉜, ㉝ et ⑭) et les corrections du cinquième exécutant, et remplace les deux micros de ce matin. Au banc, 11 étapes sur 12 sont vertes ; l'étape 8 (le délai du tableau distant) passe 2 fois sur 3 quand on la rejoue seule (point 203). Dans les captures, l'avant (en ligne) est à gauche et l'après à droite.
+  >
+  > 206. planche-A-classe-0-distant : ta correction en direct au tableau distant. Avant, elle n'arrive jamais ; après, « Pensez au Romantisme. » y est.
+  >
+  > 207. planche-C-avec-relecture : la relecture. Avant, on lit « et sa question », un bandeau rouge « Photo du prévu… refusée » et « déroulé à vérifier ». Après, la présentation ne dit que le chapitre, le bandeau a disparu et on lit « déroulé intègre ».
+  >
+  > 208. planche-J-classe-pilote : → sur le tableau des cinq œuvres en trois pages. Avant, la classe passe à « Tableau 3 » sans avoir vu la page 2 ; après, → montre la page 2 / 3. Les deux autres planches montrent ㉙ (la question écrite dans l'Atelier, sans les mots de la barre) et ㉝ (« À régler » ne signale plus le tableau). Les deux captures « apres-L-albatros » montrent « L'Albatros » entier, réparti en deux pages au tableau distant.
+  >
+  > 209. Si ça te va : « promeus ».
+  >
+  > 210. La télécommande (point 194), en maquette sur une vraie heure : telecommande-1-bandeau, puis telecommande-2-en-classe, et l'ordinateur au même moment (telecommande-3). En haut, elle affiche la classe, la diapo et ce que voit la classe ; viennent ensuite ◀ et ▶, ❄ Geler, qui a parlé (les initiales de la classe) et le minuteur. Les boutons ne pilotent pas encore : c'est l'allure, à valider. Un point reste à régler : deux paires d'élèves ont les mêmes initiales (LC, RD).
+  >
+  > 211. L'exécutant des correctifs a été arrêté depuis l'interface vers 14:24. Son travail poussé est gardé : les six correctifs, et le code des points 7 à 9 sans leurs mesures. Je ne le relance pas sans ton mot. Le retard du tableau, le délai du tableau distant et la frappe restent ouverts au registre.
+  >
+  > À jouer : regarder les captures, puis « promeus » ou non ; valider ou corriger la télécommande · en cours : l'auditeur de la fin d'heure (jusqu'à 15:10) · ouvert : 209, 210
+  >
+  > À tester : rien avant ton « promeus ».
+  >
+  > 02/11/2026 14:26
+  >
+  > MEMO

@@ -2,7 +2,7 @@
 
 *Sur les mots de Paul (02/11) : 13:48 « oui à retirer de la grille. C'est que le prompt d'injection de la grille doit subir le même sort: l'ia doit demander, il doit tojours y avoir une discussion préalable. […] il faut qu'à la fin d'une relecture de bande, j'ai un champ libre avec "commentaire général", qui s'affichera à la toute fin de la copie élève en "💬commentaire général": ce commentaire doit dire à l'élève quoi faire avec sa copie à sa réception. ça aussi l'ia doit le demander au préalable. » ; 13:58 « je te donne jusqu'à 15h30, pas plus, pour que tout soit fini » ; 14:09 « Tu l'enlèves de la grille, c'est tout. » ; 07:32 « 642 ok ». Rien n'est en ligne : la mise en ligne attend son promeus.*
 
-- Fichier : `redaction-1.4.24-RU-candidat.html`, 906 472 o, md5 `14b499c627a9144ef416befe366f8a29`. Base en ligne : 1.4.20-RU, md5 `cca2b54a64a3921bfe5403054e8af17c`. Maquette : branche `c14-poignees`, commit `ff5a14d2`.
+- Fichier : `redaction-1.4.24-RU-candidat.html`, 907 072 o, md5 `7e2efea4ec829f94c655274ba5ff258d`. Base en ligne : 1.4.20-RU, md5 `cca2b54a64a3921bfe5403054e8af17c`. Maquette : branche `c14-poignees`, commit `3cd69bb2`.
 - Contient tout ce que portait la 1.4.23 (626, 632, 633, 638, 669 : voir `NOTE-1.4.22-RU.md` et `NOTE-1.4.23-RU.md`).
 
 ## Ce que ça change pour Paul
@@ -16,3 +16,8 @@
 - Banc complet : **167 vérifications, 0 défaut** (nouvelles : 702 ×3, 642, 710 ; 704 ×3 de plus).
 - Vrai site, en lecture seule (écritures interceptées) : l'export, le tableau et les cartes sans erreur ; la 3 Franklin Aretha : « 0/29 · 27 % » en haut (la 1.4.20 dit « 0 % ») ; à la première ouverture, 30 cartes résumées (écritures interceptées) ; l'accueil, avant : l'ancien compte ; S30 trouvé dans les deux grilles (stk_mvy80ps3fiz25u, stk_mvyv2x9c9vcueu), validé, à enlever après le promeus.
 - Le fichier d'essai (C14 674), refait avec cette version : la classe vidée et S30 enlevé ici seulement ; l'en-tête recopié de sa photo (« Lundi 13 Avril ») ; ¶ aux lignes 11, 22, 29 ; la consigne demande aussi ce que l'élève doit faire de sa copie ; la grille sans S30 (43 stickers) ; aucun nom.
+
+## L'essai de Paul (15:02), chargé dans cette candidate sur une copie du vrai site, sans rien y écrire
+- Tout est reconnu : 30 lignes, 54 fautes (52 avec leur type), 17 réussites, 18 remarques, le contexte (77 045 signes), le commentaire général. L'IA a posé ses questions d'abord ; aucune remarque « copie transmise », aucune sur la marge, S30 nulle part ; un seul doute (S14), montré au professeur seul.
+- La bande parcourue jusqu'au bout : « ✓ Copie corrigée », 100 % ; le fichier de l'élève : 10 cadres, 12 remarques, la note, le commentaire général en bas, sans le doute de l'IA.
+- Deux défauts de l'app trouvés et corrigés : le contexte était coupé à 60 000 signes sans le dire (gardé en entier, jusqu'à 1 000 000, et l'app le dirait au-delà) ; « cette copie : 66 fautes proposées » comptait les mots, la bande 54 arrêts (il compte les arrêts). Banc complet refait : 167 vérifications, 0 défaut (le banc garde un contexte de 80 781 signes).

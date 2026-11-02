@@ -560,3 +560,18 @@ MEMO
 - **12:07 — l'exécutant des correctifs** : le code des six dettes écrit (㉘ ㉙ ㉛ ㉜ ㉝ ⑭) et sa sonde, aucun navigateur lancé — le cinquième enchaîne des sondes depuis 11:43 ; il demande la machine. **12:08 — la conscience** : au cinquième, « livre maintenant » (son délai était 09:45 ; finir la sonde en cours, n'en lancer aucune autre, pousser la NOTE et les sorties, l'étape 11 4 / 5 dite telle quelle) ; aux correctifs : la sonde avant / après peut tourner tout de suite (ce qu'elle mesure ne dépend pas du temps), la machine seule seulement pour une vérification de délai et le banc.
 - **12:10 — le cinquième exécutant a livré** (sas `deroule/diapos-ouverture` `ec9bba1` : la NOTE finale, les sorties ; code `ddd8a94`) : bancs 3 et 4 VERT ; la sonde des quatre dettes 76 / 0 ; l'étape 11 rejouée cinq fois seule 4 VERT, 1 ROUGE (510 ms) ; **⑯ a régressé** (partie D, médianes : v6 64-84 ms → `5770054` 124-151 → `f008a41` 248-257 → `ddd8a94` 374-417 ms, le niveau de `1cc67a1`) ; le délai de l'étape 8 à sa limite quelle que soit la version (la base en ligne ROUGE deux fois sur trois). Vu en vérifiant sa poussée : le clone du sas ne récupère que `main` par défaut (`remote.origin.fetch`) — ma surveillance de 11:12 lisait une branche jamais mise à jour ; désormais, chaque branche se récupère par son nom.
 - **12:11 — complément au mandat des correctifs** (points 7 ⑯ et 8 l'étape 8 ; délai 14:45 ; sas `a541e35`, l'heure corrigée ensuite : j'avais écrit 12:15, et 12:16 dans le message à l'exécutant — l'heure juste est 12:11) ; registre (prod `159103c`). Message à l'exécutant des correctifs : la machine à lui seul, la NOTE du cinquième à fusionner, le complément.
+- **12:12 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : l'exécutant des correctifs (jusqu'à 14:45) · ouvert : 149, 153, 154, 155
+  >
+  > 159. Le cinquième exécutant a livré. Ses deux derniers bancs complets sont verts. Mais en mesurant seul, il a vu que le tableau suit de nouveau le pilote avec du retard : environ 0,4 seconde avant que le point du fil bouge. Ce retard était réglé à 8 h (moins de 0,1 seconde) ; il est revenu avec les ajouts suivants. Sur la version en ligne, je ne l'ai pas mesuré : sa base a le même retard. Ta règle interdit de mettre en ligne avec une dette, donc je l'ai ajouté au mandat des correctifs. J'y ai mis aussi le délai du tableau distant, qui dépasse parfois la demi-seconde, même sur la version en ligne.
+  >
+  > 160. L'exécutant des correctifs a donc jusqu'à 14:45. Après, je passe le banc complet, je fais les captures et je te demande le « promeus ».
+  >
+  > 149. Question : à quelle heure est ta prochaine heure avec le déroulé ?
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 12:12
+  >
+  > MEMO

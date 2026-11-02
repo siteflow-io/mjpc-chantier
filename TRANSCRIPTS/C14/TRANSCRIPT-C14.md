@@ -3735,3 +3735,41 @@ après mon promeus, quelle conséquence pour la copie de [l'élève] et que devr
 02/11/2026 07:54
 
 MEMO
+
+---
+
+## Tour 138 — 02/11/2026 07:56
+
+**Paul (07:56) :**
+
+655. donc tu as fait un bouton patch en fait? le problème c'est que par la suite, ce bouton ne me servira plus. il faut absolument que son infobulle contextualise ce qu'il fait et surtout qu'il y a ait une garde sur les conséquences de son utilisation. Enfin, pour éviter ce genre de correctif à l'avenir, relis intégralement la copie de [l'élève] (tu as son html) et la grille et vois là où l'IA est aveugle à cause de l'app, comme cette histoire de paragraphes.
+
+**Ce qui a été fait (C14) :** 656 codé sur la maquette (`6e45588d`) : `stRedemandables` ne compte que les copies dont le dernier envoi n'avait pas les paragraphes (`envoi.par`, posé par chaque export de la 1.4.22) ; le bouton caché quand il n'y en a plus ; `stRedemanderDemander`, la garde (ce qui reste, ce qui change, les comptes) ; banc complet 154/0 (un premier essai cassé par un commentaire qui avalait du code, réparé). Candidate refaite au sas : 1.4.22-RU, 886 738 o, md5 `ac1d91c5337ada4b1681901602d00371`. Vrai site en lecture seule : le bouton visible, la garde : 24 copies, 3 aux remarques relues, 2 « ✓ Copie corrigée » ; Échap : rien de marqué, aucune écriture. Sa copie relue en privé : la photo entière (dans son fichier), la grille (12 lignes, 44 stickers), l'énoncé, ses 16 stickers et 20 remarques de l'IA ; puis la classe entière : S30 (numéros en marge) sur 24 copies, S14 (lectures) sur 24 dont 23 « sans ces textes », S35 (date) sur 12, 20 recopies qui commencent par une ligne vide. Registre des dettes à jour.
+
+**Claude (08:09, avec la capture apres-C14-656-garde) :**
+
+À jouer : ton promeus pour la 1.4.22-RU (657), ton mot sur 663 et 664 · en cours : rien · ouvert : 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+656. Oui, c'est un rattrapage, et tu as raison. Il sert maintenant une seule fois. Il ne paraît que pour les copies envoyées à l'IA avant la 1.4.22, et disparaît quand plus aucune n'en a besoin. Son nom et son infobulle le disent : « ↻ Les paragraphes : redemander les stickers », « Un rattrapage, une seule fois ». Un clic ouvre d'abord une garde qui dit ce qui reste (tes décisions, tes cadres, ta recopie) et ce qui change, avec les comptes. Sur ta 3 Dylan Bob : 24 copies ; leurs remarques remplacées, à relire, dont 3 déjà relues ; 2 copies « ✓ Copie corrigée » repasseraient à 99 % ; leur note peut changer ; leurs fichiers École Directe seraient à refaire. Échap ou « Fermer » : rien ne change. Banc complet : 154 vérifications, 0 défaut.
+
+657. Promeus pour la 1.4.22-RU ?
+
+658. J'ai relu sa copie entière sur sa photo, la grille, l'énoncé et tout ce que l'IA a rendu, puis la classe. L'IA est aveugle à quatre endroits à cause de l'app. Le premier, ce sont les paragraphes : réglé par 632.
+
+659. La marge. L'app ne recopie que la colonne du texte. Elle a numéroté ses cinq architectures dans la marge, avec des accolades : 1, 4, 3, 2, 5. L'IA a écrit « Aucun numéro d'architecture n'apparaît dans la copie transmise » (S30), et elle a jugé les architectures 2 à 5 sans savoir quelles phrases l'élève désignait. Sur la 3 Dylan Bob, cette remarque S30 est sur les 24 copies. C'est la ligne à 7 points.
+
+660. Les textes lus en classe ne partent jamais à l'IA. Sa remarque S14 : « ne peut pas être vérifié sans ces textes », sur 23 copies sur 24. S10 cite la lettre de Jean Déléage, que l'IA n'a jamais lue.
+
+661. L'en-tête. Sa date, « Lundi 13 Avril », est en haut à droite, sur la ligne au-dessus de « Bonjour ». Dans ta recopie, cette ligne est restée vide. L'IA a donc écrit « Tu ne donnes pas de date » (S35) : c'est faux pour elle ; la juste remarque serait « ta date n'a pas d'année ». Sur la classe : 12 remarques S35, et 20 recopies commencent par une ligne vide.
+
+662. Ces remarques fausses partent chez l'élève. Chez elle, S7, S14, S30 et S35 sont gardées depuis 07:50. Après le promeus, dans sa bande, au bout : « ✕ Retirer » sur ces quatre, puis télécharge son fichier. Avant le promeus, ne le fais pas : en 1.4.20, la liste ne se redessine pas après « ✕ », et Entrée remettrait la remarque.
+
+663. Ma proposition, pour que l'IA voie tout cela, et un seul rattrapage pour tout. S30 devient un sticker que tu décides toi-même dans la bande, sur la photo : l'IA ne le juge plus et n'écrit plus de remarque. Dans Réglages, « Les textes lus en classe » : tu les colles une fois, ils partent avec l'énoncé. Une ligne vide au-dessus de la lettre affiche dans la recopie « en-tête : la date, le lieu ». Le rattrapage devient « ↻ Ce que l'IA voit maintenant : redemander les stickers », avec la même garde. Je le code ?
+
+664. Pour les architectures, une option de plus : au début de chaque ligne de la recopie, un petit champ « marge », où tu tapes le numéro que l'élève a écrit devant son accolade ; l'IA juge alors chaque architecture sur la phrase désignée. Cela te coûte un geste par accolade, et il faudrait repasser sur les 24 copies déjà recopiées. Je ne sais pas combien de points cela changerait : je ne l'ai pas mesuré. Tu le veux ?
+
+À tester : la capture de la garde, apres-C14-656-garde (maquette, élèves inventés).
+
+02/11/2026 08:09
+
+MEMO

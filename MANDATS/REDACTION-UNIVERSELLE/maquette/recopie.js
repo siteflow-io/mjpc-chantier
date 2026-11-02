@@ -1377,6 +1377,20 @@ function rcBandePhoto(a, anime) {
   const t0 = Date.now(), duree = 170, pas = () => { if (RC.bd !== B || B.rubanCentre !== centre) return; const t = Math.min(1, (Date.now() - t0) / duree), e = t * (2 - t); if (t < 1) { dessiner(depart + (centre - depart) * e); requestAnimationFrame(pas); } else finir(); };
   finir(); dessiner(depart); requestAnimationFrame(pas);
 }
+/* [C14 626] (Paul 02/11 06:48 : « il n'y a plus la bande, je ne vois plus la copie ») : un sticker de toute la lettre n'a pas de place dans la copie ;
+   la bande montre toute la copie, ses lignes bout à bout depuis la première, sans cadre ; ← → la font défiler ligne par ligne (pas : -1 ou 1) */
+function rcBandeLettre(pas) {
+  const B = RC.bd, cv = RC.ui && RC.ui.querySelector("#rcBandePhoto"); if (!B || !cv) return; const a = B.A[B.i], ecart = 26, h = 110, w = Math.max(300, Math.round(cv.clientWidth || 800));
+  cv.style.height = ""; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+  const R = rcRubanPhoto(B.k); let X = 0; R.forEach(r => { r.k = Math.min(h / r.sh, (w - 40) / r.sw); r.H = r.sh * r.k; r.X = X; r.W = r.sw * r.k; X += r.W + ecart; });   // chaque ligne entière dans la bande
+  const cle = a ? a.cle : ""; if (B.lettreCle !== cle) { B.lettreCle = cle; B.lettre = 0; }
+  if (pas) B.lettre = Math.max(0, Math.min(R.length - 1, (B.lettre || 0) + pas));
+  const x = cv.getContext("2d"), sh = R.length ? 12 - R[Math.min(B.lettre || 0, R.length - 1)].X : 0; x.fillStyle = "#fffdf8"; x.fillRect(0, 0, w, h);
+  R.forEach(r => { const g = r.X + sh; if (g > w || g + r.W < 0) return;
+    if (r.im) x.drawImage(r.im.el, r.sx, r.sy, r.sw, r.sh, g, (h - r.H) / 2, r.W, r.H); else { x.fillStyle = "#f3eee4"; x.fillRect(g, Math.max(8, (h - r.H) / 2), r.W, Math.min(h - 16, r.H)); }
+    x.fillStyle = "#b9ab95"; x.font = "600 11px system-ui"; x.fillText(String(r.i + 1), g + r.W + 7, 14); x.fillRect(g + r.W + ecart / 2 - 0.5, 22, 1, h - 30); });
+  B.ruban = null; B.boite = null; B.rubanCentre = null;   // aucun cadre : rien à tirer, rien à viser
+}
 /* [C14 1.4.15] (Paul 01/11 13:12 : « dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le
    rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur ») : cote « g » ou « d » ne bouge qu'un bord ; sans cote, tout le cadre */
 function rcBandeGlisser(du, cote) {
@@ -1433,6 +1447,7 @@ function rcBandeClavier(ev) {
   if ((ev.key === "Enter" || ev.key === " ") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("o"); return true; }
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
   if (ev.key === "Backspace") { ev.preventDefault(); B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }
+  if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && B.A[B.i] && B.A[B.i].st && !B.A[B.i].g) { ev.preventDefault(); rcBandeLettre(ev.key === "ArrowLeft" ? -1 : 1); return true; }   // [C14 626]
   if (ev.key === "ArrowLeft" || ev.key === "ArrowRight") { ev.preventDefault(); rcBandeGlisser(ev.key === "ArrowLeft" ? -0.004 : 0.004); saveState(); return true; }
   if ((ev.ctrlKey || ev.metaKey) && (ev.key === "z" || ev.key === "Z")) { ev.preventDefault(); rcBandeRemettre(); return true; }
   return true;
@@ -2017,7 +2032,7 @@ RU_AIDES.bande = { ou: "La bande", l: [
   ["Entrée ou Espace", "c'est une faute (ou le sticker est réussi), puis l'arrêt suivant"],
   ["N", "non, puis l'arrêt suivant"],
   ["⌫", "revenir à l'arrêt d'avant"],
-  ["← →", "glisser le cadre sur la photo"],
+  ["← →", "glisser le cadre sur la photo ; sur un sticker de toute la lettre, faire défiler la copie"],
   ["le cadre", "tire-le ; double clic : une poignée de chaque côté pour régler sa longueur ; clic droit : une faute de ta recopie"],
   ["Ctrl + Z", "annuler ton dernier réglage du cadre"],
   ["⇧ R", "passer au mot par mot, comme en dictée, et en revenir : Entrée le mot suivant, F une faute (ou la retirer), N non, ⌫ le mot d'avant"],

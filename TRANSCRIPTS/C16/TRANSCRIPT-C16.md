@@ -575,3 +575,36 @@ MEMO
   > 02/11/2026 12:12
   >
   > MEMO
+- **12:21 — Paul, mot pour mot** : « Encore une dette, je pense : j'ai ouvert en mode test, l'adresse du tableau sur l'ordi de la classe, ainsi que le pilotage dans une autre fenêtre. 
+  Puis j'ai lancé une heure, toujours en mode test. J'ai voulu faire windows P mais l'ordi pensait que le vidéo proj était l'écran 1 donc ça a cafouillé, bref ce n'est pas génial. Je suis donc resté en dupliquer et j'ai affiché ma page de vue tableau. 
+  Puis j'ai ouvert siteflow sur mon téléphone en mode test aussi, et j'ai lancé la même séance ( j'ai trouvé ça bizarre de devoir recommencer le flux). En réalité je me suis retrouvé à jouer deux sessions en même temps, sans aucun problème. 
+  Je me suis dit que normalement en pilotant la séance sur mon téléphone, j'aurais la vue tableau qui s'actualiserait sur l'ordi de classe. Eh bien non. 
+  Il faut que quand je lance une séance, quel que soit le matériel, si je me connecte au site sur n'importe quel autre matériel, je retrouve la session en cours. 
+  Et ce, en mode test, en répétition, partout. 
+  Enfin, j'ai trouvé ce matin en écrivant les réponses des élèves que c'était assez lent l'écriture. Peut être parce que les erreurs d'enregistrement sempilaient je ne sais pas. »
+- **12:23 — registre** : ㉞ et ㉟ (prod `2b34578`, `b91aac5`) ; lu dans le code, pas mesuré (cours_actif au magasin en mode test ; pas d'annonce de la répétition ; pas de suivi en direct entre deux pilotes). Point 9 (㉟) au mandat des correctifs (sas `fa29f5f`, `58f34fb`) ; message à l'exécutant.
+- **12:23 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : l'exécutant des correctifs (jusqu'à 14:45) · ouvert : 149, 153, 154, 155, 162, 163, 164, 167
+  >
+  > 161. J'ai noté deux dettes au registre : ㉞ (une heure se retrouve sur tout appareil) et ㉟ (la frappe lente). J'ai lu le code, mais je n'ai pas encore mesuré. En vraie classe, un autre appareil voit déjà le bandeau « Heure en cours avec les … — Reprendre », et relancer la même heure la reprend. En mode test, l'heure reste dans le navigateur qui l'a lancée : seule l'image du tableau part au hub, à une adresse d'essai. Ton téléphone ne pouvait donc pas voir l'heure de l'ordinateur. Il en a lancé une deuxième, et les deux envoyaient leur image au même tableau. Pourquoi le tableau est resté sur la première : je ne sais pas, je le mesurerai. En répétition, rien n'annonce la répétition aux autres appareils. Enfin, même en classe, deux pilotes ouverts en même temps ne se suivent pas en direct : chacun garde sa copie.
+  >
+  > 162. Ma proposition pour le mode test et la répétition : l'heure vit au hub, à une adresse d'essai à part, jamais dans les données de tes classes. Aujourd'hui, la règle posée le 28/10 n'envoie au hub, en mode test, que l'image du tableau. Cette proposition l'élargit à toute l'heure d'essai.
+  >
+  > 163. Sur tout autre appareil, le bandeau « Heure en cours … — Reprendre » paraît aussi en mode test et en répétition. Relancer la même séance rejoint l'heure en cours : jamais une deuxième.
+  >
+  > 164. Deux pilotes ouverts à la fois se suivent en direct. Un geste sur l'un (dévoiler, changer de diapo, geler, écrire une réponse) paraît sur l'autre, et c'est le dernier geste qui compte. Le tableau suit l'heure, quel que soit l'appareil qui pilote : ton téléphone devient une télécommande.
+  >
+  > 165. Pour la frappe lente, je vois deux causes possibles dans le code. La première : chaque geste redessine toute la colonne des vignettes (de 0,08 à 0,2 seconde par flèche, mesuré ce matin). La seconde : les envois refusés de ㉘. Je ne sais pas laquelle ; je l'ai ajouté au mandat des correctifs, avec une mesure lettre par lettre.
+  >
+  > 166. Pour Windows + P : ce que tu as fait (dupliquer, avec la vue tableau sur l'ordinateur de la classe) est la bonne façon aujourd'hui. Chrome sait ouvrir une fenêtre directement sur le second écran, avec ton autorisation. Si tu veux, je le note pour plus tard.
+  >
+  > 167. Si 162 à 164 te vont, j'écris le mandat de ㉞. Je propose qu'il passe après les correctifs et avant le minuteur, parce qu'il change la façon dont tu mènes chaque heure et chaque essai.
+  >
+  > 149. Question : à quelle heure est ta prochaine heure avec le déroulé ?
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 12:23
+  >
+  > MEMO

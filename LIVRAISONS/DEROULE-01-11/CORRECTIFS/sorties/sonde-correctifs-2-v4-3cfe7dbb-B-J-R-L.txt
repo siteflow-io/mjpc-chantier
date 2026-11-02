@@ -1,0 +1,86 @@
+C16 · sonde des correctifs · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400) · parties B J R L · 2026-11-02 11:27 UTC · md5 3cfe7dbbc01c89fd8960dea70a10a9b0 · images : celle du canon
+
+══ B · (㉙) 1536×864 · l’Atelier : la question d’un bloc question écrite au clavier ; une diapo déjà salie dans « À régler » ══
+      B · avant « Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. » · après, au hub : « Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. Et vous ? »
+  ok     B · dans l’Atelier, « Question-bilan » : un clic dans sa question, la fin du texte, la frappe « Et vous ? »
+  ok     B · la barre du bloc paraît (au-dessus du bloc) mais jamais DANS le texte de la question — {"dansLaQuestion":false,"barreVue":true}
+  ok     B · le texte enregistré au hub est exactement ce que Paul a tapé (aucun mot de la barre) — {"attendu":"Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. Et vous ?","lu":"Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. Et vous ?"}
+  ok     B · la diapo de l’Atelier montre la question telle qu’écrite — QUESTION-BILAN Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. Et vous ? Une nature immense face à un homme petit ; l'émotion avant la règle. BLOC 1 
+  ok     B · l’Atelier, la frappe : aucune erreur JS, aucune boîte système
+      B · « À régler » : Des mots de l’écran sont entrés dans la question : « BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ » — diapo 13 · « Question-bilan » · bloc 1 clique dans la question et efface « BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ » : ces mots viennent de la barre du bloc, pas de toi — le site ne les retire pas seul Ouvrir la diapo Copier le texte pour l'instance Fiche « Le registre lyrique » non liée à une feuille — séance « Étude de 
+  ok     B · « À régler » dit ce qui est en trop (« BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ ») et où (« Question-bilan », la question) — À RÉGLER — 106 choses qui peuvent casser en classe, dans ce chapitre (cadrage 4, 6.1) ✕ Diapo « Analyse d'images : la routine » sans numéro d'activité — diapo 6 rattache-la à une activité (la carte « Ce que la diapo déclare ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé
+  ok     B · le texte sali n’est pas réparé en silence (au hub, il garde ces mots : Paul les efface lui-même) — Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours. BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕
+  ok     B · l’Atelier, la diapo salie : aucune erreur JS, aucune boîte système
+
+══ J · (㉜) 1536×864 · le tableau des cinq œuvres avec « Ce que j’en retiens » (3 pages) : → et ← en jeu ══
+      J · en classe, une vraie heure (faux hub) · départ « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · rien à dévoiler
+      J · en classe, une vraie heure (faux hub) · → « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+      J · en classe, une vraie heure (faux hub) · → « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en classe, une vraie heure (faux hub) · → « Tableau 3 »  │ tableau « Tableau 3 » │ distant « Tableau 3 » · rien à dévoiler
+      J · en classe, une vraie heure (faux hub) · ← « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en classe, une vraie heure (faux hub) · ← « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+  ok     J · en classe, une vraie heure (faux hub) : → → → montre la page 2, la page 3, puis la diapo suivante (« Tableau 3 ») — [{"act":"Les cinq tableaux","page":"page 1 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"},{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Tableau 3","page":""}]
+  ok     J · en classe, une vraie heure (faux hub) : ← ← revient au tableau, à sa page 3, puis à la page 2 — [{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"}]
+  ok     J · en classe, une vraie heure (faux hub) : à chaque geste, la même diapo et la même page au pilote, à la fenêtre du tableau et au tableau distant — []
+  ok     J · en classe, une vraie heure (faux hub) : aucune erreur JS, aucune boîte système
+      J · en classe, mode test · départ « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · rien à dévoiler
+      J · en classe, mode test · → « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+      J · en classe, mode test · → « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en classe, mode test · → « Tableau 3 »  │ tableau « Tableau 3 » │ distant « Tableau 3 » · rien à dévoiler
+      J · en classe, mode test · ← « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en classe, mode test · ← « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+  ok     J · en classe, mode test : → → → montre la page 2, la page 3, puis la diapo suivante (« Tableau 3 ») — [{"act":"Les cinq tableaux","page":"page 1 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"},{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Tableau 3","page":""}]
+  ok     J · en classe, mode test : ← ← revient au tableau, à sa page 3, puis à la page 2 — [{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"}]
+  ok     J · en classe, mode test : à chaque geste, la même diapo et la même page au pilote, à la fenêtre du tableau et au tableau distant — []
+  ok     J · en classe, mode test : aucune erreur JS, aucune boîte système
+      J · en répétition · départ « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · rien à dévoiler
+      J · en répétition · → « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+      J · en répétition · → « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en répétition · → « Tableau 3 »  │ tableau « Tableau 3 » │ distant « Tableau 3 » · rien à dévoiler
+      J · en répétition · ← « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · rien à dévoiler
+      J · en répétition · ← « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · rien à dévoiler
+  ok     J · en répétition : → → → montre la page 2, la page 3, puis la diapo suivante (« Tableau 3 ») — [{"act":"Les cinq tableaux","page":"page 1 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"},{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Tableau 3","page":""}]
+  ok     J · en répétition : ← ← revient au tableau, à sa page 3, puis à la page 2 — [{"act":"Les cinq tableaux","page":"page 3 / 3"},{"act":"Les cinq tableaux","page":"page 2 / 3"}]
+  ok     J · en répétition : à chaque geste, la même diapo et la même page au pilote, à la fenêtre du tableau et au tableau distant — []
+  ok     J · en répétition : aucune erreur JS, aucune boîte système
+      J · un à un · départ « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · 0 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · 1 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · 2 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 1 / 3 │ tableau page 1 / 3 │ distant page 1 / 3 · 3 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · 4 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 2 / 3 │ tableau page 2 / 3 │ distant page 2 / 3 · 5 / 6 dévoilés
+      J · un à un · → « Les cinq tableaux » page 3 / 3 │ tableau page 3 / 3 │ distant page 3 / 3 · 6 / 6 dévoilés
+      J · un à un · → « Tableau 3 »  │ tableau « Tableau 3 » │ distant « Tableau 3 » · rien à dévoiler
+  ok     J · un à un : chaque → dévoile la rangée suivante, la page suit la rangée (1 → 1 → 1 → 1 → 2 → 2 → 3), puis la diapo suivante — l’ordre de dévoilement inchangé — ["page 1 / 3 0 / 6 dévoilés","page 1 / 3 1 / 6 dévoilés","page 1 / 3 2 / 6 dévoilés","page 1 / 3 3 / 6 dévoilés","page 2 / 3 4 / 6 dévoilés","page 2 / 3 5 / 6 dévoilés","page 3 / 3 6 / 6 dévoilés"," rien à dévoiler"]
+  ok     J · un à un : le pilote, la fenêtre du tableau et le tableau distant ensemble — []
+  ok     J · un à un : aucune erreur JS, aucune boîte système
+
+══ R · (㉝) 1536×864 · « À régler » dans l’Atelier : un tableau en pages, une carte qui ne tient pas, un tableau avec une vraie case coupée ══
+      R · le tableau en pages : rien sur « Les cinq tableaux »
+  ÉCHEC  R · le tableau des cinq œuvres (il passe en pages, → les tourne) : « À régler » n’en dit rien, et ne conseille pas « Couper le schéma » — []
+  ok     R · le tableau en pages : aucune erreur JS, aucune boîte système
+      R · la carte : Schéma « Les cinq tableaux » : il ne tient pas lisible — coupe-le : clic droit sur une famille → Couper le schéma ici — diapo 8 · « Les cinq tableaux » · bloc 1 mesuré au tableau : 253 chevauchements, 0 hors du cadre visible, 738 traits à travers un mot, 0 libellé sur deux lignes, 0 police sous 26 pt — la police ne descend jamais sous 26 pt : c'est le schéma qu'on coupe Ouvrir la diapo Copier le texte pour l'instance
+  ok     R · une carte qui ne tient pas : « Couper le schéma » (clic droit sur une famille), le geste d’une carte — ["Schéma « Les cinq tableaux » : il ne tient pas lisible — coupe-le : clic droit sur une famille → Couper le schéma ici — diapo 8 · « Les cinq tableaux » · bloc 1 mesuré au tableau : 253 chevauchements, 0 hors du cadre visible, 738 traits à travers un mot, 0 libellé sur deux lignes, 0 police sous 26 pt — la police ne descend jamais sous 26 pt : c'est le schéma qu'on coupe Ouvrir la diapo Copier le texte pour l'instance"]
+  ok     R · la carte : aucune erreur JS, aucune boîte système
+      R · le tableau à la case coupée : Tableau « Les cinq tableaux » : un texte hors du cadre — page 1 sur 1, rangée 1, case « Pour aller plus loin » (« https://fr.wikipedia.org/wiki/Le_Radeau_… ») — diapo 8 · « Les cinq tableaux » · bloc 1 raccourcis le mot ou le texte de cette case (la source du tableau, colonne de droite), ou retire une colonne Ouvrir la diapo Copier le texte pour l'instance 
+  ok     R · un tableau avec une vraie case coupée : la ligne dit lequel (un texte hors du cadre), où (page 1 sur 1, rangée 1, case « Pour aller plus loin ») et le geste (raccourcir dans la source) — jamais « Couper le schéma » — ["Tableau « Les cinq tableaux » : un texte hors du cadre — page 1 sur 1, rangée 1, case « Pour aller plus loin » (« https://fr.wikipedia.org/wiki/Le_Radeau_… ») — diapo 8 · « Les cinq tableaux » · bloc 1 raccourcis le mot ou le texte de cette case (la source du tableau, colonne de droite), ou retire une colonne Ouvrir la diapo Copier le texte pour l'instance "]
+  ok     R · le tableau à la case coupée : aucune erreur JS, aucune boîte système
+
+══ L · (⑭) « L’Albatros » en entier dans une case : chaque ligne du poème vue une fois, entière, sur une page ══
+      L · 1536×864 · au pilote : page 1 / 3 : lignes 1–8, 4 cachée(s) │ page 2 / 3 : lignes 9–12, 8 cachée(s) │ page 3 / 3 : l’autre rangée · police 24.39px
+  ok     L · 1536×864 · au pilote : chaque ligne du poème vue une fois, entière, sur une page (12 sur 12) ; aucune ligne coupée en deux (0) — {"total":12,"uneFois":12,"deuxFois":0,"coupees":0,"memeEntete":true,"pages":["page 1 / 3 : lignes 1–8, 4 cachée(s)","page 2 / 3 : lignes 9–12, 8 cachée(s)","page 3 / 3 : l’autre rangée"],"fs":["24.39px"]}
+  ok     L · 1536×864 · au pilote : l’en-tête à la même place sur chaque page ; la police ne change pas (24.39px) — [[49.6,89.9,885.3],[49.6,89.9,885.3],[49.6,89.9,885.3]]
+      L · 1536×864 · à la fenêtre du tableau : page 1 / 3 : lignes 1–8, 4 cachée(s) │ page 2 / 3 : lignes 9–12, 8 cachée(s) │ page 3 / 3 : l’autre rangée · police 39.31px
+  ok     L · 1536×864 · à la fenêtre du tableau : chaque ligne du poème vue une fois, entière, sur une page (12 sur 12) ; aucune ligne coupée en deux (0) — {"total":12,"uneFois":12,"deuxFois":0,"coupees":0,"memeEntete":true,"pages":["page 1 / 3 : lignes 1–8, 4 cachée(s)","page 2 / 3 : lignes 9–12, 8 cachée(s)","page 3 / 3 : l’autre rangée"],"fs":["39.31px"]}
+  ok     L · 1536×864 · à la fenêtre du tableau : l’en-tête à la même place sur chaque page ; la police ne change pas (39.31px) — [[79.9,145,1425.4],[79.9,145,1425.4],[79.9,145,1425.4]]
+      L · 1536×864 · au tableau distant : page 1 / 3 : lignes 1–8, 4 cachée(s) │ page 2 / 3 : lignes 9–12, 8 cachée(s) │ page 3 / 3 : l’autre rangée · police 39.31px
+  ok     L · 1536×864 · au tableau distant : chaque ligne du poème vue une fois, entière, sur une page (12 sur 12) ; aucune ligne coupée en deux (0) — {"total":12,"uneFois":12,"deuxFois":0,"coupees":0,"memeEntete":true,"pages":["page 1 / 3 : lignes 1–8, 4 cachée(s)","page 2 / 3 : lignes 9–12, 8 cachée(s)","page 3 / 3 : l’autre rangée"],"fs":["39.31px"]}
+  ok     L · 1536×864 · au tableau distant : l’en-tête à la même place sur chaque page ; la police ne change pas (39.31px) — [[79.9,145,1425.4],[79.9,145,1425.4],[79.9,145,1425.4]]
+      L · 1536×864 · dans l’Atelier : page 1 / 3 : lignes 1–8, 4 cachée(s) │ page 2 / 3 : lignes 9–12, 8 cachée(s) │ page 3 / 3 : l’autre rangée · police 20.84px
+  ok     L · 1536×864 · dans l’Atelier : chaque ligne du poème vue une fois, entière, sur une page (12 sur 12) ; aucune ligne coupée en deux (0) — {"total":12,"uneFois":12,"deuxFois":0,"coupees":0,"memeEntete":true,"pages":["page 1 / 3 : lignes 1–8, 4 cachée(s)","page 2 / 3 : lignes 9–12, 8 cachée(s)","page 3 / 3 : l’autre rangée"],"fs":["20.84px"]}
+  ok     L · 1536×864 · dans l’Atelier : l’en-tête à la même place sur chaque page ; la police ne change pas (20.84px) — [[42.3,76.8,755.4],[42.3,76.8,755.4],[42.3,76.8,755.4]]
+  ok     L · 1536×864 : « À régler » ne signale plus la rangée du poème (rien n’est perdu) — []
+  ok     L · 1536×864 : aucune écriture refusée par le hub (la scène porte les tranches de la rangée) — []
+  ok     L · 1536×864 : aucune erreur JS, aucune boîte système
+
+--- fin : 40 vérification(s), 1 échec(s) · ROUGE

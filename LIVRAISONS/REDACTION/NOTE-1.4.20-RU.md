@@ -2,8 +2,8 @@
 
 *Sur l'ordre de Paul (01/11, 22:49) : « il faut terminer effectivement tout le reste. À coder cette nuit. Tout doit être opérationnel demain matin à 5h30. » Rien n'est en ligne : la mise en ligne attend son mot (C14 600).*
 
-- Fichier : `redaction-1.4.20-RU-candidat.html`, 870 858 o, md5 `7f0d9ff76069722e7d807fb4309284a5`. Base en ligne : 1.4.19-RU, md5 `55c27b0af397b48d2af2b8c6c491fa38`.
-- Maquette et bancs : branche `c14-poignees`, commit `a80cea9f`.
+- Fichier : `redaction-1.4.20-RU-candidat.html`, 870 879 o, md5 `cca2b54a64a3921bfe5403054e8af17c`. Base en ligne : 1.4.19-RU, md5 `55c27b0af397b48d2af2b8c6c491fa38`.
+- Maquette et bancs : branche `c14-poignees`, commit `063794cc`.
 
 ## Ce que ça change pour Paul
 - **404 — le paquet en vignettes.** Hors de « 🔤 Les initiales », l'écran des scans montre le paquet : chaque élève, son nom, ses étapes (recopiée, envoyée, chargée, la bande) et ses pages en vignettes. Un clic sur une page ouvre sa recopie à cette page ; Échap y revient. Une page sans élève vient en tête, avec « 🔤 Les initiales ». Les passes, le pinceau, les questions, le récapitulatif, le chrono des passes et « ↺ Remettre à zéro » sont partis. Un redessin du paquet ne touche jamais au focus.
@@ -14,7 +14,7 @@
 - **406 — le Bilan.** Deux colonnes, « Lignes » et « Ton temps » ; en bas, toute la classe. « ▸ sa grille » : chaque ligne de la grille d'une copie corrigée avec les stickers, ses points, son niveau, ses stickers réussis.
 - **407 — l'aide « ? ».** Récrite pour le paquet, la recopie, la bande, le Bilan, les Fiches élèves et les Réglages : seulement ce qui reste.
 - **401 — le code de l'ancien flux des scans retiré.** Fonction par fonction, seulement ce que plus rien n'atteint (prouvé par un outil qui lit le code, `banc/outil-fonctions-401.mjs`, puis par le banc) : 52 fonctions, l'écran des scans passe de 1 015 à 635 lignes ; les éléments cachés de l'en-tête (passes, chrono des passes, remise à zéro, bande repliée) aussi. Le fichier passe de 897 875 o à 869 571 o. Ouvrir la recopie n'écrit plus la copie au site (l'ancien chrono des passes ne compte plus).
-- **Les cadres sur le blanc correcteur (C14 479, 535).** Les mots d'encre d'un sticker ou d'une remarque se choisissent pour que chaque mot ait la largeur que ses lettres demandent, et que les blancs choisis soient larges ; la place attendue ne fait que départager. Sur la vraie copie de l'élève (privée), les 3 cadres décalés d'un mot sont justes (« Je suis au front », « que tu pleure », « nos rations »), les 6 autres n'ont pas bougé.
+- **Les cadres sur le blanc correcteur (C14 479, 535).** Les mots d'encre d'un sticker ou d'une remarque se choisissent pour que chaque mot ait la largeur que ses lettres demandent, et que les blancs choisis soient larges ; la place attendue ne fait que départager. Sur la vraie copie de l'élève (privée), les 3 cadres décalés d'un mot sont justes, les 6 autres n'ont pas bougé.
 - **Le tableau des élèves suit le flux unique.** « Corrigé » et 100 % disent la même chose : recopiée jusqu'à sa phrase, corrigé chargé, chaque arrêt de la bande décidé, remarques relues, et, quand le sujet a sa grille de stickers, ses réussites revenues de l'IA et décidées. Sinon « En cours » et ses étapes (la phrase 25, le corrigé 25, la bande 50 au prorata de ses arrêts) ; le compteur de la classe compte les copies entièrement corrigées. Sur la vraie classe : les 3 copies dont la bande est finie passaient « Corrigé 0 % », elles sont « En cours 75 % » : il leur manque la phrase qui t'a marqué.
 - **Trouvés par le banc cette nuit, réglés :** une copie sans faute ni sticker proposés mais avec des remarques de l'IA n'ouvrait pas sa bande (ses remarques n'étaient jamais relues, l'élève ne les lisait pas) ; une bande finie, rouverte après une ligne retapée, s'ouvrait sur « Bande finie » au lieu de l'arrêt nouveau ; une copie de l'appli tournée deux fois prenait la photo d'origine.
 

@@ -18,7 +18,7 @@ function brancherAjout(){ /* repris de l'ancien (moteur L648-656, ligne() L1441)
     ini.oninput = () => { const r = ligne(); const l = dr_candidats(ini.textContent); r.eleve = l.length === 1 ? nomDe(l[0]) : null; r.i = r.eleve ? iniDe(r.eleve) : ini.textContent.trim().toUpperCase(); ini.classList.toggle('vide', !r.i); S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'ini' }; if (r.r) dr_tout(); };
     ini.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === 'Tab') { ev.preventDefault(); const r = ligne(); if (!r.eleve && ini.textContent.trim()) { const l = dr_candidats(ini.textContent); if (l.length) { r.eleve = nomDe(l[0]); r.i = l[0]; ini.textContent = r.i; ini.classList.remove('vide'); } } dit.focus({ preventScroll: true }); } if (ev.key === 'Escape') { ev.stopPropagation(); ini.blur(); } };
     ini.ondblclick = ev => { ev.preventDefault(); const r = ligne(); if (!r.r) return; r.refo = !r.refo; journal('reponse-reformulee', { eleve: r.eleve, refo: r.refo }); S._garderFocus = { bi, ri, quoi: 'ini' }; dr_tout(); };
-    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_frappeReponse(!av); };   /* C16 (㉟) : avant, chaque touche redessinait tout (dr_tout) */
+    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_frappeReponse(!av, bi); };   /* C16 (㉟) : avant, chaque touche redessinait tout (dr_tout) */
     dit.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); const r = ligne(); if (!r.r.trim()) return; r.validee = true; if (r.eleve) journal('parole', { nom: r.eleve, m: 'reponse' }); S.derniere = { type: 'reponse' }; S.blocActif = bi; S._garderFocus = { bi, ri: ri + 1, quoi: 'ini' }; dr_tout(); } if (ev.key === 'Escape') { ev.stopPropagation(); dit.blur(); } };
     dit.onfocus = () => { S.blocActif = bi; }; });
   if (S._garderFocus) { const g = S._garderFocus; const rep = mur.querySelector(`.rep[data-bi="${g.bi}"][data-r="${g.ri}"]`); if (rep) { const c = rep.querySelector(g.quoi === 'ini' ? '.ini' : '.dit'); if (c && document.activeElement !== c) { c.focus({ preventScroll: true }); const sel = window.getSelection(); const rg = document.createRange(); rg.selectNodeContents(c); rg.collapse(false); sel.removeAllRanges(); sel.addRange(rg); } } S._garderFocus = null; } }
@@ -31,8 +31,12 @@ function brancherAjout(){ /* repris de l'ancien (moteur L648-656, ligne() L1441)
    (400 ms sans touche), ou tout de suite à la première lettre d'une réponse (la question se dévoile, la ligne suivante paraît). Rien n'est perdu : la réponse est
    dans l'état à chaque touche (`r.r`), et part au tableau à chaque touche. */
 let DR_FRAPPE_T = null;
-function dr_frappeReponse(neuve){
+function dr_frappeReponse(neuve, bi){
   const complet = () => { clearTimeout(DR_FRAPPE_T); DR_FRAPPE_T = null; dr_tout(); };
+  /* la première lettre d'une réponse ne redessine tout que si elle dévoile la question (dr_devoilerQuestionsRepondues) : la ligne libre suivante ne paraît qu'à
+     Entrée (le rendu n'en pose une que sous une réponse validée) — mesuré (sonde des correctifs, partie K, 13:14) : la première lettre de chaque réponse, avec le
+     dessin complet, passait 100 ms au pilote */
+  if (neuve) { try { const e = ecran(); const k = elements(e).findIndex(x => x.b === +bi && x.e === 'q'); neuve = k >= 0 && k + 1 > etatDiapo().nDev; } catch (x) {} }
   if (neuve || S.gel || S.atelier || !S.mur || S.mur.si !== S.si || S.mur.di !== S.di || typeof pousser !== 'function') { complet(); return; }
   try { const e = ecran(); const et = etatComplet(); ['pages', 'pagesP', 'tranchesP', 'policeRatio', 'policeReduite', 'page', 'fsBloc'].forEach(k => { if (S.mur[k] !== undefined) et[k] = S.mur[k]; }); et._pageManuelle = true;
     if (!S.repetition) { et.textes = p8TextesCopie(e, et.textes); et.retires = p8RetiresCopie(e); } et.pilote = false; pousser(et); } catch (x) { complet(); return; }

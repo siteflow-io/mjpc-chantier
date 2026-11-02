@@ -1288,3 +1288,18 @@ MEMO
   > MEMO
 - **19:37 — l'exécutant de ㉞ (message)** : le correctif de R codé, commit local `2218c05ec` sur `8602da915`, pas poussé : `dr_repEcrire` (`dr-atelier.js`) écrit par un `fetch` PUT direct ; une réussite n'affiche plus rien ; un refus ou une panne passe par `mjpcSignalerIssue` (« Répétition — le tableau distant », « retenter ») ; en mode test, rien comme avant ; la sonde ne dépend pas du bandeau « Enregistré » ; assemblé md5 `32254002…` ; NOTE à jour ; pas prouvé — il attend « machine libre ».
 - **19:59 — la conscience** : 271 sans réponse de Paul depuis 19:37 : ma proposition est acquise (le correctif, le « promeus » vers 21:00 ou un peu après). Mon banc sur `8602da915` arrêté pendant l'étape 12 : les étapes 1 à 11 vertes (parcours VERT, mode test VERT, K1-K13 0 défaut, Atelier 106 / 0, bloc question 53 / 53, §12.66 27 / 0, ⑩ 51 / 0, ouverture 126 / 0, fil 100 / 0 ; l'étape 9 « vérifications ok : 33 ») ; l'étape 14 105 / 1 (R). Machine libre pour l'exécutant (message) : R seul trois fois de suite, la sonde complète deux fois de suite, puis l'avance rapide de `deroule/session-partout` ; cible 20:25. Ensuite, mon banc complet sur ce fichier.
+- **20:05 — l'exécutant de ㉞ (message)** : le correctif `2218c05ec` ne rend pas R vert 3 fois de suite : 3 passages verts sur 5 (passage 1 : téléphone 566, tableau 569 ms ; passage 5 : 590, 614 ms) ; rien poussé (`deroule/session-partout` reste `8602da915`). La trace du passage 5 : la scène et l'état partent au hub en 50 à 100 ms ; le temps se perd dans des blocages de 240 à 407 ms de la page qui reçoit, environ 300 ms après chaque état posé ; aucune fonction de la session n'en est la cause ; il pense au dessin de l'Atelier en répétition (l'aperçu du tableau à droite ?), pas prouvé ; sur 2 cœurs avec trois navigateurs, une page bloquée retarde aussi les autres. Il ne sait pas si `2218c05ec` a amélioré R (pas mesuré avant). Il propose 10 minutes de profileur.
+- **20:04 — la conscience** : à l'exécutant (message) — le profileur, 10 minutes au plus, rien codé ; puis la machine à mon banc (étapes 12 et 13 sur `8602da915`) ; dire si ce blocage existe déjà en production 8.79.0 (le retard du tableau, ⑯).
+- **20:04 — message à Paul, mot pour mot :**
+
+  > 272. Le correctif n'a pas suffi : en répétition, 3 passages verts sur 5. Les retards (0,57 à 0,61 seconde) ne viennent plus de l'appareil qui envoie : la page qui reçoit se bloque un quart à quatre dixièmes de seconde après chaque geste reçu, probablement le dessin de l'Atelier en répétition. Ce retard ressemble à celui du tableau que tu as jugé à 13:33 « pas une vraie dette bloquante, mais à traiter » (⑯) ; je ne l'ai pas encore prouvé : l'exécutant le mesure maintenant, 10 minutes.
+  >
+  > 273. Ta décision. Soit la mise en ligne du fichier livré à 19:27, vers 20:35, après les deux dernières étapes de mon banc, ce retard en répétition noté avec celui du tableau (⑯), à traiter ensuite : c'est ma proposition. Soit attendre que la cause soit trouvée et corrigée : je ne sais pas encore combien de temps.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 20:04
+  >
+  > À jouer : rien · en cours : l'exécutant (10 minutes de mesure), puis les deux dernières étapes de mon banc · ouvert : 273
+  >
+  > MEMO

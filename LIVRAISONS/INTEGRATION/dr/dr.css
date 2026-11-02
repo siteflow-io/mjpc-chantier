@@ -651,7 +651,7 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .doc{padding-left:max(40px,5.2cqw)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .f-tab{left:5.2cqw}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .legsur{left:5.2cqw}
-.mur .alertes-diapo{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .alertes-diapo{left:5.2cqw}   /* C16 (les dernières dettes, ⑫) : sans le préfixe, la règle perdait contre celle de la ligne 219 (plus précise : elle est rangée sous « :is(#dr-zone,#ses-tab,.at-som-volet) ») et les alertes de forme restaient à .6em du bord, sous le fil (15 px au pilote 1536 × 864 : mesuré par le geste, sonde-fin.mjs partie F) */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .bandeau.on{z-index:2}
 /* C16 64 : la colonne a la main (un clic dedans) — ← → ↑ ↓ sont à elle ; la vignette ou la ligne courante le dit d'un trait d'or plus franc */
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .vig.cour{outline:2px solid var(--or);outline-offset:-1px}

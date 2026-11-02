@@ -1,0 +1,11 @@
+C16 · sonde des dernières dettes · parties F · 2026-11-02 05:57 UTC · md5 e9f2cb7b7ea32ee1c20d94fd8df5c43c · images : celle du canon · hub construit : un dossier local
+
+══ F · (⑫) la vidéo, le document, la fiche ouverte en page, la légende des surligneurs, les alertes de forme : rien ne déborde, rien sous le fil, rien de coupé ══
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 · la vidéo : au pilote (en répétition) 6 boîtes, 0 défaut │ à la fenêtre du tableau (en répétition) 7 boîtes, 0 défaut │ dans l’Atelier 6 boîtes, 0 défaut — ["au pilote (en répétition) [[44.3,825,40,450]] fil 30","à la fenêtre du tableau (en répétition) [[79.9,1508,40,834]] fil 53.7","dans l’Atelier [[45.5,848,40,462]] fil 30.8"]
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 · la fiche ouverte en page : au pilote 19 boîtes, 0 défaut │ à la fenêtre du tableau 9 boîtes, 0 défaut │ au tableau distant 9 boîtes, 0 défaut — ["au pilote [[49.6,954,0,536]] fil 33.4","à la fenêtre du tableau [[79.9,1536,0,864]] fil 53.7","au tableau distant [[79.9,1536,0,864]] fil 53.7"]
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 · la légende des surligneurs : au pilote 5 boîtes, 0 défaut │ à la fenêtre du tableau 5 boîtes, 0 défaut │ au tableau distant 5 boîtes, 0 défaut │ dans l’Atelier 5 boîtes, 0 défaut — ["au pilote [[49.6,534.3,466.7,513.5]] fil 33.4","à la fenêtre du tableau [[79.9,860.2,752.3,827.7]] fil 53.7","au tableau distant [[79.9,860.2,752.3,827.7]] fil 53.7","dans l’Atelier [[42.1,453.6,397,436.9]] fil 28.5"]
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 · les alertes de forme : au pilote 7 boîtes, 0 défaut │ dans l’Atelier 7 boîtes, 0 défaut — ["au pilote [[49.6,936,424.7,521]] fil 33.4","dans l’Atelier [[45.5,859.5,389.2,478.2]] fil 30.8"]
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 · le document : au pilote 3 boîtes, 0 défaut │ à la fenêtre du tableau 3 boîtes, 0 défaut │ au tableau distant 3 boîtes, 0 défaut — ["au pilote [[0,954,0,536]] fil 33.4","à la fenêtre du tableau [[0,1536,0,864]] fil 53.7","au tableau distant [[0,1536,0,864]] fil 53.7"]
+  ok     F · ce fichier · pilote 1536×864 · tableau 1536×864 : aucune erreur JS, aucune boîte système
+
+— fin : 6 vérifications, 0 échec(s) · VERT

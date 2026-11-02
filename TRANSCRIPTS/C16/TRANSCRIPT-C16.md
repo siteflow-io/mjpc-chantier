@@ -1126,3 +1126,19 @@ MEMO
   >
   > MEMO
 - **16:43 — la conscience** : le réveil programmé pour 15:41 (« lance le banc complet… 8.80.0-⑬ ») n'est arrivé qu'à 16:43, une heure en retard ; il est périmé (les captures montrées à 15:41, le plan changé à 16:10 et 16:30) : rien n'est fait sur lui.
+- **16:45 — l'exécutant de ㉞ (message)** : `deroule/session-partout` reste à `7fa7af22b` (T et H pas verts sur le code neuf) ; tout est sur `travail/session-2` `6f43e3b82` (assemblé `28ad450b`). Prouvé : la télécommande, QH + QT 31 / 0 ; le premier ▶ corrigé (72 à 336 ms ensuite) ; le cas de Paul vert en vraie heure et en essai (21 lettres sur 21 au tableau en 1 à 319 ms, le téléphone resté ouvert, les gestes avant et après en ≤ 0,5 s, rien qui recule) ; la répétition R + RT 15 / 16 (un geste à 568 ms), arrêter sur un appareil l'arrête partout. **Une vraie perte trouvée par la sonde** : une réponse tapée sur un second ordinateur pendant que l'ordinateur dévoile et que le téléphone note une participation était perdue chez les trois (la fusion comparait l'état reçu, rangé par le hub, à l'état d'ici, non rangé, et prenait pour base ce qu'ici avait envoyé) ; corrigé dans `6f43e3b82`, vert en H seul (9 / 0), encore des pertes de ce cas en T, deux scènes manquées au tableau en essai, une garde du pilote qui bloque la sonde ; environ 30 minutes pour T et H verts. Sa question : finir T et H, ou passer à « qui a la main » (qui change la même fusion) ?
+- **16:45 — la conscience** : à l'exécutant (message) — « qui a la main » maintenant, avec la correction de la fusion ; un appareil qui perd la main pendant une frappe envoie d'abord son dernier état ; deux ordinateurs qui agissent presque ensemble ne perdent jamais une réponse ; tout vert sur le même assemblé (T, H, R, RT, QH, QT, le cas du second ordinateur, le parcours de Paul avec « qui a la main ») avant de pousser sur `deroule/session-partout`, cible 17:45 ; la machine à la conscience jusqu'à 16:55 (maquette de l'appel). Captures de la télécommande regardées : **défaut** — le téléphone dit « Diapo 1 sur 26 », le pilote « Diapo 1 sur 13 · heure 1 » ; à l'exécutant (message) : la télécommande dit exactement ce que dit le pilote, vérifié à chaque geste par la sonde.
+- **16:46 — envoyé à Paul** : `session-q5-QH-01-ordinateur-qr.png`, `session-q5-QH-02-telecommande.png` (légende : « La télécommande, première version (pas encore « qui a la main ») : le QR sur l'ordinateur, puis le téléphone. Défaut vu : le téléphone dit « 1 sur 26 », le pilote « 1 sur 13 ». »).
+- **16:46 — message à Paul, mot pour mot :**
+
+  > 252. La sonde de l'exécutant a trouvé une vraie perte. Une réponse d'élève tapée sur un second ordinateur, pendant que le premier dévoile et que le téléphone note une participation, disparaissait des trois appareils. La cause est dans la manière dont les appareils mettent en commun ce qu'ils font, et elle était déjà dans le fichier de 16:15 : on a bien fait de ne pas le mettre en ligne. La correction est faite, mais pas encore prouvée partout.
+  >
+  > 253. Du coup, 250 ne tient plus : le reste n'est pas prouvé à 16:55. « Qui a la main » supprime l'essentiel de ces collisions, puisqu'un seul appareil agit à la fois ; l'exécutant le code maintenant, avec la correction. Tout prouvé vers 17:45, mon banc complet ensuite : le « promeus » vers 18:35.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:46
+  >
+  > À jouer : rien · en cours : l'exécutant (« qui a la main », la correction de la perte, « 1 sur 26 » ; prouvé vers 17:45), puis mon banc complet ; ma maquette de l'appel · ouvert : rien
+  >
+  > MEMO

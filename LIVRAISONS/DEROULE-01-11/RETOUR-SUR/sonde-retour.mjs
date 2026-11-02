@@ -16,7 +16,8 @@
 //      (« ↶ ») : la nouvelle le voit remis, les compétences toujours retirées.
 //  B · (§3.3) les compétences du chapitre en bilan (la dernière séance) : la nouvelle version y écrit (« ta version ») ; la 8.77.1-⑩ relit (un texte lisible,
 //      les mots de Paul) ; la nouvelle relit (le canon, les mots de Paul).
-//  X · (§3.4) la taxonomie retardée au faux hub : une diapo d'ouverture intacte marquée (renommée) ne part jamais au hub avec des libellés manquants.
+//  X · (§3.4) la taxonomie retardée de 7 s au faux hub ; « ✎ Préparer » de la case ouvre l'Atelier sans l'attendre ; Paul renomme le début de séance (intact) :
+//      aucune écriture de cette diapo avec des libellés manquants (la référence : la même chose, la taxonomie à l'heure) ; le nom au hub.
 //  G · (§3.5) le schéma « tableau » : les cinq œuvres aux cellules d'une phrase, aux trois tailles, tout dévoilé, au pilote et à la fenêtre du tableau : aucun
 //      débord, aucun texte coupé ; un tableau aux cellules courtes identique avant / après (MJPC_AVANT=<assemblé d'avant> pour la comparaison).
 // Aucune erreur JS, aucune boîte système, dans chaque cas. Code 1 si un échec.
@@ -43,12 +44,12 @@ if (!ANC) { try { ANC = path.join(OUT, '_ancienne-8.77.1.html'); fs.writeFileSyn
 dire('C16 · sonde du retour sûr à la 8.77.1-⑩ · parties ' + PARTIES.join(' ') + ' · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · nouvelle version md5 ' + md5(FICHIER) + ' · 8.77.1-⑩ md5 ' + (ANC && fs.existsSync(ANC) ? md5(ANC) : '—'));
 
 /* ── la séance 1 du faux hub, réaliste (comme sonde-fil.mjs) : dans l'heure 1, « Tableau 2 » devient le tableau des cinq œuvres ── */
-const LONG = 'Tableau | Peintre | Ce qu’on voit\n'
-  + 'Le Radeau de la Méduse (1819) | Théodore Géricault | des naufragés perdus sur une mer immense, entassés sur un radeau, un seul agite un tissu vers un bateau minuscule à l’horizon\n'
-  + 'Le lac (1863) | Albert Bierstadt | des montagnes immenses dans une lumière dorée, et les hommes ne sont que des points au bord de l’eau\n'
-  + 'Pêcheurs en mer (1796) | William Turner | une barque prise dans la tempête, la nuit, sous un ciel noir que la lune perce à peine\n'
-  + 'Cathédrale gothique au bord de l’eau (1813) | Karl Friedrich Schinkel | une cathédrale au soleil couchant, comme un rêve du Moyen Âge au-dessus d’une ville\n'
-  + 'Le Voyageur contemplant une mer de nuages (1818) | Caspar David Friedrich | un homme de dos, seul sur un rocher, qui regarde une mer de nuages et des sommets';
+const LONG = 'Tableau | Peintre | Ce qu’on voit\n'   /* une phrase par cellule : le tableau que l'exécutant du fil a mesuré (NOTE du fil §3.3) */
+  + 'Le Radeau de la Méduse (1819) | Théodore Géricault | des naufragés perdus sur une mer immense\n'
+  + 'Le lac (1863) | Albert Bierstadt | des montagnes immenses dans une lumière dorée\n'
+  + 'Pêcheurs en mer (1796) | William Turner | une barque prise dans la tempête, la nuit\n'
+  + 'Cathédrale gothique au bord de l’eau (1813) | Karl Friedrich Schinkel | une cathédrale au soleil couchant\n'
+  + 'Le Voyageur contemplant une mer de nuages (1818) | Caspar David Friedrich | un homme seul, de dos, face aux nuages';
 const COURT = 'Tableau | Peintre | Ce qu’on voit\nLe Radeau de la Méduse | Géricault | des naufragés\nLe lac | Bierstadt | des montagnes immenses\nPêcheurs en mer | Turner | une tempête la nuit\nLa ville au bord de l’eau | Schinkel | une cathédrale\nLe Voyageur | Friedrich | un homme de dos';
 const sk0 = st => { const S0 = st.site['3e'].chapitres[0].seances; return Object.keys(S0).filter(k => S0[k] && S0[k].type !== 'sommaire').sort((a, b) => (+S0[a].ordre || 0) - (+S0[b].ordre || 0)); };
 const store = (src = LONG) => { const st = storeOuverture(RACINE, { champs: true }); const ch = st.site['3e'].chapitres[0];
@@ -77,7 +78,7 @@ const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q 
   const pg = await ctx.newPage(); await pg.clock.setFixedTime(new Date('2026-09-14T' + h + ':00+02:00'));
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) { await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }); await p(300);
-    await pg.click('#tprof-btn'); await p(600); if (test) await pg.evaluate(() => { window.M8_TEST = true; }); }
+    if (prof !== 'portail') { await pg.click('#tprof-btn'); await p(600); } if (test) await pg.evaluate(() => { window.M8_TEST = true; }); }
   return { ctx, pg, errs, boites, qui }; };
 const capt = async (pg, nom) => { if (CAPT && pg) await pg.screenshot({ path: path.join(CAPT, nom + '.png') }).catch(() => {}); };
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });
@@ -184,6 +185,8 @@ const lignesX = pg => pg.evaluate(() => Array.from(document.querySelectorAll('#v
 const retirer = async (pg, eid) => { const sel = '#volet [data-eid="' + eid + '"] .t'; if (!(await pg.$(sel))) return false; await pg.evaluate(s2 => { const d = document.querySelector(s2); if (d) d.scrollIntoView({ block: 'center' }); }, sel); await p(300);
   await pg.click(sel, { button: 'right' }); await p(400); await pg.evaluate(() => { const b = document.querySelector('#menu.on [data-a="supprimer"]'); if (b) b.click(); }); await p(700);
   await pg.evaluate(() => { const m = document.getElementById('at-modale'); const b = m && Array.from(m.querySelectorAll('button')).find(x => /^Retirer$/.test(x.textContent.trim())); if (b) b.click(); }); await p(3000); return !(await pg.$(sel)); };
+/* la séance k dans l'Atelier (son nom dans la liste des séances, comme sonde-ouverture.mjs) */
+const seanceA = async (pg, cle) => { for (let n = 0; n < 4; n++) { const ok = await pg.evaluate(c => String(ATVUES.snum) === c && !!document.querySelector('#volet [data-at-di]'), cle); if (ok) break; await pg.evaluate(c => { const d = document.querySelector('.ed2-sce[data-seance="' + c + '"]'); if (d) { d.scrollIntoView({ block: 'center' }); d.click(); } }, cle); await p(1500); } await p(600); };
 const derouleDe = k => lireH('/site/3e/chapitres/0/seances/' + k + '/deroule') || {};
 if (joue('T') && ANC) { dire(''); dire('══ T · 1536×864 · les retraits : la nouvelle version retire, la 8.77.1-⑩ fait ses gestes ordinaires dans l’Atelier, la nouvelle relit ══');
   HUBN = store(); ECR = []; const k0 = sk0(HUBN)[0]; const eK = 'inv-competences-chapitre-s' + k0, eP = 'inv-plan-s' + k0, eS = 'inv-presentation-seance-s' + k0;
@@ -212,6 +215,78 @@ if (joue('T') && ANC) { dire(''); dire('══ T · 1536×864 · les retraits : 
   o = await ouvrir({}); await ouvrirAtelier(o); L = await lignesX(o.pg); await capt(o.pg, 'T5-nouvelle-relit');
   verif('T', !L.some(l => l.eid === eK) && L.some(l => l.eid === eP) && !L.some(l => l.eid === eS), 'T5 · la nouvelle version relit : les compétences du chapitre toujours retirées, le parcours remis, le début de séance retiré (les quatre rôles de la 8.77.1-⑩ se lisent dans « retraits »)', L.filter(l => /^inv-/.test(l.eid)).map(l => l.eid));
   sansErreur('T', o, 'T5 · la nouvelle version'); await o.ctx.close(); }
+
+/* ═══ B · (§3.3) les compétences du chapitre en bilan (la dernière séance) ═══ */
+if (joue('B') && ANC) { dire(''); dire('══ B · 1536×864 · les compétences du chapitre en bilan : la nouvelle version écrit, la 8.77.1-⑩ relit, la nouvelle relit ══');
+  HUBN = store(); ECR = []; const ks = sk0(HUBN); const kD = ks[ks.length - 1]; const eB = 'inv-competences-bilan-s' + kD;
+  let o = await ouvrir({}); await ouvrirAtelier(o); await seanceA(o.pg, kD);
+  /* la dernière séance, par la liste des séances de l'Atelier */
+  let L = await lignesX(o.pg); let vu = L.some(l => l.eid === eB);
+  if (!vu) { await o.pg.evaluate(eid => { const d = document.querySelector('#volet [data-eid="' + eid + '"]'); if (d) d.scrollIntoView({ block: 'center' }); }, eB); L = await lignesX(o.pg); vu = L.some(l => l.eid === eB); }
+  let tape = false; if (vu) { await (await o.pg.$('#volet [data-eid="' + eB + '"] .t')).click(); await p(900); const cl = await o.pg.$('#mur > .ouv .ouv-cr .ouv-cl[data-p]'); if (cl) { await cl.click(); await o.pg.keyboard.press('Control+End'); await o.pg.keyboard.type(' (bilan : acquis en classe)', { delay: 15 }); await o.pg.keyboard.press('Escape'); await p(2500); tape = true; } }
+  await capt(o.pg, 'B1-nouvelle-bilan'); const dB = derouleDe(kD); const eH = (dB.ecrans || []).find(e => e && e.eid === eB);
+  verif('B', vu && tape && eH && eH.ouvCanon && (eH.blocs || [])[0] && eH.blocs[0].t === 'texte' && /acquis en classe/.test(JSON.stringify(eH.blocs)) && !(eH.blocs || []).some(b => b.t === 'ouverture'), 'B1 · la nouvelle version : Paul écrit dans les compétences du chapitre en bilan (la dernière séance) ; au hub, un bloc de texte lisible avec ses mots, le canon sous « ouvCanon »', eH ? { blocs: (eH.blocs || []).map(b => b.t + ' ' + (b.el || []).length), canon: !!eH.ouvCanon } : 'absente du hub');
+  sansErreur('B', o, 'B1 · la nouvelle version'); await o.ctx.close();
+  o = await ouvrir({ fichier: ANC }); await ouvrirAtelier(o); await seanceA(o.pg, kD); await o.pg.evaluate(eid => { const d = document.querySelector('#volet [data-eid="' + eid + '"]'); if (d) d.scrollIntoView({ block: 'center' }); }, eB);
+  let lu = null; const t = await o.pg.$('#volet [data-eid="' + eB + '"] .t'); if (t) { await t.click(); await p(900); lu = await ici_(o.pg); } await capt(o.pg, 'B2-ancienne-bilan');
+  verif('B', lu && /acquis en classe/.test(lu.texte) && !lu.illisible && !lu.ouv, 'B2 · la 8.77.1-⑩ relit : les compétences en bilan en texte lisible, les mots de Paul, rien d’illisible', lu ? lu.texte.slice(0, 200) : 'introuvable');
+  sansErreur('B', o, 'B2 · la 8.77.1-⑩'); await o.ctx.close();
+  o = await ouvrir({}); await ouvrirAtelier(o); await seanceA(o.pg, kD); await o.pg.evaluate(eid => { const d = document.querySelector('#volet [data-eid="' + eid + '"]'); if (d) d.scrollIntoView({ block: 'center' }); }, eB);
+  let ln = null; const t2 = await o.pg.$('#volet [data-eid="' + eB + '"] .t'); if (t2) { await t2.click(); await p(900); ln = await ici_(o.pg); } await capt(o.pg, 'B3-nouvelle-bilan');
+  verif('B', ln && /ouv-comp/.test(ln.ouv) && /acquis en classe/.test(ln.texte), 'B3 · la nouvelle version relit : le canon (les compétences en bilan), les mots de Paul', ln ? ln.ouv : 'introuvable');
+  sansErreur('B', o, 'B3 · la nouvelle version'); await o.ctx.close(); }
+
+/* ═══ X · (§3.4) la taxonomie retardée au faux hub ═══ */
+if (joue('X')) { dire(''); dire('══ X · 1536×864 · la taxonomie retardée : une diapo d’ouverture intacte renommée ne part jamais avec des libellés manquants ══');
+  const jouerX = async retard => { HUBN = store(); ECR = []; const k0 = sk0(HUBN)[0]; const eS = 'inv-presentation-seance-s' + k0; if (retard) RETARD['/taxonomie'] = retard; else delete RETARD['/taxonomie'];
+    const o = await ouvrir({}); const t0 = Date.now();
+    /* la case de l'emploi du temps, « ✎ Préparer » : l'Atelier s'ouvre sur la séance sans attendre la taxonomie (la liste des chapitres, elle, l'attend) */
+    if (!(await clicTexte(o.pg, 'button', 'edtOuvrir()'))) await o.pg.evaluate(() => edtOuvrir()); await p(1200);
+    await o.pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')).find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0); if (c) c.click(); }); await p(700);
+    await clicTexte(o.pg, 'button', 'Préparer'); await p(1500); await o.pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(1000);
+    const d = await o.pg.$('#volet [data-eid="' + eS + '"] .t'); let ren = false, avantTaxo = null;
+    if (d) { await d.dblclick(); await p(300); await o.pg.keyboard.press('Control+A'); await o.pg.keyboard.type('S1 : le Romantisme en question', { delay: 5 }); await o.pg.keyboard.press('Enter'); ren = true; avantTaxo = await o.pg.evaluate(() => !(typeof CH !== 'undefined' && CH && CH.taxo)); }
+    await p((retard || 0) + 4000); await capt(o.pg, 'X-taxonomie-' + (retard ? 'retardee' : 'a-l-heure'));
+    const ecrits = []; ECR.forEach(x => { const bd = x.bd; const l = Array.isArray(bd && bd.ecrans) ? bd.ecrans : (bd && bd.eid ? [bd] : []); l.forEach(e => { if (e && e.eid === eS) ecrits.push({ t: x.t - t0, act: e.act, suit: !!e.suit, blocs: JSON.stringify(e.blocs || null) }); }); });
+    const fin = (derouleDe(k0).ecrans || []).find(e => e && e.eid === eS); delete RETARD['/taxonomie'];
+    const r = { ren, avantTaxo, ecrits, fin: fin ? { act: fin.act, blocs: JSON.stringify(fin.blocs || null) } : null, errs: o.errs.slice(), boites: o.boites.slice() }; await o.ctx.close(); return r; };
+  const ref = await jouerX(0); const lent = await jouerX(7000);
+  dire('      X · à l’heure : ' + ref.ecrits.length + ' écriture(s) du début de séance · retardée de 7 s : ' + lent.ecrits.length + ' écriture(s), aux temps ' + lent.ecrits.map(e => Math.round(e.t / 100) / 10 + ' s').join(', '));
+  verif('X', ref.ren && ref.fin && /Notions rencontrées : [^"·]+·/.test(ref.fin.blocs) && /travaillées : [^"]+/.test(ref.fin.blocs), 'X1 · la taxonomie à l’heure : le début de séance renommé part au hub avec les textes de l’ancien calcul, complets (la référence)', ref.fin && ref.fin.blocs.slice(0, 300));
+  verif('X', lent.ren && lent.avantTaxo === true, 'X2 · la taxonomie retardée de 7 s : Paul renomme le début de séance AVANT qu’elle arrive (« ✎ Préparer » de la case ouvre l’Atelier sans l’attendre)', { avantTaxo: lent.avantTaxo });
+  verif('X', lent.ecrits.length >= 1 && lent.ecrits.every(e => e.blocs === ref.fin.blocs || e.blocs === 'null') && lent.fin && lent.fin.blocs === ref.fin.blocs && /^S1 : /.test(lent.fin.act), 'X3 · aucune écriture du début de séance avec des libellés manquants : chacune porte les textes complets de la référence ; le nom que Paul a donné est au hub (rien de perdu)', lent.ecrits.map(e => ({ t: e.t, act: e.act, complet: e.blocs === ref.fin.blocs, blocs: e.blocs.slice(0, 120) })));
+  verif('X', !ref.errs.length && !ref.boites.length && !lent.errs.length && !lent.boites.length, 'X · aucune erreur JS, aucune boîte système', ref.errs.concat(ref.boites, lent.errs, lent.boites).join(' ; ')); }
+
+/* ═══ G · (§3.5) le schéma « tableau » aux cellules longues, aux trois tailles ═══ */
+const grille = (pg, sel) => pg.evaluate(sel => { const m = document.querySelector(sel); if (!m) return null; const t = m.querySelector('table.p8-grille'); if (!t) return null; const z = t.closest('.p8-dessin'); const M = m.getBoundingClientRect(), Z = z.getBoundingClientRect(), T = t.getBoundingClientRect();
+  const dedans = (r, R) => r.left >= R.left - 0.5 && r.right <= R.right + 0.5 && r.top >= R.top - 0.5 && r.bottom <= R.bottom + 0.5;
+  const cases = Array.from(t.querySelectorAll('th, td')); const visibles = cases.filter(c => getComputedStyle(c.parentElement).visibility !== 'hidden');
+  const coupees = visibles.filter(c => { const r = c.getBoundingClientRect(); return !dedans(r, Z) || c.scrollWidth > c.clientWidth + 1; }).map(c => c.textContent.slice(0, 30));
+  const rel = r => [r.left - M.left, r.top - M.top, r.width, r.height].map(x => Math.round(x * 10) / 10);
+  const aLaLigne = cases.filter(c => { const rg = document.createRange(); rg.selectNodeContents(c); return new Set(Array.from(rg.getClientRects()).map(r => Math.round(r.top))).size > 1; }).length;
+  return { tableau: rel(T), dessin: rel(Z), dansDessin: dedans(T, Z), dansDiapo: dedans(T, M), coupees, n: visibles.length, total: cases.length, fs: getComputedStyle(t.querySelector('td')).fontSize, aLaLigne }; }, sel);
+const jouerG = async (fichier, src, W, H, nom) => { HUBN = store(src); ECR = []; const o = await ouvrir({ fichier, W, H, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, W, H);
+  const L = await eidsDe(o.pg); const x = L.find(e => e.act === 'Les cinq tableaux');
+  { const v = await o.pg.$('#volet .vig:has(table.p8-grille)'); if (v) { await v.scrollIntoViewIfNeeded().catch(() => {}); await v.click(); await p(500); if (await o.pg.evaluate(() => document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))) { await o.pg.click('#garde-devant'); await p(900); } } }
+  await o.pg.click('#numero').catch(() => {});
+  for (let k = 0; k < 12; k++) { const s = await ici_(o.pg); if (/^(\d+) \/ \1 dévoilés|rien à dévoiler/.test(s.compte) || s.eid !== (x && x.eid)) break; await o.pg.keyboard.press('ArrowRight'); await p(300); }
+  await p(900); const gp = await grille(o.pg, '#mur'), gt = fen ? await grille(fen, '#mur2') : null; const s = await ici_(o.pg); const gv = await grille(o.pg, '#volet .vig:has(table.p8-grille)');
+  await capt(o.pg, 'G-' + nom + '-' + W + 'x' + H + '-pilote'); if (fen) await capt(fen, 'G-' + nom + '-' + W + 'x' + H + '-tableau');
+  /* dans l'Atelier, la même diapo et sa vignette */
+  const r = { gp, gt, gv, compte: s.compte, errs: o.errs.slice(), boites: o.boites.slice() }; await o.ctx.close();
+  const o2 = await ouvrir({ fichier, W, H }); await ouvrirAtelier(o2); const l2 = await lignesX(o2.pg); const y = l2.find(e => /Les cinq tableaux/.test(e.t)); if (y) { await (await o2.pg.$('#volet [data-eid="' + y.eid + '"] .t')).click(); await p(1000); }
+  r.ga = await grille(o2.pg, '#mur'); await capt(o2.pg, 'G-' + nom + '-' + W + 'x' + H + '-atelier'); r.errs.push(...o2.errs); r.boites.push(...o2.boites); await o2.ctx.close(); return r; };
+if (joue('G')) { dire(''); dire('══ G · le schéma « tableau » : les cinq œuvres aux cellules d’une phrase, aux trois tailles, tout dévoilé ══');
+  const AVANT = process.env.MJPC_AVANT && fs.existsSync(process.env.MJPC_AVANT) ? process.env.MJPC_AVANT : null;
+  for (const [W, H] of String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number))) { const T = W + '×' + H;
+    const g = await jouerG(FICHIER, LONG, W, H, 'long');
+    const bon = x => x && x.dansDessin && x.dansDiapo && !x.coupees.length;
+    verif('G', /^(\d+) \/ \1 dévoilés|rien à dévoiler/.test(g.compte) && bon(g.gp) && bon(g.gt) && bon(g.ga) && (!g.gv || (g.gv.dansDessin && !g.gv.coupees.length)), T + ' · le tableau des cinq œuvres (une phrase par cellule), tout dévoilé : il tient dans son dessin et dans la diapo, aucune cellule coupée — au pilote, à la fenêtre du tableau, dans l’Atelier, dans sa vignette', { compte: g.compte, pilote: g.gp, tableau: g.gt, atelier: g.ga, vignette: g.gv });
+    verif('G', g.gp && g.gp.aLaLigne >= 5 && g.gt && g.gt.aLaLigne >= 5, T + ' · les cellules longues passent à la ligne (' + (g.gp || {}).aLaLigne + ' cellules sur plusieurs lignes au pilote, ' + (g.gt || {}).aLaLigne + ' au tableau) ; la police reste celle de la loi (' + (g.gp || {}).fs + ')');
+    verif('G', !g.errs.length && !g.boites.length, T + ' · aucune erreur JS, aucune boîte système', g.errs.concat(g.boites).join(' ; '));
+    if (AVANT) { const c1 = await jouerG(AVANT, COURT, W, H, 'court-avant'), c2 = await jouerG(FICHIER, COURT, W, H, 'court-apres');
+      verif('G', c1.gp && c2.gp && JSON.stringify(c1.gp) === JSON.stringify(c2.gp) && JSON.stringify(c1.gt) === JSON.stringify(c2.gt), T + ' · un tableau aux cellules courtes : identique avant / après (sa place, sa taille, sa police, au pilote et au tableau)', { avant: c1.gp, apres: c2.gp }); }
+    if (AVANT && W === 1536) { const a = await jouerG(AVANT, LONG, W, H, 'long-avant'); dire('      G · avant (' + T + ') : le tableau des cinq œuvres ' + JSON.stringify(a.gp)); } } }
 
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-retour.txt'), R.join('\n') + '\n'); if (ancTiree) try { fs.unlinkSync(ANC); } catch (e) {}

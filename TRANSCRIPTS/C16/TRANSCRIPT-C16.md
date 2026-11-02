@@ -1417,3 +1417,16 @@ MEMO
   > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel · ouvert : 284, 285, 286
   >
   > MEMO
+- **22:22 — Paul, mot pour mot** : « non non pour 285, ce n'est pas ça: je parle du zoom de texte au tableau. pour la diapo ok, mais pas de zoom dessus du coup, sinon au tactile ça va télescoper et ça va être pénible. »
+- **22:23 — la conscience** : lu dans le code : « texte au tableau » au pilote, un curseur à cinq crans (`#taille`, de 0 à 4, `S.taille`), son étiquette en points (« 32 pt »).
+- **22:23 — message à Paul, mot pour mot :**
+
+  > 287. Compris. 284 devient : la diapo de la télécommande dessinée comme au pilote (les éléments pas encore dévoilés en gris), sur toute la largeur, et aucun geste sur elle — elle sert à voir, rien d'autre. 285 est remplacé : sous la diapo, une ligne « texte au tableau » avec deux boutons, « A− » et « A+ », et la taille entre les deux (« 32 pt ») ; chaque appui fait un cran, les mêmes cinq crans que le curseur du pilote. Comme les autres commandes, elle est grisée quand l'ordinateur a la main.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 22:23
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel · ouvert : 287
+  >
+  > MEMO

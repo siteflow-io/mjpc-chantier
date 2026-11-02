@@ -640,3 +640,4 @@ MEMO
   > 02/11/2026 12:42
   >
   > MEMO
+- **12:44 — contrôle horaire** : `deroule/correctifs` à `cf7bb57` (㉘ `4dbaa8d`, `82edb59` ; ㉙ `3d28158` ; ㉛ `ed6e2ab` ; ㉜ ㉝ ⑭ `cf7bb57`), fichiers touchés : les modules `dr/*` (atelier, classe, gabarit, ouverture, récit, socle, tableau), `index.html` du sas, ses sondes — dans le mandat ; ni `AUDITS/`, ni `APP_VERSION`. Le cinquième : NOTE poussée (`ec9bba1`), réponse finale rendue. Contrôle suivant à 13:35.

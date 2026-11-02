@@ -4722,3 +4722,36 @@ Promeus ? Après la mise en ligne, je lance le script des Dylan (74) : 14 copies
 02/11/2026 22:48
 
 MEMO
+
+---
+
+## Tour 168 — 02/11/2026 22:55
+
+*(Pendant le codage de la 1.4.29 : le banc court de 80 et 81 en route, arrêté par ce message.)*
+
+**Paul (22:55) :**
+
+promeus
+
+**Ce qui a été fait (C14) :** 1.4.27 copiée au sas (`SAUVEGARDES/redaction-1.4.27-RU-avant-1.4.28-2026-11-02.html`, `3945273b`) ; 1.4.28-RU en ligne : commit `6eb0021`, blob `663f089947ef`, md5 `bcb30ce932860dd705ea754460fa7490`, 936 422 o, en ligne bit à bit à 22:57 ; docs (`036fe26`) : le point de retour, le journal, les dettes ✔, où trouver quoi (`&v=1.4.28-RU`). Le script des Dylan (C14 74, `prive/enquete/vu-dylan.mjs`, ÉCRIRE=1) : `recopie/vu` écrit sur 24 copies sur 24, rien d'autre (24 écritures passées, toutes les autres interceptées) ; relu au site : 24 avec leur « vu ». Vrai site, avec la version en ligne, en lecture seule : Dylan « 10 corrigées · 14 changées depuis leur retour · 14 à exporter (2 envois de 8 au plus) », 0 erreur.
+
+**Claude (22:59) :**
+
+À jouer : 84, puis 85 · en cours : la 1.4.29 (80 et 81), que je reprends maintenant · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+83. La 1.4.28 est en ligne : à 22:57, j'ai vérifié que ton site sert exactement le bon fichier. https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.28-RU
+
+84. Recharge ta page maintenant : tant que tu ne l'as pas fait, elle tourne avec la 1.4.27.
+
+85. Le script des Dylan (74) est passé : il a écrit, pour les 24 copies, ce que l'IA en avait vu, et rien d'autre. Relu ensuite sur ton site, avec la version en ligne, le flux dit : « 10 corrigées · 14 changées depuis leur retour · 14 à exporter (2 envois de 8 au plus) ». Les fautes et tes décisions n'ont pas bougé.
+
+À tester, après avoir rechargé :
+- Dylan : clique « ⇪ Exporter pour l'IA » deux fois. Tu obtiens deux fichiers, 8 copies puis 6, qui ne demandent que les 8 stickers des paragraphes et le commentaire.
+- Donne-les à ton IA, puis charge ses deux retours.
+- Clique « ▶ La bande », en haut des scans ou sur l'accueil. Elle ne s'arrête que là où l'IA a changé d'avis, puis sur les remarques nouvelles, puis sur le commentaire, avec le tien et le sien côte à côte. Au bout d'une copie, Entrée passe à la suivante.
+- Franklin : « ▶ La bande » sur l'accueil, puis Entrée de copie en copie, sans repasser par les scans.
+- Dylan : « 📂 Mon dossier ». La fenêtre « 28 fichiers que cette rédaction ne connaît pas » ne doit plus venir.
+
+02/11/2026 22:59
+
+MEMO

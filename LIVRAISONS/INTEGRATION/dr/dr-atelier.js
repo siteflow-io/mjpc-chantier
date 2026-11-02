@@ -737,9 +737,9 @@ function dr_titrePoser(e){ $('numero').innerHTML = S.atelier ? (function(){ cons
    ouverte d'ici : elle partage le fil d'exécution du pilote. Après `pousser` (le tableau reçoit la diapo), le pilote redessinait encore la colonne des vignettes
    (`volet` : chaque diapo de l'heure rendue et réduite, et ses pages mesurées — 81 à 210 ms par flèche, mesuré) ; la fenêtre du tableau ne dessinait la diapo
    suivante, et son point ne partait, qu'après. Mesuré par le geste (sonde-fin.mjs, partie D) : le premier mouvement du point au tableau, médiane 221 ms
-   (b9392b5) puis 393 ms (1cc67a1), au même passage. En classe et en répétition, la colonne se redessine donc juste après (l'image suivante) : le tableau
-   d'abord. Hors de la classe, rien ne change. */
+   (b9392b5) puis 393 ms (1cc67a1), au même passage. En classe et en répétition, la colonne se redessine donc juste après : le tableau
+   d'abord (80 ms après). Hors de la classe, rien ne change. */
 let DR_VOLET_APRES = false;
 function dr_voletApres(){ if (S.atelier || !(S.lancee || S.repetition)) { volet(); return; } if (DR_VOLET_APRES) return; DR_VOLET_APRES = true;
   const go = () => { if (!DR_VOLET_APRES) return; DR_VOLET_APRES = false; try { volet(); } catch (x) {} };
-  try { requestAnimationFrame(() => setTimeout(go, 0)); } catch (x) {} setTimeout(go, 120); }   /* l'image d'après ; au plus tard 120 ms (une page cachée n'a pas d'image) */
+  setTimeout(go, 80); }   /* 80 ms : la fenêtre du tableau a reçu la diapo, l'a dessinée (2 à 38 ms, mesuré) et l'a montrée ; mesuré par le profil du geste : avec « l'image d'après » (requestAnimationFrame), la colonne passait souvent avant l'image de la fenêtre du tableau, qui attendait encore (médiane 317 à 332 ms) */

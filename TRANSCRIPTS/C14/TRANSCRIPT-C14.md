@@ -3625,3 +3625,35 @@ MEMO
 02/11/2026 07:18
 
 MEMO
+
+---
+
+## Tour 135 — 02/11/2026 07:21
+
+**Paul (07:21, avec trois captures : les cartes de la 3 Franklin Aretha, « recopiée » sans coche, « ✓ envoyée ✓ chargée » ; la page d'accueil, « 0/30 · 0 % » et « 0/25 · 0 % » ; la bande de [l'élève], S1 « ✓ gardé », tous les arrêts cochés ; et le fichier École Directe de [l'élève], jamais au sas) :**
+
+ok pour 628 à 633, mais je pense que le bug suivant a un rapport avec la non détection de S3 chez [l'élève] (là je vois S3 en v, et pourtant quand je reviens à la carte, 99 pourcent toujours) . bug suivant: en franklin, les cartes ne disent pas que la recopie est faite, alors qu'elle l'est. par ailleurs la page d'accueil montre 0% en cours, alors que je suis en train de corriger.pour [l'élève] c'est pareil, on a validé sur le front dans la correction, mais j'ai l'impression que dans son html ça ne va pas. voici son html. Compare avec ce qu'il y a en lignes en termes de correction et de bande. Par ailleurs, je soupçonne un crash à cause du fait qu'on avait codé la copie html des élèves avant toutes ces modifs. En tout cas, ça ne semble pas correspondre. Dis moi si oui ou non.
+
+**Ce qui a été fait (C14) :** son fichier lu en privé (jamais au sas) ; sa copie lue au site en lecture seule ; l'app en ligne a recalculé, sur le site, ce que son fichier contiendrait maintenant (`scEleveDonnees`) : même note, mêmes 48 fautes (3 cadres déplacés depuis), mêmes 16 stickers, même grille, 0 remarque des deux côtés. Sur le site : 67 arrêts, tous décidés ; `stRqARelire` vrai (20 remarques de l'IA, jamais gardées) : seule cause de `svCopieCorrigee` faux, donc 99 %. Son fichier ouvert : aucune erreur, aucun appel au site ; le cadre de S1 couvre deux mots sur trois. `rcReplacerBande` recale les cadres à chaque ouverture de la bande. La carte : « recopiée » = `rec.phrase`. L'accueil : `ruCopieFinie` lit les échelons de la grille d'origine.
+
+**Claude (07:25) :**
+
+À jouer : ton promeus pour la 1.4.21-RU (636), ton mot sur 641 et 642 · en cours : 632 et 633, que je code · ouvert : 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+637. Son fichier : non, ce n'est pas un plantage, et il correspond au site. Même note 10 / 40, mêmes 48 fautes, mêmes 16 stickers (S1 compris), même grille. Il s'ouvre sans erreur et n'appelle jamais le site. Il lui manque une chose : les 20 remarques de l'IA, « à reprendre » (638). Et 3 cadres de fautes ont bougé au site depuis que tu l'as fait : la bande recale ses cadres à chaque ouverture. Refais son fichier quand sa bande sera vraiment finie.
+
+638. Les 99 % ne viennent pas de S1 : ses 67 arrêts sont tous décidés. Ils viennent de ces 20 remarques : elles n'ont jamais été gardées. Au bout de la bande, la liste « À relire » attend Entrée, qui les garde toutes. Tant que ce n'est pas fait, la copie reste à 99 %, et son fichier part sans elles. Pour elle : dans sa bande, clique S42 dans la liste, puis Entrée : tu arrives au bout, sur les remarques. Relis-les, puis Entrée. 633 le dira aussi : « Bande finie » seulement quand les remarques sont gardées.
+
+639. « Sur le front » : son cadre ne prend que « le front », pas « sur ». C'est le même cadre dans la bande et dans son fichier. Dans la bande, double clic sur le cadre : tire la poignée de gauche jusqu'à « sur ».
+
+640. Les cartes de la 3 Franklin Aretha : la carte ne coche « recopiée » qu'avec « ★ La phrase qui m'a marqué ». C'est ta règle du 31/10 : la phrase marque la fin de la recopie. Sur cette classe, 1 copie sur 29 a sa phrase ; les autres ont été recopiées avant que la phrase existe.
+
+641. Ma proposition : « ✓ recopiée » dès qu'une copie est envoyée à l'IA, ou que sa phrase est faite. La phrase devient une étape à part sur la carte, « ★ phrase », grisée tant qu'elle n'est pas faite. Je le code ?
+
+642. La page d'accueil : son « 0/30 · 0 % » compte encore les copies notées avec la grille de l'app d'origine, que le flux unique ne remplit jamais. Il resterait à 0 jusqu'au bout. Ma proposition : l'accueil dit les copies entièrement corrigées et la moyenne des cartes. Pour la 3 Franklin Aretha, ce matin : « 0 corrigée sur 29 · 32 % ». Je le code ?
+
+À tester : sur sa bande, clique S42, Entrée, relis les remarques, Entrée. Sa carte doit passer à 100 %. Refais ensuite son fichier : les remarques y sont.
+
+02/11/2026 07:25
+
+MEMO

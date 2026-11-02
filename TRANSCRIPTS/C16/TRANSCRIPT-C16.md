@@ -1305,3 +1305,14 @@ MEMO
   > MEMO
 - **20:06 — l'exécutant de ㉞ (message)** : le profileur de Chrome (téléphone et ordinateur, les six gestes de R, assemblé `32254002`) : par état posé, environ 280 ms de JavaScript et 130 ms de travail de Chrome — `rendre` (le dessin de la diapo, `dr-socle.js`) 617 ms au téléphone, 760 à l'ordinateur ; `dr_ouvAjuster` (`dr-ouverture.js`) 240 + 160 ms (la mesure de la diapo d'ouverture, qui force la mise en page) ; la mise en forme des heures 427 ms (`toLocaleTimeString` avec options : un nouveau formateur à chaque appel ; `dr_recitHm`, `hhmm`) ; `dr_seances`, `dr_trameDe` 247 ms. Aucune de ces fonctions ne vient de ㉞ ; ㉞ y ajoute que le pilote qui suit redessine la diapo à chaque geste de l'autre. En production 8.79.0 : pas mesuré, probablement là aussi (une part de ⑯ ?). Il propose : un seul formateur de date (environ 70 ms gagnées par état, 10 minutes) ; ne plus refaire la mesure de `dr_ouvAjuster` si la diapo d'ouverture n'a pas changé (20 à 30 minutes) ; la preuve (25 minutes). Rien codé ; machine rendue.
 - **20:06 — la conscience** : la machine reprise : les étapes 12 et 13 de mon banc lancées sur `8602da915` (en attendant la réponse de Paul à 273 ; si la mise en ligne attend, elles servent de mesure). Les trois propositions de l'exécutant rejoignent ⑯ (le retard du tableau) et ㉟ (la frappe), à traiter après ㉞ ; rien n'est codé ce soir sans la décision de Paul.
+- **20:06 — message à Paul, mot pour mot :**
+
+  > 274. La mesure est faite : en répétition, le temps se perd à redessiner la diapo sur l'appareil qui reçoit (le dessin lui-même, la mesure de la diapo d'ouverture, et l'écriture des heures, refaite de zéro à chaque ligne). Ce sont des parties anciennes du site, pas celles de ㉞ ; ㉞ fait seulement que l'appareil qui suit redessine à chaque geste de l'autre. C'est la même famille que le retard du tableau (⑯) et la frappe lente (㉟), et l'exécutant a déjà trois corrections précises à proposer pour eux. Ma proposition de 273 tient : la mise en ligne vers 20:35, puis ces corrections ensuite. Les deux dernières étapes de mon banc tournent.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 20:06
+  >
+  > À jouer : rien · en cours : les deux dernières étapes de mon banc (vers 20:25) · ouvert : 273
+  >
+  > MEMO

@@ -1,5 +1,5 @@
 # MANDAT — LE RETOUR SÛR À LA 8.77.1-⑩ EN PLEINE HEURE ; LES DETTES TROUVÉES CETTE NUIT
-*Conscience n°16, 02/11/2026 02:15 (journal de la nuit, tour 12). Second complément du chantier des diapos d'ouverture, sur la même branche, promu avec lui. Un seul exécutant, neuf, sur `index.html` (par ses modules `LIVRAISONS/INTEGRATION/dr/*`), lancé après la livraison du fil (`e9bdfb1`, NOTE `LIVRAISONS/DEROULE-01-11/FIL-NAVIGATION/NOTE.md`, lue par la conscience). Transcript : `TRANSCRIPTS/C16/TRANSCRIPT-C16.md`, tour 12 et le journal de la nuit.*
+*Conscience n°16, 02/11/2026 02:02 (journal de la nuit, tour 12). Second complément du chantier des diapos d'ouverture, sur la même branche, promu avec lui. Un seul exécutant, neuf, sur `index.html` (par ses modules `LIVRAISONS/INTEGRATION/dr/*`), lancé après la livraison du fil (`e9bdfb1`, NOTE `LIVRAISONS/DEROULE-01-11/FIL-NAVIGATION/NOTE.md`, lue par la conscience). Transcript : `TRANSCRIPTS/C16/TRANSCRIPT-C16.md`, tour 12 et le journal de la nuit.*
 
 ## 0 · CE QUE ÇA CHANGE POUR LA CLASSE
 - Paul, 01/11/2026 23:49 : « Je dormirai donc il faudra faire un choix mais garder un point de retour à portée immédiate. »

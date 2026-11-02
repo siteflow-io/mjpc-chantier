@@ -959,3 +959,18 @@ MEMO
 - **15:38 — la conscience** : à l'exécutant (message) — retirer l'observateur ; à la place, une règle CSS : `html.ses-reprise-on .tprof-overlay{top:var(--ses-reprise-h,44px)}`, et la même pour les autres écrans pleins fixés en haut ; l'intervalle d'1 s reste. Un commit seul, sans navigateur. Mon banc continue sur `a6bb92f4d` (les étapes 1 à 12, puis 13) ; sur le fichier final, je repasserai l'assemblage, les collisions et l'étape 14, et je montrerai que seules ces lignes changent.
 - **15:38 — l'exécutant de ㉞ (message)** : commit `7fa7af22b`, assemblé md5 `5116aea8…` : l'observateur retiré ; une règle de `dr.css` (bloc E2) fait descendre de la hauteur du bandeau le panneau prof, l'Atelier, l'emploi du temps et la visionneuse dès qu'ils paraissent ; la veille d'1 s gardée. Il reprend le QR, sans navigateur.
 - **15:39 — la conscience** : depuis `dbe513568` (que l'exécutant a sondé), le fichier final ne change que de 5 lignes : le tiret, la règle CSS. Mon banc sur `a6bb92f4d` arrêté à l'étape 5 ; le banc complet relancé sur le fichier final `7fa7af22b` : l'étape 14 d'abord, puis les étapes 1 à 12, puis l'étape 13. Deuxième fois que `pkill -f` ferme mon propre shell (la commande contenait le nom cherché) : je n'arrête plus que par numéro de processus.
+- **15:40 — la conscience, l'étape 14 sur le fichier final `7fa7af22b`** : 23 vérifications, 0 échec. Le bandeau en 2 à 5 ms ; la reprise au téléphone à l'endroit exact ; dix gestes en alternance, l'autre pilote et le tableau distant suivent en 41 à 436 ms (20 / 20 ≤ 0,5 s, essai et vraie heure) ; l'onglet de l'ordinateur fermé, le tableau suit le téléphone en 34 à 99 ms ; clos au téléphone : l'horloge, plus de pointeur, de scène, d'état vivant ni de `cours_actif` ; 0 écriture hors des chemins d'essai ; 0 refus ; 0 erreur JS. L'en-tête du panneau prof visible sous le bandeau (captures `banc-8800/capt14/`). Le banc, étapes 1 à 12, enchaîne ; puis l'étape 13. La candidate : l'assemblé `5116aea8…` + `APP_VERSION="8.80.0-⑬"` (md5 `ce20a30b281ded49560eabac35b029b6`, 2 900 709 o).
+- **15:41 — envoyé à Paul** : trois planches, avant / après (`planches-8800/1-telephone-bandeau.png`, `2-telephone-pilote.png`, `3-cloture-tableau.png`).
+- **15:41 — message à Paul, mot pour mot :**
+
+  > 232. Les trois planches montrent ce qui partira à 16:15 (8.80.0-⑬), sur ton parcours de 14:59. Mesuré sur ce fichier : le bandeau paraît sur le téléphone et sur un second ordinateur en moins d'un dixième de seconde ; le téléphone reprend à l'endroit exact ; quand l'un pilote, l'autre et le tableau suivent, 20 gestes sur 20 en moins d'une demi-seconde ; l'heure close au téléphone, le tableau revient à l'horloge. Un défaut vu sur les captures est déjà corrigé : le bandeau cachait le haut du panneau prof (la croix, « Mode test »). Le banc complet tourne sur ce fichier, il finit vers 16:13.
+  >
+  > 233. Le second envoi (la télécommande par le QR, puis la répétition) : vers 17:45, avec son propre banc. Ce qui n'est pas encore joué dans cet envoi-ci, je te le dirai avec le « promeus ».
+  >
+  > À tester : la liste de 14:34.
+  >
+  > 02/11/2026 15:41
+  >
+  > À jouer : rien · en cours : mon banc complet (fin vers 16:13) ; l'exécutant sur la télécommande · ouvert : rien
+  >
+  > MEMO

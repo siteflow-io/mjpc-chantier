@@ -4332,3 +4332,29 @@ MEMO
 02/11/2026 16:13
 
 MEMO
+
+---
+
+## Tour 155 — 02/11/2026 16:13
+
+**Paul (16:13) :**
+
+oui excellent pour 25 c'est tout à fait ça. Les questions doivent être injectées en même temps que le sujet. Il faut deux questions à mon avis, et au moins un gros exercice. pour la fiche perso: regarde worktrack, le bilan d'une séance que l'élève recopie.
+
+**Ce qui a été fait (C14) :** mesuré dans `correction_dictee.html` : des exercices existent déjà par dictée (un titre, une règle, des items : à choix, à trous, réécriture, écriture, copie ; une case les ouvre). Mesuré dans `worktrack.html` (lecture seule, par un agent) : le bilan tissé de fin de séance (`bilanTisseHTML`), sa case, le signal au professeur, « ✋ Venir me voir ». Écrit au sas (`A-CODER-CORRECTION-ELEVE.md`).
+
+**Claude (16:22) :**
+
+À jouer : ton mot sur 27 et 29 · en cours : rien · ouvert : ce que rapportent les questions dans sa note sur 5, ce qu'on reprend tel quel, un peu, beaucoup, les sujets suivants de ce cadrage, le test iPhone École Directe (plus tard), 738 (après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+27. 25 : noté, les questions arrivent avec le sujet. Une précision : deux questions et au moins un gros exercice pour chaque sticker ? Pour ta grille de 43 stickers, cela fait 86 questions et 43 exercices, écrits par ton IA, et que tu valides avec chaque sticker.
+
+28. Le gros exercice existe déjà en dictée : chaque dictée a ses exercices, avec un titre, une règle, et des items à choix, à trous, de réécriture, d'écriture ou de copie ; une case les ouvre aux élèves. Je propose la même forme, clonée.
+
+29. La fiche perso, mesurée dans worktrack : à la fin d'une séance, l'élève voit « Ton bilan », en deux parties. « À recopier — la leçon » se recopie telle quelle. « Ton bilan personnel » se reformule avec ses mots : ce qu'il doit retravailler, à l'impératif. Il coche « J'ai recopié la leçon et écrit mon bilan personnel » ; tu reçois « 📝 a écrit son bilan », et tu peux l'appeler, « ✋ Venir me voir ». Ma proposition pour la rédaction, le même bilan : « À recopier », ses règles non tenues, chacune une seule fois ; « Ton bilan personnel », ses stickers non réussis, avec ce qu'il a à faire ; puis la même case, le même signal, le même « Venir me voir ».
+
+À tester : rien de neuf.
+
+02/11/2026 16:22
+
+MEMO

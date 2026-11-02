@@ -455,7 +455,13 @@ function dr_copieDepuisAtelier(){ /* E1 (relecture continue E4, 20:50, grave —
    à leur place (`deroule/ecrans/<n>`, retrouvée par l'`eid`), et les sous-objets changés (activités, notes, travail) ; si la même diapo a changé ici ET ailleurs depuis la
    dernière lecture, rien n'est écrit pour elle : le site le dit à Paul, en clair, avec « Garder la mienne » / « Prendre celle de l'autre appareil ». Un changement de
    structure (diapo ajoutée, retirée, déplacée) écrit la liste entière, après avoir repris d'abord les diapos changées ailleurs. */
-function dr_canon(x){ if (Array.isArray(x)) return '[' + x.map(dr_canon).join(',') + ']'; if (x && typeof x === 'object') return '{' + Object.keys(x).filter(k => x[k] !== undefined).sort().map(k => JSON.stringify(k) + ':' + dr_canon(x[k])).join(',') + '}'; return JSON.stringify(x === undefined ? null : x); }
+function dr_canon0(x){ if (Array.isArray(x)) return '[' + x.map(dr_canon0).join(',') + ']'; if (x && typeof x === 'object') return '{' + Object.keys(x).filter(k => x[k] !== undefined).sort().map(k => JSON.stringify(k) + ':' + dr_canon0(x[k])).join(',') + '}'; return JSON.stringify(x === undefined ? null : x); }
+/* C16 (les dernières dettes, ⑲ ; MANDAT-DERNIERES-DETTES §3.8) : LA FORME DE COMPARAISON EST CELLE DU HUB. Le vrai hub ne range ni une valeur nulle, ni une liste
+   ou un objet vides (une diapo neuve : `comp: []`, `blocs: []`…) ; relue, la diapo ne ressemblait plus à ce qui avait été écrit, et le site croyait qu'un autre
+   appareil l'avait changée : « La diapo « » a été modifiée sur un autre appareil » à chaque écriture, rien n'était écrit tant que Paul n'avait pas cliqué.
+   Ce qui s'écrit, ce qui se lit et ce qui est ici passent tous par `dr_commeLeHub` (dr-classe.js, la règle de ⑰) avant d'être comparés : ce que le hub retire
+   n'est plus un changement ; un vrai changement venu d'un autre appareil reste un conflit. */
+function dr_canon(x){ let y = x; try { if (typeof dr_commeLeHub === 'function') y = dr_commeLeHub(x); } catch (e) { y = x; } return dr_canon0(y === undefined ? null : y); }
 function dr_syncListe(v){ return Array.isArray(v) ? v.filter(Boolean) : (v && typeof v === 'object') ? Object.keys(v).sort((a, b) => (+a) - (+b)).map(k => v[k]).filter(Boolean) : []; }
 /* l'heure d'une diapo que le hub ne porte pas se déduit ici (le partage par les durées) : la base et le hub la prennent de l'appareil, sinon chaque diapo paraîtrait changée */
 const dr_syncAH = e => Object.prototype.propertyIsEnumerable.call(e, 'heure') && e.heure != null;   /* l'heure par défaut (dr_heureParDefaut) n'est pas une donnée : elle ne s'écrit pas */

@@ -1,0 +1,13 @@
+C16 · sonde des dernières dettes · parties N · 2026-11-02 07:23 UTC · md5 14f17cc2014e21e0bf85e211f3297469 · images : celle du canon
+
+══ N · (⑲) 1536×864 · l’Atelier : une diapo neuve écrite trois fois (aucun faux conflit), deux navigateurs sur la même diapo (le conflit paraît) ══
+  ok     N · le faux hub ordinaire : une diapo insérée, une consigne écrite trois fois — aucun message « modifiée sur un autre appareil » ; au hub, chaque écriture [true,true,true] — {"messages":["","",""]}
+  ok     N · le faux hub ordinaire, la diapo neuve : aucune erreur JS, aucune boîte système
+  ok     N · le faux hub ordinaire : deux navigateurs écrivent dans la même diapo au même moment — le conflit paraît (« ⚠ La diapo « Tableau 1 » a été modifiée sur un autre appareil pendant que tu la modifiais  ») — {"A":"","B":"⚠ La diapo « Tableau 1 » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. Garder la mienne Prendre celle de l’autre appareil","ligne":"Le Voyageur contempl"}
+  ok     N · le faux hub ordinaire, deux navigateurs : aucune erreur JS, aucune boîte système
+  ÉCHEC  N · le faux hub rangé comme le vrai : une diapo insérée, une consigne écrite trois fois — aucun message « modifiée sur un autre appareil » ; au hub, chaque écriture [false,false,false] — {"messages":["⚠ La diapo « » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. Garder la mienne Prendre celle de l’autre appareil","⚠ La diapo « » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. Garder la mienne Prendre celle de l’autre appareil","⚠ La diapo « » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. Garder la mienne Prendre celle de l’autre appareil"]}
+  ok     N · le faux hub rangé comme le vrai, la diapo neuve : aucune erreur JS, aucune boîte système
+  ok     N · le faux hub rangé comme le vrai : deux navigateurs écrivent dans la même diapo au même moment — le conflit paraît (« ⚠ La diapo « Tableau 1 » a été modifiée sur un autre appareil pendant que tu la modifiais  ») — {"A":"","B":"⚠ La diapo « Tableau 1 » a été modifiée sur un autre appareil pendant que tu la modifiais ici : rien n’est effacé, ta version n’est pas encore enregistrée. Garder la mienne Prendre celle de l’autre appareil","ligne":"Le Voyageur contempl"}
+  ok     N · le faux hub rangé comme le vrai, deux navigateurs : aucune erreur JS, aucune boîte système
+
+— fin : 8 vérifications, 1 échec(s) · ROUGE

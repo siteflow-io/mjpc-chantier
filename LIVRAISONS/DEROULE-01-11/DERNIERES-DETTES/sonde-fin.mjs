@@ -2,7 +2,7 @@
 // QUATRE-DETTES/sonde-dettes.mjs (le faux hub vit dans la sonde, tous les navigateurs le partagent : le pilote, sa fenêtre du tableau, le tableau distant
 // `?vue=tableau`, l'Atelier). Aucune écriture ni lecture du vrai hub : chaque adresse Firebase est servie par la sonde, tout le reste est coupé.
 // usage : node sonde-fin.mjs <assemble/index.html> [dossier-de-sortie]
-//   MJPC_PARTIES (défaut C,F,H,L,V,J : les parties qui doivent être VERT ; N vient avec ⑲) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
+//   MJPC_PARTIES (défaut C,F,H,L,V,J,N : les parties qui doivent être VERT) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
 //   MJPC_MEDIAS=<dossier> : les vraies images du chapitre de 3e (jamais poussées) · MJPC_CONSTRUIT=<dossier> : le hub construit de la conscience (le chapitre
 //   de 4e, Le Horla ; jamais poussé) et MJPC_MEDIAS_4E=<dossier> ses images · MJPC_CAPT=<dossier> : les captures (jamais poussées) · MJPC_TAILLES ·
 //   MJPC_ANCIENNE=<la 8.77.1-⑩> : la partie F rejouée aussi sur elle (l'avant compté, « F-avant ») · MJPC_D_FOIS (défaut 10).
@@ -38,7 +38,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L,V,J').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L,V,J,N').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -279,7 +279,7 @@ const imgMesure = (pg, sel) => pg ? pg.evaluate(sel => { const m = document.quer
   return Array.from(m.querySelectorAll('.img-sup')).filter(x => x.getClientRects().length).map(x => { const q = v => Math.round(v * 10) / 10; const im = x.querySelector(':scope > img'); let r = (im || x).getBoundingClientRect();
     if (im && im.naturalWidth && /contain|scale-down/.test(getComputedStyle(im).objectFit)) { const B = im.getBoundingClientRect(); const k = Math.min(B.width / im.naturalWidth, B.height / im.naturalHeight); const w = im.naturalWidth * k, h = im.naturalHeight * k; r = { left: B.left + (B.width - w) / 2, right: B.left + (B.width + w) / 2, top: B.top + (B.height - h) / 2, bottom: B.top + (B.height + h) / 2, width: w, height: h }; }
     const lg = x.parentElement && x.parentElement.querySelector('.img-lg'); const L = lg ? lg.getBoundingClientRect() : null;
-    return { g: q(r.left - M.left), d: q(r.right - M.left), h: q(r.top - M.top), b: q(r.bottom - M.top), coupe: q(Math.max(0, r.right - M.right) + Math.max(0, M.left - r.left) + Math.max(0, r.bottom - M.bottom) + Math.max(0, M.top - r.top)), sousFil: F != null ? r.left < F - 0.5 : false, lgCoupe: L ? q(Math.max(0, L.right - M.right)) : 0,
+    return { W: q(M.width), g: q(r.left - M.left), d: q(r.right - M.left), h: q(r.top - M.top), b: q(r.bottom - M.top), coupe: q(Math.max(0, r.right - M.right) + Math.max(0, M.left - r.left) + Math.max(0, r.bottom - M.bottom) + Math.max(0, M.top - r.top)), sousFil: F != null ? r.left < F - 0.5 : false, lgCoupe: L ? q(Math.max(0, L.right - M.right)) : 0,
       mk: Array.from(x.querySelectorAll('.mk')).map(k => { const R = k.getBoundingClientRect(); return [q(((R.left + R.width / 2) - r.left) / r.width * 100), q(((R.top + R.height / 2) - r.top) / r.height * 100)]; }) }; }); }, sel).catch(() => null) : null;
 const jouerH = async (fichier, Wp, Hp, Wt, Ht, nom) => { HUBN = storeOuverture(RACINE, { champs: true }); ECR = []; const out = []; const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: Wt, H: Ht, prof: false }); await p(1200);
   const o = await ouvrir({ fichier, W: Wp, H: Hp, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, Wt, Ht);
@@ -294,7 +294,7 @@ if (joue('H')) { dire(''); dire('══ H · (⑬) l’image pleine au tableau e
   if (a) dire('      H · avant (l’assemblé d’avant) : ' + a.out.map(ligne).join(' ; ')); dire('      H · après : ' + r.out.map(ligne).join(' ; '));
   const tous = [].concat(...r.out.map(x => [].concat(x.a || [], x.b || [], x.c || [])));
   verif('H', r.out.length >= 5 && r.out.every(x => (x.b || []).length && (x.c || []).length && (x.a || []).length) && tous.every(i => i.coupe <= 1 && !i.sousFil && i.lgCoupe <= 1), 'tableau 1280×720 (pilote 1366×768) · les ' + r.out.length + ' images pleines : aucune coupée, aucune sous le fil (l’étiquette non plus) — à la fenêtre du tableau, au tableau distant, au pilote', r.out.map(ligne));
-  if (a) { const cAv = a.out.map(x => x.act + ' ' + JSON.stringify((x.b || []).map(i => i.coupe))); const memes = r.out.every((x, k) => { const y = a.out[k]; if (!y) return false; return ['a', 'b', 'c'].every(u => (x[u] || []).every((i, n) => { const j = (y[u] || [])[n]; if (!j) return false; const tailleOk = j.coupe ? true : Math.abs((i.d - i.g) - (j.d - j.g)) <= 1.5; return tailleOk && JSON.stringify(i.mk) === JSON.stringify(j.mk); })); });
+  if (a) { const cAv = a.out.map(x => x.act + ' ' + JSON.stringify((x.b || []).map(i => i.coupe))); const memes = r.out.every((x, k) => { const y = a.out[k]; if (!y) return false; return ['a', 'b', 'c'].every(u => (x[u] || []).every((i, n) => { const j = (y[u] || [])[n]; if (!j) return false; const tailleOk = j.coupe ? true : Math.abs((i.d - i.g) / i.W - (j.d - j.g) / j.W) * Math.max(i.W, j.W) <= 1.5;   /* la taille dans la diapo (au pilote, la diapo d'avant n'avait pas toujours sa taille : le titre mesuré trop tôt, ⑮) */ return tailleOk && JSON.stringify(i.mk) === JSON.stringify(j.mk); })); });
     verif('H', memes, 'tableau 1280×720 · une image qui tenait garde sa taille ; les repères restent sur les mêmes points de l’image (avant / après)', { avantCoupees: cAv }); }
   sansErreur('H', r.errs, 'tableau 1280×720'); }
   /* le chapitre de 4e du hub construit : chaque diapo de chaque séance, dans l'Atelier (la colonne, un clic par ligne) — les images pleines qu'il porte */

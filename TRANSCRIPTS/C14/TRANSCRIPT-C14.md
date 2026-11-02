@@ -3607,3 +3607,21 @@ ok. bon cas pratique: Regarde la bande de [l'élève], sa correction complète. 
 02/11/2026 07:04
 
 MEMO
+
+**Ce qui a été fait ensuite (C14), même tour :** 626 codé sur la maquette (`c14-poignees`, `9547e06b`) : `rcBandeLettre` (nouvelle) dessine toutes les lignes de la copie bout à bout, chacune entière, depuis la première, sans cadre ; `stBandeCarte` l'appelle au lieu de vider la bande ; ← → dans `rcBandeClavier` ; les touches sous la carte et `RU_AIDES.bande`. Banc complet 148/0 (une vérification nouvelle dans `banc/stickers.mjs`). Candidate au sas : `LIVRAISONS/REDACTION/redaction-1.4.21-RU-candidat.html`, md5 `19d8d706c69b70a16f61f71b067b3f18`, 873 001 o, `NOTE-1.4.21-RU.md`, capture après (maquette) ; diff avec la 1.4.20 en ligne : ces seules lignes. Vrai site en lecture seule : sur la copie de la capture, S21 bis montre ses 29 lignes, → → ligne 3, ← ligne 2, aucune erreur. Registre des dettes : 626 codé, 632 et 633 inscrits.
+
+**Claude (07:18, avec la capture apres-626-toute-la-lettre) :**
+
+À jouer : ton promeus pour la 1.4.21-RU (636), ton mot sur 632 et 633 · en cours : rien · ouvert : 632, 633, 636, 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+634. 626 est codé. Sur un sticker de toute la lettre, la bande montre maintenant toute la copie : ses lignes bout à bout depuis la première, chacune entière, sans cadre. ← → la font défiler ligne par ligne. Les touches sous la carte et l'aide « ? » le disent.
+
+635. Le banc complet passe : 148 vérifications, 0 défaut. Sur ton vrai site, en lecture seule, la copie de ce matin : sur S21 bis, la bande montre ses 29 lignes, et les flèches la font défiler. Aucune erreur. La capture jointe vient de la maquette, avec des élèves inventés.
+
+636. Promeus pour la 1.4.21-RU ?
+
+À tester, après le promeus : recharge, ouvre la bande de la même copie, clique S21 bis dans la liste de droite. La bande montre sa première ligne. Appuie sur → deux fois, puis ←.
+
+02/11/2026 07:18
+
+MEMO

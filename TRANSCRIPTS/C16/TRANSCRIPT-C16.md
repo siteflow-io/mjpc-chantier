@@ -1286,3 +1286,4 @@ MEMO
   > À jouer : rien · en cours : mon banc (étapes 1 à 13 sur le fichier livré) ; l'exécutant code le correctif · ouvert : 271
   >
   > MEMO
+- **19:37 — l'exécutant de ㉞ (message)** : le correctif de R codé, commit local `2218c05ec` sur `8602da915`, pas poussé : `dr_repEcrire` (`dr-atelier.js`) écrit par un `fetch` PUT direct ; une réussite n'affiche plus rien ; un refus ou une panne passe par `mjpcSignalerIssue` (« Répétition — le tableau distant », « retenter ») ; en mode test, rien comme avant ; la sonde ne dépend pas du bandeau « Enregistré » ; assemblé md5 `32254002…` ; NOTE à jour ; pas prouvé — il attend « machine libre ».

@@ -710,3 +710,4 @@ MEMO
   > 02/11/2026 13:34
   >
   > MEMO
+- **13:37 — contrôle programmé (13:35)** : l'exécutant a livré à 13:16 (`dff4474`, NOTE ; 7 et 8 pas entièrement prouvés, 9 pas tenu) ; aucun fichier hors du mandat ; il attend la machine sans navigateur. Le banc de la conscience (choix B, Paul 13:33) tourne sur `cf7bb57` depuis 13:19 : étape 10 ; l'étape 8 ROUGE (516 ms, feuille du site en vraie heure), à rejouer seule.

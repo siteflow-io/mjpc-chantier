@@ -4384,3 +4384,35 @@ MEMO
 02/11/2026 16:38
 
 MEMO
+
+---
+
+## Tour 157 — 02/11/2026 16:38
+
+**Paul (16:38) :**
+
+promeus
+
+**Paul (16:40, avec une capture de la recopie : quatorze lignes vides portant « en-tête de la lettre : sa date, son lieu, s'il y en a », puis « 14 juin 1915 », « Arras », « Ma chère Bernadette, ») :**
+
+je n'avais pas vu ça. là ça veut dire que l'ia a corrigé sans savoir que l'élève avait bien un entête (même partiel?)
+
+**Ce qui a été fait (C14) :** 1.4.24 copiée au sas (`SAUVEGARDES/redaction-1.4.24-RU-avant-1.4.25-2026-11-02.html`, `35f47e22`) ; 1.4.25-RU en ligne : commit `25715b5`, blob `6f82dd3296d1`, md5 `26db1bf73adaecad2320bb7866fdd003`, 907 485 o, en ligne bit à bit à 16:40 ; docs : le point de retour, le journal, la dette ✔, où trouver quoi (`&v=1.4.25-RU`). Lu sur le vrai site, sans rien écrire : dans la 3 Dylan Bob, la ligne « 14 juin 1915 » est partie à l'IA à 15:29 (envoi 1, la 1.4.24), avec 14 lignes vides au-dessus ; la 3 Dylan Bob est chargée (24 copies, leurs commentaires proposés ; 3 commentaires gardés) ; la 3 Franklin Aretha attend ses retours (29). Mesuré dans le code : la phrase grise se posait sur toutes les lignes vides au-dessus de la première ligne recopiée. Corrigé sur la maquette (une seule ligne, aucune quand la première ligne porte une date : `RC_DATE`), banc lancé.
+
+**Claude (16:44) :**
+
+À jouer : la 1.4.25, en ligne (À tester) · en cours : 36, son banc tourne · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+33. La 1.4.25 est en ligne, vérifiée bit à bit à 16:40 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.25-RU
+
+34. Ta capture : non, l'IA savait. Vérifié sur ton site, sans rien y écrire : pour cette copie, la ligne « 14 juin 1915 » est partie à l'IA à 15:29, avec toute la lettre. Les lignes grises au-dessus sont des lignes vides de la page : rien d'elles ne part à l'IA.
+
+35. Le défaut est dans l'app : la phrase grise s'affichait sur toutes les lignes vides au-dessus de la lettre, ici quatorze, même quand la date était déjà recopiée.
+
+36. Je le corrige dans la 1.4.26 : une seule ligne porte la phrase grise, celle juste au-dessus de la lettre, et aucune quand la première ligne recopiée porte déjà une date. Le banc tourne ; je te la donne à promouvoir dès qu'il passe.
+
+À tester : la 1.4.25, dans la bande : ← → (la vitesse), puis Maj + ← → (le petit pas).
+
+02/11/2026 16:44
+
+MEMO

@@ -1455,3 +1455,18 @@ MEMO
   >
   > MEMO
 - **23:08 — un incident de la conscience** : pour voir où en était l'exécutant de l'appel, elle a lu la fin de son fichier de sortie par le shell (`tail`), ce qui est interdit (la même faute qu'à 15:11). Ce qu'elle a vu : l'exécutant attend la sonde de ㉞ sur son code et sur la base. Elle ne le refait pas : elle attend la notification de l'exécutant.
+- **23:11 — Paul, mot pour mot** : « 289. en fait elle liste les diapos non faites de l'activité en cours, puis après les activités suivantes entières. ok pour le coding de cette nuit. et il faut tout prouver. Je ne veux pas comme ce matin me retrouver avec une liste de choses à moitié faites en ayant dormi en pensant que tout serait ok. pour la refonte on verra ça après oui. »
+- **23:12 — la conscience** : le mandat de la fin d'heure écrit (`MANDATS/DEROULE-01-11/MANDAT-FIN-HEURE.md`) et corrigé selon 23:11 : l'activité en cours par diapos, les activités suivantes en une ligne entière, « Le bilan » sur sa ligne ; tout prouvé par le geste, rien de livré à moitié. À lancer dès que l'exécutant de l'appel a poussé.
+- **23:12 — message à Paul, mot pour mot :**
+
+  > 293. Compris pour 289 : d'abord les diapos non faites de l'activité en cours, une par ligne ; puis chaque activité suivante en une seule ligne entière ; « Le bilan » sur sa ligne. Le bouton du haut reporte tout ; une ligne peut recevoir un autre choix, et le choix d'une activité vaut pour toutes ses diapos.
+  >
+  > 294. Demain matin, avant de te demander le « promeus », je t'écris en deux listes : ce qui est prouvé par le geste, avec les captures, et ce qui ne l'est pas. Ce qui n'est pas prouvé ne part pas en ligne. Si rien de la fin d'heure n'est prouvé, seul l'appel part, et je te le dis.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 23:12
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) ; le mandat de la fin d'heure, prêt · ouvert : rien
+  >
+  > MEMO

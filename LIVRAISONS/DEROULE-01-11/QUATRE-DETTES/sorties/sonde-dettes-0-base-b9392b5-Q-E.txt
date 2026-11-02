@@ -1,0 +1,33 @@
+C16 · sonde du retour sûr à la 8.77.1-⑩ · parties Q E · 2026-11-02 03:25 UTC · nouvelle version md5 39ccf4fc862ccc567d2abdcc01103e65 · 8.77.1-⑩ md5 09a19419011c2a09ebeae21d4c4d41f0
+
+══ Q · 1536×864 · la taxonomie retardée de 7 s ; « ✎ Préparer », le début de séance renommé, la page quittée avant elle ; la 8.77.1-⑩ ouvre la séance ; la nouvelle version rouvre ══
+      Q · rechargement : au hub, la diapo null ; à côté null
+  ok     Q · Q · rechargement : Paul renomme le début de séance avant la taxonomie (« ✎ Préparer » de la case), la page part 2 s après (le rechargement), avant elle
+  ok     Q · Q · rechargement : au hub, le début de séance n’est jamais écrit sans ses textes ni avec des textes incomplets
+  ok     Q · Q · rechargement : la 8.77.1-⑩ ouvre la séance dans l’Atelier et lance l’heure : son début de séance a ses textes, complets (rien de vide, rien d’incomplet) — {"atelier":"POÉSIE ET PEINTURE : LE ROMANTISME EN QUESTION Ce que nous travaillons Notions rencontrées : Dire ce qu’on voit, avec les mots justes · Savoir si l’on voit de près ou de loin, et ce qui est choisi · D’où l’on regarde la ","classe":"POÉSIE ET PEINTURE : LE ROMANTISME EN QUESTION Ce que nous travaillons Notions rencontrées : Dire ce qu’on voit, avec les mots justes · Savoir si l’on voit de près ou de loin, et ce qui est choisi · D’où l’on regarde la "}
+  ÉCHEC  Q · Q · rechargement : la nouvelle version rouvre : le geste de Paul est là (« S1 : le Romantisme en question ») — {"colonne":"Séance 1 · Poésie et peinture : le Romantisme en question","hub":null,"aCote":null}
+  ok     Q · Q · rechargement : aucune erreur JS, aucune boîte système
+      Q · fermeture : au hub, la diapo {"act":"S1 : le Romantisme en question","blocs":"null"} ; à côté null
+  ok     Q · Q · fermeture : Paul renomme le début de séance avant la taxonomie (« ✎ Préparer » de la case), la page part 0,4 s après (l’onglet fermé), avant elle
+  ÉCHEC  Q · Q · fermeture : au hub, le début de séance n’est jamais écrit sans ses textes ni avec des textes incomplets — {"act":"S1 : le Romantisme en question","blocs":"null"}
+  ÉCHEC  Q · Q · fermeture : la 8.77.1-⑩ ouvre la séance dans l’Atelier et lance l’heure : son début de séance a ses textes, complets (rien de vide, rien d’incomplet) — {"atelier":"S1 : LE ROMANTISME EN QUESTION","classe":"S1 : LE ROMANTISME EN QUESTION"}
+  ok     Q · Q · fermeture : la nouvelle version rouvre : le geste de Paul est là (« S1 : le Romantisme en question ») — {"colonne":"S1 : le Romantisme en question","hub":"S1 : le Romantisme en question","aCote":null}
+  ok     Q · Q · fermeture : aucune erreur JS, aucune boîte système
+
+══ E · 1536×864 · « À écrire » dans le début de séance : la nouvelle version le pose, la 8.77.1-⑩ reprend l’heure, le déplace, la nouvelle revient ══
+  ok     E · E1 · la nouvelle version, dans l’Atelier : « ✍ À écrire » sur l’objectif de la séance (« Objectif : Observer cinq tableaux du XIXe siècle e ») — marqué au pilote, dans la trame au hub — {"pilote":[{"k":"1","t":"Objectif : Observer cinq tableaux du XIXe siècle et formuler avec la c"}],"hub":["binv-presentation-seance-s0.1"],"blocs":["texte 2"]}
+  ok     E · E1 · la nouvelle version : aucune erreur JS, aucune boîte système
+  ÉCHEC  E · E2 · la 8.77.1-⑩, dans son Atelier : la même ligne est à écrire (l’objectif), aucune autre — {"ancienne":[{"k":"1","t":"Aussi travaillées : Lire des textes non littéraires, des images et des"}],"attendu":"Objectif : Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu’ils ont en commun : l’homme face à la nature, l’émotion avant la règle."}
+  ok     E · E2 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ok     E · E3 · la nouvelle version lance l’heure (la case du 14/09), hors mode test
+  ok     E · E3 · en classe, le début de séance : l’objectif à écrire au pilote, à la fenêtre du tableau, au tableau distant — {"p":[{"k":"1","t":"Objectif : Observer cinq tableaux du XIXe siècle et formuler avec la c"}],"f":[{"k":"1","t":"Objectif : Observer cinq tableaux du XIXe siècle et formuler avec la c"}],"d":[{"k":"1","t":"Objectif : Observer cinq tableaux du XIXe siècle et formuler avec la c"}]}
+  ok     E · E3 · la nouvelle version : aucune erreur JS, aucune boîte système
+  ok     E · E3 · le tableau distant : aucune erreur JS, aucune boîte système
+  ok     E · E4 · la 8.77.1-⑩ reprend l’heure (« Reprendre ») : au début de séance, la même ligne est à écrire (l’objectif), au pilote et à la fenêtre du tableau — {"p":[{"k":"1","t":"Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu"}],"f":[{"k":"1","t":"Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu"}]}
+  ok     E · E4 · la 8.77.1-⑩ retire « à écrire » de l’objectif et le pose sur la ligne suivante (« Lire des documents, des images et des pages numéri ») : au pilote et à la fenêtre du tableau — {"p":[{"k":"2","t":"Lire des documents, des images et des pages numériques"}],"f":[{"k":"2","t":"Lire des documents, des images et des pages numériques"}]}
+  ok     E · E4 · la 8.77.1-⑩ : aucune erreur JS, aucune boîte système
+  ok     E · E5 · la nouvelle version reprend : exactement ce que la 8.77.1-⑩ a laissé (« Lire des documents, des images et des pa » à écrire, l’objectif non), au pilote, à la fenêtre du tableau, au tableau distant — {"p":[{"k":"2","t":"Lire des documents, des images et des pages numériques"}],"f":[{"k":"2","t":"Lire des documents, des images et des pages numériques"}],"d":[{"k":"2","t":"Lire des documents, des images et des pages numériques"}]}
+  ok     E · E5 · la nouvelle version : aucune erreur JS, aucune boîte système
+  ok     E · E5 · le tableau distant : aucune erreur JS, aucune boîte système
+
+— fin : 24 vérifications, 4 échec(s) · ROUGE

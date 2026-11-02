@@ -1,0 +1,9 @@
+C16 · sonde des quatre dettes · hub ordinaire · parties S · 2026-11-02 04:11 UTC · nouvelle version md5 14f17cc2014e21e0bf85e211f3297469 · 8.77.1-⑩ md5 09a19419011c2a09ebeae21d4c4d41f0
+
+══ S · 1536×864 · le même navigateur (hub ordinaire) : F5 puis « Reprendre » ; l’onglet fermé, le site rouvert, « Reprendre » ══
+  ok     S · la 8.77.1-⑩ · même navigateur · F5 puis « Reprendre » : la même diapo dessinée, le même compteur, aucune erreur JS — {"avant":["emt9v3yqoecf9d","0 / 6 dévoilés"],"apres":["emt9v3yqoecf9d","0 / 6 dévoilés","ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, "],"par":"bandeau","cles_locales":1,"quitterLeSite":1,"erreurs":[]}
+  ok     S · la 8.77.1-⑩ · même navigateur · l’onglet fermé, le site rouvert, « Reprendre » : la même diapo dessinée, le même compteur, aucune erreur JS — {"avant":["emt9v3yqoecf9d","0 / 6 dévoilés"],"apres":["emt9v3yqoecf9d","0 / 6 dévoilés","ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, "],"par":"bandeau","erreurs":[]}
+  ok     S · la nouvelle version · même navigateur · F5 puis « Reprendre » : la même diapo dessinée, le même compteur, aucune erreur JS — {"avant":["emt9v3yqoecf9d","0 / 6 dévoilés"],"apres":["emt9v3yqoecf9d","0 / 6 dévoilés","ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, "],"par":"bandeau","cles_locales":1,"quitterLeSite":1,"erreurs":[]}
+  ok     S · la nouvelle version · même navigateur · l’onglet fermé, le site rouvert, « Reprendre » : la même diapo dessinée, le même compteur, aucune erreur JS — {"avant":["emt9v3yqoecf9d","0 / 6 dévoilés"],"apres":["emt9v3yqoecf9d","0 / 6 dévoilés","ANALYSE D'IMAGES : LA ROUTINE • Observe, discute, "],"par":"bandeau","erreurs":[]}
+
+— fin : 4 vérifications, 0 échec(s) · VERT

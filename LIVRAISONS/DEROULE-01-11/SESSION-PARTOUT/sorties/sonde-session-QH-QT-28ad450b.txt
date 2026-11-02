@@ -1,0 +1,54 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties QH QT · 2026-11-02 15:24 UTC · md5 28ad450b495d0255fe2ae5d6518313e5 · images de 3e : un dossier local
+
+— la télécommande par le QR, la vraie heure · q5 —
+  ok     QH · l’ordinateur lance l’heure
+  ok     QH · « 📱 » dans la barre des actions rapides, son infobulle pour Paul — Télécommande : montre un QR code ; scanne-le avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette s
+  ok     QH · le QR montre l’adresse de la télécommande — file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/c16-session/asm/index.html?n=3e&telecommande=1&qr=tcmu0w7z403nn61k
+      QH · la fenêtre du QR, à l’ordinateur : fermée seule 2210 ms après l’ouverture de l’adresse au téléphone
+  ok     QH · la fenêtre du QR se ferme d’elle-même quand le téléphone l’a scanné — 2210
+      QH · le téléphone, sur la séance sans rien choisir : en 3215 ms · « 3E Charles de Gaulle ● en direct Diapo 1 sur 26 · Présentation du chapitre » · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     QH · le téléphone s’ouvre directement sur la séance en cours, en télécommande, là où elle en est — {"prete":3215,"haut":"3E Charles de Gaulle ● en direct Diapo 1 sur 26 · Présentation du chapitre","kk":["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]}
+      QH · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en 84, 98, 153, 90, 85, 39 ms · le tableau distant en 89, 105, 155, 94, 101, 42 ms
+  ok     QH · ▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; 12 / 12) — {"ord":[84,98,153,90,85,39],"tab":[89,105,155,94,101,42]}
+      QH · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en 119 ms, dégelé en 85 ms
+  ok     QH · ❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s) — [119,85]
+      QH · « qui a parlé » : AUDEBERT Elise (EA) noté à l’ordinateur en 179 ms (le bouton allumé), retiré en 86 ms
+  ok     QH · « qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s) — [179,86]
+      QH · le minuteur (+ puis Départ) à la télécommande : il court à l’ordinateur en 67 ms, au tableau distant (« 06:00 ») en ~0 ms
+  ok     QH · le minuteur à la télécommande : il court à l’ordinateur et paraît au tableau distant — [67,0]
+      QH · le cas de Paul : deux gestes au téléphone (ordinateur/tableau, ms : 254/256 · 201/204) ; l’ordinateur va à « Question-bilan » (emt9v3yqo6pvd5#2#0 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#0) et tape « Le paysage romantique », le téléphone ouvert : chaque lettre au tableau en 36, 58, 3, 67, 45, 38, 45, 71, 47, 42, 1, 319, 25, 87, 291, 35, 50, 227, 44, 31, 69 ms ; trois gestes au téléphone ensuite (84/86 · 372/374 · 237/248) ; la réponse au téléphone : true ; le tableau est passé par 4 états, revenu en arrière 0 fois (195 relevés)
+  ok     QH · le cas de Paul : chaque lettre tapée à l’ordinateur, le téléphone ouvert, paraît au tableau en ≤ 0,5 s (21 / 21) — [36,58,3,67,45,38,45,71,47,42,1,319,25,87,291,35,50,227,44,31,69]
+  ok     QH · le cas de Paul : les gestes au téléphone avant et après la réponse, l’ordinateur et le tableau suivent (≤ 0,5 s) — {"D1":["254/256","201/204"],"D2":["84/86","372/374","237/248"]}
+  ok     QH · le cas de Paul : rien ne recule au tableau, et la réponse est aussi au téléphone — {"recul":0,"rp":true}
+      QH · « Clore l’heure » à l’ordinateur : la télécommande le dit en 0 ms (« La séance est close. La télécommande s’arrête ici. »)
+  ok     QH · l’heure close à l’ordinateur : la télécommande le dit — 0
+  ok     QH · aucune écriture refusée par le faux hub (0) — []
+  ok     QH · ordinateur, télécommande, tableau distant : aucune erreur JS, aucune boîte système
+
+— la télécommande par le QR, l’essai en mode test · q5 —
+  ok     QT · l’ordinateur lance l’heure
+  ok     QT · « 📱 » dans la barre des actions rapides, son infobulle pour Paul — Télécommande : montre un QR code ; scanne-le avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette s
+  ok     QT · le QR montre l’adresse de la télécommande — file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/c16-session/asm/index.html?n=3e&telecommande=1&qr=tcmu0w7z40dw5om9&test=1
+      QT · la fenêtre du QR, à l’ordinateur : fermée seule 2165 ms après l’ouverture de l’adresse au téléphone
+  ok     QT · la fenêtre du QR se ferme d’elle-même quand le téléphone l’a scanné — 2165
+      QT · le téléphone, sur la séance sans rien choisir : en 2482 ms · « 3E Charles de Gaulle ● en direct · essai Diapo 1 sur 26 · Présentation du chapitre » · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     QT · le téléphone s’ouvre directement sur la séance en cours, en télécommande, là où elle en est — {"prete":2482,"haut":"3E Charles de Gaulle ● en direct · essai Diapo 1 sur 26 · Présentation du chapitre","kk":["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]}
+      QT · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en 72, 83, 53, 198, 336, 105 ms · le tableau distant en 77, 84, 57, 204, 339, 113 ms
+  ok     QT · ▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; 12 / 12) — {"ord":[72,83,53,198,336,105],"tab":[77,84,57,204,339,113]}
+      QT · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en 93 ms, dégelé en 71 ms
+  ok     QT · ❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s) — [93,71]
+      QT · « qui a parlé » : AUDEBERT Elise (EA) noté à l’ordinateur en 97 ms (le bouton allumé), retiré en 54 ms
+  ok     QT · « qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s) — [97,54]
+      QT · le minuteur (+ puis Départ) à la télécommande : il court à l’ordinateur en 82 ms, au tableau distant (« 06:00 ») en ~0 ms
+  ok     QT · le minuteur à la télécommande : il court à l’ordinateur et paraît au tableau distant — [82,0]
+      QT · le cas de Paul : deux gestes au téléphone (ordinateur/tableau, ms : 84/86 · 127/129) ; l’ordinateur va à « Question-bilan » (emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#0) et tape « Le paysage romantique », le téléphone ouvert : chaque lettre au tableau en 31, 74, 1, 26, 25, 33, 25, 30, 54, 109, 3, 24, 25, 51, 114, 35, 82, 51, 31, 28, 49 ms ; trois gestes au téléphone ensuite (336/339 · 61/66 · 321/323) ; la réponse au téléphone : true ; le tableau est passé par 5 états, revenu en arrière 0 fois (188 relevés)
+  ok     QT · le cas de Paul : chaque lettre tapée à l’ordinateur, le téléphone ouvert, paraît au tableau en ≤ 0,5 s (21 / 21) — [31,74,1,26,25,33,25,30,54,109,3,24,25,51,114,35,82,51,31,28,49]
+  ok     QT · le cas de Paul : les gestes au téléphone avant et après la réponse, l’ordinateur et le tableau suivent (≤ 0,5 s) — {"D1":["84/86","127/129"],"D2":["336/339","61/66","321/323"]}
+  ok     QT · le cas de Paul : rien ne recule au tableau, et la réponse est aussi au téléphone — {"recul":0,"rp":true}
+      QT · « Clore l’heure » à l’ordinateur : la télécommande le dit en 0 ms (« La séance est close. La télécommande s’arrête ici. »)
+  ok     QT · l’heure close à l’ordinateur : la télécommande le dit — 0
+  ok     QT · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     QT · aucune écriture refusée par le faux hub (0) — []
+  ok     QT · ordinateur, télécommande, tableau distant : aucune erreur JS, aucune boîte système
+
+31 vérifications, 0 échec(s)

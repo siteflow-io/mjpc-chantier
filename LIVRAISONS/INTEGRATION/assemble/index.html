@@ -16673,7 +16673,7 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
    la même largeur, donc les mêmes pages au tableau) ; ce qui partait du bord gauche part de la marge : l'image pleine, son étiquette et sa consigne,
    la vidéo, le document, la fiche ouverte en page, la légende des surligneurs, les alertes de forme. Le bandeau passe au-dessus du fil. */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran{padding-left:5.2%;padding-right:2%}
-:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img.img-plein{left:5.2cqw;right:0;width:auto}   /* C16 (les quatre dettes, §3.5) : la boîte de l'image pleine part de la marge du fil et s'arrête au bord droit (avant : « width:100% » la gardait entière, décalée : l'image débordait à droite, coupée par la diapo — Le Lac de 38 px au tableau 1280 × 720) ; l'image s'y ajuste (dr_imageAjuster) : elle rapetisse juste ce qu'il faut, une image qui tenait garde sa taille */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .act,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .cons{left:5.2cqw}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .video{left:max(28px,5.2cqw)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .doc{padding-left:max(40px,5.2cqw)}
@@ -16684,6 +16684,9 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 /* C16 64 : la colonne a la main (un clic dedans) — ← → ↑ ↓ sont à elle ; la vignette ou la ligne courante le dit d'un trait d'or plus franc */
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .vig.cour{outline:2px solid var(--or);outline-offset:-1px}
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .dr-d.on{outline:2px solid var(--or);outline-offset:-2px}
+
+/* C16 (les quatre dettes, §3.4) : le tableau plus haut que son dessin passe en pages — une rangée hors de la page n'est pas montrée ; une rangée seule plus haute que le dessin s'ancre en haut */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch .p8-grille tr.hors{display:none!important}:is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch .p8-grille.p8-ancre{top:0;transform:translateX(-50%)}
 
 </style>
 <script>
@@ -16764,7 +16767,7 @@ function dr_trameDe(sk){
   if (!sce.deroule || typeof sce.deroule !== 'object') sce.deroule = { ecrans: [], maj: 0 };
   if (!Array.isArray(sce.deroule.ecrans)) sce.deroule.ecrans = [];
   const E = sce.deroule.ecrans;
-  if (!DR_MEM.prepares.has(E)) { DR_MEM.prepares.add(E); dr_syncHubLu(sk, sce.deroule); if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, sk); dr_preparer(E); dr_lireSousObjets(sk); return E; }   /* l'empreinte se prend après la lecture : rien ne s'écrit tant que Paul n'a rien modifié */
+  if (!DR_MEM.prepares.has(E)) { DR_MEM.prepares.add(E); dr_syncHubLu(sk, sce.deroule); if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); const att = dr_invAttenteManquantes(sce.deroule, E); dr_normaliserTrame(E, sk); dr_invAttenteReposer(E, att); dr_preparer(E); dr_lireSousObjets(sk); return E; }   /* l'empreinte se prend après la lecture : rien ne s'écrit tant que Paul n'a rien modifié */
   dr_invRafraichir(E, sk); dr_preparer(E); return E;
 }
 /* la vue d'une séance telle que la maquette la lisait (DATA.seances[si] = {titre, ecrans}) : un regard, pas une copie */
@@ -16898,14 +16901,33 @@ const DR_INV_TAXO = ['presentation-chapitre', 'presentation-seance', 'competence
 function dr_invTaxoPrete(){ return !!(((typeof CH !== 'undefined' && CH) ? CH.taxo : null) || DR_MEM.taxoAbsente); }
 function dr_invAttendTaxo(e){ return !!e && DR_INV_TAXO.indexOf(e.role) >= 0 && !dr_invTaxoPrete() && dr_estInvariable(e) && dr_invIntacte(e) && !dr_invVierge(e); }
 function dr_invHubLu(sk, eid){ try { const H = DR_MEM.hubLu && DR_MEM.hubLu[sk]; const c = H && H.el && H.el[eid]; return c ? JSON.parse(c) : null; } catch (x) { return null; } }
+/* C16 (les quatre dettes, §3.1) — « À ÉCRIRE » D'UNE VERSION À L'AUTRE : une marque « à écrire » posée sur une ligne d'une diapo d'ouverture (e.aEcrire,
+   « <bloc>.<ligne> », la ligne que la flèche dévoile) se relit par son indice. Écrite pour la 8.77.1-⑩ avec les lignes de l'ancien calcul (le début de séance :
+   « Notions rencontrées… », « Compétence(s) principale(s)… ») ou avec une ligne par compétence, l'indice y désignait une autre ligne (mesuré par le geste :
+   l'objectif marqué ici, « Aussi travaillées » marqué dans son Atelier). Une diapo d'ouverture qui porte une marque sur une de ses lignes s'écrit donc au hub
+   avec UNE ligne par ligne dévoilée (dr_ouvLisibleCopie, la forme de la copie de la classe) : la même ligne est à écrire dans les deux versions. */
+function dr_invEcrLigne(e){ const b = dr_ouvBloc(e); if (!b || !Array.isArray(e.aEcrire)) return false; const id = String(b.bid || b.id); return e.aEcrire.some(c => String(c).indexOf(id + '.') === 0); }
 function dr_invPourHub(e, sk){ if (!dr_estInvariable(e)) return e; if (sk == null) sk = dr_invCleDe(e);
   const o = {}; Object.keys(e).forEach(k => { if (k !== 'blocs' && k !== 'ouvCanon' && k !== 'suitAct') o[k] = e[k]; });
   if (dr_invIntacte(e) && dr_invAttendTaxo(e)) { o.suit = true; const h = dr_invHubLu(sk, e.eid); if (h && Array.isArray(h.blocs) && h.blocs.length && !h.ouvCanon) o.blocs = JSON.parse(JSON.stringify(h.blocs)); if (e.act === e.dr_invAct) { o.act = h && h.act != null ? h.act : dr_invContenuV1(e.role, sk).act; o.suitAct = true; } return o; }   /* C16 (§3.4) : la page part avant la taxonomie */
   if (dr_invIntacte(e)) { o.suit = true; const b = dr_ouvBloc(e);
     const v1 = DR_INV_V1_ROLES.indexOf(e.role) >= 0 ? dr_invContenuV1(e.role, sk) : { act: e.dr_invAct != null ? e.dr_invAct : e.act, blocs: b ? [dr_ouvLisible(b)] : [] };
-    o.blocs = JSON.parse(JSON.stringify(v1.blocs || [])); if (e.act === e.dr_invAct) { o.act = v1.act; o.suitAct = true; } return o; }
+    o.blocs = JSON.parse(JSON.stringify(b && dr_invEcrLigne(e) ? [dr_ouvLisibleCopie(b)] : (v1.blocs || []))); if (e.act === e.dr_invAct) { o.act = v1.act; o.suitAct = true; } return o; }   /* C16 (§3.1 des quatre dettes) : une ligne « à écrire » — une ligne par ligne dévoilée */
   const b = dr_ouvBloc(e); if (!b) return e;   /* une ancienne forme (des blocs de texte) : telle quelle, la 8.77.1-⑩ la lit */
-  delete o.suit; o.ouvCanon = JSON.parse(JSON.stringify(b)); o.blocs = [dr_ouvLisible(b)]; return o; }
+  delete o.suit; o.ouvCanon = JSON.parse(JSON.stringify(b)); o.blocs = [dr_invEcrLigne(e) ? dr_ouvLisibleCopie(b) : dr_ouvLisible(b)]; return o; }
+/* C16 (les quatre dettes, §3.3) — LA PAGE QUITTÉE AVANT LA TAXONOMIE : une diapo d'ouverture intacte que Paul a marquée (son nom, une durée, « à écrire »…),
+   JAMAIS encore écrite au hub, n'a pas de textes complets à écrire tant que la taxonomie n'est pas là. Écrite sans textes, la 8.77.1-⑩ la montrait vide (elle
+   montre telle quelle une diapo d'ouverture qui n'est pas celle de son calcul). Elle ne s'écrit donc PAS dans les diapos de la séance : la 8.77.1-⑩, qui ne
+   la trouve pas, pose la sienne (son calcul, rempli dès que sa taxonomie arrive : ni vide ni incomplète — mesuré par le geste) ; ce que Paul y a mis
+   s'écrit à côté, sous `deroule/ouvAttente/<eid>` (une clé que la 8.77.1-⑩ garde sans la lire, comme `ouvRetraits`) : relue ici, la diapo posée par le site
+   reprend les marques de Paul (dr_invAttenteReposer) — rien n'est perdu. Dès que la taxonomie est là, la diapo s'écrit entière et `ouvAttente` s'efface.
+   Une diapo que le hub a déjà (écrite avec la taxonomie) part, elle, avec ses textes du hub (dr_invPourHub). */
+const DR_INV_HORS_ATTENTE = ['eid', 'role', 'blocs', 'ouvCanon', 'suit', 'suitAct'];
+function dr_invEnAttente(e, sk){ return !!e && dr_invAttendTaxo(e) && !dr_invHubLu(sk, e.eid); }
+function dr_invAttente(e){ const o = {}; Object.keys(e).forEach(k => { if (DR_INV_HORS_ATTENTE.indexOf(k) < 0 && e[k] !== undefined) o[k] = e[k]; }); o.role = e.role; return JSON.parse(JSON.stringify(o)); }
+function dr_invAttenteManquantes(d, E){ const a = d && d.ouvAttente; if (!a || typeof a !== 'object') return null; const o = {}; Object.keys(a).forEach(eid => { if (a[eid] && typeof a[eid] === 'object' && !E.some(e => e && e.eid === eid)) o[eid] = a[eid]; }); return Object.keys(o).length ? o : null; }
+function dr_invAttenteReposer(E, att){ if (!att) return; Object.keys(att).forEach(eid => { const x = E.find(e => e && e.eid === eid); if (!x || !x.dr_inv || x.role !== att[eid].role) return; const v = att[eid];
+  Object.keys(v).forEach(k => { if (DR_INV_HORS_ATTENTE.indexOf(k) < 0) x[k] = JSON.parse(JSON.stringify(v[k])); }); }); }
 /* C16 (le retour sûr, MANDAT-RETOUR-SUR §3.1) — LA COPIE DE LA CLASSE LISIBLE PAR LA 8.77.1-⑩ (Paul, 01/11 23:49 : « garder un point de retour à portée immédiate ») :
    une heure commencée ici, reprise en pleine heure dans la 8.77.1-⑩ remise en ligne, puis ici de nouveau. Au hub, dans la copie de la classe
    (`deroule_joue/<classe>/ecrans`), une diapo d'ouverture au canon s'écrit comme dans la trame : un bloc de texte lisible (le MÊME identifiant de bloc) et son
@@ -17109,7 +17131,9 @@ function dr_derouleDe(sk, brut){
   const travail = {}; Object.keys(DR_MEM.travail).forEach(k => { if (k.startsWith(si + '|')) travail[k.slice(si.length + 1)] = DR_MEM.travail[k]; });
   if (!brut) dr_preparer(E);
   dr_ecritsSeulement(E);
-  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invVierge(e)).map(e => dr_invPourHub(e, sk)) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
+  const attente = {}; { const a = d.ouvAttente; if (a && typeof a === 'object') Object.keys(a).forEach(eid => { if (a[eid] && typeof a[eid] === 'object' && !E.some(e => e && e.eid === eid)) attente[eid] = a[eid]; }); }   /* C16 (§3.3 des quatre dettes) : ce que le hub garde d'une diapo pas encore reposée ici */
+  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invVierge(e)).filter(e => { if (!dr_invEnAttente(e, sk)) return true; attente[e.eid] = dr_invAttente(e); return false; }).map(e => dr_invPourHub(e, sk)) };
+  if (Object.keys(attente).length) o.ouvAttente = attente;   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
   { const presents = new Set(E.filter(Boolean).map(e => e.role)); const R0 = dr_invRetraitsDe(d); const ret = R0.filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = R0.indexOf(DR_INV_MARQUE) >= 0 ? ret.concat([DR_INV_MARQUE]) : ret;
     const p = o.ecrans.filter(e => e && DR_INV.indexOf(e.role) >= 0 && DR_INV_V1_ROLES.indexOf(e.role) < 0).map(e => e.role); if (o.retraits || p.length) { o.ouvRetraits = {}; if (o.retraits) o.ouvRetraits.r = o.retraits.slice(); if (p.length) o.ouvRetraits.p = p; } }   /* C16 (retour sûr, §3.2) : ce que la 8.77.1-⑩ ne garde pas dans « retraits » */   /* C16 : la marque « canon » reste avec les rôles retirés */   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
   if (acts.length) o.activites = acts; if (Object.keys(notes).length) o.notes = notes; if (Object.keys(travail).length) o.travail = travail;
@@ -17120,7 +17144,7 @@ function dr_derouleDe(sk, brut){
 /* ── l'écriture : dr_sauve (débounce 900 ms, comme atDrEnrAuto), témoin « Enregistré à … » (atDrEnrConfirme) ── */
 function dr_sauve(){ if (typeof S !== 'undefined' && S.repetition) return; clearTimeout(DR_MEM.minuteur); DR_MEM.minuteur = setTimeout(dr_sauveMaintenant, 900); }
 /* E1 (relecteur neuf n°2) : une frappe faite moins de 900 ms avant de quitter la page partait avec elle — quand la page se cache ou se ferme, l'enregistrement en attente part tout de suite (toujours par dr_ecrire) */
-function dr_sauveAvantDepart(){ if (DR_MEM.minuteur) { clearTimeout(DR_MEM.minuteur); dr_sauveMaintenant(true); } }
+function dr_sauveAvantDepart(){ if (DR_MEM.minuteur || DR_MEM.taxoAttente) { clearTimeout(DR_MEM.minuteur); dr_sauveMaintenant(true); } }   /* C16 (§3.3 des quatre dettes) : une écriture qui attendait la taxonomie part aussi (sinon le geste de Paul était perdu) */
 window.addEventListener('pagehide', dr_sauveAvantDepart); window.addEventListener('beforeunload', dr_sauveAvantDepart); document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') dr_sauveAvantDepart(); });
 function dr_copieDepuisAtelier(){ /* E1 (relecture continue E4, 20:50, grave — perte de données) : en heure lancée, une retouche faite dans l'onglet Atelier part au hub en 900 ms, dans la copie de la classe (C/ecrans), sans attendre le retour au Pilotage ; jamais dans la trame */
   try { if (typeof dr_cheminC !== 'function' || !dr_cheminC() || typeof AT_DR_REGIME === 'undefined' || AT_DR_REGIME !== 'classe') return; const ecr = dr_copiePourHub(JSON.parse(JSON.stringify(seance().ecrans)));   /* C16 (retour sûr) : lisible par la 8.77.1-⑩ */
@@ -17173,10 +17197,10 @@ setInterval(dr_syncLire, 3000);
 function dr_syncCleHub(rv, eid){ const q = dr_syncCles(rv)[eid]; return q == null ? null : q; }
 /* l'écriture : relire, reprendre ce qui a changé ailleurs, puis n'écrire que nos changements */
 function dr_syncEcrire(k, o, depart){ const B = DR_MEM.base && DR_MEM.base[k]; const chemin = dr_cheminBDe(k) + '/deroule'; const fini = () => { if (typeof atDrEnrConfirme === 'function') atDrEnrConfirme(true); if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); };
-  const tout = () => { const sce = dr_seance(k); const o2 = dr_derouleDe(k, true); const val = Object.assign({}, sce.deroule, o2, { maj: Date.now() }); if (!o2.activites) delete val.activites; if (!o2.notes) delete val.notes; if (!o2.travail) delete val.travail; if (!o2.retraits) delete val.retraits; if (!o2.ouvRetraits) delete val.ouvRetraits; sce.deroule.maj = val.maj;
+  const tout = () => { const sce = dr_seance(k); const o2 = dr_derouleDe(k, true); const val = Object.assign({}, sce.deroule, o2, { maj: Date.now() }); if (!o2.activites) delete val.activites; if (!o2.notes) delete val.notes; if (!o2.travail) delete val.travail; if (!o2.retraits) delete val.retraits; if (!o2.ouvRetraits) delete val.ouvRetraits; if (!o2.ouvAttente) delete val.ouvAttente; else sce.deroule.ouvAttente = JSON.parse(JSON.stringify(o2.ouvAttente)); sce.deroule.maj = val.maj;
     const ecrit = JSON.parse(JSON.stringify(val)); dr_ecrire(chemin, ecrit, 'Trame du déroulé — séance ' + k, fini); DR_MEM.base[k] = dr_syncBase(o2); DR_MEM.hubLu = DR_MEM.hubLu || {}; DR_MEM.hubLu[k] = dr_syncBase(ecrit); DR_MEM.hubLu[k].cles = dr_syncCles(ecrit); DR_MEM.empreintes[k] = JSON.stringify(o2); };
   if (!B || !DR_MEM.hubLu || !DR_MEM.hubLu[k]) { DR_MEM.base = DR_MEM.base || {}; tout(); return; }
-  const ecrire = rv => { const Hl = DR_MEM.hubLu[k]; const o2 = dr_derouleDe(k, true); dr_syncBaseVue(B, dr_syncH(o2)); const R = rv ? dr_syncBase(rv) : Hl; const cles = rv ? dr_syncCles(rv) : (Hl.cles || {}); if (rv) Hl.cles = cles;
+  const ecrire = rv => { const Hl = DR_MEM.hubLu[k]; const o2 = dr_derouleDe(k, true); if (o2.ouvAttente) { tout(); return; }   /* C16 (§3.3 des quatre dettes) : une diapo en attente de la taxonomie — la séance entière */ dr_syncBaseVue(B, dr_syncH(o2)); const R = rv ? dr_syncBase(rv) : Hl; const cles = rv ? dr_syncCles(rv) : (Hl.cles || {}); if (rv) Hl.cles = cles;
     if (rv) dr_syncComparer(k, rv, false);   /* les conflits se disent ; rien n'est posé pendant l'écriture */
     const L = dr_syncBase(o2); const LE = dr_syncListe(o2.ecrans);
     if (L.ordre !== B.ordre) { /* réorganisée ici : la séance entière, après avoir repris ce qui a changé ailleurs, diapo par diapo */
@@ -17670,7 +17694,7 @@ function p8Cycle(L,c){
 function p8Grille(L,c){
   if(!L.length)return '';
   var t='<table class="p8-grille"><tr class="p8-r'+p8Cls(c,0)+'">'+L[0].split('|').map(function(x){return '<th style="font-size:'+c.fsT.toFixed(2)+'px">'+dr_esc(x.trim())+'</th>';}).join('')+'</tr>';
-  L.slice(1).forEach(function(l,i){ t+='<tr class="p8-r'+p8Cls(c,i+1)+'">'+l.split('|').map(function(x){return '<td style="font-size:'+c.fsN.toFixed(2)+'px">'+dr_esc(x.trim())+'</td>';}).join('')+'</tr>'; });
+  L.slice(1).forEach(function(l,i){ t+='<tr class="p8-r'+p8Cls(c,i+1)+'" data-pg="'+(i+1)+'">'+l.split('|').map(function(x){return '<td style="font-size:'+c.fsN.toFixed(2)+'px">'+dr_esc(x.trim())+'</td>';}).join('')+'</tr>'; });
   return t+'</table>';
 }
 
@@ -17782,6 +17806,7 @@ const prenomUnique = e => { const p = dr_prenom(e); const doublon = ELEVES.filte
 const S = window.S = { si: 0, di: 0, heure: 1, taille: 1, page: null, pageManuelle: false, mode: null, gel: null, loupe: null, bandeau: '', ecoule: 0, vue: 1, blocActif: null,
   parts: [], cand: null, notesFil: [], comm: {}, appel: {}, decisions: {}, reserve: [], notionsImprevues: {}, travail: { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }, echeance: null, motAbsents: '',
   cle: 'portable', tab: 'fenetre', doc: null, videoPos: {}, t5: false, close: false, versements: {}, mur: null, attente: null };
+const DR_S_DEFAUT = JSON.parse(JSON.stringify(S));   /* C16 (les quatre dettes, §3.2) : l'état d'une heure neuve — ce qu'une liste vide ou une valeur nulle redevient à la relecture du vrai hub (dr_etatRempli) */
 
 const parDiapo = {};
  const vuMax = {};
@@ -18017,8 +18042,9 @@ function rendre(mur, et){ const et0 = et; /* (p8-5f) */ if (et && et.atelier && 
   /* repris de l'ancien (moteur L1666-1670) : la légende d'une image et ses marques se calent sur la largeur de l'image, pas sur le corps */
   dr_imagesEntieres(mur); /* E1 (§12.34-1, 13 · 65) : l'œuvre entière, la boîte à sa forme */ dr_videoBrancher(mur, et); dr_cleMediasBrancher(mur); /* E1 (§12.44) : la vidéo lue pour de vrai ; les images et PDF de la clé (4 ter) */ if (typeof dr_ouvAjuster === 'function') dr_ouvAjuster(mur); /* C16 : la diapo d'ouverture tient dans sa place */
   mur.querySelectorAll('.img-sup').forEach(sup => { const L = sup.getBoundingClientRect().width; if (!L) return; sup.querySelectorAll('.mk').forEach(m => { m.style.fontSize = (L * 0.042) + 'px'; }); const lg = sup.parentElement.querySelector('.img-lg'); if (lg) lg.style.fontSize = (L * 0.035) + 'px'; });
-  if (et.sansPages) { const corps = mur.querySelector('.corpsd'); if (corps) { let px = parseFloat(corps.style.fontSize); while (corps.scrollHeight > corps.clientHeight + 2 && px > 8) { px -= 0.5; corps.style.fontSize = px.toFixed(2) + 'px'; } } } else if (et.pages) { const cP = mur.querySelector('.corpsd'); if (cP && et.policeRatio) cP.style.fontSize = (et.policeRatio * (mur.clientHeight || 616)).toFixed(2) + 'px'; if (cP && et.pagesP) { const cles = Array.from(cP.querySelectorAll('li, .rep')).map(p85fCle); et.pages = et.pagesP.map(p => p.map(c => cles.indexOf(c)).filter(i => i >= 0)); } appliquerPages(mur, et); } /* (p8-5f) les pages du pilote, à sa police rapportée à la hauteur du tableau */ else paginer(mur, et);
-  p8Poser(mur, et); /* (p8-2) le schéma dans la place « plein » réellement disponible */
+  if (mur.querySelector('.p8-dessin')) p8Poser(mur, et);   /* C16 (§3.4 des quatre dettes) : les rangées d'un tableau existent avant la pagination */
+  if (et.sansPages) { const corps = mur.querySelector('.corpsd'); if (corps) { let px = parseFloat(corps.style.fontSize); while (corps.scrollHeight > corps.clientHeight + 2 && px > 8) { px -= 0.5; corps.style.fontSize = px.toFixed(2) + 'px'; } } } else if (et.pages) { const cP = mur.querySelector('.corpsd'); if (cP && et.policeRatio) cP.style.fontSize = (et.policeRatio * (mur.clientHeight || 616)).toFixed(2) + 'px'; if (cP && et.pagesP) { const cles = Array.from(cP.querySelectorAll(DR_PAGE_ELS)).map(p85fCle); et.pages = et.pagesP.map(p => p.map(c => cles.indexOf(c)).filter(i => i >= 0)); } appliquerPages(mur, et); } /* (p8-5f) les pages du pilote, à sa police rapportée à la hauteur du tableau */ else paginer(mur, et);
+  p8Poser(mur, et); /* (p8-2) le schéma dans la place « plein » réellement disponible */ if (et.pages && mur.querySelector('tr[data-pg]')) appliquerPages(mur, et); if (mur.querySelector('.p8-grille')) dr_tabAncrer(mur);   /* C16 (§3.4) : le dessin reposé, ses rangées reprennent leur page */
   if (et.pilote && !et._ref && typeof brancherFin === 'function') brancherFin(); /* E1 (13 · 74) : pas pour le mur de référence */
   const corpsF = mur.querySelector('.corpsd'); if (corpsF && !corpsF.classList.contains('cahier')) { corpsF.scrollTop = 0; corpsF.classList.toggle('p85f-ancre', !corpsF.classList.contains('plein-img') && corpsF.scrollHeight > corpsF.clientHeight + 2); corpsF._p85fDeborde = corpsF.scrollHeight > corpsF.clientHeight + 2; } /* (p8-5f) jamais défilé : ancré en haut, coupé en bas */
   loupeSur(mur, et);
@@ -18056,7 +18082,7 @@ function dr_paginerReference(mur, et){ if (!(S.atelier && !S.repetition)) return
   if (!corps) { if (page) page.textContent = ''; et.pages = null; et.pagesP = null; return true; }
   if (et2.policeRatio) corps.style.fontSize = (et2.policeRatio * H0).toFixed(2) + 'px';
   if (!et2.pagesP || et2.pagesP.length <= 1) { et.pages = null; et.pagesP = null; if (page) page.textContent = ''; let px = parseFloat(corps.style.fontSize); while (corps.scrollHeight > corps.clientHeight + 2 && px > 8) { px -= 0.5; corps.style.fontSize = px.toFixed(2) + 'px'; } return true; } /* une page : le pilote s'ajuste à sa taille, sans paginer */
-  const els = Array.from(corps.querySelectorAll('li, .rep')); const cles = els.map(p85fCle); et.pagesP = et2.pagesP; et.pages = et2.pagesP.map(p => p.map(c => cles.indexOf(c)).filter(i => i >= 0));
+  const els = Array.from(corps.querySelectorAll(DR_PAGE_ELS)); const cles = els.map(p85fCle); et.pagesP = et2.pagesP; et.pages = et2.pagesP.map(p => p.map(c => cles.indexOf(c)).filter(i => i >= 0));
   if (!et._pageManuelle || et.page == null || et.page >= et.pages.length) et.page = pageDeSuivi(et, els, et.pages); appliquerPages(mur, et); return true; }
 function paginer(mur, et){ if (mur.id === 'mur' && !et._ref && dr_paginerReference(mur, et)) return;
   const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps) { if (page) page.textContent = ''; et.pages = null; return; }
@@ -18064,26 +18090,50 @@ function paginer(mur, et){ if (mur.id === 'mur' && !et._ref && dr_paginerReferen
   const gros = et._blocActif != null ? corps.querySelector(`.bloc[data-bi="${et._blocActif}"]`) : null;
   const murH = mur.clientHeight || 616; const pt0 = TAILLES[et.taille].pt; const pxMin = policePx(murH, 26);
   if (corps.scrollHeight > H + 2) { /* la police de la diapo descend jusqu'au plancher (26 pt), jamais en dessous */ let px = parseFloat(corps.style.fontSize); while (corps.scrollHeight > H + 2 && px > pxMin + 0.1) { px = Math.max(pxMin, px - 0.5); corps.style.fontSize = px.toFixed(2) + 'px'; } et.policeReduite = px < policePx(murH, pt0) - 0.1 ? Math.round(px / policePx(murH, 32) * 32) : null; } else et.policeReduite = null; et.policeRatio = corps.style.fontSize && murH ? parseFloat(corps.style.fontSize) / murH : null; /* (p8-5f) la police de la diapo, en part de sa hauteur : le tableau la reprend */
-  if (corps.scrollHeight <= H + 2) { page.textContent = ''; et.pages = null; return; }
-  const els = Array.from(corps.querySelectorAll('li, .rep')); const base = corps.querySelector('.act') ? corps.querySelector('.act').offsetHeight + 8 : 0; const top0 = els.length ? p85fHaut(els[0], corps) : 0; const pages = []; let cur = [], debut = 0; /* (p8-5f) la hauteur de chaque ligne dans le corps, quel que soit son bloc */
-  els.forEach((l, i) => { const y = p85fHaut(l, corps); const bas = y + l.offsetHeight - top0; if (bas - debut > H - base && cur.length) { pages.push(cur); cur = []; debut = y - top0; } cur.push(i); }); pages.push(cur);
-  { const pageAvant = et.page; const limite = H - (parseFloat(getComputedStyle(corps).paddingBottom) || 0); for (let pi = 0; pi < pages.length && pi < 60; pi++) { et.pages = pages; et.page = pi; appliquerPages(mur, et); const p = pages[pi]; const k = p.findIndex(i => p85fHaut(els[i], corps) + els[i].offsetHeight > limite + 1); if (k > 0) { const suite = pages[pi + 1]; pages.splice(pi, suite ? 2 : 1, p.slice(0, k), p.slice(k).concat(suite || [])); } } et.page = pageAvant; } /* (p8-5f) chaque page est montrée et mesurée sur ses boîtes réelles (titres, consignes, écarts entre blocs compris) : une ligne qui passe la marge du bas ouvre la page suivante, qui reprend la suite et se mesure à son tour ; une ligne seule trop haute reste (ancrée en haut, coupée en bas) */
+  const tabTrop = dr_tabTrop(corps);   /* C16 (§3.4 des quatre dettes) : un tableau plus haut que son dessin passe en pages, comme le texte */
+  if (corps.scrollHeight <= H + 2 && !tabTrop.length) { page.textContent = ''; et.pages = null; return; }
+  const els = Array.from(corps.querySelectorAll(DR_PAGE_ELS)); const rangee = l => l.tagName === 'TR'; const base = corps.querySelector('.act') ? corps.querySelector('.act').offsetHeight + 8 : 0; const top0 = els.length ? p85fHaut(els[0], corps) : 0; let pages = []; let cur = [], debut = 0; /* (p8-5f) la hauteur de chaque ligne dans le corps, quel que soit son bloc */
+  if (corps.scrollHeight <= H + 2) pages = [els.map((l, i) => i)]; else {   /* une rangée de tableau suit la ligne qui la précède : le texte se découpe comme avant */
+  els.forEach((l, i) => { if (rangee(l)) { cur.push(i); return; } const y = p85fHaut(l, corps); const bas = y + l.offsetHeight - top0; if (bas - debut > H - base && cur.length) { pages.push(cur); cur = []; debut = y - top0; } cur.push(i); }); pages.push(cur);
+  { const pageAvant = et.page; const limite = H - (parseFloat(getComputedStyle(corps).paddingBottom) || 0); for (let pi = 0; pi < pages.length && pi < 60; pi++) { et.pages = pages; et.page = pi; appliquerPages(mur, et); const p = pages[pi]; const k = p.findIndex(i => !rangee(els[i]) && p85fHaut(els[i], corps) + els[i].offsetHeight > limite + 1); if (k > 0) { const suite = pages[pi + 1]; pages.splice(pi, suite ? 2 : 1, p.slice(0, k), p.slice(k).concat(suite || [])); } } et.page = pageAvant; } } /* (p8-5f) chaque page est montrée et mesurée sur ses boîtes réelles (titres, consignes, écarts entre blocs compris) : une ligne qui passe la marge du bas ouvre la page suivante, qui reprend la suite et se mesure à son tour ; une ligne seule trop haute reste (ancrée en haut, coupée en bas) */
+  if (tabTrop.length) pages = dr_tabPages(mur, et, corps, els, pages, tabTrop);
   et.pages = pages; et.pagesP = pages.map(p => p.map(i => p85fCle(els[i]))); /* (p8-5f) les pages par identité, pour le tableau */ if (!et._pageManuelle || et.page == null || et.page >= pages.length) et.page = pageDeSuivi(et, els, pages); appliquerPages(mur, et);
 }
 
+/* C16 (les quatre dettes, §3.4 ; tranché par la conscience : « il passe en pages, comme le texte d'une diapo passe en pages ») — LE SCHÉMA « TABLEAU » PLUS
+   HAUT QUE SON DESSIN. La police ne rapetisse jamais (T1 : 32 pt l'en-tête, 26 pt les cases) et le tableau est figé (aucun défilement) : ses rangées passent
+   en pages, le mécanisme du texte (et.pages, appliquerPages, pageMain, Maj + ← →, la molette qui passe d'abord les pages, la colonne, le tableau qui suit par
+   pagesP, la vignette) — chaque rangée est un élément de page (`tr[data-pg]`, sa clé `g<bloc>.<rang>`), l'en-tête reste en haut de chaque page, la coupure
+   tombe entre deux rangées. Chaque page est montrée et mesurée sur ses boîtes réelles (la largeur des colonnes suit les rangées montrées) : une rangée qui
+   dépasse passe à la page suivante. Une rangée seule plus haute que le dessin reste seule sur sa page, ancrée en haut (`p8-ancre`) : rien n'est perdu (la
+   source n'est jamais touchée) et la mesure de l'Atelier (p8MesureLisible, ses cases « hors du cadre ») la signale à la préparation. Un tableau qui tient
+   ne change pas (aucune page). */
+const DR_PAGE_ELS = 'li, .rep, tr[data-pg]';
+function dr_tabTrop(corps){ const out = []; corps.querySelectorAll('.p8-dessin').forEach(z => { const t = z.querySelector(':scope > table.p8-grille'); if (t && t.querySelector('tr[data-pg]') && t.offsetHeight > z.clientHeight + 1) out.push({ z, t }); }); return out; }
+function dr_tabPages(mur, et, corps, els, pages, trop){ const pageAvant = et.page;
+  trop.forEach(({ z, t }) => { const rs = []; els.forEach((l, i) => { if (l.tagName === 'TR' && l.closest('table') === t) rs.push(i); }); if (!rs.length) return;
+    const pi = pages.findIndex(p => p.includes(rs[0])); if (pi < 0) return; const P = pages[pi]; const avant = P.filter(i => rs.indexOf(i) < 0 && i < rs[0]), apres = P.filter(i => rs.indexOf(i) < 0 && i > rs[rs.length - 1]), autres = P.filter(i => rs.indexOf(i) < 0 && i > rs[0] && i < rs[rs.length - 1]);
+    const hd = t.querySelector('tr:not([data-pg])'); const hh = hd ? hd.offsetHeight : 0; const Hd = z.clientHeight; const ch = []; let cur = [], acc = hh;
+    rs.forEach(i => { const h = els[i].offsetHeight; if (cur.length && acc + h > Hd) { ch.push(cur); cur = []; acc = hh; } cur.push(i); acc += h; }); ch.push(cur);
+    const faire = () => ch.map((c, j) => (j === 0 ? avant.concat(autres) : []).concat(c, j === ch.length - 1 ? apres : []));
+    for (let j = 0; j < ch.length && j < 80; j++) { let tour = 0; while (tour++ < 60) { const np = pages.slice(0, pi).concat(faire(), pages.slice(pi + 1)); et.pages = np; et.page = pi + j; appliquerPages(mur, et);
+        if (t.offsetHeight <= z.clientHeight + 1 || ch[j].length < 2) break; const x = ch[j].pop(); if (j === ch.length - 1) ch.push([x]); else ch[j + 1].unshift(x); } }
+    pages = pages.slice(0, pi).concat(faire(), pages.slice(pi + 1)); });
+  et.page = pageAvant; return pages; }
+function dr_tabAncrer(mur){ mur.querySelectorAll('.p8-dessin').forEach(z => { const t = z.querySelector(':scope > table.p8-grille'); if (t) t.classList.toggle('p8-ancre', t.offsetHeight > z.clientHeight + 1); }); }
 function pageDeSuivi(et, els, pages){ let cible = -1; els.forEach((l, i) => { if (l.classList.contains('libre') && et._blocActif != null && +l.dataset.bi === et._blocActif) cible = i; });
   if (et.atelier) { const f = (S._p85fCible != null && $('mur').querySelector(`[data-p="${S._p85fCible}"]`)) || document.activeElement; const fi = f ? els.findIndex(l => l === f || l.contains(f)) : -1; if (fi < 0) return et.page != null && et.page < pages.length ? et.page : 0; cible = fi; } /* (p8-5f) l'atelier : la page de la ligne qui a le curseur, ou de celle qui va le recevoir */
   else if (S.repetition) { const f = (S._p85fCible != null && $('mur').querySelector(`[data-p="${S._p85fCible}"]`)) || document.activeElement; const fi = f && (f.isContentEditable || S._p85fCible != null) ? els.findIndex(l => l === f || l.contains(f)) : -1; if (fi >= 0) cible = fi; } /* EX (§12.56 (1) c, §12.59) : en répétition aussi, la page suit la ligne où Paul écrit — mesuré par la sonde 56s : sur la diapo d'ouverture (la présentation du chapitre, la première de la répétition), la frappe qui faisait passer la ligne en page 2 ramenait la page du dévoilé, la ligne partait « hors » et Paul perdait le focus et la suite de sa frappe */
   if (cible < 0 && !et.atelier && S.neuf && S.neuf.di === S.di && S.neuf.k === et.nDev - 1) { const ni = els.findIndex(l => l.dataset.k != null && +l.dataset.k === S.neuf.k); if (ni >= 0) cible = ni; } /* E1 (relecture continue E4, A4 14:50 ; C1 5.2) : la page suit ce que ▶ vient de montrer — plus la page de la dernière réponse écrite */
-  if (cible < 0) { let last = -1; els.forEach((l, i) => { if (l.dataset.k != null && +l.dataset.k < et.nDev) last = i; if (l.dataset.r != null && !l.classList.contains('pas')) last = i; }); /* (p8-5f) un champ de réponse ne compte que dévoilé */ cible = Math.max(0, last); }
+  if (cible < 0) { let last = -1; els.forEach((l, i) => { if (l.dataset.k != null && +l.dataset.k < et.nDev) last = i; if (l.dataset.r != null && !l.classList.contains('pas')) last = i; if (l.dataset.pg != null) { const z = l.closest('.p8-dessin'); const vu = z ? +z.dataset.vu : NaN; if (isFinite(vu) && +l.dataset.pg < vu) last = i; } });   /* C16 (§3.4) : une rangée dévoilée (un à un) ; « tout ensemble » : la page ne suit pas les rangées */ /* (p8-5f) un champ de réponse ne compte que dévoilé */ cible = Math.max(0, last); }
   const pi = pages.findIndex(p => p.includes(cible)); return pi < 0 ? 0 : pi; }
 
 function appliquerPages(mur, et){ const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps || !et.pages) { if (page) page.textContent = ''; return; }
-  const els = Array.from(corps.querySelectorAll('li, .rep')); const pi = Math.max(0, Math.min(et.pages.length - 1, et.page || 0)); els.forEach((l, i) => l.classList.toggle('hors', !et.pages[pi].includes(i)));
-  corps.querySelectorAll('.bloc').forEach(b => { const vis = Array.from(b.querySelectorAll('li, .rep')).some(x => !x.classList.contains('hors')); b.querySelectorAll('.cons, .q').forEach(t => t.classList.toggle('hors', !vis && b.querySelectorAll('li, .rep').length > 0)); });
+  const els = Array.from(corps.querySelectorAll(DR_PAGE_ELS)); const pi = Math.max(0, Math.min(et.pages.length - 1, et.page || 0)); els.forEach((l, i) => l.classList.toggle('hors', !et.pages[pi].includes(i)));
+  corps.querySelectorAll('.bloc').forEach(b => { const vis = Array.from(b.querySelectorAll(DR_PAGE_ELS)).some(x => !x.classList.contains('hors')); b.querySelectorAll('.cons, .q').forEach(t => t.classList.toggle('hors', !vis && b.querySelectorAll(DR_PAGE_ELS).length > 0)); });
   page.innerHTML = et.pages.length > 1 ? `<span data-p="-1" title="page précédente (molette, Maj+←)">‹</span>page ${pi + 1} / ${et.pages.length}<span data-p="1" title="page suivante (molette, Maj+→)">›</span>` : ''; }
 
-function p85fCle(l){ return l.dataset.p || ('r' + l.dataset.bi + '.' + l.dataset.r + '.' + (l.dataset.k || '')); }
+function p85fCle(l){ if (l.dataset.pg != null) { const sc = l.closest('[data-bloc]'); return 'g' + (sc ? sc.dataset.bloc : '') + '.' + l.dataset.pg; }   /* C16 (§3.4 des quatre dettes) : une rangée de tableau */ return l.dataset.p || ('r' + l.dataset.bi + '.' + l.dataset.r + '.' + (l.dataset.k || '')); }
  /* (p8-5f) l'identité d'une ligne de page, la même au pilote et au tableau */
 function p85fHaut(l, corps){ let y = 0, n = l; while (n && n !== corps) { y += n.offsetTop; n = n.offsetParent; } if (n === corps) return y; const r = corps.getBoundingClientRect(); const k = r.height && corps.offsetHeight ? corps.offsetHeight / r.height : 1; return (l.getBoundingClientRect().top - r.top) * k + corps.scrollTop; }
  /* (p8-5f) la hauteur d'une ligne dans le corps de la diapo, où qu'elle soit */
@@ -20048,6 +20098,20 @@ function dr_versHub(x){
   });
   return o;
 }
+/* C16 (les quatre dettes, §3.2) — LE VRAI HUB (Firebase Realtime Database) ne range ni une valeur nulle, ni une liste vide, ni un objet vide : relu, l'état
+   d'une heure n'a plus ses `lum: []`, `ecr: []`, `reps: {}`… (par diapo), ni ses `parts: []`, `travail.terminer: []`, `gel: null`… — mesuré par le geste
+   sur un faux hub rangé comme le vrai : la reprise s'arrêtait sur « Cannot read properties of undefined (reading 'slice') » (etatComplet0) et la diapo ne
+   se dessinait plus. Relu, l'état reprend ce qui manque : par diapo, l'état d'une diapo neuve (etatDiapo) ; pour S, l'état d'une heure neuve
+   (DR_S_DEFAUT : les listes, les objets et les valeurs nulles, jamais ce que l'écriture retire exprès — DR_ETAT_HORS). Rien d'autre ne change. */
+const dr_estObjet = x => !!x && typeof x === 'object' && !Array.isArray(x);
+function dr_etatRempli(s){ if (!dr_estObjet(s)) return s; const hors = ['mur', 'attente', 'anim', 'coupure', 'di', 'ordres', 'repSnap', 'blocActif', 'cand'];
+  const rem = (d, o) => { Object.keys(d).forEach(k => { const v = d[k]; if (o[k] === undefined) { if (v === null || typeof v === 'object') o[k] = JSON.parse(JSON.stringify(v)); } else if (dr_estObjet(v) && dr_estObjet(o[k])) rem(v, o[k]); }); };
+  try { const d = typeof DR_S_DEFAUT !== 'undefined' ? DR_S_DEFAUT : {}; const d2 = {}; Object.keys(d).forEach(k => { if (hors.indexOf(k) < 0) d2[k] = d[k]; }); rem(d2, s); } catch (e) {} return s; }
+function dr_parDiapoRempli(pd){ if (!dr_estObjet(pd)) return {}; Object.keys(pd).forEach(k => { const x = dr_estObjet(pd[k]) ? pd[k] : {};
+  pd[k] = Object.assign({ nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} }, x);
+  ['lum', 'ecr'].forEach(n => { if (!Array.isArray(pd[k][n])) pd[k][n] = dr_estObjet(pd[k][n]) ? Object.keys(pd[k][n]).sort((a, b) => a - b).map(i => pd[k][n][i]).filter(v => v != null) : []; else pd[k][n] = pd[k][n].filter(v => v != null); });
+  ['reps', 'tailles', 'textes', 'fsBloc'].forEach(n => { if (pd[k][n] == null || typeof pd[k][n] !== 'object') pd[k][n] = {}; }); });
+  return pd; }
 function dr_duHub(x){
   if (Array.isArray(x)) return x.map(dr_duHub);
   if (!x || typeof x !== 'object') return x;
@@ -20315,7 +20379,7 @@ function dr_reprendre(cb){
     dr_finAvecCahier();
     if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
-    dr_restaurer({ S: dr_copieEtatDuHub(dr_duHub(etat.S), seance().ecrans), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
+    dr_restaurer({ S: dr_copieEtatDuHub(dr_etatRempli(dr_duHub(etat.S)), seance().ecrans), parDiapo: dr_parDiapoRempli(dr_duHub(etat.parDiapo || {})), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     try { if (typeof dr_invConvertirCopie === 'function') dr_invConvertirCopie(); } catch (e) {}   /* C16 (§4.11) : le journal relu, une ancienne diapo d'ouverture jamais montrée prend le canon ; une montrée ne change pas */
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
@@ -20376,7 +20440,7 @@ function dr_lireJoue(cb, chemin){
   dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
     if (!et && !jr) { cb(null); return; }
     if (Array.isArray(ecr)) dr_copieDuHub(ecr);   /* C16 (retour sûr) : le canon des diapos d'ouverture, ce que la classe a écrit (dr-socle.js) */
-    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_copieEtatDuHub(dr_duHub((et || {}).S || {}), Array.isArray(ecr) ? ecr : []), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
+    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_copieEtatDuHub(dr_etatRempli(dr_duHub((et || {}).S || {})), Array.isArray(ecr) ? ecr : []), parDiapo: dr_parDiapoRempli(dr_duHub((et || {}).parDiapo || {})), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
   })));
 }
 

@@ -914,3 +914,18 @@ MEMO
   > 02/11/2026 15:05
   >
   > MEMO
+- **15:07 — Paul, mot pour mot** : « 18h trop tard. 16h15 dernier délai »
+- **15:08 — la conscience** : à l'exécutant de ㉞ — les captures à 15:35, le code prouvé à 16:00 (la vraie heure et le mode test, puis la télécommande, puis la répétition si le temps le permet), rien de cassé à chaque poussée.
+- **15:08 — message à Paul, mot pour mot :**
+
+  > 228. C'est transmis : les captures pour toi à 15:35, le code prouvé à 16:00. Dans l'ordre : la vraie heure et le mode test, repilotables partout (ton parcours de 14:59 en preuve), puis la télécommande par le QR, puis la répétition si le temps le permet. Ce qui ne tiendra pas, il le dira à 16:00.
+  >
+  > 229. Mon banc complet prend environ 35 minutes après la livraison : il finirait vers 16:35. Ta décision : soit je te demande le « promeus » vers 16:40, avec le banc complet ; soit, à 16:15, je ne passe que les étapes du banc touchées par ㉞ (le tableau distant, la reprise, le mode test), environ 15 minutes, et le reste du banc tourne juste après la mise en ligne.
+  >
+  > À jouer : rien · en cours : l'exécutant de ㉞ (captures à 15:35, code à 16:00) · ouvert : 229
+  >
+  > À tester : la liste de 14:34.
+  >
+  > 02/11/2026 15:08
+  >
+  > MEMO

@@ -545,3 +545,14 @@ MEMO
   > MEMO
 - **11:12 — le cinquième exécutant : banc 4 VERT** (sur `ddd8a94`, comme le banc 3) ; il rejoue ensuite l'étape 11 cinq fois seule (sa NOTE §4.2), sans pousser : sa NOTE finale pas encore poussée à 11:42.
 - **11:44 — l'exécutant des correctifs lancé** (mandat `MANDAT-CORRECTIFS.md`, base `ddd8a94` — le code final du cinquième, ses bancs 3 et 4 VERTS ; branche `deroule/correctifs`, dossier `/home/claude/ex-correctifs` ; aucun navigateur avant que la machine soit libre ; la NOTE du cinquième fusionnée quand elle sera poussée, sans code ; délai 2 h). Le cinquième ne touche plus au code : les deux ne travaillent pas sur les mêmes fichiers.
+- **11:43 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : l'exécutant des correctifs ; le cinquième exécutant (sa note finale) · ouvert : 149, 153, 154, 155
+  >
+  > 157. L'exécutant des correctifs est lancé. Il commence par ㉘, la correction en direct refusée par le hub, puisque c'est elle qui a cassé ton heure ce matin. Il a 2 heures. Le cinquième exécutant a eu deux bancs complets verts sur son code. Il finit une dernière mesure, puis il me rend sa note.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 11:43
+  >
+  > MEMO

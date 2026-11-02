@@ -1,0 +1,79 @@
+<!-- MAQUETTE C16 222 — l'appel au lancement (㊱). Posée sur le fichier en ligne, sans rien retirer.
+     Paul, 14:14 : « quand je clique sur la case de l'emploi du temps, la prmière chose à faire c'est l'appel. »
+     Ce que la maquette montre :
+     1. la case d'une heure à venir s'ouvre sur l'appel : la liste de la classe, un clic marque un absent, un clic défait ; puis « ▶ Ouvrir le pilotage
+        et lancer », comme avant, qui dit « appel fait » ;
+     2. l'heure lancée porte ces absents dès la première diapo (la participation : « n sur N présents ») ;
+     3. un appel fait après coup, dans la case d'une heure close, corrige la Relecture (« L'APPEL », « n élèves sur N présents »).
+     Rien d'autre ne change. -->
+<script id="maq-appel">
+(function(){
+  if (typeof edtPeindreModale !== 'function' || typeof edtLancer !== 'function') return;
+  var PEND = {};                       /* la case → les absents cochés avant le lancement (slugs) */
+  var guil = function(x){ return JSON.stringify(x).replace(/"/g, '&quot;'); };
+
+  /* 1 · la case d'une heure à venir : l'appel d'abord */
+  var peindre0 = edtPeindreModale;
+  window.edtPeindreModale = function(){
+    var r = peindre0.apply(this, arguments);
+    try {
+      var cle = EDT_MOD.cle, c = edtCellule(cle); if (!c || c.nature !== 'prevu' || !c.classeMjpc) return r;
+      var m = document.getElementById('edt-modale'); if (!m) return r;
+      var lancer = Array.prototype.find.call(m.querySelectorAll('button.edt-btn-prim'), function(b){ return /Ouvrir le pilotage et lancer/.test(b.textContent); });
+      if (!lancer) return r;
+      var el = edtElevesDe(c.classeMjpc); if (!el.length) return r;
+      var abs = PEND[cle] || [];
+      var d = document.createElement('div'); d.className = 'edt-mo-bloc'; d.id = 'maq-appel';
+      d.innerHTML = '<label class="edt-lab">L’appel — absents (' + abs.length + ' sur ' + el.length + ')</label>'
+        + '<p class="edt-mini-t">D’abord l’appel : un clic marque un absent, un clic défait. Jamais montré à la classe. Puis lance l’heure.</p>'
+        + '<div class="edt-eleves">' + el.map(function(n){ var a = abs.indexOf(edtSlugEleve(n)) >= 0;
+            return '<button class="edt-el' + (a ? ' edt-el-abs' : '') + '" onclick="maqAppelBascule(' + guil(cle) + ',' + guil(n) + ')">' + escapeHtml(n) + '</button>'; }).join('') + '</div>';
+      lancer.parentNode.insertBefore(d, lancer);
+      lancer.innerHTML = '▶ Ouvrir le pilotage et lancer <span class="edt-mini-t">— appel fait : ' + (abs.length ? abs.length + ' absent' + (abs.length > 1 ? 's' : '') : 'tous présents') + '</span>';
+    } catch (e) {}
+    return r;
+  };
+  window.maqAppelBascule = function(cle, nom){
+    var s = edtSlugEleve(nom), l = (PEND[cle] || []).slice(), i = l.indexOf(s);
+    if (i < 0) l.push(s); else l.splice(i, 1);
+    PEND[cle] = l; edtPeindreModale();
+  };
+
+  /* 2 · l'heure lancée porte les absents de l'appel dès la première diapo */
+  var lancer0 = edtLancer;
+  window.edtLancer = function(cle, preparer){
+    var abs = (!preparer && PEND[cle] && PEND[cle].length) ? PEND[cle].slice() : null;
+    var r = lancer0.apply(this, arguments);
+    if (abs) { var n = 0, T = setInterval(function(){ n++;
+      try { if (typeof S === 'object' && S && S.lancee && !S.close && typeof ELEVES !== 'undefined' && ELEVES.length) { clearInterval(T);
+        var t0 = S.debutReel || Date.now(), k = 0;
+        ELEVES.forEach(function(e){ if (abs.indexOf(edtSlugEleve(e)) < 0 || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'appel au lancement' }]; k++; });
+        if (k) { try { journal('appel', { depuis: 'lancement', n: k }); } catch (x) {} try { dr_tout(); } catch (x) {} }
+        delete PEND[cle]; } } catch (e) {}
+      if (n > 200) clearInterval(T); }, 100); }
+    return r;
+  };
+
+  /* 3 · un appel fait après coup corrige la Relecture : les absents de la case (H/absents) rejoignent l'appel de leur heure */
+  if (typeof dr_recitChargerClasse === 'function') {
+    var charger0 = dr_recitChargerClasse;
+    window.dr_recitChargerClasse = function(slug, cb){
+      return charger0.call(this, slug, function(){
+        var args = arguments, fini = function(){ if (cb) cb.apply(null, args); };
+        try {
+          var C2 = dr_cheminB() + '/deroule_joue/' + slug;
+          dr_lire(C2 + '/heures', function(H){ try {
+            var cl = (typeof classesData !== 'undefined' && classesData[slug]) || null;
+            var noms = cl ? ((typeof extractEleves === 'function' ? extractEleves(cl) : cl.eleves) || []) : (typeof ELEVES !== 'undefined' ? ELEVES : []);
+            S.appel = S.appel || {};
+            Object.keys(H || {}).forEach(function(k){ var h = H[k] || {}, abs = Array.isArray(h.absents) ? h.absents : [], num = +h.heure || null; if (!abs.length || !num) return;
+              noms.forEach(function(e){ if (abs.indexOf(edtSlugEleve(e)) < 0) return;
+                var l = S.appel[e] || []; if (l.some(function(x){ return x.heure === num && x.type === 'absent'; })) return;
+                S.appel[e] = l.concat([{ type: 'absent', t: h.lanceAt || h.debutReel || 0, heure: num, raison: 'case de l’emploi du temps' }]); }); });
+          } catch (e) {} fini(); });
+        } catch (e) { fini(); }
+      });
+    };
+  }
+})();
+</script>

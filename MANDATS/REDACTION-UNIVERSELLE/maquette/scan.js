@@ -254,7 +254,7 @@ function scRendre() {
 }
 function scPagesAffichees() { const p = scPagesOrdre()[SC.ia]; return SC.attrib && p ? [p] : []; }
 function scDessinerPages() {   // [C14 401] la page à donner à son élève, pendant « 🔤 Les initiales »
-  const Z = document.getElementById("scCopie"); const ps = scPagesAffichees();
+  const Z = document.getElementById("scCopie"); const ps = scPagesAffichees(); Z.dataset.pq = "";
   if (!ps.length) { Z.dataset.sig = ""; Z.innerHTML = `<div class="sc-vide">Aucune page à afficher.</div>`; return; }
   const lw = Math.max(240, Z.clientWidth - 30) * (SC.zoom || 1); SC.upx = 1000 / lw;   // la page à la largeur de la zone, fois ton zoom
   let html = "";
@@ -616,7 +616,7 @@ function scRetirerPhotosOui() {
 /* ═══ [C14 404] le paquet en vignettes, rangées par élève, avec son nom et ses étapes ; une page sans élève en tête, pour « 🔤 Les initiales » ═══ */
 function scVuePaquet() {
   const Z = document.getElementById("scCopie"); if (!Z) return; Z.dataset.sig = "";
-  if (!Object.keys(SC.pages).length) { Z.innerHTML = `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
+  if (!Object.keys(SC.pages).length) { Z.dataset.pq = ""; Z.innerHTML = `<label class="sc-vide sc-vide-btn" title="Choisir ton paquet scanné, sur ta clé : un PDF, ou des photos (plusieurs à la fois). Il reste dans ce navigateur, jamais au site.">📄 Charger le paquet<small>un PDF ou des photos · il reste dans ce navigateur, jamais au site</small><input type="file" accept="application/pdf,.pdf,image/*" multiple onchange="scCharger(event)" hidden></label>`; return; }
   const O = scPagesOrdre(), vig = (p, titre, clic, n) => { const im = SC.imgs[p.id]; return `<button class="sc-pq-vig" onclick="${clic}" title="${escapeAttr(titre)}">${im ? `<img src="${im.url}" alt="" loading="lazy">` : `<span class="sc-pq-manque">photo à remettre</span>`}<i>${n}</i></button>`; };
   const sans = O.map((p, i) => ({ p, i })).filter(x => !x.p.eleve && !x.p.blanche), blanches = O.filter(p => p.blanche).length;
   let h = '<div class="sc-pq">';
@@ -625,7 +625,11 @@ function scVuePaquet() {
     h += `<section class="sc-pq-el${abs ? " abs" : ""}${k === scK() ? " cour" : ""}" data-k="${escapeAttr(k)}"><div class="sc-pq-nom"><b>${escapeHtml(nom)}</b>${abs ? '<b class="av-abs" title="Marqué absent : pas de fichier École Directe, il ne compte pas dans le Bilan.">ABS</b>' : ""}${typeof avCarteFlux === "function" ? avCarteFlux(k) : ""}</div>`
       + `<div class="sc-pq-vigs">${P.map((p, j) => vig(p, "Ouvrir la recopie de " + nom + " à sa page " + (j + 1) + (P.length > 1 ? " sur " + P.length : "") + ".", "scPqOuvrir('" + escapeAttr(k) + "','" + p.id + "')", "page " + (j + 1))).join("")}</div></section>`; });
   if (blanches) h += `<p class="sc-m">${blanches} page${blanches > 1 ? "s" : ""} blanche${blanches > 1 ? "s" : ""} dans le paquet : sans élève, elle${blanches > 1 ? "s" : ""} ne compte${blanches > 1 ? "nt" : ""} pas.</p>`;
-  Z.innerHTML = h + "</div>";
+  h += "</div>"; if (Z.dataset.pq === h) return;   // rien de neuf : rien ne se redessine
+  /* un redessin ne touche jamais au focus : la vignette qui l'avait le garde */
+  const a = document.activeElement, el = a && Z.contains(a) ? a.closest(".sc-pq-el") : null, ou = el ? { k: el.dataset.k || "", i: Array.from(el.querySelectorAll(".sc-pq-vig, button")).indexOf(a) } : null;
+  Z.innerHTML = h; Z.dataset.pq = h;
+  if (ou) { const e2 = Array.from(Z.querySelectorAll(".sc-pq-el")).find(x => (x.dataset.k || "") === ou.k), b = e2 && e2.querySelectorAll(".sc-pq-vig, button")[ou.i]; if (b) b.focus({ preventScroll: true }); }
 }
 function scPqOuvrir(k, pid) {
   const i = SC.copies.indexOf(k); if (i < 0) return; SC.ic = i; state.scanRecopie = { ouverte: false, copie: k, page: pid, ligne: null }; state.scanCurseur = Object.assign({}, state.scanCurseur || {}, { copie: k });   // là où tu travailles : l'écran des scans y revient

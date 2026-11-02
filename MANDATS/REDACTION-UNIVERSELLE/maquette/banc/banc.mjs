@@ -46,8 +46,11 @@ verif('le paquet (C14 404) : la dernière page donnée, l\'écran montre le paqu
   await cap('C14-404-2-recopie-a-sa-page'); await pg.keyboard.press('Escape'); await att(500);
   const o5 = await pg.evaluate(k => ({ rc: RC.ouvert, vue: document.getElementById('scanEcran').classList.contains('sc-vue-paquet'), cour: !!document.querySelector('#scCopie .sc-pq-el.cour[data-k="' + k + '"]') }), k2);
   await pg.keyboard.press('Enter'); await att(300); const o6 = await pg.evaluate(() => ({ rc: RC.ouvert, passe: SC.passe, rep: JSON.stringify(scCopie(scK()).rep || {}) }));
-  verif('le paquet (C14 404) : un clic sur la page 2 de ' + o4.nom + ' ouvre sa recopie à cette page (' + [o4.rc, o4.copie, o4.page, o4.vue].join(', ') + ') ; Échap revient au paquet, sa ligne marquée (' + o5.cour + ') ; Entrée n\'y répond à aucune question (' + o6.rep + ')',
-    o4.rc && o4.copie && o4.page && o4.vue && !o5.rc && o5.vue && o5.cour && !o6.rc && o6.rep === '{}'); }
+  /* un redessin du paquet (une photo arrivée, le site qui change) ne touche pas au focus : la vignette qui l'avait le garde */
+  await pg.locator('#scCopie .sc-pq-el[data-k="' + k2 + '"] .sc-pq-vig').nth(1).focus(); await pg.evaluate(() => { document.getElementById("scCopie").dataset.pq = ""; scRendre(); }); await att(150);
+  const foc404 = await pg.evaluate(k => { const a = document.activeElement; return !!a && a.classList.contains("sc-pq-vig") && a.closest(".sc-pq-el").dataset.k === k && Array.from(a.parentNode.children).indexOf(a) === 1; }, k2);
+  verif('le paquet (C14 404) : un clic sur la page 2 de ' + o4.nom + ' ouvre sa recopie à cette page (' + [o4.rc, o4.copie, o4.page, o4.vue].join(', ') + ') ; Échap revient au paquet, sa ligne marquée (' + o5.cour + ') ; Entrée n\'y répond à aucune question (' + o6.rep + ') ; un redessin garde le focus sur la vignette (' + foc404 + ')',
+    o4.rc && o4.copie && o4.page && o4.vue && !o5.rc && o5.vue && o5.cour && !o6.rc && o6.rep === '{}' && foc404); }
 // les copies vierges : la fenêtre d'impression
 const pop = ctx.waitForEvent('page'); await pg.click('#scanEcran .sc-haut >> text=🖨 Copies vierges'); const fen = await pop; await fen.waitForLoadState(); await att(400);
 verif('les copies vierges : ' + await fen.locator('.p svg').count() + ' pages à imprimer, quatre repères chacune', await fen.locator('.p svg').count() >= 30 && await fen.locator('.p').first().locator('rect[fill="#000"]').count() === 4); await fen.close();

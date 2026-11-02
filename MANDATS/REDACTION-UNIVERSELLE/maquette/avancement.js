@@ -122,7 +122,7 @@ function avLignesTempsClasse(F) { const L = F.reduce((a, f) => a + ((f || {}).li
   return '<td class="av-n"><b>' + (L || "") + '</b></td><td class="av-n">' + (t ? "<b>" + avDureeB(t) + "</b>" + (n ? '<br><span class="av-m">' + avDureeB(t / n) + " par copie</span>" : "") : "") + "</td>"; }
 function avGrilleBouton(k) { if (!(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const o = AV_GRILLES.has(k);
   return ' <button class="av-grille-b" data-k="' + escapeAttr(k) + '" aria-expanded="' + o + '" onclick="avGrilleBasculer(this.dataset.k)" title="' + (o ? "Replier les lignes de sa grille." : "Voir chaque ligne de sa grille : ses points, son niveau, ses stickers réussis.") + '">' + (o ? "▾" : "▸") + " sa grille</button>"; }
-function avGrilleBasculer(k) { if (AV_GRILLES.has(k)) AV_GRILLES.delete(k); else AV_GRILLES.add(k); avBilanClasse(); }
+function avGrilleBasculer(k) { if (AV_GRILLES.has(k)) AV_GRILLES.delete(k); else AV_GRILLES.add(k); avBilanClasse(); const b = Array.from(document.querySelectorAll("#ruVue_bilan .av-grille-b")).find(x => x.dataset.k === k); if (b) b.focus({ preventScroll: true }); }   // le bouton cliqué garde le focus
 function avGrilleDetail(k, n) {
   if (!AV_GRILLES.has(k) || !(typeof stCorrigeeAvec === "function" && stCorrigeeAvec(k))) return ""; const nt = stNoteCopie(k), det = {}, D = scCopie(k).stickers || {}, nb = x => String(Math.round(x * 100) / 100).replace(".", ","); nt.det.forEach(x => { det[x.ligne] = x; });
   const L = stSujetLignes().map(l => { const x = det[l.id] || {}, S = stDeLigne(l.id).filter(y => y.etat === "valide" && !y.neCompte), r = S.filter(y => (D[y.id] || {}).v === "o");

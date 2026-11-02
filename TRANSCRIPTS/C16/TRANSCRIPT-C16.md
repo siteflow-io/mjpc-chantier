@@ -400,3 +400,17 @@ MEMO
 - **02:00 — la sonde du fil entre au banc unique** (étape 11, `ab9d7e1`).
 - **02:00 — cinq dettes trouvées par l'exécutant, ouvertes au registre, aucune laissée** (règle de Paul : jamais de promotion sur une dette, même préexistante) : (1) une heure commencée avec la nouvelle version puis reprise dans la 8.77.1-⑩ montrerait ses diapos d'ouverture « Objet non lisible » au pilote et vides au tableau — le point de retour ne serait pas à portée en pleine heure ; (2) la 8.77.1-⑩, si elle réécrit un déroulé, efface les retraits qu'elle ne connaît pas (les compétences du chapitre retirées reviendraient) ; (3) le bilan des compétences pas joué par le geste dans la preuve de coexistence ; (4) une diapo écrite avant que la taxonomie soit chargée partirait au hub sans ses libellés ; (5) préexistante, en production : un schéma « tableau » aux cellules longues déborde de la diapo et son texte est coupé.
 - **02:02 — mandat du troisième exécutant** (`MANDATS/DEROULE-01-11/MANDAT-RETOUR-SUR.md`, base `ab9d7e1`, les cinq dettes, la copie de la classe d'abord) ; **lancé à 02:02**, échéance 04:15. Choix de la nuit n°3 : le retour en pleine heure se règle dans ce que la nouvelle version écrit et lit, sans migration du hub ; retour : ce n'est que du code.
+- **02:14 — message laissé à Paul (il dort ; à lire au réveil), mot pour mot :**
+
+  > À jouer : ta classe d'aujourd'hui, sur la 8.77.1-⑩ · en cours : le troisième exécutant (reprendre une heure sur la 8.77.1-⑩ sans rien perdre) · ouvert : 15
+  >
+  > 76. Le fil, les flèches et la molette sont livrés à 02:00, avec un banc vert. En relisant le travail, cinq défauts sont apparus. Je n'en laisse aucun avant ton « promeus ». Le plus important : si on revenait à la 8.77.1-⑩ en pleine heure, les diapos d'ouverture déjà montrées seraient illisibles. Un nouvel exécutant les règle tous depuis 02:02 et doit avoir fini à 04:15. J'ai pris ce choix seul, comme convenu cette nuit (choix n°3). Il est écrit dans le transcript.
+  >
+  > 77. Un changement à valider sur les captures : pour faire place au fil, le texte de toutes les diapos est un peu décalé vers la droite (1,6 % de la largeur). À 05:30, je te montre la même diapo avant et après.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 02:14
+  >
+  > MEMO
+- **03:30 — contrôle horaire.** Le troisième exécutant a poussé §3.1 et §3.2 (`bbf3fb0` 02:33, `da7add7` 03:04) : sa sonde R, I, T 42 vérifications / 0 échec, banc complet (étapes 1 à 11) VERT. Code lu au passage par la conscience : la copie de la classe part au hub lisible (`dr_copiePourHub` : un bloc de texte, le même identifiant, une ligne par ligne dévoilée, le canon sous `ouvCanon`) et chaque lecteur de la nouvelle version relit le canon (`dr_copieDuHub` : la reprise, `dr_lireJoue`, `dr_jouerCopie`, le tableau distant) ; ce que la classe a écrit dans le parcours et les compétences part en lignes, ses textes sous `ouvEl` ; les retraits que la 8.77.1-⑩ ne garde pas partent aussi sous `ouvRetraits`. Restent §3.3 à §3.5 (le bilan des compétences, la taxonomie retardée, le tableau aux cellules longues) ; échéance 04:15 tenue à ce rythme. Rien à renvoyer pour l'instant ; l'audit complet se fait sur la livraison.

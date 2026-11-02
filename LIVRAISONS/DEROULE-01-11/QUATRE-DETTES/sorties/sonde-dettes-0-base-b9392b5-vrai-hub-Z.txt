@@ -1,0 +1,6 @@
+C16 · sonde du retour sûr à la 8.77.1-⑩ · parties Z · 2026-11-02 03:14 UTC · nouvelle version md5 39ccf4fc862ccc567d2abdcc01103e65 · 8.77.1-⑩ md5 09a19419011c2a09ebeae21d4c4d41f0
+
+══ Z · 1536×864 · le témoin : la 8.77.1-⑩ seule commence l’heure et la reprend (hub rangé comme le vrai) ══
+  ÉCHEC  Z · Z · la 8.77.1-⑩ seule reprend sa propre heure : la même diapo, le même compteur, aucune erreur JS — {"avant":["emt9v3yqoecf9d","0 / 6 dévoilés"],"apres":["emt9v3yqoecf9d","0 / 3 dévoilés"],"erreurs":["Cannot read properties of undefined (reading 'slice') @     at etatComplet0 (file://<session>/base-Z/_ancienne-8.77.1.html?n=3e:17767:3149) |     at etatComplet (file://<session>/base-Z/_ancienne-8.77.1.html?n=3e:17859:40) |     at dr_tout (file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4d"]}
+
+— fin : 1 vérifications, 1 échec(s) · ROUGE

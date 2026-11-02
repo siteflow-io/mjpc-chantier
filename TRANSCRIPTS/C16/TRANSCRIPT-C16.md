@@ -1049,3 +1049,16 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
   >
   > MEMO
+- **16:17 — Paul, mot pour mot** : « ça ne concerne que le dévoilement? »
+- **16:17 — la conscience** : relu dans le code de `travail/session-2` (`dr-session.js` l. 116, 122, 124 : `DR_SES_VUE`, `parDiapo`/`vuMax`, la copie de la classe).
+- **16:17 — message à Paul, mot pour mot :**
+
+  > 241. Non : tous les gestes du téléphone qui changent ce que voit la classe. Changer de diapo, passer à la page suivante d'un tableau, dévoiler, geler, la loupe, la taille du texte, une correction écrite dans la diapo, une réponse écrite sur le téléphone. Pour ceux-là, tant que tu écris à l'ordinateur, le tableau montre ton geste du téléphone, et les lettres tapées ensuite à l'ordinateur arrivent d'un coup quand tu sors du champ. Tout le reste passe aussitôt, même pendant que tu écris : une participation notée, le minuteur, une note.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:17
+  >
+  > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

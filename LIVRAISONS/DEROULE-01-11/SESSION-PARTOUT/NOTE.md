@@ -54,8 +54,14 @@ Mesuré après : le bandeau en 1 à 7 ms une fois la page prête (≤ 2 s) ; dix
    - (e) un geste d'ici pas encore parti (l'envoi attend 20 ms) part avant qu'un état reçu se pose ;
    - (f) un texte qui prolonge celui de l'autre (l'autre n'avait pas reçu les dernières lettres) : le plus long ;
    - (g) perdre la main ferme un texte de la diapo, plus le champ des initiales (la participation en cours est posée à Entrée, et reprend la main).
+   - (h) **ce que chaque appareil calcule pour lui** (`S.page`, `S.pagesCourantes`, `S.pagesPCourantes`, `S.policeRatioCourante`, `S.vifCands`, `S.vifDT`) ne déclenche plus de renvoi (`DR_SES_APPAREIL`) : c'étaient les échos sans fin ;
+   - (i) **les clés « _ » de l'état** (`S._garderFocus` : rendre le focus au texte où l'on écrit) restent à chaque appareil : parties au hub, elles rouvraient le champ d'un autre appareil ;
+   - (j) **un objet aux clés 0, 1, 2… revient du hub en liste** (`reps: {0: […]}` ici, `reps: [[…]]` reçu) : la fusion les prenait pour deux valeurs sans rapport et gardait celle de l'autre — la réponse « Le Rom » du second ordinateur réduite à « L ». `dr_sesRange` les range comme le hub. **C'était la dernière perte** ;
+   - le champ refermé efface aussi la sélection (un caractère sans touche, « è » tapé par une méthode de saisie, s'y insérait et le rouvrait).
 22. **La course seule (T, `MJPC_STOP3=1`)**, comptée : avant (a)-(c) 0 sur 2 ; après (a)-(b) 1 sur 2 ; après (c) 2 sur 2 (+ 1 arrêt de la sonde : l'ordinateur était passé à la diapo suivante pendant `toutDevoiler`, la machine chargée) ; sans envoi « de contenu » 0 sur 3 ; avec, et (g) : 2 sur 3, le troisième montre **des échos sans fin** entre les trois pilotes (des envois « de contenu » toutes les 100 à 300 ms pendant 10 s).
 
-## 4 · CE QUI RESTE OUVERT (18:55)
-1. **La course à trois pilotes n'est pas prouvée** : il reste des échos entre pilotes quand la fusion garde, à chaque fois, une différence propre à chaque appareil (à trouver par `DR_SES.gardeCles`, la trace de la sonde les note). Les mêmes gestes un par un (le cas « qui a la main » à l'ordinateur, le cas de Paul à la télécommande) ne perdent rien.
+23. **La course seule, comptée après (h)** : participation et dévoilement verts 3 sur 3 (passages 15-17), le texte rouge 3 sur 3 ; après (i) et la sélection : pareil (19-24) ; **après (j) : T vert 3 sur 3 de suite** (passages 26-28 : « Le Roman », « Le Romant », « Le Rom » gardés chez les trois pilotes — le champ se ferme à la prise de l'ordinateur, tel qu'il est). La sonde compare la diapo et le dévoilement, pas la page (elle dépend de l'écran : le téléphone page 1, l'ordinateur page 0).
+
+## 4 · CE QUI RESTE OUVERT (19:10)
+1. **La course seule en H** (3 passages verts de suite), puis **la sonde complète deux fois de suite**, verte les deux fois, avant de pousser sur deroule/session-partout.
 2. Une ligne de journal déjà écrite sans élève (le hub d'avant le 256) : le rendu est réparé par lecture du code ; la sonde ne la rejoue pas.

@@ -209,6 +209,15 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
       const ec = window.dr_sesEcrire; window.dr_sesEcrire = function (ici, sous, v) { if (sous === '/vif') DR_SES.dbgP.push({ n: 'envoi', t: Date.now() % 100000, ts: v.ts % 100000, parts: (v.S && v.S.parts || []).length, main: v.main === DR_SES.id, cede: v.cede, g: (DR_SES.gardeCles || []).join(',') }); return ec.apply(this, arguments); }; }).catch(() => {});
     const ELV = await tl.pg.evaluate(() => { try { return { nom: ELEVES[0], ini: iniDe(ELEVES[0]) }; } catch (e) { return null; } });
     const REP = 'Le Romantisme met en scène la nature contre la règle';
+    if (process.env.MJPC_DEBUG) await o3.pg.evaluate(() => { DR_SES.dbgF = []; const d = el => el ? (el.tagName + '.' + String(el.className || '').slice(0, 30) + '[' + (el.getAttribute && el.getAttribute('data-p') || '') + ']' + ' «' + String(el.textContent || '').slice(0, 12) + '» co=' + el.isConnected) : null;
+      document.addEventListener('focusout', ev => DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'out', de: d(ev.target), vers: d(ev.relatedTarget), main: DR_SES.main === DR_SES.id, att: !!DR_SES.attente, pile: (new Error().stack || '').split('\n').slice(2, 9).map(x => x.trim().slice(3, 60)).join(' | ') }), true);
+      document.addEventListener('focusin', ev => DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'in', de: d(ev.target), pile: (new Error().stack || '').split('\n').slice(2, 9).map(x => x.trim().slice(3, 60)).join(' | ') }), true);
+      const qb = () => { try { return JSON.stringify(((parDiapo['0|emt9v3yqo6pvd5'] || {}).reps) || null).slice(0, 80); } catch (e) { return String(e); } };
+      document.addEventListener('input', ev => { if (DR_SES.dbgF.length < 30) DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'input', dom: String(ev.target.textContent || '').slice(0, 12), etat: qb() }); }, true);
+      setTimeout(() => { if (DR_SES.dbgF.length < 30) DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'apres-input', etat: qb() }); }, 900);
+      const ap = window.dr_sesAppliquer; window.dr_sesAppliquer = function (v) { const av = qb(); const r = ap.apply(this, arguments); DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'appliquer', par: v && v.par, avant: av, apres: qb(), vrep: (() => { try { return JSON.stringify(v.parDiapo['0|emt9v3yqo6pvd5'].reps).slice(0, 60); } catch (e) { return '-'; } })(), act: d(document.activeElement) }); return r; };
+      const po = window.dr_sesPoserAutour; window.dr_sesPoserAutour = function (v) { const r = po.apply(this, arguments); DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'poser ' + r, act: d(document.activeElement) }); return r; };
+      const tt = window.tout; if (tt) window.tout = function () { const a0 = document.activeElement; const r = tt.apply(this, arguments); if (a0 !== document.activeElement) DR_SES.dbgF.push({ t: Date.now() % 100000, quoi: 'tout change le focus', de: d(a0), vers: d(document.activeElement) }); return r; }; }).catch(() => {});
     const dit = await o3.pg.$('#mur .rep.libre .dit'); let tape = false;
     if (dit) { await dit.click(); await p(200);
       await Promise.all([
@@ -225,6 +234,7 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
     const REPv = garde3 && garde3.length >= 3 ? garde3 : REP;
     const vu = pg => pg.evaluate(([r, nom]) => { try { return { rep: JSON.stringify(parDiapo).indexOf(r) >= 0, part: (S.parts || []).some(x => x && x.nom === nom), cle: (() => { const m = S.mur; return m ? (m.eid || seance().ecrans[m.di].eid) + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null; })() }; } catch (e) { return String(e); } }, [REPv, ELV && ELV.nom]).catch(e => String(e));
     const V = { ordinateur: await vu(o.pg), second: await vu(o3.pg), telephone: await vu(tl.pg) };
+    if (process.env.MJPC_DEBUG) dire('      (débogage) focus du second : ' + await o3.pg.evaluate(() => JSON.stringify(DR_SES.dbgF.slice(0, 40))).catch(e => String(e)));
     if (process.env.MJPC_DEBUG) for (const [q, pg] of [['ordinateur', o.pg], ['second', o3.pg], ['telephone', tl.pg]]) dire('      (débogage) ' + q + ' ' + await pg.evaluate(() => DR_SES.id + ' ' + JSON.stringify(DR_SES.dbgP)).catch(e => String(e)));
 
     dire('      ' + mode + ' · la réponse tapée au second ordinateur (« ' + REP + ' »' + (tape ? '' : ', PAS TAPÉE') + '), l’ordinateur qui dévoile (▶ ← ▶), la participation de ' + (ELV ? ELV.nom + ' (' + ELV.ini + ')' : '?') + ' au téléphone : ' + JSON.stringify(V));

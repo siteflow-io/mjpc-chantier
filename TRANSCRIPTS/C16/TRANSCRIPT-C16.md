@@ -1398,3 +1398,22 @@ MEMO
   > À jouer : rien · en cours : l'exécutant de l'appel · ouvert : 283
   >
   > MEMO
+- **22:18 — Paul, mot pour mot** : « non en fait c'est bon je n'avais pas fait attention que j'étais en gel. Pour la télécommande téléphone, sur la zone diapo je vois les élément s'afficher un par un au lieu d'avoir la diapo complète avec ses grisés. Ce n'est pas dérangeant, mais à la limite il faudrait que ça apparaisse en plus gros. Enfin, il faut mon zoom sur ma télécommande. quel est la solution la plus simple à coder et la moins couteuse en utilisation? ferme 283. »
+- **22:18 — la conscience** : lu dans le code de 8.80.0-⑬ : la télécommande dessine sa diapo dans sa propre zone (`#tc-mur`, la vue de la classe) ; le dessin du pilote (`#mur`, la diapo entière avec les gris) est déjà dans la page, caché ; la loupe du pilote : un clic sur 🔍 l'arme, puis un cadre tracé à la souris sur la diapo (`mousedown` / `mousemove` / `mouseup`), un second clic sur 🔍 l'enlève (`#bloupe`, `S.loupeArm`, `S.loupe`).
+- **22:18 — message à Paul, mot pour mot :**
+
+  > 283 est fermé.
+  >
+  > 284. La diapo de la télécommande : je propose qu'elle montre la diapo comme au pilote — toute la diapo, les éléments pas encore dévoilés en gris — sur toute la largeur du téléphone ; un appui sur elle la met en plein écran, un second appui la remet. C'est le plus simple à coder : ce dessin du pilote est déjà dans la page de la télécommande, caché ; seule sa place change.
+  >
+  > 285. Le zoom : un bouton 🔍 à côté de « ❄ Geler ». Un appui sur 🔍 met la diapo en plein écran ; tu traces au doigt le cadre à agrandir, comme tu le fais à la souris au pilote ; le tableau zoome dessus et la télécommande revient. Un nouvel appui sur 🔍, allumé, enlève le zoom. Deux gestes pour zoomer, un pour revenir : le même geste qu'au pilote.
+  >
+  > 286. Je l'ajoute au mandat de l'appel, qui touche déjà la télécommande (un seul exécutant sur ces fichiers), avec ses captures avant toute mise en ligne.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 22:18
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel · ouvert : 284, 285, 286
+  >
+  > MEMO

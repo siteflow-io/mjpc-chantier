@@ -3848,3 +3848,29 @@ MEMO
 02/11/2026 12:54
 
 MEMO
+
+**Ce qui a été fait ensuite (C14), même tour :** 669 codé sur la maquette (`070eb7bf`) : `RC_CONSIGNE_AVANT`, `RC_CONSIGNE_DOUTE`, `RC_CONSIGNE_CONTEXTE`, la marge dans `RC_CONSIGNE_PARAGRAPHES` ; `stContexte`, `stContexteGarder`, `stContexteVoir` (« 📎 Le contexte de l'IA ») ; `manque` gardé avec les réussites et les remarques, montré dans la bande et la relecture ; la case `.rc-marge` et l'en-tête dans `rcRapprocherLignes` ; `rcIANettoyage` et `rcIAEffacer` étendus ; le rattrapage (656) retiré. Banc complet : 155/4 (trois attentes anciennes récrites, une majuscule dans mon contrôle), puis **159/0**. Candidate au sas : `redaction-1.4.23-RU-candidat.html`, 892 685 o, md5 `32b4d40fc1fe8faf1e20fd3c18b3c4e9`, `NOTE-1.4.23-RU.md`, captures. Vrai site en lecture seule : recopie et export sans erreur ; la 3 Franklin Aretha a maintenant sa grille de stickers ; l'essai de la carte ne passe plus, ni avec la 1.4.20 ni avec la 1.4.23 (le site s'ouvre sur la recopie : mon script). Le fichier d'essai fabriqué pour la copie de la capture (privé) : la classe vidée dans le bac à sable seulement, « Lundi 13 Avril » et sa marge recopiés de sa photo par le geste ; 30 lignes, ¶ 11, 22, 29, marge 6:1, 9:4, 17:3, 23:2, 27:5 ; aucun nom.
+
+**Claude (13:22, avec la capture apres-C14-669-marge-en-tete) :**
+
+À jouer : 686 (deux fichiers École Directe), ton mot sur 688 · en cours : rien · ouvert : 686, 688, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+682. 669 est codé. La consigne : avant de corriger, l'IA fait la liste de ce qui lui manque en contenu, te pose ses questions toutes ensemble, et attend tes réponses. Elle propose toujours, même sans être sûre ; ce qui lui manquait va dans « manque ». Elle te rend ce que tu lui as donné. L'app le garde avec la rédaction et le renvoie avec chaque paquet : l'IA ne redemande que ce qui manque encore. Tu le vois, ou l'effaces, dans « 📋 Le flux » → « 📎 Le contexte de l'IA ».
+
+683. Son doute : dans la bande, sur l'arrêt, « L'IA doutait, il lui manquait : … », et de même dans la liste des remarques. Le fichier de l'élève ne le dit jamais.
+
+684. La géographie : dans la recopie, une case à gauche de chaque ligne, pour la marge de l'élève ; tu y tapes le numéro qu'elle a écrit à cette hauteur, Entrée revient à la ligne. Une ligne vide au-dessus de la lettre dit « en-tête : la date, le lieu, s'il y en a ». Et les ¶ de 632.
+
+685. « 🗑 Tout effacer » efface aussi les stickers de l'IA, tes décisions sur eux, ses remarques et les copies refusées. Ta recopie, la marge recopiée, la phrase qui t'a marqué et le contexte restent. Le bouton de rattrapage est retiré. Banc complet : 159 vérifications, 0 défaut.
+
+686. Étape 1 faite pour sa copie : le fichier d'essai est prêt, fabriqué depuis ton vrai site en lecture seule ; la classe n'a été vidée qu'ici. J'y ai recopié de sa photo la date « Lundi 13 Avril » et sa marge : 1, 4, 3, 2, 5. Ses ¶ tombent aux lignes 11, 22 et 29 de l'essai. Aucun nom dans le fichier. Étape 2, à toi : envoie-moi les fichiers École Directe de deux autres copies de la 3 Dylan Bob qui ont des numéros dans la marge. Si tu préfères ne pas attendre, je t'envoie tout de suite l'essai avec sa seule copie.
+
+687. Sur ton vrai site, lu ce midi : la 3 Franklin Aretha a maintenant sa grille de stickers ; ses 29 copies sont envoyées et chargées. Mon essai automatique de la carte ne passe plus, ni avec la 1.4.20 en ligne ni avec la 1.4.23 : ton site s'ouvre maintenant sur la recopie, qui couvre les cartes. C'est mon script, pas l'app ; je l'adapte avant toute mise en ligne.
+
+688. 672, reposée : la 1.4.23 remplace la 1.4.22. Elle contient 626, 632, 633, 638 et 669, sans le bouton de rattrapage. Je te la donne à promouvoir maintenant, puisque 638 bloque tes copies complètes ? Ou bien après l'essai ?
+
+À tester : rien de neuf en ligne. La capture C14-669-marge-en-tete montre la case de la marge (« 1 ») et l'en-tête (maquette, élèves inventés).
+
+02/11/2026 13:22
+
+MEMO

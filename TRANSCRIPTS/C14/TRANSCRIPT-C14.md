@@ -4650,3 +4650,47 @@ MEMO
 02/11/2026 20:39
 
 MEMO
+
+---
+
+## Tour 165 — 02/11/2026 21:52
+
+**Paul (21:52) :**
+
+ok
+
+**Ce qui a été fait (C14), en cours :** codé dans la maquette (branche `c14-poignees`, pas encore commité) : 55 (`scDossierFichiers` : la règle feuille par feuille, `scParImage`, `scFeuilleParImage`) ; 66 à 71 (`rcReprise`, `rcVuGarder`, `rcPorteeLignes`, `rcReprendreLigne`, l'export avec « reprendre » et `RC_CONSIGNE_REPRENDRE`, la fusion des stickers et des remarques par portée, « L'IA ne le voit plus réussi », la remarque « nouvelle », le commentaire côte à côte, « Rien à envoyer », « N changée(s) depuis leur retour », la carte sous 100 %, une bande rouverte qui ne va que d'un arrêt qui reste au suivant) ; 72-73 (« ▶ La bande » en haut des scans et sur l'accueil, « Copie x sur N · y à revoir », « ← Copie », « Copie → », Entrée au bout : la copie suivante à revoir) ; les bancs (`accueil.mjs` : la classe mêlée ; `reprendre.mjs` : 66 à 73). Banc court : tout vert, aucune erreur ; banc complet en cours. Vrai site, lecture seule, avec la candidate : Dylan 24 copies corrigées, « Rien à envoyer » ; Franklin 29 revenues, « ▶ La bande » s'ouvre sur « Copie 6 sur 29 · 24 à revoir » ; le script des Dylan, à blanc : 14 copies à renvoyer pour S7 à S13 et S31.
+
+*(Pas de réponse de Claude à ce tour : Paul a posé sa question suivante pendant le travail.)*
+
+---
+
+## Tour 166 — 02/11/2026 22:33
+
+**Paul (22:33) :**
+
+question: je trouve les notes extrêmement basses. Il faut que je puisse régler les points de la grille, c'est faisable?
+
+**Ce qui a été fait (C14) :** lu le calcul de la note (`stNoteCopie`, `stSeuils`, `stNiveau`, `stPoints` ; « Régler » le compte d'une ligne, `stCompteRegler`, avec `stSiNotesChangent`) ; mesuré sur le vrai site, en lecture seule, les notes et chaque ligne de la grille (Dylan : 24 copies corrigées ; Franklin : 5) ; deux réglages simulés en mémoire.
+
+**Claude (22:35) :**
+
+À jouer : ton mot sur 80 · en cours : la 1.4.28, au banc complet · ouvert : 80, la 1.4.28 (55, 66 à 74) avant ton promeus, le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+75. Oui, c'est faisable. Une partie existe déjà : Réglages → la grille → une ligne → « Régler » : combien de stickers manqués pour chaque niveau ; avant de rien changer, l'app liste les copies dont la note changerait. Ce qui ne se règle pas encore : les points de chaque niveau, les points de chaque ligne, et les seuils des deux lignes calculées (« Trente lignes », « Orthographe et grammaire »).
+
+76. Mesuré sur ton site, sans rien y écrire : les Dylan, 24 copies corrigées, moyenne 12,6 sur 40 (de 6 à 22), soit 6,3 sur 20. Les Franklin, 5 copies corrigées pour l'instant : 11,3 sur 40.
+
+77. Où partent les points, chez les Dylan. « Orthographe et grammaire » : 0,1 sur 4 en moyenne, 22 copies sur 24 au niveau 0 (le niveau 1 demande au plus une erreur toutes les deux lignes). « Les cinq architectures » : 1 sur 7 (0,7 sticker sur 6 en moyenne). « Ce qu'on tait » : 0,1 sur 2. « Toutes les phrases sont complexes » : 1,2 sur 5. « Le thème tenu » : 2,1 sur 6, avec 3,5 stickers sur 6 en moyenne ; avec trois manqués, le compte met la copie au niveau 1, 2 points.
+
+78. Simulé, sans rien changer : le compte plus large sur toutes les lignes à stickers (un quart des stickers manqués pour le niveau 3, la moitié pour le 2, les trois quarts pour le 1) donne 15,8 sur 40 ; les points au prorata des stickers réussis, aussi 15,8. Le compte seul ne relève donc pas beaucoup : près de 4 points par copie partent dans l'orthographe, et 6 dans les architectures.
+
+79. Les deux classes ont chacune leur grille : un réglage fait sur les Dylan ne change pas les Franklin.
+
+80. Ma proposition, à ton mot, en 1.4.29, juste après la 1.4.28 : dans Réglages → la grille, pour chaque ligne, ses points et ceux de chaque niveau se règlent en place ; pour les deux lignes calculées, leurs seuils aussi (combien d'erreurs par ligne, combien de lignes, pour chaque niveau) ; le total se recalcule et s'affiche. Avant d'appliquer, comme pour le compte aujourd'hui : chaque copie dont la note change, avant et après, et la moyenne de la classe avant et après. Un bouton reporte le même réglage sur l'autre classe du même sujet. Tout suit aussitôt : les cartes, le Bilan, les fichiers des élèves.
+
+À tester : rien de neuf en ligne. Pour relever une ligne dès ce soir : Réglages → la grille → la ligne → « Régler », puis regarde la liste des copies qui changent avant de garder.
+
+02/11/2026 22:35
+
+MEMO

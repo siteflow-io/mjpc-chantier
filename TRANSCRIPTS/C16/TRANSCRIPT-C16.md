@@ -1109,3 +1109,19 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la répétition et le premier ▶ à 16:55, puis « qui a la main » à 17:40), puis mon banc complet · ouvert : rien
   >
   > MEMO
+- **16:40 — Paul, mot pour mot** : « il faudrait accélérer. 17h? »
+- **16:41 — message à Paul, mot pour mot :**
+
+  > 249. 17:00 ne tient pas : mon banc complet dure 45 minutes à lui seul, et « qui a la main » n'est pas encore codé (l'exécutant finit à 16:55 la répétition et le premier ▶, puis le code en 45 minutes). Deux façons de gagner du temps, à toi de choisir.
+  >
+  > 250. Vers 18:10 : je passe le banc complet dès 16:55 sur tout le reste (la session, la télécommande, la répétition), pendant que l'exécutant code « qui a la main » sans toucher à la machine ; puis il le prouve par sa sonde, et je repasse sur le fichier final la sonde de la session (ton parcours compris). Le banc complet n'aura pas tourné sur les lignes de « qui a la main », seulement ces deux sondes : c'est un écart à ta règle, je te le dis.
+  >
+  > 251. Vers 18:30 : tout dans les règles, le banc complet sur le fichier final.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:41
+  >
+  > À jouer : rien · en cours : l'exécutant (la répétition et le premier ▶ à 16:55, puis « qui a la main ») · ouvert : 250 ou 251
+  >
+  > MEMO

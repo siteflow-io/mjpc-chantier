@@ -4694,3 +4694,31 @@ question: je trouve les notes extrêmement basses. Il faut que je puisse régler
 02/11/2026 22:35
 
 MEMO
+
+---
+
+## Tour 167 — 02/11/2026 22:41
+
+**Paul (22:41) :**
+
+ok pour 80. Il faut aussi une case "afficher la note dans les html rendus". si je décoche, les html partent sans note, bien qu'avec leur grille.
+
+**Ce qui a été fait (C14) :** la 1.4.28 finie : banc complet 185 vérifications, 0 défaut (une attente du banc ajoutée : le paquet fini propose sa sauvegarde, la fenêtre se ferme comme Paul la ferme) ; maquette commitée (`25d40857`, branche `c14-poignees`) ; candidate au sas : `LIVRAISONS/REDACTION/redaction-1.4.28-RU-candidat.html`, 936 422 o, md5 `bcb30ce932860dd705ea754460fa7490`, `NOTE-1.4.28-RU.md`, `captures-1.4.28/` (`2196f1a2`) ; vrai site en lecture seule refait avec ce fichier. Lu, dans le fichier de l'élève (eleve.js), tout ce qui montre la note : « Ta note », le total de « Ma grille complète », les points des lignes. Les quatre captures envoyées à Paul.
+
+**Claude (22:48), pendant le travail :**
+
+À jouer : ton promeus pour la 1.4.28 (82) · en cours : 80 et 81, que je code en 1.4.29 · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+81. Noté pour la 1.4.29, avec 80 : une case « Afficher la note dans les fichiers des élèves », en haut de « 📨 Fichiers École Directe », cochée comme aujourd'hui. Décochée, le fichier de l'élève garde toute sa grille : chaque ligne, ce qu'il a réussi, ses stickers, ses remarques. Mais il n'a plus aucun point : ni « Ta note », ni le total, ni les points des lignes. « 🧪 Tester comme l'élève » le montre tel quel. Chaque classe a sa case.
+
+82. La 1.4.28 est prête au sas, pas en ligne. Elle contient 55 (« 📂 Mon dossier ») et 66 à 74 (seul ce qui a changé repart et s'arrête ; « ▶ La bande » copie après copie). Les captures sont jointes.
+- Banc complet : 185 vérifications, 0 défaut.
+- Sur ton site, sans rien y écrire : chez les Dylan, « ⇪ Exporter » dit « Rien à envoyer » ; chez les Franklin, « ▶ La bande » s'ouvre sur « Copie 6 sur 29 · 24 à revoir ».
+
+Promeus ? Après la mise en ligne, je lance le script des Dylan (74) : 14 copies deviennent « à envoyer » pour leurs 8 stickers de paragraphes.
+
+À tester : rien de neuf en ligne avant ton promeus.
+
+02/11/2026 22:48
+
+MEMO

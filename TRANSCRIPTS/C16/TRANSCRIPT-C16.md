@@ -1125,3 +1125,4 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la répétition et le premier ▶ à 16:55, puis « qui a la main ») · ouvert : 250 ou 251
   >
   > MEMO
+- **16:43 — la conscience** : le réveil programmé pour 15:41 (« lance le banc complet… 8.80.0-⑬ ») n'est arrivé qu'à 16:43, une heure en retard ; il est périmé (les captures montrées à 15:41, le plan changé à 16:10 et 16:30) : rien n'est fait sur lui.

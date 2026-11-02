@@ -12,7 +12,7 @@
 //  Q · (§3.3) la taxonomie retardée de 7 s ; « ✎ Préparer » de la case ; le début de séance renommé ; la page quittée avant elle (le rechargement 2 s après,
 //      l'onglet fermé 0,4 s après) ; la 8.77.1-⑩ ouvre la séance dans l'Atelier et lance l'heure : rien de vide, rien d'incomplet ; la nouvelle rouvre : le geste.
 //  P · (§3.4) le schéma « tableau » plus haut qu'une diapo : les cinq œuvres avec « Ce que j'en retiens », les douze vers de « Demain, dès l'aube » ; aux trois
-//      tailles, en classe (pilote, fenêtre du tableau, tableau distant ; Maj + → de page en page, la molette qui revient d'abord aux pages), en répétition, dans
+//      tailles, en classe (pilote, fenêtre du tableau, tableau distant ; Maj + → de page en page ; la molette, en jeu, ne change pas de page — ⑱), en répétition, dans
 //      l'Atelier : chaque rangée une fois, l'en-tête sur chaque page, aucune case coupée, la police inchangée.
 //  M · (§3.5) l'image pleine et la marge du fil : les cinq images de l'heure 1 (séance 1, 3e), tout dévoilé, au pilote, à la fenêtre du tableau, au tableau
 //      distant, dans l'Atelier : aucune coupée, aucune sous le fil ; avant / après : une image qui tenait garde sa taille, les repères aux mêmes points.
@@ -406,11 +406,14 @@ const jouerP = async (fichier, src, W, H, nom, repet) => { HUBN = hubDe(store(sr
   if (repet) { await ouvrirAtelier(o); const l2 = await lignesX(o.pg); const y = l2.find(e => /Les cinq tableaux/.test(e.t)); if (y) { await (await o.pg.$('#volet [data-eid="' + y.eid + '"] .t')).click(); await p(900); } await o.pg.click('#at-jouer').catch(() => {}); await p(2500); fen = await ouvrirTableau(o, W, H); }
   else { await lancerClasse(o); fen = await ouvrirTableau(o, W, H); const v = await o.pg.$('#volet .vig:has(table.p8-grille)'); if (v) { await v.scrollIntoViewIfNeeded().catch(() => {}); await v.click(); await p(500); if (await o.pg.evaluate(() => document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))) { await o.pg.click('#garde-devant'); await p(900); } } }
   await o.pg.click('#numero').catch(() => {}); await p(1200);
-  for (let k = 0; k < 8; k++) { const a = await tabPage(o.pg, '#mur'), b = await tabPage(fen, '#mur2'), c = T ? await tabPage(T.pg, 'body') : null; const vg = await tabPage(o.pg, '#volet .vig.cour');
+  R.eidT = (await ici_(o.pg)).eid; for (let k = 0; k < 8; k++) { const a = await tabPage(o.pg, '#mur'), b = await tabPage(fen, '#mur2'), c = T ? await tabPage(T.pg, 'body') : null; const vg = await tabPage(o.pg, '#volet .vig.cour');
     R.pages.push({ a, b, c, vg }); await capt(o.pg, 'P-' + nom + '-' + W + 'x' + H + '-page' + (k + 1) + '-pilote'); if (fen) await capt(fen, 'P-' + nom + '-' + W + 'x' + H + '-page' + (k + 1) + '-tableau'); if (T) await capt(T.pg, 'P-' + nom + '-' + W + 'x' + H + '-page' + (k + 1) + '-distant');
     const m = /page (\d+) \/ (\d+)/.exec((a || {}).page || ''); if (!m || +m[1] >= +m[2]) break; await o.pg.keyboard.press('Shift+ArrowRight'); await p(1500); }
-  /* la molette passe d'abord les pages (retour à la première page, molette vers le haut) */
-  if (R.pages.length > 1) { const b0 = await o.pg.$('#murcadre'); const bb = b0 ? await b0.boundingBox() : null; if (bb) { await o.pg.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); for (let k = 0; k < R.pages.length - 1; k++) { await o.pg.mouse.wheel(0, -300); await p(900); } } R.molette = await tabPage(o.pg, '#mur'); R.moletteEid = (await ici_(o.pg)).eid; }
+  /* (C16, les dernières dettes ⑱ : en classe et en répétition, la molette ne change ni de diapo ni de page — Paul, 02/11 07:48) la molette vers le haut ne revient
+     pas aux pages : la dernière page reste ; Maj + ← revient à la première */
+  if (R.pages.length > 1) { const b0 = await o.pg.$('#murcadre'); const bb = b0 ? await b0.boundingBox() : null; const der = await tabPage(o.pg, '#mur'); if (bb) { await o.pg.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); for (let k = 0; k < R.pages.length - 1; k++) { await o.pg.mouse.wheel(0, -300); await p(900); } }
+    R.moletteReste = JSON.stringify(((await tabPage(o.pg, '#mur')) || {}).rangees) === JSON.stringify((der || {}).rangees) && (await ici_(o.pg)).eid === R.eidT;
+    for (let k = 0; k < R.pages.length - 1; k++) { await o.pg.keyboard.press('Shift+ArrowLeft'); await p(900); } R.molette = await tabPage(o.pg, '#mur'); R.moletteEid = (await ici_(o.pg)).eid; }
   R.n = n; R.errs.push(...o.errs, ...o.boites); if (T) R.errs.push(...T.errs, ...T.boites); await o.ctx.close(); if (T) await T.ctx.close(); return R; };
 const verifP = (k, R, quoi) => { const P = R.pages; const toutes = P.map(x => (x.a || {}).rangees || []); const vues = [].concat(...toutes);
   const ok1 = P.length > 1 && vues.length === R.n && new Set(vues).size === R.n && vues.every((v, i) => v === i + 1);
@@ -419,7 +422,7 @@ const verifP = (k, R, quoi) => { const P = R.pages; const toutes = P.map(x => (x
   const ok3 = P.every(x => x.a && loi(x.a.fs, x.a.murH, 26) && loi(x.a.fsT, x.a.murH, 32));
   verif(k, ok1, quoi + ' : ' + P.length + ' pages, chaque rangée une fois et dans l’ordre (' + toutes.map(t => '[' + t.join(',') + ']').join(' ') + '), la coupure entre deux rangées', toutes);
   verif(k, ok2, quoi + ' : sur chaque page, l’en-tête en haut, aucune case coupée, au pilote, à la fenêtre du tableau' + (P[0].c ? ', au tableau distant' : '') + ' (les mêmes rangées)', P.map(x => ({ pilote: x.a && [x.a.page, x.a.coupees.length], tableau: x.b && [x.b.rangees.join(','), x.b.coupees.length], distant: x.c && [x.c.rangees.join(','), x.c.coupees.length] })));
-  verif(k, ok3 && R.molette && (R.molette.rangees || [])[0] === 1, quoi + ' : la police ne rapetisse pas — sur chaque page, 26 pt les cases et 32 pt l’en-tête à la hauteur de la diapo (' + P.map(x => x && x.a ? x.a.fs + '/' + x.a.fsT + ' pour ' + x.a.murH + ' px' : '?').join(' ; ') + ') ; la molette revient d’abord aux pages (page 1, la même diapo)', { molette: R.molette && R.molette.page, premiere: R.molette && (R.molette.rangees || []).join(','), polices: P.map(x => x.a && [x.a.fs, x.a.fsT, x.a.murH]) });
+  verif(k, ok3 && R.moletteReste && R.molette && (R.molette.rangees || [])[0] === 1, quoi + ' : la police ne rapetisse pas — sur chaque page, 26 pt les cases et 32 pt l’en-tête à la hauteur de la diapo (' + P.map(x => x && x.a ? x.a.fs + '/' + x.a.fsT + ' pour ' + x.a.murH + ' px' : '?').join(' ; ') + ') ; en jeu, la molette ne change pas de page (⑱) ; Maj + ← revient à la page 1', { molette: R.moletteReste, premiere: R.molette && (R.molette.rangees || []).join(','), polices: P.map(x => x.a && [x.a.fs, x.a.fsT, x.a.murH]) });
   verif(k, !R.errs.length, quoi + ' : aucune erreur JS, aucune boîte système', R.errs.join(' ; ')); };
 if (joue('P')) { dire(''); dire('══ P · le schéma « tableau » plus haut qu’une diapo : ses rangées passent en pages (les cinq œuvres avec « Ce que j’en retiens », les douze vers de « Demain, dès l’aube ») ══');
   for (const [W, H] of String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number))) { const T = W + '×' + H;

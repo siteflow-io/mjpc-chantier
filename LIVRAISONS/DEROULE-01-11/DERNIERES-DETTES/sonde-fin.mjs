@@ -2,7 +2,7 @@
 // QUATRE-DETTES/sonde-dettes.mjs (le faux hub vit dans la sonde, tous les navigateurs le partagent : le pilote, sa fenêtre du tableau, le tableau distant
 // `?vue=tableau`, l'Atelier). Aucune écriture ni lecture du vrai hub : chaque adresse Firebase est servie par la sonde, tout le reste est coupé.
 // usage : node sonde-fin.mjs <assemble/index.html> [dossier-de-sortie]
-//   MJPC_PARTIES (défaut C,F,H,L,V : les parties qui doivent être VERT) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
+//   MJPC_PARTIES (défaut C,F,H,L,V,J : les parties qui doivent être VERT ; N vient avec ⑲) · MJPC_AVANT=<assemblé d'avant> : les comparaisons avant / après (F, H) ·
 //   MJPC_MEDIAS=<dossier> : les vraies images du chapitre de 3e (jamais poussées) · MJPC_CONSTRUIT=<dossier> : le hub construit de la conscience (le chapitre
 //   de 4e, Le Horla ; jamais poussé) et MJPC_MEDIAS_4E=<dossier> ses images · MJPC_CAPT=<dossier> : les captures (jamais poussées) · MJPC_TAILLES ·
 //   MJPC_ANCIENNE=<la 8.77.1-⑩> : la partie F rejouée aussi sur elle (l'avant compté, « F-avant ») · MJPC_D_FOIS (défaut 10).
@@ -22,6 +22,9 @@
 //      comportement ne change pas (seule sur sa page, ancrée en haut) : la partie vérifie ce comportement tranché et écrit les chiffres.
 //  V · (⑰, §3.6) le témoin « déroulé intègre » au faux hub ordinaire et au faux hub rangé comme le vrai (« intègre » quand rien n'est perdu), l'écriture de la
 //      copie refusée (« à vérifier ») ; avec MJPC_FIREBASE=<dossier où firebase@8.10.1 est installé>, la copie passée par le code de Firebase lui-même.
+//  J · (⑱, §3.7) en jeu (classe en mode test, une vraie heure au faux hub, répétition), dix crans de molette et dix flèches de la colonne : ni diapo ni page ne
+//      changent, au pilote, à la fenêtre du tableau, au tableau distant ; → dévoile toujours ; dans l'Atelier, un cran = une diapo (inchangé).
+//  N · (⑲, §3.8) l'Atelier, aux deux faux hubs : une diapo neuve écrite trois fois sans faux conflit ; deux navigateurs sur la même diapo : le conflit paraît.
 // Aucune erreur JS, aucune boîte système, dans chaque cas. Code 1 si un échec.
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
@@ -35,7 +38,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L,V').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'C,F,H,L,V,J').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -179,14 +182,14 @@ const storeFil = () => store(null, E => { const par = t => E.find(e => e && e.ac
   const t2 = par('Tableau 2'); t2.act = 'Les cinq tableaux'; t2.blocs = [{ t: 'schema', forme: 'tableau', id: 'bsonde-tab', titre: 'Les cinq tableaux', src: 'Tableau | Peintre | Ce qu’on voit\nLe Radeau de la Méduse | Géricault | des naufragés\nLe lac | Bierstadt | des montagnes immenses\nPêcheurs en mer | Turner | une tempête la nuit\nLa ville au bord de l’eau | Schinkel | une cathédrale\nLe Voyageur | Friedrich | un homme de dos' }];
   const t3 = par('Tableau 3'); t3.act = 'Le tableau de Turner'; t3.blocs = [{ t: 'question', id: 'bsonde-q', q: 'Dans le tableau de Turner, qu’est-ce qui montre que l’homme est petit face à la nature ?', reps: [{ i: '', r: 'La barque est minuscule sous les vagues et le ciel noir : la tempête décide, pas les pêcheurs.', refo: false }] }]; });
 const releve = (pg, sel) => pg.evaluate(sel => { const m = document.querySelector(sel); window.__GL = []; const t0 = performance.now(); const f = () => { const fl = m && m.querySelector(':scope > .dr-fil'); const i = fl && fl.querySelector('i'); if (i) window.__GL.push([performance.timeOrigin + performance.now(), i.getBoundingClientRect().top - m.getBoundingClientRect().top]); if (performance.now() - t0 < 1500) requestAnimationFrame(f); }; requestAnimationFrame(f); }, sel);
-const PROFIL = ['rendre', 'volet', 'vueDroite', 'p8RendreNotes', 'ouOnEnEst', 'participation', 'brancherAtelier', 'brancherDocs', 'atSomSuivreCourant', 'dr_imagesAbsentes', 'pousser', 'dimensionner', 'paginer', 'p8Poser', 'dr_tabAncrer', 'journal', 'dr_sauve', 'dr_tout', 'brancherMenus', 'brancherAjout', 'temoin', 'alerteVideo', 'dr_suivreHauteurs', 'dr_derouleDe', 'dr_copieAuto', 'dr_etatAuto', 'dr_traceAuto', 'dr_sauveMaintenant'];
-const profiler = pg => pg.evaluate(noms => { window.__PR = {}; noms.forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__pr) return; const g = function () { const t0 = performance.now(); try { return f.apply(this, arguments); } finally { const d = performance.now() - t0; const x = window.__PR[n] || (window.__PR[n] = [0, 0]); x[0] += d; x[1]++; } }; g.__pr = true; try { window[n] = g; } catch (e) {} }); }, PROFIL);
+const PROFIL = ['devoiler', 'aller', 'allerSuivante', 'dr_auMur', 'dr_versMur', 'miniatures', 'p85hPages', 'etatComplet', 'dr_voletApres', 'rendre', 'volet', 'vueDroite', 'p8RendreNotes', 'ouOnEnEst', 'participation', 'brancherAtelier', 'brancherDocs', 'atSomSuivreCourant', 'dr_imagesAbsentes', 'pousser', 'dimensionner', 'paginer', 'p8Poser', 'dr_tabAncrer', 'journal', 'dr_sauve', 'dr_tout', 'brancherMenus', 'brancherAjout', 'temoin', 'alerteVideo', 'dr_suivreHauteurs', 'dr_derouleDe', 'dr_copieAuto', 'dr_etatAuto', 'dr_traceAuto', 'dr_sauveMaintenant'];
+const profiler = pg => pg.evaluate(noms => { window.__PR = {}; noms.forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__pr) return; const g = function () { const t0 = performance.now(); try { return f.apply(this, arguments); } finally { const d = performance.now() - t0; const x = window.__PR[n] || (window.__PR[n] = [0, 0, null, null]); x[0] += d; x[1]++; const a = performance.timeOrigin + t0; if (x[2] == null) x[2] = a; x[3] = a + d; } }; g.__pr = true; try { window[n] = g; } catch (e) {} }); }, PROFIL);
 const glisse = async (o, fen) => { if (process.env.MJPC_PROFIL) { await profiler(o.pg); if (fen) await profiler(fen); await o.pg.evaluate(() => { window.__PR = {}; }); if (fen) await fen.evaluate(() => { window.__PR = {}; }); }
   await o.pg.evaluate(() => { window.__KD = null; document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' && window.__KD == null) window.__KD = performance.timeOrigin + e.timeStamp; }, { capture: true, once: true }); });
   await releve(fen, '#mur2'); await releve(o.pg, '#mur'); await o.pg.keyboard.press('ArrowRight'); await p(1700);
   const kd = await o.pg.evaluate(() => window.__KD); const lire = L => { const a = L[0][1], z = L[L.length - 1][1]; const prem = L.find(x => Math.abs(x[1] - a) > 0.01); const entre = L.filter(x => Math.min(a, z) + 1 < x[1] && x[1] < Math.max(a, z) - 1);
     const arr = L.find(x => Math.abs(x[1] - z) < 0.01); return { depart: Math.round(a * 10) / 10, arrivee: Math.round(z * 10) / 10, images: L.length, premier: prem ? Math.round(prem[0] - kd) : null, entre: entre.length, fin: arr ? Math.round(arr[0] - kd) : null, a90: (L.filter(x => x[0] - kd <= 90).pop() || [0, a])[1] }; };
-  if (process.env.MJPC_PROFIL) { const r2 = x => Object.entries(x || {}).filter(([, v]) => v[0] >= 2).sort((a, b) => b[1][0] - a[1][0]).map(([k, v]) => k + ' ' + Math.round(v[0]) + ' ms ×' + v[1]).join(', '); dire('        profil pilote : ' + r2(await o.pg.evaluate(() => window.__PR))); if (fen) dire('        profil tableau : ' + r2(await fen.evaluate(() => window.__PR))); }
+  if (process.env.MJPC_PROFIL) { const r2 = x => Object.entries(x || {}).filter(([, v]) => v[0] >= 2).sort((a, b) => a[1][2] - b[1][2]).map(([k, v]) => k + ' ' + Math.round(v[0]) + ' ms ×' + v[1] + ' [' + Math.round(v[2] - kd) + '→' + Math.round(v[3] - kd) + ']').join(', '); dire('        profil pilote : ' + r2(await o.pg.evaluate(() => window.__PR))); if (fen) dire('        profil tableau : ' + r2(await fen.evaluate(() => window.__PR))); }
   return { t: lire(await fen.evaluate(() => window.__GL)), p: lire(await o.pg.evaluate(() => window.__GL)) }; };
 const jouerD = async (fichier, fois) => { HUBN = storeFil(); ECR = []; const o = await ouvrir({ fichier, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, 1536, 864);
   const L = await eidsDe(o.pg); const h1 = L.filter(e => e.heure === 1 || e.heure == null); const iT = L.findIndex(e => e.act === 'Les cinq tableaux');
@@ -372,6 +375,79 @@ if (joue('V')) { dire(''); dire('══ V · (⑰) 1536×864 · hors mode test �
     verif('V', F && F.dr_empreinte(copie) !== F.dr_empreinte(relu) && F.dr_empreinteHub(copie) === F.dr_empreinteHub(relu), 'le code de Firebase 8.10.1 : l’ancienne empreinte de la copie écrite et de la copie relue diffèrent (' + (F && F.dr_empreinte(copie)) + ' / ' + (F && F.dr_empreinte(relu)) + ') ; rangées comme le hub, elles sont égales (' + (F && F.dr_empreinteHub(copie)) + ' / ' + (F && F.dr_empreinteHub(relu)) + ')', ok3 ? '' : 'fonctions introuvables dans le fichier sondé');
     try { await app.delete(); } catch (e) {} }
   else if (!FB) dire('      V · MJPC_FIREBASE n’est pas donné : le passage par le code de Firebase n’est pas joué'); }
+
+/* ═══ J · (⑱, §3.7) en jeu, la molette et les flèches de la colonne ne changent ni de diapo ni de page ═══
+   Le tableau des cinq œuvres avec « Ce que j'en retiens » (3 pages) dans l'heure 1 : la diapo de départ, à sa page 1. En classe (mode test, puis une vraie heure
+   au faux hub), la fenêtre du tableau et le tableau distant ouverts ; en répétition, la fenêtre du tableau : dix crans de molette sur la vue centrale (un toutes
+   les 300 ms), puis un clic dans la colonne (son en-tête) et dix flèches (↓ cinq fois, ↑ cinq fois) — la diapo et la page au pilote, à la fenêtre du tableau,
+   au tableau distant, avant et après ; puis → : il dévoile, comme avant. Dans l'Atelier : un cran = une diapo, une flèche de la colonne = une diapo (inchangé). */
+const vueJ = async (pg, sel) => pg ? pg.evaluate(sel => { const m = sel === 'body' ? (document.querySelector('.mur.tableau') || document.querySelector('.mur')) : document.querySelector(sel); if (!m) return null; const a = m.querySelector('.act'); const pgT = m.querySelector('.page');
+  let di = null; try { if (sel === '#mur') di = S.di; } catch (e) {} return { di, act: a ? a.textContent.trim().slice(0, 40) : '', page: pgT ? pgT.textContent.replace(/[‹›]/g, '').trim() : '' }; }, sel).catch(() => null) : null;
+const egalJ = (a, b) => !!a && !!b && a.act === b.act && a.page === b.page && a.di === b.di;
+const gesteJ = async (o, fen, T) => { const pg = o.pg; const av = { a: await vueJ(pg, '#mur'), b: await vueJ(fen, '#mur2'), c: T ? await vueJ(T.pg, 'body') : null };
+  const bb = await (await pg.$('#murcadre')).boundingBox(); await pg.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); for (let k = 0; k < 10; k++) { await pg.mouse.wheel(0, 120); await p(300); }
+  await p(900); const garde1 = await pg.evaluate(() => !!(document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))); if (garde1) { await pg.click('#garde-devant').catch(() => {}); await p(900); }
+  const mol = { a: await vueJ(pg, '#mur'), b: await vueJ(fen, '#mur2'), c: T ? await vueJ(T.pg, 'body') : null };
+  const h5 = await pg.$('#volet h5'); if (h5) { await h5.click(); await p(300); } for (let k = 0; k < 10; k++) { await pg.keyboard.press(k < 5 ? 'ArrowDown' : 'ArrowUp'); await p(300); }
+  await p(900); const garde2 = await pg.evaluate(() => !!(document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))); if (garde2) { await pg.click('#garde-devant').catch(() => {}); await p(900); }
+  const fl = { a: await vueJ(pg, '#mur'), b: await vueJ(fen, '#mur2'), c: T ? await vueJ(T.pg, 'body') : null };
+  const c0 = (await ici_(pg)).compte; await pg.keyboard.press('ArrowRight'); await p(900); const c1 = (await ici_(pg)).compte; const apresD = await vueJ(pg, '#mur');
+  return { av, mol, fl, garde1, garde2, c0, c1, apresD }; };
+const jouerJ = async (fichier, mode) => { HUBN = store(RETIENS); ECR = []; let T = null; if (mode !== 'repetition') { T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1536, H: 864, prof: false }); await p(1200); }
+  const o = await ouvrir({ fichier, test: mode === 'test' }); let fen = null;
+  if (mode === 'repetition') { await ouvrirAtelier(o); const l2 = await lignesX(o.pg); const y = l2.find(e => /Les cinq tableaux/.test(e.t)); if (y) { await (await o.pg.$('#volet [data-eid="' + y.eid + '"] .t')).click(); await p(900); } await o.pg.click('#at-jouer').catch(() => {}); await p(2500); fen = await ouvrirTableau(o, 1536, 864); }
+  else { await lancerClasse(o); fen = await ouvrirTableau(o, 1536, 864); const v = await o.pg.$('#volet .vig:has(table.p8-grille)'); if (v) { await v.scrollIntoViewIfNeeded().catch(() => {}); await v.click(); await p(500); if (await o.pg.evaluate(() => document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))) { await o.pg.click('#garde-devant'); await p(900); } } }
+  await o.pg.click('#numero').catch(() => {}); await p(1500); const r = await gesteJ(o, fen, T); await capt(o.pg, 'J-' + mode + '-pilote'); if (fen) await capt(fen, 'J-' + mode + '-tableau');
+  r.errs = o.errs.concat(o.boites, T ? T.errs.concat(T.boites) : []); await o.ctx.close(); if (T) await T.ctx.close(); return r; };
+const txtJ = x => x ? (x.a ? 'pilote « ' + x.a.act + ' » ' + x.a.page : '') + (x.b ? ' │ tableau « ' + x.b.act + ' » ' + x.b.page : '') + (x.c ? ' │ distant « ' + x.c.act + ' » ' + x.c.page : '') : '—';
+if (joue('J')) { dire(''); dire('══ J · (⑱) 1536×864 · en jeu, la molette et les flèches de la colonne ne changent ni de diapo ni de page ══');
+  for (const [mode, nomM] of [['test', 'en classe, mode test'], ['classe', 'en classe, une vraie heure (faux hub)'], ['repetition', 'en répétition']]) { const r = await jouerJ(FICHIER, mode);
+    dire('      J · ' + nomM + ' · avant : ' + txtJ(r.av) + ' ; après dix crans : ' + txtJ(r.mol) + (r.garde1 ? ' (la garde s’est ouverte)' : '') + ' ; après dix flèches de la colonne : ' + txtJ(r.fl) + (r.garde2 ? ' (la garde s’est ouverte)' : ''));
+    const memes = x => egalJ(x.a, r.av.a) && (!r.av.b || egalJ(x.b, r.av.b)) && (!r.av.c || egalJ(x.c, r.av.c));
+    verif('J', r.av.a && r.av.a.page && memes(r.mol) && !r.garde1, nomM + ' : dix crans de molette — la même diapo, la même page, au pilote' + (r.av.b ? ', à la fenêtre du tableau' : '') + (r.av.c ? ', au tableau distant' : '') + ' ; aucune garde', { avant: txtJ(r.av), apres: txtJ(r.mol) });
+    verif('J', memes(r.fl) && !r.garde2, nomM + ' : un clic dans la colonne, dix flèches (↓ ×5, ↑ ×5) — la même diapo, la même page partout ; aucune garde', { avant: txtJ(r.av), apres: txtJ(r.fl) });
+    verif('J', r.apresD && (r.c1 !== r.c0 || r.apresD.page !== r.fl.a.page || r.apresD.act !== r.fl.a.act), nomM + ' : → avance toujours (le fil : il dévoile, ou passe à la page suivante, ou à la diapo suivante quand tout est montré) — « ' + r.c0 + ' », ' + r.fl.a.page + ' → « ' + r.c1 + ' », ' + (r.apresD || {}).page + (r.apresD && r.apresD.act !== r.fl.a.act ? ', « ' + r.apresD.act + ' »' : ''));
+    sansErreur('J', r.errs, nomM); }
+  /* l'Atelier : inchangé */
+  HUBN = store(RETIENS); ECR = []; const o = await ouvrir({}); await ouvrirAtelier(o); const L2 = await lignesX(o.pg); const y = L2.find(e => /^Tableau 1\b/.test(e.t)) || L2[6];
+  await (await o.pg.$('#volet [data-eid="' + y.eid + '"] .t')).click(); await p(900); const d0 = await o.pg.evaluate(() => S.di); const bb = await (await o.pg.$('#murcadre')).boundingBox(); await o.pg.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); await o.pg.mouse.wheel(0, 120); await p(900); const d1 = await o.pg.evaluate(() => S.di);
+  await (await o.pg.$('#volet [data-eid="' + y.eid + '"] .t')).click(); await p(600); await o.pg.keyboard.press('ArrowDown'); await p(700); const d2 = await o.pg.evaluate(() => S.di); const Ls = L2.map(l => l.di); const suiv = Ls[Ls.indexOf(d0) + 1];
+  verif('J', d1 === suiv && d2 === suiv, 'dans l’Atelier (inchangé) : un cran de molette = la diapo suivante de la colonne ; ↓ après un clic dans la colonne = la diapo suivante', { depart: d0, molette: d1, fleche: d2, attendu: suiv });
+  sansErreur('J', o.errs.concat(o.boites), 'l’Atelier'); await o.ctx.close(); }
+
+/* ═══ N · (⑲, §3.8) le faux conflit de l'Atelier sur une diapo neuve ═══
+   Au faux hub ordinaire et au faux hub rangé comme le vrai, dans l'Atelier : « Insérer une diapo après » sur « Tableau 1 » (clic droit), « + bloc » → consigne,
+   « Lis le poème à voix basse », puis « , puis relis-le », puis « en entier » (chaque fois un clic ailleurs, puis 6 à 7 s : l'enregistrement et la relecture du hub,
+   toutes les 3 s) : aucun message « modifiée sur un autre appareil », la dernière écriture au hub. Puis deux navigateurs dans l'Atelier, la même diapo (« Tableau
+   1 »), chacun écrit dans sa consigne au même moment : le conflit paraît (l'un des deux). Sur la nouvelle version seulement (la 8.77.1-⑩ a le même faux
+   conflit, préexistant : la conscience l'a mesuré). */
+const conflitN = pg => pg.evaluate(() => { const z = document.getElementById('dr-conflit'); return z ? (z.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 220) : ''; });
+const ecrireN = async (pg, re, txt) => { const v = await pg.evaluate(src => { const re = new RegExp(src); const el = Array.from(document.querySelectorAll('#mur [contenteditable]')).find(x => re.test(x.innerText || '')); if (!el) return null; const r = el.getBoundingClientRect(); return { x: r.right - 6, y: r.top + Math.min(r.height / 2, 14) }; }, re);
+  if (!v) return false; await pg.mouse.click(v.x, v.y); await p(400); await pg.keyboard.press('End'); await pg.keyboard.type(txt); await p(200); await pg.mouse.click(5, 300); return true; };
+const jouerN = async (fichier, vrai) => { VRAI = vrai; HUBN = vrai ? (ranger(store()) || {}) : store(); ECR = []; const o = await ouvrir({ fichier }); await ouvrirAtelier(o); const pg = o.pg;
+  const L = await lignesX(pg); const t1 = (L.find(l => /^Tableau 1\b/.test(l.t)) || {}).eid;
+  await pg.evaluate(s => { const d = document.querySelector(s); if (d) d.scrollIntoView({ block: 'center' }); }, '#volet [data-eid="' + t1 + '"]'); await p(250);
+  await pg.click('#volet [data-eid="' + t1 + '"] .t', { button: 'right' }); await p(500); const ins = await pg.evaluate(() => { const b = document.querySelector('#menu.on [data-a="inserer"]'); if (!b || b.disabled) return false; b.click(); return true; }); await p(900);
+  await pg.click('#at-bloc'); await p(600); const ch = await pg.evaluate(() => { const c = document.querySelector('.choix-obj .dr-c[data-t="consigne"]:not(.off)'); if (!c) return false; c.click(); return true; }); await p(800);
+  await pg.keyboard.type('Lis le poème à voix basse'); await p(200); await pg.mouse.click(5, 300); await p(6000); const c1 = await conflitN(pg);
+  await ecrireN(pg, 'Lis le poème', ', puis relis-le'); await p(7000); const c2 = await conflitN(pg);
+  await ecrireN(pg, 'Lis le poème', ' en entier'); await p(7000); const c3 = await conflitN(pg); await capt(pg, 'N-' + (vrai ? 'vrai' : 'ordinaire') + '-diapo-neuve');
+  const H = JSON.stringify(HUBN || {}); const auHub = [H.indexOf('Lis le poème à voix basse') >= 0, H.indexOf('puis relis-le') >= 0, H.indexOf('relis-le en entier') >= 0];
+  const errs = o.errs.concat(o.boites); await o.ctx.close(); VRAI = false; return { ins, ch, c: [c1, c2, c3], auHub, errs }; };
+const jouerN2 = async (fichier, vrai) => { VRAI = vrai; HUBN = vrai ? (ranger(store()) || {}) : store(); ECR = []; const A = await ouvrir({ fichier }), B = await ouvrir({ fichier }); await ouvrirAtelier(A); await ouvrirAtelier(B);
+  for (const o of [A, B]) { const L = await lignesX(o.pg); const t1 = (L.find(l => /^Tableau 1\b/.test(l.t)) || {}).eid; await o.pg.evaluate(s => { const d = document.querySelector(s); if (d) d.scrollIntoView({ block: 'center' }); }, '#volet [data-eid="' + t1 + '"]'); await (await o.pg.$('#volet [data-eid="' + t1 + '"] .t')).click(); await p(900); }
+  const premiere = pg => pg.evaluate(() => { const el = document.querySelector('#mur .corpsd [contenteditable]'); return el ? (el.innerText || '').slice(0, 20) : null; });
+  const debut = await premiere(A.pg); const re = debut ? debut.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').slice(0, 12) : '.';
+  await Promise.all([ecrireN(A.pg, re, ' (version de la salle 12)'), ecrireN(B.pg, re, ' (version de la maison)')]); await p(9000);
+  const cA = await conflitN(A.pg), cB = await conflitN(B.pg); await capt(A.pg, 'N2-' + (vrai ? 'vrai' : 'ordinaire') + '-A'); await capt(B.pg, 'N2-' + (vrai ? 'vrai' : 'ordinaire') + '-B');
+  const errs = A.errs.concat(A.boites, B.errs, B.boites); await A.ctx.close(); await B.ctx.close(); VRAI = false; return { cA, cB, debut, errs }; };
+if (joue('N')) { dire(''); dire('══ N · (⑲) 1536×864 · l’Atelier : une diapo neuve écrite trois fois (aucun faux conflit), deux navigateurs sur la même diapo (le conflit paraît) ══');
+  for (const vrai of [false, true]) { const nomH = vrai ? 'le faux hub rangé comme le vrai' : 'le faux hub ordinaire'; const r = await jouerN(FICHIER, vrai);
+    verif('N', r.ins && r.ch && r.c.every(x => !x) && r.auHub.every(Boolean), nomH + ' : une diapo insérée, une consigne écrite trois fois — aucun message « modifiée sur un autre appareil » ; au hub, chaque écriture ' + JSON.stringify(r.auHub), { messages: r.c });
+    sansErreur('N', r.errs, nomH + ', la diapo neuve');
+    const q = await jouerN2(FICHIER, vrai);
+    verif('N', /modifiée sur un autre appareil/.test(q.cA + q.cB), nomH + ' : deux navigateurs écrivent dans la même diapo au même moment — le conflit paraît (« ' + (q.cA || q.cB).slice(0, 90) + ' »)', { A: q.cA, B: q.cB, ligne: q.debut });
+    sansErreur('N', q.errs, nomH + ', deux navigateurs'); } }
 
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-fin.txt'), R.join('\n') + '\n');

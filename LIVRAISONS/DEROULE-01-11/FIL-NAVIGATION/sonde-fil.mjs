@@ -15,11 +15,10 @@
 //      de l'heure 1 ; un clic dans la colonne puis ↓ ↓ ↑ → ← ; Alt + ↓ / Alt + ↑ déplace la diapo ; la molette : un cran = une diapo, un geste continu (vingt petits
 //      coups rapprochés) = une diapo, la diapo à deux pages (page 2, la diapo suivante, en remontant la dernière page de celle d'avant) ; Ctrl + molette = le zoom ;
 //      sur le cahier de textes, la molette ne change pas de diapo.
-//  C · en classe, les flèches de la colonne et la garde : un clic dans la colonne, ↓ → « La classe te suivrait » ; « Rester » ne change rien ; « Y aller devant la
-//      classe » → le tableau suit ; ↓ ↓ sans garde, le tableau suit ; un clic sur la diapo puis → dévoile ; la garde revient au saut suivant ; Espace dévoile la
-//      colonne ayant la main, et la garde revient ; « ❄ Geler, puis y aller » → le tableau ne bouge plus, ↓ sans garde.
-//  D · en classe, la molette et la garde : le premier cran qui change de diapo ouvre la garde, « Rester », de nouveau la garde, « Y aller devant la classe »,
-//      le cran suivant sans garde, le tableau suit.
+//  C · (C16, les dernières dettes ⑱) en classe, les flèches de la colonne ne changent ni de diapo ni de page (↓ ↓ ↑ ↓ ↑ ↑ après un clic dans la colonne) ; → et
+//      Espace dévoilent ; un clic sur une vignette → la garde : « Rester » ne change rien, « Y aller devant la classe » → le tableau suit, la garde acceptée ne
+//      rouvre pas la colonne (↓ ↓ : rien) ; « ❄ Geler, puis y aller » → Paul va à la diapo, le tableau ne bouge pas.
+//  D · (⑱) en classe, la molette ne change ni de diapo ni de page (six crans ; trois crans sur la diapo à deux pages), aucune garde.
 // Aucune erreur JS, aucune boîte système, dans chaque cas. Code 1 si un échec.
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
@@ -236,39 +235,43 @@ if (joue('B1') || joue('B2') || joue('B3')) { dire(''); dire('══ B · 1536×
   verif('B', !o.errs.length, 'aucune erreur JS', o.errs.join(' ; ')); verif('B', !o.boites.length, 'aucune boîte système', o.boites.join(' ; ')); await o.ctx.close(); }
 
 /* ═══ C · en classe : les flèches de la colonne et la garde ═══ */
-if (joue('C')) { dire(''); dire('══ C · 1536×864 · en classe : les flèches de la colonne et la garde ══'); const o = await ouvrir({ W: 1536, H: 864 }); const pg = o.pg;
+/* (C16, les dernières dettes ⑱ ; Paul 02/11 07:48 : « Dès qu'un diapo est lancé, la façon d'avancer c'est soit dévoiler, soit gel. pas de scroll ou autre ») —
+   EN CLASSE, la colonne et la molette ne changent ni de diapo ni de page ; on va ailleurs par un clic sur une vignette et la garde (« Rester », « Y aller devant la
+   classe », « ❄ Geler, puis y aller »), inchangée. Les parties C et D d'avant (le premier saut à la garde, puis les sauts suivants sans elle) sont remplacées. */
+if (joue('C')) { dire(''); dire('══ C · 1536×864 · en classe : les flèches de la colonne ne changent pas de diapo ; la vignette et la garde ══'); const o = await ouvrir({ W: 1536, H: 864 }); const pg = o.pg;
   verif('C', await lancerClasse(o), 'l’heure lancée par la case de l’emploi du temps'); const fen = await ouvrirTableau(o, 1280, 720);
   await pg.click('#numero'); for (let k = 0; k < 30; k++) { const s = await ouSuisJe(pg); if (s.vig && +s.vig.split('/')[0] >= 2) break; await pg.keyboard.press('ArrowRight'); await p(260); }
   const s0 = await ouSuisJe(pg); const t0 = await filDe(fen, '#mur2'); const ordre = await pg.evaluate(() => Array.from(document.querySelectorAll('#volet .vig')).map(v => v.dataset.i + (v.dataset.pg != null ? '/' + v.dataset.pg : '')));
   const apresVig = v => ordre[ordre.indexOf(v) + 1];
-  await (await pg.$('#volet .vig.cour')).click(); await p(400); const s1 = await ouSuisJe(pg); verif('C', s1.vig === s0.vig && !s1.garde, 'un clic sur la vignette courante : rien ne bouge, la colonne a la main', s1.vig);
-  await pg.keyboard.press('ArrowDown'); await p(400); const s2 = await ouSuisJe(pg); verif('C', s2.garde && s2.vig === s0.vig, '↓ → la garde « La classe te suivrait » (le premier saut se demande)', s2);
+  await (await pg.$('#volet .vig.cour')).click(); await p(400); const s1 = await ouSuisJe(pg); verif('C', s1.vig === s0.vig && !s1.garde, 'un clic sur la vignette courante : rien ne bouge', s1.vig);
+  const fl = []; for (const t of ['ArrowDown', 'ArrowDown', 'ArrowUp', 'ArrowDown', 'ArrowUp', 'ArrowUp']) { await pg.keyboard.press(t); await p(400); const s = await ouSuisJe(pg), tt = await filDe(fen, '#mur2'); fl.push({ vig: s.vig, page: s.page, garde: s.garde, t: tt.rang }); }
+  verif('C', fl.every(x => x.vig === s0.vig && x.page === s0.page && !x.garde && x.t === t0.rang), '↓ ↓ ↑ ↓ ↑ ↑ après un clic dans la colonne : ni diapo ni page ne changent, au pilote et au tableau, aucune garde', fl);
+  const r0 = await ouSuisJe(pg); await pg.keyboard.press('ArrowRight'); await p(500); const r1 = await ouSuisJe(pg);
+  verif('C', r1.vig === r0.vig && r1.compte !== r0.compte && !r1.garde, '→ dévoile toujours (même après un clic dans la colonne)', { avant: r0.compte, apres: r1.compte });
+  const prochaine = async () => { const v = apresVig((await ouSuisJe(pg)).vig); const el = await pg.$('#volet .vig[data-i="' + String(v).split('/')[0] + '"]' + (String(v).indexOf('/') > 0 ? '[data-pg="' + String(v).split('/')[1] + '"]' : '')); if (el) { await el.scrollIntoViewIfNeeded().catch(() => {}); await el.click(); } await p(500); return v; };
+  const cible = await prochaine(); const s2 = await ouSuisJe(pg); verif('C', s2.garde && s2.vig === s0.vig, 'un clic sur la vignette suivante → la garde « La classe te suivrait »', s2);
   await pg.click('#garde-non'); await p(400); const s3 = await ouSuisJe(pg), t3 = await filDe(fen, '#mur2'); verif('C', !s3.garde && s3.vig === s0.vig && t3.rang === t0.rang, '« Rester » ne change rien (le pilote et le tableau restent sur la diapo)', { pilote: s3.vig, tableau: t3.rang });
-  await pg.keyboard.press('ArrowDown'); await p(400); const s4 = await ouSuisJe(pg); verif('C', s4.garde, '↓ de nouveau → de nouveau la garde');
-  await pg.click('#garde-devant'); await p(900); const s5 = await ouSuisJe(pg), t5 = await filDe(fen, '#mur2'), p5 = await filDe(pg, '#mur'); verif('C', !s5.garde && s5.vig === apresVig(s0.vig) && t5.rang === p5.rang, '« Y aller devant la classe » → la diapo suivante de la colonne, au pilote et au tableau', { vig: s5.vig, tableau: t5.rang, pilote: p5.rang });
-  const suit = []; for (let k = 0; k < 2; k++) { await pg.keyboard.press('ArrowDown'); await p(900); const s = await ouSuisJe(pg), t = await filDe(fen, '#mur2'), f = await filDe(pg, '#mur'); suit.push({ vig: s.vig, garde: s.garde, t: t.rang, p: f.rang }); }
-  verif('C', suit.every(x => !x.garde && x.t === x.p) && suit[0].vig === apresVig(s5.vig) && suit[1].vig === apresVig(suit[0].vig), '↓ ↓ ensuite : plus de garde, le tableau suit à chaque diapo', suit);
-  const r0 = await ouSuisJe(pg); { const b = await pg.$eval('#mur', m => { const r = m.getBoundingClientRect(); return { x: r.width * 0.012, y: r.height * 0.5 }; }); await pg.click('#mur', { position: b }).catch(() => {}); } await p(300); await pg.keyboard.press('ArrowRight'); await p(500); const r1 = await ouSuisJe(pg);
-  verif('C', r1.vig === r0.vig && r1.compte !== r0.compte && !r1.garde, 'un clic sur la diapo, puis → : la ligne suivante se dévoile (la colonne n’a plus la main)', { avant: r0.compte, apres: r1.compte });
-  await (await pg.$('#volet .vig.cour')).click(); await p(400); await pg.keyboard.press('ArrowDown'); await p(400); const r2 = await ouSuisJe(pg); verif('C', r2.garde, 'après le clic sur la diapo, le saut suivant redemande la garde'); await pg.click('#garde-non'); await p(300);
-  await pg.keyboard.press('ArrowUp'); await p(400); const r3 = await ouSuisJe(pg); verif('C', r3.garde, '↑ (la diapo d’avant) : la garde aussi'); await pg.click('#garde-devant'); await p(900);
-  const e0 = await ouSuisJe(pg); await pg.keyboard.press(' '); await p(500); const e1 = await ouSuisJe(pg); const main = await pg.evaluate(() => document.getElementById('volet').classList.contains('dr-fil-main'));
-  verif('C', e1.vig === e0.vig && e1.compte !== e0.compte && main, 'Espace dévoile, même quand la colonne a la main (elle la garde)', { avant: e0.compte, apres: e1.compte, main });
-  await pg.keyboard.press('ArrowDown'); await p(400); const e2 = await ouSuisJe(pg); verif('C', e2.garde, '▶ (Espace) reprend le fil : le saut suivant redemande la garde');
-  const g0 = await filDe(fen, '#mur2'); await pg.click('#garde-gel'); await p(900); const g1 = await ouSuisJe(pg), tg1 = await filDe(fen, '#mur2'); await pg.keyboard.press('ArrowDown'); await p(900); const g2 = await ouSuisJe(pg), tg2 = await filDe(fen, '#mur2'), pg2 = await filDe(pg, '#mur');
-  verif('C', g1.vig === apresVig(e1.vig) && !g2.garde && g2.vig === apresVig(g1.vig) && tg1.rang === g0.rang && tg2.rang === g0.rang && pg2.rang !== g0.rang, '« ❄ Geler, puis y aller » : Paul avance (↓ sans garde), la classe ne voit rien bouger (le tableau reste sur sa diapo)', { pilote: [g1.vig, g2.vig, pg2.rang], tableau: [g0.rang, tg1.rang, tg2.rang] });
+  await prochaine(); const s4 = await ouSuisJe(pg); verif('C', s4.garde, 'le clic suivant sur la vignette redemande la garde');
+  await pg.click('#garde-devant'); await p(900); const s5 = await ouSuisJe(pg), t5 = await filDe(fen, '#mur2'), p5 = await filDe(pg, '#mur'); verif('C', !s5.garde && s5.vig === cible && t5.rang === p5.rang, '« Y aller devant la classe » → cette diapo, au pilote et au tableau', { vig: s5.vig, tableau: t5.rang, pilote: p5.rang });
+  const apres = []; for (const t of ['ArrowDown', 'ArrowDown']) { await pg.keyboard.press(t); await p(600); const s = await ouSuisJe(pg), tt = await filDe(fen, '#mur2'); apres.push({ vig: s.vig, garde: s.garde, t: tt.rang }); }
+  verif('C', apres.every(x => x.vig === s5.vig && !x.garde && x.t === t5.rang), '↓ ↓ ensuite (la garde acceptée) : toujours rien ne change — la garde acceptée ne rouvre pas la colonne', apres);
+  const e0 = await ouSuisJe(pg); await pg.keyboard.press(' '); await p(500); const e1 = await ouSuisJe(pg); verif('C', e1.vig === e0.vig && e1.compte !== e0.compte, 'Espace dévoile', { avant: e0.compte, apres: e1.compte });
+  const g0 = await filDe(fen, '#mur2'); const cg = await prochaine(); const g1a = await ouSuisJe(pg); await pg.click('#garde-gel'); await p(900); const g1 = await ouSuisJe(pg), tg1 = await filDe(fen, '#mur2'), pg1 = await filDe(pg, '#mur');
+  verif('C', g1a.garde && g1.vig === cg && tg1.rang === g0.rang && pg1.rang !== g0.rang, '« ❄ Geler, puis y aller » (un clic sur une vignette) : Paul va à la diapo, la classe ne voit rien bouger (le tableau reste sur sa diapo)', { pilote: [g1.vig, pg1.rang], tableau: [g0.rang, tg1.rang] });
   await capt(pg, 'C-classe-gele'); await fin('C', o); }
 
-/* ═══ D · en classe : la molette et la garde ═══ */
-if (joue('D')) { dire(''); dire('══ D · 1536×864 · en classe : la molette et la garde ══'); const o = await ouvrir({ W: 1536, H: 864 }); const pg = o.pg;
+/* ═══ D · en classe : la molette ne change ni de diapo ni de page (⑱) ═══ */
+if (joue('D')) { dire(''); dire('══ D · 1536×864 · en classe : la molette ne change ni de diapo ni de page ══'); const o = await ouvrir({ W: 1536, H: 864 }); const pg = o.pg;
   verif('D', await lancerClasse(o), 'l’heure lancée par la case de l’emploi du temps'); const fen = await ouvrirTableau(o, 1280, 720); await pg.click('#numero'); await p(300);
-  const d0 = await ouSuisJe(pg); await centreMur(pg); await pg.mouse.wheel(0, 100); await p(450); const d1 = await ouSuisJe(pg); verif('D', d1.garde && d1.vig === d0.vig, 'le premier cran qui change de diapo ouvre la garde « La classe te suivrait »', d1);
-  await pg.click('#garde-non'); await p(400); const d2 = await ouSuisJe(pg); verif('D', !d2.garde && d2.vig === d0.vig, '« Rester » ne change rien', d2.vig);
-  await centreMur(pg); await p(300); await pg.mouse.wheel(0, 100); await p(450); const d3 = await ouSuisJe(pg); verif('D', d3.garde, 'le cran suivant redemande la garde'); await pg.click('#garde-devant'); await p(900);
-  const d4 = await ouSuisJe(pg); await centreMur(pg); await p(300); await pg.mouse.wheel(0, 100); await p(900); const d5 = await ouSuisJe(pg), t5 = await filDe(fen, '#mur2'), p5 = await filDe(pg, '#mur');
-  verif('D', d4.vig !== d0.vig && !d5.garde && d5.vig !== d4.vig && t5.rang === p5.rang, '« Y aller devant la classe », puis un cran : plus de garde, le tableau suit', { vigs: [d0.vig, d4.vig, d5.vig], tableau: t5.rang, pilote: p5.rang });
+  const d0 = await ouSuisJe(pg), t0 = await filDe(fen, '#mur2'); const crans = []; for (let k = 0; k < 6; k++) { await centreMur(pg); await pg.mouse.wheel(0, k < 4 ? 100 : -100); await p(450); const s = await ouSuisJe(pg), tt = await filDe(fen, '#mur2'); crans.push({ vig: s.vig, page: s.page, garde: s.garde, t: tt.rang }); }
+  verif('D', crans.every(x => x.vig === d0.vig && x.page === d0.page && !x.garde && x.t === t0.rang), 'six crans de molette (quatre vers le bas, deux vers le haut) : ni diapo ni page ne changent, au pilote et au tableau, aucune garde', crans);
+  /* la diapo à deux pages (« Les hypothèses de la classe ») : la molette ne passe pas les pages non plus */
+  const L = await pg.evaluate(() => Array.from(document.querySelectorAll('#volet .vig')).map(v => ({ i: v.dataset.i, pg: v.dataset.pg }))); const deux = L.find(v => v.pg === '0');
+  if (deux) { await (await pg.$('#volet .vig[data-i="' + deux.i + '"][data-pg="0"]')).click(); await p(500); if ((await ouSuisJe(pg)).garde) { await pg.click('#garde-devant'); await p(900); } await pg.click('#numero').catch(() => {}); await p(300);
+    const h0 = await ouSuisJe(pg); for (let k = 0; k < 3; k++) { await centreMur(pg); await pg.mouse.wheel(0, 100); await p(450); } const h1 = await ouSuisJe(pg);
+    verif('D', h1.vig === h0.vig && h1.page === h0.page && !h1.garde, 'sur une diapo à deux pages (' + h0.page + ') : trois crans, la même page', { avant: [h0.vig, h0.page], apres: [h1.vig, h1.page] }); }
+  else verif('D', false, 'la diapo à deux pages de la séance de la sonde est introuvable');
   await fin('D', o); }
-
 
 /* ═══ X · la coexistence avec la 8.77.1-⑩ (la conscience, 02/11 ; Paul : « garder un point de retour à portée immédiate ») : la 8.77.1-⑩ (assemblé de fc036e8 = la production,
    APP_VERSION à part ; MJPC_ANCIENNE=<fichier> sinon `git show`) écrit d'abord ce que Paul a fait sur le vrai chapitre (le début de séance et la problématique renommés) ;

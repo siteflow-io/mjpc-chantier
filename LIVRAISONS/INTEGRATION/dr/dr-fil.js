@@ -39,11 +39,17 @@ function dr_filHtml(fil, sombre){ if (!fil || typeof fil.y !== 'number') return 
    sans lui, au pilote seulement (une vignette, la diapo suivante, une mesure de pages), il se calcule ici ; la fenêtre du tableau ne le calcule jamais */
 function dr_filPour(et, sombre){ if (!et) return ''; let f = et.fil; if (f === undefined) { if (typeof dr_estTableau === 'function' && dr_estTableau()) return ''; f = dr_filDe(et.si, et.di); } return dr_filHtml(f, sombre); }
 /* l'infobulle de la colonne (une vignette, son en-tête), écrite pour Paul : ce que fait le geste, ce qu'il coûte en classe */
-var DR_FIL_BULLE = ' · après un clic dans la colonne, ↑ ↓ ← → passent à la vignette d’au-dessus ou d’en dessous, comme dans PowerPoint, jusqu’à ce que tu cliques ailleurs ; en classe, le premier saut demande « La classe te suivrait » (un clic sur la diapo ou ▶ la fait revenir) ; Espace dévoile toujours';
+var DR_FIL_BULLE = ' · avant de lancer l’heure, après un clic dans la colonne, ↑ ↓ ← → passent à la vignette d’au-dessus ou d’en dessous, comme dans PowerPoint, et la molette sur la diapo fait défiler les diapos ; dès que l’heure est lancée (ou la répétition jouée), ni la molette ni les flèches de la colonne ne changent de diapo : tu avances par → ou ▶ (dévoiler) ; pour aller ailleurs, un clic sur une vignette, puis « ❄ Geler, puis y aller »';
+/* C16 (les dernières dettes, ⑱ ; MANDAT-DERNIERES-DETTES §3.7, Paul 02/11 07:48 : « Dès qu'un diapo est lancé, la façon d'avancer c'est soit dévoiler, soit gel.
+   pas de scroll ou autre, qui sert en préparation, jamais en jeu en classe, ni en répétition. ») — EN JEU (l'heure lancée et pas close, ou la répétition jouée ;
+   jamais dans l'Atelier) : la molette sur la vue centrale et les flèches de la colonne ne changent ni de diapo ni de page. → et ▶ dévoilent (et passent à la
+   diapo suivante quand tout est dévoilé : le fil) ; ← revient ; un clic sur une vignette ouvre la garde (« ❄ Geler, puis y aller »), inchangée. Dans l'Atelier
+   et avant le lancement, rien ne change. Ctrl + molette (le zoom), le cahier de textes et la loupe ne passent pas par ici (dr-socle.js) : inchangés. */
+function dr_filEnJeu(){ try { return !S.atelier && (!!S.repetition || (!!S.lancee && !S.close)); } catch (e) { return false; } }
 
 /* ── 2 · la colonne a la main : un clic dedans la lui donne, un clic ailleurs la lui reprend (la garde « La classe te suivrait » n'est pas « ailleurs » :
    c'est elle qui laisse passer la flèche) ; un clic sur la diapo rend aussi la garde au prochain saut (C16 66) ── */
-function dr_filMarquer(){ const v = document.getElementById('volet'); if (v) { v.classList.toggle('dr-fil-main', !!DR_FIL.main); } }
+function dr_filMarquer(){ const v = document.getElementById('volet'); if (v) { v.classList.toggle('dr-fil-main', !!DR_FIL.main && !dr_filEnJeu()); } }   /* C16 (⑱) : en jeu, la colonne n'a pas la main : pas de trait d'or qui promettrait des flèches */
 document.addEventListener('pointerdown', ev => { const t = ev.target; if (!t || !t.closest) return;
   if (t.closest('#volet')) { if (!DR_FIL.main) { DR_FIL.main = true; dr_filMarquer(); } return; }
   if (t.closest('#garde, #garde2')) return;
@@ -56,6 +62,7 @@ function dr_filBloque(){ try { const on = id => { const x = document.getElementB
   if (S.lancee && S.close && !S.atelier) return true; return false; } catch (e) { return true; } }
 /* l'écoute du clavier du déroulé (dr-socle.js) la consulte avant →, ← : rend vrai si la flèche est pour la colonne */
 function dr_filColonneTouche(ev){ if (!DR_FIL.main || !/^Arrow(Up|Down|Left|Right)$/.test(ev.key) || ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) return false;
+  if (dr_filEnJeu()) { if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') { ev.preventDefault(); return true; } return false; }   /* C16 (⑱) : en jeu, ↑ ↓ de la colonne ne font rien ; ← → gardent leur sens de la classe (revenir, dévoiler) */
   if (!document.getElementById('volet') || dr_filBloque()) return false; ev.preventDefault(); dr_filPas(ev.key === 'ArrowDown' || ev.key === 'ArrowRight' ? 1 : -1, 'fleche'); return true; }
 /* la vignette ou la ligne courante reste visible dans la colonne (au plus près : rien ne bouge si elle se voit déjà) */
 function dr_filMontrer(){ try { const v = document.getElementById('volet'); const c = v && v.querySelector('.vig.cour, .dr-d.on'); if (!c) return; const r = c.getBoundingClientRect(), R = v.getBoundingClientRect(); let d = 0;
@@ -79,7 +86,7 @@ function dr_filPas(sens, source){
 /* ── 3 · la molette sur la vue centrale (l'écoute de #murcadre, dr-socle.js, la lui passe hors du cahier de textes, de la loupe et de Ctrl) : un pas par geste —
    un cran de souris (un coup d'au moins 50 px, après 90 ms sans molette) en est un ; un pavé tactile qui glisse envoie des dizaines de petits coups sans pause :
    ils s'additionnent, font un pas à 40 px, puis plus rien jusqu'à ce que le geste s'arrête (220 ms sans molette) ── */
-function dr_filMolette(ev){ ev.preventDefault(); const on = id => { const x = document.getElementById(id); return !!(x && x.classList.contains('on')); }; if (on('garde') || on('garde2')) return;
+function dr_filMolette(ev){ ev.preventDefault(); if (dr_filEnJeu()) return;   /* C16 (⑱) : en jeu, la molette ne change ni de diapo ni de page */ const on = id => { const x = document.getElementById(id); return !!(x && x.classList.contains('on')); }; if (on('garde') || on('garde2')) return;
   const M = DR_FIL.mol; const t = ev.timeStamp || Date.now(); const gap = t - M.t; M.t = t; let d = +ev.deltaY || 0; if (ev.deltaMode === 1) d *= 40; else if (ev.deltaMode === 2) d *= 800; if (!d) return;
   if (gap >= 220 || (Math.abs(d) >= 50 && gap >= 90)) { M.acc = 0; M.pris = false; } if (M.pris) return;
   M.acc += d; if (Math.abs(M.acc) < 40) return; const sens = M.acc > 0 ? 1 : -1; M.acc = 0; M.pris = true;

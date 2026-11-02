@@ -4206,3 +4206,41 @@ Cadrage de la correction par l'élève, sujet 1 : la note retenue.
 02/11/2026 15:36
 
 MEMO
+
+---
+
+## Tour 151 — 02/11/2026 15:42
+
+**Paul (15:42) :**
+
+3. oui la première proposition. 4. exactement le même flux qu'en dictée (mêmes écrans, même UI, même code, tout pareil, clonage). dis moi ce qu'on reprend tel quel, ce qu'on adapte un peu, ce qu'on adapte beaucoup, et d'abord fais moi des propositions pour savoir effectivement ce que l'élève corrige.
+
+**Ce qui a été fait (C14) :** les deux décisions écrites au sas (`A-CODER-CORRECTION-ELEVE.md`, « Cadrage du 02/11/2026 »). Mesuré sur la copie de l'essai : 54 fautes gardées, 53 avec leur bonne forme (la 54e : un mot en trop) ; 12 de ponctuation seule ; 5 de plusieurs mots ; en dictée, le stylo vert se règle de 15 à 600 secondes.
+
+**Claude (15:48) :**
+
+À jouer : ton mot sur 5 à 11 · en cours : rien · ouvert : ce qu'on reprend tel quel, un peu, beaucoup (12), puis les sujets suivants de ce cadrage, 738 (après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+Sujet 2 : ce que l'élève corrige. Mesuré sur la copie de l'essai : 54 fautes que tu as gardées dans la bande, 53 avec leur bonne forme.
+
+5. Ses fautes d'un mot ou d'un signe, comme en dictée : chacune est cachée dans son texte, avec la couleur et la lettre de son type. Il clique, tape la bonne forme, et l'app vérifie seule. Ce sont elles qui font sa note sur 5. Sur l'essai : 48 fautes, dont 12 de ponctuation.
+
+6. Le mot en trop : montré barré, rien à taper, comme en dictée.
+
+7. Les fautes de plusieurs mots, une tournure à reprendre (« dont ils venait » devient « qui venaient ») : 5 sur l'essai. Plusieurs bonnes réponses existent, l'app n'en connaît qu'une : un élève qui en tape une autre, juste, serait compté faux, et viendrait réclamer. Ma proposition : il lit ta correction sans rien taper, elle ne compte pas dans sa note, et il la recopie au stylo vert.
+
+8. Ses remarques, « À reprendre » : l'app ne peut pas vérifier seule une phrase reprise, et tu ne veux rien relire. Ma proposition : il les ouvre une à une, « 12 / 12 lues », sans note ; il les applique en recopiant sa lettre pour la cérémonie, comme le dit ton commentaire général.
+
+9. Les questions pour regagner des points : les mêmes qu'en dictée, tirées des types de ses fautes ratées (grammaire, lexique, ponctuation, élision).
+
+10. Le stylo vert : le même ; il recopie ses corrections sur sa copie papier. Le temps se règle comme en dictée, de 15 secondes à 10 minutes.
+
+11. Ce qu'il ne corrige pas : ses réussites (il les lit), ta grille, sa note.
+
+12. Ensuite, sur ton mot : ce qu'on reprend tel quel, un peu, beaucoup. Un point est déjà sûr, dans « beaucoup » : sa photo n'est pas sur le site, elle reste dans ton navigateur. Sur le site, l'élève connecté ne voit donc pas son scan, sauf à l'y mettre.
+
+À tester : rien de neuf.
+
+02/11/2026 15:48
+
+MEMO

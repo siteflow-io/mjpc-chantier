@@ -410,11 +410,14 @@ function stIARemarques(o, copiesOk) {
    et l'envoie avec chaque paquet suivant : l'IA ne redemande que ce qui manque encore */
 function stContexte() { const c = typeof SUJET === "object" && SUJET && SUJET.contexteIA; return c && c.texte ? c : null; }
 function stContexteGarder(o) {
-  const v = o && o.contexte; if (!v) return ""; const texte = (typeof v === "string" ? v : JSON.stringify(v, null, 1)).trim().slice(0, 60000); if (!texte) return "";
-  const anc = stContexte(); if (anc && anc.texte === texte) return " Le contexte de ta discussion avec l’IA : le même qu’avant, gardé.";
+  /* [C14 essai, 02/11 15:02] le contexte rendu par l'IA de Paul faisait 77 032 signes : il était coupé à 60 000, sans le dire. Il est gardé en entier jusqu'à 1 000 000 de signes ; au-delà, l'app le dit. */
+  const v = o && o.contexte; if (!v) return ""; const tout = (typeof v === "string" ? v : JSON.stringify(v, null, 1)).trim(), texte = tout.slice(0, ST_CONTEXTE_MAX); if (!texte) return "";
+  const coupe = tout.length > texte.length ? " ⚠ Il faisait " + tout.length + " signes : seuls les " + ST_CONTEXTE_MAX + " premiers sont gardés." : "";
+  const anc = stContexte(); if (anc && anc.texte === texte) return " Le contexte de ta discussion avec l’IA : le même qu’avant, gardé." + coupe;
   const c = { texte, le: new Date().toISOString() }; SUJET.contexteIA = c; ruEcrire(["redactions", RU.id, "config", "contexteIA"], c, "le contexte donné à l’IA");
-  return " Le contexte de ta discussion avec l’IA (" + texte.length + " signes) : gardé avec la rédaction, il partira avec les paquets suivants.";
+  return " Le contexte de ta discussion avec l’IA (" + texte.length + " signes) : gardé avec la rédaction, il partira avec les paquets suivants." + coupe;
 }
+const ST_CONTEXTE_MAX = 1000000;
 function stContexteVoir() {
   const c = stContexte(); if (!c) { scModale("<h3>Le contexte donné à l’IA</h3><p>Rien encore : au premier envoi, l’IA te pose ses questions (les textes lus, ce que la grille cite) ; ce que tu lui donnes revient avec son fichier, et l’app le garde ici.</p>"); return; }
   scModale("<h3>Le contexte donné à l’IA</h3><p>Gardé le " + escapeHtml(rcHeure(c.le)) + ", " + c.texte.length + " signes. Il part avec chaque paquet de cette rédaction : l’IA ne te redemande que ce qui manque encore.</p><pre class=\"st-contexte\">" + escapeHtml(c.texte) + "</pre><button class=\"sc-btn\" id=\"stContexteEffacer\" title=\"L’IA te reposera ses questions au prochain envoi. Rien d’autre ne change.\">🗑 Effacer ce contexte</button>");

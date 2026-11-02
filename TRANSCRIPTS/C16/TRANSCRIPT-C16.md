@@ -1486,3 +1486,16 @@ MEMO
   > MEMO
 - **23:28 — un incident de la machine** : le conteneur a redémarré. Arrêtés : les deux exécutants (l'appel, la fin d'heure), la chaîne finale de l'exécutant de l'appel, la boucle d'attente de l'exécutant de la fin d'heure. Les fichiers sont intacts (les dossiers de travail, le scratchpad, les dépôts).
 - **23:30 — la conscience** : les deux exécutants repris là où ils en étaient (même historique) : l'appel relance sa chaîne finale et pousse dès que tout est vert ; la fin d'heure continue sa lecture, le délai de 03:45 redit.
+- **23:38 — l'exécutant de l'appel a poussé** `12de01f62` (`deroule/appel`, l'assemblé md5 `2f270cda`) : sa sonde 88 / 0 (la base 45 / 43), la sonde de ㉞ 105 / 0, le parcours P0-P12 vert (K15 : 28 écritures permises ; K15-test : 0 hors de `/site/tableau_test`). P2T : la sonde lisait le bouton de la télécommande une fois, trop tôt (il se marque environ 60 ms après l'état du téléphone) ; elle attend maintenant 2 s comme pour les autres appareils. Un écart : en mode test, le paquet s'écrit entier (le PATCH faisait rougir P12 en mode test). Délais de ㉞ : 87 à 359 ms sur le code, 77 à 153 ms sur la base, tout sous 0,5 s ; la cause de l'écart, je ne sais pas. Restaient deux pertes silencieuses : deux gestes d'appel croisés sur deux appareils ; « Annuler cette heure » ne rend pas l'appel à la case.
+- **23:39 — la conscience** : pas de mise en ligne en dette : l'exécutant de l'appel ferme les deux (poussée avant 00:40) ; l'exécutant de la fin d'heure prend ce commit pour base et, d'ici là, lit et écrit sa sonde sans toucher aux fichiers du site. K15 : les chemins de ㉞ permis (`AUDITS`, `b440f0098`).
+- **23:39 — message à Paul, mot pour mot :**
+
+  > 296. L'appel est livré et prouvé par le geste (sa sonde 88 sur 88, la session partout 105 sur 105, le parcours complet vert en vraie heure et en mode test). Il restait deux pertes silencieuses, que je fais fermer avant le banc, cette nuit : si tu marques deux élèves sur deux appareils à la même seconde, aucun ne se perd (pour le même élève, ton dernier geste compte) ; si tu annules une heure lancée, l'appel fait avant revient dans sa case.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 23:39
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (les deux pertes) ; l'exécutant de la fin d'heure (la lecture du code, sa sonde) · ouvert : 296
+  >
+  > MEMO

@@ -451,7 +451,7 @@ function dr_tabMonter(){
   DR_TAB.ts = 0; DR_TAB.trameMaj = 0; DR_TAB.pilotePresent = true; DR_TAB.hdec = 0;   /* le cours vient d'être trouvé au pointeur */
   dr_tabLireSeance(SES.ctx);
   dr_tabLire(dr_tabCheminC(SES.ctx) + '/ecrans', ecr => {
-    if (Array.isArray(ecr)) DR_TAB.ecrans = ecr;
+    if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(ecr);   /* C16 (retour sûr) : la copie de la classe est écrite lisible pour la 8.77.1-⑩ ; ici, le canon (dr-socle.js) */
     DR_TAB.decal = null; DR_TAB.vuCours = false;   /* §12.70 (4) : l'horloge du pilote se recale à chaque cours */
     if (!dr_tabFluxOuvrir(dr_tabCheminC(SES.ctx) + '/scene') && !DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);   /* §12.70 (5) : le flux du hub ; la lecture toutes les 0,9 s en repli */
     if (!DR_TAB.pointeurT) DR_TAB.pointeurT = setInterval(() => { sesTabVeillePointeur(); dr_tabPointeur(); }, 3000);
@@ -484,7 +484,7 @@ function dr_tabSceneRecue(o, c){
     dr_tabNormaliser(o);   /* §12.71 : la participation à 0 revient en liste vide */   /* §12.70 : le minuteur suit la scène, recalé sur l'horloge du pilote */
     if (o.trameMaj && o.trameMaj > DR_TAB.trameMaj) {
       DR_TAB.trameMaj = o.trameMaj;
-      dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = ecr; dr_tabMontrer(o); });
+      dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(ecr); dr_tabMontrer(o); });
     } else dr_tabMontrer(o);
   }
 }

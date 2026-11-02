@@ -122,7 +122,21 @@ function dr_invDerniere(sk){ try { const c = dr_chapitre(); if (!c || typeof atS
    (sans la marque) qui retiraient TOUTES les diapos d'ouverture de l'ancienne version (les quatre à la première séance, les deux ailleurs) disent
    « pas d'ouverture dans cette séance » : les diapos nouvelles de la tête (les compétences du chapitre, le parcours) y restent retirées aussi. */
 const DR_INV_MARQUE = 'canon';
-function dr_invRetraits(sce, sk){ const L = (sce && sce.deroule && Array.isArray(sce.deroule.retraits)) ? sce.deroule.retraits.filter(r => typeof r === 'string') : []; if (L.indexOf(DR_INV_MARQUE) >= 0) return L;
+/* C16 (le retour sûr, MANDAT-RETOUR-SUR §3.2) — CE QUE LA 8.77.1-⑩ NE VOIT PAS, SES GESTES ORDINAIRES NE L'EFFACENT PAS. Remise en ligne, elle réécrit le déroulé
+   d'une séance à son premier geste dans l'Atelier (écrire, déplacer, retirer, renommer) ; elle ne garde dans `retraits` que ses quatre rôles (la présentation du
+   chapitre, le parcours, le début de séance, la problématique) : la marque « canon » et les compétences du chapitre (et leur bilan) retirées par Paul y
+   disparaissaient — revenue, cette version les remettait. Elle garde en revanche les clés du déroulé qu'elle ne connaît pas (son écriture part de la séance
+   telle qu'elle l'a lue). Cette version écrit donc aussi `ouvRetraits` : `r`, les retraits entiers (rôles nouveaux, marque) ; `p`, les rôles nouveaux
+   écrits au hub (« ta version »). À la lecture : les quatre rôles de la 8.77.1-⑩ se lisent dans `retraits` (les deux versions les lisent et les écrivent :
+   si Paul y remet le parcours, il est remis ici aussi) ; les rôles nouveaux et la marque, dans `retraits` ou dans `ouvRetraits.r` ; un rôle nouveau écrit au
+   hub (`p`) que la 8.77.1-⑩ a supprimé (pour elle, une diapo ordinaire) est retiré. */
+function dr_invRetraitsDe(d){ const L = (d && Array.isArray(d.retraits)) ? d.retraits.filter(r => typeof r === 'string') : []; const x = d && d.ouvRetraits; if (!x || typeof x !== 'object') return L;
+  const neufs = DR_INV.filter(r => DR_INV_V1_ROLES.indexOf(r) < 0).concat([DR_INV_MARQUE]); const out = L.slice(); const add = r => { if (out.indexOf(r) < 0) out.push(r); };
+  const liste = v => Array.isArray(v) ? v : (v && typeof v === 'object' ? Object.values(v) : []);
+  liste(x.r).forEach(r => { if (neufs.indexOf(r) >= 0) add(r); });
+  const presents = new Set(liste(d.ecrans).filter(e => e && typeof e === 'object').map(e => e.role)); liste(x.p).forEach(r => { if (neufs.indexOf(r) >= 0 && !presents.has(r)) add(r); });
+  return out; }
+function dr_invRetraits(sce, sk){ const L = dr_invRetraitsDe(sce && sce.deroule); if (L.indexOf(DR_INV_MARQUE) >= 0) return L;
   const anciens = dr_invPremiere(sk) ? ['presentation-chapitre', 'plan', 'presentation-seance', 'problematique'] : ['presentation-seance', 'problematique'];
   if (anciens.every(r => L.indexOf(r) >= 0)) DR_INV_TETE.forEach(r => { if (L.indexOf(r) < 0) L.push(r); });
   return L; }
@@ -184,6 +198,59 @@ function dr_invPourHub(e, sk){ if (!dr_estInvariable(e)) return e; if (sk == nul
     o.blocs = JSON.parse(JSON.stringify(v1.blocs || [])); if (e.act === e.dr_invAct) { o.act = v1.act; o.suitAct = true; } return o; }
   const b = dr_ouvBloc(e); if (!b) return e;   /* une ancienne forme (des blocs de texte) : telle quelle, la 8.77.1-⑩ la lit */
   delete o.suit; o.ouvCanon = JSON.parse(JSON.stringify(b)); o.blocs = [dr_ouvLisible(b)]; return o; }
+/* C16 (le retour sûr, MANDAT-RETOUR-SUR §3.1) — LA COPIE DE LA CLASSE LISIBLE PAR LA 8.77.1-⑩ (Paul, 01/11 23:49 : « garder un point de retour à portée immédiate ») :
+   une heure commencée ici, reprise en pleine heure dans la 8.77.1-⑩ remise en ligne, puis ici de nouveau. Au hub, dans la copie de la classe
+   (`deroule_joue/<classe>/ecrans`), une diapo d'ouverture au canon s'écrit comme dans la trame : un bloc de texte lisible (le MÊME identifiant de bloc) et son
+   canon sous `ouvCanon`, que seule cette version relit (dr_copieDuHub, chez chaque lecteur de la copie : la reprise, la Relecture et le récit par dr_lireJoue,
+   l'heure suivante par dr_jouerCopie, le tableau distant). Le bloc lisible a UNE ligne par ligne que la flèche dévoile (dr_ouvElements) : le compteur, les
+   dévoilements et « À écrire » (par élément) se relisent tels quels des deux côtés. Ce que la classe a écrit (S.copie, par indice de texte du bloc) : la
+   présentation, le début de séance et la problématique ont un texte par ligne, les mêmes indices ; le parcours (« titre — objectif ») et les compétences
+   (« domaine : une ; deux ») ont plusieurs textes par ligne : l'état écrit au hub leurs lignes (la 8.77.1-⑩ les montre) et garde les textes sous `ouvEl`
+   (dr_copieEtatPourHub) ; relue ici, une ligne que la 8.77.1-⑩ a écrite revient dans ses textes (dr_copieEtatDuHub). Rien n'est écrit d'autre au hub. */
+const dr_ouvMultiple = b => !!b && (b.forme === 'parcours' || b.forme === 'competences');
+function dr_ouvNomDom(dom){ const D = (typeof dr_ouvCharte === 'function' ? dr_ouvCharte().domaines : {}) || {}; return (D[dom] || [dom])[0]; }
+function dr_ouvLignesCopie(b){ const d = (b && b.d) || {}; const el = ((b && b.el) || []).map(x => String(x == null ? '' : x));
+  if (b.forme === 'parcours') return (d.seances || []).map((s, k) => (el[2 * k] || '') + (el[2 * k + 1] ? ' — ' + el[2 * k + 1] : ''));
+  if (b.forme === 'competences') return (d.doms || []).map(x => dr_ouvNomDom(x.dom) + ' : ' + (x.rows || []).map(r => el[r.ei] || '').join(' ; '));
+  return el; }
+function dr_ouvTxtCopie(b){ const d = (b && b.d) || {}; return String((b.forme === 'parcours' ? d.sn : b.forme === 'competences' ? d.titre : d.kicker) || ''); }
+function dr_ouvLisibleCopie(b){ return { t: 'texte', id: b.id, txt: dr_ouvTxtCopie(b), el: dr_ouvLignesCopie(b) }; }
+/* la ligne k qui porte le texte d'indice ei ; une ligne lue → les textes du canon qu'elle porte ({ indice: texte }) */
+function dr_ouvLigneDe(b, ei){ if (b.forme === 'parcours') return Math.floor(ei / 2); if (b.forme === 'competences') return ((b.d || {}).doms || []).findIndex(x => (x.rows || []).some(r => r.ei === ei)); return ei; }
+function dr_ouvLigneVersEl(b, k, ligne){ const o = {}; ligne = String(ligne == null ? '' : ligne);
+  if (b.forme === 'parcours') { const i = ligne.indexOf(' — '); o[2 * k] = i < 0 ? ligne : ligne.slice(0, i); o[2 * k + 1] = i < 0 ? '' : ligne.slice(i + 3); return o; }
+  if (b.forme === 'competences') { const x = ((b.d || {}).doms || [])[k]; if (!x) return o; const pre = dr_ouvNomDom(x.dom) + ' : '; const reste = ligne.startsWith(pre) ? ligne.slice(pre.length) : ligne; const rows = x.rows || [];
+    const parts = reste.split(' ; '); rows.forEach((r, j) => { o[r.ei] = j < rows.length - 1 ? (parts[j] || '') : parts.slice(j).join(' ; '); }); return o; }   /* un « ; » de trop reste dans la dernière : aucun mot perdu */
+  o[k] = ligne; return o; }
+/* l'écriture : la copie (un tableau d'écrans, déjà cloné) telle qu'elle part au hub */
+function dr_copiePourHub(ecr){ if (!Array.isArray(ecr)) return ecr;
+  return ecr.map(e => { const b = dr_ouvBloc(e); if (!b) return e; const o = {}; Object.keys(e).forEach(k => { o[k] = k === 'blocs' ? [dr_ouvLisibleCopie(b)].concat(e.blocs.slice(1)) : e[k]; }); o.ouvCanon = b; return o; }); }
+/* la lecture (sur place) : le canon revient ; une ligne que la 8.77.1-⑩ aurait changée revient dans ses textes ; une forme qu'elle aurait changée (une ligne
+   en plus ou en moins, l'en-tête) reste son bloc de texte — rien n'est perdu */
+function dr_copieDuHub(ecr){ if (!Array.isArray(ecr)) return ecr;
+  ecr.forEach(e => { if (!e || typeof e !== 'object' || !e.ouvCanon || typeof e.ouvCanon !== 'object') return; const b = e.ouvCanon; delete e.ouvCanon; if (b.t !== 'ouverture') return;
+    const l = (e.blocs || [])[0]; if (!l || l.t !== 'texte') return; if (!Array.isArray(b.el)) b.el = [];
+    const lu = Array.isArray(l.el) ? l.el.map(x => String(x == null ? '' : x)) : []; const att = dr_ouvLignesCopie(b);
+    if (String(l.txt == null ? '' : l.txt) !== dr_ouvTxtCopie(b) || lu.length !== att.length) return;
+    lu.forEach((x, k) => { if (x === att[k]) return; const o = dr_ouvLigneVersEl(b, k, x); Object.keys(o).forEach(i => { b.el[+i] = o[i]; }); });
+    e.blocs = [b].concat((e.blocs || []).slice(1)); });
+  return ecr; }
+/* ce que la classe a écrit (S.copie : { heure: { eid: { bid: { t, el: { indice: texte }, f } } } }), au hub et du hub — le parcours et les compétences seulement */
+function dr_copieEtatPourHub(C, E){ try { if (!C || typeof C !== 'object' || !Array.isArray(E)) return C; let o = null;
+  Object.keys(C).forEach(h => { const H = C[h]; if (!H || typeof H !== 'object') return; Object.keys(H).forEach(eid => { const b = dr_ouvBloc(E.find(x => x && x.eid === eid)); if (!dr_ouvMultiple(b)) return;
+    const cb = H[eid] && H[eid][b.id]; if (!cb || !cb.el || typeof cb.el !== 'object') return; const el = (b.el || []).slice(); const touchees = new Set();
+    Object.keys(cb.el).forEach(i => { if (cb.el[i] == null) return; el[+i] = cb.el[i]; touchees.add(dr_ouvLigneDe(b, +i)); });
+    const L = dr_ouvLignesCopie(Object.assign({}, b, { el })); const lignes = {}; touchees.forEach(k => { if (k >= 0) lignes[k] = L[k]; });
+    o = o || JSON.parse(JSON.stringify(C)); o[h][eid][b.id] = Object.assign({}, o[h][eid][b.id], { el: lignes, ouvEl: JSON.parse(JSON.stringify(cb.el)) }); }); });
+  return o || C; } catch (x) { return C; } }
+function dr_copieEtatDuHub(S0, E){ try { const C = S0 && S0.copie; if (!C || typeof C !== 'object' || !Array.isArray(E)) return S0;
+  Object.keys(C).forEach(h => { const H = C[h]; if (!H || typeof H !== 'object') return; Object.keys(H).forEach(eid => { const b = dr_ouvBloc(E.find(x => x && x.eid === eid)); if (!dr_ouvMultiple(b)) return;
+    const cb = H[eid] && H[eid][b.id]; if (!cb || typeof cb !== 'object') return; const base = {}; const src = cb.ouvEl;
+    if (src && typeof src === 'object') Object.keys(src).forEach(i => { if (src[i] != null) base[i] = String(src[i]); });
+    const el = (b.el || []).map(x => String(x == null ? '' : x)); Object.keys(base).forEach(i => { el[+i] = base[i]; }); const att = dr_ouvLignesCopie(Object.assign({}, b, { el }));
+    const lu = cb.el && typeof cb.el === 'object' ? cb.el : {}; Object.keys(lu).forEach(k => { if (lu[k] == null || String(lu[k]) === att[+k]) return; const o = dr_ouvLigneVersEl(b, +k, lu[k]); Object.keys(o).forEach(i => { if (o[i] !== (el[+i] || '')) base[i] = o[i]; }); });   /* une ligne écrite par la 8.77.1-⑩ */
+    if (Object.keys(base).length) cb.el = base; else delete cb.el; delete cb.ouvEl; }); });
+  } catch (x) {} return S0; }
 function dr_invNeuve(role, sk, h){ const k = dr_invContenu(role, sk); const e = { eid: dr_invEid(role, sk), act: k.act, dur: 0, role, comp: [], blocs: k.blocs, heure: h }; dr_invSiteMarque(e, k.act); return e; }
 const dr_invEstBilan = e => !!e && (e.role === 'bilan' || (!e.role && /bilan/i.test(String(e.act || ''))));
 function dr_invPoser(E, sk){ try { if (sk == null || !Array.isArray(E) || dr_pageTableau()) return; const sce = dr_seance(sk); if (!sce || sce.type === 'sommaire') return;
@@ -333,7 +400,8 @@ function dr_derouleDe(sk, brut){
   if (!brut) dr_preparer(E);
   dr_ecritsSeulement(E);
   const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invVierge(e)).map(e => dr_invPourHub(e, sk)) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
-  { const presents = new Set(E.filter(Boolean).map(e => e.role)); const R0 = Array.isArray(d.retraits) ? d.retraits : []; const ret = R0.filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = R0.indexOf(DR_INV_MARQUE) >= 0 ? ret.concat([DR_INV_MARQUE]) : ret; }   /* C16 : la marque « canon » reste avec les rôles retirés */   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
+  { const presents = new Set(E.filter(Boolean).map(e => e.role)); const R0 = dr_invRetraitsDe(d); const ret = R0.filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = R0.indexOf(DR_INV_MARQUE) >= 0 ? ret.concat([DR_INV_MARQUE]) : ret;
+    const p = o.ecrans.filter(e => e && DR_INV.indexOf(e.role) >= 0 && DR_INV_V1_ROLES.indexOf(e.role) < 0).map(e => e.role); if (o.retraits || p.length) { o.ouvRetraits = {}; if (o.retraits) o.ouvRetraits.r = o.retraits.slice(); if (p.length) o.ouvRetraits.p = p; } }   /* C16 (retour sûr, §3.2) : ce que la 8.77.1-⑩ ne garde pas dans « retraits » */   /* C16 : la marque « canon » reste avec les rôles retirés */   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
   if (acts.length) o.activites = acts; if (Object.keys(notes).length) o.notes = notes; if (Object.keys(travail).length) o.travail = travail;
   if (d.reactivation === 'oui' || d.reactivation === 'non') o.reactivation = d.reactivation;   /* E1 (§12.25 (5)) : le réglage par séance (E2 l'écrit sur B/deroule/reactivation) — porté ici pour que le PUT entier de dr_sauve ne l'efface pas */
   return o;
@@ -345,7 +413,7 @@ function dr_sauve(){ if (typeof S !== 'undefined' && S.repetition) return; clear
 function dr_sauveAvantDepart(){ if (DR_MEM.minuteur) { clearTimeout(DR_MEM.minuteur); dr_sauveMaintenant(true); } }
 window.addEventListener('pagehide', dr_sauveAvantDepart); window.addEventListener('beforeunload', dr_sauveAvantDepart); document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') dr_sauveAvantDepart(); });
 function dr_copieDepuisAtelier(){ /* E1 (relecture continue E4, 20:50, grave — perte de données) : en heure lancée, une retouche faite dans l'onglet Atelier part au hub en 900 ms, dans la copie de la classe (C/ecrans), sans attendre le retour au Pilotage ; jamais dans la trame */
-  try { if (typeof dr_cheminC !== 'function' || !dr_cheminC() || typeof AT_DR_REGIME === 'undefined' || AT_DR_REGIME !== 'classe') return; const ecr = JSON.parse(JSON.stringify(seance().ecrans));
+  try { if (typeof dr_cheminC !== 'function' || !dr_cheminC() || typeof AT_DR_REGIME === 'undefined' || AT_DR_REGIME !== 'classe') return; const ecr = dr_copiePourHub(JSON.parse(JSON.stringify(seance().ecrans)));   /* C16 (retour sûr) : lisible par la 8.77.1-⑩ */
     dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — retouche dans l’atelier', () => { if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); if (typeof DR_CL === 'object' && DR_CL && typeof dr_empreinte === 'function') DR_CL.empreinteEcrite = dr_empreinte(ecr); }); } catch (e) {} }
 /* ═══ E1 (§12.60, E3 retour 104 ; la règle de Paul du 04/10 : « un html doit toujours s'actualiser en interne ») : L'ATELIER SUR DEUX APPAREILS ═══
    Avant : l'Atelier ne relisait jamais le chapitre et chaque enregistrement réécrivait le `deroule` entier de la séance — le dernier appareil effaçait l'autre sans le dire.
@@ -360,7 +428,7 @@ function dr_syncListe(v){ return Array.isArray(v) ? v.filter(Boolean) : (v && ty
 const dr_syncAH = e => Object.prototype.propertyIsEnumerable.call(e, 'heure') && e.heure != null;   /* l'heure par défaut (dr_heureParDefaut) n'est pas une donnée : elle ne s'écrit pas */
 function dr_syncH(o){ const m = {}; dr_syncListe(o && o.ecrans).forEach(e => { if (e && e.eid && dr_syncAH(e)) m[e.eid] = e.heure; }); return m; }
 function dr_syncBaseVue(B, H){ Object.keys(B.sansH || {}).forEach(eid => { if (H[eid] == null || B.el[eid] == null) return; const x = JSON.parse(B.el[eid]); if (x.heure == null) x.heure = H[eid]; B.el[eid] = dr_canon(x); delete B.sansH[eid]; }); }
-function dr_syncBase(o, H){ const E = dr_syncListe(o && o.ecrans); const el = {}, sansH = {}; E.forEach(e => { if (!e || !e.eid) return; let x = e; if (!dr_syncAH(e)) { if (H && H[e.eid] != null) x = Object.assign({}, e, { heure: H[e.eid] }); else sansH[e.eid] = true; } el[e.eid] = dr_canon(x); }); return { sansH, ordre: E.map(e => e && e.eid).join('|'), el, activites: dr_canon((o && o.activites) || null), notes: dr_canon((o && o.notes) || null), travail: dr_canon((o && o.travail) || null), retraits: dr_canon((o && o.retraits) || null) }; }
+function dr_syncBase(o, H){ const E = dr_syncListe(o && o.ecrans); const el = {}, sansH = {}; E.forEach(e => { if (!e || !e.eid) return; let x = e; if (!dr_syncAH(e)) { if (H && H[e.eid] != null) x = Object.assign({}, e, { heure: H[e.eid] }); else sansH[e.eid] = true; } el[e.eid] = dr_canon(x); }); return { sansH, ordre: E.map(e => e && e.eid).join('|'), el, activites: dr_canon((o && o.activites) || null), notes: dr_canon((o && o.notes) || null), travail: dr_canon((o && o.travail) || null), retraits: dr_canon((o && o.retraits) || null), ouvRetraits: dr_canon((o && o.ouvRetraits) || null) }; }
 const DR_SYNC = { conflits: {}, T: null, lecture: false };
 function dr_syncGeste(){ const a = document.activeElement; if (a && a.closest && a.closest('#dr-zone, #volet') && (a.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(a.tagName))) return true; if (typeof DR_COL !== 'undefined' && (DR_COL.glisse || DR_COL.renomme)) return true;   /* EX (§12.62 (4)) : un glisser ou un renommage dans la colonne est un geste en cours */ if (document.querySelector('.choix-obj, #menuplus.on, .menu-at.on, .ctx-menu, #at-ctx, .dr-menu.on')) return true; return !!(typeof DR_VOLET !== 'undefined' && DR_VOLET.vig); }
 function dr_syncConflit(k, eid, distante){ DR_SYNC.conflits[eid] = { k, distante }; dr_syncDire(); }
@@ -380,12 +448,12 @@ function dr_syncComparer(k, rv, appliquer){ const B = DR_MEM.base && DR_MEM.base
   const lo = dr_derouleDe(k, true); dr_syncBaseVue(B, dr_syncH(lo)); const R = dr_syncBase(rv), L = dr_syncBase(lo); const RE = dr_syncListe(rv.ecrans); let change = false;
   const localTouche = L.ordre !== B.ordre || Object.keys(L.el).some(eid => L.el[eid] !== B.el[eid]);
   if (R.ordre !== Hl.ordre) { /* la structure a changé ailleurs */
-    if (!localTouche && appliquer) { const sce = dr_seance(k); sce.deroule.ecrans.splice(0, sce.deroule.ecrans.length, ...JSON.parse(JSON.stringify(RE))); ['activites', 'notes', 'travail', 'retraits'].forEach(n => { if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; }); const E = sce.deroule.ecrans; if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, k); dr_preparer(E); dr_lireSousObjets(k); DR_MEM.hubLu[k] = R; R.cles = dr_syncCles(rv); return { change: true }; }
+    if (!localTouche && appliquer) { const sce = dr_seance(k); sce.deroule.ecrans.splice(0, sce.deroule.ecrans.length, ...JSON.parse(JSON.stringify(RE))); ['activites', 'notes', 'travail', 'retraits', 'ouvRetraits'].forEach(n => { if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; }); const E = sce.deroule.ecrans; if (typeof _drIdentifierEcrans === 'function') _drIdentifierEcrans(E); dr_normaliserTrame(E, k); dr_preparer(E); dr_lireSousObjets(k); DR_MEM.hubLu[k] = R; R.cles = dr_syncCles(rv); return { change: true }; }
     return { change: false, structure: true }; }
   RE.forEach(e => { const eid = e && e.eid; if (!eid || R.el[eid] === Hl.el[eid]) return;
     if (L.el[eid] === B.el[eid]) { if (appliquer && dr_syncPoser(k, eid, e)) change = true; }
     else if (!DR_SYNC.conflits[eid]) dr_syncConflit(k, eid, e); });
-  ['activites', 'notes', 'travail', 'retraits'].forEach(n => { if (R[n] !== Hl[n] && L[n] === B[n] && appliquer) { const sce = dr_seance(k); if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; if (n === 'retraits') { dr_invPoser(sce.deroule.ecrans, k); dr_preparer(sce.deroule.ecrans); }   /* EX (§12.62 (3)) : retirée (ou remise) sur l'autre appareil */ const d = DR_MEM.hubLu[k]; dr_lireSousObjets(k); d[n] = R[n]; DR_MEM.hubLu[k] = d; change = true; } });
+  ['activites', 'notes', 'travail', 'retraits', 'ouvRetraits'].forEach(n => { if (R[n] !== Hl[n] && L[n] === B[n] && appliquer) { const sce = dr_seance(k); if (rv[n] !== undefined) sce.deroule[n] = JSON.parse(JSON.stringify(rv[n])); else delete sce.deroule[n]; if (n === 'retraits') { dr_invPoser(sce.deroule.ecrans, k); dr_preparer(sce.deroule.ecrans); }   /* EX (§12.62 (3)) : retirée (ou remise) sur l'autre appareil */ const d = DR_MEM.hubLu[k]; dr_lireSousObjets(k); d[n] = R[n]; DR_MEM.hubLu[k] = d; change = true; } });
   return { change }; }
 function dr_syncLire(){ try { if (DR_SYNC.lecture || typeof S === 'undefined' || !S.atelier || S.repetition || !dr_actif() || dr_ctx().regime === 'classe') return; const k = (typeof ATVUES !== 'undefined' && ATVUES.snum != null) ? String(ATVUES.snum) : null; if (k == null || !DR_MEM.base || !DR_MEM.base[k]) return;
   if (DR_MEM.minuteur || dr_syncGeste()) return;   /* un enregistrement en attente, ou un geste en cours : au tour suivant (rien sous le geste) */
@@ -395,7 +463,7 @@ setInterval(dr_syncLire, 3000);
 function dr_syncCleHub(rv, eid){ const q = dr_syncCles(rv)[eid]; return q == null ? null : q; }
 /* l'écriture : relire, reprendre ce qui a changé ailleurs, puis n'écrire que nos changements */
 function dr_syncEcrire(k, o, depart){ const B = DR_MEM.base && DR_MEM.base[k]; const chemin = dr_cheminBDe(k) + '/deroule'; const fini = () => { if (typeof atDrEnrConfirme === 'function') atDrEnrConfirme(true); if (typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre(); };
-  const tout = () => { const sce = dr_seance(k); const o2 = dr_derouleDe(k, true); const val = Object.assign({}, sce.deroule, o2, { maj: Date.now() }); if (!o2.activites) delete val.activites; if (!o2.notes) delete val.notes; if (!o2.travail) delete val.travail; if (!o2.retraits) delete val.retraits; sce.deroule.maj = val.maj;
+  const tout = () => { const sce = dr_seance(k); const o2 = dr_derouleDe(k, true); const val = Object.assign({}, sce.deroule, o2, { maj: Date.now() }); if (!o2.activites) delete val.activites; if (!o2.notes) delete val.notes; if (!o2.travail) delete val.travail; if (!o2.retraits) delete val.retraits; if (!o2.ouvRetraits) delete val.ouvRetraits; sce.deroule.maj = val.maj;
     const ecrit = JSON.parse(JSON.stringify(val)); dr_ecrire(chemin, ecrit, 'Trame du déroulé — séance ' + k, fini); DR_MEM.base[k] = dr_syncBase(o2); DR_MEM.hubLu = DR_MEM.hubLu || {}; DR_MEM.hubLu[k] = dr_syncBase(ecrit); DR_MEM.hubLu[k].cles = dr_syncCles(ecrit); DR_MEM.empreintes[k] = JSON.stringify(o2); };
   if (!B || !DR_MEM.hubLu || !DR_MEM.hubLu[k]) { DR_MEM.base = DR_MEM.base || {}; tout(); return; }
   const ecrire = rv => { const Hl = DR_MEM.hubLu[k]; const o2 = dr_derouleDe(k, true); dr_syncBaseVue(B, dr_syncH(o2)); const R = rv ? dr_syncBase(rv) : Hl; const cles = rv ? dr_syncCles(rv) : (Hl.cles || {}); if (rv) Hl.cles = cles;
@@ -407,7 +475,7 @@ function dr_syncEcrire(k, o, depart){ const B = DR_MEM.base && DR_MEM.base[k]; c
     let n = 0, manque = false; LE.forEach(e => { const eid = e && e.eid; if (!eid || L.el[eid] === B.el[eid] || DR_SYNC.conflits[eid]) return; if (R.el[eid] !== Hl.el[eid]) return;   /* changée ailleurs aussi : le conflit est dit, rien n'est écrit */
       const q = cles[eid]; if (q == null) { manque = true; return; } const ecrit = JSON.parse(JSON.stringify(e)); dr_ecrire(chemin + '/ecrans/' + q, ecrit, 'Trame du déroulé — séance ' + k + ', une diapo', () => {}); B.el[eid] = L.el[eid]; delete (B.sansH || {})[eid]; Hl.el[eid] = dr_canon(ecrit); n++; });
     if (manque) { tout(); return; }   /* une diapo d'ici que le hub n'a pas (la fin d'heure où Paul a écrit) : la séance entière */
-    ['activites', 'notes', 'travail', 'retraits'].forEach(nm => { if (L[nm] !== B[nm] && R[nm] === Hl[nm]) { const v = o2[nm] ? JSON.parse(JSON.stringify(o2[nm])) : null; dr_ecrire(chemin + '/' + nm, v, 'Trame du déroulé — séance ' + k + ', ' + nm, () => {}); B[nm] = L[nm]; Hl[nm] = dr_canon(v); n++; } });
+    ['activites', 'notes', 'travail', 'retraits', 'ouvRetraits'].forEach(nm => { if (L[nm] !== B[nm] && R[nm] === Hl[nm]) { const v = o2[nm] ? JSON.parse(JSON.stringify(o2[nm])) : null; dr_ecrire(chemin + '/' + nm, v, 'Trame du déroulé — séance ' + k + ', ' + nm, () => {}); B[nm] = L[nm]; Hl[nm] = dr_canon(v); n++; } });
     if (n) { const m = Date.now(); const sce = dr_seance(k); if (sce && sce.deroule) sce.deroule.maj = m; dr_ecrire(chemin + '/maj', m, 'Trame du déroulé — séance ' + k, fini); } else fini();
     DR_MEM.empreintes[k] = JSON.stringify(o2); };
   if (depart) ecrire(undefined); else dr_lire(chemin, v => ecrire(v || undefined)); }   /* la page part : pas le temps de relire — le hub tel qu'on l'a lu en dernier */
@@ -418,7 +486,7 @@ function dr_sauveMaintenant(depart){
   if (!dr_chapitre()) return;
   let n = 0; dr_cles().forEach(k => { const sce = dr_seance(k); if (!sce || !sce.deroule || !DR_MEM.prepares.has(sce.deroule.ecrans)) return;
     const o = dr_derouleDe(k); const j = JSON.stringify(o); if (DR_MEM.empreintes[k] === j) return; DR_MEM.empreintes[k] = j; n++;
-    if (o.activites) sce.deroule.activites = o.activites; if (o.notes) sce.deroule.notes = o.notes; if (o.travail) sce.deroule.travail = o.travail; if (o.retraits) sce.deroule.retraits = o.retraits; else delete sce.deroule.retraits;   /* EX (§12.62 (3)) */
+    if (o.activites) sce.deroule.activites = o.activites; if (o.notes) sce.deroule.notes = o.notes; if (o.travail) sce.deroule.travail = o.travail; if (o.retraits) sce.deroule.retraits = o.retraits; else delete sce.deroule.retraits; if (o.ouvRetraits) sce.deroule.ouvRetraits = o.ouvRetraits; else delete sce.deroule.ouvRetraits;   /* EX (§12.62 (3)) */
     dr_syncEcrire(k, o, depart);   /* E1 (§12.60) : seulement ce qui a changé, diapo par diapo (à son eid), après avoir relu le hub — jamais la séance entière par-dessus un autre appareil */
   });
   if (!n && typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre();   /* E1 (relecteur neuf 1) : rien à écrire, le hub a déjà cet état */
@@ -594,9 +662,9 @@ function dr_jouerCopie(copie){ try {
   if (!n && DR_COPIE_AVANT && typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && DR_COPIE_AVANT.classeSlug === AT_DR_COURS.classeSlug && DR_COPIE_AVANT.sk === String(ATVUES.snum)) n = DR_COPIE_AVANT.c;
   DR_COPIE_AVANT = null; if (!n) return null;
   const dh = x => (typeof dr_duHub === 'function' ? dr_duHub(x) : x); const liste = x => (Array.isArray(x) ? x : (x && typeof x === 'object' ? Object.values(x) : []));
-  const vieux = liste(n.ecrans).filter(Boolean).map(dh); const Jv = liste(n.journal).filter(Boolean).map(dh); if (!vieux.length || !Jv.some(x => x.type === 'diapo')) return null;   /* jamais jouée : la trame telle quelle */
+  const vieux = dr_copieDuHub(liste(n.ecrans).filter(Boolean).map(dh)); const Jv = liste(n.journal).filter(Boolean).map(dh); if (!vieux.length || !Jv.some(x => x.type === 'diapo')) return null;   /* jamais jouée : la trame telle quelle */
   const E = seance().ecrans; const vus = new Set(Jv.filter(x => x.type === 'diapo').map(x => x.eid)); const derniere = liste(n.heures).some(x => x && x.clos && +x.sur > 0 && +x.heure >= +x.sur); const toutVu = vieux.filter(e => e.role !== 'fin' && e.eid).every(e => vus.has(e.eid)); if (derniere || toutVu) return null;   /* la séance close pour la classe (sa dernière heure, « n sur n », close ; ou toutes ses diapos montrées) : elle repart de la trame (LOT A ④) — la trame réelle met tous ses écrans à l'heure 1 (§12.5), le nombre d'heures ne s'y lit pas */
-  const Sv = n.etat && n.etat.S ? dh(n.etat.S) : {}; const cuit = JSON.parse(JSON.stringify(vieux)); dr_cuireCopie(cuit, Sv.copie || {}, Infinity);
+  const Sv = n.etat && n.etat.S ? dr_copieEtatDuHub(dh(n.etat.S), vieux) : {};   /* C16 (retour sûr) : le canon et ce que la classe a écrit, relus (vieux : dr_copieDuHub) */ const cuit = JSON.parse(JSON.stringify(vieux)); dr_cuireCopie(cuit, Sv.copie || {}, Infinity);
   const f = typeof dr_fusionCopie === 'function' ? dr_fusionCopie(E.slice(), cuit, Jv) : cuit; E.splice(0, E.length, ...f); try { reindexer(); } catch (e) {} return f;
 } catch (e) { DR_COPIE_AVANT = null; return null; } }
 /* E1 (§12.27-8, dette 13 · 38) : #hclasse dit la classe de l'heure — celle d'AT_DR_COURS (posée par E2 au lancement, à la reprise, à l'ouverture

@@ -613,6 +613,7 @@ const DR_ETAT_HORS = ['mur', 'attente', 'anim', 'coupure', 'di', 'ordres', 'repS
 function dr_etatHeure(){
   try { S.eidCourant = eidDe(S.di); } catch (e) {}
   const s = {}; Object.keys(S).forEach(k => { if (DR_ETAT_HORS.includes(k) || k.charAt(0) === '_') return; s[k] = S[k]; });
+  if (s.copie) s.copie = dr_copieEtatPourHub(s.copie, seance().ecrans);   /* C16 (retour sûr) : ce que la classe a écrit, lisible par la 8.77.1-⑩ (dr-socle.js) */
   return { S: dr_versHub(s), parDiapo: dr_versHub(parDiapo), vuMax: dr_versHub(vuMax), maj: Date.now(), heures: dr_versHub(dr_heuresDesEcrans()), reactivations: dr_versHub(dr_reactivationsDesEcrans()), heuresParDurees: DR_CL.partages.get(seance().ecrans) || 0 };   /* réveil n°4, points 3 et 7 : l'heure de chaque diapo (les frontières) et l'heure courante (`S.heure`) — la reprise remonte l'heure telle qu'elle était, E4 lit où était chaque diapo */
 }
 /* `dr_normaliserTrame` du socle retire les écrans `reactivation` (E1, §12.26-2 : jamais dans la trame du chapitre) — appliquée ici à la COPIE de la classe en mémoire
@@ -647,7 +648,7 @@ function dr_copieAuto(vite){
   clearTimeout(DR_CL.cT);
   DR_CL.cT = setTimeout(() => {
     if (!dr_clPeutEcrire(true)) return;
-    const ecr = JSON.parse(JSON.stringify(seance().ecrans)); const em = dr_empreinte(ecr);
+    const ecr = dr_copiePourHub(JSON.parse(JSON.stringify(seance().ecrans))); const em = dr_empreinte(ecr);   /* C16 (retour sûr) : la copie au hub, lisible par la 8.77.1-⑩ (dr-socle.js) */
     if (em === DR_CL.empreinteEcrite) return; DR_CL.empreinteEcrite = em;   /* la copie ne repart que si elle a changé (relecteur neuf n°2 : 14 écritures en 17 min sans rien éditer) */
     dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(em); });
   }, vite ? 0 : 900);
@@ -859,11 +860,12 @@ function dr_reprendre(cb){
   dr_lireTous([C + '/ecrans', C + '/etat', C + '/journal', ch], (copie, etat, jr, t) => {   /* les quatre lectures ensemble (contrôle n°68) — avant : l'une après l'autre */
     { const loc = dr_heureLocaleLire(C); if (loc && loc.etat && loc.etat.S && (+loc.etat.maj || 0) > (+(etat || {}).maj || 0)) { etat = loc.etat; if (Array.isArray(loc.journal)) jr = loc.journal; } }   /* §12.28-3 (e) : ce que l'onglet fermé n'avait pas encore envoyé au hub (≤ 2 s), gardé dans ce navigateur au départ */
     if (!etat || !etat.S) { if (cb) cb(false); return; }
+    dr_copieDuHub(copie);   /* C16 (retour sûr) : les diapos d'ouverture reprennent leur canon (écrites lisibles pour la 8.77.1-⑩) */
     dr_adopterIdentites(copie); if (Array.isArray(copie) && copie.length && copie.every(x => x && typeof x === 'object')) { const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} }   /* réveil n°6 (E4 ligne 110, ma part) : la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub, sans recalcul — ce qui a été écrit en classe revient */
     dr_finAvecCahier();
     if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
-    dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
+    dr_restaurer({ S: dr_copieEtatDuHub(dr_duHub(etat.S), seance().ecrans), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     try { if (typeof dr_invConvertirCopie === 'function') dr_invConvertirCopie(); } catch (e) {}   /* C16 (§4.11) : le journal relu, une ancienne diapo d'ouverture jamais montrée prend le canon ; une montrée ne change pas */
     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
@@ -923,7 +925,8 @@ function dr_lireJoue(cb, chemin){
   const C = chemin || (typeof dr_cheminC === 'function' ? dr_cheminC() : null); if (!C) { cb(null); return; }
   dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
     if (!et && !jr) { cb(null); return; }
-    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
+    if (Array.isArray(ecr)) dr_copieDuHub(ecr);   /* C16 (retour sûr) : le canon des diapos d'ouverture, ce que la classe a écrit (dr-socle.js) */
+    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_copieEtatDuHub(dr_duHub((et || {}).S || {}), Array.isArray(ecr) ? ecr : []), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
   })));
 }
 
@@ -1389,7 +1392,7 @@ function dr_reactPoser(h, p){ if (!dr_reactValide(p)) return null; const E = sea
   try { if (typeof dr_preparer === 'function') dr_preparer(E); } catch (x) {} try { reindexer(); } catch (x) {} return e; }
 /* la copie de la classe réécrite (C/ecrans) — par le chemin connu, pas par `dr_copieAuto` (hors heure lancée, `dr_clPeutEcrire` refuse) */
 function dr_reactEcrireCopie(C, motif, cb){ C = C || dr_reactCheminC(); if (!C) { if (cb) cb(false); return false; }
-  try { const ecr = dr_reactClone(seance().ecrans); DR_CL.empreinteEcrite = dr_empreinte(ecr); dr_ecrire(C + '/ecrans', ecr, motif || 'La copie de la classe — la réactivation construite', () => { if (cb) cb(true); }); return true; } catch (x) { if (cb) cb(false); return false; } }
+  try { const ecr = dr_copiePourHub(dr_reactClone(seance().ecrans)); DR_CL.empreinteEcrite = dr_empreinte(ecr); dr_ecrire(C + '/ecrans', ecr, motif || 'La copie de la classe — la réactivation construite', () => { if (cb) cb(true); }); return true; } catch (x) { if (cb) cb(false); return false; } }
 /* (1) à la clôture de l'heure h : la diapo de l'heure h+1, depuis le paquet qui vient d'être clos, dans la copie */
 function dr_reactApresCloture(C, h, local, cb){ const fini = ok => { if (cb) cb(ok); };
   try { if (!C || dr_reactDejaLa(h)) return fini(false); const sur = +((dr_heureJouee(h - 1) || {}).sur || DR_CL.sur || 0); if (sur && h > sur) return fini(false);   /* la dernière heure de la séance : pas d'heure h+1 ici (l'heure 1 de la séance d'après se construit à son ouverture, E4 RC11) */

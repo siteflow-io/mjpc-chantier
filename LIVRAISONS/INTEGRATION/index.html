@@ -15950,16 +15950,18 @@ function atDrJouer(classeSlug, classeNom){
      copie profonde \u2014 l'identit\u00e9 vit dans le JOU\u00c9. */
   try{ _drIdentifierEcrans(_ecrans); }catch(e){}
   var _dep=Date.now();
+  /* C16 (le retour s\u00fbr, MANDAT-RETOUR-SUR \u00a73.1) : au hub, la copie de la classe est lisible par la 8.77.1-\u2469 (dr_copiePourHub, dr-socle.js) ; en m\u00e9moire, le canon */
+  var _ecransHub=(typeof dr_copiePourHub==='function')?dr_copiePourHub(JSON.parse(JSON.stringify(_ecrans))):_ecrans;
   if(!sce.deroule_joue[classeSlug]){
     sce.deroule_joue[classeSlug]={ classe:classeNom||classeSlug,      /* [T1-crochet] la s\u00e9ance jou\u00e9e retient sa classe */
       demarreLe:_dep, ecrans:_ecrans };
     mjpcPutJson(FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk+'/deroule_joue/'+classeSlug+'.json',
-      sce.deroule_joue[classeSlug],'D\u00e9marrage du d\u00e9roul\u00e9 avec '+(classeNom||classeSlug),null);
+      { classe:classeNom||classeSlug, demarreLe:_dep, ecrans:_ecransHub },'D\u00e9marrage du d\u00e9roul\u00e9 avec '+(classeNom||classeSlug),null);
   } else {
     var _cop=sce.deroule_joue[classeSlug];
     _cop.classe=classeNom||classeSlug; _cop.demarreLe=_dep; _cop.ecrans=_ecrans;
     var _base=FIREBASE_BASE+'/site/'+ec.level+'/chapitres/'+ec.chnum+'/seances/'+sk+'/deroule_joue/'+classeSlug;
-    mjpcPutJson(_base+'/ecrans.json',_ecrans,'Trame jou\u00e9e \u2014 reprise de la pr\u00e9paration',null);
+    mjpcPutJson(_base+'/ecrans.json',_ecransHub,'Trame jou\u00e9e \u2014 reprise de la pr\u00e9paration',null);
     mjpcPutJson(_base+'/demarreLe.json',_dep,'Heure de d\u00e9part du d\u00e9roul\u00e9',null);
     mjpcPutJson(_base+'/classe.json',classeNom||classeSlug,'Classe du d\u00e9roul\u00e9',null);
   }

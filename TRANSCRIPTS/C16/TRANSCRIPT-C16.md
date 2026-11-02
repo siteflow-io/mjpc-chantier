@@ -1251,3 +1251,18 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (deux sondes complètes, puis la livraison), puis mon banc complet · ouvert : 267
   >
   > MEMO
+- **19:19 — Paul, mot pour mot** : « NON ce ne sont pas de vrais élèves. que reste-t-il là? »
+- **19:20 — la conscience** : 267 clos (des noms inventés : rien à retirer ; `travail/session-2` reste tel quel).
+- **19:20 — message à Paul, mot pour mot :**
+
+  > 268. Noté, 267 est clos : rien à retirer.
+  >
+  > 269. Ce qui reste, dans l'ordre : l'exécutant repasse deux fois de suite toute sa sonde (environ 7 minutes chacune, la première tourne) ; s'il n'y a aucun échec, il livre, vers 19:30 ; je passe alors mon banc complet sur ce fichier (45 minutes) ; puis je t'envoie les captures avant / après et je te demande le « promeus », vers 20:20. S'il y a un échec, je te le dis avec sa cause.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 19:20
+  >
+  > À jouer : rien · en cours : l'exécutant (deux passages complets de la sonde), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

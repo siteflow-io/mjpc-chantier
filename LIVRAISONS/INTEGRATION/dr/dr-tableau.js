@@ -181,6 +181,9 @@ function dr_ttLireHub(chemin, cb){
 function dr_ttDebut(quoi, p){
   clearInterval(DR_TT.T); DR_TT.T = null;
   if (!dr_ttOn() || !p) return;
+  /* C16 (㉞) : l'essai repris sur cet appareil (dr-session.js) — son pointeur est adopté, jamais un deuxième ; ni la scène ni la copie ne sont remises à neuf */
+  const rj = (typeof DR_SES === 'object' && DR_SES && DR_SES.rejoindre) || null;
+  if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (rj.p.classeSlug || '') === (p.classeSlug || '')) { DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
   const ptr = Object.assign({}, p, { seance: String(p.seance), test: true, quoi, chemin: DR_TT.chemin, ts: Date.now() });
   DR_TT.quoi = quoi; DR_TT.sig = ptr.ts + '|' + ptr.seance; DR_TT.emis = ''; DR_TT.trame = '';
   dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);
@@ -203,7 +206,7 @@ function dr_ttEmettre(){
 function dr_ttFin(){
   clearInterval(DR_TT.T); DR_TT.T = null; const sig = DR_TT.sig; DR_TT.sig = null; DR_TT.quoi = null; DR_TT.emis = ''; DR_TT.trame = '';
   if (!sig) return;
-  dr_ttLireHub(DR_TT.chemin + '/pointeur', c => { if (c && (c.ts + '|' + c.seance) === sig) { dr_ttEcrire('/pointeur', null, true); dr_ttEcrire('/scene', null, true); } });   /* seulement s'il est encore le nôtre */
+  dr_ttLireHub(DR_TT.chemin + '/pointeur', c => { if (c && (c.ts + '|' + c.seance) === sig) { dr_ttEcrire('/pointeur', null, true); dr_ttEcrire('/scene', null, true); setTimeout(() => { dr_ttEcrire('/vif', null, true); dr_ttEcrire('/ecrans', null, true); }, 1500); } });   /* seulement s'il est encore le nôtre ; C16 (㉞) : l'état vivant de l'essai et sa copie aussi (1,5 s après : les autres pilotes ont lu « clos ») */
 }
 /* l'heure lancée en mode test : son pointeur part avec celui du cours (`dr_coursEcrire`), il se retire à la clôture (`dr_coursFermer`) */
 function dr_ttHeureDebut(c){ if (!dr_ttOn() || !c) return; dr_ttDebut('heure', { niveau: c.niveau, chapitre: c.chapitre, seance: c.seance, classeSlug: c.classeSlug || '', classeNom: c.classeNom || '' }); }
@@ -473,6 +476,7 @@ function dr_tabSceneRecue(o, c){
       return; }
     SES.perduDepuis = 0; if (perdu) perdu.classList.remove('on');
     if (dr_tabSceneOubliee(o, c)) return;   /* §12.68 : l'heure annulée — sa scène est retirée : l'horloge */
+    if (o && typeof o === 'object' && o.clos === true && typeof o.ts === 'number' && !(c.ts && o.ts < c.ts - 2000)) { dr_tabRetourAttente(); return; }   /* C16 (㉞) : l'heure close, d'où qu'elle l'ait été — l'horloge (avant : l'image restait) */
     if (!o || typeof o !== 'object' || typeof o.ts !== 'number' || !isFinite(o.ts)) return;   /* une scène sans heure lisible n'est pas une scène */
     o = dr_clesDuHub(o);   /* C16 (㉘) : les clés rendues telles quelles (« 0%2et » → « 0.t ») ; une scène écrite avant reste lisible */
     if (!DR_TAB.pilotePresent) return;                               /* le pilote n'est plus là (pointeur retiré ou périmé) : l'image reste (mandat point 5 ; relecteur 2, n° 5a) */

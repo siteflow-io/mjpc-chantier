@@ -1,0 +1,25 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H · 2026-11-02 14:25 UTC · md5 d5a0e8662b9be136cba41645d8b6799a · images de 3e : un dossier local
+
+— la vraie heure · v3H —
+  ok     H · l’ordinateur lance l’heure par la case de l’emploi du temps
+      H · second ordinateur : bandeau en 2 ms : « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     H · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":2,"b":"Heure en cours avec les 3E Charles de Gaulle — Reprendre"}
+      H · téléphone : bandeau en 3 ms : « Heure en cours avec les 3E Charles de Gaulle — Reprendre »
+  ok     H · le téléphone voit le bandeau en moins de 2 s — {"t":3,"b":"Heure en cours avec les 3E Charles de Gaulle — Reprendre"}
+      H · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":false,"tt":null,"ici":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","recu":0,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":false,"tt":null,"ici":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","recu":1789369200003,"di":0,"mur":true}
+      H · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     H · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      H · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 187, 83, 162, 126, 93 · téléphone 113, 117, 216, 316, 231 · tableau distant 189, 116, 85, 121, 164, 219, 130, 318, 96, 232
+  ok     H · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":318}
+      H · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     H · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      H · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 35, 37 ms
+  ok     H · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [35,37]
+      H · avant la clôture, au hub : pointeur d’essai —, scène d’essai —, cours_actif là
+      H · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     H · clos au téléphone : /site/cours_actif retiré
+  ok     H · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     H · aucune écriture refusée par le faux hub (0) — []
+  ok     H · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+11 vérifications, 0 échec(s)

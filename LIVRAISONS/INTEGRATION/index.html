@@ -16034,6 +16034,7 @@ function atTaxoLibelle(code){
 <script src="dr/dr-recit.js"></script>
 <script src="dr/dr-recyclage.js"></script><!-- E4 : le recyclage (relance E4-2) -->
 <script src="dr/dr-fil.js"></script><!-- C16 : le fil de la séance sur toutes les diapos, les flèches de la colonne, la molette -->
+<script src="dr/dr-session.js"></script><!-- C16 (㉞) : une session lancée est déclarée et repilotable partout -->
 <script>
 
 
@@ -16666,14 +16667,15 @@ function sesRepriseRetirer(){
 function sesReprisePeindre(c){
   /* [E2] §12.28-3 (d) : « Heure en cours avec les <classe> — Reprendre », en haut, sur tous les écrans du prof ; « Plus tard » tombe ;
      le bandeau ne recouvre rien : la page et les écrans pleins descendent de sa hauteur (`--ses-reprise-h`, dr.css bloc E2) */
-  var txt='Heure en cours avec les <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b> —';
+  var txt=(typeof dr_sesTexte==='function')?dr_sesTexte(c):'Heure en cours avec les <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b> —';   /* C16 (㉞) : ce qui joue, en clair (l'heure, l'essai) */
   var b=document.getElementById('ses-reprise');
   if(!b){
     b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';
     b.innerHTML='<span id="ses-reprise-txt">'+txt+'</span>'
       +'<button class="at-btn at-btn-prim" id="ses-reprise-oui" title="Rouvre l’heure de cette classe dans cet onglet, là où elle en était : la diapo, sa page, les lignes dévoilées, le chrono (sans remise à zéro), les paroles, les notes, l’appel, et « Fin de l’heure » à son étape" onclick="sesReprendre()">Reprendre</button>';
     document.body.appendChild(b);
-  } else { var t=document.getElementById('ses-reprise-txt'); if(t)t.innerHTML=txt; }
+  } else { var t=document.getElementById('ses-reprise-txt'); if(t&&t.innerHTML!==txt)t.innerHTML=txt; }
+  try{ var bo=document.getElementById('ses-reprise-oui'); if(bo&&typeof dr_sesBulle==='function'&&bo.title!==dr_sesBulle(c))bo.title=dr_sesBulle(c); }catch(e){}
   SES._reprise=c;
   try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
   sesRepriseDecaler(); if(!SES._repriseDec)SES._repriseDec=setInterval(sesRepriseDecaler,1000);
@@ -16706,6 +16708,7 @@ function sesReprisePoser(){
      l'onglet de l'heure (`dr_heureTenueAilleurs`) et son départ (`dr_heurePartie`, dr-classe.js) ; d'un autre navigateur : `/site/cours_actif`
      (lu par `dr_lire` : en test, la copie). Jamais deux pilotes d'une même heure dans un navigateur. */
   if(SES.mode)return;
+  if(typeof dr_sesVeilleDemarrer==='function'){ dr_sesVeilleDemarrer(); return; }   /* C16 (㉞) : abonné aux annonces du hub (l'heure, l'essai), sur tout appareil (dr-session.js) */
   var veille=function(){
     var prof=document.body.classList.contains('admin-mode')||(window.TRACK&&TRACK.eleve&&TRACK.eleve.is_prof);
     if(!prof){ sesRepriseRetirer(); return; }
@@ -16725,8 +16728,9 @@ function sesReprendre(){
   /* [E2] « Reprendre » : le pointeur et la trace font foi (comme aujourd'hui), puis `dr_reprendreCours` ouvre la classe en cours et
      `dr_reprendre` remonte L'HEURE ENTIÈRE à l'endroit exact (§12.28-3 e). Une seule voie de reprise (avant : deux copies). */
   var c=SES._reprise; if(!c)return;
+  if(c.__sorte==='essai'&&typeof dr_sesReprendreEssai==='function'){ sesRepriseRetirer(); dr_sesReprendreEssai(c); return; }   /* C16 (㉞) : l'essai en mode test se rejoint */
   if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); atInfo('Cette heure est ouverte dans un autre onglet de ce navigateur : continue-la là-bas.'); return; }
-  dr_lire('/site/cours_actif',function(p){
+  (typeof dr_sesLireHub==='function'&&!(typeof m8TestOn==='function'&&m8TestOn())?dr_sesLireHub:dr_lire)('/site/cours_actif',function(p){   /* C16 (㉞) : le pointeur du hub lui-même */
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
     if((!p||!p.ts)&&loc)p=loc;
     if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){ sesRepriseRetirer();

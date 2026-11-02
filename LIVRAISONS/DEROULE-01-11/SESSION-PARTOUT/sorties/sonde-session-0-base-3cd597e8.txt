@@ -1,0 +1,46 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T H · 2026-11-02 14:16 UTC · md5 3cd597e81384efc0badf0655b1d0ae78 · images de 3e : un dossier local
+
+— l’essai en mode test · base —
+  ok     T · l’ordinateur lance l’heure par la case de l’emploi du temps
+      T · second ordinateur : bandeau ABSENT (6 s)
+  ÉCHEC  T · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":null,"b":null}
+      T · téléphone : bandeau ABSENT (6 s)
+  ÉCHEC  T · le téléphone voit le bandeau en moins de 2 s — {"t":null,"b":null}
+      T · téléphone, relance de la même séance (pas de bandeau) : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#0#0 · tableau inv-presentation-chapitre-s0#0#0
+  ÉCHEC  T · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#0#0"}
+      T · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur ∞, ∞, ∞, ∞, ∞ · téléphone ∞, ∞, ∞, ∞, ∞ · tableau distant 228, 200, ∞, 396, ∞, 39, ∞, 263, ∞, 95
+  ÉCHEC  T · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (6 / 20) — {"max":99999}
+      T · deux gestes presque en même temps : ordinateur inv-competences-chapitre-s0#2#0 · téléphone inv-competences-chapitre-s0#0#0 · tableau inv-competences-chapitre-s0#2#0
+  ÉCHEC  T · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-competences-chapitre-s0#2#0","inv-competences-chapitre-s0#0#0","inv-competences-chapitre-s0#2#0"]
+      T · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en ∞, 35 ms
+  ÉCHEC  T · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — ["∞",35]
+      T · avant la clôture, au hub : pointeur d’essai là, scène d’essai là, cours_actif —
+      T · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     T · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     T · au hub : plus de pointeur ni de scène d’essai — {"ptr":null,"sc":null,"vif":null,"ca":null}
+      T · écritures au hub pendant l’essai : 35 — chemins : /site/cle_vue, /site/tableau_test/scene, /site/tableau_test/ecrans, /site/tableau_test/pointeur
+  ÉCHEC  T · en mode test, aucune écriture hors des chemins d’essai (7 hors) — ["PUT /site/cle_vue","PUT /site/cle_vue","PUT /site/cle_vue","PUT /site/cle_vue","PUT /site/cle_vue"]
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— la vraie heure · base —
+  ok     H · l’ordinateur lance l’heure par la case de l’emploi du temps
+      H · second ordinateur : bandeau ABSENT (6 s)
+  ÉCHEC  H · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":null,"b":null}
+      H · téléphone : bandeau ABSENT (6 s)
+  ÉCHEC  H · le téléphone voit le bandeau en moins de 2 s — {"t":null,"b":null}
+      H · téléphone, relance de la même séance (pas de bandeau) : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone null · tableau inv-presentation-chapitre-s0#2#0
+  ÉCHEC  H · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":null}
+      H · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur ∞, ∞, ∞, ∞, ∞ · téléphone ∞, ∞, ∞, ∞, ∞ · tableau distant ∞, 220, ∞, 229, ∞, 246, ∞, 245, ∞, 369
+  ÉCHEC  H · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (5 / 20) — {"max":99999}
+      H · deux gestes presque en même temps : ordinateur inv-competences-chapitre-s0#2#0 · téléphone null · tableau inv-competences-chapitre-s0#2#0
+  ÉCHEC  H · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-competences-chapitre-s0#2#0",null,"inv-competences-chapitre-s0#2#0"]
+      H · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en ∞, ∞ ms
+  ÉCHEC  H · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — ["∞","∞"]
+      H · avant la clôture, au hub : pointeur d’essai —, scène d’essai —, cours_actif là
+      H · clos au téléphone : tableau distant sur « inv-competences-chapitre-s0#2#0 » · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif LÀ
+  ÉCHEC  H · clos au téléphone : /site/cours_actif retiré — {"chapitre":"0","classeNom":"3E Charles de Gaulle","classeSlug":"3E Charles de Gaulle","debut":"09:00","fin":"09:52","niveau":"3e","seance":"0","ts":1789369200000}
+  ok     H · aucune écriture refusée par le faux hub (0) — []
+  ÉCHEC  H · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système — Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans') ; Cannot read properties of undefined (reading 'ecrans')
+
+22 vérifications, 15 échec(s)

@@ -543,6 +543,12 @@ const DR_TC_STYLE = 'body.tc-on{background:#0f0d0a!important;overflow:hidden!imp
   + '#tc-bas .moyen{flex:1;height:52px;font-size:19px}#tc-bas .moyen.gelon{background:#1d2a33;border-color:#8fc4ea;color:#8fc4ea}'
   + '#tc-bas h4{margin:2px 0 0;font-size:13px;letter-spacing:.12em;color:#7d7061;font-weight:600}'
   + '#tc-bas .eleves{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}#tc-bas .eleves button{height:40px;font-size:15px}#tc-bas .eleves button.on{background:#22301f;border-color:#7fb77e;color:#7fb77e}'
+  + '#tc-bas .appel{display:grid;grid-template-columns:1fr 1fr;gap:6px}#tc-bas .appel button{height:44px;font-size:15px;text-align:left;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+  + '#tc-bas .appel button.abs{background:#3a1d1a;border-color:#d9776b;color:#f0a89c}#tc-bas .appel button.abs::before{content:"absent · ";font-size:12px;letter-spacing:.04em}'
+  + '#tc-bas .tete-appel{display:flex;justify-content:space-between;align-items:center;gap:8px}#tc-bas .tete-appel button{height:40px;padding:0 14px;font-size:16px}'
+  + 'body.tc-on #ses-tab.tc-tab>#murcadre{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;margin:0!important}'
+  + 'body.tc-on #ses-tab.tc-tab #murcadre,body.tc-on #ses-tab.tc-tab #murcadre *{pointer-events:none!important;user-select:none!important;-webkit-user-select:none!important}body.tc-on #ses-tab.tc-tab #murcadre .mur{border-radius:0;box-shadow:none}'
+  + '#tc-bas .rang.taille{align-items:center}#tc-bas .rang.taille .moyen{flex:0 0 72px;height:44px;font-size:19px}#tc-bas .rang.taille .tl{flex:1;text-align:center;font-size:17px;color:#e4b45c;font-variant-numeric:tabular-nums}'
   + '#tc-bas .minut{display:flex;gap:8px;align-items:center}#tc-bas .minut .t{flex:1.3;text-align:center;font-size:30px;font-variant-numeric:tabular-nums;color:#e4b45c}#tc-bas .minut button{flex:1;height:48px;font-size:17px}'
   + '#tc-accueil{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:24px 18px;gap:18px}'
   + '#tc-accueil .rien{text-align:center;color:#b9ab94;font-size:19px;line-height:1.4}'
@@ -557,7 +563,7 @@ function dr_tcPoser(){
   DR_TC.haut = mk('tc-haut'); DR_TC.tab = mk('ses-tab', 'tc-tab'); DR_TC.mur = document.createElement('div'); DR_TC.mur.className = 'mur tableau'; DR_TC.mur.id = 'tc-mur'; DR_TC.tab.appendChild(DR_TC.mur);
   DR_TC.bas = mk('tc-bas'); DR_TC.acc = mk('tc-accueil');
   /* un seul écouteur par zone, posé une fois (§12.56 (1) e) */
-  DR_TC.bas.addEventListener('click', ev => { const b = ev.target && ev.target.closest && ev.target.closest('button[data-a]'); if (!b) return; ev.preventDefault(); dr_tcGeste(b.dataset.a, b.dataset.ini); });
+  DR_TC.bas.addEventListener('click', ev => { const b = ev.target && ev.target.closest && ev.target.closest('button[data-a]'); if (!b) return; ev.preventDefault(); dr_tcGeste(b.dataset.a, b.dataset.ini || b.dataset.e); });
   DR_TC.acc.addEventListener('click', ev => { const b = ev.target && ev.target.closest && ev.target.closest('button[data-a]'); if (!b) return; if (b.dataset.a === 'garde') { const o = document.getElementById(b.dataset.id); if (o) o.click(); setTimeout(dr_tcMaj, 50); } if (b.dataset.a === 'rejoindre') dr_tcRejoindre(); });
 }
 function dr_tcPoserSi(z, h){ if (z.__h !== h) { z.innerHTML = h; z.__h = h; } }
@@ -607,37 +613,52 @@ function dr_tcMaj(){
   let num = ''; try { const rg = rangDe(vu.di); num = rg ? 'Diapo <b>' + rg + ' sur ' + ordreHeure(S.heure).length + '</b> · heure ' + S.heure + ' · ' : 'Hors de l\'heure ' + S.heure + ' · '; } catch (x) {}   /* les mots du pilote, hors de l'heure aussi */   /* les mots du pilote : le numéro et le total de l'heure en cours */
   dr_tcPoserSi(DR_TC.haut, '<div class="cl"><b>' + dr_tcEsc(nom) + '</b><span class="vif" title="La télécommande suit la séance en direct' + (ici.test ? ' (mode test : rien n’est enregistré pour la classe)' : '') + '">' + vif + '</span></div>'
     + '<div class="di">' + num + dr_tcEsc(titre) + '</div>');
-  /* le tableau, tel que le voit la classe (le rendu du tableau distant, `dr_rendreMur`, dans sa boîte) */
-  const hb = DR_TC.haut.getBoundingClientRect().bottom; const top = Math.round(hb + 6) + 'px'; if (DR_TC.tab.style.top !== top) DR_TC.tab.style.top = top;
-  const mc = JSON.stringify(vu); if (mc !== DR_TC.murCle) { DR_TC.murCle = mc; try { dr_rendreMur(vu, null, DR_TC.mur); } catch (x) {} }
-  const bt = Math.round(DR_TC.tab.getBoundingClientRect().bottom + 6) + 'px'; if (DR_TC.bas.style.top !== bt) DR_TC.bas.style.top = bt;
+  /* C16 (㊱, Paul 22:18-22:22) : la diapo telle qu'au pilote — toute la diapo, les éléments pas encore dévoilés en gris — sur toute la largeur du téléphone :
+     le dessin du pilote lui-même (#murcadre, déjà dans la page, sous la télécommande) est posé dans la boîte ; aucun geste dessus (ni appui, ni loupe, ni plein
+     écran : « au tactile ça va télescoper »). Sans lui (une page sans pilote), le rendu de la classe comme avant. */
+  const hb = DR_TC.haut.getBoundingClientRect().bottom; const top = Math.round(hb) + 'px'; if (DR_TC.tab.style.top !== top) DR_TC.tab.style.top = top;   /* collée à l'en-tête et à la ligne d'en dessous : avant, 6 px d'écart de chaque côté laissaient voir le pilote caché dessous */
+  const cad = document.getElementById('murcadre');
+  if (cad) { if (cad.parentNode !== DR_TC.tab) { DR_TC.tab.appendChild(cad); DR_TC.mur.style.display = 'none'; try { dr_tout(); } catch (x) {} } }   /* posé une fois : le pilote y dessine ensuite à chaque geste, à la taille de la boîte */
+  else { const mc = JSON.stringify(vu); if (mc !== DR_TC.murCle) { DR_TC.murCle = mc; DR_TC.mur.style.display = ''; try { dr_rendreMur(vu, null, DR_TC.mur); } catch (x) {} } }
+  const bt = Math.round(DR_TC.tab.getBoundingClientRect().bottom) + 'px'; if (DR_TC.bas.style.top !== bt) DR_TC.bas.style.top = bt;
   let tot = null; try { tot = elements(e).length; } catch (x) {} const nd = +vu.nDev || 0;
   const L = (typeof ELEVES !== 'undefined' && ELEVES) ? ELEVES : []; const parle = n => (S.parts || []).some(p => p && p.nom === n && (p.heure == null || p.heure === S.heure));
   const nb = L.filter(parle).length; const m = (typeof DR_CL === 'object' && DR_CL.minut) || null;
-  const gel = !!S.gel; const tient = dr_sesJeTiens();
+  const gel = !!S.gel; const tient = dr_sesJeTiens(); const nAbs = typeof dr_apAbsentDeLHeure === 'function' ? L.filter(n => dr_apAbsentDeLHeure(n, S.heure)).length : 0;
   const desact = tient ? '' : '<div class="desact" style="text-align:center;color:#8fc4ea;font-size:17px">Télécommande désactivée : l’ordinateur a repris la main</div>'
     + '<div class="rang"><button class="gros or" data-a="main" style="height:58px;font-size:21px" title="La télécommande reprend la main, là où l’ordinateur en est, la réponse qu’il écrivait comprise : ce que tu fais ici, la classe le voit au tableau">Reprendre avec la télécommande</button></div>';
-  const h = desact + '<div class="voit"><span>' + (tot != null ? nd + ' / ' + tot + ' dévoilés' : nd + ' dévoilé' + (nd > 1 ? 's' : '')) + '</span><span class="gel">' + (gel ? '❄ tableau gelé' : '') + '</span></div>'
+  const tv = Math.max(0, Math.min(4, +S.taille || 0)); const tlib = ((document.getElementById('taille-l') || {}).textContent || '').trim();
+  const taille = '<div class="rang taille"><button class="moyen" data-a="t-moins"' + (tv <= 0 ? ' data-borne="1"' : '') + ' title="' + (tv <= 0 ? 'Le texte au tableau est déjà au plus petit des cinq crans' : 'A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt') + '">A−</button>'
+    + '<span class="tl" title="Texte au tableau : la taille des lettres que voit la classe (l’étiquette du pilote)">' + dr_tcEsc(tlib) + '</span>'
+    + '<button class="moyen" data-a="t-plus"' + (tv >= 4 ? ' data-borne="1"' : '') + ' title="' + (tv >= 4 ? 'Le texte au tableau est déjà au plus grand des cinq crans' : 'A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt') + '">A+</button></div>';
+  const h = taille + desact + '<div class="voit"><span>' + (tot != null ? nd + ' / ' + tot + ' dévoilés' : nd + ' dévoilé' + (nd > 1 ? 's' : '')) + '</span><span class="gel">' + (gel ? '❄ tableau gelé' : '') + '</span></div>'
     + '<div class="rang"><button class="gros" data-a="prec" title="Revoile le dernier élément montré à la classe ; au début de la diapo, revient à la page ou à la diapo d’avant">◀</button><button class="gros or" data-a="suiv" title="Dévoile l’élément suivant au tableau ; tout dévoilé, passe à la diapo suivante (avec sa page)">▶</button></div>'
-    + '<div class="rang"><button class="moyen' + (gel ? ' gelon' : '') + '" data-a="gel" title="' + (gel ? 'Dégèle le tableau : la classe revoit ce que tu montres' : 'Gèle le tableau : la classe garde ce qu’elle voit, tu peux préparer la suite') + '">' + (gel ? '❄ Dégeler' : '❄ Geler') + '</button></div>'
-    + '<h4>QUI A PARLÉ · ' + nb + ' / ' + L.length + '</h4>'
+    + '<div class="rang"><button class="moyen' + (gel ? ' gelon' : '') + '" data-a="gel" title="' + (gel ? 'Dégèle le tableau : la classe revoit ce que tu montres' : 'Gèle le tableau : la classe garde ce qu’elle voit, tu peux préparer la suite') + '">' + (gel ? '❄ Dégeler' : '❄ Geler') + '</button>'
+    + '<button class="moyen" data-a="appel" title="L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe">Appel · ' + (nAbs ? nAbs + ' absent' + (nAbs > 1 ? 's' : '') : 'tous présents') + '</button></div>'
+    + (DR_TC.appel ? dr_tcAppelHtml(L) : '<h4>QUI A PARLÉ · ' + nb + ' / ' + L.length + '</h4>'
     + '<div class="eleves">' + (L.length ? L.map(n => { const ini = (typeof iniDe === 'function' ? iniDe(n) : '') || '?'; return '<button class="' + (parle(n) ? 'on' : '') + '" data-a="qui" data-ini="' + dr_tcEsc(ini) + '" title="' + dr_tcEsc(n) + ' a parlé : un appui le note, un second l’enlève">' + dr_tcEsc(ini) + '</button>'; }).join('') : '<span style="grid-column:1/-1;color:#7d7061">la liste de la classe</span>') + '</div>'
     + '<h4>MINUTEUR</h4><div class="minut"><button data-a="m-moins" title="Une minute de moins">−</button><span class="t"></span><button data-a="m-plus" title="Une minute de plus">+</button>'
-    + '<button data-a="m-go" title="Le minuteur part, au tableau">Départ</button><button data-a="m-pause" title="Met le minuteur en pause ; un second appui le fait repartir">Pause</button><button data-a="m-stop" title="Arrête le minuteur et le retire du tableau">■</button></div>';
+    + '<button data-a="m-go" title="Le minuteur part, au tableau">Départ</button><button data-a="m-pause" title="Met le minuteur en pause ; un second appui le fait repartir">Pause</button><button data-a="m-stop" title="Arrête le minuteur et le retire du tableau">■</button></div>');
   dr_tcPoserSi(DR_TC.bas, h);
   /* sans la main : chaque commande grisée dit sa raison (son infobulle) ; seul « Reprendre avec la télécommande » reste */
   const OFF = 'Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « Reprendre avec la télécommande » pour piloter d’ici.';
-  DR_TC.bas.querySelectorAll('button[data-a]').forEach(b => { if (b.dataset.a === 'main') return; if (b.disabled !== !tient) b.disabled = !tient; if (!tient) { if (b.title !== OFF) { if (b.dataset.t0 == null) b.dataset.t0 = b.title; b.title = OFF; } b.style.opacity = '.4'; } else { if (b.dataset.t0 != null) { b.title = b.dataset.t0; delete b.dataset.t0; } if (b.style.opacity) b.style.opacity = ''; } });
+  DR_TC.bas.querySelectorAll('button[data-a]').forEach(b => { if (b.dataset.a === 'main' || b.dataset.a === 'appel-x') return; const off = !tient || b.dataset.borne === '1'; if (b.disabled !== off) b.disabled = off; if (!tient) { if (b.title !== OFF) { if (b.dataset.t0 == null) b.dataset.t0 = b.title; b.title = OFF; } b.style.opacity = '.4'; } else { if (b.dataset.t0 != null) { b.title = b.dataset.t0; delete b.dataset.t0; } const op = off ? '.4' : ''; if (b.style.opacity !== op) b.style.opacity = op; } });
   const reste = m ? (m.etat === 'pret' ? m.duree : m.etat === 'court' ? Math.max(0, m.fin - Date.now()) : Math.max(0, m.reste || 0)) : (typeof dr_minutDuree === 'function' ? (dr_minutDuree() || 300000) : 300000);
   const tt = DR_TC.bas.querySelector('.minut .t'); const txt = typeof dr_mmss === 'function' ? dr_mmss(reste) : String(Math.ceil(reste / 1000)); if (tt && tt.textContent !== txt) tt.textContent = txt;   /* l'horloge ne pose que ses chiffres */
 }
+/* C16 (㊱, Paul 258) : la liste de l'appel à la télécommande — les noms en entier (c'est Paul qui lit, jamais la classe), l'allure de « QUI A PARLÉ » */
+function dr_tcAppelHtml(L){ const h = S.heure; const nAbs = L.filter(n => dr_apAbsentDeLHeure(n, h)).length;
+  return '<div class="tete-appel"><h4>L’APPEL · ' + nAbs + ' ABSENT' + (nAbs > 1 ? 'S' : '') + ' SUR ' + L.length + '</h4><button data-a="appel-x" title="Ferme la liste de l’appel : tu retrouves « qui a parlé » et le minuteur ; rien ne change pour la séance">✕ Fermer</button></div>'
+    + '<div class="appel">' + (L.length ? L.map(n => { const a = dr_apAbsentDeLHeure(n, h); return '<button class="' + (a ? 'abs' : '') + '" data-a="abs" data-e="' + dr_tcEsc(n) + '" title="' + dr_tcEsc(n) + (a ? ' est marqué absent : un appui le défait' : ' : un appui le marque absent pour cette heure') + ' — le pilote, la case de l’emploi du temps et tes autres appareils le voient aussitôt ; jamais montré à la classe">' + dr_tcEsc(n) + '</button>'; }).join('') : '<span style="grid-column:1/-1;color:#7d7061">la liste de la classe</span>') + '</div>'; }
 /* « Reprendre avec la télécommande » (et le QR scanné) : la télécommande prend la main ; l'ordinateur ferme son champ tel qu'il est et lui envoie son dernier état */
 function dr_tcPrendreMain(){ if (!DR_SES.ici) return; DR_SES.main = DR_SES.id; DR_SES.mainTc = true; DR_SES.forcer = true; DR_SES.prise = true; clearTimeout(DR_SES.envT); try { dr_sesEnvoyerMaintenant(); } catch (e) {} DR_TC.murCle = ''; setTimeout(dr_tcMaj, 30); }
 /* chaque bouton : le geste du pilote */
 function dr_tcGeste(a, ini){
   if (!DR_SES.ici) return; const $b = id => document.getElementById(id);
   if (a === 'main') { dr_tcPrendreMain(); return; }
+  if (a === 'appel-x') { DR_TC.appel = false; setTimeout(dr_tcMaj, 30); return; }   /* fermer la liste : rien ne change pour la séance */
   if (!dr_sesJeTiens()) return;   /* désactivée : seul « Reprendre avec la télécommande » agit */
+  if (a === 'appel') { DR_TC.appel = !DR_TC.appel; setTimeout(dr_tcMaj, 30); return; }   /* C16 (㊱) : ouvrir la liste de la classe (rien ne change pour la séance) */
   try {
     if (a === 'suiv') { const b = $b('bdev'); if (b) b.click(); else devoiler(); }
     else if (a === 'prec') { const b = $b('bprec'); if (b) b.click(); else revoiler(); }
@@ -646,6 +667,8 @@ function dr_tcGeste(a, ini){
       const mes = (S.parts || []).filter(p => p && p.nom === nom && (p.heure == null || p.heure === S.heure));
       if (mes.length) partRetire(ini, mes[mes.length - 1].id); else partAjoute(ini, 'participe');
       try { if (typeof dr_sauve === 'function') dr_sauve(); } catch (x) {} dr_tout(); }
+    else if (a === 'abs' && ini) { if (typeof dr_apBasculer === 'function' && dr_apBasculer(ini, 'télécommande')) { try { if (typeof dr_sauve === 'function') dr_sauve(); } catch (x) {} dr_tout(); } }   /* C16 (㊱) : un appui marque un absent, un second le défait (ini = le nom entier) */
+    else if (a === 't-plus' || a === 't-moins') { const n = Math.max(0, Math.min(4, (+S.taille || 0) + (a === 't-plus' ? 1 : -1))); if (n !== (+S.taille || 0)) { const r = $b('taille'); if (r) { r.value = n; r.dispatchEvent(new Event('input', { bubbles: true })); } else { S.taille = n; S.page = null; dr_tout(); } } }   /* C16 (㊱) : un cran du curseur « Texte au tableau » du pilote */
     else if (/^m-/.test(a)) dr_tcMinut(a.slice(2));
   } catch (e) { try { console.warn('[télécommande] ' + e.message); } catch (x) {} }
   setTimeout(dr_tcMaj, 150);   /* une diapo qui arrive se pose en deux temps : l'en-tête la redit une fois posée */

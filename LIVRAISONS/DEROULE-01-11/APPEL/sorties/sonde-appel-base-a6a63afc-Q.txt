@@ -1,0 +1,37 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties Q QT · 2026-11-02 21:48 UTC · md5 a6a63afc9ccbec3572f189a422ffa31e · images de 3e : un dossier local
+
+— Q · la télécommande : la diapo du pilote, « Texte au tableau » (vraie heure) —
+  ok     Q · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : PAS le dessin du pilote, 0 × 0 px sur un écran de 390 px, 0 élément(s) en gris (opacité null) — au pilote de l’ordinateur : 2 ; le rendu de la classe ENCORE montré ; les gestes sur la diapo : null
+  ÉCHEC  Q · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":0,"vw":390,"gris":0,"pilote":2}
+      ▶ à la télécommande : 0 en gris (∞)
+  ÉCHEC  Q · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":0,"apres":0}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     Q · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ÉCHEC  Q · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":null,"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 32 pt » en ∞, le tableau en ∞, la télécommande dit « null » ; A− : le pilote en 3 ms, le tableau en 3 ms, la télécommande « null »
+  ÉCHEC  Q · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":null,"tt1":null,"tp2":3,"tt2":3}
+      l’ordinateur reprend la main : A− A+ PAS grisés ; un appui sur A+ grisé : la taille inchangée
+  ÉCHEC  Q · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":false}
+  ok     Q · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 51 écritures) — []
+  ok     Q · aucune écriture refusée par le faux hub (0) — []
+  ok     Q · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+— QT · la télécommande : la diapo du pilote, « Texte au tableau » (mode test) —
+  ok     QT · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : PAS le dessin du pilote, 0 × 0 px sur un écran de 390 px, 0 élément(s) en gris (opacité null) — au pilote de l’ordinateur : 2 ; le rendu de la classe ENCORE montré ; les gestes sur la diapo : null
+  ÉCHEC  QT · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":0,"vw":390,"gris":0,"pilote":2}
+      ▶ à la télécommande : 0 en gris (∞)
+  ÉCHEC  QT · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":0,"apres":0}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     QT · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ÉCHEC  QT · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":null,"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 32 pt » en ∞, le tableau en ∞, la télécommande dit « null » ; A− : le pilote en 3 ms, le tableau en 1 ms, la télécommande « null »
+  ÉCHEC  QT · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":null,"tt1":null,"tp2":3,"tt2":1}
+      l’ordinateur reprend la main : A− A+ PAS grisés ; un appui sur A+ grisé : la taille inchangée
+  ÉCHEC  QT · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":false}
+  ok     QT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     QT · aucune écriture refusée par le faux hub (0) — []
+  ok     QT · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+20 vérifications, 10 échec(s)

@@ -1342,3 +1342,20 @@ MEMO
 - **20:53 — la conscience, l'étape 14 du banc final** (`49826c1f0`, assemblé `a6a63afc`) : **105 vérifications, 0 échec** — alternance T 20 / 20 (max 380 ms), H 20 / 20 (max 234 ms) ; la réponse au second ordinateur pendant un dévoilement : rien de perdu (T, H) ; « qui a la main : rien de perdu » (T, H) ; « Reprendre avec la télécommande » (QH, QT) : rien de perdu ; R 12 / 12 (max 477 ms), RT 12 / 12 (max 485 ms). Captures `banc-8800g/capt14/` (75). Planches avant / après construites (`planches-final/`, six).
 - **21:23 — la conscience** : le banc continue (étape 12, puis 13).
 - **21:24 — la conscience, le banc final, étapes 1 à 12** (`49826c1f0`) : **VERT** — parcours VERT ; mode test VERT ; K1-K13 0 défaut ; Atelier 106 / 0 ; bloc question 53 / 53 ; §12.66 27 / 0 ; ⑩ 51 / 0 (l'étape 8 verte du premier coup) ; étape 9, 33 ok, 0 échec ; ouverture 126 / 0 ; fil 100 / 0 ; retour sûr 61 / 0. L'étape 13 tourne.
+- **21:36 — la conscience, l'étape 13 du banc final** : 116 vérifications, 3 échecs, tous en K (la frappe : au pilote médiane 29-31 ms, max 276-280 ms, 41 lettres au-delà de 100 ms ; fenêtre du tableau 42 / 192 ms) ; A, B, C, J, R, L verts. La production 8.79.0 mesurée à 20:25 dans les mêmes conditions : au pilote médiane 44-45 ms, max 432-442 ms, 45 au-delà de 100 ms. **Le banc final** : étapes 1 à 12 VERT, 14 VERT (105 / 0), 13 : la frappe (㉟) seule, au niveau de la production ou mieux.
+- **21:36 — envoyé à Paul** : `planches-final/1-bandeau.png` à `6-256.png` (légende : « 8.80.0-⑬ (tout ㉞), sur le fichier qui partira : six planches, avant / après quand il y a un avant »).
+- **21:36 — message à Paul, mot pour mot :**
+
+  > 277. Prêt pour ton « promeus » : 8.80.0-⑬, tout ㉞, sur le fichier dont les six planches viennent. Ce qu'il change : une heure, un essai en mode test ou une répétition lancés sur un appareil s'annoncent sur tous les autres (le bandeau, « Reprendre ») et s'y pilotent ; la télécommande par le QR ; « qui a la main » ; l'heure close sur un appareil se clôt partout, le tableau revient à l'horloge ; une heure continuée par une ancienne version se reprend sans rien perdre ; et 256.
+  >
+  > 278. Mon banc complet sur ce fichier : 13 étapes vertes sur 14, dont la session sur tous les appareils (105 vérifications, 0 échec). La 14e, celle des six correctifs de ce matin, n'a d'échecs que sur la frappe (㉟) : mesurée côte à côte, elle est au niveau du site en ligne ou mieux (au pilote, une lettre en 30 millièmes de seconde en moyenne contre 45, la plus lente en 0,28 seconde contre 0,44). C'est ta décision de 13:33 : « pas de vraies dettes bloquantes, mais il faudra quand même les traiter ».
+  >
+  > 279. Ce qui reste, dit tel quel. En répétition, un geste peut mettre jusqu'à 0,6 seconde à paraître sur l'autre appareil (douze sur douze sous la demi-seconde au banc, mais un passage sur deux au-dessus avant) : c'est le dessin de la diapo, avec le retard du tableau (⑯). Un appareil resté sur l'ancienne version ne suit pas en direct les autres : après la mise en ligne, recharge la page sur chaque appareil. Une ligne de journal sans élève déjà au hub (avant 256) n'est vérifiée qu'en lisant le code.
+  >
+  > À tester, après la mise en ligne : recharge la page sur l'ordinateur de la classe et sur ton téléphone (la pastille dit 8.80.0-⑬) ; en mode test, lance une heure à l'ordinateur, ouvre le site sur le téléphone : « Essai en cours (mode test) » et « Reprendre » ; dévoile au téléphone : l'ordinateur et le tableau suivent ; touche 📱 au pilote et scanne le QR : la télécommande s'ouvre sur la séance (◀ ▶, Geler, qui a parlé, le minuteur) ; écris une réponse à l'ordinateur : le téléphone dit « Télécommande désactivée » ; « Reprendre avec la télécommande » : la réponse est là ; clos l'heure au téléphone : le tableau revient à l'horloge ; lance une répétition : le téléphone dit « Répétition en cours », « ■ Arrêter » l'arrête partout.
+  >
+  > 02/11/2026 21:36
+  >
+  > À jouer : rien avant ton « promeus » · en cours : rien · ouvert : ton « promeus » (277)
+  >
+  > MEMO

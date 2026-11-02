@@ -1,0 +1,1 @@
+N vrai hub, recomptée hors origine/ts de la scène : 42 / 42 écritures, 0 différence(s) ; hub final identique : true ; adresses : PUT /site/tableau_test/scene, PUT /site/tableau_test/ecrans, PUT /site/tableau_test/pointeur

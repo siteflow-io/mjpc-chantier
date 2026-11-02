@@ -588,16 +588,19 @@ const jouerN = async (fichier, tag) => { HUBN = hubDe(store()); ECR = []; PERDUE
     const f = await o.pg.isVisible('#f-clore').catch(() => false); if (f) { await o.pg.click('#f-clore'); await p(400); if (await o.pg.evaluate(() => { const g = document.getElementById('garde-clore'); return !!(g && g.classList.contains('on')); })) { await o.pg.click('#gclore-oui').catch(() => {}); } await p(2500); clos = true; } }
   const apres = await o.pg.evaluate(() => ({ hou: ((document.getElementById('hou') || {}).textContent || '').trim(), close: !!(window.S && S.close), lancee: !!(window.S && S.lancee) })).catch(() => ({}));
   ecr.push('clore : ' + JSON.stringify(apres)); await capt(o.pg, 'N-' + (VRAI ? 'vrai' : 'ordinaire') + '-' + tag + '-2-close');
-  const w = ECR.filter(e => e.m !== 'GET').map(e => e.m + ' ' + e.c + ' ' + JSON.stringify(e.bd));
+  /* la scène du tableau porte l'identité tirée au hasard de la page (`origine`) et l'instant de l'écriture (`ts`) : ils changent d'une page à l'autre, même fichier — mis à part dans la comparaison, comptés à part */
+  const neutre = (c, bd) => { if (/\/scene$/.test(c) && bd && typeof bd === 'object' && !Array.isArray(bd)) { const o = Object.assign({}, bd); delete o.origine; delete o.ts; return o; } return bd; };
+  const w = ECR.filter(e => e.m !== 'GET').map(e => e.m + ' ' + e.c + ' ' + JSON.stringify(neutre(e.c, e.bd))); const wBrut = ECR.filter(e => e.m !== 'GET').map(e => e.m + ' ' + e.c + ' ' + JSON.stringify(e.bd));
   const hubFin = JSON.stringify(lireH0('/site/3e/chapitres/0/seances/' + k0 + '/deroule_joue') || null);
-  const errs = o.errs.concat(o.boites); await o.ctx.close(); return { l1, fin, clos, ecr, w, hubFin, errs }; };
+  const errs = o.errs.concat(o.boites); await o.ctx.close(); return { l1, fin, clos, ecr, w, wBrut, hubFin, errs }; };
 if (joue('N') && AV8771 && ANC) { dire(''); dire('══ N · 1536×864 · ' + (N_TEST ? 'en mode test' : 'hors mode test') + ' · hub ' + (VRAI ? 'rangé comme le vrai' : 'ordinaire') + ' · une heure neuve, ▶ jusqu’à la fin, « Clore l’heure » : la 8.77.1-⑩ d’avant et la corrigée ══');
   const A = await jouerN(AV8771, 'avant'), B = await jouerN(ANC, 'apres');
   dire('      avant : ' + A.ecr.length + ' écrans relevés, ' + A.w.length + ' écritures au faux hub · après : ' + B.ecr.length + ' écrans, ' + B.w.length + ' écritures');
   const dEcr = A.ecr.map((x, i) => x === B.ecr[i] ? null : i).filter(i => i != null); const dW = A.w.map((x, i) => x === B.w[i] ? null : i).filter(i => i != null);
   verif('N', A.l1 && B.l1 && A.fin && B.fin && A.clos && B.clos, 'N · les deux lancent l’heure par la case, ▶ jusqu’à « Fin de l’heure », « Clore l’heure »', { avant: [A.l1, A.fin, A.clos], apres: [B.l1, B.fin, B.clos] });
   verif('N', A.ecr.length === B.ecr.length && !dEcr.length, 'N · les mêmes écrans, dans le même ordre (' + A.ecr.length + ' / ' + B.ecr.length + ' relevés : le numéro, le compteur, le texte de la diapo)', dEcr.slice(0, 3).map(i => ({ i, avant: A.ecr[i], apres: B.ecr[i] })));
-  verif('N', A.w.length === B.w.length && !dW.length && A.hubFin === B.hubFin, 'N · les mêmes écritures au faux hub (' + A.w.length + ' / ' + B.w.length + ', comparées une à une : la méthode, l’adresse, le contenu) et le même hub à la fin', dW.slice(0, 2).map(i => ({ i, avant: A.w[i].slice(0, 300), apres: (B.w[i] || '').slice(0, 300) })));
+  const dBrut = A.wBrut.map((x, i) => x === B.wBrut[i] ? null : i).filter(i => i != null); dire('      écritures qui ne diffèrent que par `origine` (l’identité de la page) et `ts` (l’instant) de la scène du tableau : ' + dBrut.length + ' sur ' + A.w.length);
+  verif('N', A.w.length === B.w.length && !dW.length && A.hubFin === B.hubFin, 'N · les mêmes écritures au faux hub (' + A.w.length + ' / ' + B.w.length + ', comparées une à une : la méthode, l’adresse, le contenu — hors `origine` et `ts` de la scène) et le même hub à la fin', dW.slice(0, 2).map(i => ({ i, avant: A.w[i].slice(0, 300), apres: (B.w[i] || '').slice(0, 300) })));
   verif('N', !A.errs.length && !B.errs.length, 'N · aucune erreur JS, aucune boîte système (avant / après)', A.errs.concat(B.errs).slice(0, 3).join(' ; '));
   if (process.env.MJPC_N_DUMP) fs.writeFileSync(process.env.MJPC_N_DUMP, JSON.stringify({ A, B }, null, 1)); }
 

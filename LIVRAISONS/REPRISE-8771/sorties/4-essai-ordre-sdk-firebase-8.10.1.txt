@@ -1,0 +1,3 @@
+écrit : [{"eid":"e1","act":"Ouverture","role":"ouverture","blocs":[{"t":"texte","lignes":["a","b"],"marques":[]}],"z":null},{"eid":"e2","act":"A1","blocs":[],"heure":1,"ecr":[null,3]}]
+relu  : [{"act":"Ouverture","blocs":[{"lignes":["a","b"],"t":"texte"}],"eid":"e1","role":"ouverture"},{"act":"A1","ecr":[null,3],"eid":"e2","heure":1}]
+code 0

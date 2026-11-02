@@ -1,0 +1,6 @@
+la copie écrite : 25 diapos, 12989 caractères ; relue : 12919 caractères (le hub a retiré ou réordonné quelque chose)
+le témoin d’avant (le texte JSON tel quel) : « à vérifier »
+le témoin corrigé (rangé comme le hub)      : « intègre »
+une lettre changée dans la copie relue      : « à vérifier »
+rien au hub (la copie absente)               : « à vérifier »
+code 0

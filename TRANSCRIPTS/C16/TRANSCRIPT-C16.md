@@ -1470,3 +1470,4 @@ MEMO
   > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) ; le mandat de la fin d'heure, prêt · ouvert : rien
   >
   > MEMO
+- **23:13 — la conscience** : l'exécutant de la fin d'heure lancé, neuf, en deux phases : la lecture du code et le plan tout de suite, sans navigateur et sans dossier de travail ; le code seulement sur la livraison de l'appel, dont la conscience écrira le commit dans `c16-fin-heure/BASE` (scratchpad). La machine : le fichier `MACHINE-CONSCIENCE` pendant le banc. L'exécutant de l'appel : sa sonde 88 / 1 (P2T, la télécommande en mode test : chaque appareil le dit en 44, 210 et 222 ms, mais la preuve échoue), la sonde de ㉞ 105 / 0 ; il continue.

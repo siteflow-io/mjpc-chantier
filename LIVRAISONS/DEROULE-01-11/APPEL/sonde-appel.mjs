@@ -2,7 +2,7 @@
 // interdites et qui POUSSE son flux (EventSource) : le harnais de SESSION-PARTOUT/sonde-session.mjs, repris tel quel (plus RETARD : une lecture rendue plus tard).
 // Aucune écriture ni lecture du vrai hub. Aucun nom d'élève dans ce qui sort (« ÉLÈVE n » : son rang dans la liste de la classe).
 // usage : node sonde-appel.mjs <assemble/index.html> [dossier-de-sortie]
-//   MJPC_PARTIES=M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT ; MJPC_V879=<la 8.79.0-⑫ assemblée, md5 3cd597e8…> (P4) ; MJPC_CAPT ; MJPC_MEDIAS ; MJPC_NOM
+//   MJPC_PARTIES=M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT,X,XT ; MJPC_V879=<la 8.79.0-⑫ assemblée, md5 3cd597e8…> (P4) ; MJPC_CAPT ; MJPC_MEDIAS ; MJPC_NOM
 //  M  l'existant (mission 0) : un absent au clic droit du pilote est-il dans la case ? un absent coché / défait dans la case arrive-t-il au pilote ? le défaut 6
 //     (un absent coché dans la case pendant l'écriture du paquet de l'heure, effacé au hub — la lecture du pilote rendue 1,5 s plus tard, un réseau lent)
 //  P1 la case d'une heure à venir : l'appel d'abord ; 2 absents ; un clic défait ; (vraie heure) un rechargement, un second ordinateur, la case sur deux ordinateurs ;
@@ -13,6 +13,8 @@
 //  P4 une heure jouée par la 8.79.0-⑫ (lignes « appel » sans élève, absents du pilote et de la case), relue par cette version
 //  Q  la télécommande (ajout de la conscience, Paul 22:18-22:22) : la diapo dessinée comme au pilote (les gris comptés), aucun geste dessus ; A+ puis A−
 //     au pilote et au tableau en moins de 0,5 s ; grisés quand l'ordinateur a la main     (Q vraie heure, QT mode test)
+//  X  deux gestes d'appel croisés à moins de 100 ms (la case avant l'heure, le pilote, la télécommande, un second ordinateur, la case pendant l'heure) :
+//     deux élèves, aucun ne se perd ; un même élève, le dernier geste compte ; au hub et sur chaque appareil     (X vraie heure, XT mode test)
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
 const { storeOuverture } = await import(path.join(RACINE, 'LIVRAISONS/DEROULE-01-11/DIAPOS-OUVERTURE/hub-ouverture.mjs'));
@@ -25,7 +27,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; let anonF = s => s; const dire = s => { s = anonF(String(s)); R.push(s); console.log(s); };   /* aucun nom d'élève dans ce qui sort : « ÉLÈVE n » (son rang dans la liste de la classe) */
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + anonF(typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT,X,XT').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -207,8 +209,10 @@ const tcSel = nom => '#tc-bas button[data-a="abs"][data-e="' + String(nom).repla
 const tcTap = async (tl, sel) => { const ok = await tl.pg.locator(sel).first().tap({ timeout: 1500 }).then(() => true).catch(() => false); if (!ok) await tl.pg.evaluate(s => { const b = document.querySelector(s); if (b) b.click(); }, sel).catch(() => {}); return ok; };
 const tcAppelOuvrir = async tl => { if (await tl.pg.$('#tc-bas button[data-a="abs"]')) return true; if (!(await tl.pg.$('#tc-bas button[data-a="appel"]'))) return false; await tcTap(tl, '#tc-bas button[data-a="appel"]'); await p(500); return !!(await tl.pg.$('#tc-bas button[data-a="abs"]')); };
 /* le hub : l'heure de la classe (son chemin, son paquet) ; l'appel d'avant l'heure */
+const derniers = par => { const out = {}; if (!par || typeof par !== 'object') return out; Object.keys(par).forEach(s => { const d = par[s]; if (!d || typeof d !== 'object') return; Object.keys(d).forEach(dev => { const x = d[dev]; if (!x || typeof x !== 'object') return; const t = +x.t || 0; if (!out[s] || t > out[s].t || (t === out[s].t && dev > out[s].dev)) out[s] = { a: +x.a ? 1 : 0, t, dev }; }); }); return out; };
+const listeDe = H => { if (!H) return []; const l = Array.isArray(H.absents) ? H.absents.slice() : []; const d = derniers(H.absentsPar); Object.keys(d).forEach(k => { const i = l.indexOf(k); if (d[k].a) { if (i < 0) l.push(k); } else if (i >= 0) l.splice(i, 1); }); return [...new Set(l)].sort(); };
 const heureHub = () => { const C = '/site/3e/chapitres/0/seances/' + sk0(HUBN)[0] + '/deroule_joue'; const cj = lireH(C) || {}; const sl = Object.keys(cj)[0]; const H = ((cj[sl] || {}).heures) || {}; const k = Object.keys(H)[0]; return { chemin: k ? C + '/' + sl + '/heures/' + k : null, C: sl ? C + '/' + sl : null, h: k ? H[k] : null }; };
-const avantHub = () => { const a = lireH('/site/edt/appel'); const l = []; const tour = (v, ch) => { if (Array.isArray(v) && v.every(x => typeof x === 'string')) { l.push({ ch, v }); return; } if (v && typeof v === 'object') Object.keys(v).forEach(k => tour(v[k], ch + '/' + k)); }; tour(a, '/site/edt/appel'); return l; };
+const avantHub = () => { const a = lireH('/site/edt/appel'); const l = []; const tour = (v, ch) => { if (v && typeof v === 'object' && v.absentsPar) { const x = listeDe({ absentsPar: v.absentsPar }); if (x.length) l.push({ ch, v: x }); return; } if (v && typeof v === 'object') Object.keys(v).forEach(k => tour(v[k], ch + '/' + k)); }; tour(a, '/site/edt/appel'); return l; };
 const slugDe = (pg, nom) => pg.evaluate(n => edtSlugEleve(n), nom).catch(() => null);
 /* le tableau : rien de l'appel (aucun nom de la classe, ni « absent », ni « appel », ni « présents ») */
 /* ce qui se voit à l'écran du tableau (le texte affiché ; les infobulles ne se voient pas au vidéoprojecteur) */
@@ -231,9 +235,9 @@ const mesure = async fichier => { reset(); const k = 'M', pre = 'appel-' + NOMV 
   dire('      la case de l’heure en cours (second ordinateur) : « ' + (c0 ? c0.lab : '—') + ' » · ' + (c0 ? c0.els : 0) + ' noms · ' + (c0 ? extr(c0.t, /Heure jouée|Pas encore close/, 120) : ''));
   /* M1 : au pilote, clic droit → Absent ; la liste de la case (au hub, et la case de l'autre ordinateur) */
   const cd = await clicDroit(o.pg, A); const sA = await slugDe(o.pg, A);
-  const tHub = await quand(async () => { const h = heureHub().h; return !!(h && Array.isArray(h.absents) && h.absents.includes(sA)); }, 2500);
+  const tHub = await quand(async () => { const h = heureHub().h; return listeDe(h).includes(sA); }, 2500);
   const tCase = await quand(async () => { const c = await caseEtat(o2.pg); return !!(c && c.abs.includes(A)); }, 2500);
-  dire('      M1 · au pilote, clic droit → « Absent » (' + (cd ? 'fait' : 'PAS FAIT') + ') : au pilote ' + (await nbAbsents(o.pg)) + ' absent(s), « ' + (await presentsDe(o.pg)) + ' » ; au hub, H/absents ' + (((heureHub().h || {}).absents) || []).length + ' élève(s) (' + ms(tHub) + ') ; la case du second ordinateur ' + ms(tCase));
+  dire('      M1 · au pilote, clic droit → « Absent » (' + (cd ? 'fait' : 'PAS FAIT') + ') : au pilote ' + (await nbAbsents(o.pg)) + ' absent(s), « ' + (await presentsDe(o.pg)) + ' » ; au hub, la liste de l’heure ' + listeDe(heureHub().h).length + ' élève(s) (' + ms(tHub) + ') ; la case du second ordinateur ' + ms(tCase));
   verif(k, cd && tHub != null && tCase != null, 'M1 · un absent marqué au pilote est dans la liste de la case : au hub et dans la case ouverte sur un autre ordinateur, en ≤ 2 s', { tHub, tCase });
   await capt(o2.pg, pre + '1-case-apres-clic-droit');
   /* M2 : dans la case, un absent coché → au pilote */
@@ -243,13 +247,13 @@ const mesure = async fichier => { reset(); const k = 'M', pre = 'appel-' + NOMV 
   verif(k, tB != null, 'M2 · un absent coché dans la case paraît au pilote en ≤ 2 s', { tB, tB16 });
   /* M3 : dans la case, le même défait → au pilote */
   await caseClic(o2.pg, B); const tB2 = await quand(async () => (await absentAu(o.pg, B)) === false, 2000); let tB2l = tB2; if (tB2 == null) tB2l = await quand(async () => (await absentAu(o.pg, B)) === false, 15000);
-  dire('      M3 · dans la case, le même élève défait : au pilote ' + (tB2 != null ? 'en ' + tB2 + ' ms' : (tB2l != null ? 'après ' + (2000 + tB2l) + ' ms' : 'jamais (17 s) : il reste absent')) + ' ; au hub ' + (((heureHub().h || {}).absents) || []).length + ' élève(s)');
+  dire('      M3 · dans la case, le même élève défait : au pilote ' + (tB2 != null ? 'en ' + tB2 + ' ms' : (tB2l != null ? 'après ' + (2000 + tB2l) + ' ms' : 'jamais (17 s) : il reste absent')) + ' ; au hub ' + listeDe(heureHub().h).length + ' élève(s)');
   verif(k, tB2 != null, 'M3 · un absent défait dans la case est défait au pilote en ≤ 2 s', { tB2, tB2l });
   /* M4 : le défaut 6 — le paquet de l'heure écrit pendant qu'un absent est coché dans la case (la lecture du pilote rendue 1,5 s plus tard : un réseau lent) */
   const sC = await slugDe(o.pg, C); RETARD = { qui: 'ordinateur', re: /\/heures\/[^/]+\/absents$/, ms: 2500, n: 0 };
   await gesteClic(o.pg); const tl0 = await quand(async () => RETARD.n > 0, 4000);   /* la lecture de H/absents par le pilote est partie (avant d'écrire le paquet) : on coche pendant qu'elle attend */
-  await caseClic(o2.pg, C); await p(500); const juste = (heureHub().h || {}).absents || []; await p(4500);
-  const apres = (heureHub().h || {}).absents || []; const nLect = RETARD.n || 0; RETARD = null;
+  await caseClic(o2.pg, C); await p(500); const juste = listeDe(heureHub().h); await p(4500);
+  const apres = listeDe(heureHub().h); const nLect = RETARD.n || 0; RETARD = null;
   const ecrH = ECR.filter(x => x.qui === 'ordinateur' && /\/heures\/[^/]+$/.test(x.c)).map(x => x.m);
   dire('      M4 · un geste au pilote ; ' + (tl0 != null ? 'sa lecture de H/absents partie ' + tl0 + ' ms après (le paquet suit)' : 'AUCUNE lecture de H/absents par le pilote en 4 s (le paquet ne la relit pas)') + ' ; pendant ce temps, un élève coché dans la case : au hub 0,5 s après ' + JSON.stringify(juste.includes(sC)) + ' ; 4,5 s après : ' + (apres.includes(sC) ? 'toujours là' : 'EFFACÉ par le paquet') + ' (lectures retardées de H/absents par le pilote : ' + nLect + ' ; écritures du paquet : ' + [...new Set(ecrH)].join('/') + ')');
   verif(k, juste.includes(sC) && apres.includes(sC), 'M4 · défaut 6 : un absent coché dans la case pendant l’écriture du paquet de l’heure reste au hub', { juste: juste.includes(sC), apres: apres.includes(sC) });
@@ -284,10 +288,17 @@ const p1 = async (fichier, mode) => { const test = mode === 'P1T'; reset(); cons
   const pr = await presentsDe(pg); const nb = await nbAbsents(pg); await capt(pg, pre + '1d-premiere-diapo');
   dire('      lancée : « ' + pr + ' » · ' + nb + ' absent(s) au pilote · ' + ((await texteDe(pg, '#numero')) || '').slice(0, 80));
   verif(mode, !!(l && nb === 2 && /sur 27 présents/i.test(pr || '')), 'lancée : « … sur 27 présents » dès la première diapo, les 2 absents de l’appel', { pr, nb });
-  if (!test) { await p(1500); const sl = [await slugDe(pg, A), await slugDe(pg, B)].sort(); const h = heureHub(); const ab = ((h.h || {}).absents || []).slice().sort(); const av = avantHub();
+  if (!test) { await p(1500); const sl = [await slugDe(pg, A), await slugDe(pg, B)].sort(); const h = heureHub(); const ab = listeDe(h.h); const av = avantHub();
     dire('      au hub : H/absents ' + JSON.stringify(ab.length) + ' élève(s) ; l’appel d’avant l’heure : ' + (av.length ? 'encore là' : 'retiré'));
     verif(mode, JSON.stringify(ab) === JSON.stringify(sl) && !av.length, 'au hub : la liste de l’heure porte les 2 absents ; l’appel d’avant l’heure est retiré', { ab: ab.length, av: av.length }); }
   else { const st = await pg.evaluate(() => { try { return JSON.stringify(M8T.arbre()).length; } catch (e) { return 0; } }).catch(() => 0); dire('      mode test : le magasin de la page porte ' + st + ' caractères ; le hub n’a rien reçu hors /site/tableau_test'); }
+  /* « Annuler cette heure » (la conscience, 23:40) : l'appel fait avant l'heure revient dans la case de cette heure */
+  const an = await pg.evaluate(() => { const b = document.getElementById('dr-annul'); if (!b || b.offsetParent === null) return false; b.click(); return true; }).catch(() => false); await p(600);
+  const an2 = await pg.evaluate(() => { const b = document.getElementById('gannul-oui'); if (!b) return false; b.click(); return true; }).catch(() => false); await p(3500); await pg.keyboard.press('Escape').catch(() => {}); await p(400);
+  await pg.evaluate(() => { try { edtFermer(); } catch (e) {} }).catch(() => {}); await p(400); await caseOuvrir(pg); const ca = await caseEtat(pg); await capt(pg, pre + '1e-annulee-appel-revenu');
+  const avA = test ? null : avantHub();
+  dire('      « Annuler cette heure » (' + (an && an2 ? 'fait' : 'PAS FAIT') + ') : la case « ' + (ca ? ca.lab : '—') + ' »' + (test ? '' : ' ; au hub, l’appel d’avant l’heure : ' + (avA.length ? avA[0].v.length + ' élève(s)' : 'rien')));
+  verif(mode, !!(an && an2 && ca && ca.n === 2 && JSON.stringify(ca.abs) === JSON.stringify(c1.abs) && (test || (avA.length === 1 && avA[0].v.length === 2))), '« Annuler cette heure » : l’appel fait avant l’heure revient dans la case (les 2 mêmes absents' + (test ? '' : ', au hub aussi') + ')', { lab: ca && ca.lab });
   verifEcritures(mode, test); sansErreur(mode, [].concat(o.errs, o.boites), 'l’ordinateur'); await o.ctx.close(); };
 
 /* ═══ P2 · PENDANT L'HEURE, PARTOUT (§4.2, §4.5) : l'ordinateur, la télécommande, un second ordinateur (qui reprend l'heure), la case d'un troisième (vraie heure),
@@ -334,7 +345,7 @@ const p2 = async (fichier, mode) => { const test = mode === 'P2T'; reset(); cons
   dire('      c · ' + (o3 ? 'dans la case du troisième ordinateur' : 'à la télécommande (« Reprendre avec la télécommande »)') + ', le premier absent retiré : l’ordinateur ' + ms(rc.ordinateur) + ', le second ' + ms(rc.second) + ', la télécommande ' + ms(rc['télécommande']) + (o3 ? ', la case ' + ms(rc.case) : '') + ' ; « ' + prc + ' »');
   verif(mode, tous(rc) && /sur 28 présents/i.test(prc || ''), 'c · retiré ' + (o3 ? 'dans la case' : 'à la télécommande') + ' : chaque appareil le dit en moins de 2 s, le compteur suit', rc);
   await capt(o.pg, pre + '2c-ordinateur');
-  if (!test) { await p(2500); const sB = await slugDe(o.pg, B); const ab = (heureHub().h || {}).absents || [];
+  if (!test) { await p(2500); const sB = await slugDe(o.pg, B); const ab = listeDe(heureHub().h);
     dire('      d · au hub, la liste de l’heure : ' + ab.length + ' élève(s) (' + (ab.length === 1 && ab[0] === sB ? 'celui du second ordinateur' : 'PAS la bonne') + ') ; ' + ECR.filter(x => /\/heures\/[^/]+$/.test(x.c)).length + ' écritures du paquet');
     verif(mode, ab.length === 1 && ab[0] === sB, 'd · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet)', ab.length); }
   /* f · (vraie heure) une saisie en cours chez celui qui a la main n'est jamais touchée : le second ordinateur écrit la réponse d'un élève à « Question-bilan » ;
@@ -372,7 +383,7 @@ const p3 = async (fichier, mode) => { const test = mode === 'P3T'; reset(); cons
   const nB = ap2.indexOf(B.split(/\s+/).slice(-1)[0]) >= 0;
   dire('      un absent défait dans la case close : « ' + (c2 ? c2.lab : '—') + ' » ; la Relecture « ' + extr(RL2.recit, /présents/, 60) + ' » · L’APPEL « ' + court(ap2, 160) + ' »');
   verif(mode, !!(c2 && c2.n === 1 && /1 élève sur 28 présents/i.test(RL2.recit) && !nB), 'un absent défait après coup : la Relecture le suit (« 1 élève sur 28 présents », il n’est plus à « L’APPEL »)', { lab: c2 && c2.lab, presents: extr(RL2.recit, /présents/, 40), nB });
-  if (!test) { const ab = (heureHub().h || {}).absents || []; verif(mode, ab.length === 1 && ab[0] === await slugDe(pg, A), 'au hub, la liste de l’heure close : 1 élève', ab.length); }
+  if (!test) { const ab = listeDe(heureHub().h); verif(mode, ab.length === 1 && ab[0] === await slugDe(pg, A), 'au hub, la liste de l’heure close : 1 élève', ab.length); }
   verifEcritures(mode, test); sansErreur(mode, [].concat(o.errs, o.boites), 'l’ordinateur (la Relecture comprise)'); await o.ctx.close(); };
 
 /* ═══ P4 · UNE HEURE JOUÉE AVANT CETTE VERSION (§4.4) : jouée par la 8.79.0-⑫ — un absent au clic droit du pilote, deux cochés dans la case pendant l'heure
@@ -446,6 +457,67 @@ const pq = async (fichier, mode) => { const test = mode === 'QT'; reset(); const
   verifEcritures(mode, test); sansErreur(mode, [].concat(o.errs, o.boites, tl.errs, tl.boites, T.errs, T.boites), 'l’ordinateur, la télécommande, le tableau distant');
   for (const x of [tl, T, o]) await x.ctx.close().catch(() => {}); };
 
+/* ═══ X · DEUX GESTES D'APPEL CROISÉS, À MOINS DE 100 MS (la conscience, 23:40) : deux élèves différents, aucun ne se perd ; un même élève, le dernier geste compte.
+   Partout où l'appel s'écrit : la case avant l'heure (deux ordinateurs ; vraie heure — en mode test, la case d'un autre appareil ne voit pas l'essai, décision 7),
+   pendant l'heure : le pilote (clic droit), la télécommande, un second ordinateur (son pilote), la case d'un troisième (vraie heure). Chaque geste part à une heure
+   fixée d'avance sur l'horloge commune des appareils ; l'écart réel est mesuré. Compté au hub et sur chaque appareil. ═══ */
+const GESTE = ([kind, nom, at]) => new Promise(res => { const tir = () => { const t = Date.now(); let ok = false; try {
+    if (kind === 'case') { const b = Array.from(document.querySelectorAll('#edt-modale .edt-el')).find(x => x.textContent.trim() === nom); if (b && !b.disabled) { b.click(); ok = true; } }
+    else if (kind === 'tc') { const b = Array.from(document.querySelectorAll('#tc-bas button[data-a="abs"]')).find(x => x.dataset.e === nom); if (b && !b.disabled) { b.click(); ok = true; } }
+    else if (kind === 'pilote') { const el = Array.from(document.querySelectorAll('#part [data-e]')).find(x => x.dataset.e === nom); if (el) { const r = el.getBoundingClientRect(); el.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true, clientX: r.left + 2, clientY: r.top + 2 }));
+      const it = document.querySelector('#menu [data-a="absent"]') || document.querySelector('#menu [data-a="arrive"]'); if (it) { it.click(); ok = true; } } }
+  } catch (e) {} res({ t, ok }); }; const go = () => { const r = at - Date.now(); if (r > 30) setTimeout(go, r - 25); else { while (Date.now() < at) {} tir(); } }; go(); });   /* les dernières millisecondes en attente active : l'heure fixée est tenue même sur une page occupée */
+const croiser = async (g1, g2, ecart = 40) => { const at = await g1.pg.evaluate(() => Date.now() + 900); const [r1, r2] = await Promise.all([g1.pg.evaluate(GESTE, [g1.k, g1.nom, at]), g2.pg.evaluate(GESTE, [g2.k, g2.nom, at + ecart])]); return { ok: r1.ok && r2.ok, ecart: r2.t - r1.t, dernier: r2.t >= r1.t ? 2 : 1 }; };
+const etatCase = async (pg, nom) => { const c = await caseEtat(pg); return c ? c.abs.includes(nom) : null; };
+const intentionCase = (pg, nom) => pg.evaluate(n => { try { const b = edtAppelBaseDe(EDT_MOD.cle); const k = edtAppelCleSure(edtSlugEleve(n)); const x = ((EDT_APPEL.mes[b.ch] || {})[k]); return x ? !!x.a : null; } catch (e) { return null; } }, nom).catch(() => null);
+const px = async (fichier, mode) => { const test = mode === 'XT'; reset(); const pre = 'appel-' + NOMV + '-' + mode + '-';
+  dire('\n— ' + mode + ' · deux gestes d’appel croisés, à moins de 100 ms (' + (test ? 'mode test' : 'vraie heure') + ') —');
+  const [, , , G, H2, I, J2, K2, L2, M2] = [0, 1, 2, 16, 19, 22, 25, 27, 3, 6].map(i => LISTE[i]);
+  const o = await ouvrir({ fichier, test, qui: 'ordinateur' }); let o2 = null, o3 = null, tl = null;
+  const tous = r => Object.values(r).every(x => x === true);
+  if (!test) {   /* 1 · avant l'heure : la case sur deux ordinateurs */
+    o2 = await ouvrir({ fichier, qui: 'ordinateur2', W: 1366, H: 768 }); await caseOuvrir(o.pg); await caseOuvrir(o2.pg); await p(800);
+    const c1 = await croiser({ pg: o.pg, k: 'case', nom: A }, { pg: o2.pg, k: 'case', nom: B }); await p(2500);
+    const r1 = { o: (await etatCase(o.pg, A)) && (await etatCase(o.pg, B)), o2: (await etatCase(o2.pg, A)) && (await etatCase(o2.pg, B)) }; const h1 = (avantHub()[0] || { v: [] }).v; const sAB = [await slugDe(o.pg, A), await slugDe(o.pg, B)];
+    dire('      avant l’heure, deux élèves dans deux cases, à ' + c1.ecart + ' ms l’un de l’autre : le premier ordinateur ' + r1.o + ', le second ' + r1.o2 + ' ; au hub ' + h1.length + ' élève(s)');
+    verif(mode, c1.ok && Math.abs(c1.ecart) < 100 && tous(r1) && sAB.every(s => h1.includes(s)), 'avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub)', { ecart: c1.ecart, r1, hub: h1.length });
+    const c2 = await croiser({ pg: o.pg, k: 'case', nom: C }, { pg: o2.pg, k: 'case', nom: C }); await p(2500); const voulu = await intentionCase(c2.dernier === 2 ? o2.pg : o.pg, C);
+    const r2 = { o: (await etatCase(o.pg, C)) === voulu, o2: (await etatCase(o2.pg, C)) === voulu }; const sC = await slugDe(o.pg, C); const h2 = (avantHub()[0] || { v: [] }).v; const hubC = h2.includes(sC) === voulu;
+    await capt(o.pg, pre + '1-avant-premier'); await capt(o2.pg, pre + '1-avant-second');
+    dire('      avant l’heure, le même élève dans deux cases, à ' + c2.ecart + ' ms (le dernier : ' + (c2.dernier === 2 ? 'le second' : 'le premier') + ' ordinateur) : le dernier geste voulait « ' + (voulu ? 'absent' : 'présent') + ' » ; les deux cases ' + JSON.stringify(r2) + ', le hub ' + hubC);
+    verif(mode, c2.ok && Math.abs(c2.ecart) < 100 && voulu !== null && tous(r2) && hubC, 'avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub)', { ecart: c2.ecart, voulu, r2, hubC });
+    await o2.ctx.close(); o2 = null;
+  }
+  /* 2 · pendant l'heure : l'ordinateur (pilote), la télécommande, un second ordinateur (pilote), la case d'un troisième */
+  const lance = await lancerClasse(o); await garde(o.pg); await gesteClic(o.pg); await p(300);
+  tl = await ouvrirTelecommande(o, fichier, test); o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const rep2 = await reprendre(o2);
+  if (!test) { o3 = await ouvrir({ fichier, qui: 'ordinateur3', W: 1366, H: 768 }); await caseOuvrir(o3.pg); }
+  if (tl) await tcAppelOuvrir(tl); await p(800);
+  verif(mode, lance && !!tl && rep2, 'l’heure lancée ; la télécommande et le second ordinateur sur la séance' + (o3 ? ' ; la case ouverte sur un troisième' : ''), { lance, tl: !!tl, rep2 });
+  if (!tl) { for (const x of [o3, o2, o]) if (x) await x.ctx.close().catch(() => {}); return; }
+  const pilotes = [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]];
+  const partout = async (noms, voulu) => { const r = {}; for (const [n, pg] of pilotes) { const v = []; for (const nom of noms) v.push((await absentAu(pg, nom)) === voulu[nom]); r[n] = v.every(Boolean); }
+    if (o3) { const c = await caseEtat(o3.pg); r.case = !!c && noms.every(nom => c.abs.includes(nom) === voulu[nom]); }
+    if (!test) { const L = listeDe(heureHub().h); const v = []; for (const nom of noms) v.push(L.includes(await slugDe(o.pg, nom)) === voulu[nom]); r.hub = v.every(Boolean); } return r; };
+  /* la télécommande d'abord (elle a la main depuis son QR) ; un geste à l'ordinateur la lui prend ensuite */
+  const paires = [[{ pg: tl.pg, k: 'tc', nom: H2, qui: 'la télécommande' }, { pg: o.pg, k: 'pilote', nom: G, qui: 'le clic droit de l’ordinateur' }]];
+  if (o3) paires.push([{ pg: o3.pg, k: 'case', nom: I, qui: 'la case du troisième' }, { pg: o2.pg, k: 'pilote', nom: J2, qui: 'le clic droit du second ordinateur' }]);
+  else paires.push([{ pg: o2.pg, k: 'pilote', nom: I, qui: 'le clic droit du second ordinateur' }, { pg: o.pg, k: 'pilote', nom: J2, qui: 'le clic droit de l’ordinateur' }]);
+  for (const [g1, g2] of paires) { const c = await croiser(g1, g2); await p(2500); const r = await partout([g1.nom, g2.nom], { [g1.nom]: true, [g2.nom]: true });
+    dire('      pendant l’heure, ' + g1.qui + ' et ' + g2.qui + ', deux élèves à ' + c.ecart + ' ms : ' + JSON.stringify(r));
+    verif(mode, c.ok && Math.abs(c.ecart) < 100 && tous(r), 'pendant l’heure : ' + g1.qui + ' et ' + g2.qui + ' sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil' + (test ? '' : ', le hub') + ')', { ecart: c.ecart, r }); }
+  /* le même élève : le dernier geste compte (sa volonté : ce que son appareil en a fait) ; la télécommande reprend d'abord la main (« Reprendre avec la télécommande ») */
+  await tcTap(tl, '#tc-bas button[data-a="main"]'); await p(1200); if (!(await tl.pg.$('#tc-bas button[data-a="abs"]'))) await tcAppelOuvrir(tl); await p(300);
+  const memes = o3 ? [[{ pg: tl.pg, k: 'tc', nom: K2, qui: 'la télécommande' }, { pg: o3.pg, k: 'case', nom: K2, qui: 'la case du troisième' }], [{ pg: o.pg, k: 'pilote', nom: L2, qui: 'le clic droit de l’ordinateur' }, { pg: o2.pg, k: 'pilote', nom: L2, qui: 'le clic droit du second ordinateur' }]]
+    : [[{ pg: tl.pg, k: 'tc', nom: K2, qui: 'la télécommande' }, { pg: o.pg, k: 'pilote', nom: K2, qui: 'le clic droit de l’ordinateur' }], [{ pg: o.pg, k: 'pilote', nom: L2, qui: 'le clic droit de l’ordinateur' }, { pg: o2.pg, k: 'pilote', nom: L2, qui: 'le clic droit du second ordinateur' }]];
+  for (const [g1, g2] of memes) { const c = await croiser(g1, g2); await p(300); const gl = c.dernier === 2 ? g2 : g1; const voulu = gl.k === 'case' ? await intentionCase(gl.pg, gl.nom) : await absentAu(gl.pg, gl.nom); await p(2500);
+    const r = await partout([g2.nom], { [g2.nom]: voulu });
+    dire('      pendant l’heure, ' + g1.qui + ' puis ' + g2.qui + ', le même élève à ' + c.ecart + ' ms (le dernier : ' + gl.qui + ') : le dernier geste voulait « ' + (voulu ? 'absent' : 'présent') + ' » ; ' + JSON.stringify(r));
+    verif(mode, c.ok && Math.abs(c.ecart) < 100 && voulu !== null && tous(r), 'pendant l’heure : ' + g1.qui + ' puis ' + g2.qui + ' sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil' + (test ? '' : ', le hub') + ')', { ecart: c.ecart, voulu, r }); }
+  await capt(o.pg, pre + '2-ordinateur'); await capt(tl.pg, pre + '2-telecommande'); if (o3) await capt(o3.pg, pre + '2-case');
+  verifEcritures(mode, test); sansErreur(mode, [].concat(o.errs, o.boites, o2.errs, o2.boites, tl.errs, tl.boites, o3 ? o3.errs.concat(o3.boites) : []), 'tous les appareils');
+  for (const x of [tl, o3, o2, o]) if (x) await x.ctx.close().catch(() => {}); };
+
 const NOMV = process.env.MJPC_NOM || 'v';
 if (joue('M')) await mesure(FICHIER);
 for (const m of ['P1H', 'P1T']) if (joue(m)) await p1(FICHIER, m);
@@ -453,6 +525,7 @@ for (const m of ['P2H', 'P2T']) if (joue(m)) await p2(FICHIER, m);
 for (const m of ['P3H', 'P3T']) if (joue(m)) await p3(FICHIER, m);
 if (joue('P4')) await p4(FICHIER);
 for (const m of ['Q', 'QT']) if (joue(m)) await pq(FICHIER, m);
+for (const m of ['X', 'XT']) if (joue(m)) await px(FICHIER, m);
 dire('\n' + nb + ' vérifications, ' + echecs + ' échec(s)');
 await nav.close();
 fs.writeFileSync(path.join(OUT, 'sonde-appel-' + NOMV + '.txt'), R.join('\n') + '\n');

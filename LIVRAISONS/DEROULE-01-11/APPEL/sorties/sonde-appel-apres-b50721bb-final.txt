@@ -1,0 +1,189 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M P1H P1T P2H P2T P3H P3T P4 Q QT X XT · 2026-11-02 23:07 UTC · md5 b50721bba2de1055d106176cfa49509f · images de 3e : un dossier local
+
+— M · l’existant : où se fait l’appel, les deux listes, ce que voient les autres appareils (vraie heure) —
+  ok     M · l’ordinateur lance l’heure
+      la case de l’heure en cours (second ordinateur) : « Absents de cette heure (0 sur 29) » · 29 noms · de Gaulle Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 1 activité. Pas encore close. ▶ Reprendre l’heure Séance : Poésie et peinture : le Romantisme en question 
+      M1 · au pilote, clic droit → « Absent » (fait) : au pilote 1 absent(s), « 0 SUR 28 PRÉSENTS » ; au hub, la liste de l’heure 1 élève(s) (1 ms) ; la case du second ordinateur 4 ms
+  ok     M · M1 · un absent marqué au pilote est dans la liste de la case : au hub et dans la case ouverte sur un autre ordinateur, en ≤ 2 s — {"tHub":1,"tCase":4}
+      M2 · dans la case, un élève coché absent : au pilote en 48 ms ; « 0 SUR 27 PRÉSENTS »
+  ok     M · M2 · un absent coché dans la case paraît au pilote en ≤ 2 s — {"tB":48,"tB16":48}
+      M3 · dans la case, le même élève défait : au pilote en 38 ms ; au hub 1 élève(s)
+  ok     M · M3 · un absent défait dans la case est défait au pilote en ≤ 2 s — {"tB2":38,"tB2l":38}
+      M4 · un geste au pilote ; AUCUNE lecture de H/absents par le pilote en 4 s (le paquet ne la relit pas) ; pendant ce temps, un élève coché dans la case : au hub 0,5 s après true ; 4,5 s après : toujours là (lectures retardées de H/absents par le pilote : 0 ; écritures du paquet : PATCH)
+  ok     M · M4 · défaut 6 : un absent coché dans la case pendant l’écriture du paquet de l’heure reste au hub — {"juste":true,"apres":true}
+  ok     M · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 42 écritures) — []
+  ok     M · aucune écriture refusée par le faux hub (0) — []
+  ok     M · le pilote et le second ordinateur : aucune erreur JS, aucune boîte système
+
+— P1H · la case d’une heure à venir : l’appel d’abord (vraie heure) —
+      la case : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1 sur 3 L’appel — absents (0 sur 29) D’abord l’appel : un clic marque un absent, un clic défait. Jamais montré à la classe. Puis lance l’heure. ÉLÈVE 1 ÉLÈVE 2 ÉLÈVE 3 ÉLÈVE 4 ÉLÈVE 5 ÉLÈVE 6 ÉLÈVE 7 ÉLÈVE 8 ÉLÈVE 9 ÉLÈVE 10 ÉLÈVE 11 ÉLÈVE 12 ÉLÈVE 13 ÉLÈVE 14 ÉLÈVE 15 ÉLÈVE 16 ÉLÈVE 17 ÉLÈVE 18 ÉLÈVE 19 ÉLÈVE »
+  ok     P1H · la case d’une heure à venir s’ouvre sur l’appel, avant « Ouvrir le pilotage et lancer » — oésie et peinture : le Romantisme en question heure 1 sur 3 L’appel — absents (0 sur 29) D’abord l’appel : un clic marque un absent, un clic défait. Jamais mont
+  ok     P1H · deux clics : 2 absents ; le bouton dit « appel fait : 2 absents » — {"lab":"L’appel — absents (2 sur 29)","btn":"▶ Ouvrir le pilotage et lancer — appel fait : 2 absents"}
+  ok     P1H · un clic défait, un clic remarque — ["L’appel — absents (1 sur 29)","L’appel — absents (2 sur 29)"]
+      au hub, avant le lancement : /site/edt/appel/2026-2027/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle = 2 élève(s)
+  ok     P1H · avant le lancement : l’appel survit à un rechargement, et un second ordinateur le voit — ["L’appel — absents (2 sur 29)","L’appel — absents (2 sur 29)"]
+      la case ouverte sur deux ordinateurs : un élève marqué sur le second paraît sur le premier en 34 ms, son retrait en 41 ms
+  ok     P1H · avant l’heure, la case ouverte sur deux ordinateurs : un marquage et son retrait paraissent sur l’autre en moins de 2 s, sans recharger — [34,41]
+  ok     P1H · le second ordinateur : aucune erreur JS, aucune boîte système
+      lancée : « 0 SUR 27 PRÉSENTS » · 2 absent(s) au pilote · Diapo 1 sur 13 · heure 1 · présentation du chapitre
+  ok     P1H · lancée : « … sur 27 présents » dès la première diapo, les 2 absents de l’appel — {"pr":"0 SUR 27 PRÉSENTS","nb":2}
+      au hub : H/absents 2 élève(s) ; l’appel d’avant l’heure : retiré
+  ok     P1H · au hub : la liste de l’heure porte les 2 absents ; l’appel d’avant l’heure est retiré — {"ab":2,"av":0}
+      « Annuler cette heure » (fait) : la case « L’appel — absents (2 sur 29) » ; au hub, l’appel d’avant l’heure : 2 élève(s)
+  ok     P1H · « Annuler cette heure » : l’appel fait avant l’heure revient dans la case (les 2 mêmes absents, au hub aussi) — {"lab":"L’appel — absents (2 sur 29)"}
+  ok     P1H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 31 écritures) — []
+  ok     P1H · aucune écriture refusée par le faux hub (0) — []
+  ok     P1H · l’ordinateur : aucune erreur JS, aucune boîte système
+
+— P1T · la case d’une heure à venir : l’appel d’abord (mode test) —
+      la case : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1 sur 3 L’appel — absents (0 sur 29) D’abord l’appel : un clic marque un absent, un clic défait. Jamais montré à la classe. Puis lance l’heure. ÉLÈVE 1 ÉLÈVE 2 ÉLÈVE 3 ÉLÈVE 4 ÉLÈVE 5 ÉLÈVE 6 ÉLÈVE 7 ÉLÈVE 8 ÉLÈVE 9 ÉLÈVE 10 ÉLÈVE 11 ÉLÈVE 12 ÉLÈVE 13 ÉLÈVE 14 ÉLÈVE 15 ÉLÈVE 16 ÉLÈVE 17 ÉLÈVE 18 ÉLÈVE 19 ÉLÈVE »
+  ok     P1T · la case d’une heure à venir s’ouvre sur l’appel, avant « Ouvrir le pilotage et lancer » — oésie et peinture : le Romantisme en question heure 1 sur 3 L’appel — absents (0 sur 29) D’abord l’appel : un clic marque un absent, un clic défait. Jamais mont
+  ok     P1T · deux clics : 2 absents ; le bouton dit « appel fait : 2 absents » — {"lab":"L’appel — absents (2 sur 29)","btn":"▶ Ouvrir le pilotage et lancer — appel fait : 2 absents"}
+  ok     P1T · un clic défait, un clic remarque — ["L’appel — absents (1 sur 29)","L’appel — absents (2 sur 29)"]
+      lancée : « 0 SUR 27 PRÉSENTS » · 2 absent(s) au pilote · Diapo 1 sur 13 · heure 1 · présentation du chapitre
+  ok     P1T · lancée : « … sur 27 présents » dès la première diapo, les 2 absents de l’appel — {"pr":"0 SUR 27 PRÉSENTS","nb":2}
+      mode test : le magasin de la page porte 218431 caractères ; le hub n’a rien reçu hors /site/tableau_test
+      « Annuler cette heure » (fait) : la case « L’appel — absents (2 sur 29) »
+  ok     P1T · « Annuler cette heure » : l’appel fait avant l’heure revient dans la case (les 2 mêmes absents) — {"lab":"L’appel — absents (2 sur 29)"}
+  ok     P1T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P1T · aucune écriture refusée par le faux hub (0) — []
+  ok     P1T · l’ordinateur : aucune erreur JS, aucune boîte système
+
+— P2H · pendant l’heure, sur chaque appareil (vraie heure) —
+  ok     P2H · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance ; la case de l’heure ouverte sur un troisième — {"lance":true,"tl":true,"rep":true}
+  ok     P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe"},"nbNoms":29}
+      a · à la télécommande, un élève marqué absent : l’ordinateur 116 ms, le second ordinateur 63 ms, la télécommande 36 ms, la case du troisième 39 ms ; son bouton marqué absent (312 ms après les appareils) ; l’ordinateur « 0 SUR 28 PRÉSENTS »
+  ok     P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"télécommande":36,"case":39,"second":63,"ordinateur":116}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 118 ms, la télécommande 520 ms, la case 42 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : true ; un appui grisé sans effet
+  ok     P2H · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"case":42,"second":44,"ordinateur":118,"télécommande":520}
+  ok     P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":true,"cSans":true}
+      c · dans la case du troisième ordinateur, le premier absent retiré : l’ordinateur 178 ms, le second 63 ms, la télécommande 393 ms, la case 25 ms ; « 0 SUR 28 PRÉSENTS »
+  ok     P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"case":25,"second":63,"ordinateur":178,"télécommande":393}
+      d · au hub, la liste de l’heure : 1 élève(s) (celui du second ordinateur) ; 12 écritures du paquet
+  ok     P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet) — 1
+      f · le second ordinateur tape une réponse ; pendant la frappe, un élève coché dans la case : le champ garde le focus, sa frappe « Le paysage romantique » ; le champ quitté : l’ordinateur 504 ms, le second 274 ms, la télécommande 486 ms
+  ok     P2H · f · une saisie en cours n’est jamais touchée par un appel fait ailleurs ; le champ quitté, chaque appareil le dit en moins de 2 s — {"garde1":{"ed":true,"t":"Le paysage romantique"},"rf":{"case":8,"second":274,"télécommande":486,"ordinateur":504}}
+      e · au tableau distant : 0 occurrence(s) de l’appel ; à la fenêtre du tableau : 0
+  ok     P2H · e · rien de l’appel au tableau (le tableau distant, la fenêtre du tableau) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":{"n":0,"vus":[]}}
+  ok     P2H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 147 écritures) — []
+  ok     P2H · aucune écriture refusée par le faux hub (0) — []
+  ok     P2H · tous les appareils : aucune erreur JS, aucune boîte système
+
+— P2T · pendant l’heure, sur chaque appareil (mode test) —
+  ok     P2T · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance — {"lance":true,"tl":true,"rep":true}
+  ok     P2T · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe"},"nbNoms":29}
+      a · à la télécommande, un élève marqué absent : l’ordinateur 111 ms, le second ordinateur 90 ms, la télécommande 153 ms ; son bouton marqué absent (52 ms après les appareils) ; l’ordinateur « 0 SUR 28 PRÉSENTS »
+  ok     P2T · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"second":90,"ordinateur":111,"télécommande":153}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 199 ms, la télécommande 214 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : true ; un appui grisé sans effet
+  ok     P2T · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"second":3,"ordinateur":199,"télécommande":214}
+  ok     P2T · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":true,"cSans":true}
+      c · à la télécommande (« Reprendre avec la télécommande »), le premier absent retiré : l’ordinateur 26 ms, le second 27 ms, la télécommande 225 ms ; « 0 SUR 28 PRÉSENTS »
+  ok     P2T · c · retiré à la télécommande : chaque appareil le dit en moins de 2 s, le compteur suit — {"ordinateur":26,"second":27,"télécommande":225}
+      e · au tableau distant : 0 occurrence(s) de l’appel
+  ok     P2T · e · rien de l’appel au tableau (le tableau distant) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":null}
+  ok     P2T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P2T · aucune écriture refusée par le faux hub (0) — []
+  ok     P2T · tous les appareils : aucune erreur JS, aucune boîte système
+
+— P3H · l’appel fait après coup, dans la case d’une heure close (vraie heure) —
+  ok     P3H · une heure lancée, une prise de parole, close sans appel — {"lance":true,"pa":true}
+      la case close : « Absents de cette heure (0 sur 29) » → « Absents de cette heure (2 sur 29) »
+      la Relecture : « née. Au total, on a répondu à une question ; 1 élève sur 27 présents a pris la parole. 7 activités n'ont pas été faites  » · L’APPEL : « L'APPEL un élève — absent 09:03 (case de l’emploi du temps) un élève — absent 09:03 (case de l’emploi du temps)  » · « — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi  »
+  ok     P3H · après coup : la Relecture dit « 1 élève sur 27 présents » et nomme les 2 absents à « L’APPEL » — {"lab":"Absents de cette heure (2 sur 29)","presents":"née. Au total, on a répondu à une question ; 1 élève sur 27 présents a pris la parole. 7 activités n","nA":2}
+  ok     P3H · le titre « Le mot pour chaque absent », sans « (enregistré à la clôture) » — — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi à 08 h 57. Voici ce 
+      un absent défait dans la case close : « Absents de cette heure (1 sur 29) » ; la Relecture « née. Au total, on a répondu à une question ; 1 élève sur 28 présents a pris la parole. 7 activités n'ont pas été faites  » · L’APPEL « L'APPEL un élève — absent 09:03 (case de l’emploi du temps)  »
+  ok     P3H · un absent défait après coup : la Relecture le suit (« 1 élève sur 28 présents », il n’est plus à « L’APPEL ») — {"lab":"Absents de cette heure (1 sur 29)","presents":"née. Au total, on a répondu à une question ; 1 élève sur 28 présents a pris la parole. 7 activités n","nB":false}
+  ok     P3H · au hub, la liste de l’heure close : 1 élève — 1
+  ok     P3H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 49 écritures) — []
+  ok     P3H · aucune écriture refusée par le faux hub (0) — []
+  ok     P3H · l’ordinateur (la Relecture comprise) : aucune erreur JS, aucune boîte système
+
+— P3T · l’appel fait après coup, dans la case d’une heure close (mode test) —
+  ok     P3T · une heure lancée, une prise de parole, close sans appel — {"lance":true,"pa":true}
+      la case close : « Absents de cette heure (0 sur 29) » → « Absents de cette heure (2 sur 29) »
+      la Relecture : « née. Au total, on a répondu à une question ; 1 élève sur 27 présents a pris la parole. 7 activités n'ont pas été faites  » · L’APPEL : « L'APPEL un élève — absent 09:03 (case de l’emploi du temps) un élève — absent 09:03 (case de l’emploi du temps)  » · « — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi  »
+  ok     P3T · après coup : la Relecture dit « 1 élève sur 27 présents » et nomme les 2 absents à « L’APPEL » — {"lab":"Absents de cette heure (2 sur 29)","presents":"née. Au total, on a répondu à une question ; 1 élève sur 27 présents a pris la parole. 7 activités n","nA":2}
+  ok     P3T · le titre « Le mot pour chaque absent », sans « (enregistré à la clôture) » — — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi à 08 h 57. Voici ce 
+      un absent défait dans la case close : « Absents de cette heure (1 sur 29) » ; la Relecture « née. Au total, on a répondu à une question ; 1 élève sur 28 présents a pris la parole. 7 activités n'ont pas été faites  » · L’APPEL « L'APPEL un élève — absent 09:03 (case de l’emploi du temps)  »
+  ok     P3T · un absent défait après coup : la Relecture le suit (« 1 élève sur 28 présents », il n’est plus à « L’APPEL ») — {"lab":"Absents de cette heure (1 sur 29)","presents":"née. Au total, on a répondu à une question ; 1 élève sur 28 présents a pris la parole. 7 activités n","nB":false}
+  ok     P3T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P3T · aucune écriture refusée par le faux hub (0) — []
+  ok     P3T · l’ordinateur (la Relecture comprise) : aucune erreur JS, aucune boîte système
+
+— P4 · une heure jouée avant cette version (8.79.0-⑫), relue par celle-ci —
+      jouée par la 8.79 : lancée, une prise de parole true, un absent au clic droit true, deux dans la case (au pilote 6676 ms), close ; au hub, 1 ligne(s) de journal « appel » sans élève ; H/absents 2 → 3 (un coché après coup) ; marque de cette version : false
+  ok     P4 · l’heure ancienne est au hub : 1 absent du pilote, 2 de la case, des lignes « appel » sans élève, 1 coché après coup — {"lance":true,"cd":true,"t":6676,"sansEleve":1}
+      cette version, la case : « Absents de cette heure (4 sur 29) »
+  ok     P4 · la case de l’heure ancienne réunit les deux listes : les 4 absents (le pilote, la case pendant et après l’heure) — Absents de cette heure (4 sur 29)
+      la Relecture : « née. Au total, on a répondu à une question ; 1 élève sur 25 présents a pris la parole. 7 activités n'ont pas été faites  » · « participé 08:57:08 — un élève — absent 08:57:23 — 2 absents notés dans la case DIAPO PAR DIAPO DIAPO » · L’APPEL « L'APPEL un élève — absent 09:04 (case de l’emploi du temps) un élève — absent 09:04 (case de l’emploi du temps) un élève — absent 09:04 (case de l’emploi du temps) un élève — absent 08:57  »
+  ok     P4 · la Relecture de l’heure ancienne s’ouvre : « 1 élève sur 25 présents », la ligne ancienne « … notés dans la case », les 4 à « L’APPEL » — {"presents":"née. Au total, on a répondu à une question ; 1 élève sur 25 présents a pris la parole. 7 activités n","nom4":4}
+  ok     P4 · la 8.79 puis cette version (la Relecture comprise) : aucune erreur JS, aucune boîte système
+  ok     P4 · aucune écriture refusée par le faux hub (0) — []
+
+— Q · la télécommande : la diapo du pilote, « Texte au tableau » (vraie heure) —
+  ok     Q · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : le dessin du pilote, 390 × 219 px sur un écran de 390 px, 2 élément(s) en gris (opacité 0.45) — au pilote de l’ordinateur : 2 ; le rendu de la classe retiré ; les gestes sur la diapo : none
+  ok     Q · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":390,"vw":390,"gris":2,"pilote":2}
+      ▶ à la télécommande : 1 en gris (10 ms)
+  ok     Q · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":2,"apres":1}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     Q · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ok     Q · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":{"l":"32 pt","moins":{"dis":false,"title":"A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt"},"plus":{"dis":false,"title":"A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt"},"haut":290,"basDiapo":281},"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 38 pt » en 50 ms, le tableau en 4 ms, la télécommande dit « 38 pt » ; A− : le pilote en 49 ms, le tableau en 5 ms, la télécommande « 32 pt »
+  ok     Q · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":50,"tt1":4,"tp2":49,"tt2":5}
+      l’ordinateur reprend la main : A− A+ grisés (« Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « … ») ; un appui sur A+ grisé : la taille inchangée
+  ok     Q · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":true}
+  ok     Q · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 53 écritures) — []
+  ok     Q · aucune écriture refusée par le faux hub (0) — []
+  ok     Q · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+— QT · la télécommande : la diapo du pilote, « Texte au tableau » (mode test) —
+  ok     QT · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : le dessin du pilote, 390 × 219 px sur un écran de 390 px, 2 élément(s) en gris (opacité 0.45) — au pilote de l’ordinateur : 2 ; le rendu de la classe retiré ; les gestes sur la diapo : none
+  ok     QT · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":390,"vw":390,"gris":2,"pilote":2}
+      ▶ à la télécommande : 1 en gris (1 ms)
+  ok     QT · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":2,"apres":1}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     QT · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ok     QT · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":{"l":"32 pt","moins":{"dis":false,"title":"A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt"},"plus":{"dis":false,"title":"A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt"},"haut":290,"basDiapo":281},"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 38 pt » en 54 ms, le tableau en 7 ms, la télécommande dit « 38 pt » ; A− : le pilote en 33 ms, le tableau en 1 ms, la télécommande « 32 pt »
+  ok     QT · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":54,"tt1":7,"tp2":33,"tt2":1}
+      l’ordinateur reprend la main : A− A+ grisés (« Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « … ») ; un appui sur A+ grisé : la taille inchangée
+  ok     QT · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":true}
+  ok     QT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     QT · aucune écriture refusée par le faux hub (0) — []
+  ok     QT · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 52 ms l’un de l’autre : le premier ordinateur true, le second true ; au hub 2 élève(s)
+  ok     X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":52,"r1":{"o":true,"o2":true},"hub":2}
+      avant l’heure, le même élève dans deux cases, à 40 ms (le dernier : le second ordinateur) : le dernier geste voulait « absent » ; les deux cases {"o":true,"o2":true}, le hub true
+  ok     X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":40,"voulu":true,"r2":{"o":true,"o2":true},"hubC":true}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 37 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":37,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à -9 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":-9,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à 42 ms (le dernier : la case du troisième) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":42,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 49 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":49,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 146 écritures) — []
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+— XT · deux gestes d’appel croisés, à moins de 100 ms (mode test) —
+  ok     XT · l’heure lancée ; la télécommande et le second ordinateur sur la séance — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit du second ordinateur et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit du second ordinateur et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, la télécommande puis le clic droit de l’ordinateur, le même élève à 42 ms (le dernier : le clic droit de l’ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : la télécommande puis le clic droit de l’ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":42,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 42 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":42,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+  ok     XT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     XT · aucune écriture refusée par le faux hub (0) — []
+  ok     XT · tous les appareils : aucune erreur JS, aucune boîte système
+
+108 vérifications, 0 échec(s)

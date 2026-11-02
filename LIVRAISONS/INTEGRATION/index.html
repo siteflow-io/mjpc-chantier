@@ -19915,22 +19915,34 @@ function edtSlugEleve(nom){
 }
 /* ═══ C16 (㊱, MANDAT-APPEL) — L'APPEL N'IMPORTE QUAND, SUR N'IMPORTE QUEL APPAREIL : UNE SEULE LISTE PAR HEURE ═══════════════════════
    Paul, 16:59 : « je dois pouvoir faire l'appel n'importe quand sur n'importe quel appareil ».
-   · Avant l'heure : `/site/edt/appel/<année>/<clé d'heure de l'EDT>` (une liste de slugs). Elle ne peut pas vivre sous `H` : toute entrée sous `H`
-     rend la case « jouée » et compte une heure (edtProjeter, edtTraceDe, edtSeanceJouee). Au lancement, elle passe dans l'appel du pilote et dans
-     `H/absents`, puis elle est retirée (dr-classe.js, `dr_absentsDeLaCase`). Rien n'en part avec « Préparer ».
-   · Pendant et après l'heure : `H/absents`, écrit par la case (ici) ou par un geste d'appel du pilote — jamais par le paquet de l'heure (écrit en
-     PATCH de ses propres clés). Le pilote qui a la main suit la liste (le flux du hub) ; les autres appareils suivent par l'état vivant.
+   · Avant l'heure : `/site/edt/appel/<année>/<clé d'heure de l'EDT>`. Il ne peut pas vivre sous `H` : toute entrée sous `H` rend la case « jouée » et compte
+     une heure (edtProjeter, edtTraceDe, edtSeanceJouee). Au lancement, il passe dans l'appel du pilote et dans l'heure, puis il est retiré (dr-classe.js,
+     `dr_absentsDeLaCase`) ; « Annuler cette heure » le remet. Rien n'en part avec « Préparer ».
+   · Pendant et après l'heure : l'appel de l'heure, écrit par la case (ici) ou par un geste d'appel du pilote — jamais par le paquet de l'heure (PATCH de ses
+     propres clés). Le pilote qui a la main le suit (le flux du hub) ; les autres appareils suivent par l'état vivant.
    · « Absent de l'heure » = un « absent » de cette heure que ne suit aucun « arrivé » ; « parti » et « revenu » ne touchent pas la liste.
-   · Une heure jouée avant cette version (sans `appelUnique`) : la case réunit `H/absents` et l'appel du pilote gardé dans le paquet (`H/appel`) ;
-     le premier clic écrit la liste réunie et pose la marque. Toute écriture garde l'état d'avant à la corbeille (le geste du QCM, repris tel quel).
-   · La case ouverte est abonnée à sa liste (le flux du hub ; en mode test, le magasin de cette page, qui ne change que par elle). */
-var EDT_APPEL={avant:{},heure:{},ec:null,chemin:null,sorte:null,att:{},attT:{},redessin:null};
+   · Une heure jouée avant cette version (sans `appelUnique`) : la case réunit `H/absents` et l'appel du pilote gardé dans le paquet (`H/appel`) ; les gestes
+     d'aujourd'hui s'écrivent par-dessus, élève par élève.
+   · La case ouverte est abonnée à son appel (le flux du hub ; en mode test, le magasin de cette page, qui ne change que par elle). */
+var EDT_APPEL={avant:{},heure:{},par:{},mes:{},ec:null,chemin:null,sorte:null,redessin:null,dev:'c'+Math.random().toString(36).slice(2,10)};
+/* C16 (㊱, la conscience 23:40 : « deux gestes croisés, aucun ne se perd ») : L'APPEL S'ÉCRIT PAR ÉLÈVE ET PAR APPAREIL — `<base>/absentsPar/<élève>/<appareil>`
+   = {a: 1 absent | 0 présent, t: l'heure du geste}. Aucun appareil ne réécrit jamais l'écriture d'un autre : deux gestes sur deux élèves, même au même instant,
+   restent tous les deux ; pour un même élève, le geste le plus récent (t) compte, quel que soit l'ordre d'arrivée au hub. `<base>` : l'heure (`H`), ou
+   l'appel d'avant l'heure (`/site/edt/appel/<année>/<clé>`). `H/absents` (la liste des versions d'avant) reste lu, jamais réécrit. */
 function edtAppelCleSure(k){ return String(k==null?'':k).replace(/[.#$\[\]\/]/g,'_'); }
 function edtAppelCheminDe(iso,creneau,nomClasse){ return edtChemin('appel')+'/'+edtAppelCleSure(edtCleHeure(iso,creneau,nomClasse)); }
 function edtAppelCheminAvant(cle){ var c=edtCellule(cle); if(!c||!c.classeMjpc)return null; return edtAppelCheminDe(c.iso,c.creneau,c.classeMjpc); }
 function edtAppelListeNette(v){
   var l=Array.isArray(v)?v:((v&&typeof v==='object')?Object.keys(v).map(function(k){return v[k];}):[]);
   return l.filter(function(x,i,a){return typeof x==='string'&&x&&a.indexOf(x)===i;}).sort();
+}
+/* le dernier geste de chaque élève : {clé d'élève: {a, t, dev}} */
+function edtAppelDerniers(par){
+  var out={}; if(!par||typeof par!=='object')return out;
+  Object.keys(par).forEach(function(s){ var d=par[s]; if(!d||typeof d!=='object')return;
+    Object.keys(d).forEach(function(dev){ var x=d[dev]; if(!x||typeof x!=='object')return; var t=+x.t||0;
+      if(!out[s]||t>out[s].t||(t===out[s].t&&dev>out[s].dev))out[s]={a:+x.a?1:0,t:t,dev:dev}; }); });
+  return out;
 }
 /* l'appel du pilote gardé dans le paquet d'une heure (`H/appel`, les clés échappées pour le hub) : les élèves « absents de l'heure » */
 function edtAppelDuPilote(trace){
@@ -19944,15 +19956,24 @@ function edtAppelDuPilote(trace){
   });
   return out;
 }
-/* LA liste d'une heure jouée : `H/absents` ; pour une heure d'avant cette version, réunie avec l'appel du pilote */
+/* LA liste d'une heure (ou de l'appel d'avant l'heure) : ce que disaient les versions d'avant (`absents` ; sans la marque `appelUnique`, réunie avec l'appel
+   du pilote du paquet), puis, par-dessus, le dernier geste de chaque élève (`absentsPar`) */
 function edtAppelListe(trace){
   if(!trace)return [];
   var l=edtAppelListeNette(trace.absents);
-  if(trace.appelUnique)return l;
-  edtAppelDuPilote(trace).forEach(function(s){ if(l.indexOf(s)<0)l.push(s); });
-  return l.sort();
+  if(!trace.appelUnique) edtAppelDuPilote(trace).forEach(function(s){ if(l.indexOf(s)<0)l.push(s); });
+  var d=edtAppelDerniers(trace.absentsPar);
+  Object.keys(d).forEach(function(k){ var i=-1; for(var j=0;j<l.length;j++){ if(edtAppelCleSure(l[j])===k){ i=j; break; } }
+    if(d[k].a){ if(i<0)l.push(edtAppelSlugDeCle(k,l)); } else if(i>=0)l.splice(i,1); });
+  return l.filter(function(x,i,a){return x&&a.indexOf(x)===i;}).sort();
 }
-function edtAppelEnCours(ch){ return (EDT_APPEL.att[ch]||0)>0&&(Date.now()-(EDT_APPEL.attT[ch]||0))<8000; }
+function edtAppelSlugDeCle(k){ return k; }   /* la clé d'un élève est son slug (les slugs n'ont pas de caractère interdit ; sinon « _ », lu tel quel) */
+/* mes gestes pas encore revenus du hub, par-dessus ce que le hub rend (rien ne clignote, rien ne se perd) */
+function edtAppelAvecMes(ch,v){
+  var o=(v&&typeof v==='object')?JSON.parse(JSON.stringify(v)):{},m=EDT_APPEL.mes[ch]||{};
+  Object.keys(m).forEach(function(s){ var x=m[s]; o[s]=o[s]||{}; var y=o[s][EDT_APPEL.dev]; if(!y||(+y.t||0)<x.t)o[s][EDT_APPEL.dev]=x; });
+  return o;
+}
 /* le redessin de la case : jamais pendant une saisie (un champ, un menu déroulé de la case) — il attend qu'on l'ait quittée */
 function edtAppelRedessiner(){
   var m=document.getElementById('edt-modale'); if(!m)return;
@@ -19960,30 +19981,37 @@ function edtAppelRedessiner(){
   if(a&&m.contains(a)&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)){ clearTimeout(EDT_APPEL.redessin); EDT_APPEL.redessin=setTimeout(edtAppelRedessiner,500); return; }
   edtPeindreModale();
 }
-/* l'abonnement de la case ouverte : l'appel d'avant l'heure, ou la liste de l'heure jouée */
+/* la base de l'appel de la case ouverte : l'appel d'avant l'heure, ou l'heure jouée (et sa trace, pour ce que disaient les versions d'avant) */
+function edtAppelBaseDe(cle){
+  var c=cle?edtCellule(cle):null; if(!c||!c.classeMjpc)return null;
+  if(c.nature==='prevu'){ var b=edtAppelCheminAvant(cle); return b?{sorte:'avant',base:b,ch:b+'/absentsPar',trace:null}:null; }
+  if(c.nature==='jouee'){ var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(t)return {sorte:'heure',base:t.chemin,ch:t.chemin+'/absentsPar',trace:t.trace}; }
+  return null;
+}
+function edtAppelListeDe(b){
+  if(!b)return null; var v=EDT_APPEL.par[b.ch]; if(v===undefined&&b.sorte==='avant')return null;   /* pas encore lu */
+  var par=edtAppelAvecMes(b.ch,v!==undefined?v:(b.trace&&b.trace.absentsPar));
+  return edtAppelListe(b.sorte==='avant'?{absentsPar:par,appelUnique:true}:Object.assign({},b.trace||{},{absentsPar:par}));
+}
+/* l'abonnement de la case ouverte à son appel (le flux du hub ; en mode test, le magasin de cette page, qui ne change que par elle) */
 function edtAppelVeiller(){
-  var cle=EDT_MOD.cle,c=(cle&&document.getElementById('edt-modale'))?edtCellule(cle):null,ch=null,sorte=null;
-  if(c&&c.classeMjpc){
-    if(c.nature==='prevu'){ ch=edtAppelCheminAvant(cle); sorte='avant'; }
-    else if(c.nature==='jouee'){ var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(t){ ch=t.chemin+'/absents'; sorte='heure'; } }
-  }
+  var cle=EDT_MOD.cle,b=(cle&&document.getElementById('edt-modale'))?edtAppelBaseDe(cle):null,ch=b?b.ch:null;
   if(ch===EDT_APPEL.chemin)return;
   if(EDT_APPEL.ec){ try{ dr_sesTaire(EDT_APPEL.ec); }catch(e){} EDT_APPEL.ec=null; }
-  EDT_APPEL.chemin=ch; EDT_APPEL.sorte=sorte; if(!ch)return;
-  var recu=function(v){
-    if(EDT_APPEL.chemin!==ch||edtAppelEnCours(ch))return;   /* une écriture d'ici en cours : la case garde ce qu'elle montre (elle le sait déjà) */
-    var l=edtAppelListeNette(v),boite=(sorte==='avant')?EDT_APPEL.avant:EDT_APPEL.heure;
-    if(sorte==='heure'){   /* une heure d'avant cette version, pas encore touchée : la liste réunie (la case la montre ainsi) */
-      var c2=edtCellule(EDT_MOD.cle),t2=c2?edtCheminTrace(c2.classeMjpc,c2.iso,c2.creneau):null;
-      if(t2&&t2.trace){ t2.trace.absents=l.length?l:null; l=edtAppelListe(t2.trace); }
-    }
-    if(boite[ch]&&boite[ch].join('|')===l.join('|'))return;
-    boite[ch]=l; edtAppelRedessiner();
-  };
+  EDT_APPEL.chemin=ch; if(!ch)return;
+  var recu=function(v){ if(EDT_APPEL.chemin!==ch)return; var avant=JSON.stringify(edtAppelListeDe(edtAppelBaseDe(EDT_MOD.cle)));
+    EDT_APPEL.par[ch]=(v&&typeof v==='object')?v:null; if(JSON.stringify(edtAppelListeDe(edtAppelBaseDe(EDT_MOD.cle)))!==avant)edtAppelRedessiner(); };
   if(typeof dr_sesEcouter==='function'&&!(typeof m8TestOn==='function'&&m8TestOn())) EDT_APPEL.ec=dr_sesEcouter(ch,recu,1500);
-  else _siteGet(ch,function(v,err){ if(!err)recu(v); });   /* mode test : le magasin de cette page (K15-test : rien n'en sort) */
+  else _siteGet(ch,function(v,err){ if(!err)recu(v); });
 }
 setInterval(function(){ try{ if(EDT_APPEL.chemin&&!document.getElementById('edt-modale'))edtAppelVeiller(); }catch(e){} },1000);   /* la case fermée : l'abonnement se tait */
+/* un geste dans la case (à venir, en cours, close) : l'entrée de CET appareil pour CET élève, et rien d'autre */
+function edtAppelGeste(cle,nomEleve){
+  var b=edtAppelBaseDe(cle); if(!b)return; var l=edtAppelListeDe(b); if(!l){ if(typeof atInfo==='function')atInfo('La liste de l’appel se lit encore : réessaie dans un instant.'); return; }
+  var s=edtSlugEleve(nomEleve),k=edtAppelCleSure(s),x={a:l.indexOf(s)>=0?0:1,t:Date.now()};
+  EDT_APPEL.mes[b.ch]=EDT_APPEL.mes[b.ch]||{}; EDT_APPEL.mes[b.ch][k]=x; edtAppelRedessiner();
+  mjpcPutJson(FIREBASE_BASE+b.ch+'/'+k+'/'+EDT_APPEL.dev+'.json',x,'L’appel — '+nomEleve,function(){});
+}
 /* les boutons de l'appel (la case à venir et la case jouée : le même geste) */
 function edtAppelBoutonsHtml(el,abs,fn,cle,lu){
   return '<div class="edt-eleves">'+el.map(function(n){
@@ -19997,51 +20025,21 @@ function edtAppelBoutonsHtml(el,abs,fn,cle,lu){
 /* la case d'une heure à venir : l'appel d'abord (la maquette acquise, C16 254, planche 1) */
 function edtAppelAvantHtml(cle,c){
   var el=edtElevesDe(c.classeMjpc); if(!el.length)return '';
-  var ch=edtAppelCheminAvant(cle),l=EDT_APPEL.avant[ch],lu=Array.isArray(l),abs=lu?l:[];
+  var l=edtAppelListeDe(edtAppelBaseDe(cle)),lu=Array.isArray(l),abs=lu?l:[];
   return '<div class="edt-mo-bloc" id="edt-appel"><label class="edt-lab">L’appel — absents ('+(lu?abs.length+' sur '+el.length:'la liste se lit…')+')</label>'
     +'<p class="edt-mini-t">D’abord l’appel : un clic marque un absent, un clic défait. Jamais montré à la classe. Puis lance l’heure.</p>'
     +edtAppelBoutonsHtml(el,abs,'edtAppelAvantBasculer',cle,lu)+'</div>';
 }
 function edtAppelFaitHtml(cle,c){
-  var l=EDT_APPEL.avant[edtAppelCheminAvant(cle)]; if(!Array.isArray(l))return '';
+  var l=edtAppelListeDe(edtAppelBaseDe(cle)); if(!Array.isArray(l))return '';
   return ' <span class="edt-mini-t">— appel fait : '+(l.length?l.length+' absent'+(l.length>1?'s':''):'tous présents')+'</span>';
 }
-/* un clic dans la case à venir : la liste relue au hub (sauf pendant une écriture d'ici : la liste d'ici, qui la porte déjà), un élève de plus ou de moins */
-function edtAppelAvantBasculer(cle,nomEleve){
-  var c=edtCellule(cle),ch=edtAppelCheminAvant(cle); if(!c||!ch)return;
-  var poser=function(avant){
-    var l=avant.slice(),s=edtSlugEleve(nomEleve),i=l.indexOf(s); if(i<0)l.push(s); else l.splice(i,1); l.sort();
-    EDT_APPEL.avant[ch]=l; EDT_APPEL.att[ch]=(EDT_APPEL.att[ch]||0)+1; EDT_APPEL.attT[ch]=Date.now(); edtAppelRedessiner();
-    edtEcrireArchive('appel-'+c.classeMjpc+'-'+c.iso,ch,avant.length?avant:null,(l.length?l:null),
-      'L’appel — '+c.classeMjpc+' '+c.iso+' '+c.creneau,function(){ EDT_APPEL.att[ch]=Math.max(0,(EDT_APPEL.att[ch]||0)-1); });
-  };
-  if(edtAppelEnCours(ch)&&Array.isArray(EDT_APPEL.avant[ch])){ poser(EDT_APPEL.avant[ch]); return; }
-  _siteGet(ch,function(v,err){ if(err){ if(typeof atInfo==='function')atInfo('L’appel ne se lit pas (le réseau) : rien n’a changé. Réessaie.'); return; } poser(edtAppelListeNette(v)); });
-}
-/* la case d'une heure jouée (en cours ou close) : la liste relue au hub (l'heure entière : sa marque, l'appel du pilote), un élève de plus ou de moins */
-function edtAbsence(cle,nomEleve){
-  var c=edtCellule(cle); if(!c||!c.classeMjpc)return;
-  var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(!t)return;
-  var ch=t.chemin+'/absents';
-  var poser=function(H,avant){
-    var l=edtAppelListe(H).slice(),s=edtSlugEleve(nomEleve),i=l.indexOf(s); if(i<0)l.push(s); else l.splice(i,1); l.sort();
-    t.trace.absents=l.length?l:null; var marque=!t.trace.appelUnique; t.trace.appelUnique=true;
-    EDT_APPEL.heure[ch]=l; EDT_APPEL.att[ch]=(EDT_APPEL.att[ch]||0)+1; EDT_APPEL.attT[ch]=Date.now(); edtAppelRedessiner();
-    if(marque||!(H&&H.appelUnique))mjpcPutJson(FIREBASE_BASE+t.chemin+'/appelUnique.json',true,'L’appel — une seule liste ('+c.classeMjpc+')',function(){});
-    /* [③] la liste d'avant part à la corbeille avant d'être remplacée */
-    edtEcrireArchive('absents-'+c.classeMjpc+'-'+c.iso,ch,avant,(l.length?l:null),
-      'Absents — '+c.classeMjpc+' '+c.iso+' '+c.creneau,function(){ EDT_APPEL.att[ch]=Math.max(0,(EDT_APPEL.att[ch]||0)-1); });
-  };
-  if(edtAppelEnCours(ch)&&Array.isArray(EDT_APPEL.heure[ch])){ poser({absents:EDT_APPEL.heure[ch],appelUnique:true},EDT_APPEL.heure[ch].length?EDT_APPEL.heure[ch]:null); return; }
-  _siteGet(t.chemin,function(H,err){
-    if(err){ if(typeof atInfo==='function')atInfo('La liste de cette heure ne se lit pas (le réseau) : rien n’a changé. Réessaie.'); return; }
-    H=H||t.trace; if(H&&H.heure==null&&t.trace.heure!=null)H.heure=t.trace.heure;
-    poser(H,(H&&H.absents)||null);
-  });
-}
+function edtAppelAvantBasculer(cle,nomEleve){ edtAppelGeste(cle,nomEleve); }
+/* la case d'une heure jouée (en cours ou close) : le même geste */
+function edtAbsence(cle,nomEleve){ edtAppelGeste(cle,nomEleve); }
 function edtAbsencesHtml(cle,c){
-  var t=edtCheminTrace(c.classeMjpc,c.iso,c.creneau); if(!t)return '';
-  var ch=t.chemin+'/absents',abs=Array.isArray(EDT_APPEL.heure[ch])?EDT_APPEL.heure[ch]:edtAppelListe(t.trace),el=edtElevesDe(c.classeMjpc);
+  var b=edtAppelBaseDe(cle); if(!b)return '';
+  var abs=edtAppelListeDe(b)||[],el=edtElevesDe(c.classeMjpc);
   if(!el.length)return '<div class="edt-mo-bloc edt-mini-t">Aucun élève dans cette classe.</div>';
   return '<div class="edt-mo-bloc" id="edt-appel"><label class="edt-lab">Absents de cette heure ('+abs.length+' sur '+el.length+')</label>'
     +'<p class="edt-mini-t">Un clic marque, un clic défait. Jamais montré à la classe.'+(c.clos?' L’heure est close : la Relecture suit.':' Le pilote le voit aussitôt.')+'</p>'

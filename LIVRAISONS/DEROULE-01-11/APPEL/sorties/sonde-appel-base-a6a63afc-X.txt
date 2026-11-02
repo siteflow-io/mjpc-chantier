@@ -1,0 +1,69 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P1H P1T X XT · 2026-11-02 22:55 UTC · md5 a6a63afc9ccbec3572f189a422ffa31e · images de 3e : un dossier local
+
+— P1H · la case d’une heure à venir : l’appel d’abord (vraie heure) —
+      la case : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotage et lancer✎ Préparer Déplacer cette heure, ou en ajouter une… Jusqu’à la fin de l’année. Un « créneau libre » n’est pas un déplacement : c’est une heure de plus, épinglée, qui compte dans la prévision. — choisir parmi 785 créneaux — mar 15/9 · 08:00-08:55 — créneau libre, heure ajou »
+  ÉCHEC  P1H · la case d’une heure à venir s’ouvre sur l’appel, avant « Ouvrir le pilotage et lancer » — —
+  ÉCHEC  P1H · deux clics : 2 absents ; le bouton dit « appel fait : 2 absents » — {"lab":null,"btn":"▶ Ouvrir le pilotage et lancer"}
+  ÉCHEC  P1H · un clic défait, un clic remarque — [null,null]
+      au hub, avant le lancement : rien
+  ÉCHEC  P1H · avant le lancement : l’appel survit à un rechargement, et un second ordinateur le voit — [null,null]
+      la case ouverte sur deux ordinateurs : un élève marqué sur le second paraît sur le premier en ∞, son retrait en ∞
+  ÉCHEC  P1H · avant l’heure, la case ouverte sur deux ordinateurs : un marquage et son retrait paraissent sur l’autre en moins de 2 s, sans recharger — [null,null]
+  ok     P1H · le second ordinateur : aucune erreur JS, aucune boîte système
+      lancée : « 0 SUR 29 PRÉSENTS » · 0 absent(s) au pilote · Diapo 1 sur 13 · heure 1 · présentation du chapitre
+  ÉCHEC  P1H · lancée : « … sur 27 présents » dès la première diapo, les 2 absents de l’appel — {"pr":"0 SUR 29 PRÉSENTS","nb":0}
+      au hub : H/absents 0 élève(s) ; l’appel d’avant l’heure : retiré
+  ÉCHEC  P1H · au hub : la liste de l’heure porte les 2 absents ; l’appel d’avant l’heure est retiré — {"ab":0,"av":0}
+      « Annuler cette heure » (fait) : la case « null » ; au hub, l’appel d’avant l’heure : rien
+  ÉCHEC  P1H · « Annuler cette heure » : l’appel fait avant l’heure revient dans la case (les 2 mêmes absents, au hub aussi) — {"lab":null}
+  ok     P1H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 22 écritures) — []
+  ok     P1H · aucune écriture refusée par le faux hub (0) — []
+  ok     P1H · l’ordinateur : aucune erreur JS, aucune boîte système
+
+— P1T · la case d’une heure à venir : l’appel d’abord (mode test) —
+      la case : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1 sur 3 ▶ Ouvrir le pilotage et lancer✎ Préparer Déplacer cette heure, ou en ajouter une… Jusqu’à la fin de l’année. Un « créneau libre » n’est pas un déplacement : c’est une heure de plus, épinglée, qui compte dans la prévision. — choisir parmi 785 créneaux — mar 15/9 · 08:00-08:55 — créneau libre, heure ajou »
+  ÉCHEC  P1T · la case d’une heure à venir s’ouvre sur l’appel, avant « Ouvrir le pilotage et lancer » — —
+  ÉCHEC  P1T · deux clics : 2 absents ; le bouton dit « appel fait : 2 absents » — {"lab":null,"btn":"▶ Ouvrir le pilotage et lancer"}
+  ÉCHEC  P1T · un clic défait, un clic remarque — [null,null]
+      lancée : « 0 SUR 29 PRÉSENTS » · 0 absent(s) au pilote · Diapo 1 sur 13 · heure 1 · présentation du chapitre
+  ÉCHEC  P1T · lancée : « … sur 27 présents » dès la première diapo, les 2 absents de l’appel — {"pr":"0 SUR 29 PRÉSENTS","nb":0}
+      mode test : le magasin de la page porte 217536 caractères ; le hub n’a rien reçu hors /site/tableau_test
+      « Annuler cette heure » (fait) : la case « null »
+  ÉCHEC  P1T · « Annuler cette heure » : l’appel fait avant l’heure revient dans la case (les 2 mêmes absents) — {"lab":null}
+  ok     P1T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P1T · aucune écriture refusée par le faux hub (0) — []
+  ok     P1T · l’ordinateur : aucune erreur JS, aucune boîte système
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 79 ms l’un de l’autre : le premier ordinateur false, le second false ; au hub 0 élève(s)
+  ÉCHEC  X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":79,"r1":{"o":false,"o2":false},"hub":0}
+      avant l’heure, le même élève dans deux cases, à 55 ms : le dernier geste voulait « présent » ; les deux cases {"o":false,"o2":false}, le hub false
+  ÉCHEC  X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":55,"voulu":null,"r2":{"o":false,"o2":false},"hubC":false}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 50 ms : {"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}
+  ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":50,"r":{"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à 36 ms : {"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}
+  ÉCHEC  X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":36,"r":{"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à 50 ms : le dernier geste voulait « présent » ; {"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}
+  ÉCHEC  X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":50,"voulu":null,"r":{"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 58 ms : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":false,"hub":false}
+  ÉCHEC  X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":58,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":false,"hub":false}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 91 écritures) — []
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+— XT · deux gestes d’appel croisés, à moins de 100 ms (mode test) —
+  ok     XT · l’heure lancée ; la télécommande et le second ordinateur sur la séance — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 45 ms : {"ordinateur":false,"second":false,"télécommande":false}
+  ÉCHEC  XT · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":45,"r":{"ordinateur":false,"second":false,"télécommande":false}}
+      pendant l’heure, le clic droit du second ordinateur et le clic droit de l’ordinateur, deux élèves à 46 ms : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit du second ordinateur et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":46,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, la télécommande puis le clic droit de l’ordinateur, le même élève à 34 ms : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ÉCHEC  XT · pendant l’heure : la télécommande puis le clic droit de l’ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":34,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 46 ms : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":46,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+  ok     XT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     XT · aucune écriture refusée par le faux hub (0) — []
+  ok     XT · tous les appareils : aucune erreur JS, aucune boîte système
+
+38 vérifications, 21 échec(s)

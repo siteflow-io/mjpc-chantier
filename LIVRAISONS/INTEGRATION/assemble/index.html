@@ -16849,7 +16849,27 @@ function dr_invMarquer(e, actSite){ dr_preparer([e]); Object.defineProperty(e, '
 function dr_invSiteMarque(e, actSite){ Object.defineProperty(e, 'dr_pose', { value: true, configurable: true }); Object.defineProperty(e, 'dr_inv', { value: true, configurable: true }); dr_invMarquer(e, actSite); }
 const dr_invPlein = x => Array.isArray(x) ? x.length > 0 : (x && typeof x === 'object') ? Object.keys(x).some(k => dr_invPlein(x[k])) : !!x;
 function dr_invVierge(e){ return dr_invIntacte(e) && e.act === e.dr_invAct && !(+e.dur) && !e.masquee && !e.suit && !dr_invPlein(e.forme) && !dr_invPlein(e.aEcrire); }
-function dr_invPourHub(e){ if (!dr_estInvariable(e) || !dr_invIntacte(e)) return e; const o = {}; Object.keys(e).forEach(k => { if (k !== 'blocs') o[k] = e[k]; }); o.suit = true; return o; }
+/* C16 — LA COEXISTENCE AVEC LA 8.77.1-⑩ (la conscience, 02/11 ; Paul, 01/11 23:49 : « garder un point de retour à portée immédiate » — remettre la 8.77.1-⑩ en ligne,
+   qui relit tout ce que cette version a écrit au hub). La 8.77.1-⑩ ne connaît que les blocs de texte et quatre rôles d'ouverture (presentation-chapitre, plan,
+   presentation-seance, problematique), qu'elle calcule elle-même (dr_invContenuV1) et dit intacts quand le nom, les blocs, la durée, les compétences sont ceux de son calcul.
+   Donc, au hub :
+   - une diapo intacte que Paul a marquée (nom, mise en forme, « à écrire », durée…) s'écrit `suit` AVEC les blocs de l'ancien calcul — et, si son nom est celui du site,
+     le nom de l'ancien calcul et `suitAct` : la 8.77.1-⑩ la relit telle qu'elle la calcule ; cette version l'ignore et recalcule le canon (dr_invRafraichir) ;
+   - une diapo au canon que Paul a écrite (« ta version ») ou d'un rôle nouveau s'écrit en un bloc de texte lisible (ses lignes, les mots de Paul) et garde son bloc
+     au canon sous `ouvCanon`, une clé que seule cette version relit (la 8.77.1-⑩ la garde sans la lire). */
+function dr_invCleDe(e){ const m = /^inv-[a-z-]+-s(.+)$/.exec(String((e && e.eid) || '')); return m ? m[1] : null; }
+function dr_ouvLisible(b){ const d = (b && b.d) || {}; const el = ((b && b.el) || []).map(x => String(x == null ? '' : x)); let txt = '', L = [];
+  if (b.forme === 'parcours') { L = (d.seances || []).map((s, k) => (k + 1) + '. ' + (el[2 * k] || '') + (el[2 * k + 1] ? ' — ' + el[2 * k + 1] : '')); txt = d.sn || ''; }
+  else if (b.forme === 'competences') { const D = (typeof dr_ouvCharte === 'function' ? dr_ouvCharte().domaines : {}) || {}; (d.doms || []).forEach(x => (x.rows || []).forEach(r => L.push((D[x.dom] || [x.dom])[0] + ' : ' + (el[r.ei] || '')))); txt = d.titre || ''; }
+  else { L = el.filter(x => x.trim()); txt = d.kicker || ''; }
+  return { t: 'texte', id: b.id, txt, el: L }; }
+function dr_invPourHub(e, sk){ if (!dr_estInvariable(e)) return e; if (sk == null) sk = dr_invCleDe(e);
+  const o = {}; Object.keys(e).forEach(k => { if (k !== 'blocs' && k !== 'ouvCanon' && k !== 'suitAct') o[k] = e[k]; });
+  if (dr_invIntacte(e)) { o.suit = true; const b = dr_ouvBloc(e);
+    const v1 = DR_INV_V1_ROLES.indexOf(e.role) >= 0 ? dr_invContenuV1(e.role, sk) : { act: e.dr_invAct != null ? e.dr_invAct : e.act, blocs: b ? [dr_ouvLisible(b)] : [] };
+    o.blocs = JSON.parse(JSON.stringify(v1.blocs || [])); if (e.act === e.dr_invAct) { o.act = v1.act; o.suitAct = true; } return o; }
+  const b = dr_ouvBloc(e); if (!b) return e;   /* une ancienne forme (des blocs de texte) : telle quelle, la 8.77.1-⑩ la lit */
+  delete o.suit; o.ouvCanon = JSON.parse(JSON.stringify(b)); o.blocs = [dr_ouvLisible(b)]; return o; }
 function dr_invNeuve(role, sk, h){ const k = dr_invContenu(role, sk); const e = { eid: dr_invEid(role, sk), act: k.act, dur: 0, role, comp: [], blocs: k.blocs, heure: h }; dr_invSiteMarque(e, k.act); return e; }
 const dr_invEstBilan = e => !!e && (e.role === 'bilan' || (!e.role && /bilan/i.test(String(e.act || ''))));
 function dr_invPoser(E, sk){ try { if (sk == null || !Array.isArray(E) || dr_pageTableau()) return; const sce = dr_seance(sk); if (!sce || sce.type === 'sommaire') return;
@@ -16875,9 +16895,12 @@ function dr_ouvEmpreinte(){ const c = dr_chapitre(); const t = Date.now(); if (D
 function dr_invMontree(e){ try { return typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && typeof J !== 'undefined' && J.some(x => x && x.type === 'diapo' && x.eid === e.eid); } catch (x) { return false; } }
 function dr_invRafraichir(E, sk){ if (!Array.isArray(E)) return;
   const classe = typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe';
-  for (let q = 0; q < E.length; q++) { const e = E[q]; if (!e || e.dr_inv || DR_INV.indexOf(e.role) < 0 || DR_INV_LU.has(e)) continue; if (e.eid !== dr_invEid(e.role, sk)) { DR_INV_LU.add(e); continue; }   /* revenue par ↶ (une copie), ou relue du hub */
+  for (let q = 0; q < E.length; q++) { const e = E[q]; if (!e || e.dr_inv || DR_INV.indexOf(e.role) < 0 || DR_INV_LU.has(e)) continue;
+    if (e.ouvCanon && typeof e.ouvCanon === 'object') { if (e.ouvCanon.t === 'ouverture') e.blocs = [e.ouvCanon]; delete e.ouvCanon; }   /* C16 (coexistence) : relue du hub, « ta version » reprend son bloc au canon */
+    if (e.eid !== dr_invEid(e.role, sk)) { DR_INV_LU.add(e); continue; }   /* revenue par ↶ (une copie), ou relue du hub */
     const k = dr_invContenu(e.role, sk); dr_preparer([e]);
-    if (e.suit && !classe) { e.blocs = k.blocs; DR_INV_LU.add(e); dr_invSiteMarque(e, k.act); continue; }   /* écrite sans ses textes : elle suit le chapitre */
+    if (e.suit) { if (classe && typeof J !== 'undefined' && J.some(x => x && x.type === 'diapo' && x.eid === e.eid)) { DR_INV_LU.add(e); delete e.suitAct; continue; }   /* montrée à la classe : elle ne change plus */
+      e.blocs = k.blocs; if (e.suitAct) e.act = k.act; delete e.suitAct; DR_INV_LU.add(e); dr_invSiteMarque(e, k.act); continue; }   /* intacte, marquée par Paul : elle suit le chapitre — les blocs de l'ancien calcul, écrits pour la 8.77.1-⑩, sont ignorés (C16, coexistence) ; en classe aussi, tant qu'elle n'a pas été montrée */
     const kb = { blocs: k.blocs }; dr_preparer([kb]);
     if (dr_canon(kb.blocs) === dr_canon(e.blocs || [])) { DR_INV_LU.add(e); dr_invSiteMarque(e, k.act); continue; }
     if (!dr_ouvBloc(e) && DR_INV_V1_ROLES.indexOf(e.role) >= 0) {   /* C16 : l'ancienne forme, ses textes intacts, prend le canon */
@@ -16995,7 +17018,7 @@ function dr_derouleDe(sk, brut){
   const travail = {}; Object.keys(DR_MEM.travail).forEach(k => { if (k.startsWith(si + '|')) travail[k.slice(si.length + 1)] = DR_MEM.travail[k]; });
   if (!brut) dr_preparer(E);
   dr_ecritsSeulement(E);
-  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invVierge(e)).map(dr_invPourHub) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
+  const o = { ecrans: E.filter(e => !(e && e.dr_pose && !e.dr_inv && !(e.blocs || []).length) && !(e && e.role === 'reactivation') && !dr_invVierge(e)).map(e => dr_invPourHub(e, sk)) };   /* la fin d'heure posée à la lecture ne s'écrit que si Paul y a mis quelque chose ; E1 (§12.26 (2)) : jamais une réactivation construite dans B/deroule ; EX (§12.62 (3)) : une diapo d'ouverture que Paul n'a pas modifiée non plus (elle suit le chapitre) */
   { const presents = new Set(E.filter(Boolean).map(e => e.role)); const R0 = Array.isArray(d.retraits) ? d.retraits : []; const ret = R0.filter(r => DR_INV.indexOf(r) >= 0 && !presents.has(r)); if (ret.length) o.retraits = R0.indexOf(DR_INV_MARQUE) >= 0 ? ret.concat([DR_INV_MARQUE]) : ret; }   /* C16 : la marque « canon » reste avec les rôles retirés */   /* EX (§12.62 (3)) : les diapos d'ouverture retirées par Paul — celles qui sont revenues (↶) n'y sont plus */
   if (acts.length) o.activites = acts; if (Object.keys(notes).length) o.notes = notes; if (Object.keys(travail).length) o.travail = travail;
   if (d.reactivation === 'oui' || d.reactivation === 'non') o.reactivation = d.reactivation;   /* E1 (§12.25 (5)) : le réglage par séance (E2 l'écrit sur B/deroule/reactivation) — porté ici pour que le PUT entier de dr_sauve ne l'efface pas */

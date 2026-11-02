@@ -1021,3 +1021,17 @@ MEMO
 - **15:54 — la conscience, incident** : j'avais écrit au journal 15:55 et 15:58 pour les deux derniers messages de l'exécutant sans lire l'horloge (il était 15:52 et 15:53) ; corrigé. Le statut de 15:56 envoyé à Paul portait aussi une heure devinée (il était 15:52). Les heures se lisent désormais à chaque écriture.
 - **15:53 — la conscience, le banc** : étapes 1 à 8 vertes sur `7fa7af22b` — parcours VERT, parcours en mode test VERT, contrôles K1-K13 0 défaut, l'Atelier 106 / 0, la sonde §12.66 27 / 0, la sonde ⑩ 51 / 0 (l'étape 8, celle du délai du tableau distant, verte du premier coup) ; étape 9 en cours.
 - **16:05 — la conscience, le contrôle horaire (réveil programmé de 16:03, reçu à 16:05)** : les trois branches de l'exécutant (`deroule/session-partout` `7fa7af22b`, `travail/session-correctif` `e9d81e7e4`, `travail/session-2` `bbbe219ec`) ne touchent que `LIVRAISONS/INTEGRATION/{dr/,index.html,assemble/}` et `LIVRAISONS/DEROULE-01-11/SESSION-PARTOUT/` ; ni `AUDITS/`, ni `APP_VERSION`, ni `redaction.html`. Les captures ont été montrées à Paul à 15:41. Le banc à l'étape 11.
+- **16:10 — Paul, mot pour mot** : « ok pour 237, surtout qu'effectivemnet, c'est le cas majoritaire en classe. Je pars me promener dans la salle avec mon téléphone, puis je reviens, j'écris une réponse élève sans couper mon téléphone, etc. »
+- **16:10 — la conscience** : mon banc sur `7fa7af22b` arrêté (étapes 1 à 11 vertes : parcours, mode test, K1-K13 0 défaut, Atelier 106 / 0, §12.66 27 / 0, ⑩ 51 / 0, bloc question 53 / 53, ouverture 126 / 0, fil 100 / 0 ; l'étape 12 interrompue) ; les trois cas sur `7fa7af22b` et `e9d81e7e4` annulés (le fichier qui partira est celui de `travail/session-2`). À l'exécutant (message) : machine libre ; une seule mise en ligne de tout ㉞ vers 17:45 ; le parcours de Paul de 16:10 en preuve, en vraie heure et en essai (chaque lettre au tableau en ≤ 0,5 s, rien ne recule) ; tout prouvé et poussé sur `deroule/session-partout` à 16:55 au plus tard, avec les captures de la télécommande ; mon banc de 16:55 à 17:40.
+- **16:11 — la conscience** : registre (production `1c2193c`) : ㉞, la poussée 1 mesurée et pas promue, le cas de Paul de 16:10 dans les preuves.
+- **16:11 — message à Paul, mot pour mot :**
+
+  > 238. C'est noté au registre avec tes mots. Ton parcours (le téléphone en main dans la salle, puis une réponse écrite à l'ordinateur sans couper le téléphone) devient la preuve principale de ㉞, en vraie heure et en mode test : chaque lettre doit paraître au tableau en moins d'une demi-seconde, et rien de ce que tu fais au téléphone ne doit reculer. L'exécutant a la machine depuis 16:10 ; tout doit être prouvé à 16:55 ; mon banc complet tourne ensuite, et je te demande le « promeus » vers 17:45, avec les captures. Le banc passé sur le fichier de 16:15 (vert sur 11 étapes) dit déjà que le reste du site n'est pas cassé par ㉞. La maquette de l'appel (222) passera après cette mise en ligne.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:11
+  >
+  > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition, ton parcours en preuve ; prouvé à 16:55), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

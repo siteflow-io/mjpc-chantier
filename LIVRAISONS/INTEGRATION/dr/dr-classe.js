@@ -635,6 +635,15 @@ function dr_etatHeure(){
 function dr_reactNormaliserCopie(E, sk){ if (typeof dr_normaliserTrame !== 'function') return; const mis = []; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') mis.unshift({ i, e: E[i], apres: (E[i - 1] || {}).eid });
   dr_normaliserTrame(E, sk); mis.forEach(m => { if (E.includes(m.e)) return; let k = m.apres != null ? E.findIndex(x => x && x.eid === m.apres) : -1; k = k >= 0 ? k + 1 : Math.min(m.i, E.length); E.splice(k, 0, m.e); }); }
 /* les frontières d'heure de la trame en mémoire : {eid: heure}, sans les « Cahier de textes » (le socle les place) */
+/* C16 (les correctifs, ㉘) — LE VRAI HUB REFUSE (HTTP 400) TOUTE CLÉ QUI PORTE . # $ [ ] / : la scène du tableau (`C/scene`, `/site/repetition/scene`,
+   `/site/tableau_test/scene`) copiait `S.mur`, dont les textes corrigés en direct sont rangés par position (« 0.t », « 2.1 », « -1.act ») ; elle partait sans
+   échappement (02/11, 09:39 : « ● session coupée », le bandeau des enregistrements perdus, le tableau distant figé). `dr_versHub` ne convient pas à la scène :
+   il retire aussi son rang et sa séance (`di`, `si`), que le tableau distant lit. Ici, les clés seulement, dans les deux sens, avec le même codage que
+   `dr_versHub` / `dr_duHub` (« . » → « %2e »…) : une clé jamais échappée se relit telle quelle. */
+function dr_cleVersHub(k){ return String(k).replace(/[.#$\[\]\/]/g, c => '%' + c.charCodeAt(0).toString(16)); }
+function dr_cleDuHub(k){ return String(k).replace(/%(2e|23|24|5b|5d|2f)/g, (m, h) => String.fromCharCode(parseInt(h, 16))); }
+function dr_clesVersHub(x){ if (Array.isArray(x)) return x.map(dr_clesVersHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleVersHub(k)] = dr_clesVersHub(x[k]); }); return o; }
+function dr_clesDuHub(x){ if (Array.isArray(x)) return x.map(dr_clesDuHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleDuHub(k)] = dr_clesDuHub(x[k]); }); return o; }
 function dr_heuresDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (!e.role && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }
 function dr_reactivationsDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (e.role === 'reactivation' && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }   /* le rituel posé à chaque heure (§12.16), pour la reprise */
 /* reposer des frontières gardées (la reprise, l'heure suivante) : chaque diapo à son heure, chaque « Cahier de textes » derrière la dernière diapo de la sienne */

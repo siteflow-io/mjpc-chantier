@@ -70,6 +70,13 @@ const ranger = v => { if (v === null || v === undefined) return undefined; if (t
 const relire = v => { if (v === null || v === undefined || typeof v !== 'object') return v; const K = Object.keys(v); const o = {}; K.forEach(k => { o[k] = relire(v[k]); });
   if (K.length && K.every(k => /^(0|[1-9]\d*)$/.test(k))) { const max = Math.max(...K.map(Number)); if (K.length * 2 > max + 1) { const a = new Array(max + 1).fill(null); K.forEach(k => { a[+k] = o[k]; }); return a; } }
   return o; };
+/* C16 (les correctifs, ㉘) : rangé comme le vrai, le faux hub REFUSE aussi, comme le vrai, toute clé qui porte . # $ [ ] / (ou vide, ou un caractère de contrôle), à chaque
+   niveau du corps écrit, en PUT et en PATCH (les clés de tête d'un PATCH sont des chemins), et tout morceau d'adresse qui en porte : HTTP 400, rien n'est rangé
+   (le modèle : CORRECTIFS/sonde-correctifs.mjs). Chaque refus est compté dans `REFUSES` et dit à la fin. */
+const REFUSES = []; const CLE_KO = /[.#$\[\]\/\u0000-\u001F\u007F]/;
+const cleFautive = (v, ch) => { if (v && typeof v === 'object') for (const k of Object.keys(v)) { if (k === '' || CLE_KO.test(k)) return ch + '/' + k; const r = cleFautive(v[k], ch + '/' + k); if (r) return r; } return null; };
+const refusDe = (m, c, bd) => { if (c.split('/').filter(Boolean).some(x => /[.#$\[\]\u0000-\u001F\u007F]/.test(x))) return 'adresse « ' + c + ' »';
+  if (m === 'PATCH' && bd && typeof bd === 'object') { for (const k of Object.keys(bd)) { if (k.split('/').some(x => /[.#$\[\]\u0000-\u001F\u007F]/.test(x))) return 'clé de tête « ' + k + ' »'; const r = cleFautive(bd[k], c + '/' + k); if (r) return r; } return null; } return cleFautive(bd, c); };
 const hubDe = st => VRAI ? (ranger(st) || {}) : st;
 let HUBN = null; let ECR = []; const RETARD = {};
 const lireH0 = c => { const q = c.split('/').filter(Boolean); let n = HUBN; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
@@ -79,7 +86,7 @@ const posH = (c, v) => { const q = c.split('/').filter(Boolean); if (VRAI) v = r
   if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v;
   if (VRAI && v === null) for (let k = q.length - 2; k >= 0; k--) { if (pile[k + 1] && typeof pile[k + 1] === 'object' && !Object.keys(pile[k + 1]).length) delete pile[k][q[k]]; else break; } };
 const hubRepondre = async (qui, m, c, corps) => { if (m === 'GET') { const d = Object.keys(RETARD).find(x => c === x || c.startsWith(x + '/')); if (d) await p(RETARD[d]); return JSON.stringify(lireH(c)); }
-  let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {} ECR.push({ qui, m, c, t: Date.now(), bd });
+  let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {} if (VRAI) { const ko = refusDe(m, c, bd); if (ko) { REFUSES.push({ qui, m, c, ko }); ECR.push({ qui, m, c, t: Date.now(), refus: true }); return '§400§' + JSON.stringify({ error: 'Invalid data; ' + ko }); } } ECR.push({ qui, m, c, t: Date.now(), bd });
   if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => posH(c + '/' + k, bd[k])); else posH(c, m === 'DELETE' ? null : bd); return JSON.stringify(bd); };
 const fauxFetch = () => { window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase();
     return window.__hubN(m, c, (o && o.body) || null).then(t => new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
@@ -498,6 +505,7 @@ if (joue('G')) { dire(''); dire('══ G · le schéma « tableau » : les cinq
       verif('G', c1.gp && c2.gp && memeG(c1.gp, c2.gp) && memeG(c1.gt, c2.gt), T + ' · un tableau aux cellules courtes : identique avant / après (sa place, sa taille, sa police, au pilote et au tableau)', { avant: c1.gp, apres: c2.gp }); }
     if (AVANT) { const a = await jouerG(AVANT, LONG, W, H, 'long-avant'); verif('G', a.gp && g.gp && memeG(a.gp, g.gp) && memeG(a.gt, g.gt) && memeG(a.ga, g.ga), T + ' · le tableau des cinq œuvres (il tient) : identique avant / après (sa place, sa taille, sa police, au pilote, au tableau, dans l’Atelier ; aucune page)', { avant: a.gp, apres: g.gp }); } } }
 
+if (VRAI) { dire(''); verif('㉘', !REFUSES.length, 'le faux hub rangé comme le vrai (qui refuse les clés interdites) : ' + REFUSES.length + ' écriture(s) refusée(s) sur toute la sonde', REFUSES.slice(0, 6).map(x => x.m + ' ' + x.c + ' (' + x.ko + ')')); }   /* C16 (les correctifs, ㉘) */
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-dettes.txt'), R.join('\n') + '\n'); if (ancTiree) try { fs.unlinkSync(ANC); } catch (e) {}
 await nav.close(); process.exit(echecs ? 1 : 0);

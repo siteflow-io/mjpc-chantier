@@ -151,9 +151,9 @@ function dr_sceneAuto(vite){
   DR_TAB.emT = setTimeout(() => {
     if (!dr_tabPeutEcrire() || !S.mur) return;
     const sc = dr_scene(S.mur); if (!sc) return;
-    if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => {}); return; }   /* §12.66 (1) : en mode test, ce dépôt reste au magasin du mode test ; le témoin « ● session » suit l'adresse du mode test (dr_ttEmettre) */
+    if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => {}); return; }   /* §12.66 (1) : en mode test, ce dépôt reste au magasin du mode test ; le témoin « ● session » suit l'adresse du mode test (dr_ttEmettre) */
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);   /* sans accusé en 5 s : la session est coupée */
-    dr_ecrire(dr_cheminC() + '/scene', sc, 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });
+    dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });   /* C16 (㉘) : les clés échappées (les textes corrigés en direct, « 0.t ») — le vrai hub refusait la scène entière */
   }, vite ? 0 : 250);   /* le débounce de `sesEmettre` */
 }
 
@@ -186,7 +186,7 @@ function dr_ttDebut(quoi, p){
   dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);
   DR_TT.T = setInterval(dr_ttEmettre, 250);
 }
-function dr_ttTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_TT.trame) return false; DR_TT.trame = em; DR_TT.trameMaj = Date.now(); dr_ttEcrire('/ecrans', E); return true; } catch (e) { return false; } }
+function dr_ttTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_TT.trame) return false; DR_TT.trame = em; DR_TT.trameMaj = Date.now(); dr_ttEcrire('/ecrans', dr_clesVersHub(E)); return true; } catch (e) { return false; } }
 function dr_ttEmettre(){
   if (!DR_TT.sig) { clearInterval(DR_TT.T); DR_TT.T = null; return; }
   if (!dr_ttOn()) { dr_ttFin(); return; }   /* le mode test s'éteint : ce qui est à nous se retire */
@@ -198,7 +198,7 @@ function dr_ttEmettre(){
   const sc = dr_scene(S.mur); if (!sc) return; sc.trameMaj = DR_TT.trameMaj || 0;
   const cle = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); if (cle === DR_TT.emis) return; DR_TT.emis = cle;
   const heure = DR_TT.quoi === 'heure';
-  dr_ttEcrire('/scene', sc).then(ok => { if (heure) try { dr_sessionEtat(ok); } catch (e) {} });
+  dr_ttEcrire('/scene', dr_clesVersHub(sc)).then(ok => { if (heure) try { dr_sessionEtat(ok); } catch (e) {} });   /* C16 (㉘) : le mode test aussi (l'image du tableau, au vrai hub) */
 }
 function dr_ttFin(){
   clearInterval(DR_TT.T); DR_TT.T = null; const sig = DR_TT.sig; DR_TT.sig = null; DR_TT.quoi = null; DR_TT.emis = ''; DR_TT.trame = '';
@@ -385,8 +385,8 @@ function dr_tabAttendre(){
   const d = new Date(), an = dr_tabAnnee(d), niveau = (location.search.match(/[?&]n=([^&]+)/) || [])[1] || null;
   const dire = p => { if (DR_TAB.montre || SES.ctx) return; const c = p && p.depuis === 'edt' && (p.classeNom || p.classe);
     dr_tabDireClasse(c ? 'Classe attendue : ' + c + ' · ' + String(p.creneau || '').replace('-', ' – ') : ''); };
-  dr_tabLire('/site/edt/grille/' + an, g => { if (!g) { dire(null); return; }
-    dr_tabLire('/site/edt/calendrier/' + an, cal => dr_tabLire('/classes', cl => {
+  dr_tabLire('/site/edt/grille/' + an, g => { if (!g) { dire(null); return; } g = dr_clesDuHub(g);   /* C16 (㉘) : les clés de l'emploi du temps rendues telles quelles */
+    dr_tabLire('/site/edt/calendrier/' + an, cal => dr_tabLire('/classes', cl => { cal = dr_clesDuHub(cal);
       const f = (typeof dr_caseDuMoment === 'function') ? dr_caseDuMoment : (gr, ca, cr, now, n) => dr_tabCaseDuMoment(gr, ca, cl, now, n);
       let p = null; try { p = f(g, cal, null, new Date(), niveau); } catch (e) {} dire(p);
     })); });
@@ -451,7 +451,7 @@ function dr_tabMonter(){
   DR_TAB.ts = 0; DR_TAB.trameMaj = 0; DR_TAB.pilotePresent = true; DR_TAB.hdec = 0;   /* le cours vient d'être trouvé au pointeur */
   dr_tabLireSeance(SES.ctx);
   dr_tabLire(dr_tabCheminC(SES.ctx) + '/ecrans', ecr => {
-    if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(ecr);   /* C16 (retour sûr) : la copie de la classe est écrite lisible pour la 8.77.1-⑩ ; ici, le canon (dr-socle.js) */
+    if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(dr_clesDuHub(ecr));   /* C16 (retour sûr) : la copie de la classe est écrite lisible pour la 8.77.1-⑩ ; ici, le canon (dr-socle.js) */
     DR_TAB.decal = null; DR_TAB.vuCours = false;   /* §12.70 (4) : l'horloge du pilote se recale à chaque cours */
     if (!dr_tabFluxOuvrir(dr_tabCheminC(SES.ctx) + '/scene') && !DR_TAB.sondeT) DR_TAB.sondeT = setInterval(dr_tabSonder, 900);   /* §12.70 (5) : le flux du hub ; la lecture toutes les 0,9 s en repli */
     if (!DR_TAB.pointeurT) DR_TAB.pointeurT = setInterval(() => { sesTabVeillePointeur(); dr_tabPointeur(); }, 3000);
@@ -474,6 +474,7 @@ function dr_tabSceneRecue(o, c){
     SES.perduDepuis = 0; if (perdu) perdu.classList.remove('on');
     if (dr_tabSceneOubliee(o, c)) return;   /* §12.68 : l'heure annulée — sa scène est retirée : l'horloge */
     if (!o || typeof o !== 'object' || typeof o.ts !== 'number' || !isFinite(o.ts)) return;   /* une scène sans heure lisible n'est pas une scène */
+    o = dr_clesDuHub(o);   /* C16 (㉘) : les clés rendues telles quelles (« 0%2et » → « 0.t ») ; une scène écrite avant reste lisible */
     if (!DR_TAB.pilotePresent) return;                               /* le pilote n'est plus là (pointeur retiré ou périmé) : l'image reste (mandat point 5 ; relecteur 2, n° 5a) */
     const futur = DR_TAB.ts > Date.now() + 5 * 60000;                 /* la dernière scène venait d'une horloge en avance : elle ne bloque pas la suite (n° 5b) */
     if (!(o.ts > DR_TAB.ts) && !futur) return;                       /* jamais une scène plus ancienne que la dernière montrée */
@@ -484,7 +485,7 @@ function dr_tabSceneRecue(o, c){
     dr_tabNormaliser(o);   /* §12.71 : la participation à 0 revient en liste vide */   /* §12.70 : le minuteur suit la scène, recalé sur l'horloge du pilote */
     if (o.trameMaj && o.trameMaj > DR_TAB.trameMaj) {
       DR_TAB.trameMaj = o.trameMaj;
-      dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(ecr); dr_tabMontrer(o); });
+      dr_tabLire(base + '/ecrans', ecr => { if (Array.isArray(ecr)) DR_TAB.ecrans = dr_copieDuHub(dr_clesDuHub(ecr)); dr_tabMontrer(o); });
     } else dr_tabMontrer(o);
   }
 }

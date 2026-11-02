@@ -68,13 +68,20 @@ const ranger = v => { if (v === null || v === undefined) return undefined; if (t
   const o = {}; (Array.isArray(v) ? v.map((x, i) => [String(i), x]) : Object.entries(v)).forEach(([k, x]) => { const r = ranger(x); if (r !== undefined) o[k] = r; }); return Object.keys(o).length ? o : undefined; };
 const relire = v => { if (v === null || v === undefined || typeof v !== 'object') return v; const K = Object.keys(v).sort(); const o = {}; K.forEach(k => { o[k] = relire(v[k]); });
   if (K.length && K.every(k => /^(0|[1-9]\d*)$/.test(k))) { const max = Math.max(...K.map(Number)); if (K.length * 2 > max + 1) { const a = new Array(max + 1).fill(null); K.forEach(k => { a[+k] = o[k]; }); return a; } } return o; };
+/* C16 (les correctifs, ㉘) : rangé comme le vrai, le faux hub REFUSE aussi, comme le vrai, toute clé qui porte . # $ [ ] / (ou vide, ou un caractère de contrôle), à chaque
+   niveau du corps écrit, en PUT et en PATCH (les clés de tête d'un PATCH sont des chemins), et tout morceau d'adresse qui en porte : HTTP 400, rien n'est rangé
+   (le modèle : CORRECTIFS/sonde-correctifs.mjs). Chaque refus est compté dans `REFUSES` et dit à la fin. */
+const REFUSES = []; const CLE_KO = /[.#$\[\]\/\u0000-\u001F\u007F]/;
+const cleFautive = (v, ch) => { if (v && typeof v === 'object') for (const k of Object.keys(v)) { if (k === '' || CLE_KO.test(k)) return ch + '/' + k; const r = cleFautive(v[k], ch + '/' + k); if (r) return r; } return null; };
+const refusDe = (m, c, bd) => { if (c.split('/').filter(Boolean).some(x => /[.#$\[\]\u0000-\u001F\u007F]/.test(x))) return 'adresse « ' + c + ' »';
+  if (m === 'PATCH' && bd && typeof bd === 'object') { for (const k of Object.keys(bd)) { if (k.split('/').some(x => /[.#$\[\]\u0000-\u001F\u007F]/.test(x))) return 'clé de tête « ' + k + ' »'; const r = cleFautive(bd[k], c + '/' + k); if (r) return r; } return null; } return cleFautive(bd, c); };
 const lireH0 = c => { const q = c.split('/').filter(Boolean); let n = HUBN; for (const k of q) { if (n === null || typeof n !== 'object' || !(k in n)) return null; n = n[k]; } return n === undefined ? null : n; };
 const lireH = c => { const n = lireH0(c); return VRAI ? (n == null ? null : relire(n)) : n; };
 const posH = (c, v) => { const q = c.split('/').filter(Boolean); if (VRAI) v = ranger(v); if (v === undefined) v = null; let n = HUBN; const pile = [n]; for (let k = 0; k < q.length - 1; k++) { if (typeof n[q[k]] !== 'object' || n[q[k]] === null) { if (v === null) return; n[q[k]] = {}; } n = n[q[k]]; pile.push(n); }
   if (v === null) delete n[q[q.length - 1]]; else n[q[q.length - 1]] = v;
   if (VRAI && v === null) for (let k = q.length - 2; k >= 0; k--) { if (pile[k + 1] && typeof pile[k + 1] === 'object' && !Object.keys(pile[k + 1]).length) delete pile[k][q[k]]; else break; } };
 const hubRepondre = async (qui, m, c, corps) => { if (m === 'GET') return JSON.stringify(lireH(c)); let bd = null; try { bd = JSON.parse(corps || 'null'); } catch (e) {}
-  if (REFUS && REFUS.test(c)) { ECR.push({ qui, m, c, t: Date.now(), refus: true, bd }); return '§401§{"error":"Permission denied"}'; } ECR.push({ qui, m, c, t: Date.now(), bd });
+  if (REFUS && REFUS.test(c)) { ECR.push({ qui, m, c, t: Date.now(), refus: true, bd }); return '§401§{"error":"Permission denied"}'; } if (VRAI) { const ko = refusDe(m, c, bd); if (ko) { REFUSES.push({ qui, m, c, ko }); ECR.push({ qui, m, c, t: Date.now(), refus: true }); return '§400§' + JSON.stringify({ error: 'Invalid data; ' + ko }); } } ECR.push({ qui, m, c, t: Date.now(), bd });
   if (m === 'PATCH' && bd && typeof bd === 'object') Object.keys(bd).forEach(k => posH(c + '/' + k, bd[k])); else posH(c, m === 'DELETE' ? null : bd); return JSON.stringify(bd); };
 const fauxFetch = () => { window.fetch = function (u, o) { const s2 = String(u); if (s2.indexOf('firebasedatabase.app') >= 0) { const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, '')); const m = ((o && o.method) || 'GET').toUpperCase();
     return window.__hubN(m, c, (o && o.body) || null).then(t => /^§401§/.test(t) ? new Response(t.slice(5), { status: 401 }) : new Response(t, { status: 200 })); } return Promise.resolve(new Response('null', { status: 200 })); };
@@ -449,6 +456,7 @@ if (joue('N')) { dire(''); dire('══ N · (⑲) 1536×864 · l’Atelier : un
     verif('N', /modifiée sur un autre appareil/.test(q.cA + q.cB), nomH + ' : deux navigateurs écrivent dans la même diapo au même moment — le conflit paraît (« ' + (q.cA || q.cB).slice(0, 90) + ' »)', { A: q.cA, B: q.cB, ligne: q.debut });
     sansErreur('N', q.errs, nomH + ', deux navigateurs'); } }
 
+if (true) { dire(''); verif('㉘', !REFUSES.length, 'le faux hub rangé comme le vrai (qui refuse les clés interdites) : ' + REFUSES.length + ' écriture(s) refusée(s) sur toute la sonde', REFUSES.slice(0, 6).map(x => x.m + ' ' + x.c + ' (' + x.ko + ')')); }   /* C16 (les correctifs, ㉘) */
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-fin.txt'), R.join('\n') + '\n');
 await nav.close(); process.exit(echecs ? 1 : 0);

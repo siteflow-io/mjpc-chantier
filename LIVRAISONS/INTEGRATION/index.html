@@ -17231,9 +17231,16 @@ function edtPoserIdsObjet(nom,o){
 
 /* ARCHIVAGE — le modèle du site (chInjecterConfirme) : on archive AVANT, et on
    ABANDONNE si l'archivage échoue. Il n'y a pas d'exception « ajout pur ». */
+/* C16 (les correctifs, ㉘) — LE VRAI HUB REFUSE (HTTP 400) TOUTE CLÉ QUI PORTE . # $ [ ] / : la photo du prévu range ses cases par
+   « date|créneau|libellé du cours » (« 2026-09-14|10:07-11:02|X Français X. — 4 HUGO ») ; un libellé avec un point (une initiale) faisait
+   refuser la photo entière, et son archive (mesuré par la sonde des correctifs, partie A : « Photo du prévu — Rentrée : écriture refusée
+   par la base (HTTP 400) »). Toute écriture de l'emploi du temps échappe ses clés (le codage de dr_versHub : « . » → « %2e ») ; la
+   lecture les rend telles quelles ; une clé jamais échappée se relit telle quelle. */
+function edtClesVersHub(x){ return (typeof dr_clesVersHub==='function')?dr_clesVersHub(x):x; }
+function edtClesDuHub(x){ return (typeof dr_clesDuHub==='function')?dr_clesDuHub(x):x; }
 function edtArchiver(motif,chemin,data){
   return secuEcrire(atCorbeilleCle('edt-'+motif),
-    {_meta:{motif:'edt-'+motif,chemin:chemin,app:'site',ts:Date.now()},data:(data===undefined?null:data)});
+    {_meta:{motif:'edt-'+motif,chemin:chemin,app:'site',ts:Date.now()},data:(data===undefined?null:edtClesVersHub(data))});
 }
 
 /* [③] ARCHIVER AVANT D'ÉCRASER — pour TOUTE écriture qui remplace un état
@@ -17243,7 +17250,7 @@ function edtArchiver(motif,chemin,data){
    Mesuré avant cette livraison : une seule des seize écritures du bloc archivait. */
 function edtEcrireArchive(motif,chemin,avant,valeur,libelle,apres){
   var edtEcrire=function(){
-    mjpcPutJson(FIREBASE_BASE+chemin+'.json',valeur,libelle,function(){ if(apres)apres(); });
+    mjpcPutJson(FIREBASE_BASE+chemin+'.json',edtClesVersHub(valeur),libelle,function(){ if(apres)apres(); });   /* C16 (㉘) */
   };
   if(avant===null||avant===undefined){ edtEcrire(); return; }   /* rien à remplacer */
   var photo=null; try{ photo=JSON.parse(JSON.stringify(avant)); }catch(e){ photo=avant; }
@@ -17451,7 +17458,7 @@ function edtMettreANiveau(apres){
   var edtEcrireTout=function(){
     var reste=noms.length;
     noms.forEach(function(nom){
-      mjpcPutJson(FIREBASE_BASE+edtChemin(nom)+'.json',objets[nom],'Mise à niveau — '+nom,function(){
+      mjpcPutJson(FIREBASE_BASE+edtChemin(nom)+'.json',edtClesVersHub(objets[nom]),'Mise à niveau — '+nom,function(){   /* C16 (㉘) */
         if(--reste===0&&apres)apres(true); });
     });
   };
@@ -17477,7 +17484,7 @@ function edtCharger(apres){
   var reste=EDT_OBJETS.length; EDT.pannes=[];
   EDT_OBJETS.forEach(function(o){
     _siteGet(edtChemin(o),function(v,err){
-      EDT[o]=v||null;
+      EDT[o]=v?edtClesDuHub(v):null;   /* C16 (㉘) : les clés rendues telles quelles */
       if(err)EDT.pannes.push(o);
       if(--reste===0){ EDT.charge=true; EDT.enEssai=edtEnEssai();   /* [2ter ⑪] dans quel monde on a lu */
         try{edtAppliquerCreneaux();}catch(e){}

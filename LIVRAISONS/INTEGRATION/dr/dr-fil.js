@@ -11,6 +11,8 @@
    2. LA COLONNE A LA MAIN (C16 64) : dès que Paul a cliqué dans la colonne de gauche, ← → ↑ ↓ passent à l'entrée précédente ou suivante de la colonne (en classe :
       les vignettes, une par page ; dans l'Atelier : les diapos), jusqu'à ce qu'il clique ailleurs. Espace et « ▶ Dévoiler » dévoilent toujours ; Alt + ↑ ↓
       déplace toujours la diapo dans l'Atelier (dr-socle.js, l'écoute de l'Atelier, avant celle-ci).
+   3. LA MOLETTE (C16 65) : sur la vue centrale, un cran = une diapo ; un geste continu (un pavé tactile qui glisse) = une seule diapo ; une diapo à plusieurs
+      pages passe d'abord ses pages. Ctrl + molette reste le zoom ; le cahier de textes fait défiler sa carte ; la loupe garde la sienne (dr-socle.js).
    4. EN CLASSE (C16 66, la règle de Paul du 17/09 : seul ▶ est le fil) : le premier saut (flèche de la colonne, cran, vignette) demande « La classe te suivrait » ;
       une fois accepté, Paul passe d'une diapo à l'autre sans qu'elle redemande, jusqu'à ce qu'il clique sur la diapo ou reprenne ▶ (dr_garde, dr-socle.js).
    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
@@ -73,6 +75,15 @@ function dr_filPas(sens, source){
   let k = V.findIndex(v => v.cour); if (k < 0) k = V.findIndex(v => v.i === S.di); if (k < 0) return; const c = V[k], d = V[k + sens]; if (!d) return;
   if (d.i === c.i) { pageMain(sens); dr_filMontrer(); return; }   /* la page d'à côté de la même diapo : ce n'est pas un saut, pas de garde (comme Maj + ← →) */
   p85hAllerPage(d.i, d.pg); dr_filMontrer(); }
+
+/* ── 3 · la molette sur la vue centrale (l'écoute de #murcadre, dr-socle.js, la lui passe hors du cahier de textes, de la loupe et de Ctrl) : un pas par geste —
+   un cran de souris (un coup d'au moins 50 px, après 90 ms sans molette) en est un ; un pavé tactile qui glisse envoie des dizaines de petits coups sans pause :
+   ils s'additionnent, font un pas à 40 px, puis plus rien jusqu'à ce que le geste s'arrête (220 ms sans molette) ── */
+function dr_filMolette(ev){ ev.preventDefault(); const on = id => { const x = document.getElementById(id); return !!(x && x.classList.contains('on')); }; if (on('garde') || on('garde2')) return;
+  const M = DR_FIL.mol; const t = ev.timeStamp || Date.now(); const gap = t - M.t; M.t = t; let d = +ev.deltaY || 0; if (ev.deltaMode === 1) d *= 40; else if (ev.deltaMode === 2) d *= 800; if (!d) return;
+  if (gap >= 220 || (Math.abs(d) >= 50 && gap >= 90)) { M.acc = 0; M.pris = false; } if (M.pris) return;
+  M.acc += d; if (Math.abs(M.acc) < 40) return; const sens = M.acc > 0 ? 1 : -1; M.acc = 0; M.pris = true;
+  if (dr_filBloque()) return; dr_filPas(sens, 'molette'); }
 
 /* ── 4 · la garde (dr-socle.js, dr_garde) : acceptée une fois — « ❄ Geler, puis y aller » ou « Y aller devant la classe » — elle laisse passer les sauts
    suivants de la même heure, dans le même état (gelé ou non), jusqu'au prochain clic sur la diapo ou au prochain ▶ ── */

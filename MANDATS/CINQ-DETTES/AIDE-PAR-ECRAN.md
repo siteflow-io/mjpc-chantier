@@ -189,7 +189,7 @@
 ### chapitre-atelier — Le chapitre · Atelier (fil-1)
 **Ici** : les diapos de chaque heure, telles qu'elles passeront au tableau. Le point sur le trait, à gauche de chaque diapo, dit où elle se place dans la séance : tout en haut à la première, tout en bas à la dernière.
 **Dans l'ordre** :
-1. À gauche, choisis l'heure et la diapo (clic droit sur une diapo : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer ; Ctrl + molette : zoom). Après un clic dans la colonne, ↑ ↓ ← → passent d'une diapo à l'autre, comme dans PowerPoint, jusqu'à ce que tu cliques ailleurs ; Alt + ↑ ↓ déplace la diapo.
+1. À gauche, choisis l'heure et la diapo (clic droit sur une diapo : dupliquer, insérer, déplacer, envoyer vers une autre séance, supprimer ; Ctrl + molette : zoom). Après un clic dans la colonne, ↑ ↓ ← → passent d'une diapo à l'autre, comme dans PowerPoint, jusqu'à ce que tu cliques ailleurs ; Alt + ↑ ↓ déplace la diapo. La molette sur la diapo fait défiler les diapos, une par cran (les pages d'une diapo d'abord).
 2. Écris directement dans la diapo (l'aide d'écriture est à droite) ; « + bloc », « + étape », « + image », « + vidéo », « + document » ajoutent un objet.
 3. À droite : ce que la diapo déclare (son activité, son heure, ses notions), et ce qui peut casser en classe — corrige ce qui est en rouge.
 4. « ▶ Jouer en avance — répétition » : tu joues la diapo comme en classe ; rien n'est écrit.
@@ -198,7 +198,7 @@
 ### chapitre-pilotage — Le chapitre · Pilotage, la répétition (fil-1)
 **Ici** : tu répètes l'heure comme en classe ; rien n'est écrit. Une heure avec une classe se lance depuis l'emploi du temps.
 **Dans l'ordre** :
-1. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante. Après un clic dans la colonne de gauche, ↑ ↓ ← → passent d'une diapo à l'autre, jusqu'à ce que tu cliques ailleurs.
+1. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante. Après un clic dans la colonne de gauche, ↑ ↓ ← → passent d'une diapo à l'autre, jusqu'à ce que tu cliques ailleurs ; la molette sur la diapo fait de même, une diapo par cran.
 2. « ⧉ Ce que voit la classe » bascule la vue de droite : la diapo suivante, ou ce que le tableau afficherait.
 3. « ■ Arrêter » revient à l'Atelier sur cette diapo.
 **Avant / après** : avant, « Atelier » ; pour jouer avec une classe : l'emploi du temps.
@@ -224,7 +224,7 @@
 **Ici** : tu joues l'heure avec la classe. On ne quitte pas cet écran avant « Clore l'heure ».
 **Dans l'ordre** :
 1. « 🖥 Ouvrir le tableau » ouvre la fenêtre du tableau pour le vidéoprojecteur.
-2. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante ; ◀ revient. Le point sur le trait, à gauche de la diapo, dit à la classe où on en est dans la séance : il descend d'un cran à chaque diapo. Pour aller à une autre diapo : un clic dans la colonne de gauche, puis ↑ ↓ ← → ; le premier saut demande « La classe te suivrait », les suivants non, jusqu'à ce que tu cliques sur la diapo ou reprennes ▶.
+2. « ▶ Dévoiler » (→ ou espace) montre l'élément suivant, puis passe à la diapo suivante ; ◀ revient. Le point sur le trait, à gauche de la diapo, dit à la classe où on en est dans la séance : il descend d'un cran à chaque diapo. Pour aller à une autre diapo : un clic dans la colonne de gauche, puis ↑ ↓ ← →, ou la molette sur la diapo (une diapo par cran) ; le premier saut demande « La classe te suivrait », les suivants non, jusqu'à ce que tu cliques sur la diapo ou reprennes ▶.
 3. Pendant l'heure : la participation en bas à droite (les initiales de l'élève, puis 1, 2 ou 3, Entrée) ; « 📝 Notes » (N) pour toi ; « Où on en est » : ton avance ou ton retard.
 4. À cinq minutes de la fin, « Fin de l'heure » s'ouvre d'elle-même à droite (T-5, puis T-3, T-1).
 **Avant / après** : avant, la case de l'emploi du temps ; après, « Fin de l'heure », puis « Clore l'heure ». Besoin d'autre chose du site : « ↗ Le site dans un nouvel onglet ».

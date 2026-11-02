@@ -1,0 +1,24 @@
+C16 · sonde du fil de la séance, des flèches de la colonne et de la molette · parties B3 D · 2026-11-02 00:20 UTC · fichier md5 83b51baf6e465297a3e3d2c7fe0928e3 · 2808211 o · tableaux : l’image 16/9 du canon 1
+
+══ B · 1536×864 · l’Atelier, la séance 1 (ses trois heures) — B3 ══
+  ok     B · la colonne de l’Atelier montre les diapos des trois heures de la séance 1 (26 lignes) — [{"di":0,"eid":"inv-presentation-chapitre-s0","t":"08:57Présentation du chapitre0 min"},{"di":1,"eid":"inv-competences-chapitre-s0","t":"08:57Les compétences du chapitre0 min"},{"di":2,"eid":"inv-plan-s0","t":"08:57Le parcours du chapitre0 min"}]
+  ok     B · la molette sur la diapo : un cran vers le bas = la diapo suivante, un cran vers le haut = la précédente — {"bas":6,"haut":5}
+  ok     B · un geste continu (vingt petits coups de 6 px rapprochés, comme un pavé tactile qui glisse) = une seule diapo — {"ligne":6,"coups":20,"duree":820}
+  ok     B · deux crans espacés (330 ms) = deux diapos — 8
+  ok     B · une diapo à 2 pages (« Les règles héritées », heure 2, suivie de « La frise du siècle ») : la molette passe ses pages une à une, puis la diapo suivante ; en remontant, la dernière page de la diapo d’avant, puis ses pages jusqu’à la première — ["14 « page 1 / 2 »","14 « page 2 / 2 »","15 «  »","14 « page 2 / 2 »","14 « page 1 / 2 »"]
+  ok     B · Ctrl + molette : le zoom de la vue (la diapo rapetisse), sans changer de diapo — {"avant":876,"apres":832,"ligne":14}
+  ok     B · sur le cahier de textes, la molette fait défiler sa carte et ne change pas de diapo — 25
+  ok     B · aucune erreur JS
+  ok     B · aucune boîte système
+
+══ D · 1536×864 · en classe : la molette et la garde ══
+  ok     D · l’heure lancée par la case de l’emploi du temps
+  ok     D · le premier cran qui change de diapo ouvre la garde « La classe te suivrait » — {"vig":"0","ligne":null,"eid":null,"compte":"0 / 3 dévoilés","garde":true,"page":"","numero":"Diapo 1 sur 13 · heure 1 · présentation du chapitre"}
+  ok     D · « Rester » ne change rien — 0
+  ok     D · le cran suivant redemande la garde
+  ok     D · « Y aller devant la classe », puis un cran : plus de garde, le tableau suit — {"vigs":["0","1","2"],"tableau":"3/26","pilote":"3/26"}
+  ok     D · mode test : aucune écriture au hub hors de /site/tableau_test (7 écritures) — []
+  ok     D · aucune erreur JS
+  ok     D · aucune boîte système
+
+— fin : 17 vérifications, 0 échec(s) · VERT

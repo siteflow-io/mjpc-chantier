@@ -1553,7 +1553,7 @@ function pageMain(d){ if (!S.pagesCourantes || S.pagesCourantes.length < 2) retu
 
 mur.addEventListener('click', ev => { const sp = ev.target.closest('.page span'); if (sp) { ev.stopPropagation(); pageMain(+sp.dataset.p); } });
 
-$('murcadre').addEventListener('wheel', ev => { if (ecran().role === 'fin' && !ev.ctrlKey) { const c = mur.querySelector('.ed-carte'); if (c) { c.scrollTop += ev.deltaY; ev.preventDefault(); } return; } if (S.loupe || ev.ctrlKey) return; if (!S.pagesCourantes || S.pagesCourantes.length < 2) return; ev.preventDefault(); pageMain(ev.deltaY > 0 ? 1 : -1); }, { passive: false });
+$('murcadre').addEventListener('wheel', ev => { if (ecran().role === 'fin' && !ev.ctrlKey) { const c = mur.querySelector('.ed-carte'); if (c) { c.scrollTop += ev.deltaY; ev.preventDefault(); } return; } if (S.loupe || ev.ctrlKey) return; if (typeof dr_filMolette === 'function') { dr_filMolette(ev); return; } /* C16 65 : la molette fait défiler les diapos, les pages d'abord */ if (!S.pagesCourantes || S.pagesCourantes.length < 2) return; ev.preventDefault(); pageMain(ev.deltaY > 0 ? 1 : -1); }, { passive: false });
 
 document.querySelector('.scene').addEventListener('wheel', ev => { if (!ev.ctrlKey) return; ev.preventDefault(); S.vue = Math.max(.55, Math.min(1, Math.round(((S.vue || 1) + (ev.deltaY < 0 ? .05 : -.05)) * 100) / 100)); dr_tout(); }, { passive: false });
 

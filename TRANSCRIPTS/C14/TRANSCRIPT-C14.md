@@ -4498,3 +4498,29 @@ MEMO
 02/11/2026 17:58
 
 MEMO
+
+---
+
+## Tour 160 — 02/11/2026 18:02
+
+**Paul (18:02) :**
+
+promeus
+
+**Ce qui a été fait (C14) :** 1.4.26 copiée au sas (`SAUVEGARDES/redaction-1.4.26-RU-avant-1.4.27-2026-11-02.html`, `4943f74c`) ; 1.4.27-RU en ligne : commit `13d7879`, blob `4ce252b64d3d`, md5 `adbb4bec3369579857d2eea60a4e5ec3`, 910 528 o, en ligne bit à bit à 18:05 ; docs : le point de retour, le journal, la dette ✔, où trouver quoi (`&v=1.4.27-RU`). Relu sur la version en ligne, sans rien écrire : l'écho reconnu sur 23 copies sur 24 ; la 24e, ma page de contrôle venait de la modifier elle-même (son écriture interceptée, plus récente que le site).
+
+**Claude (18:07) :**
+
+À jouer : 50 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+49. La 1.4.27 est en ligne, vérifiée bit à bit à 18:05 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.27-RU
+
+50. Recharge ta page maintenant : tant que tu ne l'as pas rechargée, elle tourne encore avec l'ancienne version, et elle peut encore perdre une décision.
+
+51. Vérifié sur ton site, sans rien y écrire : la version en ligne reconnaît maintenant sa propre copie quand le site la lui renvoie.
+
+À tester : après avoir rechargé, une bande entière à ton rythme, puis la carte de cette copie : 100 %.
+
+02/11/2026 18:07
+
+MEMO

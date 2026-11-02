@@ -19940,8 +19940,8 @@ function edtAppelListeNette(v){
 function edtAppelDerniers(par){
   var out={}; if(!par||typeof par!=='object')return out;
   Object.keys(par).forEach(function(s){ var d=par[s]; if(!d||typeof d!=='object')return;
-    Object.keys(d).forEach(function(dev){ var x=d[dev]; if(!x||typeof x!=='object')return; var t=+x.t||0;
-      if(!out[s]||t>out[s].t||(t===out[s].t&&dev>out[s].dev))out[s]={a:+x.a?1:0,t:t,dev:dev}; }); });
+    Object.keys(d).forEach(function(dev){ var x=d[dev]; if(!x||typeof x!=='object')return; var t=(typeof x.t==='number')?x.t:(+x.tl||0);   /* t : l'heure du hub (écrite par le hub) ; tl : la montre de l'appareil, seulement au magasin du mode test (une seule page) */
+      if(!out[s]||t>out[s].t||(t===out[s].t&&dev>out[s].dev))out[s]={a:+x.a?1:0,t:t,dev:dev,g:x.g||''}; }); });
   return out;
 }
 /* l'appel du pilote gardé dans le paquet d'une heure (`H/appel`, les clés échappées pour le hub) : les élèves « absents de l'heure » */
@@ -19971,7 +19971,7 @@ function edtAppelSlugDeCle(k){ return k; }   /* la clé d'un élève est son slu
 /* mes gestes pas encore revenus du hub, par-dessus ce que le hub rend (rien ne clignote, rien ne se perd) */
 function edtAppelAvecMes(ch,v){
   var o=(v&&typeof v==='object')?JSON.parse(JSON.stringify(v)):{},m=EDT_APPEL.mes[ch]||{};
-  Object.keys(m).forEach(function(s){ var x=m[s]; o[s]=o[s]||{}; var y=o[s][EDT_APPEL.dev]; if(!y||(+y.t||0)<x.t)o[s][EDT_APPEL.dev]=x; });
+  Object.keys(m).forEach(function(s){ var x=m[s]; o[s]=o[s]||{}; var y=o[s][EDT_APPEL.dev]; if(!y||y.g!==x.g)o[s][EDT_APPEL.dev]={a:x.a,t:Number.MAX_SAFE_INTEGER,g:x.g}; });   /* mon geste pas encore revenu du hub : le plus récent, pour cet écran */
   return o;
 }
 /* le redessin de la case : jamais pendant une saisie (un champ, un menu déroulé de la case) — il attend qu'on l'ait quittée */
@@ -20008,7 +20008,10 @@ setInterval(function(){ try{ if(EDT_APPEL.chemin&&!document.getElementById('edt-
 /* un geste dans la case (à venir, en cours, close) : l'entrée de CET appareil pour CET élève, et rien d'autre */
 function edtAppelGeste(cle,nomEleve){
   var b=edtAppelBaseDe(cle); if(!b)return; var l=edtAppelListeDe(b); if(!l){ if(typeof atInfo==='function')atInfo('La liste de l’appel se lit encore : réessaie dans un instant.'); return; }
-  var s=edtSlugEleve(nomEleve),k=edtAppelCleSure(s),x={a:l.indexOf(s)>=0?0:1,t:Date.now()};
+  var s=edtSlugEleve(nomEleve),k=edtAppelCleSure(s),g=Math.random().toString(36).slice(2,10),test=(typeof m8TestOn==='function'&&m8TestOn());
+  /* « le dernier geste » se juge à l'HEURE DU HUB (la conscience, 00:16 : une montre d'ordinateur en retard de quelques minutes ne doit jamais faire perdre un clic) :
+     le hub écrit lui-même son heure dans le geste (`{".sv":"timestamp"}`) ; en mode test, le magasin d'une seule page : sa montre */
+  var x={a:l.indexOf(s)>=0?0:1,t:test?Date.now():{'.sv':'timestamp'},tl:Date.now(),g:g};
   EDT_APPEL.mes[b.ch]=EDT_APPEL.mes[b.ch]||{}; EDT_APPEL.mes[b.ch][k]=x; edtAppelRedessiner();
   mjpcPutJson(FIREBASE_BASE+b.ch+'/'+k+'/'+EDT_APPEL.dev+'.json',x,'L’appel — '+nomEleve,function(){});
 }

@@ -1140,7 +1140,8 @@ const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: []
 
 const eleves = () => ELEVES;
 
-const absentA = (e, t) => { const seg = S.appel[e] || []; let present = true; for (const s of seg) { if (s.t <= (t || now())) present = (s.type === 'arrive' || s.type === 'revenu') ? true : (s.type === 'absent' || s.type === 'parti') ? false : present; } return !present; };
+/* C16 (㊱, 00:20) : un « absent » vaut depuis le début de l’heure (le menu le dit), quelle que soit la montre de l’appareil qui l’a marqué — mesuré : un absent marqué par un téléphone en avance de 3 min ne comptait, à l’ordinateur, qu’au bout de 3 min */
+const absentA = (e, t) => { const seg = S.appel[e] || []; let present = true; for (const s of seg) { if (s.type === 'absent' || s.t <= (t || now())) present = (s.type === 'arrive' || s.type === 'revenu') ? true : (s.type === 'absent' || s.type === 'parti') ? false : present; } return !present; };
 
 const dr_presents = () => ELEVES.filter(e => !absentA(e)).length;
 

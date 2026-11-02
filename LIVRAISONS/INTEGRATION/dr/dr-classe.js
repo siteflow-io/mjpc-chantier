@@ -1356,7 +1356,8 @@ setInterval(() => { try { const t = { 'gclore-oui': 'Clore l’heure malgré ce 
    · Au lancement : l'appel fait dans la case avant l'heure (`/site/edt/appel/<année>/<clé>`) entre dans l'appel, daté à l'horloge de l'heure (`now()`, jamais
      `S.debutReel` : défaut 256), une ligne de journal par élève ; ses entrées passent dans l'heure, puis il est retiré — « Annuler cette heure » le remet.
    · Le paquet de l'heure ne réécrit jamais l'appel (PATCH de ses propres clés, `dr_paquetPatch`). ─── */
-var DR_AP = { ec: null, chemin: null, pret: false, tEl: {}, attente: null, oT: null, avantVerse: null };
+var DR_AP = { ec: null, chemin: null, pret: false, vuDernier: {}, attente: null, oT: null, avantVerse: null };
+function dr_apDev(){ return 'p' + (typeof DR_SES === 'object' ? DR_SES.id : 'x'); }
 function dr_apSlug(e){ return typeof edtSlugEleve === 'function' ? edtSlugEleve(e) : String(e); }
 function dr_apCle(s){ return typeof edtAppelCleSure === 'function' ? edtAppelCleSure(s) : String(s); }
 function dr_apNette(v){ if (typeof edtAppelListeNette === 'function') return edtAppelListeNette(v); const l = Array.isArray(v) ? v : (v && typeof v === 'object' ? Object.values(v) : []); return l.filter((x, i, a) => typeof x === 'string' && x && a.indexOf(x) === i).sort(); }
@@ -1372,20 +1373,22 @@ function dr_apPoser(e, absent, raison, dire){ const h = S.heure; if (!e || !h ||
   return true; }
 /* l'entrée de CET appareil pour CET élève (`H/absentsPar/<élève>/p<appareil>`) : un geste d'appel d'ici, écrit aussitôt ; rien d'autre n'est réécrit */
 function dr_apGeste(e){ try { if (!e || !S.lancee || S.close || S.repetition || S.atelier) return; const ch = dr_cheminH(); if (!ch || !dr_apPeutEcrire()) return;
-  const k = dr_apCle(dr_apSlug(e)); const x = { a: dr_apAbsentDeLHeure(e, S.heure) ? 1 : 0, t: Date.now() }; DR_AP.tEl[k] = Math.max(DR_AP.tEl[k] || 0, x.t);
-  dr_ecrire(ch + '/absentsPar/' + k + '/p' + (typeof DR_SES === 'object' ? DR_SES.id : 'x'), x, 'L’appel de l’heure — ' + ((AT_DR_COURS || {}).classeNom || ''), () => {}); } catch (x) {} }
+  const k = dr_apCle(dr_apSlug(e)); const test = typeof m8TestOn === 'function' && m8TestOn();
+  /* l'heure du geste : celle du hub, écrite par le hub (`{".sv":"timestamp"}`) — jamais la montre de l'appareil (en mode test, le magasin d'une seule page : sa montre) */
+  const x = { a: dr_apAbsentDeLHeure(e, S.heure) ? 1 : 0, t: test ? Date.now() : { '.sv': 'timestamp' }, tl: Date.now(), g: Math.random().toString(36).slice(2, 10) };
+  dr_ecrire(ch + '/absentsPar/' + k + '/' + dr_apDev(), x, 'L’appel de l’heure — ' + ((AT_DR_COURS || {}).classeNom || ''), () => {}); } catch (x) {} }
 /* la télécommande : un appui marque un absent, un second appui le défait */
 function dr_apBasculer(e, raison){ if (!e || !S.lancee || S.close) return false; const abs = dr_apAbsentDeLHeure(e, S.heure); if (!dr_apPoser(e, !abs, raison)) return false;
   S.derniere = abs ? null : { type: 'appel', eleve: e }; try { participation(); } catch (x) {} dr_apGeste(e); return true; }
-/* l'appel de l'heure reçu du hub (le flux) : pour chaque élève, le dernier geste (l'heure du geste) ; plus récent que ce qu'ici sait : l'appareil qui a la main
-   le verse dans l'appel (un geste de la case : une ligne de journal ; d'un autre pilote : sans ligne, ce pilote a écrit la sienne) ; les autres appareils le
+/* l'appel de l'heure reçu du hub (le flux) : pour chaque élève, le dernier geste À L'HEURE DU HUB ; quand il change et qu'il vient d'un autre appareil, l'appareil
+   qui a la main le verse dans l'appel (aucune montre d'appareil n'est comparée) (un geste de la case : une ligne de journal ; d'un autre pilote : sans ligne, ce pilote a écrit la sienne) ; les autres appareils le
    reçoivent par l'état vivant. Une saisie en cours ici : il attend qu'on l'ait quittée (règle du 04/10). */
 function dr_apRecu(v){ if (!S.lancee || S.close || S.repetition) return; DR_AP.attente = (v && typeof v === 'object') ? v : {}; dr_apVerser(); }
 function dr_apVerser(){ clearTimeout(DR_AP.oT); const v = DR_AP.attente; if (!v) return;
   if (typeof dr_sesOccupe === 'function' && dr_sesOccupe()) { DR_AP.oT = setTimeout(dr_apVerser, 400); return; }
   DR_AP.attente = null; if (!S.lancee || S.close) return; const tient = !(typeof dr_sesJeTiens === 'function' && !dr_sesJeTiens());
   const D = typeof edtAppelDerniers === 'function' ? edtAppelDerniers(v) : {}; const parCle = {}; (typeof ELEVES !== 'undefined' ? ELEVES : []).forEach(e => { parCle[dr_apCle(dr_apSlug(e))] = e; }); let n = 0;
-  Object.keys(D).forEach(k => { const d = D[k]; if (d.t <= (DR_AP.tEl[k] || 0)) return; if (!tient) { DR_AP.tEl[k] = d.t; return; } DR_AP.tEl[k] = d.t; const e = parCle[k]; if (!e) return;
+  Object.keys(D).forEach(k => { const d = D[k]; const id = d.dev + '|' + (d.g || d.t); if (DR_AP.vuDernier[k] === id) return; DR_AP.vuDernier[k] = id; if (!tient || d.dev === dr_apDev()) return; const e = parCle[k]; if (!e) return;
     if (dr_apPoser(e, !!d.a, /^l/.test(d.dev) ? 'appel au lancement' : 'case de l’emploi du temps', !/^p/.test(d.dev))) n++; });
   if (n) { try { participation(); } catch (x) {} try { dr_tout(); } catch (x) {} } }
 /* l'abonnement du pilote à l'appel de son heure (vraie heure ; ni en répétition, ni à l'Atelier, ni au tableau, ni en mode test) */
@@ -1407,7 +1410,7 @@ function dr_apCheminAvant(){ try { const L = window.DR_AP_LANCE; if (L && L.chem
    quelles), puis il est retiré — gardé ici pour « Annuler cette heure », qui le remet. À la reprise : l'appel de l'heure au hub fait foi. */
 function dr_absentsDeLaCase(lancement){
   const ch = (typeof dr_cheminH === 'function') ? dr_cheminH() : null; if (!ch || typeof edtSlugEleve !== 'function' || S.repetition) return;
-  DR_AP.pret = false; DR_AP.tEl = {}; const avCh = lancement ? dr_apCheminAvant() : null; window.DR_AP_LANCE = null; if (lancement) DR_AP.avantVerse = null;
+  DR_AP.pret = false; DR_AP.vuDernier = {}; const avCh = lancement ? dr_apCheminAvant() : null; window.DR_AP_LANCE = null; if (lancement) DR_AP.avantVerse = null;
   const fini = () => { DR_AP.pret = true; };
   dr_lire(ch, H => { const suite = av => { try {
     H = H || {}; const h = S.heure; const avPar = (av && typeof av === 'object' && av.absentsPar && typeof av.absentsPar === 'object') ? av.absentsPar : null;
@@ -1417,7 +1420,7 @@ function dr_absentsDeLaCase(lancement){
     (typeof ELEVES !== 'undefined' ? ELEVES : []).forEach(e => { const s = dr_apSlug(e), k = dr_apCle(s); const dans = L.includes(s); const abs = dr_apAbsentDeLHeure(e, h);
       if (dans && !abs) { if (dr_apPoser(e, true, Dv[k] && Dv[k].a ? 'appel au lancement' : 'case de l’emploi du temps')) n++; }
       else if (!dans && abs && !lancement && (H.appelUnique || (par[k] && Object.keys(par[k]).length))) { if (dr_apPoser(e, false, 'case de l’emploi du temps')) n++; } });
-    const D = typeof edtAppelDerniers === 'function' ? edtAppelDerniers(par) : {}; Object.keys(D).forEach(k => { DR_AP.tEl[k] = D[k].t; });
+    const D = typeof edtAppelDerniers === 'function' ? edtAppelDerniers(par) : {}; Object.keys(D).forEach(k => { DR_AP.vuDernier[k] = D[k].dev + '|' + (D[k].g || D[k].t); });
     if (n) { try { participation(); } catch (x) {} dr_tout(); }
     if (avPar && dr_apPeutEcrire()) { dr_ecrire(ch + '/absentsPar', par, 'L’appel d’avant l’heure, entré dans l’heure', () => {}); DR_AP.avantVerse = { chemin: avCh, val: av }; dr_ecrire(avCh, null, 'L’appel d’avant l’heure, versé dans l’heure', () => {}); }
   } catch (e) {} fini(); };

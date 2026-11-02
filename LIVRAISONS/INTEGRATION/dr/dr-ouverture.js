@@ -125,7 +125,7 @@ function dr_ouvContenu(role, sk){
   }
   if (role === 'problematique') {
     const q = String(c.problematique || '').trim();   /* son manque est dit une fois, sur la présentation du chapitre */
-    return fin('Notre question', 'problematique', q ? [q] : [], { kicker: 'NOTRE QUESTION' });
+    return fin('Notre problématique', 'problematique', q ? [q] : [], { kicker: 'NOTRE PROBLÉMATIQUE' });   /* C16 (micro 2, Paul 02/11 08:25 : « Il doit s'appeler notre problématique ») — lisait « Notre question » / « NOTRE QUESTION » */
   }
   return fin('', 'probleme', [], {});
 }
@@ -206,7 +206,7 @@ function dr_ouvCarteHtml(e, durChamp, masq){
       + ` <button class="btn" data-ouv-image-retirer="${cible}"${x ? '' : ' disabled'} title="${x ? (cible === 'chapitre' ? 'Plus d’image sur la présentation du chapitre (ni sur les débuts de séance qui la reprenaient) : la colonne de texte prend toute la largeur ; « À régler » ne la réclame plus' : 'Plus d’image sur ce début de séance : la colonne de texte prend toute la largeur') : 'Il n’y a pas d’image à retirer'}">Retirer</button></div>`; };
   if (dr_ouvChampsChapitre(e)) {
     if (e.role === 'presentation-chapitre') h += lab('TITRE DU CHAPITRE') + `<div class="l">${champ('dc-ouv-titre', 'titre', c.title, 'Le titre du chapitre — sur la présentation du chapitre, dans la liste de tes chapitres, sur la feuille sommaire ; il change pour toutes tes classes. Entrée le garde.')}</div>`;
-    h += lab('LA QUESTION DU CHAPITRE') + `<div class="l">${champ('dc-ouv-question', 'question', c.problematique, 'La problématique du chapitre — sur la présentation du chapitre, sur la diapo « Notre question » de chaque séance et sur la feuille sommaire, pour toutes tes classes. Entrée la garde.', true)}</div>`;
+    h += lab('LA PROBLÉMATIQUE DU CHAPITRE') + `<div class="l">${champ('dc-ouv-question', 'question', c.problematique, 'La problématique du chapitre — sur la présentation du chapitre, sur la diapo « Notre question » de chaque séance et sur la feuille sommaire, pour toutes tes classes. Entrée la garde.', true)}</div>`;
     if (e.role === 'presentation-chapitre') h += image('chapitre', c.image === false ? null : dr_ouvImage(c.image));
   } else {
     const L = dr_ouvSeances(c, null); const rang = Math.max(0, L.findIndex(p => String(p.j) === String(sk))) + 1;

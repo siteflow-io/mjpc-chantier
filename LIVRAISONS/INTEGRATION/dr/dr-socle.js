@@ -109,6 +109,10 @@ const DR_INV_TETE_PREMIERE = ['presentation-chapitre', 'competences-chapitre'];
 const DR_INV_TETE_SEANCE = ['plan', 'presentation-seance', 'problematique'];
 const DR_INV_TETE = DR_INV_TETE_PREMIERE.concat(DR_INV_TETE_SEANCE);
 const DR_INV = DR_INV_TETE.concat(['competences-bilan']);
+/* C16 (micro 2 de la conscience, Paul 02/11 08:25 : « La problématique doit toujours suivre la diapo de présentation de chapitre ») : l'ordre de la première séance —
+   la présentation du chapitre, la problématique, les compétences du chapitre, le parcours, le début de séance (lisait : la problématique en dernier). Les autres
+   séances (sans présentation du chapitre) gardent le parcours, le début de séance, la problématique. */
+const DR_INV_ORDRE_PREMIERE = ['presentation-chapitre', 'problematique', 'competences-chapitre', 'plan', 'presentation-seance'];
 const DR_INV_NOM = { 'presentation-chapitre': 'la présentation du chapitre', 'competences-chapitre': 'les compétences du chapitre', plan: 'le parcours du chapitre', 'presentation-seance': 'le début de séance', problematique: 'la problématique', 'competences-bilan': 'les compétences du chapitre en bilan' };
 /* §12.74 (3) : le rôle d'une diapo dit en clair dans l'en-tête du pilote (« problématique », pas « problematique ») */
 const DR_ROLE_CLAIR = { 'presentation-chapitre': 'présentation du chapitre', 'competences-chapitre': 'compétences du chapitre', plan: 'parcours du chapitre', 'presentation-seance': 'début de séance', problematique: 'problématique', 'competences-bilan': 'compétences du chapitre (bilan)', reactivation: 'réactivation', bilan: 'bilan', fin: 'Cahier de textes' };
@@ -289,8 +293,15 @@ function dr_invPoser(E, sk){ try { if (sk == null || !Array.isArray(E) || dr_pag
   const ret = dr_invRetraits(sce, sk);
   for (let i = E.length - 1; i >= 0; i--) if (dr_estInvariable(E[i]) && ret.indexOf(E[i].role) >= 0 && dr_invIntacte(E[i])) E.splice(i, 1);   /* retirée ici ou sur un autre appareil */
   const vraies = E.filter(e => e && !e.dr_pose && e.role !== 'fin' && !dr_estInvariable(e)); if (!vraies.length) return;   /* une séance sans trame n'a pas encore de début */
-  const h0 = Math.min(...vraies.map(e => +e.heure || 1)); const voulus = (dr_invPremiere(sk) ? DR_INV_TETE : DR_INV_TETE_SEANCE).filter(r => ret.indexOf(r) < 0);
+  const h0 = Math.min(...vraies.map(e => +e.heure || 1)); const prem = dr_invPremiere(sk); const voulus = (prem ? DR_INV_ORDRE_PREMIERE : DR_INV_TETE_SEANCE).filter(r => ret.indexOf(r) < 0);
   let pos = 0; voulus.forEach(r => { const k = E.findIndex(e => e && e.role === r); if (k >= 0) { pos = k + 1; return; } E.splice(pos, 0, dr_invNeuve(r, sk, h0)); pos++; });
+  /* C16 (micro 2) : à la première séance, les diapos d'ouverture déjà écrites au hub (dans l'ancien ordre) reprennent l'ordre voulu, à leurs places (les autres diapos
+     ne bougent pas) — sauf dans une heure de classe dont la classe a déjà vu une diapo (ce qui a été joué ne change plus) ; le nom d'avant « Notre question »,
+     jamais écrit par Paul, devient « Notre problématique » */
+  const joueDeja = (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe') && (typeof J !== 'undefined' && Array.isArray(J) && J.some(x => x && x.type === 'diapo'));
+  if (!joueDeja) { E.forEach(e => { if (e && e.role === 'problematique' && e.act === 'Notre question') e.act = 'Notre problématique'; });
+    if (prem) { const places = []; E.forEach((e, i) => { if (e && DR_INV_ORDRE_PREMIERE.indexOf(e.role) >= 0) places.push(i); });
+      const tri = places.map(i => E[i]).sort((a, b) => DR_INV_ORDRE_PREMIERE.indexOf(a.role) - DR_INV_ORDRE_PREMIERE.indexOf(b.role)); places.forEach((i, n) => { E[i] = tri[n]; }); } }
   /* §12.67 (8), C13 1020 : à la dernière séance, « Les compétences du chapitre » revient, juste avant la diapo du bilan de la séance (sans bilan : juste avant le cahier de textes de sa dernière heure) */
   if (dr_invDerniere(sk) && ret.indexOf('competences-bilan') < 0 && !E.some(e => e && e.role === 'competences-bilan')) {
     let ib = -1; E.forEach((e, i) => { if (dr_invEstBilan(e)) ib = i; });

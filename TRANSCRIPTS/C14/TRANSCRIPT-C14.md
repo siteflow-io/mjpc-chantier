@@ -4244,3 +4244,31 @@ Sujet 2 : ce que l'élève corrige. Mesuré sur la copie de l'essai : 54 fautes 
 02/11/2026 15:48
 
 MEMO
+
+---
+
+## Tour 152 — 02/11/2026 16:00
+
+**Paul (16:00) :**
+
+Je n'ai rien compris à ton message.
+
+**Claude (16:02) :**
+
+À jouer : ton mot sur 13 à 16 · en cours : rien · ouvert : ce qu'on reprend tel quel, un peu, beaucoup (après ton mot), les sujets suivants de ce cadrage, 738 (après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+5 à 12, en simple, avec la copie de l'essai.
+
+13. Comme en dictée : l'élève voit sa lettre, telle que tu l'as recopiée. Ses fautes y sont cachées. Il clique sur une faute, tape le bon mot, et l'app dit juste ou faux. Exemple : il avait écrit « constament » ; il voit le mot caché ; il tape « constamment » : juste. C'est ce qui fait sa note sur 5.
+
+14. Un seul cas ne marche pas comme en dictée : quand ta correction change plusieurs mots. Exemple : il avait écrit « dont ils venait », tu as gardé « qui venaient ». Il pourrait taper une autre réponse juste, et l'app dirait faux. Ma proposition : ces fautes-là, il ne les tape pas, il lit ta correction. Dans l'essai : 5 fautes sur 54.
+
+15. Ses remarques, les phrases « À reprendre » : l'app ne peut pas savoir si sa phrase reprise est bonne. Ma proposition : il les lit dans l'app, sans note, et il s'en sert pour recopier sa lettre pour la cérémonie.
+
+16. Le reste, comme en dictée : le stylo vert, puis les questions pour regagner des points.
+
+À tester : rien de neuf.
+
+02/11/2026 16:02
+
+MEMO

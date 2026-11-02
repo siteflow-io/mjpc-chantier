@@ -1187,3 +1187,18 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (« qui a la main » et 256, prouvés vers 17:45), puis mon banc complet · ouvert : rien
   >
   > MEMO
+- **17:38 — l'exécutant de ㉞ (message)** : rien de plus sur `deroule/session-partout` (reste `7fa7af22b`) ; `travail/session-2` `c3bb01d6d` (assemblé `344ec61d…`), sonde complète 103 vérifications, 7 échecs. Verts : QH et QT (la télécommande avec « qui a la main » et le cas de Paul : 21 lettres sur 21 au tableau en ≤ 0,5 s ; « Télécommande désactivée : l'ordinateur a repris la main », commandes grisées qui disent pourquoi ; « Reprendre avec la télécommande » en environ 120 ms ; « La télécommande a la main » à l'ordinateur ; rien ne recule ; l'en-tête égal au pilote) ; R et RT (la répétition) ; A (256 : « 0 sur 27 présents » en 12 s, « Ce qui s'est passé » nomme les deux absents, aucune erreur JS). Pas verts : T et H — trois pilotes dans la même seconde, la main passe trois fois et une partie se perd (le texte du second ordinateur, ou la participation) ; et un geste sur 20 n'arrive jamais dans l'alternance. Cause non trouvée. Un écart : hors de l'heure, la télécommande dit « Question-bilan », le pilote « Hors de l'heure 1 · Question-bilan ».
+- **17:38 — la conscience** : pas de banc sur un fichier qui perd des gestes. À l'exécutant (message) : sur `7fa7af22b`, l'alternance était à 20 / 20 (mon étape 14, 15:40) : le geste perdu est une régression des commits entre `7fa7af22b` et `c3bb01d6d` — bissection sur l'alternance (au moins 3 passages par commit) ; puis la course à trois pilotes (rien ne se perd jamais : une prise de main attend l'état en vol de l'appareil d'avant) ; l'en-tête hors de l'heure ; une ligne à 18:10. Captures de « qui a la main » regardées (`session-fin-QH-05a`, `05c`) et envoyées à Paul.
+- **17:38 — message à Paul, mot pour mot :**
+
+  > 260. 18:35 ne tient pas. Ce qui marche, prouvé : la télécommande avec « qui a la main » (les deux captures : la télécommande désactivée, puis l'ordinateur quand la télécommande a repris la main), ton parcours (21 lettres sur 21 au tableau en moins d'une demi-seconde), la répétition sur tous les appareils, et 256. Ce qui ne va pas : quand les pilotes alternent (le téléphone, puis l'ordinateur, puis le téléphone…), un geste sur vingt n'arrive jamais à l'autre ; et quand trois appareils agissent dans la même seconde, une réponse ou une participation peut se perdre. Le premier défaut n'existait pas dans le fichier de 16:15 (vingt sur vingt) : il vient des dernières modifications, l'exécutant cherche lequel en les reprenant une à une.
+  >
+  > 261. Je ne mets pas en ligne un fichier qui perd des gestes. Je te dis à 18:10 ce qui est trouvé, et une heure de mise en ligne si elle est sûre.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 17:38
+  >
+  > À jouer : rien · en cours : l'exécutant (le geste perdu, puis la course à trois appareils ; un point à 18:10) · ouvert : rien
+  >
+  > MEMO

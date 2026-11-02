@@ -150,8 +150,10 @@ function stRendre() {
     + '<button class="sc-btn" onclick="stValidationOuvrir()" title="Valider la grille une ligne par écran : tous les stickers de la ligne et leurs rattachements ; Entrée valide la ligne entière.">✓ Valider ligne par ligne</button>'
     + '<button class="sc-btn" id="stGrilleIA" onclick="stGrilleIA()" title="Télécharger un fichier pour ton IA : le sujet, les lignes de ta grille et les stickers déjà là. Dans une nouvelle conversation, l’IA te pose d’abord ses questions (les textes lus, ce que tu attends, ce qui compte), puis propose des stickers. Tu charges son fichier par « 📥 Charger des stickers », puis tu valides.">⇪ Faire la grille avec l’IA</button>'
     + '<label class="sc-btn" title="Charger une grille de stickers depuis un fichier (le format mjpc-redaction-stickers/1) : ils arrivent à valider ; un numéro déjà là reste tel quel.">📥 Charger des stickers<input type="file" accept=".json,application/json" onchange="stCharger(event)" hidden></label>'
-    + '<button class="sc-btn" onclick="stReprendreChoisir()" title="Copier ici les stickers d’un autre sujet (le même sujet dans une autre classe), avec leurs rattachements et leur validation.">⧉ Reprendre ceux d’un autre sujet</button></div>'
+    + '<button class="sc-btn" onclick="stReprendreChoisir()" title="Copier ici les stickers d’un autre sujet (le même sujet dans une autre classe), avec leurs rattachements et leur validation.">⧉ Reprendre ceux d’un autre sujet</button>'
+    + '<button class="sc-btn" id="stBaremeReporter" onclick="stBaremeReporterChoisir()" title="Donner les mêmes points et les mêmes seuils, ligne par ligne, à la grille d’une autre classe du même sujet. Avant de rien changer, ce qui change.">⧉ Mêmes points pour une autre classe</button></div>'
     + '<div class="st-cols"><nav class="st-arbre">' + arbre + '</nav><section class="st-milieu"><div class="st-ligne-titre"><b>' + escapeHtml(l.titre) + "</b> · " + stNb(l.poids) + " points"
+    + '<div class="st-compte st-bareme" title="Les points de chaque niveau de cette ligne' + (l.calcul ? ", et ses seuils" : "") + '. La grille fait ' + stNb(stTotal()) + ' points en tout.">' + escapeHtml(stBaremeTexte(l)) + ' <button class="sc-btn" id="stBaremeRegler" onclick="stBaremeRegler()" title="Régler les points de chaque niveau de cette ligne' + (l.calcul ? " et ses seuils" : "") + ' ; avant de rien changer, chaque note qui change, et la moyenne de la classe, avant et après.">⚖ Les points</button></div>'
     + (l.calcul ? "" : '<label class="st-comp-ligne">Compétence de la ligne <select onchange="stLigneChamp(\'competence\',this.value)" title="La compétence de la ligne : chaque nouveau sticker la prend par défaut."><option value="">—</option>' + T.comp.map(c => '<option value="' + escapeAttr(c.id) + '"' + (c.id === conf.competence ? " selected" : "") + ">" + escapeHtml(c.id) + "</option>").join("") + "</select></label>"
       + '<div class="st-compte" title="Combien de manques donnent quel niveau. Le barème de la ligne donne les points de chaque niveau.">' + escapeHtml(stCompteTexte(l.id)) + ' <button class="sc-btn" onclick="stCompteRegler()" title="Régler le compte de cette ligne : combien de manques au plus pour chaque niveau.">Régler</button></div>') + "</div>" + cartes + "</section>"
     + '<aside class="st-ratt">' + ratt + "</aside></div></div>";
@@ -183,6 +185,100 @@ function stCompteRegler() { const [a, b, c] = stSeuils(ST.ligne), n = stComptent
   scModale(`<h3>Le compte de « ${escapeHtml(stLigne(ST.ligne).titre)} »</h3><p>${n} sticker${n > 1 ? "s" : ""} qui comptent. Combien de manques au plus pour chaque niveau ? Le barème de la ligne donne les points.</p>`
     + [[3, a], [2, b], [1, c]].map(([nv, x]) => `<p><label>Niveau ${nv} (${stNb(stPoints(ST.ligne, nv))} pt) : jusqu’à <input type="number" min="0" max="${n}" value="${x}" id="stSeuil${nv}" style="width:4em"> manque(s)</label></p>`).join("")
     + `<p class="sc-m">Au-delà : niveau 0 (${stNb(stPoints(ST.ligne, 0))} pt). Une copie déjà corrigée dont la note changerait est listée avant que rien ne change.</p><button class="sc-btn" onclick="stCompteGarder()" title="Garder ce compte pour cette ligne.">Garder</button>`); }
+/* ═══ [C14 1.4.29] (Paul 02/11 22:33 : « je trouve les notes extrêmement basses. Il faut que je puisse régler les points de la grille, c'est faisable? » ; « ok pour 80 », 22:41) :
+   les points de chaque niveau d'une ligne (le niveau 3 donne ceux de la ligne), et les seuils des deux lignes calculées ; avant de rien changer, chaque note qui change
+   et la moyenne de la classe, avant et après ; le total se recalcule ; un bouton donne les mêmes points à la grille d'une autre classe du même sujet ═══ */
+function stTotal() { return stSujetLignes().reduce((s, l) => s + (Number(l.poids) || 0), 0); }
+function stPoint(id) { const g = SUJET && SUJET.grille2; return ((g && g.criteres) || []).flatMap(c => c.points || []).find(p => p.id === id) || null; }
+function stCases(pt, type) { return ((pt && pt.cases) || []).map(c => { const m = new RegExp("^calc:" + type + ":([\\d.]+)-([\\d.]+)$").exec(c.si || ""); return m ? { c, a: +m[1], b: +m[2] } : null; }).filter(Boolean); }
+/* [C14 1.4.29, trouvé au vrai site, en lecture seule] les seuils se lisent en nombres entiers (lignes) ou en erreurs pour dix lignes, au plus près de ce que la grille contient :
+   la grille du site dit « 1-1,3334 » pour 30 à 40 lignes ; « Garder » sans rien changer laisse chaque case telle quelle, ses mots aussi */
+function stLignesSeuils(pt) {
+  const C = stCases(pt, "lignes"), lg = scLong(), bas = a => Math.max(0, Math.ceil(a * lg - 1e-6)), haut = b => Math.floor(b * lg + 1e-6), x3 = C.find(y => y.c.niveau === 3);
+  const dessous = C.filter(y => y !== x3 && (!x3 || y.b <= x3.a + 1e-6)), x2 = dessous.find(y => y.c.niveau === 2), x1 = dessous.find(y => y.c.niveau === 1);
+  return { lg, bas, haut, x3, x2, x1, L3: x3 ? bas(x3.a) : lg, Lm: x3 ? haut(x3.b) : Math.round(lg * 4 / 3), L2: x2 ? bas(x2.a) : Math.round(lg * 0.8), L1: x1 ? bas(x1.a) : Math.round(lg * 0.6) };
+}
+function stFautesSeuils(pt) { const C = stCases(pt, "fautes"), h = n => { const x = C.find(y => y.c.niveau === n && y.a < 50); return x ? Math.round(x.b * 1000) / 100 : null; }; return { 3: h(3), 2: h(2), 1: h(1) }; }
+function stBaremeTexte(l) { const b = l.bareme || []; let s = "Niveau 3 : " + stNb(Number(b[3]) || 0) + " pt · 2 : " + stNb(Number(b[2]) || 0) + " · 1 : " + stNb(Number(b[1]) || 0) + " · 0 : " + stNb(Number(b[0]) || 0);
+  const pt = stPoint(l.id);
+  if (l.calcul === "fautes") { const F = stFautesSeuils(pt), h = n => F[n] == null ? "?" : stNb(F[n]); s += " · erreurs pour dix lignes, au plus : " + h(3) + " (3), " + h(2) + " (2), " + h(1) + " (1)"; }
+  if (l.calcul === "lignes") { const S = stLignesSeuils(pt); s += " · lignes : " + (S.x3 ? S.L3 + " à " + S.Lm : "?") + " (3), dès " + (S.x2 ? S.L2 : "?") + " (2), dès " + (S.x1 ? S.L1 : "?") + " (1)"; }
+  return s; }
+const ST_CHIFFRES = ["zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze"];
+function stFautesDit(r) {   // un taux d'erreurs par ligne, dit à l'élève comme dans la grille d'origine : « une toutes les quatre lignes »
+  if (r <= 0) return "aucune"; const k = 1 / r, kr = Math.round(k);
+  if (Math.abs(k - kr) < 0.02 && kr >= 1 && kr <= 12) return kr === 1 ? "une par ligne" : "une toutes les " + ST_CHIFFRES[kr] + " lignes"; return stNb(Math.round(r * 100) / 10) + " pour dix lignes"; }
+function stBaremeRegler() {
+  const l = stLigne(ST.ligne); if (!l) return; const b = l.bareme || [], pt = stPoint(l.id), lg = scLong();
+  const champ = (id, v, pas, t) => `<input type="number" min="0" step="${pas}" value="${v}" id="${id}" style="width:5em" title="${escapeAttr(t)}">`;
+  let calc = "";
+  if (l.calcul === "fautes") { const F = stFautesSeuils(pt), h = n => F[n] == null ? 0 : F[n];
+    calc = `<h4>Les seuils : combien d’erreurs pour dix lignes recopiées, au plus</h4>` + [3, 2, 1].map(n => `<p><label>Niveau ${n} : au plus ${champ("stSeuilF" + n, h(n), 0.5, "Erreurs gardées dans la bande, pour dix lignes recopiées, au plus, pour le niveau " + n)} erreurs pour dix lignes</label></p>`).join("") + `<p class="sc-m">Au-delà : niveau 0. Aujourd’hui : niveau 3 jusqu’à ${stFautesDit(h(3) / 10)}, niveau 2 jusqu’à ${stFautesDit(h(2) / 10)}, niveau 1 jusqu’à ${stFautesDit(h(1) / 10)}.</p>`; }
+  if (l.calcul === "lignes") { const S = stLignesSeuils(pt);
+    calc = `<h4>Les seuils : combien de lignes recopiées (le sujet en demande ${lg})</h4><p><label>Niveau 3 : de ${champ("stSeuilL3", S.L3, 1, "Le nombre de lignes à partir duquel la lettre a la longueur demandée")} à ${champ("stSeuilLmax", S.Lm, 1, "Au-delà, la lettre est trop longue")} lignes</label></p>`
+      + `<p><label>Niveau 2 : dès ${champ("stSeuilL2", S.L2, 1, "Le nombre de lignes à partir duquel la lettre a le niveau 2")} lignes</label></p><p><label>Niveau 1 : dès ${champ("stSeuilL1", S.L1, 1, "Le nombre de lignes à partir duquel la lettre a le niveau 1")} lignes</label></p><p class="sc-m">En dessous : niveau 0. Trop longue : le niveau qu’elle a aujourd’hui.</p>`; }
+  scModale(`<h3>⚖ Les points de « ${escapeHtml(l.titre)} »</h3><p>Les points de chaque niveau. Le niveau 3 donne les points de la ligne : la grille fait aujourd’hui ${stNb(stTotal())} points en tout.</p>`
+    + [3, 2, 1, 0].map(n => `<p><label>Niveau ${n} : ${champ("stPts" + n, Number(b[n]) || 0, 0.25, "Les points du niveau " + n + " de cette ligne")} pt</label></p>`).join("") + calc
+    + `<p class="sc-m">Avant que rien ne change : chaque copie déjà corrigée dont la note change, et la moyenne de la classe, avant et après.</p><button class="sc-btn" id="stBaremeGarder" onclick="stBaremeGarder()" title="Voir ce qui change, puis appliquer.">Garder</button> <button class="sc-btn" onclick="scModaleFermer()" title="Ne rien changer.">Annuler</button>`);
+}
+function stBaremeLire(l) {   // ce que la fenêtre dit : le nouveau point de la grille (une copie) ; une case dont la plage ne change pas reste telle quelle
+  const v = id => { const e = document.getElementById(id); return e ? Math.max(0, parseFloat(String(e.value).replace(",", ".")) || 0) : null; }, pt = JSON.parse(JSON.stringify(stPoint(l.id) || {}));
+  const b = [0, 1, 2, 3].map(n => v("stPts" + n)); for (let i = 1; i < 4; i++) b[i] = Math.max(b[i], b[i - 1]);
+  if (JSON.stringify(b) !== JSON.stringify((pt.bareme || []).map(Number)) || Number(pt.poids) !== b[3]) { pt.bareme = b; pt.poids = b[3]; }
+  if (l.calcul === "fautes") { const F0 = stFautesSeuils(pt), q = x => Math.round(x * 10000) / 10000, s = [3, 2, 1].map(n => v("stSeuilF" + n) / 10);
+    for (let i = 1; i < 3; i++) s[i] = Math.max(s[i], s[i - 1] + 0.001); const [s3, s2, s1] = s.map(q);
+    const ech = { 3: [0, s3], 2: [q(s3 + 0.0001), s2], 1: [q(s2 + 0.0001), s1], 0: [q(s1 + 0.0001), 99] }, dit = { 3: s3, 2: s2, 1: s1, 0: s1 }, avant = { 3: F0[3], 2: F0[2], 1: F0[1], 0: F0[1] };   // la valeur que les mots de chaque niveau disent
+    const fait = n => { const d = stFautesDit(dit[n]); return "{e} erreurs sur tes {n} lignes : " + (n ? d + " au plus." : (/^une /.test(d) ? "plus d’" + d : "plus de " + d) + "."); };
+    pt.cases = (pt.cases || []).map(c => { const m = /^calc:fautes:([\d.]+)-([\d.]+)$/.exec(c.si || ""); if (!m || !ech[c.niveau]) return c; const [a, z] = ech[c.niveau];
+      if (Math.abs(+m[1] - a) < 1e-6 && Math.abs(+m[2] - z) < 1e-6) return c;
+      const o = Object.assign({}, c, { si: "calc:fautes:" + a + "-" + z });
+      if (avant[c.niveau] == null || Math.abs(avant[c.niveau] / 10 - dit[c.niveau]) > 1e-6) Object.assign(o, { quand: c.niveau === 0 ? "au-delà de " + Math.round(s1 * 100) + " %" : "jusqu’à " + Math.round(z * 100) + " %", fait: fait(c.niveau) });
+      return o; }); }
+  if (l.calcul === "lignes") { const S = stLignesSeuils(pt), lg = S.lg, n = id => Math.round(v(id));
+    const L3 = Math.max(3, n("stSeuilL3")), Lm = Math.max(n("stSeuilLmax"), L3), L2 = Math.max(2, Math.min(n("stSeuilL2"), L3 - 1)), L1 = Math.max(1, Math.min(n("stSeuilL1"), L2 - 1));
+    const t = x => Math.round(x / lg * 10000) / 10000;   // un seuil tombe entre deux nombres de lignes (29,5 lignes) : aucune lettre n'est dessus
+    pt.cases = (pt.cases || []).map(c => { const m = /^calc:lignes:([\d.]+)-([\d.]+)$/.exec(c.si || ""); if (!m) return c; const a = +m[1], z = +m[2], trop = S.x3 && c !== S.x3.c && a >= S.x3.b - 1e-6;
+      let de, a2, quand;
+      if (S.x3 && c === S.x3.c) { de = L3; a2 = Lm; quand = "de " + L3 + " à " + Lm + " lignes"; }
+      else if (trop) { de = Lm + 1; a2 = Infinity; quand = "plus de " + Lm + " lignes"; }
+      else if (c.niveau === 2) { de = L2; a2 = L3 - 1; quand = "de " + L2 + " à " + (L3 - 1) + " lignes"; }
+      else if (c.niveau === 1) { de = L1; a2 = L2 - 1; quand = "de " + L1 + " à " + (L2 - 1) + " lignes"; }
+      else if (c.niveau === 0) { de = 0; a2 = L1 - 1; quand = "moins de " + L1 + " lignes"; }
+      else return c;
+      if ((a <= 0 ? 0 : S.bas(a)) === de && (z >= 50 ? Infinity : S.haut(z)) === a2) return c;   // sa plage, en lignes, ne change pas
+      const o = Object.assign({}, c, { si: "calc:lignes:" + (de ? t(de - 0.5) : 0) + "-" + (a2 === Infinity ? 99 : t(a2 + 0.5)), quand });
+      if (trop && S.Lm !== Lm) Object.assign(o, { fait: "Ta lettre fait {n} lignes : plus de " + (Lm - lg) + " lignes de trop.", tache: c.tache ? "Resserre ta lettre à " + Lm + " lignes au plus." : c.tache });
+      return o; }); }
+  return pt;
+}
+function stGrilleAvec(g, pt) { const G = JSON.parse(JSON.stringify(g || {})); (G.criteres || []).forEach(c => { c.points = (c.points || []).map(p => p.id === pt.id ? pt : p); }); return G; }
+function stGrilleEcrire(G, quoi) {
+  SUJET.grille2 = G; const tot = G.criteres.flatMap(c => c.points || []).reduce((s, p) => s + (Number(p.poids) || 0), 0); SUJET.total = tot;
+  ruEcrire(["redactions", RU.id, "config", "grille2"], JSON.parse(JSON.stringify(G)), quoi); ruEcrire(["redactions", RU.id, "config", "total"], tot, "le total de la grille");
+  if (typeof SC === "object" && SC.ouvert && typeof scGrilleNormale === "function") SC.grille = scGrilleNormale(JSON.parse(JSON.stringify(G)));
+  if (typeof svVerifier === "function") svVerifier();
+}
+function stBaremeGarder() {
+  const l = stLigne(ST.ligne); if (!l) return; const pt = stBaremeLire(l), G = stGrilleAvec(SUJET.grille2, pt); scModaleFermer();
+  if (JSON.stringify(G) === JSON.stringify(SUJET.grille2)) { toast("Rien n’a changé : les points de « " + l.titre + " » restent tels quels."); return; }
+  stSiNotesChangent(() => { SUJET.grille2 = G; }, () => { stGrilleEcrire(G, "les points d’une ligne de la grille"); toast("Les points de « " + l.titre + " » : gardés. La grille fait " + stNb(stTotal()) + " points."); }, "Les points de « " + l.titre + " »");
+}
+/* le même barème pour une autre classe du même sujet : ligne par ligne, les lignes qui ont le même identifiant */
+function stBaremeReporterChoisir() {
+  fetch(ruUrl(["redactions"]) + "?shallow=true").then(r => r.json()).then(T => Promise.all(Object.keys(T || {}).filter(id => id !== RU.id).map(id => Promise.all([ruLire(["redactions", id, "config", "titre"]), ruLire(["redactions", id, "config", "classe"]), ruLire(["redactions", id, "config", "grille2"])]).then(([ti, cl, g]) => ({ id, titre: ti || id, classe: cl || "", g })))))
+    .then(L => { const ici = SUJET.grille2, P = id => ((ici && ici.criteres) || []).flatMap(c => c.points || []).find(p => p.id === id);
+      L = L.filter(x => x.g && x.g.criteres).map(x => Object.assign(x, { diff: x.g.criteres.flatMap(c => c.points || []).filter(p => P(p.id) && JSON.stringify([P(p.id).bareme, P(p.id).poids, P(p.id).cases]) !== JSON.stringify([p.bareme, p.poids, p.cases])).map(p => p.id),
+        communes: x.g.criteres.flatMap(c => c.points || []).filter(p => P(p.id)).length })).filter(x => x.communes); ST.reporter = L;
+      scModale(`<h3>⧉ Mêmes points pour une autre classe</h3>${L.length ? `<p>Les lignes qui ont le même nom dans sa grille reçoivent les points et les seuils d’ici. Ses notes changent à sa prochaine ouverture.</p>` + L.map((x, i) => `<p><button class="sc-btn" onclick="stBaremeReporter(${i})" ${x.diff.length ? "" : "disabled"} title="${x.diff.length ? escapeAttr("Donner à sa grille les points d’ici : " + x.diff.length + " ligne(s) changent.") : "Grisé : sa grille a déjà les mêmes points."}">⧉ ${escapeHtml(x.titre)}${x.classe ? " · " + escapeHtml(x.classe) : ""}</button> <span class="sc-m">${x.diff.length ? x.diff.length + " ligne" + (x.diff.length > 1 ? "s" : "") + " changent" : "déjà les mêmes points"}</span></p>`).join("") : "<p>Aucune autre classe n’a une grille avec les mêmes lignes.</p>"}`); })
+    .catch(() => toast("⚠ Le site ne répond pas : la liste des classes n’a pas pu être lue."));
+}
+function stBaremeReporter(i) {
+  const x = (ST.reporter || [])[i]; if (!x) return; const ici = SUJET.grille2, P = id => ((ici && ici.criteres) || []).flatMap(c => c.points || []).find(p => p.id === id);
+  const G = JSON.parse(JSON.stringify(x.g)); G.criteres.forEach(c => { c.points = (c.points || []).map(p => { const q = P(p.id); return q ? Object.assign({}, p, { bareme: q.bareme, poids: q.poids, cases: p.calcul ? q.cases : p.cases }) : p; }); });
+  const tot = G.criteres.flatMap(c => c.points || []).reduce((s, p) => s + (Number(p.poids) || 0), 0);
+  ruEcrire(["redactions", x.id, "config", "grille2"], G, "les points d’une autre classe"); ruEcrire(["redactions", x.id, "config", "total"], tot, "le total d’une autre classe");
+  scModaleFermer(); toast("« " + x.titre + " » a maintenant les mêmes points qu’ici (" + x.diff.length + " ligne" + (x.diff.length > 1 ? "s" : "") + ", " + stNb(tot) + " points en tout). Ses notes changent à sa prochaine ouverture.");
+}
 function stCompteGarder() { const v = [3, 2, 1].map(nv => Math.max(0, parseInt(document.getElementById("stSeuil" + nv).value) || 0)); for (let i = 1; i < 3; i++) v[i] = Math.max(v[i], v[i - 1]); const lg = ST.ligne, c = Object.assign({}, stConf(lg)); c.compte = v; scModaleFermer();
   stSiNotesChangent(() => { SUJET.stickersLignes[lg] = Object.assign({}, c); }, () => stEcrireLigne(lg, c), "Ce compte"); }
 // ── ✓ Valider ligne par ligne : une ligne par écran, tous ses stickers ; Entrée valide la ligne entière (la lettre en douze écrans) ──
@@ -375,13 +471,14 @@ function stPoserProf(stId) {
    et ne s'applique qu'à ton « Appliquer » */
 function stNotesClasse() { const o = {}; ((state && state.classe) || []).map(eleveId).filter(k => stCorrigeeAvec(k)).forEach(k => { o[k] = stNoteCopie(k).n; }); return o; }
 function stSiNotesChangent(simuler, faire, quoi) {
-  const avant = stNotesClasse(), sauve = { s: SUJET.stickers, l: SUJET.stickersLignes };
-  SUJET.stickers = JSON.parse(JSON.stringify(SUJET.stickers || {})); SUJET.stickersLignes = JSON.parse(JSON.stringify(SUJET.stickersLignes || {}));
-  let apres; try { simuler(); apres = stNotesClasse(); } finally { SUJET.stickers = sauve.s; SUJET.stickersLignes = sauve.l; }
+  const avant = stNotesClasse(), sauve = { s: SUJET.stickers, l: SUJET.stickersLignes, g: SUJET.grille2 };   // [C14 1.4.29] la grille aussi : ses points, ses seuils
+  SUJET.stickers = JSON.parse(JSON.stringify(SUJET.stickers || {})); SUJET.stickersLignes = JSON.parse(JSON.stringify(SUJET.stickersLignes || {})); SUJET.grille2 = JSON.parse(JSON.stringify(SUJET.grille2 || {}));
+  let apres, totA = stTotal(); try { simuler(); apres = stNotesClasse(); totA = stTotal(); } finally { SUJET.stickers = sauve.s; SUJET.stickersLignes = sauve.l; SUJET.grille2 = sauve.g; }
+  const tot0 = stTotal(), moy = o => { const v = Object.values(o); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; }, mA = moy(avant), mB = moy(apres);
   const D = Object.keys(avant).filter(k => Math.abs(avant[k] - (apres[k] || 0)) > 1e-9);
   if (!D.length) { faire(); stRendre(); return; }
   ST.enAttente = faire;
-  scModale(`<h3>${escapeHtml(quoi)} change la note de ${D.length} copie${D.length > 1 ? "s" : ""} déjà corrigée${D.length > 1 ? "s" : ""}</h3><table class="sc-table"><tr><th>Élève</th><th>Avant</th><th>Après</th></tr>${D.map(k => `<tr><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${stNb(avant[k])}</td><td>${stNb(apres[k])}</td></tr>`).join("")}</table><p>Rien ne change tant que tu n’appliques pas.</p>`
+  scModale(`<h3>${escapeHtml(quoi)} change la note de ${D.length} copie${D.length > 1 ? "s" : ""} déjà corrigée${D.length > 1 ? "s" : ""}</h3>${mA != null ? `<p><b>La moyenne de la classe : ${stNb(Math.round(mA * 10) / 10)} / ${stNb(tot0)} → ${stNb(Math.round(mB * 10) / 10)} / ${stNb(totA)}</b> (${Object.keys(avant).length} copie${Object.keys(avant).length > 1 ? "s" : ""} corrigée${Object.keys(avant).length > 1 ? "s" : ""})</p>` : ""}<table class="sc-table"><tr><th>Élève</th><th>Avant</th><th>Après</th></tr>${D.map(k => `<tr><td>${escapeHtml(nomEleveDe(k) || k)}</td><td>${stNb(avant[k])} / ${stNb(tot0)}</td><td>${stNb(apres[k])} / ${stNb(totA)}</td></tr>`).join("")}</table><p>Rien ne change tant que tu n’appliques pas.</p>`
     + `<button class="sc-btn" onclick="scModaleFermer();if(ST.enAttente)ST.enAttente();ST.enAttente=null;stRendre()" title="Appliquer le changement : ces notes changent.">Appliquer</button> <button class="sc-btn" onclick="scModaleFermer();ST.enAttente=null;stRendre()" title="Ne rien changer.">Annuler</button>`);
 }
 

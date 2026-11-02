@@ -1,6 +1,7 @@
 // Pendant le travail seulement (le banc complet reste la preuve) : le paquet, ses initiales, la grille validée, puis les épreuves de la 1.4.28.
 import { eprouverStickersReglages } from "./stickers.mjs";
 import { eprouverReprendre, eprouverBandeSuite } from "./reprendre.mjs";
+import { eprouverPoints } from "./points.mjs";
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'); const MAQ = path.join(DIR, process.argv[2]); const OUT = process.argv[3]; fs.mkdirSync(OUT, { recursive: true });
@@ -9,7 +10,7 @@ const pg = await ctx.newPage(); const err = []; pg.on('pageerror', e => { err.pu
 await ctx.route(u => /firebasedatabase|firebaseio/.test(String(u)), r => { err.push('RÉSEAU HUB ' + r.request().url()); r.abort(); });
 const PDFJS = process.env.PDFJS; await ctx.route(u => String(u).includes('cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/'), r => { const f = String(r.request().url()).split('/').pop(); r.fulfill({ path: PDFJS + f, contentType: 'application/javascript' }); });
 const verif = (n, c) => { console.log((c ? '✓ ' : '✗ ') + n); };
-const att = ms => pg.waitForTimeout(ms); const cap = async n => { await pg.screenshot({ path: path.join(OUT, n + '.png') }); };
+const att = ms => pg.waitForTimeout(ms); const cap = async (n, p) => { await (p || pg).screenshot({ path: path.join(OUT, n + '.png') }); };
 try {
   await pg.goto('file://' + MAQ); await att(1500); await pg.getByText('Rédaction 1', { exact: false }).first().click(); await att(1800);
   await pg.click('#btnScan'); await att(600);
@@ -18,6 +19,6 @@ try {
   await att(800); await pg.locator('button[onclick="scFermer()"]').click(); await att(800);
   await eprouverStickersReglages({ pg, verif, cap, att, dir: DIR });
   if (process.env.ECHO) { await pg.evaluate(() => { try { localStorage.setItem("mjpc_faux_hub_echo", "300"); } catch (e) {} }); await pg.reload(); await att(6000); }
-  await eprouverReprendre({ pg, verif, cap, att }); await eprouverBandeSuite({ pg, verif, cap, att });
+  await eprouverReprendre({ pg, verif, cap, att }); await eprouverBandeSuite({ pg, verif, cap, att }); await eprouverPoints({ pg, verif, cap, att });
 } catch (e) { console.log('ARRÊT : ' + String(e.message).split('\n')[0]); await cap('zz-arret'); }
 console.log(err.length ? 'ERREURS\n' + err.join('\n') : 'aucune erreur'); await b.close();

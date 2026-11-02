@@ -9,6 +9,7 @@ import { eprouverEffacer } from "./effacer.mjs";
 import { eprouverEnlever } from "./enlever.mjs";
 import { eprouverEcho } from "./echo.mjs";
 import { eprouverReprendre, eprouverBandeSuite } from "./reprendre.mjs";
+import { eprouverPoints } from "./points.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -20,7 +21,7 @@ await ctx.route(u => /firebasedatabase|firebaseio/.test(String(u)), r => { err.p
 const PDFJS = process.env.PDFJS || '/tmp/claude-0/-home-claude/fbedd388-7b0c-5f43-87ab-077e6ae1db43/scratchpad/reperes/node_modules/pdfjs-dist/build/';   // le banc n'a pas internet : pdf.js 3.11.174 servi d'une copie locale
 await ctx.route(u => String(u).includes('cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/'), r => { const f = String(r.request().url()).split('/').pop(); r.fulfill({ path: PDFJS + f, contentType: 'application/javascript' }); });
 const ok = []; const verif = (n, c) => { ok.push((c ? '✓ ' : '✗ ') + n); };
-const att = ms => pg.waitForTimeout(ms); const cap = async n => { await pg.screenshot({ path: path.join(OUT, n + '.png') }); };
+const att = ms => pg.waitForTimeout(ms); const cap = async (n, p) => { await (p || pg).screenshot({ path: path.join(OUT, n + '.png') }); };
 process.on('uncaughtException', async e => { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); try { await cap('zz-arret'); } catch (x) {} process.exit(1); });
 try {
 await pg.goto('file://' + MAQ); await att(1500);
@@ -75,7 +76,7 @@ await pg.click('#scanEcran .sc-haut >> text=📨 Fichiers École Directe'); awai
 const dl = pg.waitForEvent('download'); await pg.click('.sc-table tr >> nth=1 >> text=Télécharger'); const d = await dl; const f = path.join(OUT, 'fichier-eleve.html'); await d.saveAs(f);
 const html = fs.readFileSync(f, 'utf8'); verif('le fichier élève porte sa photo (' + Math.round(html.length / 1024) + ' Ko) et ne joint jamais le vrai hub en maquette', /data:image\/jpeg;base64/.test(html) && /"test":true/.test(html));
 // 1463 : le fichier de l'élève en lecture seule : il clique tes marques et sa grille, il n'écrit rien ; la coche de la correction par l'élève est grisée
-const coche = await pg.evaluate(() => { const c = document.querySelector('.sc-coche input'); return c ? { off: c.disabled && !c.checked, dit: c.closest('label').textContent.replace(/\s+/g, ' ').trim() } : null; });
+const coche = await pg.evaluate(() => { const c = document.querySelector('.sc-coche input:not(#scNoteEleve)'); return c ? { off: c.disabled && !c.checked, dit: c.closest('label').textContent.replace(/\s+/g, ' ').trim() } : null; });
 verif('la coche « Ouvrir la correction par l\'élève » est là, grisée, décochée, et dit pourquoi (« ' + (coche && coche.dit.slice(0, 60)) + '… »)', coche && coche.off && /pas encore codée/.test(coche.dit));
 await pg.bringToFront(); await pg.keyboard.press('Escape'); await att(300);
 // les copies vierges de l'appli : scannées de travers, remises droites, lignes connues
@@ -134,6 +135,7 @@ await eprouverEnlever({ pg, verif, cap, att });   // [C14 710] (Paul 14:09) un s
 await eprouverEffacer({ pg, verif, cap, att });   // [C14 669] (Paul 12:46) la classe vidée de ses corrigés, la recopie intacte   // [C14] (Paul 13:12) la sauvegarde, plus haut, marque absents tous les élèves sauf un
 await eprouverReprendre({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37, C14 66-71) après un changement, seul ce qui a changé repart et s'arrête
 await eprouverBandeSuite({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37, C14 72-73) « ▶ La bande », copie après copie
+await eprouverPoints({ pg, verif, cap, att });   // [C14 1.4.29] (Paul 22:33, 22:41 ; C14 80-81) les points de la grille, la note dans les fichiers des élèves
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

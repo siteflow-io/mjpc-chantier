@@ -229,13 +229,16 @@ RU_AIDES.fiches = { ou: "Données — Fiches élèves", l: [
   ["« 📨 Fichiers École Directe »", "ouvre l’écran des scans et la liste des fichiers : un fichier par élève, sa copie scannée et tes marques"],
   ["🧪 Tester comme l’élève", "son fichier dans un nouvel onglet, comme il le verra ; rien ne va au site"],
   ["Télécharger", "le fichier d’un élève, nommé comme dans ta liste de classe (« NOM Prénom.html »)"],
+  ["Afficher la note dans les fichiers des élèves", "cochée, l’élève lit sa note ; décochée, son fichier garde toute sa grille, sans aucun point ; une case par classe"],
   ["📦 Tout rendre", "un seul zip : un fichier par élève, nommés comme dans ta liste de classe, pour l’extension d’École Directe ; un élève absent n’a pas de fichier"]] };
 RU_AIDES.reglages = { ou: "Réglages — la grille et ses stickers", l: [
   ["⇪ Faire la grille avec l’IA", "un fichier pour ton IA : le sujet, ta grille, les stickers déjà là ; elle te pose d’abord ses questions, puis propose ses stickers"],
   ["📥 Charger des stickers", "le fichier de stickers rendu par ton IA (ou une grille de stickers) : ils arrivent à valider ; ce que tu as donné à l’IA est gardé pour la correction"],
   ["✓ Valider ligne par ligne", "chaque ligne de la grille et ses stickers, un écran par ligne ; Entrée valide la ligne ; l’export pour l’IA attend que tout soit validé"],
   ["un sticker", "sa phrase pour l’élève, ce qu’il a à faire quand il ne l’a pas, ce que l’IA cherche ; ↑ ↓ sa place ; ⧉ le copier ; 🗑 l’enlever de la grille : il ne part plus à l’IA, et l’élève ne le lit plus nulle part (rien n’est effacé)"],
-  ["＋ Un sticker · ⧉ Reprendre ceux d’un autre sujet", "écrire un sticker de plus sur une ligne · reprendre les stickers d’un autre sujet"]] };
+  ["＋ Un sticker · ⧉ Reprendre ceux d’un autre sujet", "écrire un sticker de plus sur une ligne · reprendre les stickers d’un autre sujet"],
+  ["⚖ Les points", "les points de chaque niveau de la ligne (le niveau 3 donne ceux de la ligne) ; pour les lignes calculées, leurs seuils ; avant de rien changer, chaque note qui change et la moyenne de la classe"],
+  ["⧉ Mêmes points pour une autre classe", "les points et les seuils d’ici, ligne par ligne, pour la grille d’une autre classe du même sujet"]] };
 /* [C14 642] (Paul 07:21 : « la page d'accueil montre 0% en cours, alors que je suis en train de corriger » ; « 642 ok », 07:32) :
    l'accueil n'ouvre pas les copies ; il lit, dans chaque copie au site, le résumé de sa carte (scan.carte : son pourcentage, corrigée ou non).
    Le résumé s'écrit avec la copie, à la synchronisation : la copie en cours à chaque fois, toute la classe au plus une fois par minute ;

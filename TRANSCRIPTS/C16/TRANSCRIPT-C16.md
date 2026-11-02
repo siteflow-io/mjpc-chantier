@@ -1361,3 +1361,17 @@ MEMO
   > MEMO
 - **21:43 — Paul, mot pour mot** : « Promeus »
 - **21:44 — la conscience, la promotion 8.80.0-⑬** : la candidate (l'assemblé `a6a63afc` de `49826c1f0` + `APP_VERSION="8.80.0-⑬"`, seule la ligne 3138 diffère) copiée en production, commit `72e1934`, blob `9a96d9508a05`, md5 `8b2310e708683a979e1fde390844eb29` (2 959 837 o), poussé à 21:44 ; l'adresse publique le rend bit à bit à 21:45:32 (revérifié après la poussée des docs ; `?v=8.80.0` dit `APP_VERSION="8.80.0-⑬"`). Docs (production `137f782`) : le point de retour (blob `16a89127fc7a`), le journal, le registre ✔ (㉞, ㊴, 256), l'index des fonctions régénéré (2 320), où trouver quoi (dont l'adresse `index.html?n=3e&v=8.80.0`). Le mandat de l'appel : sa base écrite (`49826c1f0`).
+- **21:48 — la conscience** : le mandat de l'appel (㊱) lancé (258, acquis à 17:01 : « je le lance juste après la mise en ligne de ㉞ ») : un exécutant neuf, sur `49826c1f0`, branche `deroule/appel`, dossier `/home/claude/ex-appel` ; première mission : auditer le mandat.
+- **21:48 — message à Paul, mot pour mot :**
+
+  > 280. 8.80.0-⑬ est en ligne depuis 21:44 : l'adresse publique rend le fichier bit à bit à 21:45. Pour l'ouvrir sans l'ancien cache : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.80.0 — la pastille doit dire 8.80.0-⑬. Le retour possible est noté (la 8.79.0-⑫), le registre est à jour (㉞, ㊴ et 256 cochés).
+  >
+  > 281. Comme convenu en 258, le mandat de l'appel est lancé : un exécutant neuf, sur cette version. Je te montre ses captures avant toute mise en ligne.
+  >
+  > À tester : recharge la page sur l'ordinateur de la classe et sur ton téléphone (la pastille dit 8.80.0-⑬) ; en mode test, lance une heure à l'ordinateur, ouvre le site sur le téléphone : « Essai en cours (mode test) » et « Reprendre » ; dévoile au téléphone : l'ordinateur et le tableau suivent ; touche 📱 au pilote et scanne le QR : la télécommande s'ouvre sur la séance ; écris une réponse à l'ordinateur : le téléphone dit « Télécommande désactivée » ; « Reprendre avec la télécommande » : la réponse est là ; clos l'heure au téléphone : le tableau revient à l'horloge ; lance une répétition : le téléphone dit « Répétition en cours », « ■ Arrêter » l'arrête partout.
+  >
+  > 02/11/2026 21:48
+  >
+  > À jouer : les tests ci-dessus · en cours : l'exécutant de l'appel (㊱) · ouvert : rien
+  >
+  > MEMO

@@ -4358,3 +4358,29 @@ oui excellent pour 25 c'est tout à fait ça. Les questions doivent être inject
 02/11/2026 16:22
 
 MEMO
+
+---
+
+## Tour 156 — 02/11/2026 16:30
+
+**Paul (16:30) :**
+
+28 attention, cette partie de la dictée n'est pas finie de coder (ou en tout cas d'être améliorée). pour 29 oui. Pour 28, c'est aussi là que l'app d'exercices va devoir rentrer en ligne de compte à un moment donné. va lire sur le site de quoi on parle. Cependant, pause pour l'instant sur ce cadrage. consigne. Je veux juste que tu augmentes la vitesse de défilement de la bande quand j'utilise mes flèches gauche et droite en relecture de la bande.
+
+**Ce qui a été fait (C14) :** le cadrage consigné, en pause : au sas (`A-CODER-CORRECTION-ELEVE.md`, « État du cadrage à la pause ») et au registre des dettes. Mesuré : ← → glissaient le cadre de 0,004 de la largeur de la page par appui (environ 9 points de la bande), et la bande suit le cadre. Codé (maquette `bed522a9`) : 0,012 par appui ; Maj + ← → garde 0,004 ; l'aide « ? » de la bande. Banc complet : 168/0. Candidate au sas : `redaction-1.4.25-RU-candidat.html`, 907 485 o, md5 `26db1bf73adaecad2320bb7866fdd003`, sa note. Vrai site en lecture seule : l'export et le tableau sans erreur ; lu au passage : ta 3 Franklin Aretha est effacée et repartie, 29 copies attendent leur retour.
+
+**Claude (16:38) :**
+
+À jouer : ton promeus (32) · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+30. Consigné : le cadrage est écrit au sas et au registre, là où on l'a laissé. 29 : oui. Quand il reprend : lire l'app d'exercices du site, en sachant que les exercices de la dictée ne sont pas finis ; puis 24 et 27, toujours ouverts.
+
+31. Les flèches, c'est fait dans la 1.4.25. Dans la bande, ← → déplacent le cadre, et la bande avec lui, trois fois plus vite qu'avant. Pour placer un cadre finement, Maj + ← → garde l'ancien petit pas. Banc complet : 168 vérifications, 0 défaut.
+
+32. Promeus ?
+
+À tester : après la mise en ligne, dans la bande, ← → (la vitesse), puis Maj + ← → (le petit pas).
+
+02/11/2026 16:38
+
+MEMO

@@ -608,3 +608,4 @@ MEMO
   > 02/11/2026 12:23
   >
   > MEMO
+- **12:39 — l'exécutant des correctifs** (son message dit « 12:46 » : une heure devinée, l'heure juste est 12:39) : ㉘ prouvé et poussé (`4dbaa8d`, `82edb59`) — la sonde des correctifs, partie A, sous un faux hub qui refuse les clés (400), vraie heure et mode test, 3 corrections en direct lues partout, 0 envoi refusé, F5 + « Reprendre » et Relecture ; trouvé en plus : la photo du prévu de l'emploi du temps refusée à chaque lancement (préexistant), corrigée ; ㉙ ㉛ ㉜ ㉝ ⑭ passent à sa sonde ; 7, 8, 9 codés, mesures en cours. Contrôle de la conscience : les fichiers touchés sont ceux du mandat (`dr-atelier.js`, `dr-classe.js`, `dr-tableau.js`, `index.html` du sas, la sonde des quatre dettes), ni `AUDITS/` ni `APP_VERSION`. Registre (prod).

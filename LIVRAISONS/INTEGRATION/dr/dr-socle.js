@@ -191,8 +191,18 @@ function dr_ouvLisible(b){ const d = (b && b.d) || {}; const el = ((b && b.el) |
   else if (b.forme === 'competences') { const D = (typeof dr_ouvCharte === 'function' ? dr_ouvCharte().domaines : {}) || {}; (d.doms || []).forEach(x => (x.rows || []).forEach(r => L.push((D[x.dom] || [x.dom])[0] + ' : ' + (el[r.ei] || '')))); txt = d.titre || ''; }
   else { L = el.filter(x => x.trim()); txt = d.kicker || ''; }
   return { t: 'texte', id: b.id, txt, el: L }; }
+/* C16 (le retour sûr, MANDAT-RETOUR-SUR §3.4) — L'ANCIEN CALCUL SANS LA TAXONOMIE : les textes écrits pour la 8.77.1-⑩ d'une diapo intacte marquée nomment les
+   compétences (la présentation du chapitre, le début de séance, les compétences du chapitre et leur bilan) ; tant que la taxonomie n'est pas chargée, ils
+   seraient incomplets. L'écriture de la trame attend donc la taxonomie (dr_sauveMaintenant la demande, puis écrit) ; si la page part avant qu'elle soit là,
+   la diapo part avec les textes que le hub avait déjà pour elle (complets, écrits avec la taxonomie), sinon sans textes (elle « suit » : cette version les
+   recalcule) — jamais avec des libellés manquants. Une taxonomie absente du hub (lue vide) n'est plus attendue. */
+const DR_INV_TAXO = ['presentation-chapitre', 'presentation-seance', 'competences-chapitre', 'competences-bilan'];
+function dr_invTaxoPrete(){ return !!(((typeof CH !== 'undefined' && CH) ? CH.taxo : null) || DR_MEM.taxoAbsente); }
+function dr_invAttendTaxo(e){ return !!e && DR_INV_TAXO.indexOf(e.role) >= 0 && !dr_invTaxoPrete() && dr_estInvariable(e) && dr_invIntacte(e) && !dr_invVierge(e); }
+function dr_invHubLu(sk, eid){ try { const H = DR_MEM.hubLu && DR_MEM.hubLu[sk]; const c = H && H.el && H.el[eid]; return c ? JSON.parse(c) : null; } catch (x) { return null; } }
 function dr_invPourHub(e, sk){ if (!dr_estInvariable(e)) return e; if (sk == null) sk = dr_invCleDe(e);
   const o = {}; Object.keys(e).forEach(k => { if (k !== 'blocs' && k !== 'ouvCanon' && k !== 'suitAct') o[k] = e[k]; });
+  if (dr_invIntacte(e) && dr_invAttendTaxo(e)) { o.suit = true; const h = dr_invHubLu(sk, e.eid); if (h && Array.isArray(h.blocs) && h.blocs.length && !h.ouvCanon) o.blocs = JSON.parse(JSON.stringify(h.blocs)); if (e.act === e.dr_invAct) { o.act = h && h.act != null ? h.act : dr_invContenuV1(e.role, sk).act; o.suitAct = true; } return o; }   /* C16 (§3.4) : la page part avant la taxonomie */
   if (dr_invIntacte(e)) { o.suit = true; const b = dr_ouvBloc(e);
     const v1 = DR_INV_V1_ROLES.indexOf(e.role) >= 0 ? dr_invContenuV1(e.role, sk) : { act: e.dr_invAct != null ? e.dr_invAct : e.act, blocs: b ? [dr_ouvLisible(b)] : [] };
     o.blocs = JSON.parse(JSON.stringify(v1.blocs || [])); if (e.act === e.dr_invAct) { o.act = v1.act; o.suitAct = true; } return o; }
@@ -217,8 +227,10 @@ function dr_ouvTxtCopie(b){ const d = (b && b.d) || {}; return String((b.forme =
 function dr_ouvLisibleCopie(b){ return { t: 'texte', id: b.id, txt: dr_ouvTxtCopie(b), el: dr_ouvLignesCopie(b) }; }
 /* la ligne k qui porte le texte d'indice ei ; une ligne lue → les textes du canon qu'elle porte ({ indice: texte }) */
 function dr_ouvLigneDe(b, ei){ if (b.forme === 'parcours') return Math.floor(ei / 2); if (b.forme === 'competences') return ((b.d || {}).doms || []).findIndex(x => (x.rows || []).some(r => r.ei === ei)); return ei; }
-function dr_ouvLigneVersEl(b, k, ligne){ const o = {}; ligne = String(ligne == null ? '' : ligne);
-  if (b.forme === 'parcours') { const i = ligne.indexOf(' — '); o[2 * k] = i < 0 ? ligne : ligne.slice(0, i); o[2 * k + 1] = i < 0 ? '' : ligne.slice(i + 3); return o; }
+function dr_ouvLigneVersEl(b, k, ligne, el){ const o = {}; ligne = String(ligne == null ? '' : ligne); el = el || b.el || [];
+  if (b.forme === 'parcours') { const t0 = String(el[2 * k] == null ? '' : el[2 * k]), o0 = String(el[2 * k + 1] == null ? '' : el[2 * k + 1]);   /* un titre peut contenir « — » (« Interro de cours et analyse logique — les bases (1) ») : la coupure se cherche d'abord là où elle était */
+    let i = t0 && ligne.startsWith(t0 + ' — ') ? t0.length : o0 && ligne.endsWith(' — ' + o0) ? ligne.length - o0.length - 3 : ligne === t0 ? -1 : t0 && ligne.startsWith(t0) && ligne.indexOf(' — ', t0.length) < 0 ? -1 : ligne.indexOf(' — ');
+    o[2 * k] = i < 0 ? ligne : ligne.slice(0, i); o[2 * k + 1] = i < 0 ? '' : ligne.slice(i + 3); return o; }
   if (b.forme === 'competences') { const x = ((b.d || {}).doms || [])[k]; if (!x) return o; const pre = dr_ouvNomDom(x.dom) + ' : '; const reste = ligne.startsWith(pre) ? ligne.slice(pre.length) : ligne; const rows = x.rows || [];
     const parts = reste.split(' ; '); rows.forEach((r, j) => { o[r.ei] = j < rows.length - 1 ? (parts[j] || '') : parts.slice(j).join(' ; '); }); return o; }   /* un « ; » de trop reste dans la dernière : aucun mot perdu */
   o[k] = ligne; return o; }
@@ -232,7 +244,7 @@ function dr_copieDuHub(ecr){ if (!Array.isArray(ecr)) return ecr;
     const l = (e.blocs || [])[0]; if (!l || l.t !== 'texte') return; if (!Array.isArray(b.el)) b.el = [];
     const lu = Array.isArray(l.el) ? l.el.map(x => String(x == null ? '' : x)) : []; const att = dr_ouvLignesCopie(b);
     if (String(l.txt == null ? '' : l.txt) !== dr_ouvTxtCopie(b) || lu.length !== att.length) return;
-    lu.forEach((x, k) => { if (x === att[k]) return; const o = dr_ouvLigneVersEl(b, k, x); Object.keys(o).forEach(i => { b.el[+i] = o[i]; }); });
+    const el0 = b.el.slice(); lu.forEach((x, k) => { if (x === att[k]) return; const o = dr_ouvLigneVersEl(b, k, x, el0); Object.keys(o).forEach(i => { b.el[+i] = o[i]; }); });
     e.blocs = [b].concat((e.blocs || []).slice(1)); });
   return ecr; }
 /* ce que la classe a écrit (S.copie : { heure: { eid: { bid: { t, el: { indice: texte }, f } } } }), au hub et du hub — le parcours et les compétences seulement */
@@ -248,7 +260,7 @@ function dr_copieEtatDuHub(S0, E){ try { const C = S0 && S0.copie; if (!C || typ
     const cb = H[eid] && H[eid][b.id]; if (!cb || typeof cb !== 'object') return; const base = {}; const src = cb.ouvEl;
     if (src && typeof src === 'object') Object.keys(src).forEach(i => { if (src[i] != null) base[i] = String(src[i]); });
     const el = (b.el || []).map(x => String(x == null ? '' : x)); Object.keys(base).forEach(i => { el[+i] = base[i]; }); const att = dr_ouvLignesCopie(Object.assign({}, b, { el }));
-    const lu = cb.el && typeof cb.el === 'object' ? cb.el : {}; Object.keys(lu).forEach(k => { if (lu[k] == null || String(lu[k]) === att[+k]) return; const o = dr_ouvLigneVersEl(b, +k, lu[k]); Object.keys(o).forEach(i => { if (o[i] !== (el[+i] || '')) base[i] = o[i]; }); });   /* une ligne écrite par la 8.77.1-⑩ */
+    const lu = cb.el && typeof cb.el === 'object' ? cb.el : {}; Object.keys(lu).forEach(k => { if (lu[k] == null || String(lu[k]) === att[+k]) return; const o = dr_ouvLigneVersEl(b, +k, lu[k], el); Object.keys(o).forEach(i => { if (o[i] !== (el[+i] || '')) base[i] = o[i]; }); });   /* une ligne écrite par la 8.77.1-⑩ */
     if (Object.keys(base).length) cb.el = base; else delete cb.el; delete cb.ouvEl; }); });
   } catch (x) {} return S0; }
 function dr_invNeuve(role, sk, h){ const k = dr_invContenu(role, sk); const e = { eid: dr_invEid(role, sk), act: k.act, dur: 0, role, comp: [], blocs: k.blocs, heure: h }; dr_invSiteMarque(e, k.act); return e; }
@@ -484,12 +496,16 @@ function dr_sauveMaintenant(depart){
   DR_MEM.minuteur = null; if (typeof S !== 'undefined' && S.repetition) return;
   if (dr_ctx().regime === 'classe') { if (S.atelier && S.lancee && !S.close) { dr_copieDepuisAtelier(); return; } if (typeof dr_copieAuto === 'function') dr_copieAuto(); return; }   /* en classe : la copie jouée (E2) ; l'atelier ouvert pendant l'heure l'écrit lui-même (dr_copieAuto se tait tant que l'atelier est ouvert) */
   if (!dr_chapitre()) return;
-  let n = 0; dr_cles().forEach(k => { const sce = dr_seance(k); if (!sce || !sce.deroule || !DR_MEM.prepares.has(sce.deroule.ecrans)) return;
+  let n = 0, attendre = false; dr_cles().forEach(k => { const sce = dr_seance(k); if (!sce || !sce.deroule || !DR_MEM.prepares.has(sce.deroule.ecrans)) return;
+    if (!depart && !dr_invTaxoPrete() && sce.deroule.ecrans.some(dr_invAttendTaxo)) { attendre = true; return; }   /* C16 (§3.4) : les textes de l'ancien calcul attendent la taxonomie */
     const o = dr_derouleDe(k); const j = JSON.stringify(o); if (DR_MEM.empreintes[k] === j) return; DR_MEM.empreintes[k] = j; n++;
     if (o.activites) sce.deroule.activites = o.activites; if (o.notes) sce.deroule.notes = o.notes; if (o.travail) sce.deroule.travail = o.travail; if (o.retraits) sce.deroule.retraits = o.retraits; else delete sce.deroule.retraits; if (o.ouvRetraits) sce.deroule.ouvRetraits = o.ouvRetraits; else delete sce.deroule.ouvRetraits;   /* EX (§12.62 (3)) */
     dr_syncEcrire(k, o, depart);   /* E1 (§12.60) : seulement ce qui a changé, diapo par diapo (à son eid), après avoir relu le hub — jamais la séance entière par-dessus un autre appareil */
   });
-  if (!n && typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre();   /* E1 (relecteur neuf 1) : rien à écrire, le hub a déjà cet état */
+  if (attendre && !DR_MEM.taxoAttente) { DR_MEM.taxoAttente = true;   /* C16 (§3.4) : dès qu'elle est là, la trame s'écrit ; absente du hub (lue vide), elle n'est plus attendue ; une panne de réseau (err) : on redemande dans 5 s */
+    const fini = (v, err) => { DR_MEM.taxoAttente = false; if (v && typeof CH !== 'undefined' && CH && !CH.taxo) CH.taxo = v; if (!v && err) { setTimeout(() => dr_sauve(), 5000); return; } if (!v) DR_MEM.taxoAbsente = true; dr_sauveMaintenant(false); };
+    if (typeof _siteGet === 'function') _siteGet('/taxonomie', (v, err) => fini(v || null, !!err)); else if (typeof chChargerTaxo === 'function') chChargerTaxo(v => fini(v || null, false)); else DR_MEM.taxoAttente = false; }
+  if (!n && !attendre && typeof dr_temoinEnregistre === 'function') dr_temoinEnregistre();   /* E1 (relecteur neuf 1) : rien à écrire, le hub a déjà cet état */
 }
 
 /* ── ce qu'un autre document reçoit (la fenêtre du tableau, par postMessage ou JSON) : l'écran tel que la maquette le lisait,

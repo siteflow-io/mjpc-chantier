@@ -10,7 +10,7 @@ export async function eprouverSauvegarde({ pg, verif, cap, att }) {
   await fermerTout(); await pg.locator("#gridEleves .eleve-card").first().waitFor({ state: "visible" });
   await ouvrirScans();
   // la copie qui finira le paquet : une copie chargée à qui il reste au moins un arrêt à décider (ou sa phrase)
-  const choix = await pg.evaluate(() => { const Q = scCopiesED(), F = Q.map(k => ({ k, f: rcFluxCopie(k), reste: rcArretsBande(k).filter(a => a.st ? !stDecision(k, a.stId) : !(a.l.decisions && a.l.decisions[a.cle])).length })).filter(x => x.f.charge && (x.reste > 0 || !x.f.finie || stRqARelire(x.k)));
+  const choix = await pg.evaluate(() => { const Q = scCopiesED(), F = Q.map(k => ({ k, f: rcFluxCopie(k), reste: rcArretsBande(k).filter(a => a.st ? !stDecision(k, a.stId) : !(a.l.decisions && a.l.decisions[a.cle])).length })).filter(x => x.f.charge && (x.reste > 0 || !x.f.finie || stRqARelire(x.k) || rcCgARelire(x.k)));   /* [C14 704] le commentaire général à garder : la copie n'est pas finie */
     F.sort((a, b) => (a.reste > 0 ? 0 : 1) - (b.reste > 0 ? 0 : 1) || a.reste - b.reste);   /* une copie dont la bande reste à finir d'abord : le dernier geste est dans la bande */ const k0 = F.length ? F[0].k : Q.find(k => rcFluxCopie(k).charge && rcLignesEcrites(k).some(x => typeof x.l.corrige === "string"));   /* tout est déjà fini : une ligne retapée fera un arrêt de plus */
     return { kS: k0 || null, nom: k0 ? nomEleveDe(k0) : "", reste: F.length ? F[0].reste : 0, retaper: !F.length, Q, base: svPaquet() }; });
   await fermerTout();
@@ -29,7 +29,9 @@ export async function eprouverSauvegarde({ pg, verif, cap, att }) {
   const modale = () => pg.evaluate(() => document.getElementById("scModale").classList.contains("show"));
   let parPhrase = false; if (await pg.evaluate(k => !rcFluxCopie(k).finie, choix.kS)) { await pg.click("#rcPhraseOuvrir"); await att(250); await pg.click("#rcPhraseAucune"); await att(600); parPhrase = await modale(); }
   if (!parPhrase) { await pg.click("#rcBandeOuvrir"); await att(500); }
-  let n = 0; for (; n < 400 && !parPhrase; n++) { if (await pg.evaluate(() => document.getElementById("scModale").classList.contains("show"))) break; await pg.keyboard.press("Enter"); await att(60); }
+  let n = 0; for (; n < 400 && !parPhrase; n++) { if (await pg.evaluate(() => document.getElementById("scModale").classList.contains("show"))) break;
+    if (await pg.evaluate(() => { const t = document.getElementById("rcCgTexte"); return !!t && !t.closest("[hidden]") && !t.value.trim(); })) { await pg.locator("#rcCgTexte").fill("Relis tes fautes soulignées et récris chaque mot juste dans ton cahier. Garde ta copie : tu la reprendras pour la prochaine lettre."); await att(100); }   /* [C14 704] le commentaire général, au bout de la bande */
+    await pg.keyboard.press("Enter"); await att(60); }
   await att(1500);
   const mo = await pg.evaluate(() => ({ txt: document.querySelector("#scModale .sc-modale-c").innerText.replace(/\s+/g, " "), hub: (document.getElementById("svHub") || {}).textContent || "", bouton: !!document.getElementById("svTelechargerBtn"), titres: Array.from(document.querySelectorAll("#scModale button")).every(b => (b.title || "").length > 20) }));
   await cap("C14-sauvegarde-1-paquet-corrige");
@@ -64,4 +66,12 @@ export async function eprouverSauvegarde({ pg, verif, cap, att }) {
     nom.test(d1.suggestedFilename()) && egal && rangee && j1._meta.source === "redactions/" + site.id && !!j1.data && j1._meta.exportedBy === "sauvegarde_paquet-corrige" && compteJuste && recompte.copies >= 1 && recompte.stickersGrille >= 1 && recompte.pages >= 1 && /Téléchargée/.test(btn1));
   verif("sauvegarde (Paul 13:12) : « Plus tard » la ferme ; un geste de plus ne la repropose pas (" + !encore + ", " + s2 + " au site) ; « 💾 Télécharger la sauvegarde » du flux en refait une à tout moment (« " + d2.suggestedFilename() + " », " + (j2._meta.contenu || {}).copies + " copies)",
     !encore && s2 === 1 && nom.test(d2.suggestedFilename()) && j2._meta.exportedBy === "sauvegarde_manuelle" && JSON.stringify(j2._meta.contenu) === JSON.stringify(j1._meta.contenu));
+  /* [C14 642] (Paul 07:21 : « la page d'accueil montre 0% en cours, alors que je suis en train de corriger » ; « 642 ok », 07:32) : l'accueil lit le site seul ;
+     il dit les copies entièrement corrigées et la moyenne des cartes des élèves présents (les mêmes que les cartes du tableau) */
+  await att(2500);   // la synchronisation (900 ms), puis le site simulé
+  const acc = await pg.evaluate(() => ruLire(["redactions"]).then(t => { const x = ruLignes(t).find(l => l.id === RU.id && l.classe === RU.classe), r = avAccueil(x, state.classe.length, t);
+    const pres = state.classe.filter(nm => !avAbsent(eleveId(nm))), moy = pres.length ? Math.round(pres.reduce((s, nm) => s + (progressionPct(eleveId(nm)) || 0), 0) / pres.length) : 0;
+    return Object.assign(r, { pres: pres.length, moy, cartes: Object.values(x.copies).filter(c => c && c.scan && c.scan.carte).length, ancien: Object.values(x.copies).filter(c => ruCopieFinie(x.cfg, c)).length, patch: /avAccueil\(x, eleves, RU\.arbre\)/.test(ruListeSujets.toString()) && /avCartesResumer/.test(synchroniser.toString()) }); }));
+  verif("accueil (C14 642) : depuis le site seul, la ligne de cette rédaction dit « " + acc.finies + " corrigée sur " + acc.n + " · " + acc.pct + " % » (l'ancien compte : " + acc.ancien + ") ; " + acc.cartes + " cartes résumées avec leur copie ; la moyenne des cartes du tableau : " + acc.moy + " %, sur " + acc.pres + " présents",
+    acc.patch && acc.finies === 1 && acc.n === acc.pres && acc.pct === acc.moy && acc.cartes >= 1 && acc.ancien === 0);
 }

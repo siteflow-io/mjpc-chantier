@@ -10,7 +10,7 @@ export async function eprouverEffacer({ pg, verif, cap, att }) {
   const photo = () => pg.evaluate(() => { const C = SC.copies.filter(k => rcLignesEcrites(k).length); return { n: C.length,
     textes: JSON.stringify(C.map(k => rcLignesEcrites(k).map(x => [x.id, x.l.texte, x.l.x0, x.l.y0, x.l.marge || "", x.l.par === undefined ? "" : x.l.par]))),
     phrases: C.filter(k => ((scCopie(k).recopie || {}).phrase)).length,
-    ia: C.filter(k => { const s = scCopie(k), r = s.recopie || {}; return r.stickersIA || r.remarquesIA || r.charge || r.envoi || r.refusIA || (s.stickers && Object.keys(s.stickers).length) || rcLignesEcrites(k).some(x => x.l.corrige !== undefined || x.l.decisions); }).length,
+    ia: C.filter(k => { const s = scCopie(k), r = s.recopie || {}; return r.stickersIA || r.remarquesIA || r.charge || r.envoi || r.refusIA || (s.stickers && Object.keys(s.stickers).length) || s.commentaire || r.commentaireIA || rcLignesEcrites(k).some(x => x.l.corrige !== undefined || x.l.decisions); }).length,
     marques: C.reduce((n, k) => n + Object.values(scCopie(k).marques || {}).filter(m => m && m.bande).length, 0), contexte: !!(SUJET.contexteIA && SUJET.contexteIA.texte) }; });
   const avant = await photo();
   await pg.click("#rcImportIA"); await att(300); await pg.click("#rcIAEffacer"); await att(300);

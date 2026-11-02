@@ -196,6 +196,7 @@ function svTelecharger() { return svFaire("manuelle").then(s => { ruTelecharger(
 function svCopieCorrigee(k) {
   const f = rcFluxCopie(k); if (!f.finie || !f.charge) return false;
   if (typeof stRqARelire === "function" && stRqARelire(k)) return false;
+  if (typeof rcCgARelire === "function" && rcCgARelire(k)) return false;   // [C14 704] le commentaire général gardé
   if (typeof stActifs === "function" && stActifs().some(s => s.etat === "valide") && typeof stFinie === "function" && !stFinie(k)) return false;   // avec une grille de stickers : ses réussites revenues de l'IA et décidées
   return rcArretsBande(k).every(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]));
 }
@@ -229,7 +230,23 @@ RU_AIDES.fiches = { ou: "Données — Fiches élèves", l: [
   ["Télécharger", "le fichier d’un élève, nommé comme dans ta liste de classe (« NOM Prénom.html »)"],
   ["📦 Tout rendre", "un seul zip : un fichier par élève, nommés comme dans ta liste de classe, pour l’extension d’École Directe ; un élève absent n’a pas de fichier"]] };
 RU_AIDES.reglages = { ou: "Réglages — la grille et ses stickers", l: [
-  ["📥 Charger des stickers", "une grille de stickers depuis un fichier (le format du prompt de création d’un sujet)"],
+  ["⇪ Faire la grille avec l’IA", "un fichier pour ton IA : le sujet, ta grille, les stickers déjà là ; elle te pose d’abord ses questions, puis propose ses stickers"],
+  ["📥 Charger des stickers", "le fichier de stickers rendu par ton IA (ou une grille de stickers) : ils arrivent à valider ; ce que tu as donné à l’IA est gardé pour la correction"],
   ["✓ Valider ligne par ligne", "chaque ligne de la grille et ses stickers, un écran par ligne ; Entrée valide la ligne ; l’export pour l’IA attend que tout soit validé"],
-  ["un sticker", "sa phrase pour l’élève, ce qu’il a à faire quand il ne l’a pas, ce que l’IA cherche ; ↑ ↓ sa place ; ⧉ le copier ; 🗑 le ranger (rien n’est effacé)"],
+  ["un sticker", "sa phrase pour l’élève, ce qu’il a à faire quand il ne l’a pas, ce que l’IA cherche ; ↑ ↓ sa place ; ⧉ le copier ; 🗑 l’enlever de la grille : il ne part plus à l’IA, et l’élève ne le lit plus nulle part (rien n’est effacé)"],
   ["＋ Un sticker · ⧉ Reprendre ceux d’un autre sujet", "écrire un sticker de plus sur une ligne · reprendre les stickers d’un autre sujet"]] };
+/* [C14 642] (Paul 07:21 : « la page d'accueil montre 0% en cours, alors que je suis en train de corriger » ; « 642 ok », 07:32) :
+   l'accueil n'ouvre pas les copies ; il lit, dans chaque copie au site, le résumé de sa carte (scan.carte : son pourcentage, corrigée ou non).
+   Le résumé s'écrit avec la copie, à la synchronisation : la copie en cours à chaque fois, toute la classe au plus une fois par minute ;
+   seulement quand la carte se calcule avec ses pages (le flux unique), et seulement s'il a changé (rouvrir la classe ne réécrit rien). */
+function avCarteResumer(k) {
+  const c = state.copies[k], s = c && c.scan; if (!s || typeof scAvancement !== "function") return;
+  const a = scAvancement(k); if (!a || !a.flux) return; const v = { pct: a.pct, fini: a.pct === 100 };
+  if (!s.carte || s.carte.pct !== v.pct || s.carte.fini !== v.fini) s.carte = v;
+}
+function avCartesResumer() {
+  try { if (!avPret()) return; const K = new Set(), t = Date.now();
+    if (typeof RC !== "undefined") { if (RC.ouvert && RC.copie) K.add(RC.copie); if (RC.bd && RC.bd.k) K.add(RC.bd.k); }
+    if (AV.resumeLe !== RU.id + "|" + RU.classe + "|" + Math.floor(t / 60000)) { AV.resumeLe = RU.id + "|" + RU.classe + "|" + Math.floor(t / 60000); (state.classe || []).forEach(n => K.add(eleveId(n))); }
+    K.forEach(k => { try { avCarteResumer(k); } catch (e) {} }); } catch (e) {}
+}

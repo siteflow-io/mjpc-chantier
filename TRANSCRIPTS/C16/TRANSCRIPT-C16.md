@@ -749,3 +749,18 @@ MEMO
   > 02/11/2026 13:44
   >
   > MEMO
+- **13:50 — Paul, mot pour mot** : « 194. ok mais je veux voir une capture de ça. Pour le reste, heureusement que je t'ai envoyé relire. »
+- **13:51 — le mandat de ㉞ mis à jour** (`793963d`) : relu par Paul ; 189 (a) acquis (non commenté) ; 194 acquis, la télécommande codée seulement après sa capture validée. La conscience fera la maquette de la télécommande (le fichier en ligne, faux hub, une vraie heure).
+- **13:51 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : mon banc sur les six correctifs (étape 12 sur 12) · ouvert : rien
+  >
+  > 195. 194, c'est noté dans le mandat : la télécommande ne se code qu'après que tu as vu et validé sa capture. Je la fais moi-même, en maquette : le fichier en ligne sur un faux hub, une vraie heure jouée, et la télécommande écrite dedans, sur un écran de téléphone, avec l'ordinateur et le tableau qui suivent. Tu l'auras avant toute ligne de code, juste après les captures de la mise en ligne B.
+  >
+  > 196. Oui : sans ta relecture, ma proposition partait contre ton cadrage 1. C'est consigné. Désormais, avant toute proposition qui touche une décision passée, je relis d'abord le cadrage.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:51
+  >
+  > MEMO

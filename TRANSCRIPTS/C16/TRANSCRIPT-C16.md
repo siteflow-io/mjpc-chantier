@@ -1159,3 +1159,18 @@ MEMO
   > À jouer : la maquette de l'appel (222), à valider · en cours : l'exécutant (« qui a la main », prouvé vers 17:45), puis mon banc complet · ouvert : 254, 255
   >
   > MEMO
+- **16:59 — Paul, mot pour mot** : « 256 à corriger du coup. je dois pouvoir faire l'appel n'importe quand sur n'importe quel appareil »
+- **17:00 — la conscience** : 254 et 255 acquis (sans commentaire). À l'exécutant de ㉞ (message) : 256 dans sa poussée de 17:45 — une ligne de journal par absent (avec l'élève), le rendu sûr pour les lignes déjà écrites sans élève, les absents datés à l'horloge de l'heure ; preuve par le geste (deux absents cochés dans la case pendant l'heure, le compteur, la Relecture sans erreur qui les nomme). Registre (production `8e4a136`) : ㊱, les mots de Paul.
+- **17:00 — message à Paul, mot pour mot :**
+
+  > 257. 256 entre dans la mise en ligne de 18:35 : l'exécutant de ㉞ le corrige, avec sa preuve par le geste (deux absents cochés dans la case pendant l'heure ; le compteur du pilote les décompte ; la Relecture s'ouvre sans erreur et les nomme).
+  >
+  > 258. L'appel n'importe quand, sur n'importe quel appareil : c'est le mandat de l'appel, avec ta maquette (254 et 255 acquis). Je le lance juste après la mise en ligne de ㉞, parce qu'il touche les mêmes fichiers et la télécommande. Ma proposition : une seule liste d'absents par heure, que tu la remplisses dans la case (avant, pendant ou après l'heure), au pilote, à la télécommande ou sur un autre ordinateur ; chaque appareil la voit aussitôt ; la Relecture la lit toujours. À la télécommande, un bouton « Appel » ouvre la liste de la classe : un appui marque un absent, un second appui le défait.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 17:00
+  >
+  > À jouer : rien · en cours : l'exécutant (« qui a la main » et 256, prouvés vers 17:45), puis mon banc complet · ouvert : 258
+  >
+  > MEMO

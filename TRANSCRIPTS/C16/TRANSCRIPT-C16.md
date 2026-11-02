@@ -609,3 +609,34 @@ MEMO
   >
   > MEMO
 - **12:39 — l'exécutant des correctifs** (son message dit « 12:46 » : une heure devinée, l'heure juste est 12:39) : ㉘ prouvé et poussé (`4dbaa8d`, `82edb59`) — la sonde des correctifs, partie A, sous un faux hub qui refuse les clés (400), vraie heure et mode test, 3 corrections en direct lues partout, 0 envoi refusé, F5 + « Reprendre » et Relecture ; trouvé en plus : la photo du prévu de l'emploi du temps refusée à chaque lancement (préexistant), corrigée ; ㉙ ㉛ ㉜ ㉝ ⑭ passent à sa sonde ; 7, 8, 9 codés, mesures en cours. Contrôle de la conscience : les fichiers touchés sont ceux du mandat (`dr-atelier.js`, `dr-classe.js`, `dr-tableau.js`, `index.html` du sas, la sonde des quatre dettes), ni `AUDITS/` ni `APP_VERSION`. Registre (prod).
+- **12:40 — Paul, mot pour mot** : « Ok. Mon principe est simple: jamais une session lancée, qu'elle qu'elle soit ( répétiriin, vraie classe, mode test) ne joue sans être déclarée partout ailleurs et repilotable partout ailleurs. Ça prépare d'ailleurs le téléphone en mode télécommande comme tu dis, qui est quelque chose que j'ai posé précédemment dans mes cadrages. 
+  Pour 168 ne t'en occupe pas, fais les choses comme je les demande. Je rappelle aussi que tout ce qui se passe doit être consigné afin qu'il y ait une trace. 
+  Enfin pour le redessin, ça a déjà été un problème auquel on a déjà apporté une solution auparavant donc il faudra d'abord se renseigner avant de faire quoi que ce soit. Enfin, j'attends ton retour avec les mesures précises. Enfin 14h45 c'est trop tard. Il me faut du concret avant »
+- **12:41 — l'exécutant des correctifs** (message reçu en travaillant) : poussés `3d28158` ㉙ (le geste : dans l'Atelier, clic dans la question d'un bloc question puis une touche ; la barre se posait DANS le `<p>` de la question, `closest('p')` le rendait lui-même), `ed6e2ab` ㉛, `cf7bb57` ㉜ + ㉝ + ⑭ (un seul commit, mêmes lignes ; dit dans sa NOTE) ; sa sonde : J, R, L (1536), B, C VERT sur son code ; la base rejouée (l'avant) ; ensuite, machine seule : 9, 7, 8, puis le banc.
+- **12:41-12:42 — la conscience** : la solution du redessin retrouvée — le contrat §12.56 (« LA RÈGLE DU REDESSIN », 28/10) et §12.52 (la lenteur) ; le téléphone pilote de poche (`?vue=tel`, maquettes du 23/08, n°12 · 208 du 09/10 « mon téléphone me sert de télécommande ») encore dans `index.html`. Message à l'exécutant (il dit « 12:46 », heure devinée : l'heure juste est 12:42) : la règle §12.56 d'abord, relire 7-9 contre elle et dire dans la NOTE qu'ils étaient codés avant la consigne ; mesurer 9 en premier et m'envoyer les chiffres ; plus de banc d'exécutant ; délai 13:30 ; tout consigné dans la NOTE. Registre (prod `5d83817`, `c8de8b1`).
+- **12:42 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : l'exécutant des correctifs (les points 7 à 9, jusqu'à 13:30) · ouvert : 149, 153, 154, 155, 174
+  >
+  > 169. ㉞ : ta règle est au registre, mot pour mot. Jamais une session lancée (répétition, vraie classe, mode test) ne joue sans être déclarée partout ailleurs et repilotable partout ailleurs. J'ai retrouvé dans tes cadrages le téléphone pilote de poche (le prompteur et la palette, maquettes validées le 23/08, ouvert par le QR). Il est encore dans le fichier, mais je n'ai pas mesuré s'il marche avec le déroulé d'aujourd'hui. Le mandat partira de lui ; il passera après les correctifs, avant le minuteur.
+  >
+  > 170. Pour 168, je comprends ceci : je ne t'écris que pour décider, promouvoir ou tester, et tout le reste va dans les documents (registre, journal, transcript). La photo de l'emploi du temps y est consignée.
+  >
+  > 171. Pour le redessin, j'ai retrouvé la solution : c'est ta règle du 28/10 (contrat §12.56). Rien ne se redessine s'il n'a pas changé ; on retouche, on ne remplace pas ; pendant un geste, la zone attend. L'exécutant avait déjà codé les points 7 à 9 avant ton message. Je lui ai donné la règle à relire d'abord, et il dira dans sa note ce qu'il garde ou retire.
+  >
+  > 172. Voici les mesures précises que j'ai déjà, faites par le cinquième exécutant, seul sur la machine. Le retard du tableau, c'est-à-dire le temps entre la flèche et le premier mouvement du point (médianes) : de 64 à 84 ms à 8 h ; de 124 à 151 ms après la règle de la molette ; de 248 à 257 ms après la correction de l'Atelier et le micro n°2 ; de 374 à 417 ms aujourd'hui. C'est le niveau de la base de la version en ligne (393 à 398 ms). L'étape du banc rejouée cinq fois donne 329, 102, 60, 510 et 239 ms, pour une limite de 350 ms. Le tableau distant (une feuille du site, limite 500 ms) : la base de la version en ligne donne 321, 527 et 518 ms ; la version d'aujourd'hui 656, 437, 422, 457, 366 et 439 ms. La frappe des réponses n'est pas encore mesurée : l'exécutant la mesure en premier, lettre par lettre, et je t'envoie les chiffres dès que je les ai.
+  >
+  > 173. L'exécutant a fait et poussé ㉘, ㉙, ㉛, ㉜, ㉝ et ⑭, sur le sas, pas en ligne. Il a jusqu'à 13:30 pour les points 7 à 9. Il ne fait plus de banc : je ferai le seul banc.
+  >
+  > 174. Ton choix.
+  > A : tout ensemble. Le banc tourne de 13:30 à 14:15, puis je fais les captures et je te demande le « promeus » vers 14:20.
+  > B : les six correctifs d'abord. Je passe le banc tout de suite, de 12:50 à 13:30, et je te demande le « promeus » vers 13:35. Le retard du tableau resterait au niveau de la version en ligne (c'est mesuré). Pour la frappe, je ne sais pas encore. Le reste viendrait dans une seconde version, et pendant ce banc l'exécutant ne mesure rien qui dépende du temps. B déroge à ta règle « jamais de promotion sur une dette ».
+  > Si ta prochaine heure avec le déroulé est avant 14:30, je te conseille B.
+  >
+  > 149. Question : à quelle heure est ta prochaine heure avec le déroulé ?
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 12:42
+  >
+  > MEMO

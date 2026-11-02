@@ -3657,3 +3657,33 @@ ok pour 628 à 633, mais je pense que le bug suivant a un rapport avec la non d�
 02/11/2026 07:25
 
 MEMO
+
+---
+
+## Tour 136 — 02/11/2026 07:32
+
+**Paul (07:32, pendant le banc de 632 et 633, arrêté) :**
+
+638. c'est le bouton valider (entrée) qui ne fonctionne pas alors, il ne semble rien faire et je n'ai aucune confirmation que la copie est bien finie. C'est la mesure à faire en premier et le correctif qui doit passer en premier car c'est bloquant pour rendre les copies complètes.  D'ailleurs, il faudra aussi que je puisse enchainer les relectures de bande, donc la bande doit devenir un onglet à par entière, comme "recopier". à cadrer, pas à faire maintenant. non pour 641, je vais faire les phrases marquantes ça rétablira le flux, je voulais juste avoir l'explication. 642 ok.
+
+**Ce qui a été fait (C14) :** au site, en lecture seule : ses 20 remarques, `relu` vide. La fin de sa bande rejouée avec la 1.4.20 (écritures interceptées) : Entrée seule garde les remarques (`relu` posé, 100 %, l'écriture part) ; un clic dans une remarque puis Entrée : un retour à la ligne ajouté à la remarque, rien de gardé ; « ✕ Retirer » puis Entrée : le bouton rappuyé, la remarque remise. « ✓ Je les garde (Entrée) » cliqué après un clic dans une remarque : `relu` posé et écrit au site, 100 %, mais l'en-tête pas redessiné (le focus reste dans la liste). Correctif codé sur la maquette (`rcBandeClavier`, `rcBandeGarderRq`, `rcBandeManque`, `stRqRetirer`), avec 626, 632 et 633 ; banc complet lancé.
+
+**Claude (07:39) :**
+
+À jouer : 644 tout de suite pour cette copie · en cours : le correctif 638, au banc complet · ouvert : 636 (la 1.4.21 ne partira pas seule : elle partira avec 638), 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+643. Mesuré sur sa copie, en lecture seule : ses remarques ne sont pas gardées au site. J'ai rejoué la fin de sa bande avec la 1.4.20. Entrée, sans rien d'autre, les garde bien, et sa carte passe à 100 %. Mais deux gestes cassent Entrée. Un clic dans une remarque pour la lire, puis Entrée : Entrée ajoute un retour à la ligne dans la remarque, et ne garde rien. Un clic sur « ✕ Retirer », puis Entrée : Entrée rappuie sur ce bouton, et la remarque revient. Dans les deux cas, rien ne se voit. Et même quand ça marche, la bande disait « Bande finie » avant comme après : aucune confirmation.
+
+644. Pour cette copie, maintenant : clique « ✓ Je les garde (Entrée) », en haut de la liste des remarques. Ce bouton-là garde bien les remarques au site, je l'ai mesuré. Si tu as cliqué dans une remarque juste avant, l'en-tête ne change pas à l'écran, mais c'est gardé : vérifie sur sa carte, qui doit passer à 100 %.
+
+645. Le correctif, en cours de banc : dans la liste des remarques, Entrée quitte le champ (ton texte est gardé, sans retour à la ligne) et garde les remarques. « ✕ Retirer » ne garde plus le focus. Au bout, la bande dit ce qui reste : « Il reste 1 arrêt : S1 », ou « Il reste les remarques à relire ». Quand tout est fait, elle dit « ✓ Copie corrigée », en vert : sa carte est à 100 %, son fichier pour École Directe est prêt, avec ses remarques. Un message le confirme aussi. Je te le donne à promouvoir dès que le banc passe, avec 626.
+
+646. Noté : la bande en onglet à part entière, comme « Recopier », pour enchaîner les relectures de bande. À cadrer plus tard, inscrit au registre des dettes.
+
+647. 641 : non, compris. 642 : je le code après 638.
+
+À tester : 644, sur sa copie.
+
+02/11/2026 07:39
+
+MEMO

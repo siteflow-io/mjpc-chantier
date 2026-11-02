@@ -1,0 +1,3 @@
+S relu sans ses vides : {"si":0,"heure":1,"travail":{"prevu":true,"libre":"x"},"lancee":true,"ecoule":12}
+S rempli             : {"parts":[],"gel":null,"travail":{"prevu":true,"libre":"x","terminer":[],"preparer":[],"apprendre":null},"comm":{},"lancee":true,"ecoule":12} ; jamais remis (DR_ETAT_HORS) : []
+parDiapo rempli      : {"e5":{"nDev":2,"lum":[3,5],"ecr":[],"reps":{},"tailles":{},"textes":{},"fsBloc":{}},"e6":{"nDev":1,"lum":[],"ecr":[4],"reps":{"b":[{"eleve":"x","r":"y"}]},"tailles":{},"textes":{},"fsBloc":{}}}

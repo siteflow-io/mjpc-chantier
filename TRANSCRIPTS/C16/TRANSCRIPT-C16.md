@@ -1271,3 +1271,18 @@ MEMO
 - **19:30 — la conscience** : le réveil de 19:30 (point promis en 266) : déjà fait — la livraison est arrivée à 19:27, Paul prévenu à 19:28 ; le banc tourne (l'étape 14 en cours).
 - **19:35 — la conscience, l'étape 14 du banc final** (la sonde complète sur `045fbc22`, 19:28-19:35) : 105 vérifications, **1 échec** — R : « en répétition, chaque geste paraît sur l'autre appareil et au tableau distant (≤ 0,5 s ; 10 / 12) » : téléphone 160, 554, 117 ; ordinateur 98, 133, 437 ; tableau 110, 162, 135, 559, 438, 147 (ms). Les deux passages de l'exécutant (v5, v6) l'avaient vert ; à 16:45 il avait vu un geste à 568 ms en R. Le banc continue (étapes 1 à 12, puis 13).
 - **19:35 — la conscience** : à l'exécutant (message) — sans navigateur : pourquoi la répétition est plus lente que l'heure et l'essai, quel correctif, combien de minutes ; rien codé avant ma réponse.
+- **19:36 — l'exécutant de ㉞ (message)** : lu dans le code, sans navigateur : la seule différence est le chemin d'écriture — en répétition hors test (R), l'état vivant et la scène passent par `dr_repEcrire`, donc par `mjpcPutJson` / `mjpcEcrireRest`, qui affiche après chaque écriture réussie le bandeau « Enregistré à … » (puis `dr_repEcrire` le masque) ; deux à trois écritures par geste, une par lettre en frappe : deux changements du haut de la page par écriture chez celui qui envoie ; le même geste arrive en retard chez les deux qui reçoivent (554 et 559 ms ; 437 et 438 ms) : le retard est chez l'envoyeur ; RT (la même logique, l'écriture de l'essai) passe. Cause probable, pas mesurée. Correctif : `dr_repEcrire` par un `fetch` PUT direct, un refus ou une panne toujours signalé (`mjpcSignalerIssue`, « retenter »), une réussite n'affiche plus rien ; environ 10 minutes de code, 25 de preuve.
+- **19:37 — la conscience** : à l'exécutant (message) — le coder maintenant, en commit local sur `8602da915`, sans navigateur ; la décision à Paul.
+- **19:37 — message à Paul, mot pour mot :**
+
+  > 270. Le banc a trouvé un défaut, en répétition seulement (ni en classe, ni en mode test) : deux gestes sur douze mettent 0,55 seconde à paraître sur l'autre appareil et au tableau, au lieu de moins d'une demi-seconde. La cause, lue dans le code : en répétition, chaque enregistrement affiche puis efface aussitôt « Enregistré à … » en haut de la page ; avec ㉞, chaque geste en fait deux ou trois, et l'appareil qui envoie prend du retard. Le correctif est court : en répétition, un enregistrement réussi n'affiche plus rien (un échec se voit toujours).
+  >
+  > 271. Ta décision. Soit le correctif : sa preuve, puis mon banc complet refait, et le « promeus » vers 21:00 ; c'est ma proposition, puisque c'est ta règle. Soit la mise en ligne vers 20:25 sans lui, ce retard en répétition noté comme une dette.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 19:37
+  >
+  > À jouer : rien · en cours : mon banc (étapes 1 à 13 sur le fichier livré) ; l'exécutant code le correctif · ouvert : 271
+  >
+  > MEMO

@@ -4416,3 +4416,19 @@ je n'avais pas vu ça. là ça veut dire que l'ia a corrigé sans savoir que l'�
 02/11/2026 16:44
 
 MEMO
+
+**Ce qui a été fait ensuite (C14), même tour :** banc complet 169/0 ; candidate au sas : `redaction-1.4.26-RU-candidat.html`, 908 085 o, md5 `b17dbb81a64ea67c8b670ee30674aac3`, sa note. Vrai site en lecture seule, sur la copie de la capture : la 1.4.25 montre 14 lignes « en-tête de la lettre », la 1.4.26 aucune.
+
+**Claude (16:50) :**
+
+À jouer : ton promeus (38) · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+37. 36 est prêt, dans la 1.4.26. Banc complet : 169 vérifications, 0 défaut. Vérifié sur la copie de ta capture, sans rien écrire sur ton site : la version en ligne montre 14 lignes « en-tête de la lettre » ; la 1.4.26, aucune, puisque la date est recopiée.
+
+38. Promeus ?
+
+À tester : après la mise en ligne, rouvre la copie de ta capture : plus aucune ligne grise au-dessus de « 14 juin 1915 ».
+
+02/11/2026 16:50
+
+MEMO

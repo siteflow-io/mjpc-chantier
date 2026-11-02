@@ -1375,3 +1375,16 @@ MEMO
   > À jouer : les tests ci-dessus · en cours : l'exécutant de l'appel (㊱) · ouvert : rien
   >
   > MEMO
+- **21:56 — l'exécutant de l'appel (message)** : l'audit du mandat, 13 points. Ça tient : la base (`a6a63afc` + version = `8b2310e7`, la production), « 0 sur 27 présents », les titres. Précisions : la case lit un cache de l'emploi du temps jamais relu, et `edtAbsence` écrit ce cache plus un élève (il efface ce qu'un autre appareil y a mis) ; une troisième copie de l'appel (`H/appel`, `C/etat`, `C/vif`) ; `dr_absentsDeLaCase` ajoute sans jamais retirer. Ses propositions : la case montre les élèves « absent » sans « arrivé » après ; défaire retire cet « absent » ; une marque `appelUnique` pour les nouvelles heures (H/absents fait foi), les anciennes réunissent les deux listes. **À décider** : (5) l'appel d'avant l'heure, gardé en mémoire dans la maquette (perdu au rechargement, invisible ailleurs) — proposé : `/site/edt/appel/<année>/<clé>` ; (6) un défaut déjà présent : le paquet H s'écrit en entier (PUT) 900 ms après chaque geste et à la clôture, `absents` relu juste avant — un absent coché dans la case entre les deux est effacé au hub ; proposé : PATCH de ses propres clés (écart au §12.9) ; (7) en mode test, la case d'un autre appareil ne voit pas l'essai — proposé : l'appel passe par l'état vivant de l'essai, la case avant et après sur l'appareil de l'essai seulement. (8) K15 ne connaît pas les chemins neufs ; (9) pas de maquette pour le bouton « Appel » de la télécommande.
+- **21:57 — la conscience** : décisions (message) : 5 d'accord (prouver le rechargement et le second appareil) ; 6 d'accord, par le même chemin d'écriture (refus et panne visibles), le défaut mesuré d'abord sur la base, l'écart au §12.9 au registre et dit à Paul ; 7 d'accord, la première voie ; 8 la conscience ajoutera les chemins à PERMIS (AUDITS) ; 9 d'accord, captures pour Paul ; 4, 10, 13 d'accord.
+- **21:57 — message à Paul, mot pour mot :**
+
+  > 282. L'exécutant de l'appel a audité le mandat. Trois choses que j'ai tranchées, que je te dis : l'appel fait avant l'heure est enregistré au hub et vu de tous tes appareils (dans la maquette, il était perdu au rechargement) ; il a trouvé un défaut déjà en ligne — un absent coché dans la case pendant l'heure peut être effacé par l'enregistrement suivant de l'heure elle-même — et il le corrige, en le mesurant d'abord ; en mode test, l'appel passe d'un appareil à l'autre par les pilotes et la télécommande, mais la case d'un autre appareil ne voit pas l'essai (en mode test, rien n'est écrit pour la classe). Le bouton « Appel » de la télécommande te sera montré en captures.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 21:57
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (la mesure de la base) · ouvert : rien
+  >
+  > MEMO

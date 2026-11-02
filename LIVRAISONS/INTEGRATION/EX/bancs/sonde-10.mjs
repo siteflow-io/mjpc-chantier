@@ -95,7 +95,8 @@ const tabEtat = () => tb.evaluate(() => { const m = (typeof DR_TAB !== 'undefine
 const surTableau = async (cond, max = 3000) => { const t0 = Date.now(); while (Date.now() - t0 < max) { if (await tb.evaluate(cond).catch(() => false)) return Date.now() - t0; await dort(10); } return null; };
 const RETARDS = [];
 /* un geste au pilote, puis le temps jusqu'à ce que le tableau distant le montre (le clic compris) */
-const mesurer = async (nom, geste, cond, max = 3000) => { const t0 = Date.now(); await geste(); let ms = null; while (Date.now() - t0 < max) { if (await tb.evaluate(cond).catch(() => false)) { ms = Date.now() - t0; break; } await dort(10); } RETARDS.push({ nom, ms }); return ms; };
+const mesurer = async (nom, geste, cond, max = 3000) => { const t0 = Date.now(); const k0 = ECR.length; await geste(); const t1 = Date.now(); let ms = null; while (Date.now() - t0 < max) { if (await tb.evaluate(cond).catch(() => false)) { ms = Date.now() - t0; break; } await dort(10); }
+  const sc = ECR.slice(k0).find(x => /\/scene$/.test(x.c)); RETARDS.push({ nom, ms, geste: t1 - t0, scene: sc ? sc.t - t0 : null }); return ms; };   /* C16 (les correctifs, 8) : la décomposition — le geste rendu par Playwright, la scène arrivée au hub, le tableau distant qui la montre */
 
 /* ── le pilote ── */
 let P = null, pg = null;
@@ -275,6 +276,7 @@ await capt(tb, 'B-tableau-horloge');
 dire('');
 const ret = RETARDS.filter(x => x.ms != null).map(x => x.ms); const max = ret.length ? Math.max(...ret) : null;
 dire('  info   retards pilote → tableau distant (le clic compris) : ' + RETARDS.map(x => x.nom + ' ' + (x.ms == null ? '—' : x.ms + ' ms')).join(' · '));
+dire('  info   décomposition (le clic rendu · la scène au hub · le tableau distant la montre, depuis le clic) : ' + RETARDS.map(x => x.nom + ' ' + x.geste + ' · ' + (x.scene == null ? '—' : x.scene) + ' · ' + (x.ms == null ? '—' : x.ms) + ' ms').join(' │ '));   /* C16 (les correctifs, 8) */
 verif('Δ', ret.length === RETARDS.length && max < 500, 'le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s', 'le plus long : ' + max + ' ms');
 verif('JS', errA.length === 0 && P.errs.length === 0 && T.errs.length === 0, 'aucune erreur JS (pilote A, pilote B, tableau distant)', errA.concat(P.errs, T.errs).join(' ; '));
 verif('JS', boA.length === 0 && P.boites.length === 0 && T.boites.length === 0, 'aucune boîte système', boA.concat(P.boites, T.boites).join(' ; '));

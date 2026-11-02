@@ -1,0 +1,19 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-02 12:08 UTC · md5 5a9691bf897e57cbe1ca98812b3dc4c7 · images : celle du canon
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 5 fois par passage ══
+  ── ce fichier (md5 5a9691bf897e57cbe1ca98812b3dc4c7)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min 65 · médiane 72 · max 135 ms (65, 71, 72, 78, 135) ; arrivée : min 632 · médiane 647 · max 696 ms (632, 640, 647, 670, 696) ; images entre départ et arrivée : 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0.5 px, 0.2 px, 0.5 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 64 · médiane 81 · max 170 ms (64, 73, 81, 85, 170) ; arrivée : min 611 · médiane 616 · max 638 ms (611, 615, 616, 632, 638)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 54 · médiane 57 · max 70 ms (54, 56, 57, 63, 70) ; arrivée : min 632 · médiane 634 · max 655 ms (632, 633, 634, 647, 655) ; images entre départ et arrivée : 24, 24, 24, 23, 24 ; à 90 ms : 0.2 px, 0.2 px, 0.5 px, 0.2 px, 0.5 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 49 · médiane 63 · max 70 ms (49, 60, 63, 65, 70) ; arrivée : min 632 · médiane 643 · max 647 ms (632, 633, 643, 646, 647)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 41 · médiane 56 · max 78 ms (41, 54, 56, 70, 78) ; arrivée : min 631 · médiane 633 · max 646 ms (631, 632, 633, 639, 646) ; images entre départ et arrivée : 24, 24, 24, 24, 24 ; à 90 ms : 0.2 px, 0.5 px, 0.9 px, 0.5 px, 0.2 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 43 · médiane 65 · max 84 ms (43, 51, 65, 66, 84) ; arrivée : min 614 · médiane 630 · max 633 ms (614, 615, 630, 630, 633)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

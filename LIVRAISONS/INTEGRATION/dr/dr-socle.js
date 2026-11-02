@@ -1208,6 +1208,9 @@ function elements(e){ const out = []; dr_blocsVus(e).forEach((b, bi) => { if (b.
 // ───────── mise à jour minimale : on ne reconstruit pas, on ajuste (le nœud qui a le focus n'est jamais touché ; les champs gardent leur valeur ; les défilements et les images restent) ─────────
 function morph(a, b){
   if (a.nodeType !== b.nodeType || a.nodeName !== b.nodeName) { a.replaceWith(b.cloneNode(true)); return; }
+  if (a.nodeType === 1 && b.getAttribute('data-morph') === 'garder' && a.getAttribute('data-morph') === 'garder') {   /* C16 (les correctifs, 7 et 9 ; la règle du redessin, §12.56 (1) a-b) : une vignette garde son dessin — mesuré : `volet` posait la colonne par poserHtml, dont le morph retirait à chaque vignette son dessin (ses enfants) et son empreinte (`data-hash`), absents du gabarit : `miniatures` redessinait alors TOUTES les vignettes, à chaque flèche et à chaque touche (≈ 28 diapos rendues, 90 ms par touche) ; seuls ses attributs suivent, son dessin ne change que si son empreinte change */
+    for (const at of Array.from(b.attributes)) if (a.getAttribute(at.name) !== at.value) a.setAttribute(at.name, at.value);
+    for (const at of Array.from(a.attributes)) if (!b.hasAttribute(at.name) && at.name !== 'data-hash' && at.name !== 'style') a.removeAttribute(at.name); return; }
   if (a.nodeType === 3) { if (a.nodeValue !== b.nodeValue) a.nodeValue = b.nodeValue; return; }
   if (a.nodeType !== 1) return;
   const actif = document.activeElement; const estActif = !!(actif && a === actif && (actif.isContentEditable || /INPUT|TEXTAREA/.test(actif.tagName)));

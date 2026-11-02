@@ -1,0 +1,19 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-02 12:00 UTC · md5 5a9691bf897e57cbe1ca98812b3dc4c7 · images : celle du canon
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 10 fois par passage ══
+  ── ce fichier (md5 5a9691bf897e57cbe1ca98812b3dc4c7)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min 218 · médiane 242 · max 295 ms (218, 225, 226, 238, 238, 242, 245, 258, 262, 295) ; arrivée : min 794 · médiane 830 · max 853 ms (794, 805, 816, 817, 817, 830, 830, 834, 849, 853) ; images entre départ et arrivée : 23, 24, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 64 · médiane 98 · max 178 ms (64, 74, 75, 81, 81, 98, 99, 102, 124, 178) ; arrivée : min 613 · médiane 629 · max 642 ms (613, 613, 618, 624, 627, 629, 633, 638, 641, 642)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 208 · médiane 217 · max 248 ms (208, 209, 211, 211, 214, 217, 219, 223, 234, 248) ; arrivée : min 785 · médiane 797 · max 824 ms (785, 786, 788, 793, 794, 797, 803, 805, 815, 824) ; images entre départ et arrivée : 24, 24, 24, 24, 24, 24, 23, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 48 · médiane 58 · max 78 ms (48, 51, 52, 54, 57, 58, 63, 68, 69, 78) ; arrivée : min 625 · médiane 634 · max 664 ms (625, 625, 627, 632, 634, 634, 639, 645, 645, 664)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 203 · médiane 216 · max 245 ms (203, 207, 210, 210, 215, 216, 227, 229, 234, 245) ; arrivée : min 779 · médiane 801 · max 821 ms (779, 791, 794, 797, 799, 801, 809, 810, 815, 821) ; images entre départ et arrivée : 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ; à 90 ms : 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px, 0 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 50 · médiane 72 · max 99 ms (50, 52, 55, 56, 66, 72, 75, 80, 83, 99) ; arrivée : min 614 · médiane 632 · max 657 ms (614, 615, 619, 622, 623, 632, 633, 646, 650, 657)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

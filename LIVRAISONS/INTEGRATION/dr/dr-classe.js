@@ -18,11 +18,25 @@ function brancherAjout(){ /* repris de l'ancien (moteur L648-656, ligne() L1441)
     ini.oninput = () => { const r = ligne(); const l = dr_candidats(ini.textContent); r.eleve = l.length === 1 ? nomDe(l[0]) : null; r.i = r.eleve ? iniDe(r.eleve) : ini.textContent.trim().toUpperCase(); ini.classList.toggle('vide', !r.i); S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'ini' }; if (r.r) dr_tout(); };
     ini.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === 'Tab') { ev.preventDefault(); const r = ligne(); if (!r.eleve && ini.textContent.trim()) { const l = dr_candidats(ini.textContent); if (l.length) { r.eleve = nomDe(l[0]); r.i = l[0]; ini.textContent = r.i; ini.classList.remove('vide'); } } dit.focus({ preventScroll: true }); } if (ev.key === 'Escape') { ev.stopPropagation(); ini.blur(); } };
     ini.ondblclick = ev => { ev.preventDefault(); const r = ligne(); if (!r.r) return; r.refo = !r.refo; journal('reponse-reformulee', { eleve: r.eleve, refo: r.refo }); S._garderFocus = { bi, ri, quoi: 'ini' }; dr_tout(); };
-    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_tout(); };
+    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_frappeReponse(!av); };   /* C16 (㉟) : avant, chaque touche redessinait tout (dr_tout) */
     dit.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); const r = ligne(); if (!r.r.trim()) return; r.validee = true; if (r.eleve) journal('parole', { nom: r.eleve, m: 'reponse' }); S.derniere = { type: 'reponse' }; S.blocActif = bi; S._garderFocus = { bi, ri: ri + 1, quoi: 'ini' }; dr_tout(); } if (ev.key === 'Escape') { ev.stopPropagation(); dit.blur(); } };
     dit.onfocus = () => { S.blocActif = bi; }; });
   if (S._garderFocus) { const g = S._garderFocus; const rep = mur.querySelector(`.rep[data-bi="${g.bi}"][data-r="${g.ri}"]`); if (rep) { const c = rep.querySelector(g.quoi === 'ini' ? '.ini' : '.dit'); if (c && document.activeElement !== c) { c.focus({ preventScroll: true }); const sel = window.getSelection(); const rg = document.createRange(); rg.selectNodeContents(c); rg.collapse(false); sel.removeAllRanges(); sel.addRange(rg); } } S._garderFocus = null; } }
 
+/* C16 (les correctifs, ㉟ ; Paul, 12:21 : « en écrivant les réponses des élèves […] c'était assez lent l'écriture ») — LA FRAPPE SUIT LES DOIGTS. Avant, chaque
+   touche d'une réponse redessinait tout le pilote (`dr_tout` : la diapo et sa pagination, la vue de droite, « Où on en est », la colonne…) dans la tâche même de la
+   touche : la lettre ne paraissait qu'après, et la fenêtre du tableau (le même fil d'exécution) attendait aussi ; ce matin, chaque touche partait en plus vers le
+   hub, refusée (㉘), et le bandeau des échecs se redessinait avec la liste entière. Maintenant, une touche dans une réponse déjà commencée envoie la diapo au
+   tableau (la fenêtre, la scène du tableau distant), sans redessiner le pilote (le texte y est déjà : Paul l'écrit) ; le dessin complet vient quand Paul s'arrête
+   (400 ms sans touche), ou tout de suite à la première lettre d'une réponse (la question se dévoile, la ligne suivante paraît). Rien n'est perdu : la réponse est
+   dans l'état à chaque touche (`r.r`), et part au tableau à chaque touche. */
+let DR_FRAPPE_T = null;
+function dr_frappeReponse(neuve){
+  const complet = () => { clearTimeout(DR_FRAPPE_T); DR_FRAPPE_T = null; dr_tout(); };
+  if (neuve || S.gel || S.atelier || !S.mur || S.mur.si !== S.si || S.mur.di !== S.di || typeof pousser !== 'function') { complet(); return; }
+  try { const e = ecran(); const et = etatComplet(); ['pages', 'pagesP', 'tranchesP', 'policeRatio', 'policeReduite', 'page', 'fsBloc'].forEach(k => { if (S.mur[k] !== undefined) et[k] = S.mur[k]; }); et._pageManuelle = true;
+    if (!S.repetition) { et.textes = p8TextesCopie(e, et.textes); et.retires = p8RetiresCopie(e); } et.pilote = false; pousser(et); } catch (x) { complet(); return; }
+  clearTimeout(DR_FRAPPE_T); DR_FRAPPE_T = setTimeout(complet, 400); }
 // ───────── PARTICIPATION — le dispositif de l'ancien, repris tel quel : le panneau d'initiales (moteur L770-779), l'historique (L1099-1112), la fiche d'élève (ouvrirPart, corrigePart, posePart, supPart, allerRep), le VIF du pont (L16417-16498), la palette Maj+Espace du pont (L16517-16621) ─────────
 const trierIni = t => String(t).toUpperCase().replace(/[^A-Z]/g, '').split('').sort().join('');
 
@@ -621,6 +635,15 @@ function dr_duHub(x){
   if ('dio' in o) { const i = (o.eid != null && typeof indexDe === 'function') ? indexDe(o.eid) : -1; if (i >= 0) o.di = i + (o.dio || 0); delete o.dio; }   /* seulement là où le rang a été retiré */
   return o;
 }
+/* C16 (les correctifs, ㉘) — LE VRAI HUB REFUSE (HTTP 400) TOUTE CLÉ QUI PORTE . # $ [ ] / : la scène du tableau (`C/scene`, `/site/repetition/scene`,
+   `/site/tableau_test/scene`) copiait `S.mur`, dont les textes corrigés en direct sont rangés par position (« 0.t », « 2.1 », « -1.act ») ; elle partait sans
+   échappement (02/11, 09:39 : « ● session coupée », le bandeau des enregistrements perdus, le tableau distant figé). `dr_versHub` ne convient pas à la scène :
+   il retire aussi son rang et sa séance (`di`, `si`), que le tableau distant lit. Ici, les clés seulement, dans les deux sens, avec le même codage que
+   `dr_versHub` / `dr_duHub` (« . » → « %2e »…) : une clé jamais échappée se relit telle quelle. */
+function dr_cleVersHub(k){ return String(k).replace(/[.#$\[\]\/]/g, c => '%' + c.charCodeAt(0).toString(16)); }
+function dr_cleDuHub(k){ return String(k).replace(/%(2e|23|24|5b|5d|2f)/g, (m, h) => String.fromCharCode(parseInt(h, 16))); }
+function dr_clesVersHub(x){ if (Array.isArray(x)) return x.map(dr_clesVersHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleVersHub(k)] = dr_clesVersHub(x[k]); }); return o; }
+function dr_clesDuHub(x){ if (Array.isArray(x)) return x.map(dr_clesDuHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleDuHub(k)] = dr_clesDuHub(x[k]); }); return o; }
 /* l'état de l'heure, épuré : sans le tableau ni l'attente ni l'animation, sans les minuteurs, sans les rangs ;
    avec ce que `S` ne porte pas et sans quoi la reprise perdrait les dévoilements et les réponses (`parDiapo`, `vuMax`, audit M2) */
 const DR_ETAT_HORS = ['mur', 'attente', 'anim', 'coupure', 'di', 'ordres', 'repSnap', 'blocActif', 'cand'];
@@ -635,15 +658,6 @@ function dr_etatHeure(){
 function dr_reactNormaliserCopie(E, sk){ if (typeof dr_normaliserTrame !== 'function') return; const mis = []; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') mis.unshift({ i, e: E[i], apres: (E[i - 1] || {}).eid });
   dr_normaliserTrame(E, sk); mis.forEach(m => { if (E.includes(m.e)) return; let k = m.apres != null ? E.findIndex(x => x && x.eid === m.apres) : -1; k = k >= 0 ? k + 1 : Math.min(m.i, E.length); E.splice(k, 0, m.e); }); }
 /* les frontières d'heure de la trame en mémoire : {eid: heure}, sans les « Cahier de textes » (le socle les place) */
-/* C16 (les correctifs, ㉘) — LE VRAI HUB REFUSE (HTTP 400) TOUTE CLÉ QUI PORTE . # $ [ ] / : la scène du tableau (`C/scene`, `/site/repetition/scene`,
-   `/site/tableau_test/scene`) copiait `S.mur`, dont les textes corrigés en direct sont rangés par position (« 0.t », « 2.1 », « -1.act ») ; elle partait sans
-   échappement (02/11, 09:39 : « ● session coupée », le bandeau des enregistrements perdus, le tableau distant figé). `dr_versHub` ne convient pas à la scène :
-   il retire aussi son rang et sa séance (`di`, `si`), que le tableau distant lit. Ici, les clés seulement, dans les deux sens, avec le même codage que
-   `dr_versHub` / `dr_duHub` (« . » → « %2e »…) : une clé jamais échappée se relit telle quelle. */
-function dr_cleVersHub(k){ return String(k).replace(/[.#$\[\]\/]/g, c => '%' + c.charCodeAt(0).toString(16)); }
-function dr_cleDuHub(k){ return String(k).replace(/%(2e|23|24|5b|5d|2f)/g, (m, h) => String.fromCharCode(parseInt(h, 16))); }
-function dr_clesVersHub(x){ if (Array.isArray(x)) return x.map(dr_clesVersHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleVersHub(k)] = dr_clesVersHub(x[k]); }); return o; }
-function dr_clesDuHub(x){ if (Array.isArray(x)) return x.map(dr_clesDuHub); if (!x || typeof x !== 'object') return x; const o = {}; Object.keys(x).forEach(k => { o[dr_cleDuHub(k)] = dr_clesDuHub(x[k]); }); return o; }
 function dr_heuresDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (!e.role && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }
 function dr_reactivationsDesEcrans(){ const o = {}; try { seance().ecrans.forEach(e => { if (e.role === 'reactivation' && e.eid != null) o[e.eid] = +e.heure || 1; }); } catch (e) {} return o; }   /* le rituel posé à chaque heure (§12.16), pour la reprise */
 /* reposer des frontières gardées (la reprise, l'heure suivante) : chaque diapo à son heure, chaque « Cahier de textes » derrière la dernière diapo de la sienne */

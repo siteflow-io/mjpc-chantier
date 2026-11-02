@@ -146,15 +146,20 @@ function dr_scene(et){
   try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
 }
+/* C16 (les correctifs, point 8 ; la règle de Paul : le tableau distant suit sous 0,5 s) — la scène attendait toujours 250 ms après le dernier geste (le débounce
+   de `sesEmettre`) : un geste isolé partait au mieux 250 ms après. Maintenant le premier geste part tout de suite (à la tâche suivante : le pilote a fini son
+   dessin) ; les suivants, au plus une scène par 250 ms, la dernière toujours envoyée. En mode test, l'image du tableau (`dr_ttEmettre`) part de même, sans
+   attendre son tour de 250 ms. */
 function dr_sceneAuto(vite){
-  clearTimeout(DR_TAB.emT);
-  DR_TAB.emT = setTimeout(() => {
+  clearTimeout(DR_TAB.emT); const ecart = Date.now() - (DR_TAB.emDernier || 0);
+  DR_TAB.emT = setTimeout(() => { DR_TAB.emDernier = Date.now();
+    if (dr_ttOn() && typeof DR_TT === 'object' && DR_TT.sig) { try { dr_ttEmettre(); } catch (e) {} }   /* l'image du tableau du mode test, tout de suite */
     if (!dr_tabPeutEcrire() || !S.mur) return;
     const sc = dr_scene(S.mur); if (!sc) return;
     if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => {}); return; }   /* §12.66 (1) : en mode test, ce dépôt reste au magasin du mode test ; le témoin « ● session » suit l'adresse du mode test (dr_ttEmettre) */
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);   /* sans accusé en 5 s : la session est coupée */
     dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });   /* C16 (㉘) : les clés échappées (les textes corrigés en direct, « 0.t ») — le vrai hub refusait la scène entière */
-  }, vite ? 0 : 250);   /* le débounce de `sesEmettre` */
+  }, (vite || ecart >= 250) ? 0 : 250 - ecart);   /* C16 (8) : le premier tout de suite, puis au plus un par 250 ms (avant : toujours 250 ms après le dernier) */
 }
 
 /* ═══ §12.66 (1) — LE TABLEAU DISTANT EN MODE TEST (Paul, 28/10 18:32) ═══════════════════════════════════════════════════════════════

@@ -4020,3 +4020,37 @@ MEMO
 02/11/2026 14:11
 
 MEMO
+
+**Ce qui a été fait ensuite (C14), même tour :** 704, 702, 642 et 710 codés sur la maquette (`ff5a14d2`) : `rcCg*` (le commentaire général), `ST_CONSIGNE_GRILLE` et `stGrilleIA` (« ⇪ Faire la grille avec l'IA » ; `stImporter` garde le contexte rendu), `avCarteResumer`, `avCartesResumer`, `avAccueil` (l'accueil, et le pourcentage du haut de la classe : la moyenne des cartes), un sticker enlevé ne lu nulle part (`stArrets`, `stRqVisibles`, le fichier de l'élève : `stActifs`) ; le flux dit « N corrigées » ; l'aide « ? » de Réglages et de l'accueil. Trouvés par le banc et corrigés : un commentaire `//` qui avalait la fin d'une ligne (le fichier de l'élève) ; l'accueil dessiné avant la fin du chargement (`avAccueil` mis dans la page) ; trois attentes du banc récrites (Entrée au bout de la bande garde le commentaire proposé ; la copie à finir de la sauvegarde ; la moyenne comparée aux cartes du tableau). Banc complet : **167 vérifications, 0 défaut**. Candidate au sas : `redaction-1.4.24-RU-candidat.html`, 906 472 o, md5 `14b499c627a9144ef416befe366f8a29`, sa note, 5 captures. Vrai site en lecture seule : l'export, le tableau et les cartes sans erreur (mon script adapté au site qui s'ouvre sur la recopie) ; la 3 Franklin Aretha : « 0/29 · 27 % » en haut ; S30 trouvé dans les deux grilles. Le fichier d'essai refait avec la candidate (14h28) : S30 enlevé ici seulement, la question du commentaire dans la consigne, aucun nom.
+
+**Claude (14:37, avec le fichier d'essai et 4 captures) :**
+
+À jouer : 717 à 720 (l'essai), ton promeus (721), ton mot sur 722 · en cours : rien · ouvert : la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+712. C'est fini : la 1.4.24 attend ton promeus. Elle contient 704, 702, 642 et 710, en plus de tout ce que portait la 1.4.23. Banc complet : 167 vérifications, 0 défaut. Je l'ai fait tourner sur ton vrai site sans rien y écrire : aucune erreur.
+
+713. 704, le commentaire général : au bout de la bande, après les remarques, « 💬 Commentaire général » porte la proposition de l'IA. Tu la corriges si tu veux, puis Entrée. Alors seulement : « ✓ Copie corrigée ». L'élève le lit tout à la fin de son fichier.
+
+714. 702, la grille faite avec l'IA : Réglages → « La grille et ses stickers » → « ⇪ Faire la grille avec l'IA ». Tu donnes le fichier à ton IA ; elle te pose d'abord ses questions, puis propose ; tu charges sa réponse par « 📥 Charger des stickers », puis tu valides. Elle n'a pas le droit de proposer un sticker que seule la feuille montre, comme S30.
+
+715. 642, l'accueil : chaque rédaction dit les copies entièrement corrigées, puis la moyenne des cartes. Le pourcentage en haut de la classe aussi : ta 3 Franklin Aretha dit aujourd'hui « 0 % » ; elle dira « 27 % ». L'accueil se met à jour la première fois que tu rouvres chaque classe.
+
+716. 710 : un sticker enlevé de la grille ne part plus à l'IA, ne s'arrête plus dans la bande, et l'élève ne le lit plus nulle part. J'enlève S30 de tes deux grilles juste après ton promeus.
+
+717. L'essai, avec le fichier joint « …_14h28.json » ; jette les précédents. Étape 1 : ouvre une nouvelle conversation avec ton IA, et donne-lui ce fichier.
+
+718. Étape 2 : elle te pose ses questions. Réponds-lui : colle les textes lus en classe, et dis-lui ce que l'élève doit faire de sa copie quand il la reçoit.
+
+719. Étape 3 : elle te rend un fichier « corrige_… ». Envoie-le moi ici. Rien ne change sur ton site.
+
+720. Étape 4 : je vérifie tout et je te dis si ça va. Si ça va : « 🗑 Tout effacer » sur tes deux classes, puis tu réexportes.
+
+721. Promeus ? Je mets la 1.4.24 en ligne, puis j'enlève S30 de tes deux grilles.
+
+722. 711, reposée : « Ranger », c'est le nom du bouton de l'app qui enlève un sticker. Puisque ce mot ne te parle pas, je renomme ce bouton « 🗑 Enlever de la grille » ?
+
+À tester : les 4 captures jointes (maquette, élèves inventés) ; puis 717 à 719.
+
+02/11/2026 14:37
+
+MEMO

@@ -23001,8 +23001,8 @@ function dr_sesBandeau(){
   } catch (e) {}
 }
 /* le texte du bandeau, selon ce qui joue */
-function dr_sesTexte(c){ return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '') + ' —'
-  : 'Heure en cours avec les <b>' + escapeHtml((c && (c.classeNom || c.classeSlug)) || '') + '</b> —'; }
+function dr_sesTexte(c){ return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '')
+  : 'Heure en cours avec les <b>' + escapeHtml((c && (c.classeNom || c.classeSlug)) || '') + '</b>'; }
 function dr_sesBulle(c){ return c && c.__sorte === 'essai' ? 'Cet appareil pilote l’essai qui joue (en mode test, rien n’est enregistré pour la classe), là où il en est : il passe en mode test le temps de l’essai. Ce que tu fais ici, le tableau et les autres appareils le suivent.'
   : 'Cet appareil pilote l’heure de cette classe, là où elle en est : la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l’appel. Ce que tu fais ici, le tableau et les autres appareils le suivent ; rien n’est créé.'; }
 
@@ -23639,7 +23639,7 @@ function sesRepriseRetirer(){
 function sesReprisePeindre(c){
   /* [E2] §12.28-3 (d) : « Heure en cours avec les <classe> — Reprendre », en haut, sur tous les écrans du prof ; « Plus tard » tombe ;
      le bandeau ne recouvre rien : la page et les écrans pleins descendent de sa hauteur (`--ses-reprise-h`, dr.css bloc E2) */
-  var txt=(typeof dr_sesTexte==='function')?dr_sesTexte(c):'Heure en cours avec les <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b> —';   /* C16 (㉞) : ce qui joue, en clair (l'heure, l'essai) */
+  var txt=(typeof dr_sesTexte==='function')?dr_sesTexte(c):'Heure en cours avec les <b>'+escapeHtml(c.classeNom||c.classeSlug)+'</b>';   /* C16 (㉞) : ce qui joue, en clair (l'heure, l'essai) */
   var b=document.getElementById('ses-reprise');
   if(!b){
     b=document.createElement('div'); b.className='ses-reprise'; b.id='ses-reprise';
@@ -23651,6 +23651,14 @@ function sesReprisePeindre(c){
   SES._reprise=c;
   try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
   sesRepriseDecaler(); if(!SES._repriseDec)SES._repriseDec=setInterval(sesRepriseDecaler,1000);
+  sesRepriseObserver();
+}
+/* C16 (㉞, la conscience 15:3x) : ce qui paraît pendant que le bandeau est là (le panneau prof, l'emploi du temps, une fenêtre) descend AVANT d'être peint :
+   l'observateur des changements de la page appelle `sesRepriseDecaler` avant l'image suivante (avant : jusqu'à 1 s sous le bandeau — l'en-tête du panneau prof caché) */
+function sesRepriseObserver(){
+  if(SES._repriseObs||typeof MutationObserver!=='function')return;
+  var o=SES._repriseObs=new MutationObserver(function(){ if(!document.getElementById('ses-reprise'))return; sesRepriseDecaler(); try{ o.takeRecords(); }catch(e){} });   /* ce que le décalage vient de changer ne le rappelle pas */
+  o.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
 }
 /* [E2] §12.28-3 (d), garde L d'E3 : le bandeau ne recouvre rien — tout ce qui est fixe ou collant en haut de l'écran (le bouton du panneau prof,
    l'en-tête du niveau, les écrans pleins : panneau prof, emploi du temps, atelier) descend de sa hauteur tant qu'il est là ; la page descend
@@ -23673,6 +23681,7 @@ function sesRepriseDecaler(){
 }
 function sesRepriseRemettre(){
   if(SES._repriseDec){ clearInterval(SES._repriseDec); SES._repriseDec=null; }
+  if(SES._repriseObs){ try{ SES._repriseObs.disconnect(); }catch(e){} SES._repriseObs=null; }
   Array.prototype.forEach.call(document.querySelectorAll('[data-ses-top]'),function(el){ el.style.top=el.getAttribute('data-ses-top'); el.removeAttribute('data-ses-top'); });
 }
 function sesReprisePoser(){

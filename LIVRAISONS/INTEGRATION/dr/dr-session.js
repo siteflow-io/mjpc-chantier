@@ -264,7 +264,7 @@ function dr_sesBandeau(){
   } catch (e) {}
 }
 /* le texte du bandeau, selon ce qui joue */
-function dr_sesTexte(c){ return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '') + ' —'
-  : 'Heure en cours avec les <b>' + escapeHtml((c && (c.classeNom || c.classeSlug)) || '') + '</b> —'; }
+function dr_sesTexte(c){ return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '')
+  : 'Heure en cours avec les <b>' + escapeHtml((c && (c.classeNom || c.classeSlug)) || '') + '</b>'; }
 function dr_sesBulle(c){ return c && c.__sorte === 'essai' ? 'Cet appareil pilote l’essai qui joue (en mode test, rien n’est enregistré pour la classe), là où il en est : il passe en mode test le temps de l’essai. Ce que tu fais ici, le tableau et les autres appareils le suivent.'
   : 'Cet appareil pilote l’heure de cette classe, là où elle en est : la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l’appel. Ce que tu fais ici, le tableau et les autres appareils le suivent ; rien n’est créé.'; }

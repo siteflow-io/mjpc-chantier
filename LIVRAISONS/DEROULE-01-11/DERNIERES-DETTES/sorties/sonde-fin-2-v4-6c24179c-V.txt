@@ -1,0 +1,15 @@
+C16 · sonde des dernières dettes · parties V · 2026-11-02 06:19 UTC · md5 6c24179ccefd6027e639bd0ba2ef4d8e · images : celle du canon
+
+══ V · (⑰) 1536×864 · hors mode test · le témoin « déroulé intègre » au faux hub ordinaire, au faux hub rangé comme le vrai, et une écriture refusée ══
+  ok     V · le faux hub ordinaire : l’heure lancée, ▶ jusqu’à la première activité, deux lignes dévoilées, rien de perdu (1 écriture(s) de la copie, acceptée(s)) — le témoin : « ● déroulé intègre » — {"texte":"● déroulé intègre","titre":"Ce que la classe a vu est au hub, bit pour bit : la copie écrite et la copie relue ont la même empreinte (20315-58burp)."}
+  ok     V · le faux hub ordinaire : aucune erreur JS, aucune boîte système
+  ok     V · le faux hub ordinaire : le hub refuse l’écriture de la copie de la classe (1 refus, 401) — le témoin : « ● déroulé à vérifier » — {"texte":"● déroulé à vérifier","titre":"La copie relue au hub n’est pas celle qui vient d’être écrite : la liaison est lente ou coupée. Rien n’est perdu ici ; le site réessaie au prochain geste."}
+  ok     V · le faux hub ordinaire, l’écriture refusée : aucune erreur JS, aucune boîte système
+  ok     V · le faux hub rangé comme le vrai : l’heure lancée, ▶ jusqu’à la première activité, deux lignes dévoilées, rien de perdu (1 écriture(s) de la copie, acceptée(s)) — le témoin : « ● déroulé intègre » — {"texte":"● déroulé intègre","titre":"Ce que la classe a vu est au hub, bit pour bit : la copie écrite et la copie relue ont la même empreinte (20315-58burp)."}
+  ok     V · le faux hub rangé comme le vrai : aucune erreur JS, aucune boîte système
+  ok     V · le faux hub rangé comme le vrai : le hub refuse l’écriture de la copie de la classe (1 refus, 401) — le témoin : « ● déroulé à vérifier » — {"texte":"● déroulé à vérifier","titre":"La copie relue au hub n’est pas celle qui vient d’être écrite : la liaison est lente ou coupée. Rien n’est perdu ici ; le site réessaie au prochain geste."}
+  ok     V · le faux hub rangé comme le vrai, l’écriture refusée : aucune erreur JS, aucune boîte système
+      V · le code de Firebase 8.10.1 (hors réseau) : la copie écrite (26 diapos) relue — l’ordre des clés de la 1re diapo ["eid","act","dur","role","comp","blocs","heure","ouvCanon"] → ["act","blocs","dur","eid","heure","ouvCanon","role"] ; 19 diapo(s) dont les clés reviennent dans un autre ordre
+  ok     V · le code de Firebase 8.10.1 : l’ancienne empreinte de la copie écrite et de la copie relue diffèrent (18688-1dfau0p / 18594-kegslg) ; rangées comme le hub, elles sont égales (20315-58burp / 20315-58burp)
+
+— fin : 9 vérifications, 0 échec(s) · VERT

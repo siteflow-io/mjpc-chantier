@@ -664,7 +664,8 @@ function dr_copieAuto(vite){
     if (!dr_clPeutEcrire(true)) return;
     const ecr = dr_copiePourHub(JSON.parse(JSON.stringify(seance().ecrans))); const em = dr_empreinte(ecr);   /* C16 (retour sûr) : la copie au hub, lisible par la 8.77.1-⑩ (dr-socle.js) */
     if (em === DR_CL.empreinteEcrite) return; DR_CL.empreinteEcrite = em;   /* la copie ne repart que si elle a changé (relecteur neuf n°2 : 14 écritures en 17 min sans rien éditer) */
-    dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(em); });
+    const emH = dr_empreinteHub(ecr); dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(emH); });   /* C16 (⑰) : l'empreinte de la copie rangée comme le hub la range */
+    clearTimeout(DR_CL.iT); DR_CL.iT = setTimeout(() => dr_temoinIntegre(emH), 4000);   /* C16 (⑰) : une écriture refusée n'appelle pas la suite (mjpcPutJson : le bandeau « Réessayer ») — le témoin relit le hub de lui-même 4 s après : la copie relue n'est pas celle écrite, « à vérifier » */
   }, vite ? 0 : 900);
   dr_journalAuto(vite); dr_etatAuto(vite); dr_traceAuto(vite);
 }
@@ -686,8 +687,18 @@ function dr_traceAuto(vite){
 }
 /* le témoin « déroulé intègre » (R9) : l'empreinte de ce qui a été écrit, comparée à ce que le hub rend */
 function dr_empreinte(x){ const s = JSON.stringify(x); let h = 0; for (let j = 0; j < s.length; j++) h = ((h << 5) - h + s.charCodeAt(j)) | 0; return s.length + '-' + (h >>> 0).toString(36); }
+/* C16 (les dernières dettes, ⑰ ; MANDAT-DERNIERES-DETTES §3.6) : LES DEUX COPIES COMPARÉES RANGÉES COMME LE HUB LES RANGE. Le vrai hub (Firebase Realtime
+   Database) ne garde ni une valeur nulle, ni une liste ou un objet vides (et leur parent devenu vide disparaît) ; il range une liste en objet aux clés « 0 », « 1 »…
+   et la rend en liste quand ses clés sont des entiers dont plus de la moitié de 0 au plus grand sont là. La copie écrite (avec ses listes vides) et la copie relue
+   (sans) avaient donc deux empreintes différentes alors que rien n'était perdu : « ● déroulé à vérifier » sur le vrai hub, « ● déroulé intègre » sur un hub qui
+   garde tout. Chaque copie passe par `dr_commeLeHub` avant son empreinte (`dr_empreinteHub`) : rien de ce que le hub garde n'est retiré, une vraie différence (une écriture perdue,
+   la liaison coupée) reste « à vérifier ». Le vrai hub rend aussi les clés d'un objet triées (la voie (b), mesuré sur le code de Firebase 8.10.1 : écrit
+   `{eid, act, role, blocs}`, relu `{act, blocs, eid, role}`) : les clés sont triées des deux côtés. */
+function dr_commeLeHub(v){ if (v === null || v === undefined || typeof v === 'function' || (typeof v === 'number' && !isFinite(v))) return undefined; if (typeof v !== 'object') return v;
+  const o = {}; (Array.isArray(v) ? v.map((x, i) => String(i)) : Object.keys(v)).sort().forEach(k => { const r = dr_commeLeHub(v[k]); if (r !== undefined) o[k] = r; }); return Object.keys(o).length ? o : undefined; }   /* les mêmes fonctions que la voie (b) (sas, reprise/8771, d6f2957) : une liste rangée par ses rangs, les clés triées */
+function dr_empreinteHub(x){ const y = dr_commeLeHub(x); return y === undefined ? '' : dr_empreinte(y); }
 function dr_temoinIntegre(em){
-  dr_lire(dr_cheminC() + '/ecrans', v => { DR_CL.empreinte = em; DR_CL.relue = v ? dr_empreinte(v) : ''; const t = document.getElementById('dr-integre'); if (!t) return;
+  dr_lire(dr_cheminC() + '/ecrans', v => { DR_CL.empreinte = em; DR_CL.relue = v ? dr_empreinteHub(v) : ''; const t = document.getElementById('dr-integre'); if (!t) return;
     const ok = DR_CL.relue === em; t.textContent = ok ? '● déroulé intègre' : '● déroulé à vérifier'; t.className = ok ? 'dr-integre-ok' : 'dr-integre-ko';
     t.title = ok ? 'Ce que la classe a vu est au hub, bit pour bit : la copie écrite et la copie relue ont la même empreinte (' + em + ').' : 'La copie relue au hub n’est pas celle qui vient d’être écrite : la liaison est lente ou coupée. Rien n’est perdu ici ; le site réessaie au prochain geste.'; });
 }

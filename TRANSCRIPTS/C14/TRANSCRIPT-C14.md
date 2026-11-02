@@ -3465,3 +3465,49 @@ Promeus puis après il faut terminer effectivement tout le reste. À coder cette
 
 600. Cette nuit, je mets en ligne seul, au fur et à mesure, ce qui passe le banc complet et ton vrai site en lecture seule ? Ou bien tout attend ton promeus à 5h30 ?
 
+---
+
+## Tour 131 — la nuit du 01 au 02/11/2026, 22:55 → 01:45 (sans message de Paul ; son ordre de 22:49)
+
+**Ce qui a été fait (C14) :** tout le plan de 596 codé sur la maquette (`c14-poignees`, de `c38b084d` à `a80cea9f`), chaque morceau passé au banc complet : 403 le chrono ; 402 « 📷 La photo » ; 405 « 📦 Tout rendre » (un zip, « NOM Prénom.html ») ; la sauvegarde JSON étendue (rangée au site et proposée quand le paquet est fini, aussi dans « 📋 Le flux ») ; 404 le paquet en vignettes par élève ; 406 le Bilan (lignes, ton temps, « ▸ sa grille ») ; 407 l'aide ; 401 pour l'écran des scans (52 fonctions retirées, prouvé par un outil qui lit le code, `banc/outil-fonctions-401.mjs`) ; les cadres sur le blanc correcteur (sur la vraie copie, privée : 3 cadres décalés devenus justes, 6 inchangés) ; le tableau des élèves et la liste École Directe suivent le flux unique. Trouvés par le banc et réglés : une copie sans arrêt mais avec des remarques n'ouvrait pas sa bande ; une bande finie rouverte après une ligne retapée s'ouvrait sur « Bande finie » ; une copie de l'appli tournée deux fois reprenait la photo d'origine. Banc 147/0 (36 vérifications de l'ancien flux retirées avec leurs gestes, gardées dans `banc/ancien-flux-retire-1.4.20.mjs.txt` ; 11 nouvelles). Vrai site en lecture seule : copies, marques et 51 pages identiques ; trois exports, trois paquets de 8 copies distincts ; aucune erreur. Candidate au sas : `LIVRAISONS/REDACTION/redaction-1.4.20-RU-candidat.html`, md5 `7f0d9ff76069722e7d807fb4309284a5`, avec `NOTE-1.4.20-RU.md` et les captures avant/après (`e70ff307`). Registre de production : état de la nuit (`0fbfd1c`). Rien en ligne.
+
+**Claude (01:45, avec les captures C14-404-1, C14-403, C14-402, C14-405, C14-406, C14-sauvegarde-1) :**
+
+À jouer : ton promeus pour la 1.4.20-RU (615) · en cours : rien · ouvert : 615
+
+601. La nuit est faite. Tout le plan de 596 est codé dans la 1.4.20-RU. Rien n'est en ligne : tu n'as pas répondu à 600, donc tout attend ton promeus.
+
+602. 404, le paquet : l'écran des scans montre le paquet en vignettes, rangées par élève, avec son nom et ses étapes. Un clic sur une page ouvre sa recopie à cette page, et Échap y revient. Les passes, le pinceau, les questions et le récapitulatif ont disparu.
+
+603. 403, le chrono : en haut de la recopie, « ⏱ recopie 12 min · bande 4 min » pour la copie affichée. Le total de la classe est en bas du « 📋 Le flux ».
+
+604. 402, « 📷 La photo » : un seul bouton, avec Remplacer, Tourner, Retoucher, Ordre des pages et Retirer les photos. Un bouton grisé dit pourquoi en dessous. Ta recopie suit toujours la page.
+
+605. 405, « 📦 Tout rendre » : dans « 📨 Fichiers École Directe », un seul zip, un fichier par élève, nommé « NOM Prénom.html » comme dans ta liste de classe. La colonne « Correction » de cette liste dit maintenant « en cours, 75 % » ou la note, au lieu de « 0 points sur 12 ».
+
+606. Ta sauvegarde JSON (13:12) prend maintenant toute la rédaction : la grille de stickers, la recopie, les envois, les corrigés, la bande, les remarques, ton temps, les pages. Quand le paquet passe à « entièrement corrigé », l'app la range au site et te propose de la télécharger. Elle est aussi dans « 📋 Le flux », à tout moment. « 📤 Restaurer » la relit. Les photos n'y sont pas.
+
+607. 406, le Bilan : deux colonnes de plus, « Lignes » et « Ton temps ». « ▸ sa grille » déplie, pour chaque élève corrigé avec les stickers, les lignes de sa grille, leurs points et ses stickers réussis.
+
+608. 407, l'aide « ? » : elle est récrite pour le paquet, la recopie, la bande, le Bilan, les Fiches et les Réglages. Elle ne parle plus que de ce qui existe.
+
+609. 401, le code mort : le code de l'ancien flux des scans est retiré, 52 fonctions. Le fichier passe de 898 Ko à 871 Ko. Ouvrir une recopie n'écrit plus la copie au site. Le code de l'app d'origine, rangé en 1.4.12, est encore là : il reste relié à du code vivant, et le retirer demande de couper ces liens un par un. Je le ferai de jour, avec toi.
+
+610. Les cadres sur le blanc correcteur : sur la copie de [l'élève], les 3 cadres décalés d'un mot sont justes ([les passages cités sont retirés du transcript]). Les 6 autres n'ont pas bougé.
+
+611. Le tableau des élèves suit le flux unique. « Corrigé » et 100 % veulent dire la même chose : recopiée jusqu'à la phrase, corrigé chargé, chaque arrêt décidé, remarques relues, et les stickers revenus quand le sujet en a. Sur ta classe, les 3 copies dont la bande est finie passent de « Corrigé 0 % » à « En cours 75 % » : il leur manque la phrase qui t'a marqué.
+
+612. Le banc a trouvé trois défauts cette nuit, et je les ai réglés. Une copie sans faute ni sticker proposés, mais avec des remarques de l'IA, n'ouvrait pas sa bande : l'élève n'aurait jamais lu ses remarques. Une bande finie, rouverte après une ligne retapée, s'ouvrait sur « Bande finie » au lieu du nouvel arrêt. Une copie de l'appli tournée deux fois reprenait la photo d'origine.
+
+613. Les preuves. Le banc complet passe 147 vérifications, 0 défaut. J'ai retiré les 36 vérifications de l'ancien flux avec leurs gestes, et ajouté 11 nouvelles. Sur ton vrai site, en lecture seule, les copies, les marques et les 51 pages recopiées sont identiques ; trois exports à la suite donnent trois paquets de 8 copies différentes. Sur la vraie copie de [l'élève], tout passe sans erreur : recopie, export, retour, bande, sauvegarde proposée, son fichier.
+
+614. Je n'ai pas pu essayer une chose : la sauvegarde écrite dans ton vrai site, parce qu'il était en lecture seule cette nuit. Si le site la refuse, la fenêtre le dit, et le fichier téléchargé reste.
+
+615. Promeus pour la 1.4.20-RU ?
+
+À tester : après le promeus, recharge et ouvre « 📄 Corriger sur les scans » pour voir le paquet en vignettes. Clique une page, puis « 📷 La photo ». Ouvre « 📨 Fichiers École Directe », puis « 📦 Tout rendre ». Dans le Bilan, clique « ▸ sa grille ».
+
+02/11/2026 01:45
+
+MEMO
+

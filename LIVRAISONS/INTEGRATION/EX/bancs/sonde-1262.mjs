@@ -118,13 +118,13 @@ for (const [W, H] of TAILLES) { const T = W + '×' + H; dire(''); dire('══ '
     const invE = st.E.slice(0, 5); verif('3', invE.every(e => e.dur === 0 && !e.actId) && tete.every(l => /0 min$/.test(l.txt) && !l.drag), T + ' · hors activité, 0 minute, elles ne glissent pas', JSON.stringify(invE.map(e => e.role + ':' + e.dur)));
     await clicLigne(pg, tete[0].eid); const m0 = await lireOuv(pg); await capt(pg, W, H, '3-presentation-du-chapitre');
     verif('3', m0 && /ouv-pres/.test(m0.cls) && m0.lignes[0] === TITRE && m0.lignes[1] === PROB && /^Poésie · les dates selon la classe$/.test(m0.lignes[2] || '') && /Chapitre \d+ — 3e/.test(m0.texte), T + ' · la présentation du chapitre : « Chapitre n — 3e », le titre, la question, l’entrée et « les dates selon la classe » (l’Atelier n’a pas de classe)', JSON.stringify(m0 && m0.lignes.map(l => l.slice(0, 60))));
-    await clicLigne(pg, tete[1].eid); const m1c = await lireOuv(pg);
+    await clicLigne(pg, 'inv-competences-chapitre-s0'); const m1c = await lireOuv(pg);   /* C16 (micro 2) : chaque diapo d'ouverture par son identifiant (l'ordre a changé) */
     verif('3', m1c && /ouv-comp/.test(m1c.cls) && m1c.doms >= 3 && /Les compétences du chapitre \d+/.test(m1c.texte) && !/c4-|tr-/.test(m1c.texte), T + ' · les compétences du chapitre : par domaine, aucun identifiant', JSON.stringify(m1c && { doms: m1c.doms, debut: m1c.texte.slice(0, 80) }));
-    await clicLigne(pg, tete[2].eid); const m1 = await lireOuv(pg);
+    await clicLigne(pg, 'inv-plan-s0'); const m1 = await lireOuv(pg);
     verif('3', m1 && /ouv-parc/.test(m1.cls) && m1.rangs === NS && m1.lignes[0].indexOf(S1T) >= 0 && m1.lignes[NS - 1].indexOf(CH.chapitre.seances[NS - 1].title) >= 0 && new RegExp('Séance 1 sur ' + NS).test(m1.texte), T + ' · le parcours : les ' + NS + ' séances, dans l’ordre, « Séance 1 sur ' + NS + ' »', JSON.stringify(m1 && m1.lignes.slice(0, 2)));
-    await clicLigne(pg, tete[3].eid); const m2 = await lireOuv(pg);
+    await clicLigne(pg, 'inv-presentation-seance-s0'); const m2 = await lireOuv(pg);
     verif('3', m2 && /ouv-debut/.test(m2.cls) && /SÉANCE 1/.test(m2.texte) && m2.lignes[0] === S1T && !/c4-|tr-|litt-|vers-/.test(m2.texte), T + ' · le début de séance : « SÉANCE 1 », son titre, ses compétences — aucun identifiant', JSON.stringify(m2 && m2.lignes.map(l => l.slice(0, 60))));
-    await clicLigne(pg, tete[4].eid); const m3 = await lireOuv(pg); await capt(pg, W, H, '3-problematique');
+    await clicLigne(pg, 'inv-problematique-s0'); const m3 = await lireOuv(pg); await capt(pg, W, H, '3-problematique');
     verif('3', m3 && /ouv-prob/.test(m3.cls) && m3.lignes.length === 1 && m3.lignes[0] === PROB && /NOTRE PROBLÉMATIQUE/.test(m3.texte), T + ' · la problématique : « NOTRE PROBLÉMATIQUE », la problématique du chapitre', m3 && m3.lignes[0]);
     /* la carte d'une diapo d'ouverture */
     const carteInv = await pg.evaluate(() => { const c = document.querySelector('#droite-atelier .at-declare'); return c ? c.innerText.replace(/\s+/g, ' ').slice(0, 700) : null; });

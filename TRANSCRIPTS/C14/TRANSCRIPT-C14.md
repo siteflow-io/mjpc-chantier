@@ -3687,3 +3687,23 @@ MEMO
 02/11/2026 07:39
 
 MEMO
+
+**Ce qui a été fait ensuite (C14), même tour :** banc complet 152/1 (une attente ancienne : « Bande finie » au bout d'une copie entièrement corrigée, récrite), puis **153/0**. Candidate au sas : `LIVRAISONS/REDACTION/redaction-1.4.22-RU-candidat.html`, 883 928 o, md5 `80064a44e3c8cce5f376defc86d45938`, `NOTE-1.4.22-RU.md`, captures `captures-1.4.22/` (maquette) ; maquette `fc82f89d`. Vrai site en lecture seule, 3 Dylan Bob : la copie de la capture, un clic dans une remarque puis Entrée : `relu` écrit (intercepté), 100 %, « ✓ Copie corrigée », aucun retour à la ligne ; les ¶ trouvés sur les 24 copies (sur elle : 10, 21, 28). Registre des dettes à jour (638, la bande en onglet, l'accueil, 641).
+
+**Claude (07:52, avec les captures apres-C14-638-copie-corrigee, apres-C14-633-il-reste, apres-C14-632-paragraphe, apres-C14-632-redemander) :**
+
+À jouer : ton promeus pour la 1.4.22-RU (651) · en cours : rien · ouvert : 642 (après le promeus), la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+648. 638 est codé et passe le banc. Dans la liste des remarques, Entrée quitte le champ et garde les remarques, même si tu viens de cliquer dans une remarque ou sur « ✕ Retirer ». Quand la copie est entièrement corrigée, la bande dit « ✓ Copie corrigée », en vert : « Sa carte est à 100 % ; son fichier pour École Directe est prêt, avec ses remarques ». Un message le confirme aussi.
+
+649. Sur ton vrai site, en lecture seule, sur sa copie : un clic dans une remarque, puis Entrée. Ses 20 remarques sont gardées, sans retour à la ligne ajouté ; sa carte passe à 100 % ; la bande dit « ✓ Copie corrigée ». Aucune erreur.
+
+650. La même candidate porte aussi 626, 633 et 632. 626 : la copie dans la bande, sur un sticker de toute la lettre. 633 : la fin de la bande dit ce qui reste, et Entrée y va. 632 : un ¶ devant chaque ligne qui ouvre un paragraphe, posé seul ou par « ¶ Paragraphe », et dit à l'IA ; dans « 📋 Le flux », « ↻ Redemander les stickers ». Sur ta 3 Dylan Bob, le ¶ se pose seul sur les 24 copies ; sur la sienne, aux lignes 10, 21 et 28, comme je l'avais mesuré. Attention : le retour de l'IA redemandé remplace aussi les remarques de ces copies ; tu les reliras au bout de leur bande, et elles resteront à 99 % jusque-là. Banc complet : 153 vérifications, 0 défaut.
+
+651. Promeus pour la 1.4.22-RU ? Elle remplace la 1.4.21.
+
+À tester, après le promeus : recharge. Sur une copie dont la bande est finie, clique dans une remarque, puis Entrée : la bande dit « ✓ Copie corrigée », et sa carte passe à 100 %. Dans la recopie, regarde le ¶ devant les lignes qui ouvrent un paragraphe. Pour que l'IA revoie les paragraphes de la classe : « 📋 Le flux » → « ↻ Redemander les stickers », puis « ⇪ Exporter pour l'IA ».
+
+02/11/2026 07:52
+
+MEMO

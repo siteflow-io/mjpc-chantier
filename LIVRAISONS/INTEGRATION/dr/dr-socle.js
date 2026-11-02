@@ -1430,7 +1430,7 @@ function pageDeSuivi(et, els, pages){ let cible = -1; els.forEach((l, i) => { if
 function appliquerPages(mur, et){ const corps = mur.querySelector('.corpsd'); const page = mur.querySelector('.page'); if (!corps || !et.pages) { if (page) page.textContent = ''; return; }
   const els = Array.from(corps.querySelectorAll(DR_PAGE_ELS)); const pi = Math.max(0, Math.min(et.pages.length - 1, et.page || 0)); els.forEach((l, i) => l.classList.toggle('hors', !et.pages[pi].includes(i)));
   corps.querySelectorAll('.bloc').forEach(b => { const vis = Array.from(b.querySelectorAll(DR_PAGE_ELS)).some(x => !x.classList.contains('hors')); b.querySelectorAll('.cons, .q').forEach(t => t.classList.toggle('hors', !vis && b.querySelectorAll(DR_PAGE_ELS).length > 0)); });
-  page.innerHTML = et.pages.length > 1 ? `<span data-p="-1" title="page précédente (molette, Maj+←)">‹</span>page ${pi + 1} / ${et.pages.length}<span data-p="1" title="page suivante (molette, Maj+→)">›</span>` : ''; }
+  page.innerHTML = et.pages.length > 1 ? `<span data-p="-1" title="page précédente (Maj+← ; la molette, dans l’Atelier seulement)">‹</span>page ${pi + 1} / ${et.pages.length}<span data-p="1" title="page suivante (Maj+→ ; la molette, dans l’Atelier seulement)">›</span>` : ''; }
 
 function p85fCle(l){ if (l.dataset.pg != null) { const sc = l.closest('[data-bloc]'); return 'g' + (sc ? sc.dataset.bloc : '') + '.' + l.dataset.pg; }   /* C16 (§3.4 des quatre dettes) : une rangée de tableau */ return l.dataset.p || ('r' + l.dataset.bi + '.' + l.dataset.r + '.' + (l.dataset.k || '')); }
  /* (p8-5f) l'identité d'une ligne de page, la même au pilote et au tableau */

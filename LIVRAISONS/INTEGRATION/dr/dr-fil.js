@@ -39,7 +39,7 @@ function dr_filHtml(fil, sombre){ if (!fil || typeof fil.y !== 'number') return 
    sans lui, au pilote seulement (une vignette, la diapo suivante, une mesure de pages), il se calcule ici ; la fenêtre du tableau ne le calcule jamais */
 function dr_filPour(et, sombre){ if (!et) return ''; let f = et.fil; if (f === undefined) { if (typeof dr_estTableau === 'function' && dr_estTableau()) return ''; f = dr_filDe(et.si, et.di); } return dr_filHtml(f, sombre); }
 /* l'infobulle de la colonne (une vignette, son en-tête), écrite pour Paul : ce que fait le geste, ce qu'il coûte en classe */
-var DR_FIL_BULLE = ' · après un clic dans la colonne, ↑ ↓ ← → passent à la vignette d’au-dessus ou d’en dessous, comme dans PowerPoint, jusqu’à ce que tu cliques ailleurs ; en classe, le premier saut demande « La classe te suivrait » (un clic sur la diapo ou ▶ la fait revenir) ; Espace dévoile toujours';
+var DR_FIL_BULLE = ' · dans l’Atelier et avant le lancement, après un clic dans la colonne, ↑ ↓ ← → passent à la vignette d’au-dessus ou d’en dessous, comme dans PowerPoint, jusqu’à ce que tu cliques ailleurs ; pendant l’heure et en répétition, ni les flèches de la colonne ni la molette ne changent de diapo : ▶ avance, et un clic sur une vignette va ailleurs (en classe, la garde « La classe te suivrait » propose de geler d’abord) ; Espace dévoile toujours';
 
 /* ── 2 · la colonne a la main : un clic dedans la lui donne, un clic ailleurs la lui reprend (la garde « La classe te suivrait » n'est pas « ailleurs » :
    c'est elle qui laisse passer la flèche) ; un clic sur la diapo rend aussi la garde au prochain saut (C16 66) ── */
@@ -55,7 +55,11 @@ function dr_filBloque(){ try { const on = id => { const x = document.getElementB
   if (['menu', 'menuplus', 'ppop', 'vif-palette', 'vtoutes', 'fraison', 'garde', 'garde2'].some(on)) return true; if (document.querySelector('.choix-obj')) return true;
   if (S.lancee && S.close && !S.atelier) return true; return false; } catch (e) { return true; } }
 /* l'écoute du clavier du déroulé (dr-socle.js) la consulte avant →, ← : rend vrai si la flèche est pour la colonne */
-function dr_filColonneTouche(ev){ if (!DR_FIL.main || !/^Arrow(Up|Down|Left|Right)$/.test(ev.key) || ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) return false;
+/* C16 (micro de la conscience, 02/11, ⑱ — Paul, 07:48 : « Dès qu'un diapo est lancé, la façon d'avancer c'est soit dévoiler, soit gel. pas de scroll ou autre, qui sert en
+   préparation, jamais en jeu en classe, ni en répétition ») : en jeu (l'heure lancée, ou la répétition), ni les flèches de la colonne ni la molette ne changent de diapo
+   ou de page ; dans l'Atelier et avant le lancement, rien ne change */
+function dr_filEnJeu(){ try { return !S.atelier && !!(S.lancee || S.repetition); } catch (e) { return false; } }
+function dr_filColonneTouche(ev){ if (!DR_FIL.main || !/^Arrow(Up|Down|Left|Right)$/.test(ev.key) || ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) return false; if (dr_filEnJeu()) return false;   /* ⑱ : la flèche retourne à l'écoute ordinaire (→ dévoile, ← revoile) */
   if (!document.getElementById('volet') || dr_filBloque()) return false; ev.preventDefault(); dr_filPas(ev.key === 'ArrowDown' || ev.key === 'ArrowRight' ? 1 : -1, 'fleche'); return true; }
 /* la vignette ou la ligne courante reste visible dans la colonne (au plus près : rien ne bouge si elle se voit déjà) */
 function dr_filMontrer(){ try { const v = document.getElementById('volet'); const c = v && v.querySelector('.vig.cour, .dr-d.on'); if (!c) return; const r = c.getBoundingClientRect(), R = v.getBoundingClientRect(); let d = 0;
@@ -79,7 +83,7 @@ function dr_filPas(sens, source){
 /* ── 3 · la molette sur la vue centrale (l'écoute de #murcadre, dr-socle.js, la lui passe hors du cahier de textes, de la loupe et de Ctrl) : un pas par geste —
    un cran de souris (un coup d'au moins 50 px, après 90 ms sans molette) en est un ; un pavé tactile qui glisse envoie des dizaines de petits coups sans pause :
    ils s'additionnent, font un pas à 40 px, puis plus rien jusqu'à ce que le geste s'arrête (220 ms sans molette) ── */
-function dr_filMolette(ev){ ev.preventDefault(); const on = id => { const x = document.getElementById(id); return !!(x && x.classList.contains('on')); }; if (on('garde') || on('garde2')) return;
+function dr_filMolette(ev){ ev.preventDefault(); if (dr_filEnJeu()) return;   /* ⑱ : en jeu, la molette ne fait rien sur la diapo */ const on = id => { const x = document.getElementById(id); return !!(x && x.classList.contains('on')); }; if (on('garde') || on('garde2')) return;
   const M = DR_FIL.mol; const t = ev.timeStamp || Date.now(); const gap = t - M.t; M.t = t; let d = +ev.deltaY || 0; if (ev.deltaMode === 1) d *= 40; else if (ev.deltaMode === 2) d *= 800; if (!d) return;
   if (gap >= 220 || (Math.abs(d) >= 50 && gap >= 90)) { M.acc = 0; M.pris = false; } if (M.pris) return;
   M.acc += d; if (Math.abs(M.acc) < 40) return; const sens = M.acc > 0 ? 1 : -1; M.acc = 0; M.pris = true;

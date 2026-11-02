@@ -517,3 +517,29 @@ MEMO
 - **Incident déclaré (relevé à 11:00)** : depuis le matin (après le message de 02:14), ce journal a résumé mes messages à Paul (« message à Paul (points …) ») au lieu de les recopier mot pour mot, contre sa règle (« transcript mot pour mot des échanges, réponses de Claude comprises, jamais résumées »). Leur texte n'est plus récupérable dans la session (seul le message de 09:58, ci-dessus, l'est). Désormais chaque message est recopié mot pour mot.
 - **10:59 — Paul** : « Fais les correctifs »
 - **11:03 — les correctifs dans un mandat à eux** (`MANDATS/DEROULE-01-11/MANDAT-CORRECTIFS.md` : ㉘ ㉙ ㉛, branche `deroule/correctifs`, partie du dernier commit du cinquième exécutant) ; le §3 bis sort du mandat du minuteur, qui partira ensuite de `deroule/correctifs`. Raison : ces correctifs vont en ligne avec la version du cinquième exécutant sans attendre le minuteur, et le banc de la conscience doit tourner seul sur la machine. Vu en relisant le code pour le mandat : l'infobulle du champ « LA PROBLÉMATIQUE DU CHAPITRE » (Atelier) dit encore « sur la diapo « Notre question » » (oubli du micro n°2) et un manque dit « le chapitre n'a pas de question (sa problématique) » — ajoutés à ㉛. Le cinquième exécutant : bancs 1 et 2 ROUGES (corrigés), banc 3 VERT, banc 4 en cours (étape 11 à 11:03).
+- **11:06 — trois restes du cinquième exécutant ajoutés au mandat des correctifs** (㉜ → et les pages d'un tableau « tout ensemble » ; ㉝ « À régler » et les tableaux ; ⑭ rouverte, « L'Albatros » : 3 lignes sous le bord), tranchages proposés à Paul ; registre (prod `ed4ac81`).
+- **11:07 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : le cinquième exécutant (la fin de son dernier banc) · ouvert : 149, 153, 154, 155
+  >
+  > 150. Les correctifs ont maintenant un mandat à eux : ㉘ (ta correction en direct refusée par le hub), ㉙ (les mots de la barre dans ta question) et ㉛ (la problématique dite deux fois). Je le lance dès que le cinquième exécutant a fini son dernier banc, dans quelques minutes, puisqu'un seul exécutant à la fois travaille sur les mêmes fichiers. Le minuteur viendra juste après, avec un autre exécutant. Ainsi, les correctifs ne l'attendent pas.
+  >
+  > 151. Ensuite, je passe le banc complet, seul sur la machine, sur la version du cinquième exécutant avec les correctifs. Puis je te demande le « promeus » sur captures. Cette version remplace les deux micros de ce matin.
+  >
+  > 152. En relisant le code pour ㉛, j'ai trouvé deux restes de « question » que mon micro n°2 a oubliés. Dans l'Atelier, l'infobulle du champ de la problématique dit encore « sur la diapo « Notre question » ». Et un message de « À régler » dit « le chapitre n'a pas de question ». Les deux sont dans le correctif.
+  >
+  > 153. Le cinquième exécutant a vu trois choses que je dois te porter. Ta règle interdit de mettre en ligne avec une dette, alors je les ai mises dans le même mandat, avec ma proposition. Si tu veux autre chose, dis-le maintenant et je le transmets à l'exécutant. La première : en classe, sur un tableau en plusieurs pages réglé « tout ensemble », → passe à la diapo suivante sans montrer les pages 2 et 3. Avant, la molette tournait ces pages ; depuis ta règle de ce matin, elle ne le fait plus en jeu. C'est mesuré sur sa version. Sur la version en ligne, je ne l'ai pas mesuré, mais le code y est le même : en attendant, Maj + → et les flèches « ‹ › » tournent les pages. Ma proposition : → montre la page suivante tant qu'il en reste, puis passe à la diapo suivante ; ← revient page par page.
+  >
+  > 154. La deuxième se passe dans l'Atelier. « À régler » range un tableau qui tient parmi les schémas « qui ne tiennent pas lisibles ». Il te conseille aussi « Couper le schéma », un geste qui ne vaut que pour une carte. Ma proposition : un tableau qui tient, ou qui passe en pages, n'est plus signalé ; un vrai défaut dit la page, la rangée, la case, et le geste qui le règle.
+  >
+  > 155. La troisième concerne une case très longue, par exemple « L'Albatros » en entier. La rangée est seule sur sa page, mais 3 lignes sur 12 sont sous le bord : la classe ne les voit jamais. Ma proposition : la rangée continue sur la page suivante, coupée entre deux lignes, avec l'en-tête répété en haut. La police ne change pas.
+  >
+  > 156. J'ai un incident à te déclarer. Depuis ce matin, le transcript a résumé mes messages au lieu de les recopier mot pour mot, contre ta règle. Je ne peux plus retrouver les textes de ce matin, sauf mon message de 09:58. À partir de maintenant, je recopie tout mot pour mot.
+  >
+  > 149. Question : à quelle heure est ta prochaine heure avec le déroulé ?
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 11:07
+  >
+  > MEMO

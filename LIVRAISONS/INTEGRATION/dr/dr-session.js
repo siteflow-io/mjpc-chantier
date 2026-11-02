@@ -84,7 +84,7 @@ function dr_sesEnvoyerMaintenant(close, cede){
      le minuteur…), sans bouton ; la télécommande, seulement par « Reprendre avec la télécommande ». Celui qui ne l'a pas suit, et n'envoie rien. */
   if (!close && !cede && !dr_sesJeTiens()) {
     if (window.DR_TC) return;
-    if (Date.now() - (DR_SES.geste || 0) > 2000) return;   /* rien de fait ici : ce n'est pas un geste */
+    if (Date.now() - (DR_SES.geste || 0) > 2000 || (DR_SES.geste || 0) < (DR_SES.applyTs || 0)) return;   /* rien de fait ici depuis le dernier état posé : ce n'est pas un geste (un geste fait avant que l'état se pose est repris par la fusion, dr_sesAppliquer) */
     DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; }
   if (!DR_SES.main) { DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; }
   const ph = dr_sesPhoto(); const sig = dr_sesSig(ph);
@@ -106,6 +106,7 @@ function dr_sesEnvoyerMaintenant(close, cede){
    ait fini de se redessiner (mesuré au téléphone : le premier geste attendait 1,2 s derrière son premier dessin) */
 function dr_sesScene(){
   try { clearTimeout(DR_TAB.emT); if (!dr_tabPeutEcrire() || !S.mur) return; const sc = dr_scene(S.mur); if (!sc) return;
+    { const cle = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); if (cle === DR_TAB.emisCle) return; DR_TAB.emisCle = cle; }   /* la même scène ne repart pas (son heure, plus récente, passerait devant le geste d'un autre pilote) */
     if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => {}); return; }
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);
     dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); }); } catch (e) {}
@@ -222,10 +223,13 @@ function dr_sesAppliquer(v){
     if ((ici.test || ici.sorte === 'repetition') && typeof dr_scene === 'function' && S.mur) { const X = ici.test ? DR_TT : DR_REP; if (!ici.test) dr_repTrame(false); else dr_ttTrame(false); const sc = dr_scene(S.mur); if (sc) { sc.trameMaj = X.trameMaj || 0; X.emis = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); } }   /* la scène est déjà au hub : rien ne repart d'ici */
     clearTimeout(DR_TAB.emT);
   } finally { DR_SES.appl = false; }
-  DR_SES.geste = 0;   /* ce qui change ici en posant l'état reçu n'est pas un geste : seul le prochain geste d'ici reprendra la main */
+  DR_SES.applyTs = Date.now();   /* ce qui change ici en posant l'état reçu n'est pas un geste */
   const apres = dr_sesPhoto(); DR_SES.socle = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut }; DR_SES.recuBase = true;
   DR_SES.dernier = v.par + '|' + v.ts; dr_sesMemo(DR_SES.dernier, renvoyer ? { S: p.S, parDiapo: p.parDiapo, vuMax: p.vuMax, minut: p.minut } : v);   /* ce qu'ici sait maintenant (la fusion, si elle a gardé quelque chose d'ici) */ DR_SES.envoye = dr_sesSig(apres);   /* la base commune : l'état reçu (ce que l'autre pilote savait), pas ce qu'ici a fait par-dessus */
-  if (renvoyer && !dr_sesEq(dr_sesSig(apres), dr_sesSig({ S: p.S, parDiapo: p.parDiapo, vuMax: p.vuMax, J: v.J, minut: v.minut }))) { DR_SES.envoye = ''; dr_sesEnvoyer(); }
+  /* la fusion a gardé quelque chose d'ici (un geste fait juste avant que l'état arrive, une réponse en cours) : il part — et si ce geste est récent, cet appareil prend la main */
+  const garde = renvoyer && ['S', 'parDiapo', 'vuMax', 'minut'].some(k => !dr_sesEq(dr_sesRange(p[k]), dr_sesRange(v[k])));
+  if (garde) { if (!dr_sesJeTiens() && !window.DR_TC && Date.now() - (DR_SES.geste || 0) < 2000) { DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; try { dr_sesMainAfficher(); } catch (e) {} }
+    DR_SES.envoye = ''; dr_sesEnvoyer(); }
 }
 /* l'heure (ou l'essai) close sur un autre appareil : ce pilote le dit et revient à l'accueil ; rien n'est réécrit (l'autre a tout écrit) */
 function dr_sesClosAilleurs(v){
@@ -538,7 +542,7 @@ function dr_tcMaj(){
   let et = ''; try { const x = dr_etiquetteDe(vu); et = x == null ? '' : (typeof x === 'string' ? x : (x.t || x.txt || '')); } catch (x) {} const titre = et || e.act || '';
   const fil = vu.fil || null; const nom = ici.sorte === 'repetition' ? 'Répétition' : ((typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) || '');
   const vif = ici.sorte === 'essai' ? '● en direct · essai' : ici.sorte === 'repetition' ? '● en direct' : '● en direct';
-  let num = ''; try { const rg = rangDe(vu.di); if (rg) num = 'Diapo <b>' + rg + ' sur ' + ordreHeure(S.heure).length + '</b> · heure ' + S.heure + ' · '; } catch (x) {}   /* les mots du pilote : le numéro et le total de l'heure en cours */
+  let num = ''; try { const rg = rangDe(vu.di); num = rg ? 'Diapo <b>' + rg + ' sur ' + ordreHeure(S.heure).length + '</b> · heure ' + S.heure + ' · ' : 'Hors de l\'heure ' + S.heure + ' · '; } catch (x) {}   /* les mots du pilote, hors de l'heure aussi */   /* les mots du pilote : le numéro et le total de l'heure en cours */
   dr_tcPoserSi(DR_TC.haut, '<div class="cl"><b>' + dr_tcEsc(nom) + '</b><span class="vif" title="La télécommande suit la séance en direct' + (ici.test ? ' (mode test : rien n’est enregistré pour la classe)' : '') + '">' + vif + '</span></div>'
     + '<div class="di">' + num + dr_tcEsc(titre) + '</div>');
   /* le tableau, tel que le voit la classe (le rendu du tableau distant, `dr_rendreMur`, dans sa boîte) */

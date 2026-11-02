@@ -72,7 +72,7 @@ const typeDe = f => /\.webp$/i.test(f) ? 'image/webp' : /\.png$/i.test(f) ? 'ima
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
 /* LE FLUX DU FAUX HUB : le flux REST de Firebase (`EventSource`, événements « put ») — chaque abonné reçoit la valeur de son chemin dès
    qu'une écriture touche ce chemin (au-dessus, dessous ou dessus), comme le vrai hub la pousse. */
-const ABOS = [];
+const ABOS = []; const T0REEL = Date.now();
 /* l'image du QR (api.qrserver.com est coupé, comme tout le réseau) : dessinée par `qrcode` (Python) — MJPC_PYQR = le dossier de la bibliothèque ; sans elle, une image d'attente */
 const QR_PY = 'import sys\nsys.path.insert(0, sys.argv[1])\nimport qrcode, qrcode.image.svg\nsys.stdout.write(qrcode.make(sys.argv[2], image_factory=qrcode.image.svg.SvgPathFillImage, box_size=10, border=2).to_string(encoding="unicode"))\n';
 const qrSvg = d => { try { if (process.env.MJPC_PYQR && fs.existsSync(process.env.MJPC_PYQR)) { const { execFileSync } = req('child_process'); return execFileSync('python3', ['-I', '-c', QR_PY, process.env.MJPC_PYQR, d]).toString(); } } catch (e) {}
@@ -93,8 +93,10 @@ const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q 
   await ctx.exposeFunction('__hubN', (m, c, corps) => hubRepondre(qui, m, c, corps)); await ctx.addInitScript(fauxFetch);
   await ctx.addInitScript(() => { const st = document.createElement('style'); st.textContent = '#fi-overlay{display:none!important}'; document.addEventListener('DOMContentLoaded', () => document.head.appendChild(st)); });
   ctx.on('page', pg => { pg.on('pageerror', e => errs.push(String(e.message).slice(0, 200))); pg.on('dialog', d => { if (d.type() === 'beforeunload') { d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
-  /* l'horloge : le 14/09 à 09:00, figée comme dans toutes les sondes (MJPC_HORLOGE=avance : elle avance, chaque appareil part de 09:00 à son ouverture) */
-  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'avance') await pg.clock.install({ time: new Date(jour + 'T' + h + ':00+02:00') }); else await pg.clock.setFixedTime(new Date(jour + 'T' + h + ':00+02:00'));
+  /* l'horloge : le 14/09, 09:00 au lancement de la sonde, puis elle AVANCE, la même pour tous les appareils (une horloge figée faisait de l'heure des scènes un compteur
+     que deux pilotes faisaient monter chacun de leur côté — un artefact que la classe ne vit jamais) ; MJPC_HORLOGE=figee : l'ancienne */
+  const t09 = new Date(jour + 'T' + h + ':00+02:00').getTime();
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL)) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) await profPrep(pg, test);
   return { ctx, pg, errs, boites, qui }; };
@@ -180,6 +182,8 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
     if (parTel) await geste(tl.pg); else await gesteClic(o.pg);
     const s = await suivre(src.pg, [[parTel ? 'ord' : 'tel', dst.pg, false], ['tab', T.pg, true]]);
     const a = s.r[parTel ? 'ord' : 'tel'], b = s.r.tab; if (a == null || b == null) manques++;
+    if (process.env.MJPC_DEBUG && b == null) { const cs = Object.entries(ECR.length ? {} : {}); const sc = (() => { const L = ECR.filter(x => /\/scene$/.test(x.c)).slice(-4); return L.map(x => x.qui + ' ts' + ((x.bd && x.bd.ts) || 0) % 100000 + ' ' + ((x.bd && x.bd.eid) || '') + '#' + ((x.bd && x.bd.nDev) || 0) + ' @' + (x.t % 100000)).join(' | '); })();
+      dire('      (débogage) tableau ∞ au geste ' + k + ' : cible ' + s.cible + ' ; dernières scènes écrites : ' + sc + ' ; tableau ' + JSON.stringify(await T.pg.evaluate(() => ({ ts: DR_TAB.ts % 100000, pp: DR_TAB.pilotePresent, m: DR_TAB.montre && (DR_TAB.montre.eid + '#' + DR_TAB.montre.nDev) })).catch(e => String(e))) + ' ; ordinateur ' + JSON.stringify(await o.pg.evaluate(() => ({ main: DR_SES.main === DR_SES.id, dts: (DR_TAB.dernierTs || 0) % 100000 })).catch(e => String(e)))); }
     D[parTel ? 'ord' : 'tel'].push(a == null ? '∞' : a); D.tab.push(b == null ? '∞' : b); await p(250); }
   dire('      ' + mode + ' · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur ' + D.ord.join(', ') + ' · téléphone ' + D.tel.join(', ') + ' · tableau distant ' + D.tab.join(', '));
   const tous = D.ord.concat(D.tel, D.tab); verif(mode, !manques && tous.every(x => x !== '∞' && x <= 500), 'chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (' + tous.filter(x => x !== '∞' && x <= 500).length + ' / ' + tous.length + ')', { max: Math.max(...tous.map(x => x === '∞' ? 99999 : x)) });
@@ -189,6 +193,7 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
   const kk = [await cleDe(o.pg), await cleDe(tl.pg), ((await tabDe(T.pg)) || {}).cle];
   dire('      ' + mode + ' · deux gestes presque en même temps : ordinateur ' + kk[0] + ' · téléphone ' + kk[1] + ' · tableau ' + kk[2]);
   verif(mode, kk[0] && kk[0] === kk[1] && kk[1] === kk[2], 'deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord', kk);
+  if (process.env.MJPC_ALT_SEUL) { sansErreur(mode, [].concat(o.errs, o.boites, tl.errs, tl.boites, T.errs, T.boites), 'ordinateur, téléphone, tableau distant'); await tl.ctx.close(); await T.ctx.close(); await o.ctx.close(); return; }   /* la bissection : l'alternance seule */
   /* une réponse tapée sur un second ordinateur pendant que le premier dévoile, et la participation saisie au téléphone pendant ce temps : rien perdu */
   {
     const o3 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const b3 = await attendreBandeau(o3.pg);
@@ -310,7 +315,7 @@ const telecommande = async (fichier, mode, nomV) => { const test = mode === 'QT'
   const tap = async a => { const ok = await tl.pg.locator('#tc-bas button[data-a="' + a + '"]').first().tap({ timeout: 1500 }).then(() => true).catch(() => false); if (!ok) await tl.pg.evaluate(a => { const b = document.querySelector('#tc-bas button[data-a="' + a + '"]'); if (b) b.click(); }, a); };
   const D = { ord: [], tab: [] };
   if (process.env.MJPC_DEBUG) { const k0 = await cleDe(tl.pg); const t0 = Date.now(); await tap('suiv'); const t1 = Date.now(); let k1 = null; while (Date.now() - t0 < 4000) { k1 = await cleDe(tl.pg); if (k1 !== k0) break; await p(20); } const t2 = Date.now(); const r = await suivre(tl.pg, [['ord', o.pg, false]]); dire('      (débogage) premier ▶ : le tap rend en ' + (t1 - t0) + ' ms, le téléphone change en ' + (t2 - t0) + ' ms, l’ordinateur suit ' + r.r.ord + ' ms après ; écritures après le tap : ' + ECR.filter(x => x.t >= t0).map(x => x.qui + ' ' + x.c.split('/').slice(-1)[0] + ' +' + (x.t - t0)).join(', ') + ' ; téléphone : ' + JSON.stringify(await tl.pg.evaluate(() => ({ att: DR_SES.attendrePremier ? Date.now() - DR_SES.attendrePremier : 0, rej: DR_SES.rejoint, recu: DR_SES.recu, attente: !!DR_SES.attente, occ: dr_sesOccupe(), ae: document.activeElement && (document.activeElement.id || document.activeElement.tagName) })))); }
-  const numDe = async () => { const tc = ((await texteDe(tl.pg, '#tc-haut .di')) || '').match(/^Diapo \d+ sur \d+ · heure \d+/); const pi = ((await texteDe(o.pg, '#numero')) || '').match(/^Diapo \d+ sur \d+ · heure \d+/); return [tc && tc[0], pi && pi[0]]; };
+  const numDe = async () => { const re = /^(Diapo \d+ sur \d+ · heure \d+|Hors de l.heure \d+)/; const tc = ((await texteDe(tl.pg, '#tc-haut .di')) || '').match(re); const pi = ((await texteDe(o.pg, '#numero')) || '').match(re); return [tc && tc[0], pi && pi[0]]; };
   const NUM = [];
   for (const a of ['suiv', 'suiv', 'suiv', 'suiv', 'suiv', 'prec']) { await tap(a); const r = await suivre(tl.pg, [['ord', o.pg, false], ['tab', T.pg, true]]); D.ord.push(r.r.ord == null ? '∞' : r.r.ord); D.tab.push(r.r.tab == null ? '∞' : r.r.tab); let nn = await numDe(); const tn = Date.now(); while (nn[0] !== nn[1] && Date.now() - tn < 500) { await p(40); nn = await numDe(); } NUM.push(nn.concat([Date.now() - tn])); await p(250); }
   dire('      ' + mode + ' · le texte de la télécommande et celui du pilote, à chaque geste : ' + NUM.map(x => x[0] + ' | ' + x[1]).join(' ; '));
@@ -346,6 +351,9 @@ const telecommande = async (fichier, mode, nomV) => { const test = mode === 'QT'
   {
     const D1 = []; for (let k = 0; k < 2; k++) { await tap('suiv'); const r = await suivre(tl.pg, [['ord', o.pg, false], ['tab', T.pg, true]]); D1.push([r.r.ord, r.r.tab].join('/')); await p(250); }
     await garde(o.pg); await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1500);
+    let nh = await numDe(); const tq = Date.now(); while (nh[0] !== nh[1] && Date.now() - tq < 1500) { await p(50); nh = await numDe(); }
+    dire('      ' + mode + ' · à « Question-bilan », la télécommande dit « ' + nh[0] + ' », le pilote « ' + nh[1] + ' »');
+    verif(mode, nh[0] && nh[0] === nh[1], 'sur une diapo hors de l’heure, la télécommande dit ce que dit le pilote', nh);
     let desact = null; for (let k = 0; k < 30; k++) { const t = await texteDe(tl.pg, '#tc-bas .desact'); if (t && /Télécommande désactivée/.test(t)) { desact = t; break; } await p(100); }
     const grises = await tl.pg.evaluate(() => Array.from(document.querySelectorAll('#tc-bas button[data-a]')).filter(b => b.dataset.a !== 'main').map(b => b.disabled && /désactivée/.test(b.title)).every(Boolean)).catch(() => false);
     await capt(tl.pg, pre + '05a-telecommande-desactivee');

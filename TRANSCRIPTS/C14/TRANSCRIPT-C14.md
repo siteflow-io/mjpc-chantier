@@ -4552,3 +4552,33 @@ ok. c'est normal ça?
 02/11/2026 18:49
 
 MEMO
+
+---
+
+## Tour 162 — 02/11/2026 18:57
+
+**Paul (18:57) :**
+
+ok mesure et reviens me dire.
+
+**Ce qui a été fait (C14) :** sur le vrai site, lecture seule : les écarts d'empreinte entre pages (Dylan : 45 pages, la paire la plus proche à 47 points ; Franklin : 51 pages, à 37). Dans la maquette (faux hub, élèves inventés), le paquet d'essai photographié page par page (8 JPEG), feuilles 1 à 3 avec origine, 4 à 8 sans, une nouvelle copie dans le dossier ; trois cas : même navigateur, image calculée un peu autrement, autre ordinateur sans photo ; sur la version en ligne (1.4.27) et sur l'essai de la règle 55 (scan.js, worktree `c14-poignees`, non commité, ni au sas ni en ligne). L'empreinte d'une même photo lue autrement : 7 points au plus (7 pages écrites, 4 façons). Scripts : `mesure-dossier/` du bloc-notes.
+
+**Claude (19:03) :**
+
+À jouer : ton mot sur 60 · en cours : rien · ouvert : 60, le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+56. Mesuré sur ton site, sans rien y écrire : deux pages différentes ne se ressemblent jamais de près. Les deux plus proches sont à 47 points d'écart sur 256 chez les Dylan, à 37 chez les Franklin. Une même photo lue un peu autrement (un autre navigateur, un autre ordinateur, la photo réenregistrée) bouge de 7 points au plus. Donc chez toi, reconnaître une photo par son image est sûr : elle tombe tout près de sa page, et loin de toutes les autres.
+
+57. Ton écran, reproduit dans la maquette avec le paquet d'essai photographié page par page : 3 pages qui ont leur origine, 5 qui ne l'ont pas, comme chez les Dylan, et une vraie nouvelle copie dans le dossier. La version en ligne montre 6 fichiers « que cette rédaction ne connaît pas » : les 5 photos de tes pages, et la nouvelle.
+
+58. « Les charger », avec la version en ligne : sur le même ordinateur, si l'image se calcule exactement pareil, les 5 pages sont reconnues, aucun double. Si elle se calcule un tout petit peu autrement, 5 pages en double, sans élève, qui passent par « Les initiales ». Ton « Non » de 54 est le bon geste, jusqu'à la nouvelle version.
+
+59. La règle de 55, à l'essai dans la maquette : sur le même ordinateur, la fenêtre ne montre plus que la vraie nouvelle copie ; les 5 pages sont retrouvées et reçoivent leur origine (« 5 pages retrouvées · 3 fichiers déjà là ») ; aucun double. Avec une image calculée un peu autrement, 3 pages sur 5 sont retrouvées : les 2 autres sont, dans ce paquet d'essai, à 16 points d'une autre page, trop près pour trancher, et l'app demande au lieu de deviner. Chez toi, les pages sont à 37 points au moins les unes des autres : elles seraient toutes retrouvées. Une vraie nouvelle copie est toujours montrée, jamais chargée sans toi.
+
+60. Pour en faire la candidate 1.4.28, il reste à mettre ce mélange au banc (des pages avec leur origine, d'autres sans, une vraie nouvelle copie, sur le même ordinateur et sur un autre), puis le banc complet. L'essai n'est ni au sas ni en ligne. Je la finis ?
+
+À tester : rien de neuf en ligne. Quand la fenêtre s'ouvre, clique « Non » et continue ta correction.
+
+02/11/2026 19:03
+
+MEMO

@@ -8129,10 +8129,17 @@ function atPromptTexte(){
 /* M-PROMPT-4 : la liste des outils vient du hub, où les apps l'ont publiée. */
 function atChargerOutils(){ mjpcChargerOutils(FIREBASE_BASE,function(){}); }
 try{atChargerOutils();}catch(e){}
+/* C16 (la conscience, 02/11 ; règle de Paul : une nouvelle version lit les anciennes copies et les met à jour si c'est faisable) : le prompt du hub qui est
+   EXACTEMENT un ancien seed du site — mesuré le 02/11 à 00:20 : /site/atelier/prompts/chapitre vaut le seed de la 8.77.1-⑩ caractère pour caractère — n'est
+   pas une version de Paul : à la lecture, le site prend le seed d'aujourd'hui (les champs objectif, evaluee, la majeure en premier). Rien n'est écrit au hub.
+   Un prompt que Paul a modifié n'a l'empreinte d'aucun ancien seed : il reste le sien, intact. L'empreinte : la longueur et un hachage FNV-1a 32 bits. */
+var ATELIER_PROMPT_SEEDS_ANCIENS={chapitre:['7121:a53557ce'/* le seed « chapitre » de la 8.77.1-⑩ */]};
+function atPromptEmpreinte(t){ var h=2166136261>>>0; for(var i=0;i<t.length;i++){ h^=t.charCodeAt(i); h=Math.imul(h,16777619)>>>0; } return t.length+':'+h.toString(16); }
+function atPromptAncienSeed(produit,t){ var l=ATELIER_PROMPT_SEEDS_ANCIENS[produit]; return !!(l&&typeof t==='string'&&l.indexOf(atPromptEmpreinte(t))>=0); }
 function atIAChargerPrompt(suite){
   if(AT_IA.charge){if(suite)suite();return;}
   _siteGet(AT_IA_NOEUD+'/'+AT_IA.produit,function(v){
-    AT_IA.tpl=(typeof v==='string'&&v.length)?v:null;   /* la base sinon le seed */
+    AT_IA.tpl=(typeof v==='string'&&v.length&&!atPromptAncienSeed(AT_IA.produit,v))?v:null;   /* la base sinon le seed ; un ancien seed tel quel : le seed d'aujourd'hui (C16) */
     AT_IA.charge=true;if(suite)suite();
   });
 }

@@ -3970,3 +3970,29 @@ oui à retirer de la grille. C'est que le prompt d'injection de la grille doit s
 02/11/2026 13:55
 
 MEMO
+
+---
+
+## Tour 144 — 02/11/2026 13:58
+
+**Paul (13:58) :**
+
+pas compris S30. pour le reste, non j'attendrai la fin de la livraison pour enfin finaliser la correction de mes copies. je te donne jusqu'à 15h30, pas plus, pour que tout soit fini.
+
+**Ce qui a été fait (C14) :** le banc de 704 relancé (l'arrêt de 13:58 l'avait coupé) ; la maquette reconstruite en 1.4.24.
+
+**Claude (14:04) :**
+
+À jouer : rien · en cours : 704 (son banc tourne), puis 702, 642, le fichier d'essai, la version à promouvoir · ouvert : la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+707. S30, en simple : c'est une ligne de ta grille, « Tu notes le numéro de chaque architecture dans la marge ». Elle ne compte pas dans la note. Mais l'IA juge chaque copie sur cette ligne sans jamais voir la marge. Elle écrit donc une remarque fausse à chaque élève : « Aucun numéro d'architecture n'apparaît ». Ce matin, elle l'a écrite sur les 24 copies.
+
+708. Ce que je fais pour S30 : je range moi-même cette ligne dans tes deux grilles, au moment de la mise en ligne, avec ton promeus. Tu n'as rien à faire. Rien n'est effacé : elle est rangée, et tu peux la ressortir.
+
+709. 15h30 : compris. D'ici là, tout sera fini : 704 (le commentaire général), 702 (la grille faite avec l'IA, qui te questionne d'abord), 642 (l'accueil), le nouveau fichier d'essai et la version à promouvoir. Rien ne part en ligne sans ton promeus.
+
+À tester : rien de neuf.
+
+02/11/2026 14:04
+
+MEMO

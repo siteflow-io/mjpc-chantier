@@ -192,10 +192,11 @@ function svFaire(raison) {
     return { nom: svNom(le), cle: svNom(le).replace(/^Sauvegarde_/, "").replace(/\.json$/, "").replace(/[.#$\[\]\/]/g, "-"), o: { _meta: { source: "redactions/" + RU.id, exportedAt: le.toISOString(), exportedBy: "sauvegarde_" + raison, version: 2, titre: SUJET.titre, classe: RU.classeNom || RU.classe, contenu: svCompter(d), photos: "dans ce navigateur seulement : elles ne passent jamais par le site" }, data: d } }; });
 }
 function svTelecharger() { return svFaire("manuelle").then(s => { ruTelecharger(s.o, s.nom); toast("Sauvegarde téléchargée : " + svDire(s.o._meta.contenu) + "."); return s; }, e => toast("⚠ La sauvegarde n’a pas pu se faire : " + (e && e.message || e))); }
-/* le paquet est complètement corrigé : chaque copie présente est recopiée jusqu'à sa phrase, son corrigé est chargé, chaque arrêt de sa bande (fautes et stickers) est décidé, ses remarques sont relues */
+/* le paquet est complètement corrigé : chaque copie présente est recopiée jusqu'à sa phrase, son corrigé est chargé, chaque arrêt de sa bande (fautes et stickers) est décidé, ses remarques sont relues ; avec une grille de stickers, ses réussites sont revenues de l'IA */
 function svCopieCorrigee(k) {
   const f = rcFluxCopie(k); if (!f.finie || !f.charge) return false;
   if (typeof stRqARelire === "function" && stRqARelire(k)) return false;
+  if (typeof stActifs === "function" && stActifs().some(s => s.etat === "valide") && typeof stFinie === "function" && !stFinie(k)) return false;   // avec une grille de stickers : ses réussites revenues de l'IA et décidées
   return rcArretsBande(k).every(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]));
 }
 function svPaquet() { const Q = typeof scCopiesED === "function" ? scCopiesED() : []; const ok = Q.filter(svCopieCorrigee); return { n: Q.length, ok: ok.length, complet: Q.length > 0 && ok.length === Q.length }; }

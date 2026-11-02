@@ -1,0 +1,78 @@
+--- a/index.html (la production, 8.77.1-⑩, md5 db481a8725124c7782c031e9e6485e82)
++++ b/LIVRAISONS/REPRISE-8771/index.html (la 8.77.1-⑩ corrigée, md5 f70b6661243038482c9b0280c379ca71)
+@@ -17456,6 +17456,7 @@
+ const S = window.S = { si: 0, di: 0, heure: 1, taille: 1, page: null, pageManuelle: false, mode: null, gel: null, loupe: null, bandeau: '', ecoule: 0, vue: 1, blocActif: null,
+   parts: [], cand: null, notesFil: [], comm: {}, appel: {}, decisions: {}, reserve: [], notionsImprevues: {}, travail: { terminer: [], preparer: [], apprendre: null, prevu: true, libre: '' }, echeance: null, motAbsents: '',
+   cle: 'portable', tab: 'fenetre', doc: null, videoPos: {}, t5: false, close: false, versements: {}, mur: null, attente: null };
++const DR_S_DEFAUT = JSON.parse(JSON.stringify(S));   /* C16 (la reprise de la 8.77.1-⑩, dette ⑪) : l'état d'une heure neuve — ce qu'une liste vide, un objet vide ou une valeur nulle redevient à la relecture du vrai hub (dr_etatRempli) */
+ 
+ const parDiapo = {};
+  const vuMax = {};
+@@ -19503,7 +19504,7 @@
+     if (!dr_clPeutEcrire(true)) return;
+     const ecr = JSON.parse(JSON.stringify(seance().ecrans)); const em = dr_empreinte(ecr);
+     if (em === DR_CL.empreinteEcrite) return; DR_CL.empreinteEcrite = em;   /* la copie ne repart que si elle a changé (relecteur neuf n°2 : 14 écritures en 17 min sans rien éditer) */
+-    dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(em); });
++    dr_ecrire(dr_cheminC() + '/ecrans', ecr, 'Séance en classe — copie au fil de l’eau (' + AT_DR_COURS.classeNom + ')', () => { dr_temoinIntegre(em, ecr); });
+   }, vite ? 0 : 900);
+   dr_journalAuto(vite); dr_etatAuto(vite); dr_traceAuto(vite);
+ }
+@@ -19525,9 +19526,16 @@
+ }
+ /* le témoin « déroulé intègre » (R9) : l'empreinte de ce qui a été écrit, comparée à ce que le hub rend */
+ function dr_empreinte(x){ const s = JSON.stringify(x); let h = 0; for (let j = 0; j < s.length; j++) h = ((h << 5) - h + s.charCodeAt(j)) | 0; return s.length + '-' + (h >>> 0).toString(36); }
+-function dr_temoinIntegre(em){
+-  dr_lire(dr_cheminC() + '/ecrans', v => { DR_CL.empreinte = em; DR_CL.relue = v ? dr_empreinte(v) : ''; const t = document.getElementById('dr-integre'); if (!t) return;
+-    const ok = DR_CL.relue === em; t.textContent = ok ? '● déroulé intègre' : '● déroulé à vérifier'; t.className = ok ? 'dr-integre-ok' : 'dr-integre-ko';
++/* C16 (dette ⑰) : le vrai hub range la copie à sa façon — ni valeur nulle, ni liste ni objet vides (ni leur parent devenu vide), une liste rangée par ses rangs, les
++   clés dans son ordre (mesuré sur le code de Firebase 8.10.1 sans réseau : relu, `{eid, act, role, blocs}` revient `{act, blocs, eid, role}`). L'écrit et le relu
++   sont rangés de la même façon avant l'empreinte : ce que le hub retire ou réordonne n'est plus une alerte ; une vraie différence (une écriture perdue, la
++   liaison coupée) reste « à vérifier ». */
++function dr_commeLeHub(v){ if (v === null || v === undefined || typeof v === 'function' || (typeof v === 'number' && !isFinite(v))) return undefined; if (typeof v !== 'object') return v;
++  const o = {}; (Array.isArray(v) ? v.map((x, i) => String(i)) : Object.keys(v)).sort().forEach(k => { const r = dr_commeLeHub(v[k]); if (r !== undefined) o[k] = r; }); return Object.keys(o).length ? o : undefined; }
++function dr_empreinteHub(x){ const y = dr_commeLeHub(x); return y === undefined ? '' : dr_empreinte(y); }
++function dr_temoinIntegre(em, ecrit){
++  dr_lire(dr_cheminC() + '/ecrans', v => { DR_CL.empreinte = em; DR_CL.relue = v ? dr_empreinteHub(v) : ''; const t = document.getElementById('dr-integre'); if (!t) return;
++    const ok = DR_CL.relue === dr_empreinteHub(ecrit); em = DR_CL.relue || em; t.textContent = ok ? '● déroulé intègre' : '● déroulé à vérifier'; t.className = ok ? 'dr-integre-ok' : 'dr-integre-ko';
+     t.title = ok ? 'Ce que la classe a vu est au hub, bit pour bit : la copie écrite et la copie relue ont la même empreinte (' + em + ').' : 'La copie relue au hub n’est pas celle qui vient d’être écrite : la liaison est lente ou coupée. Rien n’est perdu ici ; le site réessaie au prochain geste.'; });
+ }
+ 
+@@ -19708,6 +19716,20 @@
+ 
+ /* ─── reprendre en pleine heure : `C/etat` + `C/journal` + `H` (la règle de `_drTraceReprendre`) ─── */
+ function dr_lireTous(chemins, cb){ const r = new Array(chemins.length); let n = chemins.length; chemins.forEach((c, k) => dr_lire(c, v => { r[k] = v; if (--n === 0) cb(...r); })); }
++/* C16 (la reprise de la 8.77.1-⑩, dette ⑪) — LE VRAI HUB (Firebase Realtime Database) ne range ni une valeur nulle, ni une liste vide, ni un objet vide : relu,
++   l'état d'une heure n'a plus ses `lum: []`, `ecr: []`, `reps: {}`… (par diapo), ni ses `parts: []`, `travail.terminer: []`, `gel: null`… — mesuré par le geste
++   sur un faux hub rangé comme le vrai : la reprise s'arrêtait sur « Cannot read properties of undefined (reading 'slice') » (etatComplet0) et la diapo ne se
++   dessinait plus. Relu, l'état reprend ce qui manque : par diapo, l'état d'une diapo neuve (etatDiapo) ; pour S, l'état d'une heure neuve (DR_S_DEFAUT : les
++   listes, les objets et les valeurs nulles, jamais ce que l'écriture retire exprès — DR_ETAT_HORS). Le modèle : dr_etatRempli / dr_parDiapoRempli de la nouvelle version. */
++const dr_estObjet = x => !!x && typeof x === 'object' && !Array.isArray(x);
++function dr_etatRempli(s){ if (!dr_estObjet(s)) return s; const hors = DR_ETAT_HORS;
++  const rem = (d, o) => { Object.keys(d).forEach(k => { const v = d[k]; if (o[k] === undefined) { if (v === null || typeof v === 'object') o[k] = JSON.parse(JSON.stringify(v)); } else if (dr_estObjet(v) && dr_estObjet(o[k])) rem(v, o[k]); }); };
++  try { const d2 = {}; Object.keys(DR_S_DEFAUT).forEach(k => { if (hors.indexOf(k) < 0) d2[k] = DR_S_DEFAUT[k]; }); rem(d2, s); } catch (e) {} return s; }
++function dr_parDiapoRempli(pd){ if (!dr_estObjet(pd)) return {}; Object.keys(pd).forEach(k => { const x = dr_estObjet(pd[k]) ? pd[k] : {};
++  pd[k] = Object.assign({ nDev: 0, lum: [], ecr: [], reps: {}, tailles: {}, textes: {}, fsBloc: {} }, x);
++  ['lum', 'ecr'].forEach(n => { if (!Array.isArray(pd[k][n])) pd[k][n] = dr_estObjet(pd[k][n]) ? Object.keys(pd[k][n]).sort((a, b) => a - b).map(i => pd[k][n][i]).filter(v => v != null) : []; else pd[k][n] = pd[k][n].filter(v => v != null); });
++  ['reps', 'tailles', 'textes', 'fsBloc'].forEach(n => { if (pd[k][n] == null || typeof pd[k][n] !== 'object') pd[k][n] = {}; }); });
++  return pd; }
+ function dr_reprendre(cb){
+   const C = dr_cheminC(), ch = dr_cheminH(); if (!C || !ch) { if (cb) cb(false); return; }
+   dr_lireTous([C + '/ecrans', C + '/etat', C + '/journal', ch], (copie, etat, jr, t) => {   /* les quatre lectures ensemble (contrôle n°68) — avant : l'une après l'autre */
+@@ -19717,7 +19739,7 @@
+     dr_finAvecCahier();
+     if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
+     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
+-    dr_restaurer({ S: dr_duHub(etat.S), parDiapo: dr_duHub(etat.parDiapo || {}), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
++    dr_restaurer({ S: dr_etatRempli(dr_duHub(etat.S)), parDiapo: dr_parDiapoRempli(dr_duHub(etat.parDiapo || {})), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
+     DR_CL.sur = ((dr_heureJouee(S.heure) || {}).sur) || DR_CL.sur || 1;   /* N revient avec l'heure */
+     const hc = dr_heureJouee(S.heure); if (hc && typeof HEURES_SIM === 'object') HEURES_SIM[S.heure] = hc; else dr_heurePoser(S.heure, AT_DR_COURS, t && t.debutReel);
+     S.debutReel = (t && t.debutReel) || S.debutReel || Date.now();
+@@ -19776,7 +19798,7 @@
+   const C = chemin || (typeof dr_cheminC === 'function' ? dr_cheminC() : null); if (!C) { cb(null); return; }
+   dr_lire(C + '/ecrans', ecr => dr_lire(C + '/etat', et => dr_lire(C + '/journal', jr => {
+     if (!et && !jr) { cb(null); return; }
+-    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_duHub((et || {}).S || {}), parDiapo: dr_duHub((et || {}).parDiapo || {}), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
++    cb({ ecrans: Array.isArray(ecr) ? ecr : null, S: dr_etatRempli(dr_duHub((et || {}).S || {})), parDiapo: dr_parDiapoRempli(dr_duHub((et || {}).parDiapo || {})), vuMax: dr_duHub((et || {}).vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub), maj: (et || {}).maj || null, heures: dr_duHub((et || {}).heures || {}), reactivations: dr_duHub((et || {}).reactivations || {}), heuresParDurees: (et || {}).heuresParDurees || 0 });
+   })));
+ }
+ 

@@ -3938,3 +3938,35 @@ MEMO
 02/11/2026 13:39
 
 MEMO
+
+---
+
+## Tour 143 — 02/11/2026 13:48
+
+**Paul (13:48) :**
+
+oui à retirer de la grille. C'est que le prompt d'injection de la grille doit subir le même sort: l'ia doit demander, il doit tojours y avoir une discussion préalable. Par ailleurs, on est d'acccord qu'il n'y a de confusion nulle part entre la date réelle de la rédaction, et celle de la lettre? Enfin, il faut qu'à la fin d'une relecture de bande, j'ai un champ libre avec "commentaire général", qui s'affichera à la toute fin de la copie élève en "💬commentaire général": ce commentaire doit dire à l'élève quoi faire avec sa copie à sa réception. ça aussi l'ia doit le demander au préalable. Tout est ok?
+
+**Ce qui a été fait (C14) :** lu : le geste pour ranger un sticker (Réglages, sa carte, « 🗑 Ranger » : il ne se propose plus à l'IA ni dans la bande, rien n'est effacé) ; aucun prompt de création de grille dans l'app ni dans les dépôts (`PROMPT-REDACTION.md`, cité dans le code, n'existe nulle part ; la grille de la lettre vient de ma proposition du 31/10, validée par Paul, chargée par « 📥 Charger des stickers ») ; le fichier d'essai : la seule date réelle est dans son nom (« fichier »), la seule date dans la copie est celle de l'élève, aucune dans la consigne ni dans l'énoncé.
+
+**Claude (13:55) :**
+
+À jouer : 701 (S30, ton geste) · en cours : 704, que je code · ouvert : 702, 700, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+701. S30 : c'est ton geste, sur tes deux rédactions (chaque rédaction a sa grille). Réglages → « La grille et ses stickers » → la ligne « Les cinq architectures » → la carte de S30 → « 🗑 Ranger », puis « 🗑 Ranger ». Il ne se propose plus à l'IA ni dans la bande. Rien n'est effacé.
+
+702. Le prompt de la grille : mesuré, il n'existe pas. L'app n'a aucun prompt pour fabriquer une grille ; celle de la lettre vient de ma proposition du 31/10, que tu as validée, puis chargée. Ma proposition : dans Réglages → « La grille et ses stickers », un bouton « ⇪ Faire la grille avec l'IA ». Il donne à l'IA l'énoncé et une consigne : d'abord, elle te pose ses questions (les textes lus, ce qui a été fait en classe, ce que tu attends) ; ensuite, elle propose la grille, que « 📥 Charger des stickers » lit. Sa règle : chaque sticker doit pouvoir se juger sur le texte recopié et ses paragraphes, jamais sur ce que seule la photo montre, comme S30. Je le code après 704 ?
+
+703. Les dates : oui, aucune confusion, je l'ai vérifié dans le fichier d'essai. La seule date que l'IA voit dans une copie est celle que l'élève a écrite dans sa lettre. La date réelle n'est que dans le nom du fichier, que la consigne lui demande seulement de recopier pour nommer son retour. Pour que toi non plus tu ne confondes pas, la ligne vide au-dessus de la lettre dira « en-tête de la lettre : sa date, son lieu, s'il y en a ».
+
+704. Le commentaire général, ce que je code : avant de corriger, l'IA te demande aussi ce que l'élève doit faire de sa copie quand il la reçoit. Ensuite, elle propose pour chaque copie un commentaire général qui le lui dit. Au bout de la bande, après les remarques, un champ « 💬 Commentaire général » porte sa proposition ; tu l'écris ou tu la corriges, puis Entrée la garde. La copie n'est « ✓ Copie corrigée » qu'une fois ce commentaire gardé. Dans le fichier de l'élève, il s'affiche tout à la fin : « 💬 Commentaire général ».
+
+705. Le fichier d'essai attend 704 : je te renverrai un nouveau fichier, qui pose aussi la question du commentaire général. Ne donne pas le précédent à ton IA.
+
+706. 700, reposée : la 1.4.23 remplace la 1.4.22. Je te la donne à promouvoir maintenant, puisque 638 bloque tes copies complètes ? Ou bien après l'essai ?
+
+À tester : 701, sur tes deux rédactions.
+
+02/11/2026 13:55
+
+MEMO

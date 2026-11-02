@@ -470,7 +470,11 @@ const grille = (pg, sel) => pg.evaluate(sel => { const m = document.querySelecto
   const coupees = visibles.filter(c => { const r = c.getBoundingClientRect(); return !dedans(r, Z) || c.scrollWidth > c.clientWidth + 1; }).map(c => c.textContent.slice(0, 30));
   const rel = r => [r.left - M.left, r.top - M.top, r.width, r.height].map(x => Math.round(x * 10) / 10);
   const aLaLigne = cases.filter(c => { const rg = document.createRange(); rg.selectNodeContents(c); return new Set(Array.from(rg.getClientRects()).map(r => Math.round(r.top))).size > 1; }).length;
-  return { tableau: rel(T), dessin: rel(Z), dansDessin: dedans(T, Z), dansDiapo: dedans(T, M), coupees, n: visibles.length, total: cases.length, fs: getComputedStyle(t.querySelector('td')).fontSize, aLaLigne }; }, sel);
+  return { tableau: rel(T), dessin: rel(Z), dansDessin: dedans(T, Z), dansDiapo: dedans(T, M), coupees, n: visibles.length, total: cases.length, fs: getComputedStyle(t.querySelector('td')).fontSize, aLaLigne, murH: Math.round(M.height * 10) / 10 }; }, sel);
+/* (C16, les dernières dettes) « identique » se lit dans la diapo : au pilote, la diapo d'avant n'avait pas toujours sa taille à l'arrivée (le titre mesuré trop tôt, corrigé
+   au ⑮ : 416 px de haut au lieu de 437 à 1366 × 768) — la place, la taille et la police rapportées à la hauteur de la diapo, à 1,5 px près ; tout le reste égal */
+const memeG = (a, b) => { if (!a || !b) return false; const k = a.murH / b.murH; const px = (x, y) => Math.abs(x - y * k) <= 1.5; const L = (u, v) => u.length === v.length && u.every((x, i) => px(x, v[i]));
+  return L(a.tableau, b.tableau) && L(a.dessin, b.dessin) && px(parseFloat(a.fs), parseFloat(b.fs)) && a.dansDessin === b.dansDessin && a.dansDiapo === b.dansDiapo && JSON.stringify(a.coupees) === JSON.stringify(b.coupees) && a.n === b.n && a.total === b.total && a.aLaLigne === b.aLaLigne; };
 const jouerG = async (fichier, src, W, H, nom) => { HUBN = hubDe(store(src)); ECR = []; const o = await ouvrir({ fichier, W, H, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, W, H);
   const L = await eidsDe(o.pg); const x = L.find(e => e.act === 'Les cinq tableaux');
   { const v = await o.pg.$('#volet .vig:has(table.p8-grille)'); if (v) { await v.scrollIntoViewIfNeeded().catch(() => {}); await v.click(); await p(500); if (await o.pg.evaluate(() => document.getElementById('garde') && document.getElementById('garde').classList.contains('on'))) { await o.pg.click('#garde-devant'); await p(900); } } }
@@ -491,8 +495,8 @@ if (joue('G')) { dire(''); dire('══ G · le schéma « tableau » : les cinq
     verif('G', g.gp && g.gp.aLaLigne >= 5 && g.gt && g.gt.aLaLigne >= 5, T + ' · les cellules longues passent à la ligne (' + (g.gp || {}).aLaLigne + ' cellules sur plusieurs lignes au pilote, ' + (g.gt || {}).aLaLigne + ' au tableau) ; la police reste celle de la loi (' + (g.gp || {}).fs + ')');
     verif('G', !g.errs.length && !g.boites.length, T + ' · aucune erreur JS, aucune boîte système', g.errs.concat(g.boites).join(' ; '));
     if (AVANT) { const c1 = await jouerG(AVANT, COURT, W, H, 'court-avant'), c2 = await jouerG(FICHIER, COURT, W, H, 'court-apres');
-      verif('G', c1.gp && c2.gp && JSON.stringify(c1.gp) === JSON.stringify(c2.gp) && JSON.stringify(c1.gt) === JSON.stringify(c2.gt), T + ' · un tableau aux cellules courtes : identique avant / après (sa place, sa taille, sa police, au pilote et au tableau)', { avant: c1.gp, apres: c2.gp }); }
-    if (AVANT) { const a = await jouerG(AVANT, LONG, W, H, 'long-avant'); verif('G', a.gp && g.gp && JSON.stringify(a.gp) === JSON.stringify(g.gp) && JSON.stringify(a.gt) === JSON.stringify(g.gt) && JSON.stringify(a.ga) === JSON.stringify(g.ga), T + ' · le tableau des cinq œuvres (il tient) : identique avant / après (sa place, sa taille, sa police, au pilote, au tableau, dans l’Atelier ; aucune page)', { avant: a.gp, apres: g.gp }); } } }
+      verif('G', c1.gp && c2.gp && memeG(c1.gp, c2.gp) && memeG(c1.gt, c2.gt), T + ' · un tableau aux cellules courtes : identique avant / après (sa place, sa taille, sa police, au pilote et au tableau)', { avant: c1.gp, apres: c2.gp }); }
+    if (AVANT) { const a = await jouerG(AVANT, LONG, W, H, 'long-avant'); verif('G', a.gp && g.gp && memeG(a.gp, g.gp) && memeG(a.gt, g.gt) && memeG(a.ga, g.ga), T + ' · le tableau des cinq œuvres (il tient) : identique avant / après (sa place, sa taille, sa police, au pilote, au tableau, dans l’Atelier ; aucune page)', { avant: a.gp, apres: g.gp }); } } }
 
 dire(''); dire('— fin : ' + nb + ' vérifications, ' + echecs + ' échec(s) · ' + (echecs ? 'ROUGE' : 'VERT'));
 fs.writeFileSync(path.join(OUT, 'sonde-dettes.txt'), R.join('\n') + '\n'); if (ancTiree) try { fs.unlinkSync(ANC); } catch (e) {}

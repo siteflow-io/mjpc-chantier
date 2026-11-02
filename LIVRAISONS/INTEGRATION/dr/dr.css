@@ -482,6 +482,8 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 /* E2 · §12.28-3 (d) : le bandeau « Heure en cours avec les <classe> — Reprendre », en haut, ne recouvre rien — la page et les écrans pleins du prof descendent de sa hauteur */
 #ses-reprise{top:0;bottom:auto}
 html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
+/* C16 (㉞) : les écrans pleins fixés en haut (le panneau prof, l'Atelier et la classe en cours, l'emploi du temps, la visionneuse) descendent de la hauteur du bandeau dès qu'ils paraissent — par la feuille de style, sans attendre la veille d'1 s (leur en-tête restait dessous) */
+html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-reprise-on #edt-ecran,html.ses-reprise-on .doc-viewer-overlay{top:var(--ses-reprise-h,44px)}
 /* les éléments fixes ou collants en haut descendent par `sesRepriseDecaler` (index.html) */
 /* E2 · §12.29 S3 (vu par E1) : la séquence en préparation vit dans la colonne de droite (#prep) — une seule colonne, comme #fin (la liste des étapes n'est plus coupée à droite) */
 #dr-zone #prep .dr-pp{grid-template-columns:1fr}

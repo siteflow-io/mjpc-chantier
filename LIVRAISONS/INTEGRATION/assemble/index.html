@@ -16510,6 +16510,8 @@ body.dr-pose-mk #dr-zone .mur .img-sup{cursor:crosshair;outline:2px dashed #c99a
 /* E2 · §12.28-3 (d) : le bandeau « Heure en cours avec les <classe> — Reprendre », en haut, ne recouvre rien — la page et les écrans pleins du prof descendent de sa hauteur */
 #ses-reprise{top:0;bottom:auto}
 html.ses-reprise-on body{padding-top:var(--ses-reprise-h,44px)}
+/* C16 (㉞) : les écrans pleins fixés en haut (le panneau prof, l'Atelier et la classe en cours, l'emploi du temps, la visionneuse) descendent de la hauteur du bandeau dès qu'ils paraissent — par la feuille de style, sans attendre la veille d'1 s (leur en-tête restait dessous) */
+html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-reprise-on #edt-ecran,html.ses-reprise-on .doc-viewer-overlay{top:var(--ses-reprise-h,44px)}
 /* les éléments fixes ou collants en haut descendent par `sesRepriseDecaler` (index.html) */
 /* E2 · §12.29 S3 (vu par E1) : la séquence en préparation vit dans la colonne de droite (#prep) — une seule colonne, comme #fin (la liste des étapes n'est plus coupée à droite) */
 #dr-zone #prep .dr-pp{grid-template-columns:1fr}
@@ -23651,14 +23653,6 @@ function sesReprisePeindre(c){
   SES._reprise=c;
   try{ document.documentElement.classList.add('ses-reprise-on'); document.documentElement.style.setProperty('--ses-reprise-h',b.offsetHeight+'px'); }catch(e){}
   sesRepriseDecaler(); if(!SES._repriseDec)SES._repriseDec=setInterval(sesRepriseDecaler,1000);
-  sesRepriseObserver();
-}
-/* C16 (㉞, la conscience 15:3x) : ce qui paraît pendant que le bandeau est là (le panneau prof, l'emploi du temps, une fenêtre) descend AVANT d'être peint :
-   l'observateur des changements de la page appelle `sesRepriseDecaler` avant l'image suivante (avant : jusqu'à 1 s sous le bandeau — l'en-tête du panneau prof caché) */
-function sesRepriseObserver(){
-  if(SES._repriseObs||typeof MutationObserver!=='function')return;
-  var o=SES._repriseObs=new MutationObserver(function(){ if(!document.getElementById('ses-reprise'))return; sesRepriseDecaler(); try{ o.takeRecords(); }catch(e){} });   /* ce que le décalage vient de changer ne le rappelle pas */
-  o.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
 }
 /* [E2] §12.28-3 (d), garde L d'E3 : le bandeau ne recouvre rien — tout ce qui est fixe ou collant en haut de l'écran (le bouton du panneau prof,
    l'en-tête du niveau, les écrans pleins : panneau prof, emploi du temps, atelier) descend de sa hauteur tant qu'il est là ; la page descend
@@ -23681,7 +23675,6 @@ function sesRepriseDecaler(){
 }
 function sesRepriseRemettre(){
   if(SES._repriseDec){ clearInterval(SES._repriseDec); SES._repriseDec=null; }
-  if(SES._repriseObs){ try{ SES._repriseObs.disconnect(); }catch(e){} SES._repriseObs=null; }
   Array.prototype.forEach.call(document.querySelectorAll('[data-ses-top]'),function(el){ el.style.top=el.getAttribute('data-ses-top'); el.removeAttribute('data-ses-top'); });
 }
 function sesReprisePoser(){

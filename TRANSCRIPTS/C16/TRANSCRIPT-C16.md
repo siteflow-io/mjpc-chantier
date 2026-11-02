@@ -730,3 +730,22 @@ MEMO
   > 02/11/2026 13:40
   >
   > MEMO
+- **13:43 — Paul, mot pour mot** : « 190 pourquoi j'avais pris ces anciennes décisions? »
+- **13:43-13:44 — vérifié dans les traces** : §12.66 (1) — Paul (C13 tour 337, 28/10 18:32) « le tableau distant doit absolument marcher pour le mode test et les de gaulle aussi » ; la proposition « une seule chose part » est de la n°13 (C13 924), acceptée (« Oui relance ») ; §12.41 — Paul « Évidemment pour 717! » (C13 717, la répétition au tableau distant) ; l'écart de `cours_actif` est un choix d'E1 en le codant (`dr-atelier.js`, commentaire §12.41) ; le téléphone — cadrage 1 §0.2 (`DEROULE/CADRAGE-1-LA-CLASSE.md:6`) : « Tout se fait sur le pilotage ordi. Le téléphone n'est qu'une télécommande, à faire plus tard ; l'actuel est à jeter. » — **la proposition (b) de la conscience (C16 189, reprendre le pilote de poche) allait contre : corrigée** dans le mandat (`4a734c0`) ; la question du 23/08 « palette réduite ou complète » jamais tranchée, la proposition « ▶ ◀, le gel, F2 initiales, le chrono ; rien d'autre » (`PLAN-10-JOURS.md:44`) jamais posée (`CADRAGE-RESTANT.md` sujet 26).
+- **13:44 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : mon banc sur les six correctifs (étape 12 sur 12) · ouvert : 188, 189, 194
+  >
+  > 191. Le mode test (28/10, 18:32). Tu as demandé : « le tableau distant doit absolument marcher pour le mode test et les de gaulle aussi ». C'est la conscience n°13 qui a proposé qu'une seule chose parte au hub, l'image du tableau, pour garder la raison d'être du mode test : rien n'est enregistré pour la classe. Tu as répondu « Oui relance ». Cette raison reste vraie avec ㉞ : l'essai ira à une adresse d'essai, jamais dans les données de tes classes.
+  >
+  > 192. La répétition hors du bandeau « Reprendre » : ce n'est pas ta décision. Tu as demandé (28/10, 06:50 : « Évidemment pour 717! ») que la répétition envoie au tableau distant ce que voit la classe, pour tout essayer la veille. C'est l'exécutant qui, en le codant, a tenu la répétition à l'écart de l'adresse des heures de classe : sinon, elle faisait paraître « Reprendre » comme si une classe jouait. C'était un choix technique.
+  >
+  > 193. Le téléphone : c'est ta décision, et elle me corrige. Cadrage 1, §0.2 : « Tout se fait sur le pilotage ordi. Le téléphone n'est qu'une télécommande, à faire plus tard ; l'actuel est à jeter. » Ma seconde proposition du point 189, reprendre l'ancien pilote de poche, allait contre cette décision : je l'ai retirée du mandat. Le téléphone sera une télécommande neuve ; un autre ordinateur, lui, sera un pilote entier.
+  >
+  > 194. Il reste à trancher ce que fait la télécommande : la question « palette réduite ou complète », posée le 23/08, n'a jamais été tranchée. Ma proposition : ▶ dévoiler, ◀ revoiler, ❄ geler, la participation (les initiales des élèves qui parlent) et le minuteur, rien d'autre. En haut, elle affiche la classe, la diapo et ce que voit la classe.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:44
+  >
+  > MEMO

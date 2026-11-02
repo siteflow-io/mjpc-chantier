@@ -641,3 +641,20 @@ MEMO
   >
   > MEMO
 - **12:44 — contrôle horaire** : `deroule/correctifs` à `cf7bb57` (㉘ `4dbaa8d`, `82edb59` ; ㉙ `3d28158` ; ㉛ `ed6e2ab` ; ㉜ ㉝ ⑭ `cf7bb57`), fichiers touchés : les modules `dr/*` (atelier, classe, gabarit, ouverture, récit, socle, tableau), `index.html` du sas, ses sondes — dans le mandat ; ni `AUDITS/`, ni `APP_VERSION`. Le cinquième : NOTE poussée (`ec9bba1`), réponse finale rendue. Contrôle suivant à 13:35.
+- **13:01 — l'exécutant des correctifs, mot pour mot** : « Correctifs, 13:01 — 9, la frappe (3 réponses d'élève, 244 touches à 80 ms, après une correction en direct de la question comme ce matin ; machine seule). BASE ddd8a94, faux hub qui refuse : pilote médiane 30 ms, max 52 ; fenêtre du tableau médiane 77, max 108 ; tableau distant : n'a RIEN reçu (13 envois refusés, bandeau « 13 enregistrements n'ont pas abouti »). BASE sans refus : pilote 31/62 ; fenêtre 243/297 (règle de 7 rouge). Le profil base, par touche : dr_tout complet à chaque touche, dont volet 98 ms (miniatures redessine ~28 diapos : 6954 rendus pour 244 touches) + participation 13 ms + le reste ~20 ms. Cause du volet : le morph de poserHtml retirait à chaque vignette son dessin et son empreinte (data-hash), absents du gabarit → toutes redessinées à chaque touche et à chaque flèche (même cause pour 7). MON CODE (morph qui garde la vignette, §12.56 a-b ; une touche dans une réponse commencée n'envoie que la diapo au tableau, le dessin complet quand Paul s'arrête) : pilote 14/46 et 14/50 ; fenêtre 7/37 sans refus, mais 132/163 au premier passage (à revoir) ; 0 refus, rien perdu (pilote, fenêtre, distant, hub). Le retard « reste 80 ms après » que j'avais ajouté pour 7 est retiré. Je passe à 7 (partie D), puis 8. »
+- **13:01 — la conscience à l'exécutant** : le premier passage (132/163) est une dette du mandat, à régler, pas « à revoir » ; la cause du volet dans la NOTE ; délai 13:30.
+- **13:01 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : l'exécutant des correctifs (les points 7 et 8, jusqu'à 13:30) · ouvert : 149, 153, 154, 155, 174
+  >
+  > 175. Voici les mesures précises de la frappe (㉟), faites par l'exécutant, seul sur cette machine. Le geste : trois réponses d'élève, 244 touches, une toutes les 80 ms, après une correction en direct de la question, comme ce matin. Sur la version d'aujourd'hui, avec les envois refusés de ce matin : au pilote, chaque lettre paraît en 30 ms (au plus 52 ms) ; à la fenêtre du tableau, en 77 ms (au plus 108 ms) ; le tableau distant n'a rien reçu du tout (13 envois refusés, le bandeau « 13 enregistrements n'ont pas abouti »). Sans les envois refusés : au pilote, 31 ms (au plus 62 ms) ; à la fenêtre du tableau, 243 ms (au plus 297 ms).
+  >
+  > 176. La cause est mesurée. À chaque touche, le pilote redessinait toute la colonne des vignettes, environ 28 diapos : 6 954 dessins pour 244 touches, soit 98 ms de travail par touche, plus 33 ms d'autre travail. La raison : la mise à jour de la colonne effaçait le dessin de chaque vignette, alors elles étaient toutes redessinées, à chaque touche comme à chaque flèche. C'est la même cause que le retard du tableau (point 172), et cela va contre ta règle du redessin. Sur cette machine, la lettre paraît vite au pilote, mais le travail qui suit retarde le tableau. Sur ton ordinateur, je ne sais pas.
+  >
+  > 177. La correction suit ta règle : seule la vignette qui a changé se retouche. Mesuré sur son code : au pilote, 14 ms (au plus 50 ms) ; à la fenêtre du tableau, 7 ms (au plus 37 ms) ; aucun envoi refusé, rien de perdu, au pilote, au tableau, au tableau distant et au hub. Un passage reste à régler : le premier, à 132 ms (au plus 163 ms) à la fenêtre du tableau. L'exécutant en cherche la cause. Le retard ajouté exprès ce matin pour la colonne est retiré.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:01
+  >
+  > MEMO

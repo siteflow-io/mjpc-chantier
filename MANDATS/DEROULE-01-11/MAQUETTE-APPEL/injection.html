@@ -46,9 +46,9 @@
     var r = lancer0.apply(this, arguments);
     if (abs) { var n = 0, T = setInterval(function(){ n++;
       try { if (typeof S === 'object' && S && S.lancee && !S.close && typeof ELEVES !== 'undefined' && ELEVES.length) { clearInterval(T);
-        var t0 = S.debutReel || Date.now(), k = 0;
-        ELEVES.forEach(function(e){ if (abs.indexOf(edtSlugEleve(e)) < 0 || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'appel au lancement' }]; k++; });
-        if (k) { try { journal('appel', { depuis: 'lancement', n: k }); } catch (x) {} try { dr_tout(); } catch (x) {} }
+        var t0 = (typeof now === 'function' ? now() : Date.now()), k = 0;   /* l'horloge de l'heure (celle de la case), pas l'heure réelle : un absent compte dès la première diapo */
+        ELEVES.forEach(function(e){ if (abs.indexOf(edtSlugEleve(e)) < 0 || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'appel au lancement' }]; k++; try { journal('appel', { eleve: e, quoi: 'absent', raison: 'appel au lancement' }); } catch (x) {} });
+        if (k) { try { dr_tout(); } catch (x) {} try { if (typeof participation === 'function') participation(); } catch (x) {} }
         delete PEND[cle]; } } catch (e) {}
       if (n > 200) clearInterval(T); }, 100); }
     return r;

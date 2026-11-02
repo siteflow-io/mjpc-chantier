@@ -1142,3 +1142,20 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (« qui a la main », la correction de la perte, « 1 sur 26 » ; prouvé vers 17:45), puis mon banc complet ; ma maquette de l'appel · ouvert : rien
   >
   > MEMO
+- **16:48-16:54 — la conscience, la maquette de l'appel (222) jouée** (le fichier en ligne `126b2a6a…` + `MANDATS/DEROULE-01-11/MAQUETTE-APPEL/injection.html`, au faux hub ; jeu par le geste `maquette-appel.mjs`) : premier passage, 7 vérifications, 1 échec — une erreur JS (`dr_prenom` sur `undefined`) : ma ligne de journal « appel » n'avait pas d'élève ; et le compteur restait « 0 SUR 29 PRÉSENTS » : l'absent était daté de l'heure réelle (09:00) et non de l'horloge de l'heure (08:57). Corrigés (une ligne de journal par absent, la date de l'horloge de l'heure) ; dernier passage 7 / 0 : la case s'ouvre sur l'appel ; deux clics, « appel fait : 2 absents » ; la première diapo dit « 0 SUR 27 PRÉSENTS » ; une heure close sans appel, 2 absents cochés après coup dans la case : la Relecture les dit (« le mot pour chaque absent »). **Vu dans le code en le faisant** : en ligne, `dr_absentsDeLaCase` écrit au journal `appel` sans élève (`{ depuis: 'case', n }`) ; le rendu « Ce qui s'est passé » lit `x.eleve` : la même forme, écrite par ma maquette, a fait l'erreur — en ligne, un absent coché dans la case pendant l'heure ferait la même (pas joué sur le fichier en ligne). Machine rendue à l'exécutant à 16:54.
+- **16:55 — envoyé à Paul** : `maq-appel/planches/1-appel-au-lancement.png`, `2-appel-apres-coup.png`.
+- **16:55 — message à Paul, mot pour mot :**
+
+  > 254. La maquette de l'appel (222), jouée sur le fichier en ligne. Première planche : au clic sur la case, l'appel vient d'abord ; un clic marque un absent, un clic défait ; le bouton dit « appel fait : 2 absents » ; l'heure lancée compte « 0 sur 27 présents » dès la première diapo. Seconde planche : une heure close sans appel ; deux absents cochés après coup dans la case ; la Relecture les dit, au « mot pour chaque absent ».
+  >
+  > 255. Au-dessus de ce mot, le site écrit « enregistré à la clôture » : c'est faux quand l'appel est fait après coup. Je propose « Le mot pour chaque absent », sans plus.
+  >
+  > 256. Vu dans le code en la faisant : dans le site en ligne, un absent coché dans la case pendant l'heure écrit au journal une ligne sans nom d'élève, et l'écran « Ce qui s'est passé » de la Relecture se casse sur elle. Je ne l'ai pas joué sur le site en ligne, mais ma maquette a fait exactement cette erreur avant que je la corrige. Le mandat de l'appel la corrigera.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:55
+  >
+  > À jouer : la maquette de l'appel (222), à valider · en cours : l'exécutant (« qui a la main », prouvé vers 17:45), puis mon banc complet · ouvert : 254, 255
+  >
+  > MEMO

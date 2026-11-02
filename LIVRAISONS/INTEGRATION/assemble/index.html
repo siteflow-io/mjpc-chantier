@@ -22826,7 +22826,8 @@ function dr_sesEnvoyerMaintenant(close){
 function dr_sesOccupe(){
   if (DR_SES.appui) return true;
   const a = document.activeElement; if (!a || a === document.body) return false;
-  return !!(a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
+  if (a.isContentEditable || a.tagName === 'SELECT') return true;   /* un texte de la diapo où l'on écrit, un menu déroulé */
+  return /^(INPUT|TEXTAREA)$/.test(a.tagName) && !/^(button|checkbox|radio|range|submit)$/i.test(a.type || '') && String(a.value || '') !== '';   /* un champ où l'on a commencé à écrire (la palette, que le pilote garde sous le curseur, vide : non) */
 }
 function dr_sesRecu(v){
   const ici = DR_SES.ici; if (!ici || !v || typeof v !== 'object') return;
@@ -22916,8 +22917,9 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
 ['dr_tout', 'dr_copieAuto', 'dr_minuteurEnvoyer'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const r = f.apply(this, arguments); try { if (!DR_SES.appl && DR_SES.ici) dr_sesEnvoyer(); } catch (e) {} return r; }; g.__ses = true; window[n] = g; });
 /* pendant qu'un état reçu se pose, rien ne repart d'ici (la scène, la copie, l'état : l'autre pilote les a écrits) */
-['dr_sceneAuto', 'dr_copieAuto'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
-  const g = function () { if (DR_SES.appl) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });
+/* et pendant qu'un état reçu attend la fin d'une frappe ici, la scène d'ici ne part pas (elle montrerait au tableau un état en retard sur l'autre pilote) : elle repart, fusionnée, à la sortie du champ */
+['dr_sceneAuto', 'dr_copieAuto', 'dr_ttEmettre'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
+  const g = function () { if (DR_SES.appl || (n !== 'dr_copieAuto' && DR_SES.attente && dr_sesOccupe())) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });
 /* clore ici : l'état vivant part une dernière fois, « clos », pour les autres pilotes ; puis la clôture d'avant (le pointeur, l'image d'essai) */
 (function(){ const f = window.dr_cloreFin; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const ici = dr_sesIci() || DR_SES.ici; if (ici) { DR_SES.ici = ici; try { dr_sesEnvoyerMaintenant(true); } catch (e) {} }

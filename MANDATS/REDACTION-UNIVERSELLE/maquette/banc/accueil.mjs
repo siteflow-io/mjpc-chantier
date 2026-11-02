@@ -117,3 +117,55 @@ export async function eprouverAutreOrdinateur({ pg, verif, cap, att, dir }) {
   verif("feuilles (1.4.13) : sur un autre ordinateur, sans aucune photo (" + sans + ") et avec une empreinte d'image calculée autrement, « 📂 Mon dossier de copies » relit la clé : les " + sources + " feuilles qui ont leur origine reviennent par elle, sous leur identité de toujours, à leur élève et à leur taille (" + vus + " photos, " + justes.length + " sur " + revenues.length + "), retouches comprises (" + revenues.filter(p => p.retouche).length + ") ; marques et recopies identiques (" + (apres.marques === avant.marques && apres.recopie === avant.recopie) + ") ; aucune feuille en double (" + nouvelles + ") ; l'ancienne photo d'une feuille remplacée reste de côté (" + (/1 ancienne photo remplacée, laissée de côté/.test(mot) && !/recopie-lignes-essai/.test(inconnu)) + ") ; le fichier inconnu est montré, rien n'est chargé sans toi (« " + inconnu.slice(0, 70) + " »)",
     sans === 0 && sources >= 9 && vus >= sources && justes.length === revenues.length && revenues.some(p => p.retouche) && apres.marques === avant.marques && apres.recopie === avant.recopie && nouvelles === 0 && /1 ancienne photo remplacée, laissée de côté/.test(mot) && !/recopie-lignes-essai/.test(inconnu) && /1 fichier que cette rédaction ne connaît pas/.test(inconnu) && /nouvelle-copie\.png/.test(inconnu));
 }
+
+// [C14 1.4.28] (Paul 02/11 18:45, sur sa capture « 28 fichiers que cette rédaction ne connaît pas » : « c'est normal ça? » ; C14 52-60) : une classe comme les Dylan,
+// des feuilles chargées avant la 1.4.13 (sans origine) à côté de feuilles qui l'ont. Deux copies d'élèves chargées seules, photo par photo, depuis leur carte ; leur origine
+// ôtée comme sur une feuille d'avant la 1.4.13 ; « 📂 Mon dossier » : leurs deux photos sont retrouvées, la vraie nouvelle copie seule est montrée ; sur ce navigateur,
+// puis sur un autre ordinateur (sans aucune photo, une image calculée un peu autrement). Les évaluations lisent l'état ; tout le reste par le geste.
+export async function eprouverDossierMele({ pg, verif, cap, att, dir }) {
+  const fs = await import("node:fs"), os = await import("node:os"), path = await import("node:path");
+  if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(250); } if (await pg.evaluate(() => SC.ouvert)) { await pg.locator('button[onclick="scFermer()"]').click(); await att(800); }
+  const lettre = (lignes, y0) => pg.evaluate(([L, y0]) => { const c = document.createElement("canvas"); c.width = 1240; c.height = 1754; const x = c.getContext("2d"); x.fillStyle = "#fbfaf5"; x.fillRect(0, 0, 1240, 1754);
+    x.strokeStyle = "#c9d6ea"; x.lineWidth = 2; for (let y = 160; y < 1700; y += 52) { x.beginPath(); x.moveTo(40, y); x.lineTo(1200, y); x.stroke(); } x.strokeStyle = "#e08080"; x.beginPath(); x.moveTo(150, 60); x.lineTo(150, 1700); x.stroke();
+    x.fillStyle = "#1d2a5a"; x.font = "italic 38px serif"; L.forEach((t, i) => x.fillText(t, 175, y0 + i * 52)); return c.toDataURL("image/jpeg", 0.88).split(",")[1]; }, [lignes, y0]).then(b => Buffer.from(b, "base64"));
+  const PA = await lettre(["Le 3 novembre 1916, à Verdun", "Ma chère Jeanne,", "Je t'écris à la lueur d'une bougie.", "Ici, la boue colle aux semelles", "et le froid nous mord les mains.", "Je t'embrasse, ton Pierre."], 206);
+  const PB = await lettre(["Le 20 février 1917, dans l'Aisne", "Mon cher père,", "Nous sommes montés en ligne hier soir.", "Les rats courent dans la tranchée", "et personne ne dort vraiment.", "Ce qui est le plus dur, c'est l'attente,", "les heures sans rien faire, le froid,", "et la peur quand le sifflet retentit.", "Je pense à la moisson et à la grange,", "à maman qui doit s'inquiéter pour moi.", "Dis-lui que je mange bien, même si", "la soupe arrive froide dans les boyaux.", "Est-ce que la vache a vêlé ? Est-ce que", "le petit Jean va encore à l'école ?", "Écris-moi vite, tes lettres me font", "tenir. Ton fils qui t'aime, Émile."], 674);
+  const PN = await lettre(["Le 1er juillet 1916, sur la Somme", "Chère maman,", "On dit que l'attaque est pour demain.", "Je garde ta médaille sur moi.", "Ton fils, Henri."], 1100);
+  const D = fs.mkdtempSync(path.join(os.tmpdir(), "cle-dylan-"));
+  fs.writeFileSync(path.join(D, "IMG_20261031_161801.jpg"), PA); fs.writeFileSync(path.join(D, "IMG_20261031_161821.jpg"), PB);
+  // deux copies chargées seules, depuis la carte de leur élève : une photo chacune
+  const charge = [];
+  for (const [nom, buf] of [["IMG_20261031_161801.jpg", PA], ["IMG_20261031_161821.jpg", PB]]) {
+    const s = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll("#gridEleves .eleve-card")), i = L.findIndex(c => { const n = c.querySelector(".eleve-nom"); return n && !scPagesDe(eleveId(n.textContent)).length && !c.classList.contains("absent"); }); return i < 0 ? null : { i, k: eleveId(L[i].querySelector(".eleve-nom").textContent) }; });
+    if (!s) break; await pg.locator("#gridEleves .eleve-card").nth(s.i).click(); await att(800);
+    const ch = pg.waitForEvent("filechooser"); await pg.click("#avChargerSa"); await (await ch).setFiles({ name: nom, mimeType: "image/jpeg", buffer: buf });
+    await pg.waitForFunction(() => typeof RC !== "undefined" && RC.ouvert, null, { timeout: 30000 }).catch(() => {}); await att(1000); charge.push(s.k);
+    await pg.click("#rcFermer"); await att(250); await pg.locator('button[onclick="scFermer()"]').click(); await att(800); }
+  if (charge.length < 2) { verif("1.4.28 (55) : deux élèves sans copie, pour deux photos chargées seules", false); return; }
+  await pg.click("#btnScan"); await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200); if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }
+  /* leurs deux feuilles comme chargées avant la 1.4.13 : sans origine (les autres feuilles de la classe gardent la leur) */
+  const ids = await pg.evaluate(K => { const P = Object.values(SC.pages).filter(p => p && K.includes(p.eleve)); P.forEach(p => { delete p.source; ruEcrire(scChemin(["pages", p.id]), p, "banc : une feuille d'avant la 1.4.13"); }); return P.map(p => p.id); }, charge); await att(1500);
+  const avec = await pg.evaluate(() => Object.values(SC.pages).filter(p => p && p.source).length);
+  const dist = await pg.evaluate(I => { const b = h => h.split("").map(c => parseInt(c, 16).toString(2).padStart(4, "0")).join(""), A = b(I[0].slice(5, 69)), B = b(I[1].slice(5, 69)); let d = 0; for (let i = 0; i < 256; i++) if (A[i] !== B[i]) d++; return d; }, ids);
+  fs.writeFileSync(path.join(D, "IMG_20261102_183000.jpg"), PN); fs.copyFileSync(path.join(dir, "paquet-essai.pdf"), path.join(D, "paquet-essai.pdf"));
+  const dossier = async () => { await pg.evaluate(() => { window.showDirectoryPicker = undefined; }); const ch = pg.waitForEvent("filechooser"); await pg.click('#scanEcran .sc-haut >> text=Mon dossier'); await (await ch).setFiles(D);
+    for (let i = 0, v = 0; i < 160 && v < 4; i++) { await att(250); v = (await pg.evaluate(() => (document.getElementById("scCharge") || {}).textContent || "")) ? 0 : v + 1; } await att(800);
+    const r = await pg.evaluate(I => ({ modale: (() => { const m = document.getElementById("scModale"); return m && m.classList.contains("show") ? m.innerText.replace(/\s+/g, " ") : ""; })(), mot: (document.getElementById("toast") || {}).textContent || "",
+      origine: I.filter(id => SC.pages[id] && SC.pages[id].source).length, photos: I.filter(id => SC.imgs[id]).length, pages: Object.values(SC.pages).filter(p => p && p.id).length, sans: Object.values(SC.pages).filter(p => p && p.id && !p.eleve && !p.blanche).length }), ids);
+    if (r.modale) { await pg.keyboard.press("Escape"); await att(250); } return r; };
+  const n0 = await pg.evaluate(() => Object.values(SC.pages).filter(p => p && p.id).length);
+  const r1 = await dossier(); await cap("C14-1428-55-dossier-mele");
+  verif("1.4.28 (C14 55) : une classe mêlée, " + avec + " feuilles avec leur origine et 2 sans (chargées avant la 1.4.13, à " + dist + " points l’une de l’autre) : « 📂 Mon dossier » retrouve leurs 2 photos par leur image (" + r1.origine + " avec leur origine maintenant), sans feuille en double (" + (r1.pages - n0) + "), et ne montre que la vraie nouvelle copie (« " + r1.modale.slice(0, 90) + " ») ; « " + r1.mot + " »",
+    avec >= 8 && r1.origine === 2 && r1.photos === 2 && r1.pages === n0 && r1.sans === 0 && /^1 fichier que cette rédaction ne connaît pas/.test(r1.modale) && /IMG_20261102_183000\.jpg/.test(r1.modale) && !/IMG_20261031/.test(r1.modale));
+  // sur un autre ordinateur : aucune photo, et l'image se calcule un peu autrement ; les deux feuilles encore sans origine
+  await pg.evaluate(I => { I.forEach(id => { const p = SC.pages[id]; if (p) { delete p.source; ruEcrire(scChemin(["pages", id]), p, "banc : une feuille d'avant la 1.4.13"); } }); }, ids); await att(1200);
+  await pg.evaluate(() => new Promise(res => { (SC.dbp || Promise.resolve(null)).then(db => { try { db && db.close(); } catch (e) {} const r = indexedDB.deleteDatabase("mjpc_scans"); r.onsuccess = r.onerror = r.onblocked = () => res(); }); }));
+  await pg.reload(); await pg.locator("#gridEleves .eleve-card").first().waitFor({ state: "visible", timeout: 20000 }); await att(800);
+  await pg.evaluate(() => { const g = CanvasRenderingContext2D.prototype.getImageData; CanvasRenderingContext2D.prototype.getImageData = function (x, y, w, h) { const d = g.call(this, x, y, w, h); if (w === 16 && h === 16) for (let i = 0; i < 3; i++) d.data[i] = 255 - d.data[i]; return d; }; });
+  if (!(await pg.evaluate(() => SC.ouvert))) { await pg.click("#btnScan"); } await pg.locator("#scanEcran").waitFor({ state: "visible" }); await att(1200); if (await pg.evaluate(() => typeof RC !== "undefined" && RC.ouvert)) { await pg.click("#rcFermer"); await att(300); }
+  for (const n of ["paquet-reperes.pdf"]) fs.copyFileSync(path.join(dir, n), path.join(D, n)); fs.copyFileSync(path.join(dir, "banc/recopie-lignes-essai.png"), path.join(D, "recopie-lignes-essai.png"));
+  if (globalThis.BANC_PHOTO_REFAITE) fs.writeFileSync(path.join(D, "photo-refaite.png"), globalThis.BANC_PHOTO_REFAITE); if (globalThis.BANC_COPIE_SEULE) fs.writeFileSync(path.join(D, "copie-seule.png"), globalThis.BANC_COPIE_SEULE);
+  const sans2 = await pg.evaluate(() => Object.keys(SC.imgs).length), r2 = await dossier();
+  verif("1.4.28 (C14 55) : sur un autre ordinateur (" + sans2 + " photo au départ, une image calculée un peu autrement), le même dossier : les 2 feuilles sans origine retrouvées par leur image (" + r2.origine + ", " + r2.photos + " photos), aucune en double (" + (r2.pages - n0) + "), seule la nouvelle copie montrée (« " + r2.modale.slice(0, 60) + " »)",
+    sans2 === 0 && r2.origine === 2 && r2.photos === 2 && r2.pages === n0 && /^1 fichier que cette rédaction ne connaît pas/.test(r2.modale) && /IMG_20261102_183000\.jpg/.test(r2.modale));
+}

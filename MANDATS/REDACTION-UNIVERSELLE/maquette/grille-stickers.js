@@ -223,22 +223,37 @@ function stTrouverMots(texte, mots) {
 }
 /* le retour de l'IA : les réussites de chaque copie, gardées seulement pour les copies dont les lignes sont à jour ; une ligne d'une autre copie ne s'y mêle jamais */
 function stIAReussites(o, copiesOk) {
-  const R = o.reussites || {}, quand = new Date().toISOString(); let copies = 0, poses = 0, incompletes = 0, inconnus = 0, horsCopie = 0;
+  const R = o.reussites || {}, quand = new Date().toISOString(); let copies = 0, poses = 0, incompletes = 0, inconnus = 0, horsCopie = 0, plusVus = 0;
   copiesOk.forEach(k => { const c = state.copies[k] || {}, L = R[c.id]; if (!Array.isArray(L)) return; const ici = {}; rcLignesEcrites(k).forEach(x => { ici[x.id] = x; });
     const liste = [], vu = new Set(); let complet = false;
     L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; } const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } if (vu.has(st.id)) return; vu.add(st.id);
       const p = Object.assign(e.p ? { p: String(e.p).slice(0, 500) } : {}, e.manque ? { manque: String(e.manque).slice(0, 400) } : {});   // [C14 1.4.17, proposé, C14 493] pourquoi c'est réussi, dit à l'élève ; [C14 669] ce qui manquait à l'IA, pour toi seul
       if (st.portee === "lettre" || !e.l) { liste.push(Object.assign({ st: st.id, num: st.num, lettre: true }, p)); return; }
       const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = stTrouverMots(x.l.texte, e.m); liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, mots: String(e.m || "").slice(0, 200) }, t ? { de: t.de, a: t.a } : { sansPlace: true }, p, e.l2 && ici[e.l2] ? { l2: e.l2 } : {})); });
-    const s = scCopie(k); s.recopie = s.recopie || {}; const prof = (((s.recopie.stickersIA || {}).liste) || []).filter(e => e.par === "prof");   // ce que tu as posé de ta main reste
-    s.recopie.stickersIA = { le: quand, complet, liste: prof.concat(liste.filter(e => !prof.some(p => p.st === e.st))) }; if (!complet) incompletes++; copies++; poses += liste.length; });
-  return { copies, poses, incompletes, inconnus, horsCopie };
+    const s = scCopie(k); s.recopie = s.recopie || {}; const avant = s.recopie.stickersIA, prof = (((avant || {}).liste) || []).filter(e => e.par === "prof");   // ce que tu as posé de ta main reste
+    const portee = stPorteeReprise(k);
+    if (!portee) s.recopie.stickersIA = { le: quand, complet, liste: prof.concat(liste.filter(e => !prof.some(p => p.st === e.st))) };
+    else {   /* [C14 1.4.28] (Paul 02/11 20:37, C14 66 et 70) une copie reprise : seuls les stickers en portée changent ; la même réussite garde ta décision, sans arrêt ;
+                une réussite nouvelle s'arrête ; une réussite gardée que l'IA ne voit plus s'arrête aussi, et attend ta décision */
+      const D = s.stickers = Object.assign({}, s.stickers), anc = ((avant || {}).liste || []).filter(e => e.par !== "prof"), dans = id => portee === "tous" || portee.has(id), nouv = [];
+      liste.filter(e => dans(e.st) && !prof.some(p => p.st === e.st)).forEach(e => { const a = anc.find(x => x.st === e.st);
+        if (a) { const g = Object.assign({}, a); delete g.plusVu; nouv.push(g); } else { nouv.push(e); const d = D[e.st]; if (d && d.v !== "o") delete D[e.st]; } });
+      anc.filter(a => dans(a.st) && !liste.some(e => e.st === a.st)).forEach(a => { const d = D[a.st]; if (d && (d.v === "o" || d.avant === "o")) { nouv.push(Object.assign({}, a, { plusVu: quand })); D[a.st] = Object.assign({}, d, { v: null, avant: "o" }); plusVus++; } });
+      s.recopie.stickersIA = { le: quand, complet, liste: prof.concat(anc.filter(a => !dans(a.st)), nouv) }; }
+    if (!complet) incompletes++; copies++; poses += liste.length; });
+  return { copies, poses, incompletes, inconnus, horsCopie, plusVus };
 }
+/* [C14 1.4.28] (Paul 02/11 20:37 : « si je modifie après un import, et que je veux réexport, c'est le nouvel export qui part avec les modifications et après je n'ai plus que
+   ces nouvelles choses à revérifier dans la bande ») : la signature d'un sticker (ce que l'IA cherche, sa portée, sa taille) ; les stickers qui dépendent des paragraphes ;
+   la portée d'une copie reprise (« tous », ou les stickers repartis), lue dans son envoi */
+function stSig(s) { return [s.cherche || s.texteEleve || "", s.portee === "lettre" ? "lettre" : "passage", s.taille || ""].join("|"); }
+function stDesParagraphes(s) { const l = stLigne(s.ligne), c = stConf(s.ligne); return /paragraph|alin[ée]a/i.test([s.cherche, s.texteEleve, s.texteManque, s.ligne, l && l.titre, c && c.eleve].filter(Boolean).join(" ")); }
+function stPorteeReprise(k) { const r = scCopie(k).recopie || {}, rp = r.envoi && r.envoi.reprise; if (!rp || !r.stickersIA) return null; return rp.stickers === "tous" ? "tous" : new Set(rp.stickers || []); }
 /* les arrêts des stickers d'une copie, après ceux des fautes : dans l'ordre de la grille ; ceux de toute la lettre en dernier */
 function stArrets(k) {
   const r = (scCopie(k).recopie || {}).stickersIA; if (!r || !Array.isArray(r.liste)) return []; const L = rcLignesEcrites(k), ordre = stSujetLignes().map(l => l.id), A = [];
   r.liste.forEach(e => { const st = stActifs().find(x => x.id === e.st); if (!st) return; const x = e.l && L.find(y => y.id === e.l), i = x ? L.indexOf(x) : -1;   // [C14 710] un sticker enlevé de la grille ne s'arrête plus dans la bande
-    const a = { st: true, k, sticker: st, stId: st.id, cle: "stk:" + st.id, lettre: !x || e.lettre || e.sansPlace, mots: e.mots || "", p: e.p || "", l2: e.l2 || null, manque: e.manque || "" };
+    const a = { st: true, k, sticker: st, stId: st.id, cle: "stk:" + st.id, lettre: !x || e.lettre || e.sansPlace, mots: e.mots || "", p: e.p || "", l2: e.l2 || null, manque: e.manque || "", plusVu: e.plusVu || "" };
     if (x && !e.lettre && !e.sansPlace && e.a > e.de) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l, g: { de: e.de, a: e.a, de2: e.de, a2: e.a, eleve: e.mots || "", corrige: e.mots || "" } });
     else if (x) Object.assign(a, { pid: x.pid, id: x.id, n: i + 1, l: x.l });
     A.push(a); });
@@ -301,6 +316,7 @@ function stBandeCarte(B, a, ctx, carte, touches) {
   carte.innerHTML = '<div class="rc-bande-mot rc-st-mot" style="color:' + c + '">★ ' + escapeHtml(a.sticker.texteEleve) + '</div><div class="rc-bande-pied"><b class="rc-bande-type" style="background:' + c + "22;color:" + c + ";border-color:" + c + '">' + escapeHtml((a.sticker.num || "") + " · " + (l ? l.titre : "")) + "</b> "
     + (a.lettre ? "Toute la lettre : gardé seulement si rien ne le contredit." : a.mots ? "L’IA l’a vu dans « " + escapeHtml(a.mots) + " »" + (a.sticker.taille === "phrase" ? " : le cadre prendra toute la phrase." : a.sticker.taille === "paragraphe" ? " : l’accolade prendra tout le paragraphe." : ".") : "") + (d === "o" ? " · ✓ gardé" : d === "n" ? " · ✗ non" : "") + '</div>'
     + (a.p ? '<div class="rc-bande-pied rc-st-pourquoi" title="La phrase que l’élève lira sous ce qu’il a écrit. Entrée la garde avec le sticker.">Pour l’élève : ' + escapeHtml(a.p) + "</div>" : "")
+    + (a.plusVu && !d ? '<div class="rc-bande-pied rc-st-manque" title="Tu avais gardé ce sticker ; renvoyée à l’IA après ton changement, la copie ne le montre plus réussi pour elle. À toi de décider.">L’IA ne le voit plus réussi depuis ton changement : Entrée le garde, N l’enlève.</div>' : "")   /* [C14 1.4.28] (C14 70) */
     + (a.manque ? '<div class="rc-bande-pied rc-st-manque" title="L’IA a proposé quand même : à toi de décider. L’élève ne lit jamais cette ligne.">L’IA doutait, il lui manquait : ' + escapeHtml(a.manque) + "</div>" : "")   /* [C14 669] (Paul 12:52 : « il faut quand même qu'elle propose, et que je dispose ») */ + '<div class="rc-bande-pied rc-st-compte">' + stBandeApport(B.k, a, d) + " · sa note, avec les stickers déjà gardés avant celui-ci : " + stNb(nt.n) + " / " + stNb(nt.tot) + "</div>";
   touches.innerHTML = '<b class="rc-bande-mode">Les stickers</b><span><kbd>Entrée</kbd> ou <kbd>Espace</kbd> gardé</span><span><kbd>N</kbd> non</span><span><kbd>Retour</kbd> l’arrêt d’avant</span>' + (a.g && !zone ? "<span>glisser le cadre, ou <kbd>←</kbd> <kbd>→</kbd> : viser · double clic sur le cadre : sa longueur</span>" : "") + (a.g ? "" : "<span><kbd>←</kbd> <kbd>→</kbd> : faire défiler la copie</span>") + "<span><kbd>Échap</kbd> revenir à la recopie</span>" + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : "");
   if (a.g) rcBandePhoto(a); else rcBandeLettre();   // [C14 626] toute la lettre : toute la copie dans la bande
@@ -393,7 +409,7 @@ function stEchelle(l) {
 function stIARemarques(o, copiesOk) {
   const R = o.aReprendre || {}, quand = new Date().toISOString(); let copies = 0, n = 0, refusReussi = 0, horsCopie = 0, inconnus = 0, longues = 0;
   copiesOk.forEach(k => { const c = state.copies[k] || {}, L = R[c.id]; if (!Array.isArray(L)) return; const ici = {}; rcLignesEcrites(k).forEach(x => { ici[x.id] = x; });
-    const s = scCopie(k), ia = (((s.recopie || {}).stickersIA || {}).liste) || [], dec = s.stickers || {}, reussi = id => ia.some(e => e.st === id) || (dec[id] || {}).v === "o";
+    const s = scCopie(k), ia = (((s.recopie || {}).stickersIA || {}).liste) || [], dec = s.stickers || {}, reussi = id => ia.some(e => e.st === id && !e.plusVu) || (dec[id] || {}).v === "o";   // [C14 1.4.28] un sticker que l'IA ne voit plus n'est pas réussi pour elle
     const liste = [], vu = new Set(); let complet = false;
     L.forEach(e => { if (!e || typeof e.s !== "string") return; if (e.s === "fin") { complet = true; return; }
       const st = stParNum(e.s) || stActifs().find(x => x.id === e.s); if (!st) { inconnus++; return; } const r = String(e.r || "").trim(); if (!r || vu.has(st.id)) return;
@@ -402,7 +418,13 @@ function stIARemarques(o, copiesOk) {
       if (!e.l) { liste.push(Object.assign({ st: st.id, num: st.num, r, grille: true, longue }, mq)); return; }
       const x = ici[e.l]; if (!x) { horsCopie++; return; } const t = e.m ? stTrouverMots(x.l.texte, e.m) : null;
       liste.push(Object.assign({ st: st.id, num: st.num, l: x.id, pid: x.pid, r, mots: String(e.m || "").slice(0, 200), longue }, mq, t ? { de: t.de, a: t.a } : { sansPlace: true })); });
-    s.recopie = s.recopie || {}; s.recopie.remarquesIA = { le: quand, complet, relu: null, liste }; copies++; n += liste.length; });
+    s.recopie = s.recopie || {}; const avant = s.recopie.remarquesIA, portee = typeof stPorteeReprise === "function" && avant ? stPorteeReprise(k) : null;
+    if (!portee) s.recopie.remarquesIA = { le: quand, complet, relu: null, liste };
+    else {   /* [C14 1.4.28] (C14 70) une copie reprise : les remarques des autres stickers restent telles que tu les as relues ; une remarque qui revient pareille (ou que tu avais
+                récrite) reste ; une remarque nouvelle est à relire, et la relecture revient au bout de la bande */
+      const dans = id => portee === "tous" || portee.has(id), A = avant.liste || [], nouv = liste.filter(e => dans(e.st)).map(e => { const a = A.find(x => x.st === e.st && (x.r === e.r || x.deProf)); return a ? a : Object.assign(e, { nouvelle: quand }); });
+      const neuves = nouv.filter(e => e.nouvelle === quand).length; s.recopie.remarquesIA = { le: quand, complet, relu: neuves ? null : avant.relu || null, liste: A.filter(x => !dans(x.st)).concat(nouv) }; }
+    copies++; n += liste.length; });
   return { copies, n, refusReussi, horsCopie, inconnus, longues };
 }
 /* [C14 669] (Paul 12:46 : « Quand j'envoie à l'IA elle doit me demander les textes lus, etc. Tout ce dont elle n'a pas connaissance en termes de contenus. Il y a donc une
@@ -426,7 +448,7 @@ function stContexteVoir() {
 function stRq(k) { const r = (scCopie(k).recopie || {}).remarquesIA; return r && Array.isArray(r.liste) ? r : null; }
 function stRqVisibles(k) { const r = stRq(k); if (!r || !r.relu) return []; const D = scCopie(k).stickers || {}, A = new Set(stActifs().map(s => s.id)); return r.liste.filter(e => e.etat !== "retire" && (D[e.st] || {}).v !== "o" && A.has(e.st)); }   // [C14 710] (Paul 14:09 : « Tu l'enlèves de la grille, c'est tout ») : jamais la remarque d'un sticker enlevé
 function stRqARelire(k) { const r = stRq(k); return !!(r && !r.relu && r.liste.length); }
-function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); saveState(); if (typeof svVerifier === "function") svVerifier(); }
+function stRqGarder(k) { const r = stRq(k); if (!r) return; r.relu = new Date().toISOString(); r.liste.forEach(e => { delete e.nouvelle; }); saveState(); if (typeof svVerifier === "function") svVerifier(); }
 function stRqRetirer(k, i) { const r = stRq(k); if (!r || !r.liste[i]) return; if (r.liste[i].etat === "retire") delete r.liste[i].etat; else r.liste[i].etat = "retire"; saveState();
   if (document.activeElement && document.activeElement.closest && document.activeElement.closest("#rcRqListe") && document.activeElement.tagName === "BUTTON") document.activeElement.blur();   // [C14 638] le bouton cliqué ne garde pas le focus : la liste se redessine, et Entrée ne le rappuie pas
   if (RC.bd) rcBandeRendre(); }
@@ -438,7 +460,7 @@ function stRqRelecture(k) {
   return '<div class="st-rq-tete"><b>Les remarques de l’IA · ' + r.liste.length + "</b> <span>" + (r.relu ? "✓ relues à " + escapeHtml(rcHeure(r.relu)) + " : l’élève lit celles qui restent." : "À relire : l’élève ne les lit qu’après ton <kbd>Entrée</kbd>.") + "</span>"
     + (r.relu ? "" : '<button class="sc-btn" onclick="this.blur();rcBandeGarderRq()" title="Garder toutes les remarques qui restent : l’élève les lira dans son fichier (Entrée).">✓ Je les garde (Entrée)</button>') + "</div>"
     + r.liste.map((e, i) => { const st = stTous().find(x => x.id === e.st), x = e.l && L.find(y => y.id === e.l), reussi = (D[e.st] || {}).v === "o", enleve = !!st && st.etat === "range", c = st ? stCouleur(st) : "#6b7280";
-      return '<div class="st-rq' + (e.etat === "retire" || reussi || enleve ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (enleve ? " · son sticker est enlevé de la grille : elle ne part pas" : reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + "</small>" + (e.manque ? '<em class="st-rq-manque" title="L’élève ne lit jamais cette ligne.">L’IA doutait, il lui manquait : ' + escapeHtml(e.manque) + "</em>" : "")
+      return '<div class="st-rq' + (e.etat === "retire" || reussi || enleve ? " off" : "") + '" style="--st-c:' + c + '"><div class="st-rq-h"><b>' + escapeHtml(e.num || "") + "</b><span>" + escapeHtml(st ? (st.texteManque || st.texteEleve) : "") + "</span><small>" + (x ? "ligne " + (L.indexOf(x) + 1) + (e.mots ? " · « " + escapeHtml(e.mots) + " »" : "") : "dans la grille") + (e.longue ? " · plus de quarante mots" : "") + (enleve ? " · son sticker est enlevé de la grille : elle ne part pas" : reussi ? " · réussi depuis : elle ne part pas" : e.etat === "retire" ? " · retirée" : "") + (e.nouvelle && !r.relu ? " · nouvelle" : "") + "</small>" + (e.manque ? '<em class="st-rq-manque" title="L’élève ne lit jamais cette ligne.">L’IA doutait, il lui manquait : ' + escapeHtml(e.manque) + "</em>" : "")
         + '<button class="sc-btn" onclick="stRqRetirer(RC.bd.k,' + i + ')" title="' + (e.etat === "retire" ? "Remettre cette remarque : l’élève la lira." : "Retirer cette remarque : l’élève ne la lira pas. Rien n’est effacé.") + '">' + (e.etat === "retire" ? "↺ Remettre" : "✕ Retirer") + "</button></div>"
         + '<textarea rows="2" onchange="stRqTexte(RC.bd.k,' + i + ',this.value)" title="La remarque que l’élève lira. Corrige-la ici : ton texte remplace celui de l’IA.">' + escapeHtml(e.r) + "</textarea></div>"; }).join("");
 }

@@ -124,14 +124,14 @@ function rcInterface() {
     '<button id="rcRenvoyerIA" class="sc-btn" hidden title="Un retour de l’IA s’est perdu : redonne-lui les copies qui attendent encore leur retour, dans un nouveau fichier (8 au plus par clic). Rien n’est effacé.">↻ Renvoyer les copies en attente</button>',
     '<button id="rcImportIA" class="sc-btn" title="Coller ou choisir le retour de l’IA. L’app vérifie que toutes les lignes correspondent avant de rien changer.">⇩ Charger le corrigé de l’IA</button><button id="rcFluxOuvrir" class="sc-btn" title="Le flux de la classe : pour chaque copie, ce qui est recopié, envoyé à l’IA, chargé, et où en est la bande, avec l’heure de chaque étape.">📋 Le flux</button><span id="rcIAEtat" class="rc-ia-etat"></span>',
     '<button id="rcPhraseOuvrir" class="sc-btn" title="La fin de la recopie de cette copie : surligne la phrase qui t’a marqué (clic sur son premier mot, puis sur son dernier), ou coche « Pas de phrase ». Elle passe en or sur la copie de l’élève. Le flux ne coche « recopiée » qu’après.">★ La phrase qui m’a marqué</button>',
-    '<button id="rcBandeOuvrir" class="sc-btn" title="La bande : elle s’arrête à chaque faute proposée par le corrigé de l’IA. Entrée ou Espace : c’est une faute ; N : non. Échap : revenir à la recopie.">▶ La bande</button>',
+    '<button id="rcBandeOuvrir" class="sc-btn" title="La bande de cette copie : elle s’arrête à chaque faute et à chaque sticker proposés par l’IA. Entrée ou Espace : oui ; N : non. Au bout, Entrée passe à la bande de la copie suivante qui a quelque chose à revoir. Échap : revenir à la recopie.">▶ La bande</button>',
     '<button id="rcPhotoOuvrir" class="sc-btn" title="Les outils de la photo de cette page, des gestes rares : la remplacer, la tourner, la retoucher, changer l’ordre des pages, retirer les photos de ce navigateur.">📷 La photo</button>',
     '<button id="rcCharger" class="sc-btn" hidden title="Remettre le paquet dans ce navigateur ; les lignes et le texte déjà gardés restent en place.">Charger le paquet</button></div>',
     '<div class="rc-apercu"><div><b id="rcLigneTitre"></b><span>Recale les poignées vertes, puis recopie sans corriger.<br>Entrée : ligne suivante · ↑ ↓ : changer de ligne.</span></div>',
     '<div class="rc-zoom-bande-c"><span class="rc-zoom-boutons"><button id="rcZoomMoins" class="sc-btn" title="Revenir d\'un cran : à ×1, la ligne en grand va de la marge rouge au bord de la copie.">−</button><b id="rcZoomCran">×1</b><button id="rcZoomPlus" class="sc-btn" title="Grossir la ligne en grand d\'un cran : elle prend toute la largeur, la photo et tes lignes ne bougent pas.">+</button></span><canvas id="rcAgrandie" aria-label="La ligne manuscrite en grand"></canvas></div></div>',
     '<div id="rcDefile" class="rc-defile"><div id="rcPages" class="rc-pages"></div></div>',
     '<p id="rcMessage" class="rc-message"></p>',
-    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div><div id="rcCg" class="rc-cg" hidden></div><div id="rcRqListe" class="st-rq-liste" hidden></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
+    '<section id="rcBande" class="rc-bande" aria-label="La bande des fautes"><div class="rc-bande-g"><div class="rc-bande-haut"><button id="rcBandeRetour" class="sc-btn" title="Revenir à ta recopie (Échap). Tes réponses sont gardées.">← Revenir à la recopie</button><b id="rcBandeTitre"></b><span id="rcBdOu" class="rc-bd-ou" title="Ta place dans les copies revenues de l’IA, et combien ont encore quelque chose à revoir dans leur bande."></span><button id="rcBdAvant" class="sc-btn" title="La bande de la copie d’avant, parmi celles revenues de l’IA. Tes décisions sont gardées.">← Copie</button><button id="rcBdSuite" class="sc-btn" title="La bande de la copie suivante, parmi celles revenues de l’IA. Tes décisions sont gardées.">Copie →</button><button id="rcStPlus" class="sc-btn" title="Poser un sticker que l’IA n’a pas vu : sur le mot où tu es (mot par mot), ou sur le passage de l’arrêt en cours. Seuls les stickers validés se posent.">＋ Un sticker</button></div><div id="rcBandeAvis" class="rc-bande-avis" hidden></div><canvas id="rcBandePhoto" aria-label="La ligne de la photo" title="Glisse le cadre pour le déplacer. Double clic sur le cadre : deux poignées, une de chaque côté, pour régler sa longueur ; encore un double clic les retire. Clic droit sur le cadre : une faute de ta recopie."></canvas><div id="rcBandeContexte" class="rc-bande-contexte"></div><div id="rcBandeCarte" class="rc-bande-carte"></div><div id="rcBandeTouches" class="rc-bande-touches"></div><div id="rcCg" class="rc-cg" hidden></div><div id="rcRqListe" class="st-rq-liste" hidden></div></div><aside class="rc-bande-d"><h4>Les arrêts de cette copie</h4><ol id="rcBandeListe"></ol></aside></section>',
     '<div id="rcPhrase" class="rc-ia" hidden><div class="rc-ia-c rc-phrase-c" role="dialog" aria-label="La phrase qui m’a marqué"><b>La phrase qui m’a marqué</b><span>Clique le premier mot de la phrase : il s’écrit en dessous. Clique le dernier : toute la phrase s’écrit d’un coup. Un autre clic recommence. Elle passera en or sur la copie de l’élève. C’est la fin de la recopie de cette copie : sans elle (ou « Pas de phrase »), tu ne passes pas à la copie suivante.</span><div id="rcPhraseTexte" class="rc-phrase-t"></div><div id="rcPhraseChoix" class="rc-phrase-choix" aria-live="polite"></div><div class="rc-ia-b"><label class="rc-phrase-non" title="Aucune phrase ne t’a marqué dans cette copie : la recopie est finie quand même.">' + '<input type="checkbox" id="rcPhraseAucune"> Pas de phrase</label><button id="rcPhraseOui" class="sc-btn" disabled title="Choisis d’abord le premier et le dernier mot de la phrase.">✓ C’est elle</button><button id="rcPhraseFermer" class="sc-btn" title="Fermer (Échap) : rien ne change.">Fermer</button></div></div></div>',
     '<div id="rcPhotoF" class="rc-ia" hidden><div class="rc-ia-c rc-photo-c" role="dialog" aria-label="La photo de cette page"><b>📷 La photo</b><span id="rcPhotoQui"></span><div class="rc-photo-b">',
     '<button id="rcRemplacer" class="sc-btn" title="Remplacer la photo de cette page par une meilleure (une photo, ou un PDF d’une page). La feuille garde son identité : ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent.">📷 Remplacer</button>',
@@ -163,6 +163,7 @@ function rcInterface() {
   e.querySelector("#rcBandeOuvrir").onclick = () => { if (RC.bd) rcBandeFermer(); else rcBandeOuvrir(); };
   e.querySelector("#rcStPlus").onclick = () => { if (typeof stPlusOuvrir === "function") stPlusOuvrir(); };
   e.querySelector("#rcBandeRetour").onclick = () => rcBandeFermer();
+  e.querySelector("#rcBdAvant").onclick = () => { e.querySelector("#rcBdAvant").blur(); rcBandeVoisine(-1); }; e.querySelector("#rcBdSuite").onclick = () => { e.querySelector("#rcBdSuite").blur(); rcBandeVoisine(1); };   // [C14 1.4.28] (C14 72)
   e.querySelector("#rcImportIA").onclick = rcIAOuvrir;
   e.querySelector("#rcIAFermer").onclick = rcIAFermer;
   /* [C14 1.4.12] (exigences du 29/10 : « max 30 clics par copie » ; « mesurer le gain ») : le temps de recopie, le temps de bande et les gestes de chaque copie, comptés seuls */
@@ -261,9 +262,9 @@ function rcFermer(sansRendre) {
   document.body.classList.remove("rc-ouvert"); SC.actif = Date.now(); rcBookmark(); aidePoser(SC.ouvert ? "scan" : (SC.aideAvant || "correction"));
   if (!sansRendre) scRendre();
 }
-function rcChoisirCopie(k) {
+function rcChoisirCopie(k, depuisBande) {
   if (!SC.copies.includes(k)) return;
-  if (!RC.bd && k !== RC.copie && rcPhraseManque(RC.copie)) { rcPhraseOuvrir(); if (RC.phrase) { RC.phraseApres = k; toast("D’abord la phrase qui t’a marqué (ou « Pas de phrase ») : c’est la fin de la recopie de cette copie."); } const sel = RC.ui.querySelector("#rcCopie"); if (sel) sel.value = RC.copie; return; }
+  if (!RC.bd && !depuisBande && k !== RC.copie && rcPhraseManque(RC.copie)) { rcPhraseOuvrir(); if (RC.phrase) { RC.phraseApres = k; toast("D’abord la phrase qui t’a marqué (ou « Pas de phrase ») : c’est la fin de la recopie de cette copie."); } const sel = RC.ui.querySelector("#rcCopie"); if (sel) sel.value = RC.copie; return; }
   if (RC.bd) rcBandeFermer(true);
   RC.copie = k; RC.documents = {}; RC.annule = [];
   SC.ic = SC.copies.indexOf(k); const pages = scPagesDe(k), r = rcCopieSource().reprise || {};
@@ -634,27 +635,81 @@ function rcParBasculer() {
 function rcParEtat() { const b = RC.ui && RC.ui.querySelector("#rcPar"); if (!b) return; const on = !!(RC.copie && RC.ligne && rcParagraphes(RC.copie).has(RC.ligne)); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); }
 function rcArretsLigne(l) { return l && typeof l.corrige === "string" && l.texte === l.corrigeDe ? rcEcarts(l.texte, l.corrige).segs : []; }
 function rcCopieACorriger(k) { return rcLignesEcrites(k).some(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe); }
+/* [C14 1.4.28] (Paul 02/11 20:37 : « ce principe doit être tenu pour tout. si je modifie après un import, et que je veux réexport, c'est le nouvel export qui part avec les
+   modifications et après je n'ai plus que ces nouvelles choses à revérifier dans la bande » ; C14 66 à 71, « ok » 21:52). Une copie revenue de l'IA garde ce que l'IA en a vu
+   (recopie.vu : ses paragraphes, la signature de chaque sticker jugé). Ce qui a changé depuis repart, et seulement cela : une ligne retapée qui a trop changé, ou ajoutée
+   (avec les stickers posés sur elle) ; des paragraphes changés (les stickers des paragraphes et le commentaire général) ; un sticker ajouté à la grille, ou dont la question a changé. */
+function rcRevenue(k) { const r = scCopie(k).recopie || {}; return !!(r.charge || r.stickersIA); }
+function rcParasDe(k) { return Array.from(rcParagraphes(k)).sort(); }
+function rcReprise(k) {
+  if (!rcRevenue(k)) return null; const r = scCopie(k).recopie || {}, vu = r.vu || null, L = rcLignesEcrites(k); if (!L.length) return null;
+  const lignes = L.filter(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe).map(x => x.id), st = new Set(); let paras = false;
+  const A = typeof stActifs === "function" && typeof stEnvoiGrille === "function" && stEnvoiGrille() ? stActifs() : [];
+  if (A.length) {
+    if (vu && Array.isArray(vu.paras)) { const P = rcParasDe(k); if (P.join("|") !== vu.paras.slice().sort().join("|")) { paras = true; A.filter(stDesParagraphes).forEach(s => st.add(s.id)); } }
+    if (lignes.length) { const E = new Set(lignes); (((r.stickersIA || {}).liste) || []).forEach(e => { if (e.par !== "prof" && (E.has(e.l) || E.has(e.l2))) st.add(e.st); }); (((r.remarquesIA || {}).liste) || []).forEach(e => { if (E.has(e.l)) st.add(e.st); }); }
+    if (vu && vu.st) A.forEach(s => { if (vu.st[s.id] !== stSig(s)) st.add(s.id); });
+  }
+  if (!lignes.length && !st.size) return null;
+  return { lignes, stickers: Array.from(st), paras, commentaire: paras };
+}
+/* les lignes reparties d'une copie reprise, lues dans son envoi ; null pour une copie partie entière */
+function rcPorteeLignes(k) { const r = scCopie(k).recopie || {}, ev = r.envoi; return ev && ev.reprise && Array.isArray(ev.reprise.lignes) && rcRevenue(k) ? new Set(ev.reprise.lignes) : null; }
+function rcSigsTous() { const o = {}; if (typeof stActifs === "function" && typeof stSig === "function") stActifs().forEach(s => { o[s.id] = stSig(s); }); return o; }
+/* ce que l'IA a vu : les paragraphes partis avec l'envoi (ou ceux d'aujourd'hui, pour un envoi d'avant la 1.4.28) ; les stickers jugés, ajoutés à ceux qu'elle avait déjà vus */
+function rcVuGarder(k) { const s = scCopie(k), r = s.recopie = s.recopie || {}, ev = r.envoi || {}, avant = r.vu || {};
+  r.vu = { le: new Date().toISOString(), paras: Array.isArray(ev.paras) ? ev.paras.slice() : rcParasDe(k), st: Object.assign({}, avant.st || rcSigsTous(), ev.st || {}) }; }
+/* [C14 1.4.28] (C14 67) une ligne reprise par l'IA : une faute restée la même (le même mot de l'élève, la même correction) garde ta décision, son cadre et sa marque ;
+   les autres reviennent dans la bande ; une faute oubliée par l'IA (« mot-n ») suit son mot ; comme une ligne retapée (rcRetroactif) */
+function rcReprendreLigne(k, pid, id, ancTexte, ancCorr) {
+  const pg = ((scCopie(k).recopie || {}).pages || {})[pid], L0 = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || (pg && pg.lignes[id]);
+  if (!L0 || !(L0.decisions || L0.marquesBande || L0.places)) return;
+  const nouveau = L0.texte || "", corr = L0.corrige || "", sig = segs => { const c = {}; return segs.map(x => { const b = x.eleve + "→" + x.corrige; c[b] = (c[b] || 0) + 1; return b + "#" + c[b]; }); };
+  const anc = rcEcarts(ancTexte, ancCorr).segs, nouv = rcEcarts(nouveau, corr).segs, sA = sig(anc), sN = sig(nouv), map = {};
+  sA.forEach((v, i) => { const j = sN.indexOf(v); if (j >= 0) map[rcCle(anc[i])] = rcCle(nouv[j]); });
+  const mots = t => rcPosMots(t).map(p => t.slice(p[0], p[1])), mm = rcAligner(mots(ancTexte), mots(nouveau));
+  const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else if (/^stk:/.test(x)) r[x] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };
+  const s = scCopie(k), mb = re(L0.marquesBande), gardees = new Set(Object.values(mb));
+  Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) delete s.marques[mid]; });   // la marque de cette copie-là (pas forcément celle à l'écran)
+  rcLigneMaj(k, pid, id, l => { l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (l.placesApp) l.placesApp = re(l.placesApp); });
+  const Lf = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || pg.lignes[id], P = rcPosMots(nouveau);
+  Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m || /^stk:/.test(c)) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
+    if (!g || (mo && !P[+mo[1]])) return; const q = rcPlaceSeg({ k, pid, id, l: Lf, g, cle: c }); Object.assign(m, { x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, modifieLe: new Date().toISOString() }); if (m.bande) { m.bande.cle = c; m.bande.eleve = g.eleve; m.bande.corrige = g.corrige; } });
+  scNumeroter(k);
+}
+/* ce qui a changé, dit en clair pour le flux */
+function rcRepriseTexte(rp) { const pl = (n, m) => n + " " + m + (n > 1 ? "s" : ""); return [rp.lignes.length ? pl(rp.lignes.length, "ligne") + " à corriger" : "", rp.paras ? "ses paragraphes" : "", rp.stickers.length ? pl(rp.stickers.length, "sticker") + " à revoir" : ""].filter(Boolean).join(", "); }
 function rcExportIA(renvoi) {
   { const g = typeof stGardeExport === "function" ? stGardeExport() : null; if (g) { toast("Pas encore d’export : " + g + "."); rcEtatIA(); return; } }   // [C14 1.4.18] (Paul 20:31, C14 565) le sujet complet d'abord
   if (RC.page) rcGarder();
+  /* [C14 1.4.28] (C14 67) une ligne retapée qui ressemble encore à l'ancienne : son ancien corrigé la suit ici, rien ne part pour elle */
+  SC.copies.forEach(k => { if (rcRevenue(k)) rcLignesEcrites(k).forEach(x => { if (typeof x.l.corrige === "string" && x.l.texte !== x.l.corrigeDe) rcRetroactif(k, x.pid, x.id); }); });
   /* 1.4.2 (Paul 10:57) : un retour d'IA trop long est coupé ; on exporte par paquets les copies qui n'ont pas encore leur corrigé à jour.
      [C14 1.4.10] 8 copies (retour compact) ; chaque ligne garde le texte envoyé et l'heure (dette C14 296 : l'import refuse une ligne qui a changé depuis) ;
      plus de bandeau après l'export (Paul 17:03) : le compteur d'en haut le dit. */
   const sti = typeof stEnvoiGrille === "function" ? stEnvoiGrille() : null;   // [C14 1.4.16] les stickers validés partent avec la correction, dans le même envoi
   /* [C14 1.4.19] (Paul 20:54 : « tout exporter à la suite en une fois puis tout importer ensuite à la suite en une fois » ; « Ok pour 571 », 22:16) :
      chaque export donne le paquet suivant ; une copie qui attend son retour ne repart que par « ↻ Renvoyer les copies en attente » */
-  const besoin = SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || (sti && stAEnvoyer(k)))), attente = besoin.filter(rcEnAttente);
+  const besoin = SC.copies.filter(k => rcLignesEcrites(k).length && (rcCopieACorriger(k) || (sti && (stAEnvoyer(k) || rcReprise(k))))), attente = besoin.filter(rcEnAttente);
   const aFaire = renvoi ? attente.slice().sort((a, b) => ((scCopie(a).recopie.envoi || {}).n || 0) - ((scCopie(b).recopie.envoi || {}).n || 0)) : besoin.filter(k => !attente.includes(k));
   if (!sti && typeof stActifs === "function" && stActifs().length) toast("Les stickers ne partent pas encore : " + stPretTexte() + ".");
-  if (!aFaire.length) { if (!renvoi && attente.length) toast("Toutes tes copies à corriger sont parties : " + attente.length + " attend" + (attente.length > 1 ? "ent" : "") + " son retour. Charge les retours ; si l’un s’est perdu : « ↻ Renvoyer les copies en attente »."); rcEtatIA(); return; }
+  if (!aFaire.length) { if (!renvoi && attente.length) toast("Toutes tes copies à corriger sont parties : " + attente.length + " attend" + (attente.length > 1 ? "ent" : "") + " son retour. Charge les retours ; si l’un s’est perdu : « ↻ Renvoyer les copies en attente ».");
+    else if (!renvoi) toast(SC.copies.some(k => rcLignesEcrites(k).length) ? "Rien à envoyer : toutes tes copies recopiées sont revenues de l’IA, et rien n’a changé depuis leur retour." : "Rien à envoyer : recopie d’abord une copie.");   /* [C14 1.4.28] (Paul 20:16 : « l'export IA ne foncitonne plus » ; C14 71) il dit toujours pourquoi */
+    rcEtatIA(); return; }
   const paquetsEnAttente = new Set(attente.map(k => (scCopie(k).recopie.envoi || {}).n)).size;
   const copies = aFaire.slice(0, RC_PAQUET_IA), le = new Date().toISOString(), nEnvoi = 1 + SC.copies.reduce((m, k) => Math.max(m, (((scCopie(k).recopie || {}).envoi) || {}).n || 0), 0);
+  const RP = {};   /* [C14 1.4.28] une copie revenue qui repart : seulement ce qui a changé (ses lignes à corriger, ses stickers à revoir, son commentaire si ses paragraphes ont changé) */
   copies.forEach(k => { const s = scCopie(k), c = state.copies[k]; if (c && !c.id) { c.id = idCopie(); if (!c.creeLe) c.creeLe = le; }   // [C14 1.4.16] une copie part toujours avec son identité interne (une copie toute neuve n'en avait pas encore)
-    s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length, par: true }, sti && !rcCopieACorriger(k) ? { seul: true } : {}); /* [C14 656] par : ses paragraphes sont partis avec elle */ });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
+    const rp = rcRevenue(k) ? rcReprise(k) || (sti && stAEnvoyer(k) ? { lignes: rcLignesEcrites(k).filter(x => typeof x.l.corrige !== "string" || x.l.texte !== x.l.corrigeDe).map(x => x.id), stickers: [], paras: false, commentaire: false } : null) : null;
+    if (rp && sti && stAEnvoyer(k)) rp.stickers = "tous";   // une liste de réussites revenue coupée : tous ses stickers repartent
+    if (rp) RP[k] = rp; const portee = !sti ? [] : rp ? (rp.stickers === "tous" ? stActifs() : stActifs().filter(x => rp.stickers.includes(x.id))) : stActifs(), sg = {}; portee.forEach(x => { sg[x.id] = stSig(x); });
+    s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length, par: true, paras: rcParasDe(k), st: sg }, sti && !rcCopieACorriger(k) ? { seul: true } : {}, rp ? { reprise: { lignes: rp.lignes, stickers: rp.stickers, commentaire: !!rp.commentaire } } : {}); /* [C14 656] par : ses paragraphes sont partis avec elle ; [C14 1.4.28] paras : lesquels */ });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
   const o = { consigne: (sti ? RC_CONSIGNE_AVANT : "") + RC_CONSIGNE_IA + rcConsigneVariantes() + (sti ? RC_CONSIGNE_STICKERS + (typeof RC_CONSIGNE_POURQUOI === "string" ? RC_CONSIGNE_POURQUOI : "") + (typeof RC_CONSIGNE_REMARQUES === "string" ? RC_CONSIGNE_REMARQUES : "") + RC_CONSIGNE_PARAGRAPHES + RC_CONSIGNE_DOUTE + RC_CONSIGNE_COMMENTAIRE + RC_CONSIGNE_CONTEXTE : ""), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = [], seul = !!sti && !rcCopieACorriger(k), PAR = rcParagraphes(k); let n = 0;
     L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push(Object.assign({ id: x.id, n: ++n, texte: x.l.texte }, PAR.has(x.id) ? { par: true } : {}));
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
-    return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
+    const rp = RP[k], nums = rp && rp.stickers !== "tous" ? rp.stickers.map(id => { const x = stActifs().find(y => y.id === id); return x ? x.num || x.id : null; }).filter(Boolean) : null;
+    return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}, rp ? { reprendre: { lignes: rp.lignes, stickers: rp.stickers === "tous" ? "tous" : nums, commentaire: !!rp.commentaire } } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
+  if (Object.keys(RP).length) o.consigne += RC_CONSIGNE_REPRENDRE;   // [C14 1.4.28]
   if (sti) { o.sujet = stEnonce(); o.grille = sti; const cx = typeof stContexte === "function" ? stContexte() : null; if (cx) o.contexte = cx.texte; }   // [C14 669] ce que tu lui as déjà donné
   const nom = rcNomEnvoi({ n: copies.length, seuls: copies.filter(k => sti && !rcCopieACorriger(k)).length, renvoi, rang: paquetsEnAttente + 1, total: paquetsEnAttente + Math.ceil(aFaire.length / RC_PAQUET_IA) });
   o.fichier = nom; o.consigne += RC_CONSIGNE_FICHIER;   // [C14 1.4.19] (Paul 20:54 : « Nommés par leurs contenus ») le fichier rendu porte le même nom, précédé de « corrige_ »
@@ -778,8 +833,9 @@ function rcIAChargerSuite(txt) {
   const pc = {}; Object.keys(recu).forEach(id => { (pc[ici[id].k] = pc[ici[id].k] || []).push(id); });
   const ok = [], coupees = [], changees = [], melangees = [];
   Object.keys(pc).forEach(k => { const L = rcLignesEcrites(k), idc = (state.copies[k] || {}).id, ev = (scCopie(k).recopie || {}).envoi; if (ev && ev.seul && !rcCopieACorriger(k)) return;   // [C14 1.4.16] partie pour ses seules réussites : son corrigé et ta bande ne bougent pas
-    if (!L.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k);
-    else if (L.some(x => (o.copieDe[x.id] && idc && o.copieDe[x.id] !== idc) || rcRessemblance(x.l.texte, rcLettres(recu[x.id], x.l.texte).texte) < RC_RESSEMBLANCE_IA)) melangees.push(k); else ok.push(k); });
+    const Rl = rcPorteeLignes(k), Lr = Rl ? L.filter(x => Rl.has(x.id)) : L;   // [C14 1.4.28] une copie reprise : seules ses lignes reparties comptent
+    if (!Lr.every(x => recu[x.id] !== undefined)) coupees.push(k); else if (L.some(x => x.l.envoiIA && x.l.envoiIA.texte !== x.l.texte)) changees.push(k);
+    else if (Lr.some(x => (o.copieDe[x.id] && idc && o.copieDe[x.id] !== idc) || rcRessemblance(x.l.texte, rcLettres(recu[x.id], x.l.texte).texte) < RC_RESSEMBLANCE_IA)) melangees.push(k); else ok.push(k); });
   /* [C14 1.4.12] (Paul 15:59, « sinon c'est la porte ouverte au mélange de données ») : le refus est gardé dans la copie, pour le flux ; un chargement réussi l'efface */
   { const parId = {}; SC.copies.forEach(k => { const id = (state.copies[k] || {}).id; if (id) parId[id] = k; });   // [C14 1.4.19] (C14 591) un retour arrivé sans une copie de son envoi : elle repart au prochain export, comme le message le dit
     const touches = new Set(Object.keys(pc).concat(Object.keys(o.reussites || {}).map(id => parId[id]), Object.keys(o.aReprendre || {}).map(id => parId[id])).filter(Boolean).map(k => ((scCopie(k).recopie || {}).envoi || {}).n).filter(Boolean)), qt = new Date().toISOString();
@@ -787,18 +843,23 @@ function rcIAChargerSuite(txt) {
   const qr = new Date().toISOString(); melangees.forEach(k => { const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.refusIA = { le: qr, raison: "melange" }; }); ok.forEach(k => { const s = scCopie(k); if (s.recopie && s.recopie.refusIA) delete s.recopie.refusIA; });
   if (melangees.length) saveState();
   const aJour = SC.copies.filter(k => !ok.includes(k) && !melangees.includes(k) && rcLignesEcrites(k).length && !rcCopieACorriger(k)), stR = typeof stIAReussites === "function" && Object.keys(o.reussites || {}).length ? stIAReussites(o, ok.concat(aJour)) : null;
-  const dSt = stR && stR.copies ? " Les stickers : " + stR.poses + " réussite" + (stR.poses > 1 ? "s" : "") + " proposée" + (stR.poses > 1 ? "s" : "") + " sur " + stR.copies + " copie" + (stR.copies > 1 ? "s" : "") + (stR.incompletes ? " (" + stR.incompletes + " dont la liste est coupée : au prochain export)" : "") + (stR.horsCopie ? " · " + stR.horsCopie + " sur une ligne d’une autre copie, refusée" + (stR.horsCopie > 1 ? "s" : "") : "") + (stR.inconnus ? " · " + stR.inconnus + " d’un numéro inconnu, laissée" + (stR.inconnus > 1 ? "s" : "") : "") + "." : "";
+  const dSt = stR && stR.copies ? " Les stickers : " + stR.poses + " réussite" + (stR.poses > 1 ? "s" : "") + " proposée" + (stR.poses > 1 ? "s" : "") + " sur " + stR.copies + " copie" + (stR.copies > 1 ? "s" : "") + (stR.plusVus ? " · " + stR.plusVus + " que tu avais gardée" + (stR.plusVus > 1 ? "s" : "") + " et que l’IA ne voit plus : la bande s’y arrête" : "") + (stR.incompletes ? " (" + stR.incompletes + " dont la liste est coupée : au prochain export)" : "") + (stR.horsCopie ? " · " + stR.horsCopie + " sur une ligne d’une autre copie, refusée" + (stR.horsCopie > 1 ? "s" : "") : "") + (stR.inconnus ? " · " + stR.inconnus + " d’un numéro inconnu, laissée" + (stR.inconnus > 1 ? "s" : "") : "") + "." : "";
   const rqR = typeof stIARemarques === "function" && Object.keys(o.aReprendre || {}).length ? stIARemarques(o, ok.concat(aJour)) : null;   // [C14 1.4.17] les remarques, après les réussites
   const dRq = rqR && rqR.copies ? " Les remarques : " + rqR.n + " à relire à la fin de la bande" + (rqR.refusReussi ? " · " + rqR.refusReussi + " sur un sticker réussi, refusée" + (rqR.refusReussi > 1 ? "s" : "") : "") + (rqR.horsCopie ? " · " + rqR.horsCopie + " sur une ligne d’une autre copie, refusée" + (rqR.horsCopie > 1 ? "s" : "") : "") + (rqR.longues ? " · " + rqR.longues + " de plus de quarante mots, signalée" + (rqR.longues > 1 ? "s" : "") : "") + "." : "";
   const dCx = (typeof stContexteGarder === "function" ? stContexteGarder(o) : "") + rcCgCharger(o, ok.concat(aJour));   // [C14 669, 704]
+  /* [C14 1.4.28] ce que l'IA a vu de chaque copie à qui elle a répondu : ses paragraphes envoyés, les stickers jugés */
+  ok.concat(aJour).forEach(k => { const id = (state.copies[k] || {}).id; if (ok.includes(k) || (id && ((o.reussites || {})[id] || (o.aReprendre || {})[id] || (o.commentaires || {})[id]))) rcVuGarder(k); });
   const dMel = melangees.length ? " " + melangees.length + " copie" + (melangees.length > 1 ? "s" : "") + " refusée" + (melangees.length > 1 ? "s" : "") + " (" + melangees.map(k => nomEleveDe(k) || k).join(", ") + ") : une ligne rendue par l’IA ne ressemble plus à la ligne envoyée, l’IA a pu mélanger des lignes ; rien n’y est écrit, elle repart au prochain export." : "";   // [C14 1.4.17] dite avant d'être lue (elle était lue plus haut avant d'exister)
   if (!ok.length && stR && stR.copies) { saveState(); rcEtatIA(); if (RC.bd) rcBandeRendre(); msg.textContent = "Chargé." + dSt + dRq + dCx + dMel; return true; }
   if (!ok.length) { msg.textContent = "Rien n’a changé : " + (melangees.length && !changees.length && !coupees.length ? dMel.trim() : changees.length ? "une ligne de chaque copie du retour a changé depuis l’envoi à l’IA : exporte à nouveau." : o.coupe ? "le retour de l’IA est coupé avant la fin de la première copie : demande-lui de tout rendre, ou exporte à nouveau." : "il manque des lignes à chaque copie du retour (écrites après l’export ? refais l’export).") ; return false; }
   const quand = new Date().toISOString(); let fautes = 0, lignes = 0, typees = 0, sansLettre = 0, sujetsDits = 0;
   { const V = rcVariantes().map(v => v.id); if (V.length > 1) ok.forEach(k => { const c = state.copies[k] || {}, dit = c.id && o.sujets[c.id]; if (dit && V.includes(dit) && !c.sujet) { c.sujet = dit; c.sujetDe = "ia"; sujetsDits++; } }); }   // [C14 1.4.12] le sujet traité, dit par l'IA
-  ok.forEach(k => { const s = scCopie(k); rcLignesEcrites(k).forEach(x => { const id = x.id, r = rcLettres(recu[id], x.l.texte), A = rcEcarts(x.l.texte, r.texte).segs;
+  let reprises = 0;
+  ok.forEach(k => { const s = scCopie(k), Rl = rcPorteeLignes(k); rcLignesEcrites(k).forEach(x => { if (Rl && !Rl.has(x.id)) return;   // [C14 1.4.28] (C14 67) une ligne que tu n'as pas touchée garde son corrigé et tes décisions
+    const id = x.id, r = rcLettres(recu[id], x.l.texte), A = rcEcarts(x.l.texte, r.texte).segs, ancTexte = typeof x.l.corrigeDe === "string" ? x.l.corrigeDe : null, ancCorr = typeof x.l.corrige === "string" ? x.l.corrige : null;
     rcLigneMaj(k, x.pid, id, l => { l.corrige = r.texte; l.corrigeDe = l.texte; l.corrigeLe = quand; if (r.texte !== recu[id]) l.corrigeMarque = recu[id]; else delete l.corrigeMarque;
       if (r.types) { l.types = r.types; l.typesDe = r.texte; } else { delete l.types; delete l.typesDe; } });
+    if (Rl) { reprises++; if (ancTexte != null && ancCorr != null) rcReprendreLigne(k, x.pid, id, ancTexte, ancCorr); }
     A.forEach(g => { if (r.types && r.types[rcCle(g)]) typees++; else sansLettre++; });
     Object.keys(x.l.marquesBande || {}).forEach(c => { const m = s.marques[x.l.marquesBande[c]]; if (m && m.bande && r.types && r.types[c]) m.bande.code = r.types[c]; });
     fautes += A.length; lignes++; }); });
@@ -808,6 +869,7 @@ function rcIAChargerSuite(txt) {
   msg.textContent = "Chargé : " + pl(ok.length, "copie") + ", " + lignes + " lignes, " + fautes + " faute" + (fautes > 1 ? "s" : "") + " proposée" + (fautes > 1 ? "s" : "") + " par l’IA" + (fautes ? ", dont " + typees + " avec leur type" + (sansLettre ? " (" + sansLettre + " sans lettre : le type du moteur)" : "") : "") + "."
     + (coupees.length ? " " + pl(coupees.length, "copie") + (o.coupe ? " coupée" + (coupees.length > 1 ? "s" : "") : " incomplète" + (coupees.length > 1 ? "s" : "")) + " : au prochain export." : "")
     + (changees.length ? " " + pl(changees.length, "copie") + " dont une ligne a changé depuis l’envoi : au prochain export." : "") + dMel
+    + (reprises ? " Dont " + reprises + " ligne" + (reprises > 1 ? "s" : "") + " reprise" + (reprises > 1 ? "s" : "") + " après ton changement : les autres lignes de ces copies et tes décisions n’ont pas bougé." : "")
     + (o.coupe && !coupees.length ? " Le retour de l’IA était coupé : les copies qui manquent repartent au prochain export." : "") + (sujetsDits ? " Le sujet traité, dit par l’IA : " + sujetsDits + " copie" + (sujetsDits > 1 ? "s" : "") + "." : "") + dSt + dRq + dCx;
   return true;
 }
@@ -987,8 +1049,9 @@ function rcFluxRendre() {
 }
 function rcCompteIA() {
   const rec = SC.copies.filter(k => rcLignesEcrites(k).length), corr = rec.filter(rcCopieACorriger), st = typeof stEnvoiGrille === "function" && !!stEnvoiGrille();
-  const attente = rec.filter(k => (rcCopieACorriger(k) || (st && stAEnvoyer(k))) && rcEnAttente(k)), aFaire = corr.filter(k => !attente.includes(k));   // [C14 1.4.19] une copie partie attend son retour (sa correction, ou ses seuls stickers)
-  return { rec: rec.length, ok: rec.length - corr.length, aFaire: aFaire.length, attente: attente.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA) };
+  const rep = rec.filter(k => rcRevenue(k) && rcReprise(k)), autres = st ? rep.filter(k => !corr.includes(k)) : [];   // [C14 1.4.28] (C14 71) une copie changée depuis son retour : à renvoyer
+  const attente = rec.filter(k => (rcCopieACorriger(k) || (st && (stAEnvoyer(k) || rcReprise(k)))) && rcEnAttente(k)), aFaire = corr.concat(autres).filter(k => !attente.includes(k));   // [C14 1.4.19] une copie partie attend son retour (sa correction, ou ses seuls stickers)
+  return { rec: rec.length, ok: rec.length - corr.length, aFaire: aFaire.length, attente: attente.length, envois: Math.ceil(aFaire.length / RC_PAQUET_IA), changees: rep.filter(k => !attente.includes(k)).length };
 }
 /* [C14 1.4.19] (C14 571) une copie partie chez l'IA, dont aucun retour n'est encore chargé et dont aucune ligne n'a changé depuis : elle attend son retour */
 function rcEnAttente(k) {
@@ -1002,6 +1065,8 @@ function rcNomEnvoi(p) {
   return [sl((typeof SUJET === "object" && SUJET && SUJET.titre) || "Redaction").slice(0, 40).replace(/-$/, ""), sl(RU.classe || "classe"), p.renvoi ? "renvoi" : "envoi-" + p.rang + "-sur-" + Math.max(p.rang, p.total),
     p.n + "-copie" + (p.n > 1 ? "s" : "") + (p.seuls === p.n ? "-stickers-seuls" : ""), d.getFullYear() + "-" + z(d.getMonth() + 1) + "-" + z(d.getDate()), z(d.getHours()) + "h" + z(d.getMinutes())].join("_") + ".json";
 }
+/* [C14 1.4.28] (C14 66 à 70) une copie déjà corrigée et relue par le professeur, qui repart après un changement : l'IA ne rend que ce qui a changé */
+const RC_CONSIGNE_REPRENDRE = " Une copie qui porte « reprendre » a déjà été corrigée, et le professeur a relu ta correction ; il a changé la copie depuis. Pour elle, rends seulement : dans « lignes », les lignes dont l'identifiant est dans « reprendre.lignes », corrigées comme les autres, et aucune autre ligne ; dans « reussites » et dans « aReprendre », les seuls stickers de « reprendre.stickers » (tous, s'il vaut \"tous\"), jugés sur toute la copie telle qu'elle est maintenant, ses lignes et ses paragraphes, et termine quand même chaque liste par {\"s\":\"fin\"} ; un commentaire général seulement si « reprendre.commentaire » est vrai.";
 const RC_CONSIGNE_FICHIER = " Rends ton travail dans un fichier JSON nommé « corrige_ » suivi exactement du nom donné dans « fichier ».";
 /* plusieurs retours de l'IA choisis d'un coup : chargés l'un après l'autre ; le message dit, fichier par fichier, ce qui s'est chargé */
 function rcIAChargerPlusieurs(fs) {
@@ -1022,7 +1087,8 @@ function rcEtatIA() {
     const rv = RC.ui.querySelector("#rcRenvoyerIA"); if (rv) rv.hidden = !c.attente;   // [C14 1.4.19] (C14 571)
     if (b) { b.classList.toggle("rc-gris", !!g); b.setAttribute("aria-disabled", g ? "true" : "false"); b.title = g ? "Pas encore : " + g + ". L’export partira quand le sujet sera complet." : "Télécharger un fichier pour l’IA : ta consigne, puis tes copies recopiées, numérotées, sans aucun nom. Donne-le à l’IA, elle te rend le même fichier corrigé."; }
   }
-  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", c.attente ? c.attente + " en attente de leur retour" : "", ici].filter(Boolean).join(" · ");
+  const rpI = rcReprise(RC.copie), ici2 = rpI && !rcEnAttente(RC.copie) ? "cette copie a changé depuis son retour : " + rcRepriseTexte(rpI) + ", à renvoyer" : "";   // [C14 1.4.28] (C14 71)
+  e.textContent = [g ? "⇪ L’export attend : " + g : "", flux, c.changees ? c.changees + " changée" + (c.changees > 1 ? "s" : "") + " depuis leur retour" : "", c.aFaire && !g ? c.aFaire + " à exporter (" + c.envois + " envoi" + (c.envois > 1 ? "s" : "") + " de " + RC_PAQUET_IA + " au plus)" : "", c.attente ? c.attente + " en attente de leur retour" : "", ici, ici2].filter(Boolean).join(" · ");
   if (RC.fluxOuvert) rcFluxRendre();
 }
 /* 1.4.1 (C14, Paul 31/10 : 181, 183, 186, 187) : la bande des fautes. Elle s'arrête à chaque faute proposée par le corrigé de l'IA.
@@ -1234,7 +1300,7 @@ function rcRetroactif(k, pid, id) {
   const mots = t => rcPosMots(t).map(p => t.slice(p[0], p[1])), mm = rcAligner(mots(ancien), mots(nouveau));
   const re = o => { const r = {}; Object.keys(o || {}).forEach(x => { if (map[x]) r[map[x]] = o[x]; else if (/^stk:/.test(x)) r[x] = o[x]; else { const m = /^mot-(\d+)$/.exec(x); if (m && mm[+m[1]] >= 0) r["mot-" + mm[+m[1]]] = o[x]; } }); return r; };   // [C14 1.4.16] un sticker de la ligne reste
   const s = scCopie(k), mb = re(L0.marquesBande), gardees = new Set(Object.values(mb)), typesAJour = L0.types && L0.typesDe === corr, types = typesAJour ? re(L0.types) : null;
-  Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) scEffacer(mid); });
+  Object.values(L0.marquesBande || {}).forEach(mid => { if (!gardees.has(mid) && s.marques[mid]) { if (k === scK()) scEffacer(mid); else delete s.marques[mid]; } });   // [C14 1.4.28] la marque de cette copie-là, même si une autre est à l'écran
   rcLigneMaj(k, pid, id, l => { l.corrigeDe = nouveau; l.decisions = re(l.decisions); l.marquesBande = mb; l.places = re(l.places); if (l.placesApp) l.placesApp = re(l.placesApp); if (typesAJour) l.types = types; l.retoucheeLe = new Date().toISOString(); });
   const Lf = (RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]) || pg.lignes[id], P = rcPosMots(nouveau);
   Object.keys(mb).forEach(c => { const m = s.marques[mb[c]]; if (!m) return; const mo = /^mot-(\d+)$/.exec(c), g = mo ? (w => ({ de: w, a: w + 1, de2: w, a2: w + 1, eleve: nouveau.slice(P[w][0], P[w][1]), corrige: nouveau.slice(P[w][0], P[w][1]) }))(+mo[1]) : nouv.find(x => rcCle(x) === c);
@@ -1265,10 +1331,10 @@ function rcRecalerPage(k, pid) {
 }
 function rcLigneMaj(k, pid, id, fn) { const pgs = (scCopie(k).recopie || {}).pages || {}; [pgs[pid] && pgs[pid].lignes[id], RC.copie === k && RC.documents[pid] && RC.documents[pid].lignes[id]].forEach(l => { if (l) fn(l); }); }
 function rcNoteTexte(k) { const r = scNote(k); return r.ok ? (Math.round(r.n * 10) / 10) + " / " + r.tot : "incomplète"; }
-function rcBandeOuvrir(reprise) {
+function rcBandeOuvrir(reprise, deCopieEnCopie) {
   if (RC.page && !reprise) rcGarder(); const k = RC.copie; rcSeparerAnciens(k); rcLignesEcrites(k).forEach(x => rcRetroactif(k, x.pid, x.id)); const A = rcArretsBande(k);
-  if (!A.length && !(typeof stRqARelire === "function" && stRqARelire(k))) { toast("Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }   // [C14] (trouvé par le banc de la sauvegarde) une copie sans arrêt mais avec des remarques de l'IA : la bande s'ouvre sur leur relecture, sinon l'élève ne les lirait jamais
-  RC.bd = { k, i: 0, A }; aidePoser("bande"); rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
+  if (!A.length && !(typeof stRqARelire === "function" && stRqARelire(k)) && !(rcRevenue(k) && (rcCgARelire(k) || deCopieEnCopie))) { toast(rcRevenue(k) ? "Rien à revoir dans la bande de cette copie : ni faute ni sticker proposés, et son commentaire général est gardé." : "Pas de faute ni de sticker proposés sur cette copie : charge d’abord le corrigé de l’IA."); return; }   // [C14] (trouvé par le banc de la sauvegarde) une copie sans arrêt mais avec des remarques de l'IA : la bande s'ouvre sur leur relecture, sinon l'élève ne les lirait jamais
+  RC.bd = { k, i: 0, A }; RC.bdReste = {}; aidePoser("bande"); rcBandeSouris(); RC.ui.classList.add("rc-mode-bande"); RC.ui.querySelector("#rcBandeOuvrir").textContent = "■ Fermer la bande";
   RC.ui.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(k); if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   rcReplacerBande(k);
   const s = scCopie(k), anc = Object.values(s.marques).filter(m => m.forme === "faute" && !m.bande).length, av = RC.ui.querySelector("#rcBandeAvis");
@@ -1278,11 +1344,37 @@ function rcBandeOuvrir(reprise) {
     av.querySelector("#rcBandeCommencer").onclick = rcBandeCommencer;
   } else { av.hidden = true; if (!s.bandeDebut) rcBandeCommencer(); }
   const i = A.findIndex(a => a.st ? !stDecision(k, a.stId) : !(a.l.decisions && a.l.decisions[a.cle])); RC.bd.i = i >= 0 ? i : 0;
+  if (i >= 0 && A.some(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]))) RC.bd.reste = true;   // [C14 1.4.28] (C14 66) une bande déjà passée : Entrée va d'un arrêt qui reste au suivant, jamais sur ce que tu as déjà décidé
   /* [C14 1.4.7] (Paul 15:41 : « si je commence la bande, que je fais deux mots, je dois retomber à ce même mot ») : l'arrêt où tu étais, pour chaque élève */
   const ba = (scCopie(k).recopie || {}).bandeArret;
   if (ba && ba.mot) { const B = RC.bd; B.mot = true; B.W = rcMotsCopie(k, A); let j = ba.fin ? B.W.length : B.W.findIndex(w => w.id === ba.id && w.cle === ba.cle); if (j < 0) j = Math.max(0, B.W.findIndex(w => w.id === ba.id)); B.j = j; }   // [C14 1.4.12] rouverte en mot par mot, au même mot
   else if (ba && ba.fin) RC.bd.i = i >= 0 ? i : A.length; else if (ba) {   /* [C14] (trouvé par le banc de la sauvegarde) une bande finie le reste, sauf un arrêt nouveau (une ligne retapée) : elle s'ouvre sur lui */ let j = A.findIndex(a => a.id === ba.id && a.cle === ba.cle); if (j < 0) j = A.findIndex(a => a.id === ba.id); if (j >= 0) RC.bd.i = j; }
   rcBookmark(); rcBandeRendre(); if (typeof svVerifier === "function") svVerifier();   // [C14] une copie rouverte avec un arrêt de plus (une ligne retapée) n'est plus finie : la sauvegarde se reproposera quand elle le sera
+}
+/* [C14 1.4.28] (Paul 02/11 20:37 : « C'est le moment aussi de me coder le bouton "la bande" afin que je puisse passer les élèves en continu sans devoir toujours repasser
+   par les scans etc. » ; C14 72-73, « ok » 21:52) : la bande, copie après copie. Elle va de copie en copie parmi celles revenues de l'IA ; au bout d'une copie, Entrée ouvre
+   la bande de la suivante qui a quelque chose à revoir (un arrêt, des remarques, le commentaire général), sans repasser par la recopie ni par les scans. */
+function rcABande(k) { return rcRevenue(k) && rcLignesEcrites(k).length > 0; }
+function rcBandeReste(k) { if (!rcABande(k)) return false; return rcArretsBande(k).some(a => a.st ? !stDecision(k, a.stId) : !(a.l.decisions && a.l.decisions[a.cle])) || (typeof stRqARelire === "function" && stRqARelire(k)) || rcCgARelire(k); }
+function rcBandeCopies() { return SC.copies.filter(k => rcABande(k) && !(typeof avAbsent === "function" && avAbsent(k))); }   // un élève absent n'a pas de bande à revoir
+function rcBandeSuivanteAReVoir(k) { const C = rcBandeCopies(), i = C.indexOf(k); for (let j = 1; j <= C.length; j++) { const x = C[(Math.max(i, 0) + j) % C.length]; if (x !== k && rcBandeReste(x)) return x; } return null; }
+function rcBandeOu() {
+  const B = RC.bd, e = RC.ui, z = e && e.querySelector("#rcBdOu"); if (!B || !z) return; const C = rcBandeCopies(), i = C.indexOf(B.k), R = RC.bdReste = RC.bdReste || {}; R[B.k] = rcBandeReste(B.k);
+  const n = C.filter(k => (R[k] != null ? R[k] : (R[k] = rcBandeReste(k)))).length; z.textContent = "Copie " + (i + 1) + " sur " + C.length + " · " + (n ? n + " à revoir" : "rien à revoir");
+  const av = e.querySelector("#rcBdAvant"), su = e.querySelector("#rcBdSuite"); av.disabled = i <= 0; su.disabled = i < 0 || i >= C.length - 1;
+  av.title = av.disabled ? "Grisé : c’est la première copie revenue de l’IA." : "La bande de " + nomEleveDe(C[i - 1]) + ", la copie d’avant revenue de l’IA. Tes décisions sont gardées.";
+  su.title = su.disabled ? "Grisé : c’est la dernière copie revenue de l’IA." : "La bande de " + nomEleveDe(C[i + 1]) + ", la copie suivante revenue de l’IA. Tes décisions sont gardées.";
+}
+function rcBandeAller(k) { if (!k || !SC.copies.includes(k)) return; if (RC.bd) rcBandeFermer(true); if (RC.copie !== k) rcChoisirCopie(k, true); if (RC.copie === k) rcBandeOuvrir(false, true); }   // de copie en copie : la bande s'ouvre même sur une copie déjà corrigée (sa fin le dit)
+function rcBandeVoisine(sens) { const C = rcBandeCopies(), i = C.indexOf(RC.copie) + sens; if (i >= 0 && i < C.length) rcBandeAller(C[i]); }
+/* « ▶ La bande », en haut des scans et sur l'accueil : la bande de la première copie du paquet qui a quelque chose à revoir */
+function rcBandeGlobale() {
+  const aller = () => { if (!SC.ouvert) return; if (SC.attrib) { toast("Donne d’abord chaque page à son élève (« Les initiales »)."); return; }
+    const C = rcBandeCopies(); if (!C.length) { toast("Aucune copie n’est encore revenue de l’IA : exporte, puis charge son corrigé."); return; }
+    const k = C.find(rcBandeReste) || (C.includes(RC.copie) ? RC.copie : C.includes(scK()) ? scK() : C[0]); if (!C.some(rcBandeReste)) toast("Toutes les copies revenues de l’IA sont corrigées : la bande s’ouvre pour les relire.");
+    const i = SC.copies.indexOf(k); if (i >= 0) SC.ic = i;
+    if (!RC.ouvert) { rcOuvrir(); if (!RC.ouvert) return; } if (RC.copie !== k || !RC.bd) rcBandeAller(k); };
+  if (SC.ouvert) aller(); else { scOuvrir(); let n = 0; const t = setInterval(() => { if (SC.ouvert || ++n > 100) { clearInterval(t); if (SC.ouvert) setTimeout(aller, 300); } }, 100); }
 }
 function rcBandeMemoriser() {
   const B = RC.bd; if (!B || B.attente) return; const rec = scCopie(B.k).recopie; if (!rec) return; const a = rcBandeCourant();
@@ -1299,21 +1391,27 @@ function rcBandeFermer(seul) { RC.bd = null; if (RC.ouvert) aidePoser("recopie")
 /* [C14 704] le commentaire général : l'IA en propose un par copie ; au bout de la bande, tu l'écris ou le corriges, Entrée le garde ; l'élève le lit à la fin de son fichier */
 function rcCg(k) { const s = scCopie(k), c = s.commentaire; return c && c.texte && c.le ? c : null; }
 function rcCgPropose(k) { const c = ((scCopie(k).recopie || {}).commentaireIA) || null; return c && c.texte ? c.texte : ""; }
-function rcCgARelire(k) { return !rcCg(k); }
+/* [C14 1.4.28] (C14 70) après un changement, l'IA propose un nouveau commentaire : au bout de la bande, le tien et le sien côte à côte ; Entrée garde celui du champ */
+function rcCgNouveau(k) { const c = rcCg(k), p = (scCopie(k).recopie || {}).commentaireIA; return !!(c && p && p.texte && p.le && p.le > c.le && p.texte.trim() !== c.texte.trim()); }
+function rcCgARelire(k) { return !rcCg(k) || rcCgNouveau(k); }
 function rcCgCharger(o, copiesOk) {
   const C = (o && o.commentaires) || {}; let n = 0; const quand = new Date().toISOString();
-  copiesOk.forEach(k => { const id = (state.copies[k] || {}).id, v = id && C[id]; if (!v || !String(v).trim()) return; const s = scCopie(k); s.recopie = s.recopie || {}; s.recopie.commentaireIA = { texte: String(v).trim().slice(0, 1500), le: quand }; n++; });
+  copiesOk.forEach(k => { const id = (state.copies[k] || {}).id, v = id && C[id]; if (!v || !String(v).trim()) return; const s = scCopie(k); s.recopie = s.recopie || {};
+    const rp = s.recopie.envoi && s.recopie.envoi.reprise; if (rp && !rp.commentaire && rcCg(k)) return;   // [C14 1.4.28] une copie reprise sans que son commentaire soit redemandé : le tien reste, seul
+    if (rcCg(k) && rcCg(k).texte === String(v).trim()) return; s.recopie.commentaireIA = { texte: String(v).trim().slice(0, 1500), le: quand }; n++; });
   return n ? " Le commentaire général : proposé par l’IA pour " + n + " copie" + (n > 1 ? "s" : "") + ", à relire au bout de la bande." : "";
 }
 function rcCgRendre(B, montrer) {
   const z = RC.ui.querySelector("#rcCg"); if (!z) return; if (!montrer) { if (!z.contains(document.activeElement)) { z.hidden = true; z.innerHTML = ""; z.dataset.h = ""; } return; }
-  const c = rcCg(B.k), v = c ? c.texte : rcCgPropose(B.k), h = B.k + "|" + (c ? c.le : "") + "|" + v;
+  const c = rcCg(B.k), nv = rcCgNouveau(B.k), v = c ? c.texte : rcCgPropose(B.k), h = B.k + "|" + (c ? c.le : "") + "|" + v + "|" + (nv ? rcCgPropose(B.k) : "");
   if (z.dataset.h === h && !z.hidden) return; if (z.contains(document.activeElement)) return;   // un redessin ne touche jamais ta saisie
   z.dataset.h = h; z.hidden = false;
-  z.innerHTML = '<div class="rc-cg-tete"><b>💬 Commentaire général</b> <span>' + (c ? "✓ gardé à " + escapeHtml(rcHeure(c.le)) + " : l’élève le lit à la toute fin de son fichier." : (v ? "Proposé par l’IA : relis-le, corrige-le, puis <kbd>Entrée</kbd>." : "Écris-lui ce qu’il doit faire de sa copie quand il la reçoit, puis <kbd>Entrée</kbd>.")) + "</span></div>"
+  z.innerHTML = '<div class="rc-cg-tete"><b>💬 Commentaire général</b> <span>' + (c && nv ? "L’IA en propose un nouveau, après ton changement : le tien est dans le champ, le sien dessous. <kbd>Entrée</kbd> garde celui du champ." : c ? "✓ gardé à " + escapeHtml(rcHeure(c.le)) + " : l’élève le lit à la toute fin de son fichier." : (v ? "Proposé par l’IA : relis-le, corrige-le, puis <kbd>Entrée</kbd>." : "Écris-lui ce qu’il doit faire de sa copie quand il la reçoit, puis <kbd>Entrée</kbd>.")) + "</span></div>"
     + '<textarea id="rcCgTexte" rows="3" title="Ce que l’élève doit faire de sa copie quand il la reçoit. Il le lit à la toute fin de son fichier, sous « 💬 Commentaire général ». Entrée le garde ; Maj + Entrée va à la ligne."></textarea>'
-    + (c ? "" : '<button class="sc-btn" id="rcCgGarder" title="Garder ce commentaire : l’élève le lira à la fin de son fichier (Entrée).">✓ Je le garde (Entrée)</button>');
+    + (nv ? '<div class="rc-cg-nouveau"><b>La proposition de l’IA :</b> <span id="rcCgSien">' + escapeHtml(rcCgPropose(B.k)) + '</span> <button class="sc-btn" id="rcCgPrendre" title="Mettre la proposition de l’IA dans le champ, à la place du tien. Rien n’est gardé avant ton Entrée.">↧ Prendre la sienne</button></div>' : "")
+    + (c && !nv ? "" : '<button class="sc-btn" id="rcCgGarder" title="Garder ce commentaire : l’élève le lira à la fin de son fichier (Entrée).">✓ Je le garde (Entrée)</button>');
   z.querySelector("#rcCgTexte").value = v; const b = z.querySelector("#rcCgGarder"); if (b) b.onclick = () => { b.blur(); rcCgGarder(); };
+  const pr = z.querySelector("#rcCgPrendre"); if (pr) pr.onclick = () => { const ta = z.querySelector("#rcCgTexte"); ta.value = rcCgPropose(B.k); pr.blur(); ta.focus(); };
 }
 function rcCgGarder() {
   const B = RC.bd; if (!B) return; const z = RC.ui.querySelector("#rcCgTexte"), v = String((z ? z.value : rcCgPropose(B.k)) || "").trim();
@@ -1351,7 +1449,7 @@ function rcDeciderArret(k, a, v) {   // [C14 1.4.12] la décision d'un arrêt de
 }
 function rcBandeRendre() {
   const B = RC.bd, e = RC.ui; if (!B) return; const a = B.A[B.i], s = scCopie(B.k); rcBandeMemoriser();
-  e.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(B.k) + (B.mot ? " · mot par mot" : "");
+  e.querySelector("#rcBandeTitre").textContent = "La bande de " + nomEleveDe(B.k) + (B.mot ? " · mot par mot" : ""); rcBandeOu();
   const liste = e.querySelector("#rcBandeListe"), wc = B.mot ? B.W[B.j] : null, estOn = (x, i) => B.mot ? !!(wc && wc.ia === x) : i === B.i;
   liste.innerHTML = B.A.map((x, i) => { if (x.st) { const d = stDecision(B.k, x.stId), c = stCouleur(x.sticker); return '<li class="rc-st-li' + (estOn(x, i) ? " on" : "") + '" data-i="' + i + '" style="border-left-color:' + c + (estOn(x, i) ? ";background:" + c + "18" : "") + '"><span><b style="color:' + c + '">' + escapeHtml(x.sticker.num || "★") + "</b> " + escapeHtml(x.sticker.texteEleve) + "</span><small>" + (x.lettre ? "toute la lettre" : "ligne " + x.n) + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }
     const d = x.l.decisions && x.l.decisions[x.cle]; return '<li class="' + (estOn(x, i) ? "on" : "") + '" data-i="' + i + '" style="border-left-color:' + rcStyleArret(x).couleur + (estOn(x, i) ? ";background:" + rcStyleArret(x).fond : "") + '"><span>' + escapeHtml(x.g.eleve || "∅") + " → " + escapeHtml(x.g.corrige || "∅") + '</span><small>ligne ' + x.n + (d === "o" ? " ✓" : d === "n" ? " ✗" : "") + "</small></li>"; }).join("");
@@ -1372,8 +1470,10 @@ function rcBandeRendre() {
     const ok = !nd.length && !rq && !cg && typeof svCopieCorrigee === "function" && svCopieCorrigee(B.k), manque = !nd.length && !rq && !cg && !ok ? rcBandeManque(B.k) : "";   // [C14 638] la confirmation, en clair
     rcCgRendre(B, !nd.length && !rq);   // [C14 704] le commentaire, une fois les remarques gardées
     const titre = nd.length ? "Il reste " + nd.length + " arrêt" + (nd.length > 1 ? "s" : "") + " : " + nd.slice(0, 6).map(i => rcBandeNom(B.A[i])).join(", ") + (nd.length > 6 ? "…" : "") : rq ? "Il reste les remarques à relire" : cg ? "Il reste le commentaire général" : ok ? "✓ Copie corrigée" : "Bande finie";
+    const rien = !nd.length && !rq && !cg, nx = rien ? rcBandeSuivanteAReVoir(B.k) : null;   /* [C14 1.4.28] (C14 73) au bout, Entrée : la copie suivante qui a quelque chose à revoir */
+    const suite = rien ? '<div class="rc-bande-pied rc-bande-suite">' + (nx ? "<kbd>Entrée</kbd> : la bande de " + escapeHtml(nomEleveDe(nx)) + ", la copie suivante qui a quelque chose à revoir." : "Toutes les copies revenues de l’IA sont corrigées.") + "</div>" : "";
     carte.classList.toggle("rc-bande-ok", !!ok);
-    carte.innerHTML = '<div class="rc-bande-mot">' + escapeHtml(titre) + '</div>' + (nd.length ? '<div class="rc-bande-pied rc-bande-reste"><kbd>Entrée</kbd> : y aller. Tant qu’un arrêt n’est pas décidé, la copie n’est pas corrigée.</div>' : rq ? '<div class="rc-bande-pied rc-bande-reste">Relis-les ci-dessous, puis <kbd>Entrée</kbd> (ou « ✓ Je les garde ») : l’élève les lira. Tant qu’elles ne sont pas gardées, la copie n’est pas corrigée.</div>' : cg ? '<div class="rc-bande-pied rc-bande-reste">Ci-dessous : ce que l’élève doit faire de sa copie quand il la reçoit. Relis-le ou écris-le, puis <kbd>Entrée</kbd>. Tant qu’il n’est pas gardé, la copie n’est pas corrigée.</div>' : ok ? '<div class="rc-bande-pied rc-bande-reste">Sa carte est à 100 % ; son fichier pour École Directe est prêt, avec ses remarques et ton commentaire général.</div>' : manque ? '<div class="rc-bande-pied rc-bande-reste">La copie n’est pas encore corrigée : il manque ' + escapeHtml(manque) + ".</div>" : "") + '<div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + F.length + " arrêts" + (Sx.length ? " · " + gard + " sticker" + (gard > 1 ? "s" : "") + " gardé" + (gard > 1 ? "s" : "") + " sur " + Sx.length + " · note : " + stNb(nt.n) + " / " + stNb(nt.tot) : "") + (Sx.length ? "" : " · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k))) + "</div>";   // [C14 1.4.17] (C14 467) avec les stickers, l'ancienne grille ne parle plus
+    carte.innerHTML = '<div class="rc-bande-mot">' + escapeHtml(titre) + '</div>' + (nd.length ? '<div class="rc-bande-pied rc-bande-reste"><kbd>Entrée</kbd> : y aller. Tant qu’un arrêt n’est pas décidé, la copie n’est pas corrigée.</div>' : rq ? '<div class="rc-bande-pied rc-bande-reste">Relis-les ci-dessous, puis <kbd>Entrée</kbd> (ou « ✓ Je les garde ») : l’élève les lira. Tant qu’elles ne sont pas gardées, la copie n’est pas corrigée.</div>' : cg ? '<div class="rc-bande-pied rc-bande-reste">Ci-dessous : ce que l’élève doit faire de sa copie quand il la reçoit. Relis-le ou écris-le, puis <kbd>Entrée</kbd>. Tant qu’il n’est pas gardé, la copie n’est pas corrigée.</div>' : ok ? '<div class="rc-bande-pied rc-bande-reste">Sa carte est à 100 % ; son fichier pour École Directe est prêt, avec ses remarques et ton commentaire général.</div>' : manque ? '<div class="rc-bande-pied rc-bande-reste">La copie n’est pas encore corrigée : il manque ' + escapeHtml(manque) + ".</div>" : "") + '<div class="rc-bande-pied">' + faites + " faute" + (faites > 1 ? "s" : "") + " gardée" + (faites > 1 ? "s" : "") + " sur " + F.length + " arrêts" + (Sx.length ? " · " + gard + " sticker" + (gard > 1 ? "s" : "") + " gardé" + (gard > 1 ? "s" : "") + " sur " + Sx.length + " · note : " + stNb(nt.n) + " / " + stNb(nt.tot) : "") + (Sx.length ? "" : " · note avant : " + escapeHtml((s.bandeDebut && s.bandeDebut.noteAvant) || "—") + " · note maintenant : " + escapeHtml(rcNoteTexte(B.k))) + "</div>" + suite;   // [C14 1.4.17] (C14 467) avec les stickers, l'ancienne grille ne parle plus
     ctx.innerHTML = ""; touches.innerHTML = '<b class="rc-bande-mode">Les arrêts</b><span><kbd>Retour</kbd> l’arrêt d’avant</span><span><kbd>⇧</kbd> + <kbd>R</kbd> mot par mot</span><span><kbd>Ctrl</kbd> + <kbd>Z</kbd> : remettre une faute</span><span><kbd>Échap</kbd> revenir à la recopie</span>' + (B.note ? '<em class="rc-bande-note">' + escapeHtml(B.note) + "</em>" : ""); rcBandePhoto(null); return;
   }
   const P = rcPosMots(a.l.texte), d = a.l.decisions && a.l.decisions[a.cle], T = rcStyleArret(a), st = ' style="background:' + T.fond + ";color:" + (T.texte || T.couleur) + ";box-shadow:inset 0 -2px 0 " + T.couleur + '"';
@@ -1548,6 +1648,7 @@ function rcBandeClavier(ev) {
   if (ev.key === "Enter" && !B.A[B.i] && !B.mot) { const nd = rcBandeNonDecides(B); if (nd.length) { ev.preventDefault(); B.i = nd[0]; B.reste = true; B.note = ""; rcBandeRendre(); return true; } }   // [C14 633] au bout, Entrée va à l'arrêt qui reste
   if (ev.key === "Enter" && !B.A[B.i] && typeof stRqARelire === "function" && stRqARelire(B.k)) { ev.preventDefault(); rcBandeGarderRq(); return true; }
   if (ev.key === "Enter" && !B.A[B.i] && !B.mot && rcCgARelire(B.k)) { ev.preventDefault(); rcCgGarder(); return true; }   // [C14 704]
+  if (ev.key === "Enter" && !B.A[B.i] && !B.mot) { ev.preventDefault(); const nx = rcBandeSuivanteAReVoir(B.k); if (nx) rcBandeAller(nx); else { B.note = "Toutes les copies revenues de l’IA sont corrigées."; rcBandeRendre(); } return true; }   // [C14 1.4.28] (C14 73)
   if ((ev.key === "Enter" || ev.key === " ") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("o"); return true; }
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
   if (ev.key === "Backspace") { ev.preventDefault(); B.reste = false; B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }
@@ -2127,7 +2228,7 @@ RU_AIDES.recopie = { ou: "Recopier", l: [
   ["¶ Paragraphe", "la ligne en cours commence un paragraphe : l'IA le saura ; l'app pose seule le ¶ après une ligne sautée, un retrait, ou une ligne d'avant qui s'arrête tôt sur une fin de phrase"],
   ["− ↔ Largeur ＋ · Ctrl + molette", "la taille de la photo et de la feuille ensemble"],
   ["★ La phrase qui m'a marqué", "la fin de la recopie de cette copie : premier mot, dernier mot, « ✓ C'est elle » (ou « Pas de phrase ») ; sans elle, la copie suivante ne vient pas"],
-  ["⇪ Exporter pour l'IA", "le paquet suivant, 8 copies au plus, sans nom d'élève ; grisé tant que l'énoncé ou ta grille de stickers manque, et il dit pourquoi ; « ↻ Renvoyer » si un retour s'est perdu"],
+  ["⇪ Exporter pour l'IA", "le paquet suivant, 8 copies au plus, sans nom d'élève ; une copie changée depuis son retour repart avec ses seuls changements ; grisé tant que l'énoncé ou ta grille de stickers manque, et il dit pourquoi ; quand rien ne part, il le dit ; « ↻ Renvoyer » si un retour s'est perdu"],
   ["⇩ Charger le corrigé de l'IA", "colle le retour, ou choisis ses fichiers, plusieurs d'un coup ; rien ne change tant que les lignes ne correspondent pas"],
   ["▶ La bande", "elle s'arrête à chaque faute proposée par l'IA, puis à chaque sticker"],
   ["📋 Le flux", "chaque copie : recopiée, envoyée, chargée, la bande, ton temps ; en bas, toute la classe ; « 💾 Télécharger la sauvegarde » ; « 📎 Le contexte de l'IA » : ce que tu lui as donné avant la correction, gardé et renvoyé à chaque paquet"],
@@ -2145,5 +2246,7 @@ RU_AIDES.bande = { ou: "La bande", l: [
   ["＋ Un sticker", "un sticker que l'IA n'a pas vu, sur le mot où tu es ou le passage de l'arrêt ; seuls les stickers validés se posent"],
   ["les remarques", "à la fin de la bande : corrige un texte en place, ✕ en retire une, Entrée les garde toutes"],
   ["la liste à droite", "les arrêts de cette copie ; un clic y va"],
-  ["au bout", "la bande dit ce qui reste : un arrêt (Entrée y va), les remarques à relire (Entrée les garde), puis le commentaire général (Entrée le garde ; Maj + Entrée va à la ligne) ; enfin « ✓ Copie corrigée »"],
+  ["au bout", "la bande dit ce qui reste : un arrêt (Entrée y va), les remarques à relire (Entrée les garde), puis le commentaire général (Entrée le garde ; Maj + Entrée va à la ligne) ; enfin « ✓ Copie corrigée », et Entrée ouvre la bande de la copie suivante qui a quelque chose à revoir"],
+  ["« Copie 5 sur 24 · 3 à revoir » · ← Copie · Copie →", "ta place parmi les copies revenues de l'IA ; aller à la bande de la copie d'avant ou de la suivante"],
+  ["après un changement", "une copie que tu changes après le retour de l'IA (une ligne retapée, un ¶, un sticker de la grille) repart seule à l'export ; au retour, la bande ne s'arrête que sur ce qui a changé ; un sticker gardé que l'IA ne voit plus s'arrête aussi ; le nouveau commentaire de l'IA vient à côté du tien"],
   ["Échap", "revenir à ta recopie : tes réponses sont gardées"]] };

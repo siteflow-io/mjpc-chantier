@@ -197,6 +197,7 @@ function svCopieCorrigee(k) {
   const f = rcFluxCopie(k); if (!f.finie || !f.charge) return false;
   if (typeof stRqARelire === "function" && stRqARelire(k)) return false;
   if (typeof rcCgARelire === "function" && rcCgARelire(k)) return false;   // [C14 704] le commentaire général gardé
+  if (typeof rcReprise === "function" && rcReprise(k)) return false;   // [C14 1.4.28] (Paul 02/11 20:37, C14 66) changée depuis son retour de l'IA : elle repart, sa carte redescend sous 100 %
   if (typeof stActifs === "function" && stActifs().some(s => s.etat === "valide") && typeof stFinie === "function" && !stFinie(k)) return false;   // avec une grille de stickers : ses réussites revenues de l'IA et décidées
   return rcArretsBande(k).every(a => a.st ? !!stDecision(k, a.stId) : !!(a.l.decisions && a.l.decisions[a.cle]));
 }

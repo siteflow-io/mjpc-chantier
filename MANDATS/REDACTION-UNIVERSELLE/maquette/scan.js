@@ -89,7 +89,8 @@ function scChargerFichiers(fs, opts) {
   const pour = opts && opts.pour; SC.chargement = { pour: pour || null, donnees: 0, autres: [] };   // [C14 1.4.13] « 📄 Charger sa copie » : ses pages lui sont données d'office
   let ordre = scPagesOrdre().reduce((m, p) => Math.max(m, p.ordre || 0), 0);
   const nouvelles = []; let n = 0, anciennes = 0;
-  const traiter = (cv, src) => scPage(cv, src).then(o => { if (o.ancienne) { anciennes++; return; } n++; scTemoinCharge("Page " + n + " lue…");
+  const parImage = opts && opts.parImage;   // [C14 1.4.28] ces fichiers-là ont été reconnus par leur image : leur feuille peut avoir sa photo ici
+  const traiter = (cv, src, img) => scPage(cv, src, img).then(o => { if (o.ancienne) { anciennes++; return; } n++; scTemoinCharge("Page " + n + " lue…");
     const ex = SC.pages[o.id];
     if (ex && src && !(ex.source && ex.source.f === src.f && ex.source.p === src.p)) { ex.source = src; ruEcrire(scChemin(["pages", o.id]), ex, "l'origine d'une page"); }   // une page déjà connue reçoit son origine, une fois
     SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (SC.encres) delete SC.encres[o.id]; if (o.orig) SC.origs[o.id] = { blob: o.orig, w: o.ow, h: o.oh };
@@ -98,7 +99,7 @@ function scChargerFichiers(fs, opts) {
     if (!ex) { SC.pages[o.id] = meta; nouvelles.push(meta); ruEcrire(scChemin(["pages", o.id]), meta, "une page du paquet"); }
     return scDbMettre({ id: o.id, red: RU.id, classe: RU.classe, blob: o.blob, w: o.w, h: o.h, le: new Date().toISOString() }); });   // [C14 1.4.12, mesuré] une page déjà connue reprend ici sa retouche (scPage) : le même paquet, rechargé sur un autre ordinateur, rend tout
   let ch = Promise.resolve();
-  fs.forEach(f => { ch = ch.then(() => scEmpreinteFichier(f).catch(() => null)).then(fh => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, (cv, i) => traiter(cv, fh ? { f: fh, p: i } : null)) : scLireImage(f).then(cv => traiter(cv, fh ? { f: fh, p: 1 } : null))); });
+  fs.forEach(f => { ch = ch.then(() => scEmpreinteFichier(f).catch(() => null)).then(fh => /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, (cv, i) => traiter(cv, fh ? { f: fh, p: i } : null, parImage && parImage.has(f))) : scLireImage(f).then(cv => traiter(cv, fh ? { f: fh, p: 1 } : null, parImage && parImage.has(f)))); });
   return ch.then(() => { scCopiesOrdre(); if (pour) { state.paquetOrdre = SC.copies.slice(); saveState(); } SC.attrib = scPagesSans().length > 0; SC.ia = scPremiereSans(); scTemoinCharge("");
     toast(n + " page" + (n > 1 ? "s" : "") + " lue" + (n > 1 ? "s" : "") + (nouvelles.length < n ? " · " + (n - nouvelles.length) + " déjà connue" + (n - nouvelles.length > 1 ? "s" : "") + " : leurs marques reviennent" : "") + (anciennes ? " · " + anciennes + " ancienne" + (anciennes > 1 ? "s" : "") + " photo" + (anciennes > 1 ? "s" : "") + " remplacée" + (anciennes > 1 ? "s" : "") + ", laissée" + (anciennes > 1 ? "s" : "") + " de côté" : ""));
     scRendre(); return n; }, e => { scTemoinCharge(""); toast("⚠ Ce fichier n'a pas pu être lu."); console.error(e); return 0; });
@@ -121,18 +122,22 @@ function scTourner(cv, deg) {   // deg : un quart de tour dans le sens inverse d
   const x = c.getContext("2d"); x.translate(c.width / 2, c.height / 2); x.rotate(-q * Math.PI / 180); x.drawImage(cv, -cv.width / 2, -cv.height / 2); return c; }
 /* une empreinte d'image presque identique (8 points sur 256 au plus) : la même feuille, calculée un peu autrement sur un autre ordinateur ; seulement si une seule
    feuille de la rédaction est aussi proche, et si sa photo n'est pas déjà dans ce navigateur */
-function scPageProche(hex) {
+function scPageProche(hex, avecPhoto) {
   const bits = c => [8, 4, 2, 1].map(b => (parseInt(c, 16) & b) ? 1 : 0), dist = (a, b) => { let d = 0; for (let i = 0; i < 64; i++) { const x = bits(a[i]), y = bits(b[i]); for (let j = 0; j < 4; j++) if (x[j] !== y[j]) d++; } return d; };
   /* seulement une feuille sans origine (pas encore rechargée depuis la 1.4.13), pas blanche, sans photo ici ; la plus proche à 8 points au plus, et la suivante loin derrière (24 points) */
-  const C = Object.values(SC.pages).filter(p => p && /^page_[0-9a-f]{64}_/.test(p.id) && !p.source && !p.blanche && !SC.imgs[p.id]).map(p => ({ p, d: dist(p.id.slice(5, 69), hex) })).sort((x, y) => x.d - y.d);
+  const C = Object.values(SC.pages).filter(p => p && /^page_[0-9a-f]{64}_/.test(p.id) && !p.source && !p.blanche && (avecPhoto || !SC.imgs[p.id])).map(p => ({ p, d: dist(p.id.slice(5, 69), hex) })).sort((x, y) => x.d - y.d);
   return C[0] && C[0].d <= 8 && (!C[1] || C[1].d >= 24) ? C[0].p : null;
 }
-function scPage(cvLu, src) {
+function scEmpreinteImage(cvLu) {   // l'empreinte de l'image (16 × 16 points) : l'identité donnée à une feuille à son premier chargement
   const p = document.createElement("canvas"); p.width = 16; p.height = 16; const pc = p.getContext("2d"); pc.drawImage(cvLu, 0, 0, 16, 16);
   const d = pc.getImageData(0, 0, 16, 16).data; const g = []; for (let i = 0; i < 256; i++) g.push(d[i * 4] + d[i * 4 + 1] + d[i * 4 + 2]);
   const moy = g.reduce((a, b) => a + b, 0) / 256; let hex = ""; for (let i = 0; i < 256; i += 4) { let v = 0; for (let j = 0; j < 4; j++) v = v * 2 + (g[i + j] > moy ? 1 : 0); hex += v.toString(16); }
+  return hex;
+}
+function scPage(cvLu, src, avecPhoto) {
+  const hex = scEmpreinteImage(cvLu);
   const id0 = "page_" + hex + "_" + cvLu.width.toString(36) + cvLu.height.toString(36), parSource = src && Object.values(SC.pages).find(p => p && p.source && p.source.f === src.f && p.source.p === src.p);
-  const id = parSource ? parSource.id : SC.pages[id0] ? id0 : ((scPageProche(hex) || {}).id || id0);
+  const id = parSource ? parSource.id : SC.pages[id0] ? id0 : ((scPageProche(hex, avecPhoto) || {}).id || id0);
   /* [C14 1.4.13] une photo remplacée : son ancien fichier (ou la même image venue d'ailleurs) est laissé de côté, la nouvelle photo reste */
   const ancienne = !parSource && (src && Object.values(SC.pages).some(p => p && (p.anciennes || []).some(a => a.f === src.f && a.p === src.p)) || (SC.pages[id] && SC.pages[id].remplaceeLe && SC.pages[id].source && !(src && SC.pages[id].source.f === src.f && SC.pages[id].source.p === src.p)));
   if (ancienne) return Promise.resolve({ id, ancienne: true });
@@ -292,6 +297,7 @@ RU_AIDES.scan = { ou: "Corriger sur les scans", l: [   /* [C14 407] le paquet en
   ["le paquet", "ses pages en vignettes, rangées par élève, avec son nom et ses étapes (recopiée, envoyée, chargée, la bande) ; une page sans élève vient en tête"],
   ["clic sur une page", "ouvre la recopie de son élève à cette page ; Échap y revient"],
   ["✍ Recopier", "la recopie de la copie où tu travaillais"],
+  ["▶ La bande", "la bande, copie après copie : la première copie revenue de l'IA qui a encore quelque chose à revoir ; au bout, Entrée passe à la suivante ; aussi sur l'accueil"],
   ["📄 Charger des copies · 📂 Mon dossier", "ton paquet scanné, ou la copie d'un élève : un PDF ou des photos ; les pages neuves passent par « 🔤 Les initiales » ; elles restent dans ce navigateur et sur ta clé, jamais au site"],
   ["🔤 Les initiales", "l'élève de chaque page : tape ses initiales, Entrée ; Entrée seule : le même élève que la page d'avant ; → passe la page"],
   ["🖨 Copies vierges", "des copies de l'appli à imprimer : scannées, elles se remettent droites d'elles-mêmes"],
@@ -563,16 +569,31 @@ function scDossierLire(h) {
 function scDossierFichiers(fichiers, nom) {
   fichiers = fichiers.filter(f => /\.(pdf|jpe?g|png)$/i.test(f.name)); if (!fichiers.length) { scTemoinCharge(""); toast("Aucun PDF ni photo dans " + nom + "."); return Promise.resolve(); }
   return Promise.all(fichiers.map(f => scEmpreinteFichier(f).catch(() => null))).then(E => {
-    const P = Object.values(SC.pages).filter(p => p && p.id), premiere = !P.some(p => p.source);   // la première fois, aucune feuille n'a encore son origine : tout se relit
-    const connus = [], inconnus = []; let deja = 0, remplaces = 0;
-    fichiers.forEach((f, i) => { const pg = P.filter(p => p.source && p.source.f === E[i]); if (pg.length && pg.every(p => SC.imgs[p.id])) deja++; else if (premiere || pg.length) connus.push(f);
-      else if (P.some(p => (p.anciennes || []).some(a => a.f === E[i]))) remplaces++; else inconnus.push(f); });   // l'ancien fichier d'une photo remplacée : laissé de côté, sans te le demander
-    SC.dossierInconnus = inconnus;
-    return scChargerFichiers(connus).then(n => { scTemoinCharge("");
+    const P = Object.values(SC.pages).filter(p => p && p.id);
+    const connus = [], aVoir = []; let deja = 0, remplaces = 0;
+    fichiers.forEach((f, i) => { const pg = P.filter(p => p.source && p.source.f === E[i]); if (pg.length && pg.every(p => SC.imgs[p.id])) deja++; else if (pg.length) connus.push(f);
+      else if (P.some(p => (p.anciennes || []).some(a => a.f === E[i]))) remplaces++; else aVoir.push(f); });   // l'ancien fichier d'une photo remplacée : laissé de côté, sans te le demander
+    /* [C14 1.4.28] (Paul 02/11 18:45, C14 55) la règle se décide feuille par feuille : un fichier dont l'origine n'est pas connue est d'abord comparé, par son image,
+       aux feuilles qui n'ont pas encore la leur (chargées avant la 1.4.13) ; si c'est l'une d'elles, il la reprend et lui donne son origine ; seul un fichier qui ne ressemble à aucune feuille est montré */
+    return scParImage(aVoir).then(({ oui, non }) => { const inconnus = non; SC.dossierInconnus = inconnus;
+    return scChargerFichiers(connus.concat(oui), { parImage: new Set(oui) }).then(n => { scTemoinCharge("");
       toast(nom + " : " + (n ? n + " page" + (n > 1 ? "s" : "") + " retrouvée" + (n > 1 ? "s" : "") : "rien à recharger") + (deja ? " · " + deja + " fichier" + (deja > 1 ? "s" : "") + " déjà là" : "") + (remplaces ? " · " + remplaces + " ancienne" + (remplaces > 1 ? "s" : "") + " photo" + (remplaces > 1 ? "s" : "") + " remplacée" + (remplaces > 1 ? "s" : "") + ", laissée" + (remplaces > 1 ? "s" : "") + " de côté" : ""));
       if (inconnus.length) scModale(`<h3>${inconnus.length} fichier${inconnus.length > 1 ? "s" : ""} que cette rédaction ne connaît pas</h3><p>${inconnus.length > 1 ? "Ils sont" : "Il est"} dans ${escapeHtml(nom)}, mais aucune page de cette classe ne vient ${inconnus.length > 1 ? "d'eux. Ce sont peut-être de nouvelles copies" : "de lui. C'est peut-être une nouvelle copie"}.</p><ul>${inconnus.map(f => "<li>" + escapeHtml(f.name) + "</li>").join("")}</ul>
-        <button class="sc-btn" id="scDossierOui" onclick="scModaleFermer();scChargerFichiers(SC.dossierInconnus||[])" title="Les charger comme un nouveau paquet : leurs pages passent par « Les initiales ».">Les charger</button> <button class="sc-btn" onclick="scModaleFermer()" title="Ne rien charger : ils restent sur ta clé.">Non</button>`); });
+        <button class="sc-btn" id="scDossierOui" onclick="scModaleFermer();scChargerFichiers(SC.dossierInconnus||[])" title="Les charger comme un nouveau paquet : leurs pages passent par « Les initiales ».">Les charger</button> <button class="sc-btn" onclick="scModaleFermer()" title="Ne rien charger : ils restent sur ta clé.">Non</button>`); }); });
   });
+}
+/* une feuille sans origine que ce fichier refait : la même image (son empreinte exacte), ou presque (8 points sur 256 au plus, et la suivante loin derrière, à 24 points) ;
+   mesuré au site le 02/11 : les deux feuilles les plus proches sont à 47 points chez les Dylan, à 37 chez les Franklin */
+function scFeuilleParImage(cv) {
+  const hex = scEmpreinteImage(cv), id0 = "page_" + hex + "_" + cv.width.toString(36) + cv.height.toString(36), ex = SC.pages[id0];
+  if (ex && !ex.source) return ex; return scPageProche(hex, true);
+}
+function scParImage(fs) {
+  const sans = Object.values(SC.pages).some(p => p && p.id && !p.source && !p.blanche); if (!fs.length || !sans) return Promise.resolve({ oui: [], non: fs.slice() });
+  const oui = [], non = []; let ch = Promise.resolve(); scTemoinCharge("Les photos comparées à tes feuilles…");
+  fs.forEach(f => { ch = ch.then(() => { const vus = []; const lu = /pdf$/i.test(f.type) || /\.pdf$/i.test(f.name) ? scLirePdf(f, cv => { vus.push(scFeuilleParImage(cv)); return Promise.resolve(); }) : scLireImage(f).then(cv => { vus.push(scFeuilleParImage(cv)); });
+    return lu.then(() => { (vus.some(Boolean) ? oui : non).push(f); }, () => non.push(f)); }); });
+  return ch.then(() => ({ oui, non }));
 }
 /* « 📷 Remplacer la photo » d'une page : la feuille garde son identité ; ta recopie reste et se recale sur la nouvelle photo, les cadres de la bande se replacent */
 function scRemplacerPage(pid) {

@@ -95,6 +95,7 @@
 #rcIAMessage.rc-ia-msg.ko{background:#fbe0e2;color:#8a1f28}
 .rc-bande-haut{display:flex;align-items:center;gap:12px}
 .rc-bande-haut b{font:600 16px Georgia,serif;color:#6b1a2a}
+.rc-bd-ou{margin-left:auto;font:14px system-ui,sans-serif;color:#6b5d4d;white-space:nowrap}.rc-bande-suite{color:#1d5b2e;font-weight:600}
 #rcBandePhoto{cursor:ew-resize}
 .rc-bande-note{display:block;width:100%;font-style:normal;color:#2c5a1e;background:#e3f2d9;padding:4px 8px;border-radius:6px}
 
@@ -135,4 +136,5 @@
 /* [C14 704] le commentaire général, au bout de la bande */
 .rc-cg{margin:10px 0;padding:10px 12px;background:#fdfbf7;border:1px solid #d6cfc1;border-left:5px solid #6b1a2a;border-radius:8px}
 .rc-cg-tete{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}.rc-cg-tete b{color:#6b1a2a}.rc-cg-tete span{color:#6b5d4d;font-size:14px}
+.rc-cg-nouveau{margin:8px 0;padding:8px 10px;background:#f3efe6;border:1px dashed #b9a98c;border-radius:6px;font:15px/1.45 Georgia,serif}.rc-cg-nouveau b{color:#6b1a2a;font-family:system-ui,sans-serif;font-size:13px}.rc-cg-nouveau .sc-btn{margin-left:6px}
 .rc-cg textarea{width:100%;box-sizing:border-box;font:16px/1.45 Georgia,serif;padding:6px 8px;border:1px solid #cdbfa8;border-radius:6px;background:#fff;resize:vertical}

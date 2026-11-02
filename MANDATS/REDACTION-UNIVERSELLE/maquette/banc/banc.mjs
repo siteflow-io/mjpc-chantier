@@ -1,5 +1,5 @@
 import { eprouverRecopie } from "./recopie.mjs";
-import { eprouverAccueil, eprouverAutreOrdinateur } from "./accueil.mjs";
+import { eprouverAccueil, eprouverAutreOrdinateur, eprouverDossierMele } from "./accueil.mjs";
 import { eprouverAbsent } from "./absent.mjs";
 import { eprouverDettes115 } from "./dettes115.mjs";
 import { eprouverStickers, eprouverStickersReglages } from "./stickers.mjs";
@@ -8,6 +8,7 @@ import { eprouverBilan } from "./bilan.mjs";
 import { eprouverEffacer } from "./effacer.mjs";
 import { eprouverEnlever } from "./enlever.mjs";
 import { eprouverEcho } from "./echo.mjs";
+import { eprouverReprendre, eprouverBandeSuite } from "./reprendre.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -123,13 +124,16 @@ await eprouverRecopie({ pg, verif, cap, att, dir: DIR, out: OUT });
 await eprouverDettes115({ pg, verif, cap, att });
 await eprouverAccueil({ pg, verif, cap, att });
 await eprouverAutreOrdinateur({ pg, verif, cap, att, dir: DIR });
+await eprouverDossierMele({ pg, verif, cap, att, dir: DIR });   // [C14 1.4.28] (Paul 18:45, C14 55) une classe mêlée : des feuilles d'avant la 1.4.13 retrouvées par leur image
 await eprouverAbsent({ pg, verif, cap, att });
 await eprouverStickers({ pg, verif, cap, att, dir: DIR, out: OUT });
 await eprouverBilan({ pg, verif, cap, att });   // [C14 406] après les stickers : des copies corrigées avec eux
 await eprouverSauvegarde({ pg, verif, cap, att });
 await eprouverEcho({ pg, verif, cap, att });   // [C14 1.4.27] (Paul 16:53) l'écho du site
 await eprouverEnlever({ pg, verif, cap, att });   // [C14 710] (Paul 14:09) un sticker enlevé de la grille
-await eprouverEffacer({ pg, verif, cap, att });   // [C14 669] (Paul 12:46) tout en dernier : la classe vidée de ses corrigés, la recopie intacte   // [C14] (Paul 13:12) en dernier : elle marque absents tous les élèves sauf un
+await eprouverEffacer({ pg, verif, cap, att });   // [C14 669] (Paul 12:46) la classe vidée de ses corrigés, la recopie intacte   // [C14] (Paul 13:12) la sauvegarde, plus haut, marque absents tous les élèves sauf un
+await eprouverReprendre({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37, C14 66-71) après un changement, seul ce qui a changé repart et s'arrête
+await eprouverBandeSuite({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37, C14 72-73) « ▶ La bande », copie après copie
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

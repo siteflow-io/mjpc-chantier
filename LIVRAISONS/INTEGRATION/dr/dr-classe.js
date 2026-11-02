@@ -1348,9 +1348,12 @@ setInterval(() => { try { const t = { 'gclore-oui': 'Clore l’heure malgré ce 
    case (`H/absents`, des slugs `edtSlugEleve`) sont absents dans l'appel du Pilotage, dès le début de l'heure (raison « case de l'EDT »). ─── */
 function dr_absentsDeLaCase(){
   const ch = (typeof dr_cheminH === 'function') ? dr_cheminH() : null; if (!ch || typeof edtSlugEleve !== 'function') return;
-  dr_lire(ch + '/absents', abs => { try { if (!Array.isArray(abs) || !abs.length) return; let n = 0; const t0 = S.debutReel || now();
-    (typeof ELEVES !== 'undefined' ? ELEVES : []).forEach(e => { if (!abs.includes(edtSlugEleve(e)) || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'case de l’emploi du temps' }]; n++; });
-    if (n) { journal('appel', { depuis: 'case', n }); dr_tout(); } } catch (e) {} });
+  /* C16 (défaut 256, Paul 16:59) : l'absent prend l'horloge de l'heure (`now()`, l'horloge de la case pour les De Gaulle) — avec S.debutReel (la montre), il ne comptait
+     pas tant que l'horloge de la case n'avait pas atteint la montre : « 0 sur 29 présents » ; et une ligne de journal par élève, comme l'appel fait au pilote — la
+     ligne d'avant (sans élève) faisait lever « Ce qui s'est passé » de la Relecture (dr_prenom) */
+  dr_lire(ch + '/absents', abs => { try { if (!Array.isArray(abs) || !abs.length) return; let n = 0; const t0 = now();
+    (typeof ELEVES !== 'undefined' ? ELEVES : []).forEach(e => { if (!abs.includes(edtSlugEleve(e)) || (S.appel[e] || []).length) return; S.appel[e] = [{ type: 'absent', t: t0, heure: S.heure, raison: 'case de l’emploi du temps' }]; journal('appel', { eleve: e, quoi: 'absent', raison: 'case de l’emploi du temps' }); n++; });
+    if (n) dr_tout(); } catch (e) {} });
 }
 /* dette 13 · 32 (25/10) : l'enveloppe de `_drProchainCreneau` (12 · 17, « À relire — » : le prochain jour ouvré → la prochaine heure de la classe) est retirée — la fonction n'a plus aucun appelant dans 8.75.0-① (le papier lit `dr_recitProchaines()`) ; E1 retire la fonction morte dans `index.html` */
 setInterval(() => { try { if (typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && S.lancee && !S.close) dr_absentsDeLaCase(); } catch (e) {} }, 15000);   /* un absent coché dans la case pendant l'heure arrive au Pilotage */

@@ -3511,3 +3511,35 @@ Promeus puis après il faut terminer effectivement tout le reste. À coder cette
 
 MEMO
 
+
+---
+
+## Tour 132 — 02/11/2026 06:06
+
+**Paul (06:06) :**
+
+Promeus
+
+**Ce qui a été fait (C14) :** la 1.4.19-RU en ligne copiée au sas (`SAUVEGARDES/redaction-1.4.19-RU-avant-1.4.20-2026-11-02.html`, `a57a2356`) ; la 1.4.20-RU candidate (md5 `cca2b54a64a3921bfe5403054e8af17c`, 870 879 o) mise en production, commit `8d00785`, blob `5938bc546ec2` ; en ligne bit à bit à 06:10:07. Docs de production (`743fea8`) : journal, point de retour avant 1.4.20 (`docs/MJPC6-restauration.md`), où trouver quoi (`&v=1.4.20-RU`, dix lignes nouvelles), dettes (l'état de production ; la nuit ✔ sauf 401 seconde moitié). L'index des fonctions ne couvre pas `redaction.html`. Gestes rejoués sur le fichier en ligne lui-même, vrai site en lecture seule (écritures interceptées) : 30 cartes, chacune ouvre sa copie ; 51 pages recopiées, mêmes textes, mêmes places ; ouvrir la recopie : 1 écriture (le suivi) ; trois exports : envois 1, 2, 3 sur 4, huit copies chacun, disjoints, 25 écritures interceptées ; le sujet lu, sa garde : la grille de stickers n'est pas chargée ; le tableau : « 0/29 · 0 % · 1 absent », 29 en cours (3 à 75 %, 1 à 70 %, 25 à 25 %) ; aucune erreur. *(La numérotation reprend à 618 : 616 et 617 ont été pris pendant la nuit, après 01:45 ; leur texte n'a pas survécu à la compaction de la conversation et n'est pas ici.)*
+
+**Claude (06:14) :**
+
+À jouer : tester la 1.4.20-RU en ligne (À tester) · en cours : rien · ouvert : 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+618. La 1.4.20-RU est en ligne depuis 06:10, vérifiée bit à bit. La 1.4.19 est copiée au sas : on peut y revenir en une minute.
+
+619. J'ai rejoué les gestes sur le fichier en ligne lui-même, avec ton vrai site en lecture seule. Les 30 cartes des élèves ouvrent chacune leur copie. Les 51 pages recopiées ont les mêmes textes aux mêmes places. Ouvrir une recopie n'écrit plus qu'une fois au site. Trois exports à la suite donnent les envois 1, 2 et 3 sur 4, huit copies chacun, sans doublon. Aucune erreur.
+
+620. Ton tableau des élèves dit maintenant « 0/29 · 0 % » : aucune copie n'est entièrement corrigée. Les 29 copies sont « En cours » : 3 à 75 % (leur bande est finie, il leur manque la phrase qui t'a marqué), 1 à 70 %, 25 à 25 %.
+
+621. Sur ton vrai site, la grille de stickers du sujet n'est pas chargée. « ⇪ Exporter pour l'IA » reste donc grisé, avec cette raison à l'écran, tant que tu ne l'as pas chargée : Réglages → « La grille et ses stickers » → « 📥 Charger des stickers ».
+
+622. La sauvegarde rangée au site n'a pas encore été essayée sur ton vrai site. La première fois qu'un paquet sera entièrement corrigé, l'app l'y rangera et te proposera « 💾 Télécharger la sauvegarde ». Si le site la refuse, la fenêtre le dit, et le fichier téléchargé reste.
+
+623. Ce qui reste ouvert. 401, seconde moitié : je la ferai de jour, avec toi. Le reste attend ton essai ou ton mot : le test iPhone de la pièce jointe École Directe, 442 (le premier vrai paquet), le dossier des copies (351-360), « corriger des textes tapés ».
+
+À tester : ouvre https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.20-RU → la rédaction → la classe → « 📄 Corriger sur les scans ». Tu vois le paquet en vignettes. Clique une page : sa recopie s'ouvre à cette page, avec le chrono en haut ; Échap revient au paquet. Clique « 📷 La photo ». Dans « 📨 Fichiers École Directe », clique « 📦 Tout rendre ». Dans le Bilan, regarde la colonne « Lignes ».
+
+02/11/2026 06:14
+
+MEMO

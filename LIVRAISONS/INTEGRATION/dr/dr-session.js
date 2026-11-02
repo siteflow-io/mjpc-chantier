@@ -71,7 +71,13 @@ function dr_sesPhoto(){
 /* L'HISTOIRE DES ÉTATS : chaque état envoyé ou posé ici, gardé par sa clé (appareil|heure logique) ; chaque état envoyé dit sur lequel il s'appuie (`base`).
    À la réception, la base de la fusion est CET état-là — ce que l'autre savait quand il a agi — : ce qu'ici a fait depuis (une réponse tapée, une participation)
    est gardé, ce que l'autre a fait est pris ; trois pilotes qui agissent presque en même temps ne perdent rien (mesuré : la base « dernier reçu » perdait un geste). */
-function dr_sesMemo(cle, p){ if (!cle || !p) return; DR_SES.hist = DR_SES.hist || new Map(); DR_SES.hist.set(cle, { S: p.S, parDiapo: p.parDiapo, vuMax: p.vuMax, minut: p.minut }); if (DR_SES.hist.size > 40) DR_SES.hist.delete(DR_SES.hist.keys().next().value); }
+function dr_sesMemo(cle, p, base){ if (!cle || !p) return; DR_SES.hist = DR_SES.hist || new Map(); DR_SES.hist.set(cle, { S: p.S, parDiapo: p.parDiapo, vuMax: p.vuMax, minut: p.minut, base: base !== undefined ? base : (p.base || null) }); if (DR_SES.hist.size > 160) DR_SES.hist.delete(DR_SES.hist.keys().next().value); }
+/* CE QU'ICI CONNAÎT : les états qu'ici a envoyés ou posés, et tous ceux sur lesquels ils s'appuient. La base d'une fusion doit être connue des DEUX côtés :
+   l'état sur lequel l'autre s'appuie, s'il est connu ici ; sinon le plus récent de ses ancêtres connu ici (mesuré : le second ordinateur, en pleine frappe, n'avait
+   jamais posé l'état où la participation était entrée ; l'état suivant de l'ordinateur, pris pour base, la contenait : « rien changé là-bas », la participation
+   effacée chez les trois pilotes) */
+function dr_sesConnu(cle){ DR_SES.connus = DR_SES.connus || new Set(); if (DR_SES.connus.size > 4000) DR_SES.connus = new Set(); let k = cle, n = 0;
+  while (k && !DR_SES.connus.has(k) && n++ < 400) { DR_SES.connus.add(k); const h = DR_SES.hist && DR_SES.hist.get(k); k = h && h.base; } }
 function dr_sesSig(p){ return JSON.stringify([p.S, p.parDiapo, p.vuMax, (p.J || []).length, p.minut]); }
 function dr_sesCopie(){ try { return dr_empreinte(seance().ecrans); } catch (e) { return ''; } }
 
@@ -83,20 +89,23 @@ function dr_sesEnvoyerMaintenant(close, cede){
   /* QUI A LA MAIN (Paul, 16:19) : un seul appareil pilote à la fois. Un ordinateur la prend par un geste (dévoiler, changer de diapo, écrire, noter une participation,
      le minuteur…), sans bouton ; la télécommande, seulement par « Reprendre avec la télécommande ». Celui qui ne l'a pas suit, et n'envoie rien. */
   if (!close && !cede && !dr_sesJeTiens()) {
-    if (window.DR_TC) return;
-    if (Date.now() - (DR_SES.geste || 0) > 2000 || (DR_SES.geste || 0) < (DR_SES.applyTs || 0)) return;   /* rien de fait ici depuis le dernier état posé : ce n'est pas un geste (un geste fait avant que l'état se pose est repris par la fusion, dr_sesAppliquer) */
-    DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; }
-  if (!DR_SES.main) { DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; }
+    const geste = !window.DR_TC && Date.now() - (DR_SES.geste || 0) <= 2000 && (DR_SES.geste || 0) >= (DR_SES.applyTs || 0);   /* quelque chose fait ici depuis le dernier état posé */
+    if (geste) { DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; DR_SES.prise = true; }
+    else if (!DR_SES.contenu || window.DR_TC) return; }   /* sans geste : rien ne part, sauf ce que la fusion a gardé d'ici (il part sans prendre la main) */
+  const contenu = !!DR_SES.contenu; DR_SES.contenu = false;
+  if (!DR_SES.main) { DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; DR_SES.prise = true; }
   const ph = dr_sesPhoto(); const sig = dr_sesSig(ph);
-  if (!close && !cede && sig === DR_SES.envoye && !DR_SES.forcer) return; DR_SES.forcer = false;
+  if (!close && !cede && sig === DR_SES.envoye && !DR_SES.forcer && !contenu) return; DR_SES.forcer = false;
+  const tiens = DR_SES.main === DR_SES.id;
   try { dr_sesMainAfficher(); } catch (e) {}
-  /* la scène part avec le geste (pas 250 ms après) : le tableau distant suit aussitôt ; son heure sert d'horloge logique aux autres pilotes */
-  try { if (!close && !cede) { if (ici.test) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else dr_sesScene(); } } catch (e) {}
+  /* la scène part avec le geste (pas 250 ms après) : le tableau distant suit aussitôt ; son heure sert d'horloge logique aux autres pilotes — seulement de qui a la main */
+  try { if (!close && !cede && tiens) dr_sesEmettreScene(); } catch (e) {}
   const ts = Math.max(Date.now(), DR_SES.vu + 1, (DR_TAB.dernierTs || 0) + 1); DR_SES.vu = ts; DR_SES.envoiTs = ts; DR_SES.envoye = sig; if (!DR_SES.recuBase) DR_SES.socle = ph;   /* tant que rien n'est reçu, la base est ce qu'ici a envoyé */
-  const base = DR_SES.dernier || null; DR_SES.dernier = DR_SES.id + '|' + ts; dr_sesMemo(DR_SES.dernier, ph);
+  if (DR_SES.prise) { DR_SES.prise = false; if (tiens) DR_SES.mainTs = ts; }   /* LA MAIN A UNE HEURE : celle de sa prise (l'horloge logique, plus récente que tout ce qu'ici a vu) ; les états suivants du même appareil ne la reprennent pas */
+  const base = DR_SES.dernier || null; DR_SES.dernier = DR_SES.id + '|' + ts; dr_sesMemo(DR_SES.dernier, ph, base); dr_sesConnu(DR_SES.dernier);
   const v = Object.assign({ par: DR_SES.id, ts, sig: ici.sig, sorte: ici.sorte, close: !!close, sts: DR_TAB.dernierTs || 0,
     cours: (typeof dr_coursIci === 'function' ? dr_coursIci() : null), H: dr_cheminH(), debutReel: S.debutReel || null,
-    main: DR_SES.main, mainTc: DR_SES.main === DR_SES.id ? !!window.DR_TC : !!DR_SES.mainTc, cede: !!cede, base }, ph);   /* `cede` : le dernier état de celui qui vient de perdre la main (sa réponse en cours comprise) */
+    main: DR_SES.main, mainTs: DR_SES.mainTs || 0, mainTc: DR_SES.main === DR_SES.id ? !!window.DR_TC : !!DR_SES.mainTc, cede: !!cede, base }, ph);   /* `cede` : le dernier état de celui qui vient de perdre la main (sa réponse en cours comprise) */
   const cop = dr_sesCopie(); v.cop = cop;
   if (cop !== DR_SES.copieEnv || close) { try { v.ecrans = dr_copiePourHub(JSON.parse(JSON.stringify(seance().ecrans))); DR_SES.copieEnv = cop; } catch (e) {} }
   dr_sesEcrire(ici, '/vif', v);
@@ -111,6 +120,7 @@ function dr_sesScene(){
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);
     dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); }); } catch (e) {}
 }
+function dr_sesEmettreScene(){ const ici = DR_SES.ici || dr_sesIci(); if (!ici) return; if (ici.test) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else dr_sesScene(); }
 /* un appareil qui REJOINT une session (la reprise d'une heure ou d'un essai, une répétition adoptée) n'envoie rien avant d'avoir posé le premier état
    reçu — sinon son état de départ (relu au hub un peu plus tôt, ou celui d'une répétition neuve) passerait devant les gestes de l'autre ; 3 s sans état reçu : il envoie */
 function dr_sesAttend(){ if (DR_SES.rejoint && Date.now() - DR_SES.rejoint < 20000) return true;   /* une reprise en cours : rien ne part avant qu'elle ait abouti */
@@ -125,14 +135,20 @@ function dr_sesOccupe(){
 function dr_sesRecu(v){
   const ici = DR_SES.ici; if (!ici || !v || typeof v !== 'object') return;
   if (v.par === DR_SES.id || v.sig !== ici.sig) { if (v && v.sig !== ici.sig && dr_sesAttend()) DR_SES.attendrePremier = 0; return; }
-  const cleV = v.par + '|' + v.ts; if (cleV === DR_SES.recuCle || (DR_SES.hist && DR_SES.hist.has(cleV))) return; DR_SES.recuCle = cleV;   /* un état neuf au hub (le dernier écrit) : jamais rejeté parce que la montre de son appareil retarde */
+  const cleV = v.par + '|' + v.ts; if (cleV === DR_SES.recuCle || (DR_SES.hist && DR_SES.hist.has(cleV))) return; DR_SES.recuCle = cleV; dr_sesMemo(cleV, v);   /* chaque état reçu est gardé dès son arrivée, même s'il ne se pose jamais (un autre, plus récent, l'a remplacé en attente) : il peut servir de base à un état suivant */   /* un état neuf au hub (le dernier écrit) : jamais rejeté parce que la montre de son appareil retarde */
   DR_SES.recu = Math.max(DR_SES.recu, v.ts); DR_SES.vu = Math.max(DR_SES.vu, v.ts);
   try { DR_TAB.dernierTs = Math.max(DR_TAB.dernierTs || 0, (+v.sts || 0) + 50, v.ts); } catch (e) {}   /* ma prochaine scène passe après la sienne */
   if (v.close) { DR_SES.attendrePremier = 0; dr_sesClosAilleurs(v); return; }
+  /* un geste d'ici pas encore parti (l'envoi attend 20 ms) part AVANT que l'état reçu se pose : il n'est jamais pris pour un effet de la pose */
+  if (DR_SES.envT && !DR_SES.attendrePremier && !dr_sesOccupe()) { clearTimeout(DR_SES.envT); DR_SES.envT = null; try { dr_sesEnvoyerMaintenant(); } catch (e) {} }
   const avais = DR_SES.main === DR_SES.id;
-  if (v.main && v.ts > (DR_SES.envoiTs || 0)) { DR_SES.main = v.main; DR_SES.mainTc = !!v.mainTc; }   /* deux prises presque en même temps : la plus récente l'emporte */
+  /* la main a une heure, celle de sa prise : la prise la plus récente l'emporte (à heure égale, le plus grand identifiant), chez tous les pilotes pareil — un état
+     parti d'un appareil qui ne savait pas encore qu'un autre avait pris la main ne la lui reprend pas (mesuré : la réponse tapée au second ordinateur reprenait la main
+     lettre après lettre à l'ordinateur qui venait de dévoiler) */
+  const vm = +v.mainTs || 0, mm = +DR_SES.mainTs || 0;
+  if (v.main && (vm > mm || (vm === mm && String(v.main) > String(DR_SES.main || '')))) { DR_SES.main = v.main; DR_SES.mainTc = !!v.mainTc; DR_SES.mainTs = vm; }
   const perdue = avais && DR_SES.main !== DR_SES.id;
-  if (perdue) { DR_SES.geste = 0; DR_SES.appui = false; DR_SES.attente = null; try { const a = document.activeElement; if (a && a !== document.body && (a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) a.blur(); } catch (e) {} }   /* l'autre a pris la main : le champ se ferme tel qu'il est, son texte gardé */
+  if (perdue) { DR_SES.geste = 0; DR_SES.appui = false; DR_SES.attente = null; try { S._garderFocus = null; } catch (e) {} try { const a = document.activeElement; if (a && a !== document.body && a.isContentEditable) { a.blur(); DR_SES.coupe = Date.now(); DR_SES.coupeEv = 0; } } catch (e) {} }   /* l'autre a pris la main : le champ se ferme tel qu'il est, son texte gardé ; les lettres tapées juste après ne tombent nulle part (pas une commande : g gèle, l loupe…) */
   try { dr_sesMainAfficher(); } catch (e) {}
   if (!perdue && dr_sesOccupe()) { if (!DR_SES.attendrePremier && dr_sesPoserAutour(v)) return; DR_SES.attente = v; return; }
   const premier = !!DR_SES.attendrePremier; DR_SES.attendrePremier = 0;
@@ -156,9 +172,12 @@ function dr_sesMainAfficher(){
    focus et ce qu'on y tape, la scène d'ici continue de partir à chaque lettre, avec la participation et le minuteur à jour. Sinon : il attend la
    sortie du champ (rend faux). */
 const DR_SES_VUE = ['eidCourant', 'gel', 'loupe', 'taille', 'doc', 'fichePage', 'repetition', 'lancee', 'close', 'heure'];   /* la page n'y est pas : elle dépend de la taille de l'écran de chaque appareil (mesuré : téléphone page 2, ordinateur page 1, sur la même diapo) */
+/* la base d'un état reçu : l'état sur lequel il s'appuie, gardé ici ; inconnue ici (jamais reçu) : aucune base — la fusion garde alors tout ce qui est des deux côtés (rien ne se perd), plutôt que le dernier reçu (trop récent : ce qu'il a et que l'autre n'a pas encore passait pour retiré — mesuré : une participation) */
+function dr_sesBase(v){ if (!v.base) return DR_SES.socle; const C = DR_SES.connus || new Set(); let k = v.base, n = 0;
+  while (k && n++ < 400) { const h = DR_SES.hist && DR_SES.hist.get(k); if (!h) break; if (C.has(k)) return h; k = h.base; } return { inconnue: true }; }
 function dr_sesPoserAutour(v){
   try {
-    const b = (v.base && DR_SES.hist && DR_SES.hist.get(v.base)) || DR_SES.socle; if (!b || DR_SES.attente) return false;
+    const b = dr_sesBase(v); if (!b || b.inconnue || DR_SES.attente) return false;
     const loc = dr_sesPhoto();
     const m = { S: dr_sesFus3(b.S, loc.S, v.S), parDiapo: dr_sesFus3(b.parDiapo, loc.parDiapo, v.parDiapo), vuMax: dr_sesFus3(b.vuMax, loc.vuMax, v.vuMax), minut: dr_sesFus3(b.minut, loc.minut, v.minut), J: dr_sesJournal(loc.J, v.J) };
     if (!dr_sesEq(m.parDiapo, dr_sesRange(loc.parDiapo)) || !dr_sesEq(m.vuMax, dr_sesRange(loc.vuMax))) return false;   /* un dévoilement, une réponse ailleurs : la diapo changerait */
@@ -174,8 +193,9 @@ function dr_sesPoserAutour(v){
       try { if (S.qui && !S.gel && typeof quiAParticipe === 'function') { S.qui = quiAParticipe(); if (S.mur) S.mur.qui = S.qui; } } catch (e) {}
     } finally { DR_SES.appl = false; }
     DR_SES.socle = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut }; DR_SES.recuBase = true; DR_SES.envoye = '';   /* la base commune : l'état reçu ; ce qu'on tape ici part au prochain envoi, fusionné (ici a la main : il frappe) */
-    DR_SES.dernier = v.par + '|' + v.ts; dr_sesMemo(DR_SES.dernier, m);
-    try { if (DR_SES.ici && (DR_SES.ici.test || DR_SES.ici.sorte === 'essai')) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (DR_SES.ici && DR_SES.ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else dr_sesScene(); } catch (e) {}   /* la classe voit la participation, le minuteur, sans attendre la prochaine lettre */
+    DR_SES.dernier = v.par + '|' + v.ts; dr_sesMemo(DR_SES.dernier, v); dr_sesConnu(DR_SES.dernier);   /* sous la clé d'un état : CET état, le même chez tous les pilotes (pas la fusion d'ici : l'autre ne la connaît pas — mesuré : une participation perdue) */
+    if (!dr_sesJeTiens()) DR_SES.contenu = true;
+    try { if (dr_sesJeTiens()) dr_sesEmettreScene(); } catch (e) {}   /* la classe voit la participation, le minuteur, sans attendre la prochaine lettre (de qui a la main) */
     dr_sesEnvoyer(); return true;
   } catch (e) { DR_SES.appl = false; return false; }
 }
@@ -193,16 +213,17 @@ function dr_sesFus(b, m, t){
     const bb = Array.isArray(b) ? b : []; const o = []; for (let i = 0; i < Math.max(m.length, t.length); i++) { const r = dr_sesFus(bb[i], m[i], t[i]); if (r !== undefined) o.push(r); } return o; }   /* rang par rang (les lignes de réponse d'un bloc) : une réponse tapée ici n'est jamais perdue parce que l'autre pilote a changé autre chose */
   if (m && t && typeof m === 'object' && typeof t === 'object' && !Array.isArray(m) && !Array.isArray(t)) { const o = {};
     new Set(Object.keys(m).concat(Object.keys(t))).forEach(k => { const r = dr_sesFus(b && typeof b === 'object' ? b[k] : undefined, m[k], t[k]); if (r !== undefined) o[k] = r; }); return o; }
-  if (typeof m === 'string' && m !== '' && (t === '' || t == null)) return m;   /* un texte écrit ici contre un texte vide là-bas : le texte écrit (rien de perdu) ; un objet retiré là-bas (le gel levé, une parole retirée) reste retiré */
+  if (typeof m === 'string' && m !== '' && (t === '' || t == null)) return m;
+  if (typeof m === 'string' && typeof t === 'string' && m.length > t.length && m.startsWith(t) && (typeof b !== 'string' || m.startsWith(b))) return m;   /* le texte d'ici prolonge celui de l'autre : l'autre n'avait pas encore reçu les dernières lettres */   /* un texte écrit ici contre un texte vide là-bas : le texte écrit (rien de perdu) ; un objet retiré là-bas (le gel levé, une parole retirée) reste retiré */
   return t;
 }
 function dr_sesJournal(m, t){ const cle = x => JSON.stringify([x && x.t, x && x.type, x && x.di, x && x.k, x && x.nom]); const vus = new Set((t || []).map(cle)); const o = (t || []).concat((m || []).filter(x => !vus.has(cle(x)))); return o.sort((a, b) => ((a && a.t) || 0) - ((b && b.t) || 0)); }
 function dr_sesAppliquer(v){
   const ici = DR_SES.ici; if (!ici) return;
   let p = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut };
-  const loc = dr_sesPhoto(); let renvoyer = false;
+  const loc = dr_sesPhoto(); const sale = dr_sesSig(loc) !== DR_SES.envoye; let renvoyer = false; const tiens = DR_SES.main === DR_SES.id;   /* ici a la main : l'état reçu vient d'un autre (son dernier état, sa réponse) : la scène d'ici repart, fusionnée */
   if (DR_SES.socle) {   /* ce qu'ici a changé depuis la base commune (le dernier état reçu) est gardé, même déjà parti : l'autre pilote a pu écrire sans l'avoir reçu */
-    const b = (v.base && DR_SES.hist && DR_SES.hist.get(v.base)) || DR_SES.socle; p = { S: dr_sesFus3(b.S, loc.S, p.S), parDiapo: dr_sesFus3(b.parDiapo, loc.parDiapo, p.parDiapo), vuMax: dr_sesFus3(b.vuMax, loc.vuMax, p.vuMax), J: dr_sesJournal(loc.J, p.J), minut: dr_sesFus3(b.minut, loc.minut, p.minut) }; renvoyer = true; }
+    const b = dr_sesBase(v); p = { S: dr_sesFus3(b.S, loc.S, p.S), parDiapo: dr_sesFus3(b.parDiapo, loc.parDiapo, p.parDiapo), vuMax: dr_sesFus3(b.vuMax, loc.vuMax, p.vuMax), J: dr_sesJournal(loc.J, p.J), minut: dr_sesFus3(b.minut, loc.minut, p.minut) }; renvoyer = true; }
   DR_SES.appl = true;
   try {
     if (Array.isArray(v.ecrans) && v.cop !== dr_sesCopie()) { const copie = dr_sesClone(v.ecrans); dr_copieDuHub(copie); dr_adopterIdentites(copie); const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} DR_SES.copieEnv = dr_sesCopie(); }
@@ -220,16 +241,20 @@ function dr_sesAppliquer(v){
     if (v.cop && v.cop === dr_sesCopie()) DR_SES.copieEnv = v.cop;   /* la même copie ici : elle ne repartira pas avec le prochain geste */
     J.length = 0; J1.forEach(o => J.push(o));   /* le rendu journalise ce qu'il montre : ici, c'est déjà au journal reçu */
     try { if (typeof participation === 'function') participation(); } catch (e) {}
-    if ((ici.test || ici.sorte === 'repetition') && typeof dr_scene === 'function' && S.mur) { const X = ici.test ? DR_TT : DR_REP; if (!ici.test) dr_repTrame(false); else dr_ttTrame(false); const sc = dr_scene(S.mur); if (sc) { sc.trameMaj = X.trameMaj || 0; X.emis = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); } }   /* la scène est déjà au hub : rien ne repart d'ici */
+    if (!tiens && (ici.test || ici.sorte === 'repetition') && typeof dr_scene === 'function' && S.mur) { const X = ici.test ? DR_TT : DR_REP; if (!ici.test) dr_repTrame(false); else dr_ttTrame(false); const sc = dr_scene(S.mur); if (sc) { sc.trameMaj = X.trameMaj || 0; X.emis = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); } }   /* la scène est déjà au hub : rien ne repart d'ici */
     clearTimeout(DR_TAB.emT);
   } finally { DR_SES.appl = false; }
   DR_SES.applyTs = Date.now();   /* ce qui change ici en posant l'état reçu n'est pas un geste */
   const apres = dr_sesPhoto(); DR_SES.socle = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut }; DR_SES.recuBase = true;
-  DR_SES.dernier = v.par + '|' + v.ts; dr_sesMemo(DR_SES.dernier, renvoyer ? { S: p.S, parDiapo: p.parDiapo, vuMax: p.vuMax, minut: p.minut } : v);   /* ce qu'ici sait maintenant (la fusion, si elle a gardé quelque chose d'ici) */ DR_SES.envoye = dr_sesSig(apres);   /* la base commune : l'état reçu (ce que l'autre pilote savait), pas ce qu'ici a fait par-dessus */
+  DR_SES.dernier = v.par + '|' + v.ts; dr_sesMemo(DR_SES.dernier, v); dr_sesConnu(DR_SES.dernier);   /* sous la clé d'un état : CET état, le même chez tous les pilotes (la fusion d'ici, l'autre ne la connaît pas : prise pour base, elle effaçait ce qu'ici avait gardé — mesuré : la participation du téléphone, la réponse du second ordinateur) */ DR_SES.envoye = dr_sesSig(apres);   /* la base commune : l'état reçu (ce que l'autre pilote savait), pas ce qu'ici a fait par-dessus */
   /* la fusion a gardé quelque chose d'ici (un geste fait juste avant que l'état arrive, une réponse en cours) : il part — et si ce geste est récent, cet appareil prend la main */
-  const garde = renvoyer && ['S', 'parDiapo', 'vuMax', 'minut'].some(k => !dr_sesEq(dr_sesRange(p[k]), dr_sesRange(v[k])));
-  if (garde) { if (!dr_sesJeTiens() && !window.DR_TC && Date.now() - (DR_SES.geste || 0) < 2000) { DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; try { dr_sesMainAfficher(); } catch (e) {} }
+  const diff = (a, b) => { const A = dr_sesRange(a) || {}, B = dr_sesRange(b) || {}; return Array.from(new Set(Object.keys(A).concat(Object.keys(B)))).filter(k => !dr_sesEq(A[k], B[k])); };
+  DR_SES.gardeCles = renvoyer ? [].concat(diff(p.S, v.S).map(k => 'S.' + k), ['parDiapo', 'vuMax', 'minut'].filter(k => !dr_sesEq(dr_sesRange(p[k]), dr_sesRange(v[k])))) : [];
+  const garde = renvoyer && DR_SES.gardeCles.length > 0;
+  if (garde) { if (sale && !dr_sesJeTiens() && !window.DR_TC && Date.now() - (DR_SES.geste || 0) < 2000) { DR_SES.main = DR_SES.id; DR_SES.mainTc = false; DR_SES.forcer = true; DR_SES.prise = true; try { dr_sesMainAfficher(); } catch (e) {} }
+    else if (!dr_sesJeTiens()) DR_SES.contenu = true;   /* ce qu'ici a gardé, déjà parti ou fait sans geste : il part sans prendre la main (celui qui l'a le fusionne, et sa scène le montre) */
     DR_SES.envoye = ''; dr_sesEnvoyer(); }
+  else if (tiens) { try { dr_sesEmettreScene(); } catch (e) {} }
 }
 /* l'heure (ou l'essai) close sur un autre appareil : ce pilote le dit et revient à l'accueil ; rien n'est réécrit (l'autre a tout écrit) */
 function dr_sesClosAilleurs(v){
@@ -256,7 +281,7 @@ function dr_sesClosAilleurs(v){
 }
 
 /* ─── suivre : dès que cette page pilote une session, elle écoute son état vivant ; elle se tait quand la session s'arrête ici ─── */
-function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.envoiTs = 0; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
+function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.connus = new Set(); DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.mainTs = 0; DR_SES.prise = false; DR_SES.contenu = false; DR_SES.envoiTs = 0; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
 function dr_sesVeiller(){
   const ici = dr_sesIci();
   if (!ici) { if (DR_SES.ici) dr_sesSuivreFin(); return; }
@@ -269,7 +294,12 @@ function dr_sesVeiller(){
 if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
   setInterval(() => { try { dr_sesVeiller(); } catch (e) {} }, 400);
   /* un geste en cours (bouton appuyé) : l'état reçu attend le relâché ; un champ quitté : l'état reçu se pose, fusionné avec ce qui y a été écrit */
-  document.addEventListener('pointerdown', ev => { DR_SES.appui = true; if (!(ev.target && ev.target.closest && ev.target.closest('#ses-reprise, #dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true);
+  /* le champ fermé parce qu'un autre a pris la main : les lettres tapées dans la foulée ne tombent nulle part (sinon g gèlerait, l mettrait la loupe, Espace dévoilerait…) */
+  window.addEventListener('keydown', ev => { if (!DR_SES.coupe) return;
+    const a = document.activeElement; if (a && a !== document.body && (a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) { DR_SES.coupe = 0; return; }
+    const t = ev.timeStamp || 0; if (DR_SES.coupeEv ? t - DR_SES.coupeEv > 1500 : Date.now() - DR_SES.coupe > 5000) { DR_SES.coupe = 0; DR_SES.coupeEv = 0; return; }   /* l'écart entre deux touches, mesuré sur les touches elles-mêmes : une page occupée un instant ne l'arrête pas */
+    if (ev.key && ev.key.length === 1 && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { DR_SES.coupeEv = t; ev.preventDefault(); ev.stopImmediatePropagation(); } else if (ev.key !== 'Shift') { DR_SES.coupe = 0; DR_SES.coupeEv = 0; } }, true);
+  document.addEventListener('pointerdown', ev => { DR_SES.appui = true; DR_SES.coupe = 0; if (!(ev.target && ev.target.closest && ev.target.closest('#ses-reprise, #dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true);
   ['keydown', 'input', 'click'].forEach(t => document.addEventListener(t, ev => { if (!(ev.target && ev.target.closest && ev.target.closest('#ses-reprise, #dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true));   /* un geste d'ici : il prend la main */
   const relache = () => { DR_SES.appui = false; if (DR_SES.attente) setTimeout(() => { if (DR_SES.attente && !dr_sesOccupe()) { const a = DR_SES.attente; DR_SES.attente = null; dr_sesAppliquer(a); } }, 30); };
   document.addEventListener('pointerup', relache, true); document.addEventListener('pointercancel', relache, true);
@@ -570,7 +600,7 @@ function dr_tcMaj(){
   const tt = DR_TC.bas.querySelector('.minut .t'); const txt = typeof dr_mmss === 'function' ? dr_mmss(reste) : String(Math.ceil(reste / 1000)); if (tt && tt.textContent !== txt) tt.textContent = txt;   /* l'horloge ne pose que ses chiffres */
 }
 /* « Reprendre avec la télécommande » (et le QR scanné) : la télécommande prend la main ; l'ordinateur ferme son champ tel qu'il est et lui envoie son dernier état */
-function dr_tcPrendreMain(){ if (!DR_SES.ici) return; DR_SES.main = DR_SES.id; DR_SES.mainTc = true; DR_SES.forcer = true; clearTimeout(DR_SES.envT); try { dr_sesEnvoyerMaintenant(); } catch (e) {} DR_TC.murCle = ''; setTimeout(dr_tcMaj, 30); }
+function dr_tcPrendreMain(){ if (!DR_SES.ici) return; DR_SES.main = DR_SES.id; DR_SES.mainTc = true; DR_SES.forcer = true; DR_SES.prise = true; clearTimeout(DR_SES.envT); try { dr_sesEnvoyerMaintenant(); } catch (e) {} DR_TC.murCle = ''; setTimeout(dr_tcMaj, 30); }
 /* chaque bouton : le geste du pilote */
 function dr_tcGeste(a, ini){
   if (!DR_SES.ici) return; const $b = id => document.getElementById(id);

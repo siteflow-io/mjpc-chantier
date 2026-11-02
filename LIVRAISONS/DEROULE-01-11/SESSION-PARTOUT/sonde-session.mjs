@@ -120,7 +120,7 @@ const garde = async pg => { if (await pg.evaluate(() => !!(document.getElementBy
 const allerA = async (pg, eid) => { const L = await eidsDe(pg); const x = L.find(e => e.eid === eid); if (!x) return false; const v = await pg.$('#volet .vig[data-i="' + x.i + '"]'); if (!v) return false;
   await v.scrollIntoViewIfNeeded().catch(() => {}); await v.click(); await p(500); await garde(pg);
   for (let k = 0; k < 20 && (await ici_(pg)).eid !== eid; k++) await p(200); return (await ici_(pg)).eid === eid; };
-const toutDevoiler = async (pg, eid) => { await pg.click('#numero').catch(() => {}); for (let k = 0; k < 14; k++) { const s2 = await ici_(pg); if (s2.eid !== eid || /^(\d+) \/ \1 dévoilés|rien à dévoiler|vidéo/.test(s2.compte)) break; await pg.keyboard.press('ArrowRight'); await p(300); } await p(900); };
+const toutDevoiler = async (pg, eid) => { await pg.click('#numero').catch(() => {}); for (let k = 0; k < 14; k++) { const s2 = await ici_(pg); if (process.env.MJPC_DEBUG) console.log('      (débogage) toutDevoiler ' + k + ' ' + JSON.stringify(s2) + ' main ' + await pg.evaluate(() => DR_SES.main === DR_SES.id).catch(() => '?')); if (s2.eid !== eid || /^(\d+) \/ \1 dévoilés|rien à dévoiler|vidéo/.test(s2.compte)) break; await pg.keyboard.press('ArrowRight'); await p(300); } await p(900); };
 const sansErreur = (k, errs, quoi) => verif(k, !errs.length, quoi + ' : aucune erreur JS, aucune boîte système', errs.join(' ; '));
 const texteDe = (pg, sel) => pg ? pg.evaluate(sel => { const m = document.querySelector(sel); return m ? (m.innerText || '').replace(/\s+/g, ' ').trim() : null; }, sel).catch(() => null) : Promise.resolve(null);
 const temoins = pg => pg.evaluate(() => { const s = document.getElementById('dr-session'); const b = document.getElementById('mjpc-echecs-bandeau');
@@ -198,9 +198,15 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
   {
     const o3 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const b3 = await attendreBandeau(o3.pg);
     if (b3.b) { await o3.pg.click('#ses-reprise-oui').catch(() => {}); await p(4000); await o3.pg.keyboard.press('Escape').catch(() => {}); await p(400); await garde(o3.pg); }
-    const aQB = await garde(o.pg); await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1500);
+    await garde(o.pg); const aQB = await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1500);
     const k3 = [await cleDe(o.pg), await cleDe(o3.pg), await cleDe(tl.pg)];
     dire('      ' + mode + ' · un second ordinateur reprend aussi (' + (b3.b ? 'bandeau en ' + b3.t + ' ms' : 'PAS DE BANDEAU') + ') ; l’ordinateur va à « Question-bilan » (' + (aQB ? 'fait' : 'PAS TROUVÉE') + ') : ordinateur ' + k3[0] + ' · second ' + k3[1] + ' · téléphone ' + k3[2]);
+    if (process.env.MJPC_DEBUG) dire('      (débogage) le second avant la frappe : ' + JSON.stringify(await o3.pg.evaluate(() => { const a = document.activeElement; return { att: !!DR_SES.attente, occ: dr_sesOccupe(), appui: DR_SES.appui, act: a ? a.tagName + '#' + a.id + '.' + a.className + ' v=' + String(a.value || '').slice(0, 20) : null, main: DR_SES.main === DR_SES.id ? 'moi' : DR_SES.main, rejoint: DR_SES.rejoint, ap: DR_SES.attendrePremier, ici: !!DR_SES.ici }; }).catch(e => String(e))));
+    if (process.env.MJPC_DEBUG) for (const pg of [o.pg, o3.pg, tl.pg]) await pg.evaluate(() => { const noms = () => (S.parts || []).map(x => x && x.nom).filter(Boolean); DR_SES.dbgP = [];
+      ['dr_sesAppliquer', 'dr_sesPoserAutour', 'dr_sesEnvoyerMaintenant'].forEach(n => { const f = window[n]; window[n] = function (v) { const av = noms(); const r = f.apply(this, arguments); const ap = noms(); const perdus = av.filter(x => !ap.includes(x)); const gagnes = ap.filter(x => !av.includes(x));
+        if (perdus.length || gagnes.length || n === 'dr_sesEnvoyerMaintenant' && false) DR_SES.dbgP.push({ n, t: Date.now() % 100000, par: v && v.par, ts: v && v.ts % 100000, base: v && v.base, bConnue: !!(v && v.base && DR_SES.hist.get(v.base)), bP: v && v.base && DR_SES.hist.get(v.base) ? JSON.stringify(DR_SES.hist.get(v.base).S && DR_SES.hist.get(v.base).S.parts || null).length : -1, tP: v && v.S ? (v.S.parts || []).length : -1, perdus, gagnes, main: DR_SES.main === DR_SES.id }); return r; }; });
+      const pa = window.partAjoute; if (pa) window.partAjoute = function () { const r = pa.apply(this, arguments); DR_SES.dbgP.push({ n: 'partAjoute', t: Date.now() % 100000, nom: r && r.nom }); return r; };
+      const ec = window.dr_sesEcrire; window.dr_sesEcrire = function (ici, sous, v) { if (sous === '/vif') DR_SES.dbgP.push({ n: 'envoi', t: Date.now() % 100000, ts: v.ts % 100000, parts: (v.S && v.S.parts || []).length, main: v.main === DR_SES.id, cede: v.cede, g: (DR_SES.gardeCles || []).join(',') }); return ec.apply(this, arguments); }; }).catch(() => {});
     const ELV = await tl.pg.evaluate(() => { try { return { nom: ELEVES[0], ini: iniDe(ELEVES[0]) }; } catch (e) { return null; } });
     const REP = 'Le Romantisme met en scène la nature contre la règle';
     const dit = await o3.pg.$('#mur .rep.libre .dit'); let tape = false;
@@ -219,11 +225,14 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
     const REPv = garde3 && garde3.length >= 3 ? garde3 : REP;
     const vu = pg => pg.evaluate(([r, nom]) => { try { return { rep: JSON.stringify(parDiapo).indexOf(r) >= 0, part: (S.parts || []).some(x => x && x.nom === nom), cle: (() => { const m = S.mur; return m ? (m.eid || seance().ecrans[m.di].eid) + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null; })() }; } catch (e) { return String(e); } }, [REPv, ELV && ELV.nom]).catch(e => String(e));
     const V = { ordinateur: await vu(o.pg), second: await vu(o3.pg), telephone: await vu(tl.pg) };
+    if (process.env.MJPC_DEBUG) for (const [q, pg] of [['ordinateur', o.pg], ['second', o3.pg], ['telephone', tl.pg]]) dire('      (débogage) ' + q + ' ' + await pg.evaluate(() => DR_SES.id + ' ' + JSON.stringify(DR_SES.dbgP)).catch(e => String(e)));
+
     dire('      ' + mode + ' · la réponse tapée au second ordinateur (« ' + REP + ' »' + (tape ? '' : ', PAS TAPÉE') + '), l’ordinateur qui dévoile (▶ ← ▶), la participation de ' + (ELV ? ELV.nom + ' (' + ELV.ini + ')' : '?') + ' au téléphone : ' + JSON.stringify(V));
     await capt(o3.pg, pre + '05b-second-ordinateur-reponse'); await capt(o.pg, pre + '05b-ordinateur'); await capt(tl.pg, pre + '05b-telephone');
     verif(mode, dit && tape && garde3.length >= 3 && Object.values(V).every(x => x && x.rep), 'la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là (« ' + garde3 + ' ») est chez les trois pilotes, rien de perdu', V);
     verif(mode, ELV && Object.values(V).every(x => x && x.part), 'la participation saisie au téléphone pendant ce temps : chez les trois pilotes', V);
-    verif(mode, Object.values(V).every(x => x && x.cle && x.cle === V.ordinateur.cle), 'le dévoilement de l’ordinateur : chez les trois pilotes', V);
+    const sansPage = c => String(c || '').split('#').slice(0, 2).join('#');   /* la page dépend de la taille de l'écran de chaque appareil (DR_SES_VUE) : la diapo et le dévoilement */
+    verif(mode, Object.values(V).every(x => x && x.cle && sansPage(x.cle) === sansPage(V.ordinateur.cle)), 'le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement)', V);
     o.errs.push(...o3.errs, ...o3.boites); await o3.ctx.close();
     if (process.env.MJPC_STOP3) { await tl.ctx.close(); await T.ctx.close(); await o.ctx.close(); return; }
     /* qui a la main (Paul, 16:19) : l'ordinateur tape une réponse — chaque lettre au tableau en ≤ 0,5 s ; le téléphone (un pilote entier) note une participation :

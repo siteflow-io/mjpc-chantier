@@ -3,6 +3,10 @@
 function scAvancement(k) {
   const copie = state.copies[k], s = copie && copie.scan;
   if (!s) return null;
+  /* [C14 401] une copie du flux unique (recopie, corrigé de l'IA, bande) : 100 % quand elle est entièrement corrigée (recopiée jusqu'à sa phrase, chargée,
+     chaque arrêt de sa bande décidé, ses remarques relues) ; sinon ses étapes : la phrase 25, le corrigé chargé 25, la bande au prorata de ses arrêts 50 */
+  { const f = typeof avFlux === "function" ? avFlux(k) : null; if (f && (f.lignes || f.arrets)) { let fini = false; try { fini = typeof svCopieCorrigee === "function" ? svCopieCorrigee(k) : !!f.fini; } catch (e) { fini = !!f.fini; }
+    const p = fini ? 100 : Math.min(99, Math.round(25 * !!f.finie + 25 * !!f.charge + (f.arrets ? 50 * f.decides / f.arrets : 0))); return { commence: true, fait: p, total: 100, pct: p, flux: true }; } }
   const rep = s.rep || {}, marques = s.marques || {}, vu = s.vu || {};
   const commence = Object.keys(marques).length > 0 || Number(s.lignes) > 0
     || Object.values(vu).some(Boolean)
@@ -51,7 +55,7 @@ function avCarteFlux(k) {
     + e(!!f.charge, "chargée", f.charge ? "Corrigé de l’IA chargé " + rcHeure(f.charge.le) + " : " + pl(f.charge.fautes, "faute") + " proposée" + (f.charge.fautes > 1 ? "s" : "") + "." : "Le corrigé de l’IA n’est pas encore chargé.")
     + e(f.fini, f.arrets ? "bande " + f.decides + "/" + f.arrets : "bande", f.arrets ? f.decides + " arrêt" + (f.decides > 1 ? "s" : "") + " décidé" + (f.decides > 1 ? "s" : "") + " sur " + f.arrets + (f.fini ? " : la bande est finie." : ".") : "La bande attend le corrigé de l’IA.") + "</div>";
 }
-function avCarteEtat(k, pct, suivi) { if (avAbsent(k)) return '<b class="av-abs" title="Marqué absent : il ne compte ni dans le compteur, ni dans le Bilan, ni dans les fichiers École Directe. Clic droit sur sa carte : le marquer présent.">ABS</b>'; const f = avFlux(k); if (f && f.fini) return "Corrigé"; if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }
+function avCarteEtat(k, pct, suivi) { if (avAbsent(k)) return '<b class="av-abs" title="Marqué absent : il ne compte ni dans le compteur, ni dans le Bilan, ni dans les fichiers École Directe. Clic droit sur sa carte : le marquer présent.">ABS</b>'; const f = avFlux(k); if ((f && (f.lignes || f.arrets)) || suivi || pct > 0) return pct === 100 ? "Corrigé" : "En cours"; return "Non commencé"; }   // [C14 401] « Corrigé » et 100 % disent la même chose : entièrement corrigée (scAvancement)
 /* [C14 1.4.12.1] (Paul 01/11 08:47 : « quand je clique sur la carte d'un élève sans copie, ça affiche la copie et l'espace de correction d'un autre élève ») :
    la carte n'ouvre que la copie de son élève. Sans page à son nom dans le paquet, rien ne s'ouvre, et la fenêtre le dit ; les pages se lisent d'abord si besoin. */
 function avOuvrirCarte(k) {

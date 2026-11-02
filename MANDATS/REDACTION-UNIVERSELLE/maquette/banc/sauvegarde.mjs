@@ -20,7 +20,7 @@ export async function eprouverSauvegarde({ pg, verif, cap, att }) {
     const i = await pg.evaluate(k => Array.from(document.querySelectorAll("#gridEleves .eleve-card")).findIndex(c => eleveId(c.querySelector(".eleve-nom").textContent) === k), k); if (i < 0) continue;
     if (await pg.evaluate(i => document.querySelectorAll("#gridEleves .eleve-card")[i].classList.contains("absent"), i)) continue;
     await pg.locator("#gridEleves .eleve-card").nth(i).click({ button: "right" }); await att(200); await pg.click("#avAbsentBtn"); await att(500); nAbs++; }
-  await att(1200);
+  await att(1200); const titre0 = await pg.locator("#ruSousTitre").innerText();
   await ouvrirScans(); await pg.locator('#scCopie .sc-pq-el[data-k="' + choix.kS + '"] .sc-pq-vig').first().click(); await att(700);   /* [C14 404] sa copie, par sa vignette */
   await sansPhrase();
   if (choix.retaper) { const id = await pg.evaluate(() => { const x = rcLignesEcrites(RC.copie).find(y => typeof y.l.corrige === "string"); if (x && RC.page !== x.pid) rcActiverPage(x.pid); return x ? x.id : null; }); await att(200);
@@ -52,7 +52,11 @@ export async function eprouverSauvegarde({ pg, verif, cap, att }) {
   const dl2 = pg.waitForEvent("download"); await pg.click("#rcSauvegarde"); const d2 = await dl2, j2 = JSON.parse(fs.readFileSync(await d2.path(), "utf8"));
   await cap("C14-sauvegarde-3-depuis-le-flux"); await pg.click("#rcFluxFermer"); await att(150);
   const s2 = await pg.evaluate(() => window.__FAUX_HUB_FETCH("https://x.firebasedatabase.app/sauvegardes/redactions/" + RU.id + ".json").then(r => r.json()).then(s => s ? Object.keys(s).length : 0));
-  await pg.click("#rcFermer"); await att(200);
+  await pg.click("#rcFermer"); await att(200); await pg.locator('button[onclick="scFermer()"]').click(); await att(1000);
+  const titre1 = await pg.locator("#ruSousTitre").innerText(), carteS = await pg.evaluate(k => { const c = Array.from(document.querySelectorAll("#gridEleves .eleve-card")).find(c => eleveId(c.querySelector(".eleve-nom").textContent) === k); return c ? c.innerText.replace(/\s+/g, " ") : ""; }, choix.kS);
+  const fin0 = +((titre0.match(/· (\d+)\//) || [])[1]), fin1 = +((titre1.match(/· (\d+)\//) || [])[1]);
+  verif("tableau (C14 401) : la copie entièrement corrigée compte dans le compteur de la classe (« " + titre0 + " » → « " + titre1 + " ») ; sa carte : « " + carteS.slice(0, 110) + " »",
+    fin1 === fin0 + (choix.retaper ? 0 : 1) && /Corrigé/.test(carteS) && /100\s?%/.test(carteS));   /* une copie déjà finie, retapée puis refinie, était déjà comptée */
   const nom = /^Sauvegarde_Redaction-.+_\d{4}-\d\d-\d\d_\d\dh\d\d\.json$/;
   verif("sauvegarde (Paul 13:12) : " + nAbs + " élèves marqués absents par le geste, il reste la copie de " + choix.nom + " (" + (choix.retaper ? "finie : une ligne retapée lui donne un arrêt de plus" : choix.reste + " arrêt" + (choix.reste > 1 ? "s" : "") + " à décider") + ") ; le paquet " + (avant.paquet.complet ? "déjà fini" : "pas fini (" + avant.paquet.ok + " / " + avant.paquet.n + ")") + " à l'ouverture ; " + (parPhrase ? "« Pas de phrase » finit la copie" : n + " Entrée dans la bande") + " : la fenêtre s'ouvre seule (« " + mo.txt.slice(0, 150) + "… ») ; « " + mo.hub + " »",
     !!choix.kS && avant.copie === choix.kS && !avant.paquet.complet && !avant.modale && n < 400 && /Le paquet est entièrement corrigé/.test(mo.txt) && /(La copie du paquet est recopiée|Les \d+ copies du paquet sont recopiées)/.test(mo.txt) && /Les photos n’y sont pas/.test(mo.txt) && /^✓ Rangée au site/.test(mo.hub) && mo.bouton && mo.titres);

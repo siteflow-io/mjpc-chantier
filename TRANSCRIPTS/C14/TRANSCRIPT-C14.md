@@ -4470,3 +4470,31 @@ je sais ce qui fait casser: ce sont les erreurs que je refuse (celles qui n'en s
 02/11/2026 17:08
 
 MEMO
+
+---
+
+## Tour 159 — 02/11/2026 17:10
+
+**Paul (17:10) :**
+
+43 ok. en attendant je recomplète les arrêts manquants mais c'est pénible.
+
+**Ce qui a été fait (C14) :** codé sur la maquette (`c0b8e26f`) : la signature de l'écriture sous la forme du site (`scFb`) ; l'écho d'une écriture plus ancienne ignoré (`ruEchoAncien`), celui de la dernière appliqué ; un message du site ne revoit que les copies qu'il touche ; la copie ouverte gardée tant qu'une décision n'est pas enregistrée (`ruGarderLocal`). Le faux hub du banc renvoie chaque écriture comme le site (un flux, champs triés, 300 ms) ; nouvelle épreuve, huit décisions à une par seconde. Trouvé en chemin, par le banc et un journal : chaque message du site revoyait toutes les copies et remettait celles dont l'écho n'était pas encore arrivé (même « Tout effacer » en perdait deux) ; corrigé. Contrôle sur l'ancien code : voulues « oonnnn », la copie « oonono » ; sur la 1.4.27 : « oonnnn » partout. Une attente récrite (1.4.5, une place d'un arrêt d'avant). Banc complet 170/0. Vrai site, lecture seule : l'écho reconnu sur 24 copies sur 24 (la 1.4.26 : 0) ; export et tableau sans erreur. Candidate au sas : `redaction-1.4.27-RU-candidat.html`, 910 528 o, md5 `adbb4bec3369579857d2eea60a4e5ec3`, sa note.
+
+**Claude (17:58) :**
+
+À jouer : ton promeus (48) · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+45. 43 est prêt, dans la 1.4.27. L'app reconnaît maintenant sa propre copie quand le site la lui renvoie. Et une décision que tu viens de prendre n'est plus jamais effacée par ce qui revient du site.
+
+46. La preuve : le banc fait maintenant comme ton site, il renvoie chaque copie enregistrée. Dans la bande, une décision par seconde, au rythme d'une relecture : avec l'ancienne version, 2 décisions sur 6 se perdaient, comme chez toi ; avec la 1.4.27, aucune. En chemin, le banc a trouvé pire : chaque retour du site pouvait remettre aussi les autres copies, même juste après « Tout effacer » ; c'est corrigé. Banc complet : 170 vérifications, 0 défaut.
+
+47. Sur ton vrai site, sans rien y écrire : la version en ligne ne reconnaît sa propre copie sur aucune des 24 ; la 1.4.27 la reconnaît sur les 24.
+
+48. Promeus ? Après la mise en ligne, recharge la page avant de reprendre ta bande. Les arrêts déjà perdus restent à refaire : la carte les montre (« bande 47/49 »), et au bout de sa bande, Entrée t'y emmène.
+
+À tester : après la mise en ligne, une bande entière à ton rythme, puis la carte de cette copie : 100 %.
+
+02/11/2026 17:58
+
+MEMO

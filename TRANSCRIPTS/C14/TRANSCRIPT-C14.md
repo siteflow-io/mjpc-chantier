@@ -3895,7 +3895,7 @@ pas compris. Et toujours pas compris l'essai et ce que je dois faire.
 
 691. L'essai, en simple : avant que tu effaces tout, on vérifie avec ton IA, sur une vraie copie, que la nouvelle consigne marche. J'ai préparé le fichier d'essai avec sa copie seule, pour faire simple : la date et sa marge y sont déjà recopiées, par moi, d'après sa photo. Rien ne change sur ton site.
 
-692. Ce que tu fais, étape 1 : ouvre le fichier joint à ce message, « Redaction-1-…_1-copie_….json ».
+692. Ce que tu fais, étape 1 : télécharge le fichier joint à ce message, « Redaction-1-…_1-copie_….json ».
 
 693. Étape 2 : ouvre une nouvelle conversation avec ton IA, et donne-lui ce fichier, comme quand tu exportes pour l'IA.
 

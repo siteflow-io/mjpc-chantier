@@ -543,3 +543,5 @@ MEMO
   > 02/11/2026 11:07
   >
   > MEMO
+- **11:12 — le cinquième exécutant : banc 4 VERT** (sur `ddd8a94`, comme le banc 3) ; il rejoue ensuite l'étape 11 cinq fois seule (sa NOTE §4.2), sans pousser : sa NOTE finale pas encore poussée à 11:42.
+- **11:44 — l'exécutant des correctifs lancé** (mandat `MANDAT-CORRECTIFS.md`, base `ddd8a94` — le code final du cinquième, ses bancs 3 et 4 VERTS ; branche `deroule/correctifs`, dossier `/home/claude/ex-correctifs` ; aucun navigateur avant que la machine soit libre ; la NOTE du cinquième fusionnée quand elle sera poussée, sans code ; délai 2 h). Le cinquième ne touche plus au code : les deux ne travaillent pas sur les mêmes fichiers.

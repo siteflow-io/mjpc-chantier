@@ -4582,3 +4582,33 @@ ok mesure et reviens me dire.
 02/11/2026 19:03
 
 MEMO
+
+---
+
+## Tour 163 — 02/11/2026 20:16
+
+**Paul (20:16) :**
+
+alors là j'ai un cas : j'ai fait tout l'import export des dylan, corrigé tout le paquet. puis je me suis rendu compte que je n'avais pas contrôlé les paragraphes. Du coup j'ai tout recalé, et la seule solution que j'ai maintenant c'est de tout recommencer. D'autre part, l'export IA ne foncitonne plus (parce que correction complète à mon avis?)
+
+**Ce qui a été fait (C14) :** lu le code (`rcExportIA`, `rcCopieACorriger`, `stAEnvoyer`, `rcParagraphes`, `stIAReussites`, la relecture des remarques) ; relu le vrai site en lecture seule (0 écriture), 3 Dylan Bob : 24 copies, 777 lignes écrites, 777 avec leur corrigé à jour, 895 décisions de bande, les stickers revenus entiers sur les 24, 24 commentaires gardés ; les paragraphes recalculés comme l'app (`rcParagraphes`) sur le site relu à 16:41 (pour l'écho) et maintenant : 14 copies changées, uniquement par des ¶ à la main (30 lignes), aucun texte changé, aucune ligne déplacée ; la grille : 8 stickers dépendent des paragraphes (S7 à S13, S31) ; 14 commentaires gardés sur 24 parlent de paragraphes ; sur les 14 copies changées, tous les stickers de paragraphes proposés par l'IA avaient été gardés. Les remarques déjà gardées ne se rouvrent pas (aucun geste). L'essai de 55 (scan.js) reste non commité.
+
+**Claude (20:22) :**
+
+À jouer : ton mot sur 60 et 64 · en cours : rien · ouvert : 60, 64, le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+61. Oui, l'export ne part plus parce que tout est fait. Mesuré sur ton site, sans rien y écrire : les 24 copies des Dylan ont leur corrigé sur leurs 777 lignes, et leurs stickers sont tous revenus. Il n'y a plus rien à envoyer. Mais le bouton ne te le dit pas, et ça, c'est un défaut de l'app : il doit toujours dire pourquoi rien ne part.
+
+62. Ne recommence pas tout, et ne clique pas « 🗑 Tout effacer » : il effacerait tes 895 décisions de la bande pour rien. Les paragraphes ne changent rien aux fautes. Ce qui dépend des paragraphes : 8 stickers de ta grille (S7 à S13, et S31 « Chaque paragraphe a sa nuance »), les remarques de l'IA sur ces stickers, et le commentaire général (14 commentaires sur 24 parlent de paragraphes).
+
+63. Ce que tu as changé, mesuré : par rapport à ton site relu à 16:41, tu as changé des ¶ sur 14 copies sur 24 (30 lignes en tout). Aucun texte n'a changé, aucune ligne n'a bougé ; les 10 autres copies ont les mêmes paragraphes. Sur ces 14, tu avais gardé tous les stickers de paragraphes que l'IA proposait. Je compare à 16:41 et pas à 14:29, l'heure de l'export : entre les deux, je ne sais pas.
+
+64. Ma proposition, à ton mot, dans la même 1.4.28 que 55. L'app retient les paragraphes qu'elle envoie avec chaque copie. Si tu changes un ¶ après le retour de l'IA, la copie redevient « à envoyer », mais seulement pour ses 8 stickers de paragraphes, leurs remarques et son commentaire général. Au retour, les fautes et tes 895 décisions ne bougent pas ; la bande ne s'arrête que là où l'avis de l'IA a changé, puis sur les remarques et le commentaire. Pour les Dylan, partis avant cette version, les 14 copies mesurées en 63 repartent : deux envois, 8 puis 6. Et « ⇪ Exporter » dit toujours pourquoi rien ne part.
+
+65. À la main, sans attendre, c'est possible pour les stickers. Dans la bande de chaque copie, tu cliques dans la liste à droite sur S7 à S13 ou S31, puis Entrée (réussi) ou N (non) ; « ＋ Un sticker » pour un sticker que l'IA n'avait pas proposé ; le commentaire général se change au bout. Mais les remarques déjà gardées ne se rouvrent pas : un sticker que tu passes à N n'aura pas de remarque pour l'élève. Mon conseil : 64.
+
+À tester : rien de neuf en ligne. Ne touche plus aux ¶ des Dylan d'ici ta réponse : la mesure de 63 resterait juste.
+
+02/11/2026 20:22
+
+MEMO

@@ -4300,3 +4300,35 @@ déjà l'élève corrige dans son html. Il faut relier ce html au site, afin que
 02/11/2026 16:06
 
 MEMO
+
+---
+
+## Tour 154 — 02/11/2026 16:08
+
+**Paul (16:08) :**
+
+17, l'élève fera la correction en salle multimédia pour l'instant en classe, donc le test iphone on verra plus tard. Pour 14 OK. 20. OK. mais moi je pensais à des questions aussi sur tout le reste de la grille. ON peut très bien calibrer des questions sur la compétence non réussie de la grille. MEsure en dictée comment ça se passe justement sur la langue. Et attention: on doit faire en sorte que les questions soient les plus fines possibles pour que l'élève voit le lien entre son erreur et la question qu'on lui pose. Tu vois? Et ensuite, il fait une fiche perso qu'il recopie et qui récapitule toutes les règles qu'il n'a pas tenues. Tu as compris?
+
+**Ce qui a été fait (C14) :** mesuré dans `correction_dictee.html` : `acChoisirQuestion` tire la question au hasard dans la série du type de la faute (`acBanquePour`), sans regarder l'erreur ; la banque : 105 questions, 61 notions de la taxonomie, une règle par question. Mesuré dans la rédaction : chaque faute de la bande porte la classe précise du moteur de la dictée et sa règle (`rcNotion` → `GRAMM.classify`). Écrit au sas (`A-CODER-CORRECTION-ELEVE.md`).
+
+**Claude (16:13) :**
+
+À jouer : ton mot sur 24 à 26 · en cours : rien · ouvert : ce que rapportent les questions dans sa note sur 5 (le sujet d'après), ce qu'on reprend tel quel, un peu, beaucoup, les sujets suivants de ce cadrage, le test iPhone École Directe (plus tard), 738 (après ce cadrage), la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+21. Noté : la correction en salle multimédia, le test iPhone plus tard ; 14 et 20 : oui.
+
+22. Ce que j'ai compris : des questions sur toute la grille, pas seulement sur la langue ; chaque question au plus près de son erreur, pour qu'il voie le lien ; à la fin, une fiche perso qu'il recopie, avec toutes les règles qu'il n'a pas tenues.
+
+23. Mesuré en dictée : la question d'un essai raté est tirée au hasard dans la série de son type (grammaire, lexique, ponctuation, élision). Elle ne regarde pas l'erreur elle-même. Un raté sur un accord du verbe peut donc donner une question sur l'infinitif : le lien est lâche.
+
+24. Pour la langue, plus fin : dans ta bande, chaque faute porte déjà le nom précis de son erreur, donné par le moteur de la dictée (accord, conjugaison, participe passé, accent, homophone…), et sa règle. Ma proposition : sa question est prise dans la même erreur précise ; s'il n'y en a pas, dans la même série. Pour cela, il faut relier les noms d'erreurs du moteur aux notions de ta banque : c'est la concordance.
+
+25. Pour le reste de la grille, aucune question n'existe. Ma proposition : quand ton IA fait une grille, elle écrit aussi, pour chaque sticker, une ou deux questions qui ne testent que lui (par exemple : « Laquelle de ces phrases est une litote ? »). Tu les valides avec le sticker, une fois pour toute la classe. Pour ta grille actuelle, ton IA les écrit une fois. Un élève qui n'a pas réussi un sticker reçoit sa question.
+
+26. La fiche perso : à la fin, l'app lui montre ses règles non tenues, chacune une seule fois. Pour une faute, la règle de sa question ou celle du moteur ; pour un sticker, ce qu'il a à faire. Il la recopie dans son cahier.
+
+À tester : rien de neuf.
+
+02/11/2026 16:13
+
+MEMO

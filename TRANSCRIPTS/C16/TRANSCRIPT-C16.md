@@ -782,3 +782,25 @@ MEMO
   > 02/11/2026 14:17
   >
   > MEMO
+- **14:19 — Paul, mot pour mot** : « ok mais une seule autorisation, là j'ai du enchainer quasi dix autorisations c'était pénible »
+- **14:20-14:21 — la lecture du vrai hub, deux gestes seulement** (un onglet, la page JSON de `deroule_joue/3_franklin_aretha`, lue en texte ; onglet fermé) — l'heure `2026-11-02_08h57-09h52_3_franklin_aretha` : `sur: 1` ; `decisionsParActivite.a2` « reporter » 09:47 (fin) ; `decisionsParEcran` : 9 diapos de l'activité 2 (« Groupe 1 : l'hypothèse », les images et hypothèses des groupes 2 à 5) ; « Le bilan » sans décision ; `activites` : les diapos jouées seulement ; `absents` : 2 élèves (slugs) ; `etat.S.appel` absent ; le récit « 3 élèves sur 30 présents » ; `journal` : fin-section 2 à 7, `clore-quand-meme` (manque « copié pour École Directe »). Les noms d'élèves de ces données ne sont recopiés nulle part. Lu dans le code : `dr_absentsDeLaCase` (dr-classe.js) ne lit `H/absents` qu'au lancement et à la reprise ; aucun lecteur de la décision « reporter » hors de la fin d'heure (`grep`).
+- **14:22 — l'auditeur de la fin d'heure lancé** (`MANDATS/DEROULE-01-11/MANDAT-AUDIT-FIN-HEURE.md`, `07f30c4` ; branche `audit/fin-heure` ; mesurer seulement ; 45 min). **14:22 — la vérification de ⑭ au tableau distant** (la partie L qui attend la page, 1366 et 1920) lancée. La maquette de la télécommande a tourné (14:19-14:20 : le bandeau, « Diapo 6 sur 26 · Analyse d'images : la routine », « 3 / 6 dévoilés » comme au pilote ; la liste de la classe pas encore lue : à corriger avant de la montrer à Paul).
+- **14:23 — message à Paul, mot pour mot :**
+
+  > 199. J'ai lu ton heure de ce matin dans tes vraies données, en lecture seule. L'appel d'abord. Les deux absents que tu as notés après coup, par la case de l'emploi du temps, sont bien enregistrés pour cette heure. Mais l'heure elle-même n'a aucun appel, et le récit dit « 3 élèves sur 30 présents ». La raison est lue dans le code : les absents notés dans la case ne sont lus qu'au lancement de l'heure ou à sa reprise. Notés après la fin, rien ne les relit : c'est pour ça que la relecture dit « aucun élève absent ».
+  >
+  > 200. Le glissé. À 09:47, tu as choisi « Reporter à la séance suivante » pour l'activité 2, « Mise en commun ». Le site l'a bien enregistré sur ses 9 diapos restantes : « Groupe 1 : l'hypothèse », puis les tableaux et les hypothèses des groupes 2 à 5. Mais dans le code, je n'ai trouvé personne qui relise ensuite ce « reporter » : ni l'emploi du temps, qui garde son plan (séance 1 lundi, séance 2 mardi), ni la séance suivante. C'est pour ça que mardi montre la séance 2. Et « Le bilan », qui n'appartient à aucune activité, n'a reçu aucune décision.
+  >
+  > 201. Ta question sur les tableaux : dans ton heure, ils ne sont pas comptés comme faits. Dans cette séance, l'activité 1 « Analyse d'images » n'a qu'une diapo, la routine en 6 étapes ; les cinq tableaux appartiennent à l'activité 2. Le site a donc reporté les 9 diapos non faites de l'activité 2, mais il te les a présentées en une seule ligne, « Activité 2 — Mise en commun », avec une seule décision à prendre. C'est le décalage entre activités et diapos que tu as senti. Ce que l'emploi du temps en fait ensuite, je ne le sais pas encore.
+  >
+  > 202. Il reste à mesurer, par le geste : où le site propose l'appel au lancement et à la fin ; combien de clics demande chaque étape de la fin d'heure, et où cliquer pour reporter ; ce que montre la case de mardi après la clôture ; ce que dit la relecture quand l'appel est fait pendant l'heure. Un auditeur le joue en ce moment sur une copie, sans toucher au site, sur la version en ligne et sur celle des correctifs. Je te rapporte ses chiffres et ses captures avant 15:10.
+  >
+  > 203. La mise en ligne B. Le banc est vert, sauf deux points que je vérifie. Le tableau distant dépasse parfois la demi-seconde. Sur cinq passages, la nouvelle version a fait 451, 658 et 460 ms, et la version en ligne 364 et 420 ms : la nouvelle est donc un peu plus lente. Au point 186, je l'avais dite « au même niveau », mais je l'avais écrit avant de mesurer : c'était faux. Ensuite, pour « L'Albatros » au tableau distant, deux mesures ont échoué. Je vérifie en ce moment si c'est la sonde qui lit trop tôt, ou un vrai défaut. Je ne te demande le « promeus » que si c'est la sonde.
+  >
+  > À jouer : rien · en cours : l'auditeur de la fin d'heure (jusqu'à 15:10) ; ma vérification de « L'Albatros » au tableau distant ; l'exécutant des correctifs, en attente de la machine · ouvert : rien
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 14:23
+  >
+  > MEMO

@@ -901,3 +901,16 @@ MEMO
   > 02/11/2026 15:02
   >
   > MEMO
+- **15:05 — Paul, mot pour mot** : « en revanche il va falloir accélérer. »
+- **15:05 — la conscience** : à l'exécutant de ㉞ (message) — mission 0 réduite à la base et aux deux parcours de Paul, les captures à 15:50, tout prouvé à 17:00, la vraie heure et le mode test d'abord, pas de banc d'exécutant.
+- **15:05 — message à Paul, mot pour mot :**
+
+  > 227. Compris. L'exécutant de ㉞ a de nouveaux délais : les captures à 15:50 au lieu de 16:31, et tout prouvé à 17:00 au lieu de 18:01. Il ne mesure plus que tes deux parcours, et il code d'abord la vraie heure et le mode test ; la répétition suit. Moi, je passe le banc dès qu'il livre, et la maquette de l'appel part dans l'heure.
+  >
+  > À jouer : rien · en cours : l'exécutant de ㉞ (captures à 15:50) ; ma maquette de l'appel · ouvert : rien
+  >
+  > À tester : la liste de 14:34.
+  >
+  > 02/11/2026 15:05
+  >
+  > MEMO

@@ -1359,3 +1359,5 @@ MEMO
   > À jouer : rien avant ton « promeus » · en cours : rien · ouvert : ton « promeus » (277)
   >
   > MEMO
+- **21:43 — Paul, mot pour mot** : « Promeus »
+- **21:44 — la conscience, la promotion 8.80.0-⑬** : la candidate (l'assemblé `a6a63afc` de `49826c1f0` + `APP_VERSION="8.80.0-⑬"`, seule la ligne 3138 diffère) copiée en production, commit `72e1934`, blob `9a96d9508a05`, md5 `8b2310e708683a979e1fde390844eb29` (2 959 837 o), poussé à 21:44 ; l'adresse publique le rend bit à bit à 21:45:32 (revérifié après la poussée des docs ; `?v=8.80.0` dit `APP_VERSION="8.80.0-⑬"`). Docs (production `137f782`) : le point de retour (blob `16a89127fc7a`), le journal, le registre ✔ (㉞, ㊴, 256), l'index des fonctions régénéré (2 320), où trouver quoi (dont l'adresse `index.html?n=3e&v=8.80.0`). Le mandat de l'appel : sa base écrite (`49826c1f0`).

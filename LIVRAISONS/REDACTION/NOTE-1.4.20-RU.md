@@ -2,14 +2,14 @@
 
 *Sur l'ordre de Paul (01/11, 22:49) : « il faut terminer effectivement tout le reste. À coder cette nuit. Tout doit être opérationnel demain matin à 5h30. » Rien n'est en ligne : la mise en ligne attend son mot (C14 600).*
 
-- Fichier : `redaction-1.4.20-RU-candidat.html`, 870 693 o, md5 `e5bb52992088a6597272f57c7b3cbf4b`. Base en ligne : 1.4.19-RU, md5 `55c27b0af397b48d2af2b8c6c491fa38`.
-- Maquette et bancs : branche `c14-poignees`, commit `0a8cf90c`.
+- Fichier : `redaction-1.4.20-RU-candidat.html`, 870 858 o, md5 `7f0d9ff76069722e7d807fb4309284a5`. Base en ligne : 1.4.19-RU, md5 `55c27b0af397b48d2af2b8c6c491fa38`.
+- Maquette et bancs : branche `c14-poignees`, commit `a80cea9f`.
 
 ## Ce que ça change pour Paul
 - **404 — le paquet en vignettes.** Hors de « 🔤 Les initiales », l'écran des scans montre le paquet : chaque élève, son nom, ses étapes (recopiée, envoyée, chargée, la bande) et ses pages en vignettes. Un clic sur une page ouvre sa recopie à cette page ; Échap y revient. Une page sans élève vient en tête, avec « 🔤 Les initiales ». Les passes, le pinceau, les questions, le récapitulatif, le chrono des passes et « ↺ Remettre à zéro » sont partis. Un redessin du paquet ne touche jamais au focus.
 - **403 — le chrono.** En haut de la recopie : « ⏱ recopie 12 min · bande 4 min » pour la copie affichée, compté seul (une minute sans geste ne compte pas). Sous « 📋 Le flux » : le total de la classe.
 - **402 — « 📷 La photo ».** Un seul bouton ; sa fenêtre : Remplacer, Tourner, Retoucher, Ordre des pages, Retirer les photos. Un bouton grisé dit pourquoi, en dessous. Ta recopie, tes marques et les cadres suivent la page. Une copie de l'appli tourne « en vue » : quatre quarts de tour reviennent au même.
-- **405 — « 📦 Tout rendre ».** Dans « 📨 Fichiers École Directe » : un seul zip, un fichier par élève, nommé comme dans la liste de la classe (« NOM Prénom.html »). Un fichier seul porte le même nom.
+- **405 — « 📦 Tout rendre ».** Dans « 📨 Fichiers École Directe » : un seul zip, un fichier par élève, nommé comme dans la liste de la classe (« NOM Prénom.html »). Un fichier seul porte le même nom. La colonne « Correction » de la liste suit le flux unique : la note, ou « corrigée », « en cours, N % », « pas commencée » (plus de « 0 points sur 12 »).
 - **La sauvegarde JSON étendue (Paul 13:12).** Toute la rédaction telle qu'elle est au site (le sujet et sa grille de stickers, les copies : recopie, envois, corrigés, bande, stickers, remarques, temps ; les pages du paquet ; les retours). Quand le paquet passe à « entièrement corrigé », l'app la range au site (`sauvegardes/redactions/<rédaction>/…`) et propose « 💾 Télécharger la sauvegarde ». « 💾 Télécharger la sauvegarde » est aussi dans « 📋 Le flux ». Même format que « 📸 Snapshot » : « 📤 Restaurer » la relit. Les photos n'y sont pas.
 - **406 — le Bilan.** Deux colonnes, « Lignes » et « Ton temps » ; en bas, toute la classe. « ▸ sa grille » : chaque ligne de la grille d'une copie corrigée avec les stickers, ses points, son niveau, ses stickers réussis.
 - **407 — l'aide « ? ».** Récrite pour le paquet, la recopie, la bande, le Bilan, les Fiches élèves et les Réglages : seulement ce qui reste.

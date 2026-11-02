@@ -402,7 +402,7 @@ function stRqRelecture(k) {
 /* la phrase de l'élève qui contient le passage, telle que tu l'as recopiée (les lignes de la copie, bout à bout) : avant, le passage, après */
 function stPhraseRecopiee(k, id, de, a) {
   const L = rcLignesEcrites(k), coupes = new Set(); let T = "", deb = -1, fin = -1, entiere = false, avant = "";
-  /* [C14 1.4.17] une ligne finie par une virgule, suivie d'une ligne qui commence par une majuscule, finit la phrase (« Cher Marie, » puis « Je suis au front… ») */
+  /* [C14 1.4.17] une ligne finie par une virgule, suivie d'une ligne qui commence par une majuscule, finit la phrase (« Ma chère Louise, » puis « Je t'écris depuis la tranchée… ») */
   L.forEach(x => { const t = x.l.texte || ""; if (T) { if (/,\s*$/.test(avant) && /^\s*[A-ZÀ-Ý]/.test(t)) coupes.add(T.length); T += " "; } avant = t; const o = T.length; if (x.id === id) { const P = rcPosMots(t); if (de != null && a > de && P[de] && P[a - 1]) { deb = o + P[de][0]; fin = o + P[a - 1][1]; } else { deb = o; fin = o + t.length; entiere = true; } } T += t; });
   if (deb < 0) return null; let s = deb; while (s > 0 && !/[.!?…]/.test(T[s - 1]) && !coupes.has(s - 1)) s--; let e = fin; while (e < T.length && !/[.!?…]/.test(T[e - 1]) && !coupes.has(e)) e++;
   return entiere ? { avant: T.slice(s, e).trim(), passage: "", apres: "" } : { avant: T.slice(s, deb).replace(/^\s+/, ""), passage: T.slice(deb, fin), apres: T.slice(fin, e) };

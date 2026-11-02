@@ -1047,7 +1047,7 @@ function rcPlaceSeg(a) {
    entiers ; chaque bord se cale sur le blanc entre deux mots le plus proche, mesuré sur la photo (les traits d'encre de la ligne) ; au bout de la ligne, sur l'encre */
 function rcCalerMots(e, texte, x0, x1, c0, c1, u) {
   const tr = e && e.traits; if (!tr || !tr.length) return [x0, x1];
-  /* les mots de la ligne comme l'élève les écrit : les morceaux entre deux blancs de ta recopie, la ponctuation collée au mot d'avant (« front, », « j'observe ») */
+  /* les mots de la ligne comme l'élève les écrit : les morceaux entre deux blancs de ta recopie, la ponctuation collée au mot d'avant (« Louise, », « j'écris ») */
   const T = String(texte || ""), W = [], re = /\S+/g; let m; while ((m = re.exec(T))) { if (W.length && /^[.,;:!?…»)\]]+$/.test(m[0])) W[W.length - 1].b = m.index + m[0].length; else W.push({ a: m.index, b: m.index + m[0].length }); }
   const bl = []; for (let i = 0; i + 1 < tr.length; i++) bl.push({ g: tr[i][1], d: tr[i + 1][0], l: tr[i + 1][0] - tr[i][1] });
   const tri = bl.map(b => b.l).sort((p, q) => q - p), n = W.length, i0 = W.findIndex(w => c0 < w.b), i1 = W.findIndex(w => Math.max(c0, c1 - 1) < w.b);

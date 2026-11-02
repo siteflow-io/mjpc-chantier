@@ -43,16 +43,20 @@ function dr_sesTaire(h){ if (!h) return; h.fini = true; clearInterval(h.T); try 
 function dr_sesIci(){
   try {
     if (typeof dr_estTableau === 'function' && dr_estTableau()) return null;
-    if (typeof S !== 'object' || !S || S.repetition || S.atelier) return null;
+    if (typeof S !== 'object' || !S || S.atelier) return null;
+    if (S.repetition) {   /* la répétition (§3.5) : son annonce à elle (hors mode test `/site/repetition`, en mode test `/site/tableau_test`, `quoi: 'repetition'`) */
+      if (dr_sesTest()) return (DR_TT.sig && DR_TT.quoi === 'repetition') ? { sorte: 'repetition', base: DR_TT.chemin, sig: 'repetition|' + DR_TT.sig, test: true } : null;
+      return (typeof DR_REP === 'object' && DR_REP.sig) ? { sorte: 'repetition', base: DR_REP.chemin, sig: 'repetition|' + DR_REP.sig } : null; }
     if (!(S.lancee && !S.close && typeof AT_DR_REGIME !== 'undefined' && AT_DR_REGIME === 'classe' && AT_DR_COURS)) return null;
     const C = dr_cheminC(); if (!C) return null;
-    if (dr_sesTest()) { if (!DR_TT.sig || DR_TT.quoi !== 'heure') return null; return { sorte: 'essai', base: DR_TT.chemin, sig: 'essai|' + DR_TT.sig, C }; }
+    if (dr_sesTest()) { if (!DR_TT.sig || DR_TT.quoi !== 'heure') return null; return { sorte: 'essai', base: DR_TT.chemin, sig: 'essai|' + DR_TT.sig, C, test: true }; }
     return { sorte: 'heure', base: C, sig: 'heure|' + (dr_cheminH() || C), C };
   } catch (e) { return null; }
 }
 /* écrire l'état vivant : l'heure par le transport du site (ses reprises, son témoin) ; l'essai à son adresse d'essai (jamais le magasin) */
 function dr_sesEcrire(ici, sous, v){
-  if (ici.sorte === 'essai') { if (typeof dr_ttEcrire === 'function') dr_ttEcrire(sous, v, true); return; }
+  if (ici.test) { if (typeof dr_ttEcrire === 'function') dr_ttEcrire(sous, v, true); return; }
+  if (ici.sorte === 'repetition') { if (typeof dr_repEcrire === 'function') dr_repEcrire(ici.base + sous, v); return; }   /* `dr_ecrire` refuse tout en répétition */
   if (typeof dr_ecrire === 'function') dr_ecrire(ici.base + sous, v, 'La session en direct (les autres appareils suivent)', () => {});
 }
 
@@ -67,14 +71,14 @@ function dr_sesSig(p){ return JSON.stringify([p.S, p.parDiapo, p.vuMax, (p.J || 
 function dr_sesCopie(){ try { return dr_empreinte(seance().ecrans); } catch (e) { return ''; } }
 
 /* ─── envoyer : après chaque geste (le rendu, la sauvegarde, le minuteur), seulement si quelque chose a changé ─── */
-function dr_sesEnvoyer(){ if (DR_SES.appl) return; clearTimeout(DR_SES.envT); DR_SES.envT = setTimeout(dr_sesEnvoyerMaintenant, 20); }
+function dr_sesEnvoyer(){ if (DR_SES.appl || dr_sesAttend()) return; clearTimeout(DR_SES.envT); DR_SES.envT = setTimeout(dr_sesEnvoyerMaintenant, 20); }
 function dr_sesEnvoyerMaintenant(close){
-  const ici = close ? DR_SES.ici : dr_sesIci(); if (!ici || DR_SES.appl) return;
+  const ici = close ? DR_SES.ici : dr_sesIci(); if (!ici || DR_SES.appl || (!close && dr_sesAttend())) return;
   if (DR_SES.attente && !close) { if (dr_sesOccupe()) return; const a = DR_SES.attente; DR_SES.attente = null; dr_sesAppliquer(a); return; }
   const ph = dr_sesPhoto(); const sig = dr_sesSig(ph);
   if (!close && sig === DR_SES.envoye) return;
   /* la scène part avec le geste (pas 250 ms après) : le tableau distant suit aussitôt ; son heure sert d'horloge logique aux autres pilotes */
-  try { if (!close) { if (ici.sorte === 'essai') { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } } catch (e) {}
+  try { if (!close) { if (ici.test) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } } catch (e) {}
   const ts = Math.max(Date.now(), DR_SES.vu + 1, (DR_TAB.dernierTs || 0) + 1); DR_SES.vu = ts; DR_SES.envoye = sig; DR_SES.socle = ph;
   const v = Object.assign({ par: DR_SES.id, ts, sig: ici.sig, sorte: ici.sorte, close: !!close, sts: DR_TAB.dernierTs || 0,
     cours: (typeof dr_coursIci === 'function' ? dr_coursIci() : null), H: dr_cheminH(), debutReel: S.debutReel || null }, ph);
@@ -83,19 +87,26 @@ function dr_sesEnvoyerMaintenant(close){
   dr_sesEcrire(ici, '/vif', v);
 }
 
+/* un appareil qui REJOINT une session (la reprise d'une heure ou d'un essai, une répétition adoptée) n'envoie rien avant d'avoir posé le premier état
+   reçu — sinon son état de départ (relu au hub un peu plus tôt, ou celui d'une répétition neuve) passerait devant les gestes de l'autre ; 3 s sans état reçu : il envoie */
+function dr_sesAttend(){ if (DR_SES.rejoint && Date.now() - DR_SES.rejoint < 20000) return true;   /* une reprise en cours : rien ne part avant qu'elle ait abouti */
+  const t = DR_SES.attendrePremier; if (!t) return false; if (Date.now() - t > 3000) { DR_SES.attendrePremier = 0; return false; } return true; }
 /* ─── recevoir ─── */
 function dr_sesOccupe(){
   if (DR_SES.appui) return true;
   const a = document.activeElement; if (!a || a === document.body) return false;
-  return !!(a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
+  if (a.isContentEditable || a.tagName === 'SELECT') return true;   /* un texte de la diapo où l'on écrit, un menu déroulé */
+  return /^(INPUT|TEXTAREA)$/.test(a.tagName) && !/^(button|checkbox|radio|range|submit)$/i.test(a.type || '') && String(a.value || '') !== '';   /* un champ où l'on a commencé à écrire (la palette, que le pilote garde sous le curseur, vide : non) */
 }
 function dr_sesRecu(v){
   const ici = DR_SES.ici; if (!ici || !v || typeof v !== 'object') return;
-  if (v.par === DR_SES.id || v.sig !== ici.sig) return;
+  if (v.par === DR_SES.id || v.sig !== ici.sig) { if (v && v.sig !== ici.sig && dr_sesAttend()) DR_SES.attendrePremier = 0; return; }
   if (!(v.ts > DR_SES.recu)) return; DR_SES.recu = v.ts; DR_SES.vu = Math.max(DR_SES.vu, v.ts);
   try { DR_TAB.dernierTs = Math.max(DR_TAB.dernierTs || 0, (+v.sts || 0) + 50, v.ts); } catch (e) {}   /* ma prochaine scène passe après la sienne */
-  if (v.close) { dr_sesClosAilleurs(v); return; }
+  if (v.close) { DR_SES.attendrePremier = 0; dr_sesClosAilleurs(v); return; }
   if (dr_sesOccupe()) { DR_SES.attente = v; return; }
+  const premier = !!DR_SES.attendrePremier; DR_SES.attendrePremier = 0;
+  if (premier) DR_SES.socle = null;   /* le premier état reçu fait foi : l'état de départ d'ici n'est pas un geste */
   dr_sesAppliquer(v);
 }
 /* la fusion à trois voies : ce que seul l'un a changé est gardé ; les deux ont changé : le plus récent (le sien, puisqu'il arrive après) */
@@ -131,7 +142,7 @@ function dr_sesAppliquer(v){
     try { tout(); } catch (e) {}
     J.length = 0; J1.forEach(o => J.push(o));   /* le rendu journalise ce qu'il montre : ici, c'est déjà au journal reçu */
     try { if (typeof participation === 'function') participation(); } catch (e) {}
-    if (ici.sorte === 'essai' && typeof dr_scene === 'function' && S.mur) { const sc = dr_scene(S.mur); if (sc) { sc.trameMaj = DR_TT.trameMaj || 0; DR_TT.emis = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); } }   /* la scène est déjà au hub : rien ne repart d'ici */
+    if ((ici.test || ici.sorte === 'repetition') && typeof dr_scene === 'function' && S.mur) { const X = ici.test ? DR_TT : DR_REP; if (!ici.test) dr_repTrame(false); else dr_ttTrame(false); const sc = dr_scene(S.mur); if (sc) { sc.trameMaj = X.trameMaj || 0; X.emis = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); } }   /* la scène est déjà au hub : rien ne repart d'ici */
     clearTimeout(DR_TAB.emT);
   } finally { DR_SES.appl = false; }
   const apres = dr_sesPhoto(); DR_SES.socle = apres; DR_SES.envoye = dr_sesSig(apres);
@@ -140,6 +151,12 @@ function dr_sesAppliquer(v){
 /* l'heure (ou l'essai) close sur un autre appareil : ce pilote le dit et revient à l'accueil ; rien n'est réécrit (l'autre a tout écrit) */
 function dr_sesClosAilleurs(v){
   const ici = DR_SES.ici; DR_SES.closVu[v.sig] = true; dr_sesSuivreFin();
+  if (v.sorte === 'repetition') {   /* « ■ Arrêter » sur un autre appareil : la répétition s'arrête ici aussi (ce qui y a été joué est oublié, comme toujours) */
+    DR_SES.arretAilleurs = true;
+    try { if (typeof DR_REP === 'object') DR_REP.sig = null; if (ici && ici.test) { clearInterval(DR_TT.T); DR_TT.T = null; DR_TT.sig = null; DR_TT.quoi = null; } } catch (e) {}
+    try { arreterRepetition(); } catch (e) {} DR_SES.arretAilleurs = false;
+    try { atInfo('La répétition a été arrêtée sur un autre appareil : elle s’arrête ici aussi.'); } catch (e) {}
+    if (window.DR_TC && typeof dr_tcClos === 'function') dr_tcClos(v); return; }
   try { [DR_CL.jT, DR_CL.eT, DR_CL.tT, DR_CL.cT].forEach(clearTimeout); } catch (e) {}
   try { S.close = true; S.lancee = false; S.mur = null; S.gel = null; document.body.classList.remove('gel'); } catch (e) {}
   try { if (typeof AT_DR_REGIME !== 'undefined') AT_DR_REGIME = 'prep'; } catch (e) {}
@@ -162,6 +179,7 @@ function dr_sesVeiller(){
   if (!ici) { if (DR_SES.ici) dr_sesSuivreFin(); return; }
   if (DR_SES.ici && DR_SES.ici.sig === ici.sig) { DR_SES.ici = ici; if (dr_sesSig(dr_sesPhoto()) !== DR_SES.envoye) dr_sesEnvoyer(); return; }
   dr_sesSuivreFin(); DR_SES.ici = ici;
+  if (DR_SES.rejoint) { DR_SES.rejoint = 0; DR_SES.attendrePremier = Date.now(); }   /* cet appareil a rejoint la session : le premier état reçu fait foi (3 s au plus) */
   DR_SES.ec = dr_sesEcouter(ici.base + '/vif', v => dr_sesRecu(v), 300);
   dr_sesEnvoyer();
 }
@@ -176,9 +194,10 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
 /* les gestes qui changent la session : le rendu (`dr_tout`), la sauvegarde (`dr_copieAuto`), le minuteur (`dr_minuteurEnvoyer`) — après eux, l'envoi */
 ['dr_tout', 'dr_copieAuto', 'dr_minuteurEnvoyer'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const r = f.apply(this, arguments); try { if (!DR_SES.appl && DR_SES.ici) dr_sesEnvoyer(); } catch (e) {} return r; }; g.__ses = true; window[n] = g; });
-/* pendant qu'un état reçu se pose, rien ne repart d'ici (la scène, la copie, l'état : l'autre pilote les a écrits) */
-['dr_sceneAuto', 'dr_copieAuto'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
-  const g = function () { if (DR_SES.appl) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });
+/* pendant qu'un état reçu se pose, rien ne repart d'ici (la scène, la copie, l'état : l'autre pilote les a écrits) ; et pendant qu'un état reçu attend la fin
+   d'une frappe ici, la scène d'ici ne repart pas non plus (elle montrerait au tableau un état en retard sur l'autre pilote) : elle repart, fusionnée, à la sortie du champ */
+['dr_sceneAuto', 'dr_copieAuto', 'dr_ttEmettre', 'dr_repEmettre'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
+  const g = function () { if (DR_SES.appl || (n !== 'dr_copieAuto' && DR_SES.attente && dr_sesOccupe())) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });
 /* clore ici : l'état vivant part une dernière fois, « clos », pour les autres pilotes ; puis la clôture d'avant (le pointeur, l'image d'essai) */
 (function(){ const f = window.dr_cloreFin; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const ici = dr_sesIci() || DR_SES.ici; if (ici) { DR_SES.ici = ici; try { dr_sesEnvoyerMaintenant(true); } catch (e) {} }
@@ -240,6 +259,7 @@ function dr_sesVeilleDemarrer(){
   if (DR_SES.annEc.length) return;
   DR_SES.annEc.push(dr_sesEcouter('/site/cours_actif', v => { DR_SES.ann.heure = v; dr_sesBandeau(); }, 1500));
   DR_SES.annEc.push(dr_sesEcouter(DR_TT.chemin + '/pointeur', v => { DR_SES.ann.essai = v; dr_sesBandeau(); }, 1500));
+  if (typeof DR_REP === 'object') DR_SES.annEc.push(dr_sesEcouter(DR_REP.chemin + '/pointeur', v => { DR_SES.ann.rep = v; dr_sesBandeau(); }, 1500));
   setInterval(dr_sesBandeau, 1000);
 }
 function dr_sesBandeau(){
@@ -252,10 +272,12 @@ function dr_sesBandeau(){
     const h = DR_SES.ann.heure, t = DR_SES.ann.essai;
     if (dr_sesFrais(h)) c = Object.assign({}, h, { __sorte: 'heure' });
     else if (dr_sesFrais(t) && t.quoi === 'heure') c = Object.assign({}, t, { __sorte: 'essai' });
+    else if (dr_sesFrais(DR_SES.ann.rep)) c = Object.assign({}, DR_SES.ann.rep, { __sorte: 'repetition', test: false });   /* une heure lancée prime ; puis l'essai ; puis la répétition */
+    else if (dr_sesFrais(t) && t.quoi === 'repetition') c = Object.assign({}, t, { __sorte: 'repetition', test: true });
     if (!c) { const loc = (typeof dr_heurePartie === 'function') ? dr_heurePartie() : null; if (dr_sesFrais(loc) && !dr_sesTest()) c = Object.assign({}, loc, { __sorte: 'heure' }); }
     if (!c) { if (SES._reprise) sesRepriseRetirer(); return; }
     if (c.__sorte === 'heure' && typeof dr_heureTenueAilleurs === 'function' && dr_heureTenueAilleurs(_drSignatureCours(c))) { if (SES._reprise) sesRepriseRetirer(); return; }   /* un autre onglet de ce navigateur la tient (§12.28-3 d) */
-    const cle = c.__sorte + '|' + (c.__sorte === 'essai' ? c.ts + '|' + c.seance : _drSignatureCours(c));
+    const cle = c.__sorte + '|' + (c.__sorte !== 'heure' ? c.ts + '|' + c.seance : _drSignatureCours(c));
     if (DR_SES.closVu[cle]) return;
     if (SES._reprise && SES._reprise.__cle === cle) return;   /* déjà là : rien ne se redessine (§12.56 (1) a) */
     c.__cle = cle;
@@ -264,7 +286,222 @@ function dr_sesBandeau(){
   } catch (e) {}
 }
 /* le texte du bandeau, selon ce qui joue */
-function dr_sesTexte(c){ return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '')
+function dr_sesTexte(c){ if (c && c.__sorte === 'repetition') return '<b>Répétition en cours' + (c.test ? ' (mode test)' : '') + '</b>';
+  return c && c.__sorte === 'essai' ? '<b>Essai en cours (mode test)</b> — ' + escapeHtml(c.classeNom || c.classeSlug || '')
   : 'Heure en cours avec les <b>' + escapeHtml((c && (c.classeNom || c.classeSlug)) || '') + '</b>'; }
-function dr_sesBulle(c){ return c && c.__sorte === 'essai' ? 'Cet appareil pilote l’essai qui joue (en mode test, rien n’est enregistré pour la classe), là où il en est : il passe en mode test le temps de l’essai. Ce que tu fais ici, le tableau et les autres appareils le suivent.'
+function dr_sesBulle(c){ if (c && c.__sorte === 'repetition') return 'Cet appareil joue la même répétition, là où elle en est (rien n’est écrit pour la classe)' + (c.test ? ' ; il passe en mode test le temps de la répétition' : '') + '. Ce que tu fais ici, le tableau distant et les autres appareils le suivent.';
+  return c && c.__sorte === 'essai' ? 'Cet appareil pilote l’essai qui joue (en mode test, rien n’est enregistré pour la classe), là où il en est : il passe en mode test le temps de l’essai. Ce que tu fais ici, le tableau et les autres appareils le suivent.'
   : 'Cet appareil pilote l’heure de cette classe, là où elle en est : la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l’appel. Ce que tu fais ici, le tableau et les autres appareils le suivent ; rien n’est créé.'; }
+
+/* ═══ LA RÉPÉTITION (§3.5) : déclarée et repilotable comme l'heure ═══
+   L'annonce existait (`/site/repetition/pointeur` ; en mode test `/site/tableau_test/pointeur`, `quoi: 'repetition'`) ; l'état vivant vit à côté
+   (`/site/repetition/vif`, `/site/tableau_test/vif`). Une heure lancée prime au tableau distant, comme aujourd'hui (§12.41 (2)). Reprendre : l'appareil
+   ouvre la séance dans l'Atelier, lance la répétition et adopte son pointeur (jamais une deuxième) ; le premier état reçu le met où elle en est. */
+function dr_sesReprendreRepetition(p){
+  const test = !!(p.test || p.chemin === DR_TT.chemin);
+  if (test && !dr_sesTest()) { try { M8_TEST = true; sessionStorage.setItem('mjpc_m8_test', '1'); } catch (e) {} try { atInfo('Cet appareil passe en mode test le temps de la répétition : rien n’est enregistré pour la classe.'); } catch (e) {} }
+  DR_SES.rejoindre = { sig: p.ts + '|' + p.seance, p: Object.assign({}, p, { quoi: 'repetition' }) };
+  try { if (typeof edtFermer === 'function') edtFermer(); if (typeof edtModaleFermer === 'function') edtModaleFermer(); } catch (e) {}
+  try { atelierOuvrir(); } catch (e) {}
+  atChargerChapitres(p.niveau, () => { try { atEditerChapitre(p.niveau, p.chapitre); } catch (e) {} ATVUES.snum = String(p.seance);
+    edtQuandPilotagePret(manque => { if (manque) { try { atInfo('La répétition ne s’ouvre pas ici (manque : ' + manque + ').'); } catch (e) {} return; }
+      try { atVuesAller('pilotage'); } catch (e) {} if (S.repetition) return; DR_SES.rejoint = Date.now(); try { lancerRepetition(); } catch (e) {} }); });
+}
+/* relancer la même répétition ailleurs la rejoint ; une autre répétition joue : le site le dit avant */
+(function(){ const f = window.lancerRepetition; if (typeof f !== 'function' || f.__ses) return;
+  const g = function () { const self = this, args = arguments; if (S.repetition || DR_SES.rejoindre) return f.apply(self, args);
+    const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || {}; const sn = String(typeof ATVUES !== 'undefined' ? ATVUES.snum : '');
+    const meme = x => dr_sesFrais(x) && String(x.niveau) === String(ec.level) && String(x.chapitre) === String(ec.chnum) && String(x.seance) === sn;
+    const test = dr_sesTest(); const ch = test ? DR_TT.chemin + '/pointeur' : DR_REP.chemin + '/pointeur'; let fait = false;
+    const lancer = () => { if (fait) return; fait = true; f.apply(self, args); };
+    setTimeout(lancer, 1500);   /* le hub ne répond pas : la répétition part quand même, ici */
+    dr_sesLireHub(ch, p => { if (fait) return; const rep = p && (test ? p.quoi === 'repetition' : true) && dr_sesFrais(p);
+      if (rep && meme(p)) { DR_SES.rejoindre = { sig: p.ts + '|' + p.seance, p: Object.assign({}, p, { quoi: 'repetition' }) }; DR_SES.rejoint = Date.now(); lancer(); return; }
+      if (rep && !(test ? DR_TT.sig : DR_REP.sig)) { fait = true; dr_sesDemander('Une répétition joue déjà sur un autre appareil (séance ' + (p.seance != null ? (+p.seance + 1) : '?') + ').', () => dr_sesReprendreRepetition(p), () => { f.apply(self, args); }); return; }
+      lancer(); }); };
+  g.__ses = true; window.lancerRepetition = g; })();
+/* « ■ Arrêter » ici : l'état vivant part une dernière fois, « clos », pour les autres appareils ; puis l'arrêt d'avant (le pointeur, la scène) */
+(function(){ const f = window.arreterRepetition; if (typeof f !== 'function' || f.__ses) return;
+  const g = function () { const ici = DR_SES.arretAilleurs ? null : (dr_sesIci() || (DR_SES.ici && DR_SES.ici.sorte === 'repetition' ? DR_SES.ici : null));
+    if (ici && ici.sorte === 'repetition') { DR_SES.ici = ici; try { dr_sesEnvoyerMaintenant(true); } catch (e) {} }
+    const r = f.apply(this, arguments); if (ici) { DR_SES.closVu[ici.sig] = true; dr_sesSuivreFin(); } return r; };
+  g.__ses = true; window.arreterRepetition = g; })();
+/* la reprise d'une heure (ou d'un essai) rejoint : le premier état reçu fait foi */
+(function(){ const f = window.dr_reprendre; if (typeof f !== 'function' || f.__ses) return;
+  const g = function () { DR_SES.rejoint = Date.now(); return f.apply(this, arguments); }; g.__ses = true; window.dr_reprendre = g; })();
+
+/* ═══ LA TÉLÉCOMMANDE PAR LE QR CODE (§3.6 ; Paul, 14:59 : « regarde le fonctionnement dans évaluation qcm. Je scanne le qr code, et ça me met
+   directement sur la séance ») ════════════════════════════════════════════════════════════════════════════════════════════════════════════
+   Le modèle : `evaluation-qcm.html` (`QRPilotage`) — l'adresse porte un nonce (`…&telecommande=1&qr=<nonce>`), le téléphone écrit `…/<nonce>/scan`, la
+   fenêtre du QR l'écoute et se ferme ; l'image du QR vient de `api.qrserver.com` (gratuit, sans compte ; le site n'a pas de QR dessiné dans la page).
+   Le nonce est posé au hub par l'ordinateur quand il montre le QR (`/site/telecommande/<nonce>` ; en mode test `/site/tableau_test/telecommande/<nonce>`) :
+   le téléphone ne pilote que si le nonce existe et a moins de 15 minutes (puis il le garde dans son onglet : F5 le garde télécommande).
+   Le téléphone est un pilote de la session (il la reprend, comme « Reprendre ») ; par-dessus, l'allure de la maquette acquise (MAQUETTE-TELECOMMANDE,
+   C16 194, captures du 02/11 14:26) : l'en-tête (la classe, « Diapo n sur N », la diapo), le tableau tel que le voit la classe, « n / N dévoilés »,
+   ◀ ▶, ❄ Geler, « QUI A PARLÉ » avec les initiales de la classe (deux élèves aux mêmes initiales : celles du pilote, `iniDe`, qui les numérote), le
+   minuteur. Chaque bouton fait le geste du pilote (◀ ▶ : les boutons du pilote eux-mêmes) ; l'état vivant le porte aux autres pilotes et au tableau. ═══ */
+const DR_TC_BULLE = 'Télécommande : montre un QR code ; scanne-le avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette séance, en télécommande (◀ ▶, geler, qui a parlé, le minuteur). '
+  + 'Ce que tu y fais, la classe le voit au tableau et cet ordinateur le suit. La fenêtre se ferme d’elle-même quand le téléphone l’a scanné.';
+function dr_tcChemin(nonce, test){ return (test ? DR_TT.chemin : '/site') + '/telecommande/' + nonce; }
+function dr_tcEcrire(ch, v, test){
+  if (typeof dr_estTableau === 'function' && dr_estTableau()) return;
+  if (test) { if (ch.indexOf(DR_TT.chemin + '/') === 0 && typeof dr_ttEcrire === 'function') dr_ttEcrire(ch.slice(DR_TT.chemin.length), v, true); return; }   /* en mode test : seulement l'adresse d'essai */
+  try { fetch(FIREBASE_BASE + ch + '.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(v) }).catch(() => {}); } catch (e) {}
+}
+/* côté ordinateur : le bouton, dans la barre des actions rapides, tant que cette page pilote une session */
+function dr_tcBouton(){
+  if (window.DR_TC) return; const ou = document.getElementById('bqui'); let b = document.getElementById('dr-tc-btn');
+  if (!b && ou) { b = document.createElement('button'); b.className = 'rond'; b.id = 'dr-tc-btn'; b.type = 'button'; b.textContent = '📱'; b.title = DR_TC_BULLE; b.setAttribute('aria-label', '📱 Télécommande');
+    b.addEventListener('click', ev => { ev.stopPropagation(); dr_tcQrOuvrir(); }); ou.insertAdjacentElement('afterend', b); }
+  if (b) { const v = DR_SES.ici ? '' : 'none'; if (b.style.display !== v) b.style.display = v; }
+}
+var DR_TC_QR = null;
+function dr_tcQrOuvrir(){
+  const ici = DR_SES.ici; if (!ici || document.getElementById('dr-tc-qr')) return;
+  const nonce = 'tc' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); const test = dr_sesTest(); const ch = dr_tcChemin(nonce, test);
+  dr_tcEcrire(ch, { ts: Date.now(), sorte: ici.sorte, sig: ici.sig }, test);
+  const niv = ((typeof AT !== 'undefined' && AT && AT.edChap) || {}).level || ((location.search.match(/[?&]n=([^&]+)/) || [])[1]) || '';
+  const url = location.href.split(/[?#]/)[0] + '?n=' + encodeURIComponent(niv) + '&telecommande=1&qr=' + nonce + (test ? '&test=1' : '');
+  const d = document.createElement('div'); d.className = 'ses-qr-fond'; d.id = 'dr-tc-qr';
+  d.innerHTML = '<div class="ses-qr-boite"><button class="ses-qr-x" id="dr-tc-qr-x" title="Ferme cette fenêtre ; rien ne change">✕</button>'
+    + '<h3>📱 Télécommande</h3><p>Scanne ce code avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette séance' + (ici.sorte === 'repetition' ? ' (la répétition)' : ici.sorte === 'essai' ? ' (l’essai, en mode test)' : '') + ', en télécommande. Cette fenêtre se ferme d’elle-même quand le téléphone l’a scanné.</p>'
+    + '<img id="dr-tc-qr-img" alt="QR code de la télécommande" width="280" height="280" style="display:block;margin:10px auto;width:280px;height:280px;background:#fff;border-radius:8px">'
+    + '<div class="ses-qr-url" id="dr-tc-qr-url"></div></div>';
+  d.querySelector('#dr-tc-qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=10&data=' + encodeURIComponent(url);
+  d.querySelector('#dr-tc-qr-url').textContent = url;
+  d.addEventListener('click', ev => { if (ev.target === d || ev.target.id === 'dr-tc-qr-x') dr_tcQrFermer(false); });
+  document.body.appendChild(d);
+  DR_TC_QR = { ch, test, url, h: dr_sesEcouter(ch + '/scan', v => { if (v) dr_tcQrFermer(true); }, 700) };
+}
+function dr_tcQrFermer(scanne){
+  const q = DR_TC_QR; DR_TC_QR = null; const d = document.getElementById('dr-tc-qr'); if (d) d.remove(); if (!q) return; dr_sesTaire(q.h);
+  if (!scanne) dr_tcEcrire(q.ch, null, q.test);   /* fermée sans scan : le nonce ne sert plus ; scanné, il reste (le téléphone l'a gardé dans son onglet) */
+  if (scanne) try { atInfo('Le téléphone est branché : c’est ta télécommande. Ce que tu y fais paraît ici et au tableau.'); } catch (e) {}
+}
+if (!(typeof dr_estTableau === 'function' && dr_estTableau())) setInterval(() => { try { dr_tcBouton(); } catch (e) {} }, 400);
+
+/* côté téléphone : `?telecommande=1&qr=<nonce>` */
+window.DR_TC = (function(){ try { if (/[?&]vue=tableau(&|$)/.test(location.search) || !/[?&]telecommande=1(&|$)/.test(location.search)) return null; const m = /[?&]qr=([A-Za-z0-9_-]{4,80})(&|$)/.exec(location.search); if (!m) return null;
+  return { nonce: m[1], test: /[?&]test=1(&|$)/.test(location.search), etat: 'ouvre', rec: null, h: '', murCle: '', basCle: '', T: null }; } catch (e) { return null; } })();
+const DR_TC_STYLE = 'body.tc-on{background:#0f0d0a!important;overflow:hidden!important}'
+  + '#tc-haut,#tc-bas,#tc-accueil{position:fixed;left:0;right:0;z-index:2147483000;font-family:"EB Garamond",Garamond,Georgia,serif;color:#efe6d6;background:#0f0d0a}'
+  + '#tc-haut{top:0;padding:10px 14px 8px;border-bottom:1px solid #332a20}'
+  + '#tc-haut .cl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}#tc-haut .cl b{font-size:19px;letter-spacing:.02em}#tc-haut .cl .vif{font-size:14px;color:#7fb77e;white-space:nowrap}'
+  + '#tc-haut .di{margin-top:3px;font-size:16px;color:#b9ab94;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#tc-haut .di b{color:#e4b45c;font-weight:600}'
+  + '#tc-bas{bottom:0;padding:8px 12px 14px;border-top:1px solid #332a20;display:flex;flex-direction:column;gap:10px;overflow:auto}'
+  + '#tc-bas .voit{display:flex;justify-content:space-between;font-size:15px;color:#b9ab94}#tc-bas .voit .gel{color:#8fc4ea}'
+  + '#tc-bas .rang{display:flex;gap:10px}'
+  + '#tc-bas button{font-family:inherit;background:#241e17;border:1px solid #4a3d2f;color:#efe6d6;border-radius:12px;padding:0;touch-action:manipulation}'
+  + '#tc-bas .gros{flex:1;height:76px;font-size:30px;font-weight:600}#tc-bas .gros.or{flex:1.6;background:#3a2c14;border-color:#e4b45c;color:#e4b45c}'
+  + '#tc-bas .moyen{flex:1;height:52px;font-size:19px}#tc-bas .moyen.gelon{background:#1d2a33;border-color:#8fc4ea;color:#8fc4ea}'
+  + '#tc-bas h4{margin:2px 0 0;font-size:13px;letter-spacing:.12em;color:#7d7061;font-weight:600}'
+  + '#tc-bas .eleves{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}#tc-bas .eleves button{height:40px;font-size:15px}#tc-bas .eleves button.on{background:#22301f;border-color:#7fb77e;color:#7fb77e}'
+  + '#tc-bas .minut{display:flex;gap:8px;align-items:center}#tc-bas .minut .t{flex:1.3;text-align:center;font-size:30px;font-variant-numeric:tabular-nums;color:#e4b45c}#tc-bas .minut button{flex:1;height:48px;font-size:17px}'
+  + '#tc-accueil{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:24px 18px;gap:18px}'
+  + '#tc-accueil .rien{text-align:center;color:#b9ab94;font-size:19px;line-height:1.4}'
+  + '#tc-accueil .band{background:#1b1712;border:1px solid #e4b45c;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}#tc-accueil .band .q{font-size:20px;line-height:1.3}'
+  + '#tc-accueil .band button{height:60px;font-size:20px;font-weight:600;font-family:inherit;background:#3a2c14;border:1px solid #e4b45c;color:#e4b45c;border-radius:12px}'
+  + 'body.tc-on #ses-tab.tc-tab{position:fixed;left:0;width:100vw;height:calc(100vw * 9 / 16);z-index:2147482999;overflow:hidden;background:#0f0d0a}'
+  + 'body.tc-on #ses-reprise{display:none!important}';
+function dr_tcPoser(){
+  if (document.getElementById('tc-haut')) return; const st = document.createElement('style'); st.id = 'tc-style'; st.textContent = DR_TC_STYLE; document.head.appendChild(st);
+  document.body.classList.add('tc-on');
+  const mk = (id, cl) => { const z = document.createElement('div'); z.id = id; if (cl) z.className = cl; document.body.appendChild(z); return z; };
+  DR_TC.haut = mk('tc-haut'); DR_TC.tab = mk('ses-tab', 'tc-tab'); DR_TC.mur = document.createElement('div'); DR_TC.mur.className = 'mur tableau'; DR_TC.mur.id = 'tc-mur'; DR_TC.tab.appendChild(DR_TC.mur);
+  DR_TC.bas = mk('tc-bas'); DR_TC.acc = mk('tc-accueil');
+  /* un seul écouteur par zone, posé une fois (§12.56 (1) e) */
+  DR_TC.bas.addEventListener('click', ev => { const b = ev.target && ev.target.closest && ev.target.closest('button[data-a]'); if (!b) return; ev.preventDefault(); dr_tcGeste(b.dataset.a, b.dataset.ini); });
+  DR_TC.acc.addEventListener('click', ev => { const b = ev.target && ev.target.closest && ev.target.closest('button[data-a]'); if (!b) return; if (b.dataset.a === 'garde') { const o = document.getElementById(b.dataset.id); if (o) o.click(); setTimeout(dr_tcMaj, 50); } if (b.dataset.a === 'rejoindre') dr_tcRejoindre(); });
+}
+function dr_tcPoserSi(z, h){ if (z.__h !== h) { z.innerHTML = h; z.__h = h; } }
+const dr_tcEsc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function dr_tcAccueil(h){ DR_TC.haut.style.display = 'none'; DR_TC.bas.style.display = 'none'; DR_TC.tab.style.display = 'none'; DR_TC.acc.style.display = ''; dr_tcPoserSi(DR_TC.acc, h); }
+/* le démarrage : le nonce vérifié au hub, le scan écrit, la séance reprise — sans rien choisir */
+function dr_tcDemarrer(){
+  dr_tcPoser(); dr_tcAccueil('<div class="rien">📱 La télécommande s’ouvre…</div>');
+  let garde = null; try { garde = JSON.parse(sessionStorage.getItem('mjpc-tc') || 'null'); } catch (e) {}
+  const ch = dr_tcChemin(DR_TC.nonce, DR_TC.test);
+  dr_sesLireHub(ch, rec => {
+    const ok = rec && rec.ts && (Date.now() - rec.ts) < 15 * 60000; const deja = garde && garde.nonce === DR_TC.nonce && garde.rec;
+    if (!ok && !deja) { DR_TC.etat = 'perime'; dr_tcAccueil('<div class="rien">Ce QR code n’est plus valable.<br>Sur l’ordinateur, clique 📱 dans la barre du pilote : un nouveau code paraît.</div>'); return; }
+    DR_TC.rec = ok ? rec : garde.rec; try { sessionStorage.setItem('mjpc-tc', JSON.stringify({ nonce: DR_TC.nonce, rec: DR_TC.rec })); } catch (e) {}
+    try { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); } catch (e) {}   /* le QR vaut la session du professeur, pour cette page */
+    if (DR_TC.test && !dr_sesTest()) { try { M8_TEST = true; sessionStorage.setItem('mjpc_m8_test', '1'); } catch (e) {} }
+    if (ok && !deja) dr_tcEcrire(ch + '/scan', Date.now(), DR_TC.test);   /* la fenêtre du QR, sur l'ordinateur, se ferme */
+    dr_tcRejoindre();
+    clearInterval(DR_TC.T); DR_TC.T = setInterval(dr_tcMaj, 400);
+  });
+}
+function dr_tcRejoindre(){
+  if (DR_SES.ici || !DR_TC.rec) return; DR_TC.etat = 'ouvre'; const s = DR_TC.rec.sorte;
+  const rien = () => { DR_TC.etat = 'rien'; dr_tcMaj(); };
+  if (s === 'essai') { dr_sesLireHub(DR_TT.chemin + '/pointeur', p => { if (dr_sesFrais(p) && p.quoi === 'heure') dr_sesReprendreEssai(p, ok => { if (!ok) rien(); }); else rien(); }); return; }
+  if (s === 'repetition') { dr_sesLireHub((DR_TC.test ? DR_TT.chemin : DR_REP.chemin) + '/pointeur', p => { if (dr_sesFrais(p) && (!DR_TC.test || p.quoi === 'repetition')) dr_sesReprendreRepetition(Object.assign({}, p, { test: DR_TC.test })); else rien(); }); return; }
+  dr_sesLireHub('/site/cours_actif', c => { if (!dr_sesFrais(c)) { rien(); return; } _drHeureCloseAu(c, close => { if (close) { rien(); return; } dr_reprendreCours(c); }); });
+}
+function dr_tcClos(v){ DR_TC.etat = 'clos'; DR_TC.murCle = ''; dr_tcMaj(); }
+/* le dessin : seulement ce qui a changé (§12.56 (1)) ; pendant un appui, rien ne bouge */
+function dr_tcMaj(){
+  if (!DR_TC || !DR_TC.haut) return; if (DR_SES.appui) return;
+  const ici = DR_SES.ici; const g = document.getElementById('garde'); const gardeOn = g && g.classList.contains('on');
+  if (gardeOn) {   /* une garde du pilote (une diapo d'une autre heure…) : elle se dit ici, ses boutons font la même chose */
+    const t = (g.querySelector('h3, .titre, b') || {}).innerText || ''; const p = (g.querySelector('p') || {}).innerText || '';
+    const bs = Array.from(g.querySelectorAll('button')).filter(b => b.offsetParent !== null && b.id).map(b => '<button data-a="garde" data-id="' + dr_tcEsc(b.id) + '">' + dr_tcEsc(b.innerText.trim()) + '</button>').join('');
+    dr_tcAccueil('<div class="band"><div class="q">' + dr_tcEsc(t) + '</div><div class="rien" style="font-size:16px;text-align:left">' + dr_tcEsc(p) + '</div>' + bs + '</div>'); return; }
+  if (!ici || !(S.mur || S.gel)) {
+    dr_tcAccueil(DR_TC.etat === 'clos' ? '<div class="rien">La séance est close.<br>La télécommande s’arrête ici.</div>'
+      : DR_TC.etat === 'rien' ? '<div class="rien">Aucune séance en cours.<br>Lance l’heure sur l’ordinateur de la classe,<br>puis scanne de nouveau son QR code.</div><div class="band"><button data-a="rejoindre" title="Cherche de nouveau la séance qui joue">Chercher la séance</button></div>'
+      : DR_TC.etat === 'perime' ? (DR_TC.acc.__h || '') : '<div class="rien">📱 La séance s’ouvre…</div>'); return; }
+  DR_TC.acc.style.display = 'none'; DR_TC.haut.style.display = ''; DR_TC.bas.style.display = ''; DR_TC.tab.style.display = '';
+  const vu = S.gel || S.mur; const E = seance().ecrans; const e = E[vu.di] || {};
+  let et = ''; try { const x = dr_etiquetteDe(vu); et = x == null ? '' : (typeof x === 'string' ? x : (x.t || x.txt || '')); } catch (x) {} const titre = et || e.act || '';
+  const fil = vu.fil || null; const nom = ici.sorte === 'repetition' ? 'Répétition' : ((typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) || '');
+  const vif = ici.sorte === 'essai' ? '● en direct · essai' : ici.sorte === 'repetition' ? '● en direct' : '● en direct';
+  dr_tcPoserSi(DR_TC.haut, '<div class="cl"><b>' + dr_tcEsc(nom) + '</b><span class="vif" title="La télécommande suit la séance en direct' + (ici.test ? ' (mode test : rien n’est enregistré pour la classe)' : '') + '">' + vif + '</span></div>'
+    + '<div class="di">' + (fil ? 'Diapo <b>' + (fil.r + 1) + ' sur ' + fil.n + '</b> · ' : '') + dr_tcEsc(titre) + '</div>');
+  /* le tableau, tel que le voit la classe (le rendu du tableau distant, `dr_rendreMur`, dans sa boîte) */
+  const hb = DR_TC.haut.getBoundingClientRect().bottom; const top = Math.round(hb + 6) + 'px'; if (DR_TC.tab.style.top !== top) DR_TC.tab.style.top = top;
+  const mc = JSON.stringify(vu); if (mc !== DR_TC.murCle) { DR_TC.murCle = mc; try { dr_rendreMur(vu, null, DR_TC.mur); } catch (x) {} }
+  const bt = Math.round(DR_TC.tab.getBoundingClientRect().bottom + 6) + 'px'; if (DR_TC.bas.style.top !== bt) DR_TC.bas.style.top = bt;
+  let tot = null; try { tot = elements(e).length; } catch (x) {} const nd = +vu.nDev || 0;
+  const L = (typeof ELEVES !== 'undefined' && ELEVES) ? ELEVES : []; const parle = n => (S.parts || []).some(p => p && p.nom === n && (p.heure == null || p.heure === S.heure));
+  const nb = L.filter(parle).length; const m = (typeof DR_CL === 'object' && DR_CL.minut) || null;
+  const gel = !!S.gel;
+  const h = '<div class="voit"><span>' + (tot != null ? nd + ' / ' + tot + ' dévoilés' : nd + ' dévoilé' + (nd > 1 ? 's' : '')) + '</span><span class="gel">' + (gel ? '❄ tableau gelé' : '') + '</span></div>'
+    + '<div class="rang"><button class="gros" data-a="prec" title="Revoile le dernier élément montré à la classe ; au début de la diapo, revient à la page ou à la diapo d’avant">◀</button><button class="gros or" data-a="suiv" title="Dévoile l’élément suivant au tableau ; tout dévoilé, passe à la diapo suivante (avec sa page)">▶</button></div>'
+    + '<div class="rang"><button class="moyen' + (gel ? ' gelon' : '') + '" data-a="gel" title="' + (gel ? 'Dégèle le tableau : la classe revoit ce que tu montres' : 'Gèle le tableau : la classe garde ce qu’elle voit, tu peux préparer la suite') + '">' + (gel ? '❄ Dégeler' : '❄ Geler') + '</button></div>'
+    + '<h4>QUI A PARLÉ · ' + nb + ' / ' + L.length + '</h4>'
+    + '<div class="eleves">' + (L.length ? L.map(n => { const ini = (typeof iniDe === 'function' ? iniDe(n) : '') || '?'; return '<button class="' + (parle(n) ? 'on' : '') + '" data-a="qui" data-ini="' + dr_tcEsc(ini) + '" title="' + dr_tcEsc(n) + ' a parlé : un appui le note, un second l’enlève">' + dr_tcEsc(ini) + '</button>'; }).join('') : '<span style="grid-column:1/-1;color:#7d7061">la liste de la classe</span>') + '</div>'
+    + '<h4>MINUTEUR</h4><div class="minut"><button data-a="m-moins" title="Une minute de moins">−</button><span class="t"></span><button data-a="m-plus" title="Une minute de plus">+</button>'
+    + '<button data-a="m-go" title="Le minuteur part, au tableau">Départ</button><button data-a="m-pause" title="Met le minuteur en pause ; un second appui le fait repartir">Pause</button><button data-a="m-stop" title="Arrête le minuteur et le retire du tableau">■</button></div>';
+  dr_tcPoserSi(DR_TC.bas, h);
+  const reste = m ? (m.etat === 'pret' ? m.duree : m.etat === 'court' ? Math.max(0, m.fin - Date.now()) : Math.max(0, m.reste || 0)) : (typeof dr_minutDuree === 'function' ? (dr_minutDuree() || 300000) : 300000);
+  const tt = DR_TC.bas.querySelector('.minut .t'); const txt = typeof dr_mmss === 'function' ? dr_mmss(reste) : String(Math.ceil(reste / 1000)); if (tt && tt.textContent !== txt) tt.textContent = txt;   /* l'horloge ne pose que ses chiffres */
+}
+/* chaque bouton : le geste du pilote */
+function dr_tcGeste(a, ini){
+  if (!DR_SES.ici) return; const $b = id => document.getElementById(id);
+  try {
+    if (a === 'suiv') { const b = $b('bdev'); if (b) b.click(); else devoiler(); }
+    else if (a === 'prec') { const b = $b('bprec'); if (b) b.click(); else revoiler(); }
+    else if (a === 'gel') { if (S.gel) degeler(); else gel(); }
+    else if (a === 'qui' && ini) { const nom = typeof nomDe === 'function' ? nomDe(ini) : null; if (!nom) return;
+      const mes = (S.parts || []).filter(p => p && p.nom === nom && (p.heure == null || p.heure === S.heure));
+      if (mes.length) partRetire(ini, mes[mes.length - 1].id); else partAjoute(ini, 'participe');
+      try { if (typeof dr_sauve === 'function') dr_sauve(); } catch (x) {} dr_tout(); }
+    else if (/^m-/.test(a)) dr_tcMinut(a.slice(2));
+  } catch (e) { try { console.warn('[télécommande] ' + e.message); } catch (x) {} }
+  setTimeout(dr_tcMaj, 30);
+}
+function dr_tcMinut(a){
+  try { dr_minuteurPoser(); } catch (e) {} const inp = document.getElementById('dr-minut-in'); const m = DR_CL.minut;
+  if (a === 'go') { const t = document.getElementById('dr-minut-tab'); if (t) t.checked = true; if (m && m.etat === 'pause') dr_minuteurPause(); else if (!(m && m.etat === 'court')) dr_minuteurDepart(); return; }
+  if (a === 'pause') { dr_minuteurPause(); return; }
+  if (a === 'stop') { dr_minuteurArret(); return; }
+  const d = a === 'plus' ? 60000 : -60000;
+  if (m && m.etat === 'court') { m.fin = Math.max(Date.now() + 1000, m.fin + d); m.duree = Math.max(60000, m.duree + d); }
+  else if (m && m.etat === 'pause') { m.reste = Math.max(1000, (m.reste || 0) + d); m.duree = Math.max(60000, m.duree + d); }
+  else { const nv = Math.max(60000, (dr_minutDuree() || 300000) + d); if (inp) inp.value = dr_mmss(nv); if (m && m.etat === 'pret') { m.duree = nv; m.reste = nv; } }
+  dr_minuteurEnvoyer(); dr_minuteurAfficher(); try { dr_minuteurBoucle(); } catch (e) {}
+}
+if (window.DR_TC) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(dr_tcDemarrer, 900)); else setTimeout(dr_tcDemarrer, 900); }

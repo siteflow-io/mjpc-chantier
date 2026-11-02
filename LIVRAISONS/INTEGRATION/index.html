@@ -16729,6 +16729,7 @@ function sesReprendre(){
      `dr_reprendre` remonte L'HEURE ENTIÈRE à l'endroit exact (§12.28-3 e). Une seule voie de reprise (avant : deux copies). */
   var c=SES._reprise; if(!c)return;
   if(c.__sorte==='essai'&&typeof dr_sesReprendreEssai==='function'){ sesRepriseRetirer(); dr_sesReprendreEssai(c); return; }   /* C16 (㉞) : l'essai en mode test se rejoint */
+  if(c.__sorte==='repetition'&&typeof dr_sesReprendreRepetition==='function'){ sesRepriseRetirer(); dr_sesReprendreRepetition(c); return; }   /* C16 (㉞) : la répétition aussi */
   if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); atInfo('Cette heure est ouverte dans un autre onglet de ce navigateur : continue-la là-bas.'); return; }
   (typeof dr_sesLireHub==='function'&&!(typeof m8TestOn==='function'&&m8TestOn())?dr_sesLireHub:dr_lire)('/site/cours_actif',function(p){   /* C16 (㉞) : le pointeur du hub lui-même */
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;

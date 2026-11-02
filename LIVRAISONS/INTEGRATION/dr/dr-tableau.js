@@ -183,7 +183,7 @@ function dr_ttDebut(quoi, p){
   if (!dr_ttOn() || !p) return;
   /* C16 (㉞) : l'essai repris sur cet appareil (dr-session.js) — son pointeur est adopté, jamais un deuxième ; ni la scène ni la copie ne sont remises à neuf */
   const rj = (typeof DR_SES === 'object' && DR_SES && DR_SES.rejoindre) || null;
-  if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (rj.p.classeSlug || '') === (p.classeSlug || '')) { DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
+  if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (quoi !== 'heure' || (rj.p.classeSlug || '') === (p.classeSlug || ''))) {   /* la répétition joue avec la classe de cet appareil : la séance suffit */ DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
   const ptr = Object.assign({}, p, { seance: String(p.seance), test: true, quoi, chemin: DR_TT.chemin, ts: Date.now() });
   DR_TT.quoi = quoi; DR_TT.sig = ptr.ts + '|' + ptr.seance; DR_TT.emis = ''; DR_TT.trame = '';
   dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);

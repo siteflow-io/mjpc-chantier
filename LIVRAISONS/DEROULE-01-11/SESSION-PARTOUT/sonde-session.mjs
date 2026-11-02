@@ -2,7 +2,10 @@
 // (HTTP 400) les clés interdites, et qui POUSSE son flux (le flux REST de Firebase, `EventSource`, « put » à chaque écriture qui touche le chemin écouté).
 // Le harnais : la partie haute de CORRECTIFS/sonde-correctifs.mjs (le faux hub, `ouvrir`, `lancerClasse`, `garde`, `texteDe`, `capt`), plus le flux et un
 // téléphone (390 × 844, tactile). Aucune écriture ni lecture du vrai hub.
-// usage : node sonde-session.mjs <assemble/index.html> [dossier-de-sortie]   (MJPC_PARTIES=T,H : T l'essai en mode test, H la vraie heure ; MJPC_CAPT=<dossier>)
+// usage : node sonde-session.mjs <assemble/index.html> [dossier-de-sortie]   (MJPC_PARTIES=T,H,QH,QT,R,RT ; MJPC_CAPT=<dossier> ; MJPC_PYQR=<la bibliothèque Python « qrcode »>)
+//  T l'essai en mode test, H la vraie heure (le parcours de Paul, plus : un second ordinateur qui écrit une réponse pendant que l'ordinateur dévoile et que le
+//  téléphone note une participation ; F5 au téléphone et à l'ordinateur, qui relance la même séance) ; QH, QT la télécommande par le QR (vraie heure, essai) ;
+//  R, RT la répétition (hors mode test, en mode test).
 //  Le parcours de Paul (㊴, 14:44-14:59) : le tableau distant (1280 × 720) ; l'ordinateur (1536 × 864) lance l'heure par la case de l'emploi du temps
 //  (3E Charles de Gaulle, 14/09) et dévoile ; un second ordinateur (1366 × 768) et le téléphone ouvrent le site : le bandeau (≤ 2 s) ; le téléphone
 //  « Reprendre » (sur la base : s'il n'y a pas de bandeau, il relance la même séance, comme Paul) — à l'endroit exact ; cinq gestes au téléphone, cinq à
@@ -21,7 +24,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; const dire = s => { R.push(s); console.log(s); };
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + (typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'T,H').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'T,H,QH,QT,R,RT').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -70,6 +73,10 @@ const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM
 /* LE FLUX DU FAUX HUB : le flux REST de Firebase (`EventSource`, événements « put ») — chaque abonné reçoit la valeur de son chemin dès
    qu'une écriture touche ce chemin (au-dessus, dessous ou dessus), comme le vrai hub la pousse. */
 const ABOS = [];
+/* l'image du QR (api.qrserver.com est coupé, comme tout le réseau) : dessinée par `qrcode` (Python) — MJPC_PYQR = le dossier de la bibliothèque ; sans elle, une image d'attente */
+const QR_PY = 'import sys\nsys.path.insert(0, sys.argv[1])\nimport qrcode, qrcode.image.svg\nsys.stdout.write(qrcode.make(sys.argv[2], image_factory=qrcode.image.svg.SvgPathFillImage, box_size=10, border=2).to_string(encoding="unicode"))\n';
+const qrSvg = d => { try { if (process.env.MJPC_PYQR && fs.existsSync(process.env.MJPC_PYQR)) { const { execFileSync } = req('child_process'); return execFileSync('python3', ['-I', '-c', QR_PY, process.env.MJPC_PYQR, d]).toString(); } } catch (e) {}
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#fff"/><text x="50" y="55" font-size="14" text-anchor="middle">QR</text></svg>'; };
 const pousserFlux = c => { const cc = c.replace(/\/+$/, ''); ABOS.forEach(a => { if (!(cc === a.ch || cc.startsWith(a.ch + '/') || a.ch.startsWith(cc + '/'))) return; if (a.pg.isClosed()) return;
   a.pg.evaluate(([id, d]) => { try { window.__esPousser && window.__esPousser(id, d); } catch (e) {} }, [a.id, JSON.stringify(lireH(a.ch))]).catch(() => {}); }); };
 const fauxFlux = () => { const ES = {}; let n = 0;
@@ -82,7 +89,7 @@ const fauxFlux = () => { const ES = {}; let n = 0;
 const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q = '?n=3e', test = false, prof = true, h = '09:00', jour = '2026-09-14', tel = false }) => {
   const ctx = await nav.newContext(Object.assign({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }, tel ? { isMobile: true, hasTouch: true } : {}));
   await ctx.exposeBinding('__hubEcoute', (src, id, ch) => { ABOS.push({ pg: src.page, id, ch: ch.replace(/\/+$/, '') }); return JSON.stringify(lireH(ch)); }); await ctx.addInitScript(fauxFlux); const errs = [], boites = [];
-  await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => { const u = r.request().url(); const f = imageDe(u); if (f) return r.fulfill({ path: f, contentType: typeDe(f) }); return r.abort(); });
+  await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => { const u = r.request().url(); if (u.indexOf('api.qrserver.com') >= 0) return r.fulfill({ body: qrSvg(new URL(u).searchParams.get('data') || ''), contentType: 'image/svg+xml' }); const f = imageDe(u); if (f) return r.fulfill({ path: f, contentType: typeDe(f) }); return r.abort(); });
   await ctx.exposeFunction('__hubN', (m, c, corps) => hubRepondre(qui, m, c, corps)); await ctx.addInitScript(fauxFetch);
   await ctx.addInitScript(() => { const st = document.createElement('style'); st.textContent = '#fi-overlay{display:none!important}'; document.addEventListener('DOMContentLoaded', () => document.head.appendChild(st)); });
   ctx.on('page', pg => { pg.on('pageerror', e => errs.push(String(e.message).slice(0, 200))); pg.on('dialog', d => { if (d.type() === 'beforeunload') { d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
@@ -121,6 +128,12 @@ const corriger = async (pg, sel, ajout) => { const x = await pg.$('#mur ' + sel)
 const attendre = async (f, ms = 6000) => { const t0 = Date.now(); let v = null; while (Date.now() - t0 < ms) { v = await f(); if (v) return v; await p(300); } return v; };
 
 /* ═══ le parcours ═══ */
+const QB = 'emt9v3yqo6pvd5';
+/* relancer la même séance par la case de l'emploi du temps : « Ouvrir le pilotage et lancer », ou « Reprendre le cours » quand la case sait l'heure en cours */
+const relancerClasse = async (o, jour = '2026-09-14') => { const pg = o.pg; if (!(await clicTexte(pg, 'button', 'edtOuvrir()'))) await pg.evaluate(() => edtOuvrir()); await p(1500);
+  const ok = await pg.evaluate(j => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const x = cs.find(e => (e.getAttribute('onclick') || '').indexOf(j) >= 0); if (!x) return false; x.click(); return true; }, jour); await p(800);
+  let quoi = null; if (ok && await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer')) quoi = 'Ouvrir le pilotage et lancer'; else if (ok && await clicTexte(pg, 'button', 'Reprendre le cours')) quoi = 'Reprendre le cours';
+  await p(3500); await pg.keyboard.press('Escape'); await p(400); return quoi; };   /* « Question-bilan » (un bloc question) de la séance 1 du faux hub */
 const cleDe = pg => pg.evaluate(() => { try { const m = S.mur; if (!m) return null; let eid = m.eid; try { if (!eid) eid = seance().ecrans[m.di].eid; } catch (e) {} return eid + '#' + (m.nDev || 0) + '#' + (m.page || 0); } catch (e) { return null; } }).catch(() => null);
 const tabDe = pg => pg.evaluate(() => { const a = document.getElementById('ses-tab-att'); const m = (typeof DR_TAB === 'object' && DR_TAB.montre) || null; return { attente: !!(a && a.style.display !== 'none'), cle: m ? m.eid + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null, vide: !((document.getElementById('mur2') || {}).innerHTML || '').trim() }; }).catch(() => null);
 const geste = async pg => { const ok = await pg.locator('#bdev').tap({ timeout: 1500 }).then(() => true).catch(() => false); if (!ok) await pg.evaluate(() => document.getElementById('bdev').click()).catch(() => {}); };
@@ -174,6 +187,47 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
   const kk = [await cleDe(o.pg), await cleDe(tl.pg), ((await tabDe(T.pg)) || {}).cle];
   dire('      ' + mode + ' · deux gestes presque en même temps : ordinateur ' + kk[0] + ' · téléphone ' + kk[1] + ' · tableau ' + kk[2]);
   verif(mode, kk[0] && kk[0] === kk[1] && kk[1] === kk[2], 'deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord', kk);
+  /* une réponse tapée sur un second ordinateur pendant que le premier dévoile, et la participation saisie au téléphone pendant ce temps : rien perdu */
+  {
+    const o3 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const b3 = await attendreBandeau(o3.pg);
+    if (b3.b) { await o3.pg.click('#ses-reprise-oui').catch(() => {}); await p(4000); await o3.pg.keyboard.press('Escape').catch(() => {}); await p(400); await garde(o3.pg); }
+    const aQB = await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1500);
+    const k3 = [await cleDe(o.pg), await cleDe(o3.pg), await cleDe(tl.pg)];
+    dire('      ' + mode + ' · un second ordinateur reprend aussi (' + (b3.b ? 'bandeau en ' + b3.t + ' ms' : 'PAS DE BANDEAU') + ') ; l’ordinateur va à « Question-bilan » (' + (aQB ? 'fait' : 'PAS TROUVÉE') + ') : ordinateur ' + k3[0] + ' · second ' + k3[1] + ' · téléphone ' + k3[2]);
+    const ELV = await tl.pg.evaluate(() => { try { return { nom: ELEVES[0], ini: iniDe(ELEVES[0]) }; } catch (e) { return null; } });
+    const REP = 'Le Romantisme met en scène la nature contre la règle';
+    const dit = await o3.pg.$('#mur .rep.libre .dit'); let tape = false;
+    if (dit) { await dit.click(); await p(200);
+      await Promise.all([
+        o3.pg.keyboard.type(REP, { delay: 45 }).then(() => { tape = true; }),
+        (async () => { await p(500); await gesteClic(o.pg); await p(600); await o.pg.keyboard.press('ArrowLeft').catch(() => {}); await p(600); await gesteClic(o.pg); })(),
+        (async () => { if (!ELV) return; await p(700); await tl.pg.evaluate(() => { const v = document.getElementById('vif'); if (v) v.focus(); }); await tl.pg.keyboard.type(ELV.ini, { delay: 60 }); await p(500); await tl.pg.keyboard.press('Enter'); await p(300); await tl.pg.evaluate(() => { try { document.activeElement.blur(); } catch (e) {} }); })() ]);
+      await p(300); await o3.pg.evaluate(() => { try { document.activeElement.blur(); } catch (e) {} }); }
+    await p(2500);
+    const vu = pg => pg.evaluate(([r, nom]) => { try { return { rep: JSON.stringify(parDiapo).indexOf(r) >= 0, part: (S.parts || []).some(x => x && x.nom === nom), cle: (() => { const m = S.mur; return m ? (m.eid || seance().ecrans[m.di].eid) + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null; })() }; } catch (e) { return String(e); } }, [REP, ELV && ELV.nom]).catch(e => String(e));
+    const V = { ordinateur: await vu(o.pg), second: await vu(o3.pg), telephone: await vu(tl.pg) };
+    dire('      ' + mode + ' · la réponse tapée au second ordinateur (« ' + REP + ' »' + (tape ? '' : ', PAS TAPÉE') + '), l’ordinateur qui dévoile (▶ ← ▶), la participation de ' + (ELV ? ELV.nom + ' (' + ELV.ini + ')' : '?') + ' au téléphone : ' + JSON.stringify(V));
+    await capt(o3.pg, pre + '05b-second-ordinateur-reponse'); await capt(o.pg, pre + '05b-ordinateur'); await capt(tl.pg, pre + '05b-telephone');
+    verif(mode, dit && tape && Object.values(V).every(x => x && x.rep), 'la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : chez les trois pilotes', V);
+    verif(mode, ELV && Object.values(V).every(x => x && x.part), 'la participation saisie au téléphone pendant ce temps : chez les trois pilotes', V);
+    verif(mode, Object.values(V).every(x => x && x.cle && x.cle === V.ordinateur.cle), 'le dévoilement de l’ordinateur : chez les trois pilotes', V);
+    o.errs.push(...o3.errs, ...o3.boites); await o3.ctx.close();
+    /* F5 sur chaque pilote : le téléphone (« Reprendre »), puis l'ordinateur (il relance la même séance par la case : il la rejoint, aucune deuxième) */
+    const ptr0 = test ? lireH('/site/tableau_test/pointeur') : lireH('/site/cours_actif');
+    await tl.pg.reload({ waitUntil: 'load' }).catch(() => {}); await p(1800); await profPrep(tl.pg, test); const bf = await attendreBandeau(tl.pg);
+    if (bf.b) { await tl.pg.locator('#ses-reprise-oui').tap({ timeout: 3000 }).catch(() => tl.pg.click('#ses-reprise-oui').catch(() => {})); await p(4000); await tl.pg.keyboard.press('Escape').catch(() => {}); await p(400); await garde(tl.pg); }
+    await p(1000); const f1 = [await cleDe(o.pg), await cleDe(tl.pg)];
+    dire('      ' + mode + ' · F5 au téléphone : bandeau ' + (bf.b ? 'en ' + bf.t + ' ms' : 'ABSENT') + ', « Reprendre » : ordinateur ' + f1[0] + ' · téléphone ' + f1[1]);
+    verif(mode, bf.b && f1[0] && f1[0] === f1[1], 'F5 au téléphone : la session reprend, là où elle en est', f1);
+    await o.pg.reload({ waitUntil: 'load' }).catch(() => {}); await p(1800); await profPrep(o.pg, test); const quoiR = await relancerClasse(o); await garde(o.pg); await p(1500);
+    dire('      ' + mode + ' · F5 à l’ordinateur : la case de l’emploi du temps, « ' + quoiR + ' »');
+    const f2 = [await cleDe(o.pg), await cleDe(tl.pg)]; const ptr1 = test ? lireH('/site/tableau_test/pointeur') : lireH('/site/cours_actif');
+    dire('      ' + mode + ' · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur ' + f2[0] + ' · téléphone ' + f2[1] + ' · pointeur ' + (ptr0 && ptr1 && ptr0.ts === ptr1.ts ? 'le même (ts ' + ptr1.ts + ')' : (test ? 'CHANGÉ ' : 'réécrit ') + JSON.stringify([ptr0 && ptr0.ts, ptr1 && ptr1.ts])));
+    verif(mode, f2[0] && f2[0] === f2[1], 'F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est', f2);
+    if (test) verif(mode, ptr0 && ptr1 && ptr0.ts === ptr1.ts, 'relancer le même essai ailleurs : aucune deuxième session (le pointeur d’essai inchangé)', [ptr0 && ptr0.ts, ptr1 && ptr1.ts]);
+    else verif(mode, ptr1 && ptr0 && ptr1.classeSlug === ptr0.classeSlug && String(ptr1.seance) === String(ptr0.seance), 'relancer la même heure ailleurs : la même heure (le pointeur désigne la même classe et la même séance)', [ptr0, ptr1]);
+    for (let k = 0; k < 2; k++) { await geste(tl.pg); const s3 = await suivre(tl.pg, [['ord', o.pg, false], ['tab', T.pg, true]]); dire('      ' + mode + ' · après les F5, un geste au téléphone : ordinateur ' + s3.r.ord + ' ms, tableau ' + s3.r.tab + ' ms'); verif(mode, s3.r.ord != null && s3.r.ord <= 500 && s3.r.tab != null && s3.r.tab <= 500, 'après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s)', s3.r); await p(300); }
+  }
   /* l'onglet de l'ordinateur fermé, deux gestes au téléphone, clore au téléphone */
   await o.pg.close({ runBeforeUnload: true }).catch(() => {}); await p(800);
   const D2 = []; for (let k = 0; k < 2; k++) { await geste(tl.pg); const s = await suivre(tl.pg, [['tab', T.pg, true]]); D2.push(s.r.tab == null ? '∞' : s.r.tab); await p(300); }
@@ -194,8 +248,99 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
   const errs = [].concat(o.errs, o.boites, tl.errs, tl.boites, T.errs, T.boites); sansErreur(mode, errs, 'ordinateur, téléphone, tableau distant');
   await tl.ctx.close(); await T.ctx.close(); await o.ctx.close().catch(() => {});
 };
+/* ═══ Q · la télécommande par le QR code (§3.6) : l'ordinateur lance l'heure (ou l'essai), « 📱 » montre le QR ; le téléphone ouvre l'adresse du QR (il
+   n'est ni connecté ni en mode test : le QR vaut la session) ; la fenêtre du QR se ferme seule ; le téléphone est sur la séance, sans rien choisir ;
+   ▶ ◀ ❄ « qui a parlé » le minuteur : l'ordinateur et le tableau distant suivent ; « Clore l'heure » à l'ordinateur : la télécommande le dit ═══ */
+const telecommande = async (fichier, mode, nomV) => { const test = mode === 'QT'; HUBN = ranger(store()) || {}; ECR = []; REFUSES.length = 0; ABOS.length = 0; const pre = 'session-' + nomV + '-' + mode + '-';
+  dire('\n— la télécommande par le QR, ' + (test ? 'l’essai en mode test' : 'la vraie heure') + ' · ' + nomV + ' —');
+  const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(800);
+  const o = await ouvrir({ fichier, test, qui: 'ordinateur' }); const lance = await lancerClasse(o); await garde(o.pg); for (let k = 0; k < 2; k++) { await gesteClic(o.pg); await p(400); }
+  verif(mode, lance, 'l’ordinateur lance l’heure');
+  const vb = await o.pg.waitForSelector('#dr-tc-btn', { state: 'visible', timeout: 4000 }).then(() => true).catch(() => false);
+  const bulle = await o.pg.evaluate(() => { const b = document.getElementById('dr-tc-btn'); return b ? b.title : ''; });
+  verif(mode, vb && /Télécommande/.test(bulle), '« 📱 » dans la barre des actions rapides, son infobulle pour Paul', bulle.slice(0, 120));
+  await o.pg.click('#dr-tc-btn').catch(() => {}); await p(800);
+  const url = await o.pg.evaluate(() => { const i = document.getElementById('dr-tc-qr-img'); return i ? new URL(i.src).searchParams.get('data') : null; });
+  await capt(o.pg, pre + '01-ordinateur-qr');
+  verif(mode, url && /[?&]telecommande=1&qr=/.test(url) && (!test || /&test=1/.test(url)), 'le QR montre l’adresse de la télécommande', url);
+  if (!url) { await o.ctx.close(); await T.ctx.close(); return; }
+  const t0 = Date.now(); const tl = await ouvrir({ fichier, qui: 'telephone', W: 390, H: 844, tel: true, prof: false, test: false, q: '?' + url.split('?')[1] });
+  let ferme = null; for (let k = 0; k < 60; k++) { if (!(await o.pg.$('#dr-tc-qr'))) { ferme = Date.now() - t0; break; } await p(100); }
+  dire('      ' + mode + ' · la fenêtre du QR, à l’ordinateur : ' + (ferme != null ? 'fermée seule ' + ferme + ' ms après l’ouverture de l’adresse au téléphone' : 'PAS FERMÉE (6 s)'));
+  verif(mode, ferme != null, 'la fenêtre du QR se ferme d’elle-même quand le téléphone l’a scanné', ferme);
+  let prete = null; for (let k = 0; k < 100; k++) { const h = await texteDe(tl.pg, '#tc-haut'); const vis = await tl.pg.evaluate(() => { const x = document.getElementById('tc-haut'); return !!(x && x.style.display !== 'none'); }).catch(() => false); if (vis && h && /Diapo/.test(h)) { prete = Date.now() - t0; break; } await p(150); }
+  const kk = [await cleDe(o.pg), await cleDe(tl.pg)]; const haut = await texteDe(tl.pg, '#tc-haut');
+  dire('      ' + mode + ' · le téléphone, sur la séance sans rien choisir : ' + (prete != null ? 'en ' + prete + ' ms' : 'PAS PRÊT (15 s)') + ' · « ' + haut + ' » · ordinateur ' + kk[0] + ' · téléphone ' + kk[1]);
+  verif(mode, prete != null && /Charles de Gaulle/.test(haut || '') && kk[0] && kk[0] === kk[1], 'le téléphone s’ouvre directement sur la séance en cours, en télécommande, là où elle en est', { prete, haut, kk });
+  await capt(tl.pg, pre + '02-telecommande');
+  const tap = async a => { const ok = await tl.pg.locator('#tc-bas button[data-a="' + a + '"]').first().tap({ timeout: 1500 }).then(() => true).catch(() => false); if (!ok) await tl.pg.evaluate(a => { const b = document.querySelector('#tc-bas button[data-a="' + a + '"]'); if (b) b.click(); }, a); };
+  const D = { ord: [], tab: [] };
+  for (const a of ['suiv', 'suiv', 'suiv', 'suiv', 'suiv', 'prec']) { await tap(a); const r = await suivre(tl.pg, [['ord', o.pg, false], ['tab', T.pg, true]]); D.ord.push(r.r.ord == null ? '∞' : r.r.ord); D.tab.push(r.r.tab == null ? '∞' : r.r.tab); await p(250); }
+  dire('      ' + mode + ' · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en ' + D.ord.join(', ') + ' ms · le tableau distant en ' + D.tab.join(', ') + ' ms');
+  const tous = D.ord.concat(D.tab); verif(mode, tous.every(x => x !== '∞' && x <= 500), '▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; ' + tous.filter(x => x !== '∞' && x <= 500).length + ' / ' + tous.length + ')', D);
+  const attendrePc = async (f, ms = 1500) => { const t1 = Date.now(); while (Date.now() - t1 < ms) { if (await o.pg.evaluate(f).catch(() => false)) return Date.now() - t1; await p(25); } return null; };
+  await tap('gel'); const g1 = await attendrePc(() => !!S.gel); await capt(tl.pg, pre + '03-telecommande-gel'); await tap('gel'); const g2 = await attendrePc(() => !S.gel);
+  dire('      ' + mode + ' · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en ' + g1 + ' ms, dégelé en ' + g2 + ' ms');
+  verif(mode, g1 != null && g1 <= 500 && g2 != null && g2 <= 500, '❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s)', [g1, g2]);
+  const ini = await tl.pg.evaluate(() => { const b = document.querySelector('#tc-bas .eleves button[data-ini]'); return b ? { ini: b.dataset.ini, nom: b.title.split(' a parlé')[0] } : null; });
+  let q1 = null, q2 = null;
+  if (ini) { await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q1 = await attendrePc(n => (S.parts || []).some(x => x.nom === n), 1500);
+    const on = await tl.pg.evaluate(i => { const b = document.querySelector('#tc-bas .eleves button[data-ini="' + i + '"]'); return !!(b && b.classList.contains('on')); }, ini.ini); await capt(tl.pg, pre + '04-telecommande-qui');
+    await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q2 = await attendrePc(n => !(S.parts || []).some(x => x.nom === n), 1500);
+    dire('      ' + mode + ' · « qui a parlé » : ' + ini.nom + ' (' + ini.ini + ') noté à l’ordinateur en ' + q1 + ' ms (le bouton ' + (on ? 'allumé' : 'PAS allumé') + '), retiré en ' + q2 + ' ms'); }
+  verif(mode, ini && q1 != null && q1 <= 500 && q2 != null && q2 <= 500, '« qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s)', [q1, q2]);
+  await tap('m-plus'); await p(200); await tap('m-go'); const m1 = await attendrePc(() => !!(DR_CL.minut && DR_CL.minut.etat === 'court' && DR_CL.minut.tableau), 1500);
+  let mt = null; for (let k = 0; k < 20; k++) { if (await T.pg.evaluate(() => { const m = document.getElementById('dr-tab-minut'); return !!(m && m.style.display !== 'none' && m.textContent); }).catch(() => false)) { mt = k * 100; break; } await p(100); }
+  const mtxt = await texteDe(T.pg, '#dr-tab-minut'); await capt(tl.pg, pre + '05-telecommande-minuteur'); await capt(o.pg, pre + '05-ordinateur-suit'); await capt(T.pg, pre + '05-tableau-suit');
+  dire('      ' + mode + ' · le minuteur (+ puis Départ) à la télécommande : il court à l’ordinateur en ' + m1 + ' ms, au tableau distant (« ' + mtxt + ' ») en ~' + mt + ' ms');
+  verif(mode, m1 != null && m1 <= 500 && mt != null, 'le minuteur à la télécommande : il court à l’ordinateur et paraît au tableau distant', [m1, mt]);
+  await tap('m-stop'); await p(600);
+  await clore(o.pg); let fin = null; for (let k = 0; k < 30; k++) { const a = await texteDe(tl.pg, '#tc-accueil'); if (/close/.test(a || '')) { fin = k * 100; break; } await p(100); }
+  dire('      ' + mode + ' · « Clore l’heure » à l’ordinateur : la télécommande ' + (fin != null ? 'le dit en ' + fin + ' ms (« ' + (await texteDe(tl.pg, '#tc-accueil')) + ' »)' : 'NE LE DIT PAS (3 s)'));
+  verif(mode, fin != null, 'l’heure close à l’ordinateur : la télécommande le dit', fin); await capt(tl.pg, pre + '06-telecommande-close');
+  if (test) { const hors = ECR.filter(x => x.qui !== 'tableau' && !/^\/site\/tableau_test(\/|$)/.test(x.c)); verif(mode, !hors.length, 'en mode test, aucune écriture hors des chemins d’essai (' + hors.length + ' hors)', hors.slice(0, 5).map(x => x.m + ' ' + x.c)); }
+  verif(mode, !REFUSES.length, 'aucune écriture refusée par le faux hub (' + REFUSES.length + ')', REFUSES.slice(0, 3));
+  sansErreur(mode, [].concat(o.errs, o.boites, tl.errs, tl.boites, T.errs, T.boites), 'ordinateur, télécommande, tableau distant');
+  await tl.ctx.close(); await T.ctx.close(); await o.ctx.close().catch(() => {}); };
+
+/* ═══ R · la répétition (§3.5) : l'ordinateur la joue (l'Atelier, onglet Pilotage) ; le téléphone voit le bandeau, « Reprendre » ; ils se suivent ;
+   « ■ Arrêter » à l'ordinateur : le téléphone s'arrête aussi, le tableau distant revient à l'horloge, plus de pointeur (hors mode test et en mode test) ═══ */
+const repetition = async (fichier, mode, nomV) => { const test = mode === 'RT'; HUBN = ranger(store()) || {}; ECR = []; REFUSES.length = 0; ABOS.length = 0; const pre = 'session-' + nomV + '-' + mode + '-';
+  dire('\n— la répétition, ' + (test ? 'en mode test' : 'hors mode test') + ' · ' + nomV + ' —');
+  const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(800);
+  const o = await ouvrir({ fichier, test, qui: 'ordinateur' }); await ouvrirAtelier(o); await o.pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(3500);
+  const rep0 = await o.pg.evaluate(() => !!S.repetition); verif(mode, rep0, 'l’ordinateur joue la répétition (l’Atelier, onglet Pilotage)');
+  for (let k = 0; k < 2; k++) { await gesteClic(o.pg); await p(400); } await p(800);
+  const tl = await ouvrir({ fichier, test: false, qui: 'telephone', W: 390, H: 844, tel: true }); const bt = await attendreBandeau(tl.pg);
+  dire('      ' + mode + ' · téléphone : bandeau ' + (bt.b ? 'en ' + bt.t + ' ms : « ' + bt.b + ' »' : 'ABSENT (6 s)')); await capt(tl.pg, pre + '01-telephone-bandeau');
+  verif(mode, bt.b && /Répétition en cours/.test(bt.b) && bt.t <= 2000, 'le téléphone voit « Répétition en cours » en moins de 2 s', bt);
+  if (bt.b) { await tl.pg.locator('#ses-reprise-oui').tap({ timeout: 3000 }).catch(() => tl.pg.click('#ses-reprise-oui').catch(() => {})); await p(6000); await garde(tl.pg); }
+  const k0 = [await cleDe(o.pg), await cleDe(tl.pg)]; const r1 = await tl.pg.evaluate(() => !!S.repetition).catch(() => false);
+  dire('      ' + mode + ' · téléphone, « Reprendre » : en répétition ' + r1 + ' · ordinateur ' + k0[0] + ' · téléphone ' + k0[1]);
+  verif(mode, r1 && k0[0] && k0[0] === k0[1], 'le téléphone reprend la répétition là où elle en est', k0); await capt(tl.pg, pre + '02-telephone-repris');
+  const D = { tel: [], ord: [], tab: [] };
+  for (let k = 0; k < 6; k++) { const parTel = k % 2 === 0; if (parTel) await geste(tl.pg); else await gesteClic(o.pg); const r = await suivre(parTel ? tl.pg : o.pg, [[parTel ? 'ord' : 'tel', parTel ? o.pg : tl.pg, false], ['tab', T.pg, true]]);
+    D[parTel ? 'ord' : 'tel'].push(r.r[parTel ? 'ord' : 'tel'] == null ? '∞' : r.r[parTel ? 'ord' : 'tel']); D.tab.push(r.r.tab == null ? '∞' : r.r.tab); await p(250); }
+  dire('      ' + mode + ' · six gestes en alternance — ordinateur ' + D.ord.join(', ') + ' · téléphone ' + D.tel.join(', ') + ' · tableau distant ' + D.tab.join(', ') + ' ms');
+  const tous = D.ord.concat(D.tel, D.tab); verif(mode, tous.every(x => x !== '∞' && x <= 500), 'en répétition, chaque geste paraît sur l’autre appareil et au tableau distant (≤ 0,5 s ; ' + tous.filter(x => x !== '∞' && x <= 500).length + ' / ' + tous.length + ')', D);
+  await capt(o.pg, pre + '03-ordinateur-suit'); await capt(T.pg, pre + '03-tableau-suit');
+  await o.pg.evaluate(() => { const b = document.getElementById('rep-stop'); if (b) b.click(); }); await p(3500);
+  const r2 = await tl.pg.evaluate(() => !!S.repetition).catch(() => null); const tb = await tabDe(T.pg); const ptr = test ? lireH('/site/tableau_test/pointeur') : lireH('/site/repetition/pointeur');
+  dire('      ' + mode + ' · « ■ Arrêter » à l’ordinateur : téléphone en répétition ' + r2 + ' · tableau distant ' + (tb && tb.attente ? 'à l’horloge' : 'sur ' + (tb && tb.cle)) + ' · pointeur ' + (ptr ? 'LÀ' : '—'));
+  verif(mode, r2 === false && tb && tb.attente && !ptr, '« ■ Arrêter » sur un appareil : la répétition s’arrête partout, le tableau distant revient à l’horloge, plus de pointeur', { r2, tb, ptr: !!ptr });
+  await capt(tl.pg, pre + '04-telephone-arrete'); await capt(T.pg, pre + '04-tableau-horloge');
+  if (test) { const hors = ECR.filter(x => x.qui !== 'tableau' && !/^\/site\/tableau_test(\/|$)/.test(x.c)); verif(mode, !hors.length, 'en mode test, aucune écriture hors des chemins d’essai (' + hors.length + ' hors)', hors.slice(0, 5).map(x => x.m + ' ' + x.c)); }
+  else { const cl = ECR.filter(x => /\/deroule_joue(\/|$)|^\/site\/cours_actif|^\/presence/.test(x.c)); const ch = [...new Set(ECR.filter(x => x.qui !== 'tableau').map(x => x.c))];
+    dire('      ' + mode + ' · écritures au hub pendant la répétition : ' + ECR.length + ' — chemins : ' + ch.slice(0, 12).join(', ') + (ch.length > 12 ? '…' : ''));
+    verif(mode, !cl.length, 'en répétition, rien d’écrit pour la classe : aucune écriture dans la copie de la classe, ni cours_actif, ni la présence (' + cl.length + ')', cl.slice(0, 5).map(x => x.m + ' ' + x.c)); }
+  verif(mode, !REFUSES.length, 'aucune écriture refusée par le faux hub (' + REFUSES.length + ')', REFUSES.slice(0, 3));
+  sansErreur(mode, [].concat(o.errs, o.boites, tl.errs, tl.boites, T.errs, T.boites), 'ordinateur, téléphone, tableau distant');
+  await tl.ctx.close(); await T.ctx.close(); await o.ctx.close().catch(() => {}); };
+
 const NOMV = process.env.MJPC_NOM || 'v';
 for (const m of ['T', 'H']) if (joue(m)) await parcours(FICHIER, m, NOMV);
+for (const m of ['QH', 'QT']) if (joue(m)) await telecommande(FICHIER, m, NOMV);
+for (const m of ['R', 'RT']) if (joue(m)) await repetition(FICHIER, m, NOMV);
 dire('\n' + nb + ' vérifications, ' + echecs + ' échec(s)');
 await nav.close();
 fs.writeFileSync(path.join(OUT, 'sonde-session-' + NOMV + '.txt'), R.join('\n') + '\n');

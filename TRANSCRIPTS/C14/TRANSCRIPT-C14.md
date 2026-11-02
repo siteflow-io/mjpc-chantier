@@ -3773,3 +3773,42 @@ MEMO
 02/11/2026 08:09
 
 MEMO
+
+---
+
+## Tour 139 — 02/11/2026 12:46
+
+**Paul (12:46) :**
+
+C'est au prompt d'injection  de cadrer en fait. Quand j'envoie à l'IA elle doit me demander les textes lus, etc. Tout ce dont elle n'a pas connaissance en termes de contenus. Il y a donc une discussion préalable avec moi. Pour ce qui est de la géographie de la copie, là pour le coup il faut des solutions techniques. Est ce que ces deux choses règlent le problème de l'IA aveugle?
+Enfin, le bouton. Je préfère en réalité effacer l'ensemble des corrigés IA actuellement en ligne, afin de repartir sur du propre complet. Mais donc avant ça, il faut vérifier que tout ce qui partira dorénavant sera bien traité par l'IA correctement et que ce soit complet.
+Les allers retours que j'ai fait au fur et à mesure ont permis de toute façon de voir les manques et les trous dans le flux.
+Tu as compris?
+
+**Ce qui a été fait (C14) :** lu dans le code de la 1.4.22 : « 🗑 Tout effacer : corrigés de l'IA et bande » (`rcIANettoyage`, 1.4.9) efface, sur la classe, les champs des lignes `corrige`, `corrigeDe`, `corrigeLe`, `corrigeMarque`, `types`, `typesDe`, `envoiIA`, `decisions`, `marquesBande`, `places`, `placesApp`, les marques portant `bande` (les cadres des fautes et des stickers), `bandeArret`, `envoi`, `charge`, `bandeDebut` ; il ne touche pas `stickersIA`, `remarquesIA`, `stickers` (les décisions), `refusIA`.
+
+**Claude (12:50) :**
+
+À jouer : ton mot sur 669 à 672 · en cours : rien · ouvert : 669 à 672, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+665. Oui, compris. Le contenu que l'IA ne connaît pas (les textes lus, le chapitre, les modèles du cahier d'entraînement…), c'est la consigne qui le cadre : avant de corriger, l'IA te demande ce qui lui manque, et vous en discutez. La géographie de la copie, ce sont des solutions techniques dans l'app. Pas de bouton de rattrapage : tu effaces tous les corrigés de l'IA en ligne et tu repars propre, mais seulement quand on a vérifié que tout ce qui partira sera traité correctement et en entier. Tes allers-retours de ce matin ont montré les trous : les paragraphes, la marge, l'en-tête, les textes lus, Entrée sur les remarques, la fin de la bande, la bande vide sur toute la lettre, le pourcentage de l'accueil.
+
+666. Ces deux choses ne suffisent pas à elles seules. Il reste un trou : ce que l'IA ne peut pas juger, elle le juge quand même. Elle a écrit « dans la copie transmise » au lieu de se taire, et ces remarques partent chez l'élève. La consigne doit aussi lui dire : « si tu ne peux pas juger un sticker avec ce que tu as, ne le juge pas, et dis-le ». L'app met alors ce sticker de côté pour toi : la bande s'y arrête, et tu décides sur la photo. Avec ce troisième point, oui : l'IA ne sera plus aveugle sans le dire.
+
+667. Pour que la discussion préalable ne se refasse pas à chaque paquet : à la fin de la discussion, l'IA écrit dans son fichier de retour ce que tu lui as donné. L'app le garde et l'envoie avec chaque paquet suivant de cette rédaction. L'IA ne te redemande que ce qui manque encore.
+
+668. Avant d'effacer, mesuré dans le code : « 🗑 Tout effacer : corrigés de l'IA et bande » date de la 1.4.9. Il efface les corrections, la bande, les cadres (ceux des stickers compris) et les envois. Il n'efface pas ce qui est venu depuis : les stickers rendus par l'IA, tes décisions sur eux, les remarques et leur relecture, les copies refusées. Tes décisions de stickers compteraient encore dans la note, sans leur cadre : ce ne serait pas propre. Il faut l'étendre. Il garde, comme il doit : ta recopie, ses lignes et leurs places, la marge, la phrase qui t'a marqué, les photos.
+
+669. Le plan, première étape : je code la consigne nouvelle (les questions d'abord, ce qu'elle ne peut pas juger, le contexte gardé), la géographie (le ¶ déjà fait, le champ « marge » de 664, l'en-tête de 663) et « 🗑 Tout effacer » étendu. Tout passe au banc complet.
+
+670. Deuxième étape : un paquet d'essai de trois vraies copies, dont la sienne, que tu donnes à ton IA. Je lis son retour ligne par ligne contre les copies et la grille. Je vérifie trois choses : ses questions posées avant de corriger, plus aucune remarque « copie transmise », et la liste complète jusqu'à « fin ».
+
+671. Troisième étape, seulement alors : « 🗑 Tout effacer » sur les deux classes, puis tu réexportes tout.
+
+672. La 1.4.22 : le bouton de rattrapage n'a plus lieu d'être. Je le retire, et je te redonne la 1.4.22 à promouvoir avec 626, 632, 633 et 638 ? Ou bien elle attend 669 ?
+
+À tester : rien de neuf.
+
+02/11/2026 12:50
+
+MEMO

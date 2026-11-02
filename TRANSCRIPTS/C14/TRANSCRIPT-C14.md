@@ -4781,3 +4781,33 @@ MEMO
 02/11/2026 23:46
 
 MEMO
+
+---
+
+## Tour 169 — 02/11/2026 23:47
+
+**Paul (23:47) :**
+
+promeus
+
+**Ce qui a été fait (C14) :** 1.4.28 copiée au sas (`SAUVEGARDES/redaction-1.4.28-RU-avant-1.4.29-2026-11-02.html`, `88113199`) ; 1.4.29-RU en ligne : commit `2b7ab42`, blob `166bf0bac522`, md5 `e089934e71a2e6c02ca940495277835e`, 954 555 o, en ligne bit à bit à 23:49 (cinq lectures de suite, puis trois autres) ; docs (`89a5fa7`) : le point de retour, le journal, les dettes ✔, où trouver quoi (`&v=1.4.29-RU`). Vrai site, avec le fichier en ligne, en lecture seule : sur les deux classes, « Garder » sans rien changer, 12 lignes sur 12 à l'identique ; la case décochée, le fichier d'un élève sans aucun point ; 0 erreur.
+
+**Claude (23:53) :**
+
+À jouer : 91 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+90. La 1.4.29 est en ligne : à 23:49, j'ai vérifié que ton site sert exactement le bon fichier. https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.29-RU
+
+91. Recharge ta page maintenant : tant que tu ne l'as pas fait, elle tourne avec la 1.4.28.
+
+92. Relu ensuite sur ton site, avec la version en ligne et sans rien y écrire : sur tes deux classes, « Garder » sans rien toucher ne change rien, et la case décochée donne un fichier d'élève sans aucun point.
+
+À tester, après avoir rechargé :
+- Réglages → la grille → « Le thème tenu » → « ⚖ Les points » : monte le niveau 2 d'un point, puis « Garder ». La fenêtre liste les notes qui changent et la moyenne avant et après ; « Appliquer » les change, « Annuler » ne change rien.
+- « Orthographe et grammaire » → « ⚖ Les points » : les seuils en erreurs pour dix lignes (aujourd'hui 1 ; 2,3 ; 4,7). Change-les si tu veux, la fenêtre te montre d'abord les notes.
+- Quand ta grille te va, chez les Dylan : « ⧉ Mêmes points pour une autre classe » → les Franklin. Leurs notes suivent à leur prochaine ouverture.
+- Scans → « 📨 Fichiers École Directe » : décoche « Afficher la note dans les fichiers des élèves », puis « 🧪 Tester comme l'élève » sur une copie corrigée : ni note ni points, toute la grille. La case vaut pour la classe ouverte ; décoche-la aussi chez les Franklin si tu veux la même chose.
+
+02/11/2026 23:53
+
+MEMO

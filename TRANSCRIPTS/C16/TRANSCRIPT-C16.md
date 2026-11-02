@@ -1096,3 +1096,16 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (le premier ▶, la répétition, puis « qui a la main ») · ouvert : 246
   >
   > MEMO
+- **16:30 — Paul, mot pour mot** : « ok »
+- **16:31 — la conscience** : 246 acquis — une seule mise en ligne vers 18:30, avec tout ㉞ et « qui a la main ». À l'exécutant (message) : à 16:55, il pousse ce qui est prouvé (pas de banc) ; « qui a la main » prouvé et poussé au plus tard à 17:40, avec les captures ; pendant qu'il code sans navigateur, la conscience prend la machine environ 5 minutes pour la maquette de l'appel (222).
+- **16:31 — message à Paul, mot pour mot :**
+
+  > 248. Noté : une seule mise en ligne, vers 18:30, avec tout ㉞ et « qui a la main ». Entre-temps, je te montre la maquette de l'appel (222) dès qu'elle est jouée, pendant que l'exécutant code.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:31
+  >
+  > À jouer : rien · en cours : l'exécutant (la répétition et le premier ▶ à 16:55, puis « qui a la main » à 17:40), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

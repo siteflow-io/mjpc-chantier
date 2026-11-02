@@ -645,7 +645,7 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
    la même largeur, donc les mêmes pages au tableau) ; ce qui partait du bord gauche part de la marge : l'image pleine, son étiquette et sa consigne,
    la vidéo, le document, la fiche ouverte en page, la légende des surligneurs, les alertes de forme. Le bandeau passe au-dessus du fil. */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran{padding-left:5.2%;padding-right:2%}
-:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img{left:5.2cqw}
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .img.img-plein{left:5.2cqw;right:0;width:auto}   /* C16 (les quatre dettes, §3.5) : la boîte de l'image pleine part de la marge du fil et s'arrête au bord droit (avant : « width:100% » la gardait entière, décalée : l'image débordait à droite, coupée par la diapo — Le Lac de 38 px au tableau 1280 × 720) ; l'image s'y ajuste (dr_imageAjuster) : elle rapetisse juste ce qu'il faut, une image qui tenait garde sa taille */
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .act,:is(#dr-zone,#ses-tab,.at-som-volet) .mur .ecran.plein-img .cons{left:5.2cqw}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .video{left:max(28px,5.2cqw)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .doc{padding-left:max(40px,5.2cqw)}
@@ -656,3 +656,6 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 /* C16 64 : la colonne a la main (un clic dedans) — ← → ↑ ↓ sont à elle ; la vignette ou la ligne courante le dit d'un trait d'or plus franc */
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .vig.cour{outline:2px solid var(--or);outline-offset:-1px}
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet.dr-fil-main .dr-d.on{outline:2px solid var(--or);outline-offset:-2px}
+
+/* C16 (les quatre dettes, §3.4) : le tableau plus haut que son dessin passe en pages — une rangée hors de la page n'est pas montrée ; une rangée seule plus haute que le dessin s'ancre en haut */
+:is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch .p8-grille tr.hors{display:none!important}:is(#dr-zone,#ses-tab,.at-som-volet) .mur .sch .p8-grille.p8-ancre{top:0;transform:translateX(-50%)}

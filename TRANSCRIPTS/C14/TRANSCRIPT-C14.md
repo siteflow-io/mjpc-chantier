@@ -3874,3 +3874,39 @@ MEMO
 02/11/2026 13:22
 
 MEMO
+
+---
+
+## Tour 141 — 02/11/2026 13:27
+
+**Paul (13:27, avec un extrait de mon message précédent : « Tu y tapes le numéro qu'elle a écrit à cette hauteur, ») :**
+
+pas compris. Et toujours pas compris l'essai et ce que je dois faire.
+
+**Ce qui a été fait (C14) :** le fichier d'essai relu (privé) : la consigne finale (« passe par cette ligne »), sa copie seule, 30 lignes, la date en ligne 1, la marge aux lignes 6, 9, 17, 23, 27, les ¶ aux lignes 11, 22, 29 ; nommé comme l'app le nomme ; envoyé à Paul.
+
+**Claude (13:30, avec le fichier d'essai) :**
+
+À jouer : 692 à 695 (l'essai) · en cours : rien · ouvert : 688, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+689. La marge, en simple. Sur sa feuille, à gauche, dans la marge, elle a tracé des accolades avec un chiffre : 1, 4, 3, 2, 5. Ce chiffre dit « cette phrase est mon architecture n° 4 ». L'IA ne l'a jamais vu, parce que l'app ne recopie que le texte.
+
+690. Maintenant, dans la recopie, chaque ligne a une petite case à sa gauche. Quand l'élève a écrit un chiffre dans la marge à côté d'une ligne, tu tapes ce chiffre dans la petite case de cette ligne. Chez elle, le « 4 » est à côté de la ligne « [un passage de sa copie, retiré du transcript] » : tu tapes 4 dans la case de cette ligne. C'est tout. Quand la marge est vide, la case reste vide.
+
+691. L'essai, en simple : avant que tu effaces tout, on vérifie avec ton IA, sur une vraie copie, que la nouvelle consigne marche. J'ai préparé le fichier d'essai avec sa copie seule, pour faire simple : la date et sa marge y sont déjà recopiées, par moi, d'après sa photo. Rien ne change sur ton site.
+
+692. Ce que tu fais, étape 1 : ouvre le fichier joint à ce message, « Redaction-1-…_1-copie_….json ».
+
+693. Étape 2 : ouvre une nouvelle conversation avec ton IA, et donne-lui ce fichier, comme quand tu exportes pour l'IA.
+
+694. Étape 3 : l'IA doit d'abord te poser des questions : les textes lus en classe, les modèles du cahier d'entraînement. Réponds-lui, colle-lui les textes.
+
+695. Étape 4 : elle te rend un fichier « corrige_… ». Envoie-le moi ici. Moi, je vérifie tout, et je te dis si ça va.
+
+696. 688, reposée : la 1.4.23 remplace la 1.4.22. Elle contient 626, 632, 633, 638 et 669, sans le bouton de rattrapage. Je te la donne à promouvoir maintenant, puisque 638 bloque tes copies complètes ? Ou bien après l'essai ?
+
+À tester : 692 à 695.
+
+02/11/2026 13:30
+
+MEMO

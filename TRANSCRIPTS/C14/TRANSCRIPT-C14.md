@@ -4078,3 +4078,29 @@ il faut l'infobulle du coup, toujours. Un stickers ne part jamais à la poubelle
 02/11/2026 14:50
 
 MEMO
+
+---
+
+## Tour 147 — 02/11/2026 14:50
+
+**Paul (14:50, avec un extrait de mon message précédent : « C'est ce que l'essai vérifie ») :**
+
+alors on fait ça tout de suite. je t'écoute. puis je promeus une fois que ce test est fait.
+
+**Claude (14:52) :**
+
+À jouer : 726 à 728 (l'essai) · en cours : rien · ouvert : ton promeus après l'essai (721), la banque de stickers, la taxonomie et la concordance (ton message de 14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+726. Étape 1 : ouvre une nouvelle conversation avec ton IA, celle avec qui tu corriges. Donne-lui le fichier « Redaction-1-…_14h28.json », celui de mon message de 14:37. Tu n'as rien à écrire : la consigne est dans le fichier.
+
+727. Étape 2 : elle doit d'abord te poser ses questions, sans rien corriger. Réponds à tout : colle-lui les textes lus en classe qu'elle demande, et dis-lui ce que l'élève doit faire de sa copie quand il la reçoit.
+
+728. Étape 3 : elle te rend un fichier « corrige_Redaction-1-…_14h28.json ». Envoie-le moi ici, tel quel. Si elle corrige sans te poser de question, ou si elle te rend du texte au lieu d'un fichier, envoie-moi aussi sa réponse : je dois le voir.
+
+729. Ensuite, moi : je charge son fichier dans une copie de ton site, sans rien y écrire, et je lis tout : chaque réussite, chaque remarque, son commentaire général, le contexte. Je te dis ce qui va et ce qui ne va pas.
+
+À tester : 726 à 728.
+
+02/11/2026 14:52
+
+MEMO

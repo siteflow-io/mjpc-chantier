@@ -4811,3 +4811,41 @@ promeus
 02/11/2026 23:53
 
 MEMO
+
+---
+
+## Tour 170 — 03/11/2026 00:39
+
+**Paul (00:39) :**
+
+*(le fichier École Directe d'une élève des Franklin, joint)* voici le html de [l'élève]. tu ne trouves pas quelque chose de bizarre, notamment sur les mots manquants?
+
+**Paul (00:43, la mesure en cours) :**
+
+*(une capture de la bande de [l'élève] : « augmentes → augmentent », « Mot manquant · Mot faux · proposé par l'IA · ligne 9 · arrêt 17 sur 96 · gardée » ; à droite, la liste des arrêts)*
+
+**Ce qui a été fait (C14) :** le fichier copié dans le bloc-notes privé de la conscience (`prive/mae/`), jamais au sas ni en prod ; ses données lues : 81 fautes, dont 8 « mots manquants ». Sa copie relue au site, en lecture seule (GET) : pour chaque faute, les mots de l'élève, le corrigé, le texte rendu par l'IA avec ses marques. Les deux classes mesurées, en lecture seule (`prive/enquete/types-vrai.mjs`, écritures interceptées) : le type de chaque faute gardée contre ce que l'app lit dans les mots. Dettes (prod) : consigné.
+
+**Claude (00:47) :**
+
+À jouer : 94 à 98 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+93. Oui, c'est faux. Sur sa copie, 8 « mots manquants » : 3 vrais (n', quoi, par) et 5 qui n'en sont pas (rencontré → rencontrer, augmentes → augmentent, soigné → soigner, affaibli → affaiblit, se → que ce). Elle voit « ∅ Mot manquant · 8 » et la pastille ∅ sous des mots qu'elle a bien écrits. La cause : ton IA écrit {M} après des mots qu'elle a corrigés (« augmentent{M} »), et l'app prend ce type tel quel, sans le confronter aux mots. Ta capture le montre : « Mot manquant » à côté de « Mot faux ». Mesuré sur ton site, sans rien y écrire : chez les Franklin, 48 fautes de ce genre sur 21 copies ; chez les Dylan, 11 sur 7 copies. Pour la moitié, un mot a seulement été changé ; pour l'autre moitié, un mot a été ajouté et un autre changé dans le même groupe (« Je → Il me »).
+
+94. Je propose : un « mot manquant » proposé par l'IA sur un mot que l'élève a écrit prend le type que l'app lit dans les mots, comme en dictée (augmentes → augmentent : grammaire).
+
+95. Je propose : un groupe qui mêle plusieurs fautes se coupe comme l'IA l'a marqué, mot par mot. L'IA donne bien un type par mot. Chez elle, « se → que ce » devient « que » (mot manquant) et « se → ce » (grammaire). « auquel → , à quoi », qui sort aujourd'hui en « ponctuation », devient « , », « à » (mot manquant) et « auquel → quoi ». Il y a 11 groupes de ce genre en « ponctuation », en plus des 30 « mots manquants » mêlés.
+
+96. Je propose : après ton promeus, un script reprend les copies déjà corrigées des deux classes en gardant tes décisions. Les fichiers École Directe déjà faits seront à refaire. Je ne sais pas si tu en as déjà déposé.
+
+97. Je propose : la consigne à l'IA dira « {M} seulement pour un mot que l'élève n'a pas écrit du tout ; un mot mal écrit prend G, L, C ou E ».
+
+98. Trouvé aussi : la bonne forme est gardée avec des espaces (« n ' », « s ' en », « promets - »), 58 fois sur les deux classes. L'élève ne la voit pas aujourd'hui, mais la correction par l'élève en aura besoin. Je propose de la recoller dans la même version.
+
+Le tout ferait la 1.4.30. Ton mot ?
+
+À tester : rien de neuf en ligne. Si tu corriges ce soir, une pastille ∅ sur un mot écrit par l'élève est fausse : dans la bande, le badge « Mot manquant » à côté de « Mot faux » le signale.
+
+03/11/2026 00:47
+
+MEMO

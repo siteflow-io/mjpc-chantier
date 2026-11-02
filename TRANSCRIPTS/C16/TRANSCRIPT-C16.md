@@ -1174,3 +1174,16 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (« qui a la main » et 256, prouvés vers 17:45), puis mon banc complet · ouvert : 258
   >
   > MEMO
+- **17:01 — Paul, mot pour mot** : « ok »
+- **17:02 — la conscience** : 257 et 258 acquis. Le mandat de l'appel écrit au sas, `MANDATS/DEROULE-01-11/MANDAT-APPEL.md` (à lancer après la mise en ligne de ㉞, sur le fichier promu ; la base à écrire au lancement) : l'appel d'abord à la case ; une seule liste d'absents par heure, remplie partout, vue partout en moins de 2 s ; le bouton « Appel » de la télécommande, sous « qui a la main » ; l'appel après coup corrige la Relecture ; « Le mot pour chaque absent » ; jamais au tableau ; six preuves par le geste.
+- **17:02 — message à Paul, mot pour mot :**
+
+  > 259. Le mandat de l'appel est écrit au sas, avec tes mots de 14:14 et de 16:59 : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DEROULE-01-11/MANDAT-APPEL.md — il part juste après la mise en ligne de ㉞.
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 17:02
+  >
+  > À jouer : rien · en cours : l'exécutant (« qui a la main » et 256, prouvés vers 17:45), puis mon banc complet · ouvert : rien
+  >
+  > MEMO

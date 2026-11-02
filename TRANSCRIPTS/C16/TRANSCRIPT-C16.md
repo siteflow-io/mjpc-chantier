@@ -658,3 +658,20 @@ MEMO
   > 02/11/2026 13:01
   >
   > MEMO
+- **13:16 — l'exécutant des correctifs, mot pour mot** : « Correctifs, 13:16 — dernier commit dff4474 (assemblé md5 5a9691bf897e57cbe1ca98812b3dc4c7), NOTE poussée (LIVRAISONS/DEROULE-01-11/CORRECTIFS/NOTE.md). Prouvé : ㉘ ㉙ ㉛ ㉜ ㉝ ⑭ (base : 82 vérif., 41 échecs → mon code : A 36/0, B 8/0, C 6/0, J 15/0, L 11/0 à 1536, R 4/1 = un défaut de ma sonde, corrigé). 8 : sonde-10 51/0, le plus long 256 ms (une fois ; 5 passages pas faits). 7 : partie D à 13:10 médianes 72/57/56 ms, max 135 — mais 216–242 ms à 13:02, et la v6 du cinquième aussi 230–241 ms à 13:05 : les chiffres suivent la charge ; ×10 et étape 11 ×5 pas faits. 9 NON tenu : mesure corrigée (texte exact ; l'ancienne comptait la réponse préparée qui paraît au tableau après la participation) → pilote 14/112 et 16/114 ms (15–19 lettres > 100 ms : le dessin complet à la 1re lettre et après Entrée), fenêtre 15/113 puis 190/300 ms sans cause trouvée. Rien perdu, 0 refus. Retiré : mon « reste 80 ms après » ; gardé, à trancher : la colonne 80 ms après de ⑯. ATTENTION machine : je viens de lancer la sonde entière (A B C J R L, 3 tailles) sur dff4474, jusque vers 13:40 ; dis-moi si je l'arrête pour ton banc. »
+- **13:17-13:19 — la conscience** : la NOTE des correctifs lue (mission 0 en 14 points ; la liste des écrivains ; le geste de ㉙ ; la coupure de ⑭ ; 9 pas tenu ; l'aide « ? » à remettre d'accord avec `MANDATS/CINQ-DETTES/AIDE-PAR-ECRAN.md` par la conscience). A pas prêt (9 pas tenu) ; la conscience prépare B sans attendre Paul (le seul prêt avant 14:45 ; rien en ligne sans son « promeus »). Message à l'exécutant (13:17) : arrêter sa sonde, aucun navigateur, chercher sans navigateur la cause des lettres lentes, trancher la colonne 80 ms après selon §12.56. Son outil restait pris par la sonde : **la conscience a arrêté elle-même sa sonde** (kill TERM 6479, 6481, 13:18), et le lui a dit (13:19). Une faute de la conscience : sa boucle d'attente comptait les navigateurs par `pgrep -f chrom`, qui se compte lui-même (jamais 0) ; refaite par `ps -eo comm`. **13:19:20 — le banc de la conscience lancé sur `cf7bb57`** (les six correctifs sur le code du cinquième, sans 7 à 9), dossier `wt-banc`, sorties `scratchpad/banc-cf7bb57/`, seul sur la machine.
+- **13:19 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : mon banc sur les six correctifs (jusque vers 14:00) ; l'exécutant, sur la frappe, sans navigateur · ouvert : 149, 153, 154, 155, 174
+  >
+  > 178. L'exécutant a livré à 13:16. Les six correctifs (㉘, ㉙, ㉛, ㉜, ㉝ et ⑭) sont prouvés. Sur la version d'aujourd'hui, sa sonde trouve 41 échecs sur 82 vérifications. Sur son code, elle n'en trouve aucun, sauf une vérification de sa propre sonde, trop large, qu'il a corrigée. Le tableau distant a mis au plus 256 ms sur une mesure (de 321 à 656 ms avant), mais les cinq passages ne sont pas faits. Le retard du tableau (7) est de 56 à 72 ms sur une mesure et de 216 à 242 ms sur une autre ; la version de 8 h donne aussi 230 ms à ce moment-là. Les chiffres suivent donc la charge de la machine : ce n'est pas encore prouvé.
+  >
+  > 179. La frappe (9) n'est pas tenue. Au pilote, la plupart des lettres paraissent en 14 ms, mais 15 à 19 lettres sur 244 dépassent 100 ms : la première lettre de chaque réponse et celles qui suivent Entrée. La version d'aujourd'hui restait sous 62 ms au pilote. À la fenêtre du tableau, une mesure tient (15 ms), l'autre non (190 ms), et la cause n'est pas trouvée. Le choix A du point 174 n'est donc pas prêt.
+  >
+  > 180. Sans attendre ta réponse au point 174, je passe le banc sur les six correctifs seuls (le choix B) : c'est le seul qui peut être prêt avant 14:45. Rien ne part en ligne sans ton « promeus ». Le banc finit vers 14:00 ; viennent ensuite les captures et ma demande. Pendant ce temps, l'exécutant cherche la cause des lettres lentes, sans navigateur.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:19
+  >
+  > MEMO

@@ -212,6 +212,31 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
     verif(mode, ELV && Object.values(V).every(x => x && x.part), 'la participation saisie au téléphone pendant ce temps : chez les trois pilotes', V);
     verif(mode, Object.values(V).every(x => x && x.cle && x.cle === V.ordinateur.cle), 'le dévoilement de l’ordinateur : chez les trois pilotes', V);
     o.errs.push(...o3.errs, ...o3.boites); await o3.ctx.close();
+    /* l'ordinateur tape une réponse ; pendant la frappe, le téléphone note une participation, puis dévoile : chaque lettre paraît au tableau (≤ 0,5 s) tant que
+       le téléphone n'a pas changé ce que voit la classe ; son dévoilement ne recule jamais au tableau ; à la sortie du champ, tout est là chez les deux */
+    {
+      await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1200);
+      const dits = await o.pg.$$('#mur .rep .dit'); const dit2 = dits.length ? dits[dits.length - 1] : null; const ELV2 = await tl.pg.evaluate(() => { try { return { nom: ELEVES[1], ini: iniDe(ELEVES[1]) }; } catch (e) { return null; } });
+      const tabRep = (t) => T.pg.evaluate(t => { const m = (typeof DR_TAB === 'object' && DR_TAB.montre) || null; return !!(m && JSON.stringify(m.reps || {}).indexOf(t) >= 0); }, t).catch(() => false);
+      const L1 = [], L2 = []; let avantDev = null, apresDev = null, recul = 0, ech = 0, tape = '';
+      const lettre = async (c, liste) => { await o.pg.keyboard.type(c); tape += c; const t0 = Date.now(); let ms = null; while (Date.now() - t0 < 1500) { if (await tabRep(tape.slice(-6))) { ms = Date.now() - t0; break; } await p(20); } if (liste) liste.push(ms == null ? '∞' : ms); await p(120); };
+      if (dit2 && ELV2) { await dit2.click(); await p(200); await o.pg.keyboard.press('End').catch(() => {}); await o.pg.keyboard.type(' ');
+        for (const c of 'Pensez') await lettre(c, L1);
+        await tl.pg.evaluate(() => { const v = document.getElementById('vif'); if (v) v.focus(); }); await tl.pg.keyboard.type(ELV2.ini, { delay: 40 }); await p(300); await tl.pg.keyboard.press('Enter'); await p(200); await tl.pg.evaluate(() => { try { document.activeElement.blur(); } catch (e) {} });
+        for (const c of ' au pay') await lettre(c, L1);
+        avantDev = ((await tabDe(T.pg)) || {}).cle; await geste(tl.pg); await p(150); apresDev = await cleDe(tl.pg);
+        const veille = (async () => { const t0 = Date.now(); while (Date.now() - t0 < 4000) { const k = ((await tabDe(T.pg)) || {}).cle; if (k && apresDev && k === avantDev && avantDev !== apresDev) recul++; ech++; await p(50); } })();
+        for (const c of 'sage') await lettre(c, L2);
+        await p(300); await o.pg.evaluate(() => { try { document.activeElement.blur(); } catch (e) {} }); await veille; await p(1200); }
+      const V2 = { ordinateur: await o.pg.evaluate(([t, n]) => ({ rep: JSON.stringify(parDiapo).indexOf(t) >= 0, part: (S.parts || []).some(x => x && x.nom === n) }), ['Pensez au paysage', ELV2 && ELV2.nom]).catch(e => String(e)),
+        telephone: await tl.pg.evaluate(([t, n]) => ({ rep: JSON.stringify(parDiapo).indexOf(t) >= 0, part: (S.parts || []).some(x => x && x.nom === n) }), ['Pensez au paysage', ELV2 && ELV2.nom]).catch(e => String(e)) };
+      const kf = [await cleDe(o.pg), await cleDe(tl.pg), ((await tabDe(T.pg)) || {}).cle];
+      dire('      ' + mode + ' · l’ordinateur tape « Pensez au paysage » dans une réponse : lettres au tableau avant et pendant la participation au téléphone (' + (ELV2 && ELV2.ini) + ') en ' + L1.join(', ') + ' ms ; le téléphone dévoile (' + avantDev + ' → ' + apresDev + ') ; les lettres tapées ensuite, au tableau à la sortie du champ (pendant la frappe : ' + L2.join(', ') + ' ms) ; le tableau revenu en arrière ' + recul + ' fois sur ' + ech + ' relevés ; à la fin : ordinateur ' + kf[0] + ' · téléphone ' + kf[1] + ' · tableau ' + kf[2] + ' · ' + JSON.stringify(V2));
+      await capt(o.pg, pre + '05c-ordinateur-frappe'); await capt(T.pg, pre + '05c-tableau-frappe');
+      verif(mode, dit2 && L1.length === 13 && L1.every(x => x !== '∞' && x <= 500), 'chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s, la participation notée au téléphone pendant la frappe (' + L1.filter(x => x !== '∞' && x <= 500).length + ' / 13)', L1);
+      verif(mode, avantDev !== apresDev && !recul, 'le dévoilement fait au téléphone pendant la frappe ne recule jamais au tableau (' + recul + ' / ' + ech + ')', { avantDev, apresDev });
+      verif(mode, kf[0] && kf[0] === kf[1] && kf[1] === kf[2] && Object.values(V2).every(x => x && x.rep && x.part), 'à la sortie du champ : la réponse entière, la participation et le dévoilement, chez les deux pilotes et au tableau', { kf, V2 });
+    }
     /* F5 sur chaque pilote : le téléphone (« Reprendre »), puis l'ordinateur (il relance la même séance par la case : il la rejoint, aucune deuxième) */
     const ptr0 = test ? lireH('/site/tableau_test/pointeur') : lireH('/site/cours_actif');
     await tl.pg.reload({ waitUntil: 'load' }).catch(() => {}); await p(1800); await profPrep(tl.pg, test); const bf = await attendreBandeau(tl.pg);
@@ -278,15 +303,15 @@ const telecommande = async (fichier, mode, nomV) => { const test = mode === 'QT'
   for (const a of ['suiv', 'suiv', 'suiv', 'suiv', 'suiv', 'prec']) { await tap(a); const r = await suivre(tl.pg, [['ord', o.pg, false], ['tab', T.pg, true]]); D.ord.push(r.r.ord == null ? '∞' : r.r.ord); D.tab.push(r.r.tab == null ? '∞' : r.r.tab); await p(250); }
   dire('      ' + mode + ' · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en ' + D.ord.join(', ') + ' ms · le tableau distant en ' + D.tab.join(', ') + ' ms');
   const tous = D.ord.concat(D.tab); verif(mode, tous.every(x => x !== '∞' && x <= 500), '▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; ' + tous.filter(x => x !== '∞' && x <= 500).length + ' / ' + tous.length + ')', D);
-  const attendrePc = async (f, ms = 1500) => { const t1 = Date.now(); while (Date.now() - t1 < ms) { if (await o.pg.evaluate(f).catch(() => false)) return Date.now() - t1; await p(25); } return null; };
+  const attendrePc = async (f, ms = 1500, arg) => { const t1 = Date.now(); while (Date.now() - t1 < ms) { if (await o.pg.evaluate(f, arg).catch(() => false)) return Date.now() - t1; await p(25); } return null; };
   await tap('gel'); const g1 = await attendrePc(() => !!S.gel); await capt(tl.pg, pre + '03-telecommande-gel'); await tap('gel'); const g2 = await attendrePc(() => !S.gel);
   dire('      ' + mode + ' · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en ' + g1 + ' ms, dégelé en ' + g2 + ' ms');
   verif(mode, g1 != null && g1 <= 500 && g2 != null && g2 <= 500, '❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s)', [g1, g2]);
   const ini = await tl.pg.evaluate(() => { const b = document.querySelector('#tc-bas .eleves button[data-ini]'); return b ? { ini: b.dataset.ini, nom: b.title.split(' a parlé')[0] } : null; });
   let q1 = null, q2 = null;
-  if (ini) { await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q1 = await attendrePc(n => (S.parts || []).some(x => x.nom === n), 1500);
+  if (ini) { await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q1 = await attendrePc(n => (S.parts || []).some(x => x.nom === n), 1500, ini.nom);
     const on = await tl.pg.evaluate(i => { const b = document.querySelector('#tc-bas .eleves button[data-ini="' + i + '"]'); return !!(b && b.classList.contains('on')); }, ini.ini); await capt(tl.pg, pre + '04-telecommande-qui');
-    await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q2 = await attendrePc(n => !(S.parts || []).some(x => x.nom === n), 1500);
+    await tl.pg.locator('#tc-bas .eleves button[data-ini="' + ini.ini + '"]').tap({ timeout: 1500 }).catch(() => {}); q2 = await attendrePc(n => !(S.parts || []).some(x => x.nom === n), 1500, ini.nom);
     dire('      ' + mode + ' · « qui a parlé » : ' + ini.nom + ' (' + ini.ini + ') noté à l’ordinateur en ' + q1 + ' ms (le bouton ' + (on ? 'allumé' : 'PAS allumé') + '), retiré en ' + q2 + ' ms'); }
   verif(mode, ini && q1 != null && q1 <= 500 && q2 != null && q2 <= 500, '« qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s)', [q1, q2]);
   await tap('m-plus'); await p(200); await tap('m-go'); const m1 = await attendrePc(() => !!(DR_CL.minut && DR_CL.minut.etat === 'court' && DR_CL.minut.tableau), 1500);

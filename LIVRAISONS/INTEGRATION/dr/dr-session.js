@@ -104,10 +104,37 @@ function dr_sesRecu(v){
   if (!(v.ts > DR_SES.recu)) return; DR_SES.recu = v.ts; DR_SES.vu = Math.max(DR_SES.vu, v.ts);
   try { DR_TAB.dernierTs = Math.max(DR_TAB.dernierTs || 0, (+v.sts || 0) + 50, v.ts); } catch (e) {}   /* ma prochaine scène passe après la sienne */
   if (v.close) { DR_SES.attendrePremier = 0; dr_sesClosAilleurs(v); return; }
-  if (dr_sesOccupe()) { DR_SES.attente = v; return; }
+  if (dr_sesOccupe()) { if (!DR_SES.attendrePremier && dr_sesPoserAutour(v)) return; DR_SES.attente = v; return; }
   const premier = !!DR_SES.attendrePremier; DR_SES.attendrePremier = 0;
   if (premier) DR_SES.socle = null;   /* le premier état reçu fait foi : l'état de départ d'ici n'est pas un geste */
   dr_sesAppliquer(v);
+}
+/* pendant une frappe ici : un état reçu qui ne change rien de ce que la classe voit de cette diapo (la même diapo, la même page, le même dévoilement,
+   ni gel ni loupe ni taille changés — une participation, le minuteur, une note) se pose TOUT DE SUITE, sans redessiner la diapo : le champ garde son
+   focus et ce qu'on y tape, la scène d'ici continue de partir à chaque lettre, avec la participation et le minuteur à jour. Sinon : il attend la
+   sortie du champ (rend faux). */
+const DR_SES_VUE = ['eidCourant', 'page', 'pageManuelle', 'gel', 'loupe', 'taille', 'doc', 'fichePage', 'repetition', 'lancee', 'close', 'heure'];
+function dr_sesPoserAutour(v){
+  try {
+    const b = DR_SES.socle; if (!b || DR_SES.attente) return false;
+    const loc = dr_sesPhoto();
+    const m = { S: dr_sesFus(b.S, loc.S, v.S), parDiapo: dr_sesFus(b.parDiapo, loc.parDiapo, v.parDiapo), vuMax: dr_sesFus(b.vuMax, loc.vuMax, v.vuMax), minut: dr_sesFus(b.minut, loc.minut, v.minut), J: dr_sesJournal(loc.J, v.J) };
+    if (!dr_sesEq(m.parDiapo, loc.parDiapo) || !dr_sesEq(m.vuMax, loc.vuMax)) return false;   /* un dévoilement, une réponse ailleurs : la diapo changerait */
+    if (DR_SES_VUE.some(k => !dr_sesEq((m.S || {})[k], (loc.S || {})[k]))) return false;
+    if (Array.isArray(v.ecrans) && v.cop !== dr_sesCopie()) return false;   /* la copie de la classe a changé : la diapo changerait */
+    const S1 = dr_copieEtatDuHub(dr_etatRempli(dr_duHub(m.S || {})), seance().ecrans); const SL = dr_copieEtatDuHub(dr_etatRempli(dr_duHub(loc.S || {})), seance().ecrans);
+    DR_SES.appl = true;
+    try {
+      Object.keys(S1).forEach(k => { if (DR_SES_LOCAL.includes(k) || DR_SES_VUE.includes(k)) return; if (!dr_sesEq(S1[k], SL[k])) S[k] = S1[k]; });
+      if (!dr_sesEq(m.minut, loc.minut)) { DR_CL.minut = m.minut ? Object.assign({ bips: {} }, m.minut) : null; try { dr_minuteurAfficher(); dr_minuteurBoucle(); } catch (e) {} }
+      const J1 = (Array.isArray(m.J) ? m.J : []).map(dr_duHub); J.length = 0; J1.forEach(o => J.push(o));
+      try { if (typeof participation === 'function') participation(); } catch (e) {}   /* le panneau de la participation, pas la diapo */
+      try { if (S.qui && !S.gel && typeof quiAParticipe === 'function') { S.qui = quiAParticipe(); if (S.mur) S.mur.qui = S.qui; } } catch (e) {}
+    } finally { DR_SES.appl = false; }
+    DR_SES.socle = m; DR_SES.envoye = '';   /* la base commune contient l'état reçu ; ce qu'on tape ici part au prochain envoi, fusionné */
+    try { if (DR_SES.ici && DR_SES.ici.test) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (DR_SES.ici && DR_SES.ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } catch (e) {}   /* la classe voit la participation, le minuteur, sans attendre la prochaine lettre */
+    dr_sesEnvoyer(); return true;
+  } catch (e) { DR_SES.appl = false; return false; }
 }
 /* la fusion à trois voies : ce que seul l'un a changé est gardé ; les deux ont changé : le plus récent (le sien, puisqu'il arrive après) */
 function dr_sesFus(b, m, t){
@@ -195,7 +222,8 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
 ['dr_tout', 'dr_copieAuto', 'dr_minuteurEnvoyer'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const r = f.apply(this, arguments); try { if (!DR_SES.appl && DR_SES.ici) dr_sesEnvoyer(); } catch (e) {} return r; }; g.__ses = true; window[n] = g; });
 /* pendant qu'un état reçu se pose, rien ne repart d'ici (la scène, la copie, l'état : l'autre pilote les a écrits) ; et pendant qu'un état reçu attend la fin
-   d'une frappe ici, la scène d'ici ne repart pas non plus (elle montrerait au tableau un état en retard sur l'autre pilote) : elle repart, fusionnée, à la sortie du champ */
+   d'une frappe ici — il a changé ce que voit la classe (une autre diapo, un dévoilement, le gel : `dr_sesPoserAutour` ne l'a pas posé) —, la scène d'ici ne
+   repart pas non plus (elle ferait reculer le tableau d'un geste) : elle repart, fusionnée, à la sortie du champ */
 ['dr_sceneAuto', 'dr_copieAuto', 'dr_ttEmettre', 'dr_repEmettre'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
   const g = function () { if (DR_SES.appl || (n !== 'dr_copieAuto' && DR_SES.attente && dr_sesOccupe())) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });
 /* clore ici : l'état vivant part une dernière fois, « clos », pour les autres pilotes ; puis la clôture d'avant (le pointeur, l'image d'essai) */

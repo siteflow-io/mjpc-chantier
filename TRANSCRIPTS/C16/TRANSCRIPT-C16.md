@@ -1471,3 +1471,16 @@ MEMO
   >
   > MEMO
 - **23:13 — la conscience** : l'exécutant de la fin d'heure lancé, neuf, en deux phases : la lecture du code et le plan tout de suite, sans navigateur et sans dossier de travail ; le code seulement sur la livraison de l'appel, dont la conscience écrira le commit dans `c16-fin-heure/BASE` (scratchpad). La machine : le fichier `MACHINE-CONSCIENCE` pendant le banc. L'exécutant de l'appel : sa sonde 88 / 1 (P2T, la télécommande en mode test : chaque appareil le dit en 44, 210 et 222 ms, mais la preuve échoue), la sonde de ㉞ 105 / 0 ; il continue.
+- **23:27 — Paul, mot pour mot** : « demain matin, c'est à dire à 5H30 dernier délai »
+- **23:27 — la conscience** : le délai écrit au mandat de la fin d'heure et envoyé à son exécutant : sa dernière poussée prouvée avant 03:45 ; de 03:45 à 05:15, la machine à la conscience pour le banc complet.
+- **23:27 — message à Paul, mot pour mot :**
+
+  > 295. Entendu : je te demande le « promeus » à 5:30 au plus tard, avec les deux listes et les captures. Pour le tenir : dès que l'appel est livré, cette nuit, je passe le banc complet sur l'appel seul ; c'est ce qui partira si la fin d'heure n'est pas prouvée. L'exécutant de la fin d'heure pousse ce qu'il a prouvé jusqu'à 3:45 ; ce qui n'est pas prouvé à 3:45 ne part pas. De 3:45 à 5:15, le banc complet sur l'ensemble.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 02/11/2026 23:27
+  >
+  > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) ; l'exécutant de la fin d'heure (la lecture) · ouvert : rien
+  >
+  > MEMO

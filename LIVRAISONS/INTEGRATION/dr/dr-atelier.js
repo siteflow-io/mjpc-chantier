@@ -760,6 +760,8 @@ function dr_repTableauDebut(){
     const src = typeof dr_sourceSeance === 'function' ? dr_sourceSeance() : null; const cl = (typeof dr_classe === 'function' ? dr_classe() : {}) || {};
     const p = { repetition: true, chemin: DR_REP.chemin, niveau: ec.level, chapitre: ec.chnum, seance: String(ATVUES.snum), classeSlug: (src && src.classeSlug) || cl.slug || '', classeNom: (src && src.classeNom) || cl.nom || '', ts: Date.now() };
     if (test) { try { dr_ttDebut('repetition', p); } catch (e) {} dr_repEntete(); return; }   /* §12.66 (1) : l'image du tableau, à l'adresse du mode test */
+    { const rj = (typeof DR_SES === 'object' && DR_SES && DR_SES.rejoindre) || null;   /* C16 (㉞) : la répétition reprise sur cet appareil — son pointeur est adopté, jamais un deuxième ; ni la scène ni la copie ne sont remises à neuf */
+      if (rj && rj.p && rj.p.quoi === 'repetition' && String(rj.p.seance) === String(p.seance) && String(rj.p.chapitre) === String(p.chapitre) && String(rj.p.niveau) === String(p.niveau)) { DR_SES.rejoindre = null; DR_REP.sig = rj.sig; DR_REP.emis = ''; DR_REP.trame = ''; dr_repEntete(); DR_REP.T = setInterval(dr_repEmettre, 250); return; } }
     DR_REP.sig = p.ts + '|' + p.seance; dr_repEcrire(DR_REP.chemin + '/scene', null); dr_repTrame(true); dr_repEcrire(DR_REP.chemin + '/pointeur', p); dr_repEntete();
     DR_REP.T = setInterval(dr_repEmettre, 250); }); }
 function dr_repTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_REP.trame) return false; DR_REP.trame = em; DR_REP.trameMaj = Date.now(); dr_repEcrire(DR_REP.chemin + '/ecrans', dr_clesVersHub(E)); return true; } catch (e) { return false; } }

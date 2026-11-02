@@ -150,9 +150,12 @@ function dr_sceneAuto(vite){
   clearTimeout(DR_TAB.emT);
   DR_TAB.emT = setTimeout(() => {
     if (!dr_tabPeutEcrire() || !S.mur) return;
+    if (typeof DR_SES === 'object' && DR_SES && DR_SES.ici && typeof dr_sesJeTiens === 'function' && !dr_sesJeTiens()) return;   /* C16 (㉞) : au moment d'écrire, cet appareil n'a plus la main — sa scène, en retard, ne passe plus devant celle de l'appareil qui l'a (mesuré : 1 geste sur 20 manqué au tableau) */
     const sc = dr_scene(S.mur); if (!sc) return;
+    { const cle = JSON.stringify(Object.assign({}, sc, { ts: 0, origine: '' })); if (cle === DR_TAB.emisCle) return; DR_TAB.emisCle = cle; }   /* C16 (㉞) : la même scène ne repart pas avec une heure plus récente (mesuré : elle passait devant le geste suivant d'un autre pilote, et le tableau le refusait) */
     if (dr_ttOn()) { dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => {}); return; }   /* §12.66 (1) : en mode test, ce dépôt reste au magasin du mode test ; le témoin « ● session » suit l'adresse du mode test (dr_ttEmettre) */
     clearTimeout(DR_TAB.ecrT); DR_TAB.ecrT = setTimeout(() => dr_sessionEtat(false), 5000);   /* sans accusé en 5 s : la session est coupée */
+    try { if (typeof DR_SES === 'object' && DR_SES && DR_SES.ici && dr_sesJeTiens()) { DR_SES.forcer = true; dr_sesEnvoyer(); } } catch (e) {}   /* C16 (㉞) : l'état vivant redit l'heure de cette scène — le prochain pilote qui prendra la main écrira après elle (mesuré : sa scène, plus ancienne, était refusée) */
     dr_ecrire(dr_cheminC() + '/scene', dr_clesVersHub(sc), 'La scène du tableau (ce que voit la classe)', () => { clearTimeout(DR_TAB.ecrT); dr_sessionEtat(true); });   /* C16 (㉘) : les clés échappées (les textes corrigés en direct, « 0.t ») — le vrai hub refusait la scène entière */
   }, vite ? 0 : 250);   /* le débounce de `sesEmettre` */
 }
@@ -183,7 +186,7 @@ function dr_ttDebut(quoi, p){
   if (!dr_ttOn() || !p) return;
   /* C16 (㉞) : l'essai repris sur cet appareil (dr-session.js) — son pointeur est adopté, jamais un deuxième ; ni la scène ni la copie ne sont remises à neuf */
   const rj = (typeof DR_SES === 'object' && DR_SES && DR_SES.rejoindre) || null;
-  if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (rj.p.classeSlug || '') === (p.classeSlug || '')) { DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
+  if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (quoi !== 'heure' || (rj.p.classeSlug || '') === (p.classeSlug || ''))) {   /* la répétition joue avec la classe de cet appareil : la séance suffit */ DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
   const ptr = Object.assign({}, p, { seance: String(p.seance), test: true, quoi, chemin: DR_TT.chemin, ts: Date.now() });
   DR_TT.quoi = quoi; DR_TT.sig = ptr.ts + '|' + ptr.seance; DR_TT.emis = ''; DR_TT.trame = '';
   dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);

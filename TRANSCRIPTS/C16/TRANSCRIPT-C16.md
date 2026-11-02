@@ -882,3 +882,22 @@ MEMO
   > 02/11/2026 14:51
   >
   > MEMO
+- **14:59 — Paul, mot pour mot** (citant « Une question : as-tu clos l’heure sur le même appareil et dans le même onglet que ceux qui l’avaient lancée ? ») : « Non, je crois que j'ai lancé le pilotage sur l'ordi, que j'ai ensuite repris sur le téléphone, puis j'ai fermé l'onglet du pilotage sur l'ordi, j'ai continué sur le téléphone puis j'ai fermé la séance sur le téléphone, et là j'ai eu le tableau que je t'ai envoyé. 210. La télécommande c'est asssez simple: regarde le fonctionnement dans évaluation qcm. Je scanne le qr code, et ça me met directement sur la séance. Pour les controles de la télécommande, on part sur ceux que tu as proposé effectivement, on verra plus tard pour en rajouter. »
+- **15:00-15:02 — la conscience** : lu `evaluation-qcm.html` (l. 13614-13630 : le QR vers `#mode=prof&view=phone&qr=<nonce>`, `qrScans/<nonce>`, l'image de `api.qrserver.com` ; l. 17177-17178) ; lu `dr_ttDebut`, `dr_coursEcrire` (dr-tableau.js, dr-classe.js) ; le mandat de ㉞ mis à jour (le QR, la maquette acquise poussée au sas `MANDATS/DEROULE-01-11/MAQUETTE-TELECOMMANDE/injection.html`, le parcours de Paul en preuve, la base `cf7bb57`) : sas `b57d2ad` ; **l'exécutant de ㉞ lancé à 15:01** (branche `deroule/session-partout`, dossier `/home/claude/ex-session`) ; registre (prod `c7ef4fb`) ; contrôle programmé à 16:03.
+- **15:02 — message à Paul, mot pour mot :**
+
+  > 223. Ton parcours explique l'image restée au tableau. C'est lu dans le code, pas mesuré. En mode test, chaque appareil garde sa propre heure. Ton téléphone n'a donc pas repris l'heure de l'ordinateur : il a repris la sienne. Fermer l'onglet de l'ordinateur n'a pas retiré l'image de l'essai, et la clôture sur le téléphone n'a retiré que celle du téléphone. C'est exactement ce que ㉞ règle : ton parcours est devenu une preuve obligatoire du mandat (lancer sur l'ordinateur, passer au téléphone, fermer l'onglet, clore sur le téléphone, et le tableau revient à l'horloge).
+  >
+  > 224. 210, c'est noté. La télécommande s'ouvre par le QR code, comme dans évaluation QCM : tu scannes, et le téléphone arrive directement sur la séance. Les contrôles sont ceux que j'ai proposés (◀ ▶, ❄ Geler, qui a parlé, le minuteur), et d'autres viendront plus tard. L'allure de la maquette devient le code de départ.
+  >
+  > 225. ㉞ est lancé depuis 15:01, à partir de la version en ligne. L'exécutant commence par refaire tes parcours de 12:21 et de 14:59 sur la version en ligne, et il mesure ce qui se passe. Ses captures (le bandeau, le QR, la télécommande qui pilote, l'ordinateur et le tableau qui suivent) arrivent avant 16:31. Tu les verras avant toute mise en ligne.
+  >
+  > 226. Tu n'as pas commenté 222 : je prépare donc la maquette de l'appel au lancement. Au clic sur la case, l'appel vient d'abord, puis l'heure se lance ; et un appel fait après coup corrige la relecture. C'est le premier sujet de la refonte de la fin d'heure, et je te l'envoie en captures.
+  >
+  > À jouer : rien · en cours : l'exécutant de ㉞ (captures avant 16:31) ; ma maquette de l'appel · ouvert : rien
+  >
+  > À tester : la liste de 14:34, toujours valable.
+  >
+  > 02/11/2026 15:02
+  >
+  > MEMO

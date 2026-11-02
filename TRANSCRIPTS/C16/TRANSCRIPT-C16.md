@@ -830,3 +830,26 @@ MEMO
   > 02/11/2026 14:26
   >
   > MEMO
+- **14:29 — Paul, mot pour mot** : « promeus. »
+- **14:29-14:33 — la promotion 8.79.0-⑫** : commit prod `4f9984a` (index.html seul ; `redaction.html` pas touché), md5 `126b2a6a0183b025c108d80ef5722d99` (2 872 521 o), blob `16a89127fc7a` ; l'adresse publique le rend bit à bit à 14:30:41 ; le point de retour (blob `e497ef8d5a45`, la 8.78.2-⑪-micro), le journal, le journal des micros (n°1 et n°2 « remplacés par 8.79.0-⑫ »), le registre ✔, l'index des fonctions (2 265), « où trouver quoi » : prod `7fc9256`.
+- **14:34 — message à Paul, mot pour mot :**
+
+  > 212. C'est en ligne : 8.79.0-⑫, servi bit à bit par l'adresse publique à 14:30. Les deux micros de ce matin sont remplacés. Le point de retour, le journal, le journal des micros, le registre (✔ pour ㉘, ㉙, ㉛, ㉜, ㉝, ⑭ et les dettes du cinquième), l'index des fonctions et « où trouver quoi » sont à jour. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/?n=3e&v=8.79.0
+  >
+  > 213. Ta question « Groupe 1 : l'hypothèse » de ce matin garde les mots de la barre dans la copie des 3 FRANKLIN ARETHA. Rien n'est réparé en silence : « À régler » te la signale dans l'Atelier, et tu la corriges toi-même.
+  >
+  > 214. Restent ouverts, non bloquants mais à traiter : le retard du tableau, le délai du tableau distant et la frappe (l'exécutant arrêté avait commencé : son code est gardé, ses mesures sont à refaire). Restent aussi la télécommande à valider (210), puis ㉞, l'audit de la fin d'heure (en cours, chiffres avant 15:10) et le minuteur.
+  >
+  > À tester, en mode test, avec la classe test (jamais pendant un cours) :
+  > 1. Ouvre l'adresse : le badge dit 8.79.0-⑫.
+  > 2. Lance une heure en mode test et ouvre l'adresse du tableau sur un autre appareil. Corrige en direct, au pilote, la question d'un bloc question : la correction paraît au tableau distant, le témoin reste « ● session » sans « coupée », et aucun bandeau rouge ne paraît.
+  > 3. Dans l'Atelier, clique dans la question d'un bloc question et tape quelques mots : le texte enregistré est exactement le tien, sans « BLOC 1 · QUESTION ».
+  > 4. En classe ou en répétition, sur un tableau en plusieurs pages, appuie sur → : la page suivante paraît avant la diapo suivante. ← revient page par page.
+  > 5. Clos l'heure d'essai et relis le récit : la présentation dit « on a ouvert le chapitre … », sans « et sa question ».
+  > 6. Dans « À régler », un tableau qui passe en pages n'est plus signalé.
+  >
+  > À jouer : les tests ci-dessus ; valider ou corriger la télécommande (210) · en cours : l'auditeur de la fin d'heure (jusqu'à 15:10) · ouvert : 210
+  >
+  > 02/11/2026 14:34
+  >
+  > MEMO

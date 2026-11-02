@@ -675,3 +675,19 @@ MEMO
   > 02/11/2026 13:19
   >
   > MEMO
+- **13:27 — Paul, mot pour mot** : « C'est bon je suis de nouveau devant mon poste pour coder. Que dois je faire? Par ailleurs je vois qu'un agent tourne depuis maintenant 1h45, c'est dû à quoi? »
+- **13:28 — message à Paul, mot pour mot :**
+
+  > À jouer : rien · en cours : mon banc sur les six correctifs (étape 6 sur 12, fin vers 13:55) ; l'exécutant, sur la frappe, sans navigateur · ouvert : 149, 174
+  >
+  > 181. Tu as deux réponses à donner, et rien à tester. Pour 149 : l'heure de ta prochaine heure avec le déroulé. Pour 174 : confirmer B (les six correctifs en ligne d'abord ; le retard du tableau et la frappe restent comme aujourd'hui, en dérogation à ta règle), ou dire A. Ensuite, vers 14:15, tu regardes mes captures avant / après, puis tu dis « promeus » ou non.
+  >
+  > 182. L'agent qui tourne depuis 1 h 45 est l'exécutant des correctifs, lancé à 11:44. Il y a trois raisons à cette durée. D'abord, son mandat a grandi : 3 dettes au départ (㉘, ㉙, ㉛), puis les 3 restes du tableau en pages (㉜, ㉝, ⑭), puis le retard du tableau, le tableau distant et la frappe (7, 8 et 9), soit 9 points en tout. Ensuite, la machine n'était pas libre : jusqu'à 12:10, le cinquième exécutant faisait encore ses mesures (son délai était 09:45), et le disque a été plein à 11:47. Enfin, les mesures de temps demandent la machine seule : il attend en ce moment la fin de mon banc. Il a livré les six correctifs prouvés à 13:16. Il lui reste la frappe (9), pas encore tenue, et les mesures répétées de 7 et 8.
+  >
+  > 183. Pendant le banc, j'écris le mandat de ㉞ (la séance retrouvée et repilotable sur tout appareil), suite à ton « Ok » de 12:40. Je te l'envoie pour relecture avant de lancer quoi que ce soit.
+  >
+  > À tester : rien.
+  >
+  > 02/11/2026 13:28
+  >
+  > MEMO

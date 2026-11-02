@@ -3812,3 +3812,39 @@ Tu as compris?
 02/11/2026 12:50
 
 MEMO
+
+---
+
+## Tour 140 — 02/11/2026 12:52
+
+**Paul (12:52) :**
+
+666. Attention parce que parfois l'IA préférera se taire alors qu'elle avait tout ce qu'il fallait. Donc il faut quand même qu'elle propose, et que je dispose. Ok. Pour 670 pas compris le flux précis.
+
+**Claude (12:54) :**
+
+À jouer : ton mot sur 672 · en cours : 669, que je code (ton « Ok ») · ouvert : 672, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+673. 666 corrigé : elle propose toujours, tu disposes. Pour chaque sticker, l'IA donne son avis, même sans être sûre. Quand il lui manquait quelque chose, elle l'écrit : « il me manquait : … ». La bande te le montre sur cet arrêt, et la liste des remarques aussi. Rien ne part chez l'élève sans ta décision.
+
+674. 670, le flux précis, étape 1 : quand 669 passe le banc, je fabrique moi-même le fichier d'essai avec la version nouvelle, depuis ton vrai site en lecture seule. Il contient 3 vraies copies : la sienne et deux autres. C'est exactement le fichier que l'app exportera. Rien ne change sur ton site.
+
+675. Étape 2, ce qu'il te faut pour ces deux autres copies : choisis-en deux qui ont des numéros dans la marge, et envoie-moi leurs fichiers École Directe, comme pour la sienne. J'y lis leur marge et leur en-tête sur la photo, et je les porte dans l'essai.
+
+676. Étape 3 : je t'envoie le fichier d'essai. Tu ouvres une conversation neuve avec ton IA et tu lui donnes le fichier, comme d'habitude.
+
+677. Étape 4 : l'IA lit sa consigne et te pose d'abord ses questions : les textes lus en classe, le chapitre, les modèles du cahier d'entraînement. Tu lui réponds, tu colles les textes.
+
+678. Étape 5 : elle te rend son fichier « corrige_… ». Tu me l'envoies ici.
+
+679. Étape 6 : je le charge dans la copie de ton site que j'ai ici, toujours en lecture seule. Je le lis ligne par ligne contre les 3 copies et la grille. Je vérifie qu'elle a posé ses questions, qu'aucune remarque ne dit « copie transmise », que chaque doute dit ce qui manquait, que la liste va jusqu'à « fin », et que le contexte est gardé pour les paquets suivants. Je te dis ce qui va et ce qui ne va pas, avec la bande de chaque copie en capture.
+
+680. Étape 7 : si tout va, on passe à 671 : tu promeus, tu effaces les deux classes, et tu réexportes tout. Sinon, je corrige, et on refait les étapes 1 à 6.
+
+681. 672, reposée : la 1.4.22. Le bouton de rattrapage n'a plus lieu d'être. Je le retire, et je te redonne la 1.4.22 à promouvoir avec 626, 632, 633 et 638 ? Ou bien elle attend 669 ?
+
+À tester : rien de neuf.
+
+02/11/2026 12:54
+
+MEMO

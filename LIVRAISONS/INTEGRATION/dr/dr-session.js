@@ -122,7 +122,7 @@ function dr_sesPoserAutour(v){
       try { if (S.qui && !S.gel && typeof quiAParticipe === 'function') { S.qui = quiAParticipe(); if (S.mur) S.mur.qui = S.qui; } } catch (e) {}
     } finally { DR_SES.appl = false; }
     DR_SES.socle = m; DR_SES.envoye = '';   /* la base commune contient l'état reçu ; ce qu'on tape ici part au prochain envoi, fusionné */
-    try { if (DR_SES.ici && DR_SES.ici.test) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (DR_SES.ici && DR_SES.ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } catch (e) {}   /* la classe voit la participation, le minuteur, sans attendre la prochaine lettre */
+    try { if (DR_SES.ici && (DR_SES.ici.test || DR_SES.ici.sorte === 'essai')) { if (typeof dr_ttEmettre === 'function') dr_ttEmettre(); } else if (DR_SES.ici && DR_SES.ici.sorte === 'repetition') { if (typeof dr_repEmettre === 'function') dr_repEmettre(); } else if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } catch (e) {}   /* la classe voit la participation, le minuteur, sans attendre la prochaine lettre */
     dr_sesEnvoyer(); return true;
   } catch (e) { DR_SES.appl = false; return false; }
 }

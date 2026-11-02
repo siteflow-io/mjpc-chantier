@@ -4513,14 +4513,42 @@ promeus
 
 À jouer : 50 · en cours : rien · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
 
-49. La 1.4.27 est en ligne, vérifiée bit à bit à 18:05 : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.27-RU
+49. La 1.4.27 est en ligne. À 18:05, j'ai vérifié que ton site sert exactement le bon fichier : https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.27-RU
 
-50. Recharge ta page maintenant : tant que tu ne l'as pas rechargée, elle tourne encore avec l'ancienne version, et elle peut encore perdre une décision.
+50. Recharge ta page maintenant. Tant que tu ne l'as pas rechargée, elle tourne encore avec l'ancienne version, et une décision peut encore s'y perdre.
 
 51. Vérifié sur ton site, sans rien y écrire : la version en ligne reconnaît maintenant sa propre copie quand le site la lui renvoie.
 
-À tester : après avoir rechargé, une bande entière à ton rythme, puis la carte de cette copie : 100 %.
+À tester : après avoir rechargé, fais une bande entière à ton rythme, puis regarde la carte de cette copie : elle doit être à 100 %.
 
 02/11/2026 18:07
+
+MEMO
+
+---
+
+## Tour 161 — 02/11/2026 18:45
+
+**Paul (18:45) :** *[capture : la fenêtre « 28 fichiers que cette rédaction ne connaît pas » — « Ils sont dans « Rédaction lettre Bob dylan », mais aucune page de cette classe ne vient d'eux. Ce sont peut-être de nouvelles copies. » — et la liste IMG_20261031_161801.jpg, IMG_20261031_161821.jpg… ; derrière, les cartes des élèves, « ✓ envoyée », « page 1 », « page 2 »]*
+
+ok. c'est normal ça?
+
+**Ce qui a été fait (C14) :** lu le code (`scDossierFichiers`, scan.js 563-576 ; `scPage`, `scPageProche`) et le banc (`eprouverAutreOrdinateur`, accueil.mjs) ; relu le vrai site en lecture seule (0 écriture) : 3 Dylan Bob, 45 pages, toutes créées le 01/11 à 07:52 (avant la 1.4.13, en ligne à 09:47), 17 avec leur origine (ordre 1 à 16 et 19), 28 sans ; 3 Franklin Aretha, 51 pages, 1 avec origine (01/11 08:54). Dette consignée au registre.
+
+**Claude (18:49) :**
+
+À jouer : 54, puis ton mot sur 55 · en cours : rien · ouvert : 55, le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site), 738, la banque de stickers, la taxonomie et la concordance (14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe (plus tard), 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+52. Non, ce n'est pas normal. Ces 28 fichiers sont tes photos des Dylan, déjà dans la classe, et l'app ne les reconnaît pas. Mesuré sur ton site, sans rien y écrire : la classe a 45 pages, chargées le 01/11 à 07:52, avant la version qui retient de quel fichier vient chaque page. Depuis, 17 ont reçu cette origine, 28 non. La fenêtre montre exactement 28 fichiers.
+
+53. La cause : « 📂 Mon dossier » ne relit toutes les photos que si aucune page de la classe n'a encore son origine. Dès qu'une seule l'a, toute photo dont l'origine n'est pas connue passe pour une nouvelle copie. Le banc ne jouait que « toutes » ou « aucune », jamais le mélange : c'est un trou de la 1.4.13. Les Franklin tomberont dans le même piège : 51 pages, une seule avec son origine (la copie chargée seule le 01/11 à 08:54), donc 50 photos montrées comme inconnues.
+
+54. Pour l'instant, clique « Non ». Rien n'est perdu ni changé : tes pages, tes recopies et tes bandes sont au site. Ne clique pas « Les charger » : je ne sais pas si ça créerait des pages en double, et je ne le joue pas sur tes vraies copies.
+
+55. Ma proposition, à ton mot : la règle se décide page par page, plus pour toute la classe. Une photo dont l'origine n'est pas connue est d'abord comparée, par son image, aux pages de la classe qui n'ont pas encore la leur. Si c'est l'une d'elles, l'app la reprend sans rien te demander et lui donne son origine, une fois pour toutes. Seule une photo qui ne ressemble à aucune page est montrée comme nouvelle. Le banc rejoue le mélange : une classe avec des pages qui ont leur origine, d'autres non, et une vraie nouvelle copie. Ce serait la candidate 1.4.28, banc complet avant ton promeus.
+
+À tester : rien de neuf en ligne. Clique « Non » : la fenêtre se ferme, tes cartes et tes copies restent les mêmes.
+
+02/11/2026 18:49
 
 MEMO

@@ -1481,6 +1481,7 @@ function rcBandeLettre(pas) {
 }
 /* [C14 1.4.15] (Paul 01/11 13:12 : « dans la bande, parfois la largeur du rectangle est trop longue et je n'ai pas de moyen de la raccourcir. Un double clic sur le
    rectangle doit activer deux poignées de chaque côté du rectangle pour le redimensionner en longueur ») : cote « g » ou « d » ne bouge qu'un bord ; sans cote, tout le cadre */
+const RC_PAS_FLECHE = 0.012, RC_PAS_FIN = 0.004;   // le pas d'une flèche dans la bande, en part de la largeur de la page
 function rcBandeGlisser(du, cote) {
   const B = RC.bd, a = B && rcBandeCible(); if (!a || B.attente || (a.st && !a.g) || (a.st && ["phrase", "paragraphe"].includes(a.sticker.taille))) return; const q = B.boite ? B.boite.q : rcPlaceSeg(a);   // [C14 1.4.17] une phrase ou un paragraphe ne se glisse pas : sa zone suit ses lignes
   let x0 = cote === "d" ? q.x0 : rcBorne(q.x0 + du, 0, 0.99), x1 = cote === "g" ? q.x1 : rcBorne(q.x1 + du, 0.01, 1); if (x1 - x0 < 0.008) { if (cote === "g") x0 = x1 - 0.008; else if (cote === "d") x1 = x0 + 0.008; }
@@ -1548,7 +1549,7 @@ function rcBandeClavier(ev) {
   if ((ev.key === "n" || ev.key === "N") && !ev.ctrlKey && !ev.metaKey) { ev.preventDefault(); rcBandeDecider("n"); return true; }
   if (ev.key === "Backspace") { ev.preventDefault(); B.reste = false; B.i = Math.max(0, B.i - 1); B.note = ""; rcBandeRendre(); return true; }
   if ((ev.key === "ArrowLeft" || ev.key === "ArrowRight") && B.A[B.i] && B.A[B.i].st && !B.A[B.i].g) { ev.preventDefault(); rcBandeLettre(ev.key === "ArrowLeft" ? -1 : 1); return true; }   // [C14 626]
-  if (ev.key === "ArrowLeft" || ev.key === "ArrowRight") { ev.preventDefault(); rcBandeGlisser(ev.key === "ArrowLeft" ? -0.004 : 0.004); saveState(); return true; }
+  if (ev.key === "ArrowLeft" || ev.key === "ArrowRight") { ev.preventDefault(); rcBandeGlisser((ev.key === "ArrowLeft" ? -1 : 1) * (ev.shiftKey ? RC_PAS_FIN : RC_PAS_FLECHE)); saveState(); return true; }   /* [C14 1.4.25] (Paul 02/11 16:30 : « augmentes la vitesse de défilement de la bande quand j'utilise mes flèches gauche et droite ») : trois fois plus vite ; Maj : à petits pas, comme avant */
   if ((ev.ctrlKey || ev.metaKey) && (ev.key === "z" || ev.key === "Z")) { ev.preventDefault(); rcBandeRemettre(); return true; }
   return true;
 }
@@ -2134,7 +2135,7 @@ RU_AIDES.bande = { ou: "La bande", l: [
   ["Entrée ou Espace", "c'est une faute (ou le sticker est réussi), puis l'arrêt suivant"],
   ["N", "non, puis l'arrêt suivant"],
   ["⌫", "revenir à l'arrêt d'avant"],
-  ["← →", "glisser le cadre sur la photo ; sur un sticker de toute la lettre, faire défiler la copie"],
+  ["← →", "glisser le cadre sur la photo, la bande avec lui ; Maj + ← → : à petits pas ; sur un sticker de toute la lettre, faire défiler la copie"],
   ["le cadre", "tire-le ; double clic : une poignée de chaque côté pour régler sa longueur ; clic droit : une faute de ta recopie"],
   ["Ctrl + Z", "annuler ton dernier réglage du cadre"],
   ["⇧ R", "passer au mot par mot, comme en dictée, et en revenir : Entrée le mot suivant, F une faute (ou la retirer), N non, ⌫ le mot d'avant"],

@@ -479,8 +479,13 @@ export async function eprouverRecopie({ pg, verif, cap, att, dir, out }) {
     const av21 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return { cle: a.cle, q: (({ x0, x1 }) => ({ x0, x1 }))(rcPlaceSeg(a)) }; });
     await pg.keyboard.press("ArrowRight"); await att(150); await pg.keyboard.press("ArrowRight"); await att(200);
     const ap21 = await pg.evaluate(cle => { const a = RC.bd.A[RC.bd.i]; return { app: a.l.placesApp && a.l.placesApp[cle], ici: a.l.places && a.l.places[cle] }; }, av21.cle);
+    /* [C14 1.4.25] (Paul 16:30 : « augmentes la vitesse de défilement de la bande ») : → glisse de 0,012 de la page ; Maj + → de 0,004, comme avant */
+    await pg.keyboard.press("Shift+ArrowRight"); await att(150); await pg.keyboard.press("Shift+ArrowRight"); await att(200);
+    const fin21 = await pg.evaluate(cle => { const a = RC.bd.A[RC.bd.i]; return a.l.places && a.l.places[cle]; }, av21.cle);
+    verif("bande (1.4.25) : deux → glissent le cadre, et la bande avec lui, de " + (ap21.ici ? (ap21.ici.x0 - av21.q.x0).toFixed(3) : "—") + " de la page (trois fois plus qu'avant) ; deux Maj + → de " + (fin21 && ap21.ici ? (fin21.x0 - ap21.ici.x0).toFixed(3) : "—") + ", à petits pas",
+      !!ap21.ici && Math.abs(ap21.ici.x0 - av21.q.x0 - 0.024) < 1e-6 && !!fin21 && Math.abs(fin21.x0 - ap21.ici.x0 - 0.008) < 1e-6);
     verif("recopie (1.4.12) : un cadre glissé pour la première fois (deux fois →) garde la place où l'app l'avait posé (" + (ap21.app ? ap21.app.x0.toFixed(3) : "—") + ") à côté de la tienne (" + (ap21.ici ? ap21.ici.x0.toFixed(3) : "—") + ") : la mesure se fera sur ton travail",
-      i21 >= 0 && !!ap21.app && Math.abs(ap21.app.x0 - av21.q.x0) < 1e-9 && !!ap21.ici && Math.abs(ap21.ici.x0 - av21.q.x0 - 0.008) < 1e-6); }
+      i21 >= 0 && !!ap21.app && Math.abs(ap21.app.x0 - av21.q.x0) < 1e-9 && !!ap21.ici && Math.abs(ap21.ici.x0 - av21.q.x0 - 0.024) < 1e-6); }
   // 1.4.7 (Paul 15:41) : la bande se rouvre à l'arrêt où l'on était, après l'avoir fermée, puis après un rechargement de la page
   const i8 = await pg.evaluate(id => RC.bd.A.findIndex(a => a.id === id && a.g.eleve === "se"), cible2); await pg.click('#rcBandeListe li[data-i="' + i8 + '"]'); await att(200);
   const vise8 = await pg.evaluate(() => { const a = RC.bd.A[RC.bd.i]; return a.id + "|" + a.cle; });

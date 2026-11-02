@@ -4054,3 +4054,27 @@ MEMO
 02/11/2026 14:37
 
 MEMO
+
+---
+
+## Tour 146 — 02/11/2026 14:48
+
+**Paul (14:48, avec un extrait de mon message précédent : « 🗑 Enlever de la grille ») :**
+
+il faut l'infobulle du coup, toujours. Un stickers ne part jamais à la poubelle, mais va dans une banque de stickers. Cette banque là est aussi appelée via le bouton "reprendre ceux d'un autre sujet". En effet, au fur et à mesure de l'année, l'ia d'injection du sujet devra avoir un aperçu des stickers précédemment utilisés, des compétences qui y sont attachées, etc. Ils devraient rejoindre la taxonomie à mon avis, qu'en penses-tu? Et ça réouvre le sujet de la concordance. avant de commenter ce que je viens de dire, réponds d'abord à cette simple question: si je promeus ce que tu viens de finir, je peux finaliser ma correction de rédac après avoir tout supprimé de ce qui est en ligne?
+
+**Claude (14:50) :**
+
+À jouer : ton promeus (721) · en cours : rien · ouvert : la banque de stickers, la taxonomie et la concordance (ton message de 14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+723. Oui. La 1.4.24 en ligne, tu fais « 🗑 Tout effacer » sur tes deux classes. Puis tu exportes, tu donnes chaque fichier à ton IA, tu charges ses retours, tu relis chaque bande jusqu'au commentaire général, et tu rends les fichiers École Directe. Tout ce chemin est dans l'app, et le banc le parcourt en entier.
+
+724. Ce que je ne sais pas : si ton IA suit bien la nouvelle consigne (ses questions d'abord, le commentaire général, le contexte). C'est ce que l'essai mesure. Si tu le sautes et qu'elle répond mal, tu ne perds rien : ta recopie reste ; tu effaces encore, et tu réexportes.
+
+725. Le reste de ton message (l'infobulle, la banque de stickers, la taxonomie, la concordance) : je relis d'abord ce qui existe, puis je te réponds.
+
+À tester : rien de neuf.
+
+02/11/2026 14:50
+
+MEMO

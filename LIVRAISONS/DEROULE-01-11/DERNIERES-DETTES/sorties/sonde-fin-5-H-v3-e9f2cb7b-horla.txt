@@ -1,0 +1,7 @@
+C16 · sonde des dernières dettes · parties H · 2026-11-02 06:02 UTC · md5 e9f2cb7b7ea32ee1c20d94fd8df5c43c · images : celle du canon · hub construit : un dossier local
+
+══ H · (⑬) l’image pleine au tableau en 1280 × 720 (les cinq images de l’heure 1) ; le chapitre de 4e du hub construit (Le Horla) ══
+      H · le chapitre de 4e du hub construit (« Le Horla, de Guy de Maupassant ») : 7 séances, 100 diapos ouvertes une à une dans l’Atelier (sur 114 que portent ses séances) : 0 image(s) pleine(s) montrée(s), 0 bloc(s) image
+  ok     H · le chapitre de 4e (Le Horla) : 100 diapos ouvertes une à une, 0 image pleine (il n’en porte aucune : rien à couper) ; aucune erreur JS
+
+— fin : 1 vérifications, 0 échec(s) · VERT

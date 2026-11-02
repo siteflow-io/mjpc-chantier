@@ -88,12 +88,14 @@ export async function eprouverStickers({ pg, verif, cap, att, dir, out }) {
   /* [C14 669] la ligne de la date laissée vide au-dessus de la lettre dit « en-tête : la date, le lieu » (Paul 13:31 : pas de case pour la marge) */
   const c0l = pg.locator('#rcFeuille .rc-saisie[data-ligne="' + kE.l[0] + '"]'); await c0l.fill(""); await att(400);
   const tete = await pg.evaluate(id => (document.querySelector('#rcFeuille .rc-saisie[data-ligne="' + id + '"]') || {}).placeholder || "", kE.l[0]); await cap("C14-669-marge-en-tete");
+  const nTete = () => pg.evaluate(() => Array.from(document.querySelectorAll("#rcFeuille .rc-saisie")).filter(i => /^en-tête de la lettre/.test(i.placeholder || "")).length), n1 = await nTete();   /* [C14 1.4.26] (Paul 16:40) une seule ligne la porte */
   await c0l.fill(ENTETE[0]); await att(300);
-  const tete2 = await pg.evaluate(id => (document.querySelector('#rcFeuille .rc-saisie[data-ligne="' + id + '"]') || {}).placeholder || "", kE.l[0]);
+  const tete2 = await pg.evaluate(id => (document.querySelector('#rcFeuille .rc-saisie[data-ligne="' + id + '"]') || {}).placeholder || "", kE.l[0]); const n2 = await nTete();
   const dl = pg.waitForEvent("download"); await pg.click("#rcExportIA"); const fichier = await (await dl).path(); const ex = JSON.parse(fs.readFileSync(fichier, "utf8"));
   const nCop = ex.copies.length, seul = ex.copies.filter(c => c.seulementStickers).length, sansId = ex.copies.filter(c => !c.copie).length;
   const idE = await pg.evaluate(k => (state.copies[k] || {}).id, kE.k), c0 = ex.copies.find(c => c.copie === idE);
   const L0 = c0 ? c0.pages.flatMap(p => p.lignes) : [], entete = L0.slice(0, ENTETE.length).map(l => l.texte).join(" / ");
+  verif("1.4.26 (Paul 16:40) : la date vidée, une seule ligne dit « en-tête de la lettre » (" + n1 + "), celle juste au-dessus de la lettre ; la date recopiée (« " + ENTETE[0] + " »), plus aucune (" + n2 + ")", n1 === 1 && n2 === 0);
   verif("669 : la ligne de la date vidée, au-dessus de la lettre, dit « " + tete + " » ; remplie, elle ne dit plus rien ; aucune case de marge (Paul 13:31) ; aucune ligne de l’export ne porte « marge »",
     /^en-tête de la lettre : sa date, son lieu/.test(tete) && tete2 === "" && !(await pg.locator("#rcFeuille .rc-marge").count()) && L0.every(l => l.marge === undefined) && !/\\?"marge\\?"/.test(ex.consigne));
   verif("669 : la consigne (Paul 12:46, 12:52) : avant de corriger, l’IA demande au professeur tout ce qui lui manque en contenu (« " + ex.consigne.slice(0, 90) + "… ») ; elle propose toujours, son doute dans « manque », jamais dit à l’élève ; elle rend le « contexte » donné",

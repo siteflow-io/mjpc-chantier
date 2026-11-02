@@ -2361,7 +2361,7 @@ if(typeof window!=="undefined"&&window.addEventListener){
 /* ═══ fin M-SÉCU-2 ═══ */
 
 // ── DÉCLARATION DE L'APP (redaction) ──
-var APP_VERSION = "1.4.25";
+var APP_VERSION = "1.4.26";
 var MJPC_APP = { id: "redaction", nom: "Rédaction universelle", contenant: "aucun" };
 var MJPC_MANIFESTE = { notions: [], noeuds: ["redactions", "redactions_communes"] };
 var MJPC_PURGE = { preserver: ["redactions", "redactions_communes"], purger: [] };
@@ -8247,7 +8247,9 @@ function rcRapprocherLignes() {
   for (const [id, n] of presents) if (!d.ordre.includes(id)) n.remove();
   const PAR = RC.copie ? rcParagraphes(RC.copie) : new Set();   // [C14 632]
   const enTete = new Set(); { const pages = RC.copie ? scPagesDe(RC.copie) : [], premiere = pages.length && pages[0].id === RC.page, i0 = d.ordre.findIndex(id => rcEcrite(d.lignes[id]));   // [C14 669] les lignes vides au-dessus de la lettre
-    if (premiere && i0 > 0) d.ordre.slice(0, i0).forEach(id => enTete.add(id)); }
+    /* [C14 1.4.26] (Paul 16:40, sa capture : quatorze lignes vides la portaient, au-dessus d'une date déjà recopiée) : une seule ligne, celle juste au-dessus de la lettre,
+       et aucune quand la première ligne recopiée porte déjà une date */
+    if (premiere && i0 > 0 && !RC_DATE.test(d.lignes[d.ordre[i0]].texte || "")) enTete.add(d.ordre[i0 - 1]); }
   d.ordre.forEach((id, rang) => {
     let row = presents.get(id);
     if (!row) {
@@ -9408,6 +9410,7 @@ function rcBandePhoto(a, anime) {
 }
 /* [C14 626] (Paul 02/11 06:48 : « il n'y a plus la bande, je ne vois plus la copie ») : un sticker de toute la lettre n'a pas de place dans la copie ;
    la bande montre toute la copie, ses lignes bout à bout depuis la première, sans cadre ; ← → la font défiler ligne par ligne (pas : -1 ou 1) */
+const RC_DATE = /\b(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[ûu]t|septembre|octobre|novembre|d[ée]cembre|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\b|\b\d{1,2}\s*\/\s*\d{1,2}\b|\b(1[5-9]|20)\d\d\b/i;   // [C14 1.4.26] une ligne qui porte déjà une date
 function rcBandeLettre(pas) {
   const B = RC.bd, cv = RC.ui && RC.ui.querySelector("#rcBandePhoto"); if (!B || !cv) return; const a = B.A[B.i], ecart = 26, h = 110, w = Math.max(300, Math.round(cv.clientWidth || 800));
   cv.style.height = ""; if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
@@ -10061,7 +10064,7 @@ RU_AIDES.recopie = { ou: "Recopier", l: [
   ["« (guillemet droit)", "s'écrit en guillemets français, « » selon la place"],
   ["Ctrl + Z", "dans le champ : annuler la frappe ; hors du champ : annuler le dernier ajout, retrait ou recalage"],
   ["＋ Une ligne · − Cette ligne", "ajouter une ligne après celle en cours · retirer celle en cours"],
-  ["« en-tête de la lettre »", "une ligne vide au-dessus de la lettre : recopie-y la date et le lieu que l'élève a écrits, s'il y en a, sinon l'IA dira qu'ils manquent"],
+  ["« en-tête de la lettre »", "la ligne vide juste au-dessus de la lettre, tant qu'aucune date n'est recopiée : recopie-y la date et le lieu que l'élève a écrits, s'il y en a, sinon l'IA dira qu'ils manquent"],
   ["¶ Paragraphe", "la ligne en cours commence un paragraphe : l'IA le saura ; l'app pose seule le ¶ après une ligne sautée, un retrait, ou une ligne d'avant qui s'arrête tôt sur une fin de phrase"],
   ["− ↔ Largeur ＋ · Ctrl + molette", "la taille de la photo et de la feuille ensemble"],
   ["★ La phrase qui m'a marqué", "la fin de la recopie de cette copie : premier mot, dernier mot, « ✓ C'est elle » (ou « Pas de phrase ») ; sans elle, la copie suivante ne vient pas"],

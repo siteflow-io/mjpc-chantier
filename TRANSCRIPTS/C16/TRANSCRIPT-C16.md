@@ -1443,7 +1443,7 @@ MEMO
   >
   > 290. Une heure close avec des diapos reportées laisse la séance ouverte : l'emploi du temps dit « pas finie : n diapos reportées », et la case suivante de la classe propose la suite de cette séance, qui commence par les diapos reportées puis reprend le plan. Les séances suivantes glissent d'autant. La case compte en diapos, plus en « activités ».
   >
-  > 291. Ce que tu as fait ce matin avec les 3 Franklin Aretha (9 diapos « reportées » au hub) est relu tel quel : leur prochaine case proposera la suite de la séance 1, à partir de « Groupe 1 : l'hypothèse », avec « Le bilan ».
+  > 291. Ce que tu as fait ce matin avec les 3 FRANKLIN ARETHA (9 diapos « reportées » au hub) est relu tel quel : leur prochaine case proposera la suite de la séance 1, à partir de « Groupe 1 : l'hypothèse », avec « Le bilan ».
   >
   > 292. Cette nuit : l'exécutant code et prouve par le geste ; je passe le banc complet sur l'ensemble (l'appel et la fin d'heure) ; je te demande le « promeus » demain matin avant tes heures, avec les captures. Ce qui n'est pas prouvé ne part pas, et je te le dis. Le reste de la refonte des 7 étapes de la fin d'heure (㉚) vient après.
   >

@@ -69,7 +69,7 @@
             Object.keys(H || {}).forEach(function(k){ var h = H[k] || {}, abs = Array.isArray(h.absents) ? h.absents : [], num = +h.heure || null; if (!abs.length || !num) return;
               noms.forEach(function(e){ if (abs.indexOf(edtSlugEleve(e)) < 0) return;
                 var l = S.appel[e] || []; if (l.some(function(x){ return x.heure === num && x.type === 'absent'; })) return;
-                S.appel[e] = l.concat([{ type: 'absent', t: h.lanceAt || h.debutReel || 0, heure: num, raison: 'case de l’emploi du temps' }]); }); });
+                S.appel[e] = l.concat([{ type: 'absent', t: +h.debutReel || 0, heure: num, raison: 'case de l’emploi du temps' }]); }); });
           } catch (e) {} fini(); });
         } catch (e) { fini(); }
       });

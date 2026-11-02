@@ -3707,3 +3707,31 @@ MEMO
 02/11/2026 07:52
 
 MEMO
+
+---
+
+## Tour 137 — 02/11/2026 07:52
+
+**Paul (07:52) :**
+
+après mon promeus, quelle conséquence pour la copie de [l'élève] et que devrais je faire pour qu'elle ait enfin son fichier à jour?
+
+**Ce qui a été fait (C14) :** sa copie lue au site, en lecture seule : `remarquesIA.relu` posé à 07:50:31 (le geste de 644) ; `stickersIA.complet` vrai ; `bandeArret` fin. L'app en ligne (1.4.20) recalcule sur le site : 100 %, `svCopieCorrigee` vrai ; son fichier refait maintenant : note 10, 48 fautes, 16 stickers, 11 « à reprendre » (0 dans le fichier de 07:21) ; 20 remarques visibles, aucune retirée.
+
+**Claude (07:54) :**
+
+À jouer : 654 (son fichier, maintenant) · en cours : rien · ouvert : 651 (promeus 1.4.22-RU), 655 (après le promeus, si tu veux ses paragraphes), 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+652. Sa copie est déjà à jour au site. Tu as gardé ses remarques à 07:50 (644), et sa carte est à 100 %. Son fichier, refait maintenant, aurait 11 remarques « à reprendre » au lieu de 0, avec la même note 10 / 40, les mêmes 48 fautes et les mêmes 16 stickers. Le promeus ne touche à aucune de ses données.
+
+653. Ce que la 1.4.22 change pour elle : sa bande rouverte dira « ✓ Copie corrigée », et sa recopie montrera un ¶ devant ses lignes 10, 21 et 28. Ses stickers de paragraphes (S7, S8, S9, S11, S13) restent « pas encore réussi » tant que l'IA ne les a pas revus avec ces ¶.
+
+654. Pour son fichier à jour tout de suite, avec ou sans le promeus : « 📨 Fichiers École Directe » → sa ligne → « Télécharger ». Il aura ses remarques, et la note 10 / 40. Si tu veux d'abord « sur le front » en entier (639) : dans sa bande, clique S1, double-clique sur le cadre, tire la poignée de gauche jusqu'à « sur ».
+
+655. Pour que ses paragraphes soient jugés, après le promeus : « 📋 Le flux » → « ↻ Redemander les stickers » → « ⇪ Exporter pour l'IA », par paquets de 8 → donne les fichiers à l'IA → « ⇩ Charger le corrigé de l'IA ». Sa bande ne s'arrêtera que sur les stickers nouveaux. Au bout, relis ses nouvelles remarques, puis Entrée : « ✓ Copie corrigée ». Télécharge alors son fichier de nouveau. Entre le chargement et ta relecture, ses remarques sont à relire, et son fichier partirait sans elles. Sa note peut monter si l'IA trouve ses paragraphes.
+
+À tester : 654, puis ouvre son fichier : la note 10 / 40, et les numéros des remarques dans la marge.
+
+02/11/2026 07:54
+
+MEMO

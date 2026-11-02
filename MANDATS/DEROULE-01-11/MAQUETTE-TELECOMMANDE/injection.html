@@ -1,0 +1,94 @@
+<!-- MAQUETTE C16 194 — la télécommande du téléphone (㉞). Posée sur le fichier en ligne, active seulement avec ?vue=tableau&telecommande=1.
+     Ce que la maquette montre : l'allure, sur une vraie heure jouée au faux hub (la classe, la diapo, ce que voit la classe, la participation, le minuteur).
+     Les boutons ne pilotent pas encore : c'est le mandat ㉞ qui les branche, une fois la capture validée par Paul. -->
+<style id="tc-style">
+body.tc-on{background:#0f0d0a!important;overflow:hidden!important}
+#tc-haut,#tc-bas,#tc-accueil{position:fixed;left:0;right:0;z-index:2147483000;font-family:"EB Garamond",Garamond,Georgia,serif;color:#efe6d6;background:#0f0d0a}
+#tc-haut{top:0;padding:10px 14px 8px;border-bottom:1px solid #332a20}
+#tc-haut .cl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#tc-haut .cl b{font-size:19px;letter-spacing:.02em}
+#tc-haut .cl .vif{font-size:14px;color:#7fb77e;white-space:nowrap}
+#tc-haut .di{margin-top:3px;font-size:16px;color:#b9ab94;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tc-haut .di b{color:#e4b45c;font-weight:600}
+#tc-bas{bottom:0;padding:8px 12px 14px;border-top:1px solid #332a20;display:flex;flex-direction:column;gap:10px;overflow:auto}
+#tc-bas .voit{display:flex;justify-content:space-between;font-size:15px;color:#b9ab94}
+#tc-bas .voit .gel{color:#8fc4ea}
+#tc-bas .rang{display:flex;gap:10px}
+#tc-bas button{font-family:inherit;background:#241e17;border:1px solid #4a3d2f;color:#efe6d6;border-radius:12px;padding:0;touch-action:manipulation}
+#tc-bas .gros{flex:1;height:76px;font-size:30px;font-weight:600}
+#tc-bas .gros.or{flex:1.6;background:#3a2c14;border-color:#e4b45c;color:#e4b45c}
+#tc-bas .moyen{flex:1;height:52px;font-size:19px}
+#tc-bas .moyen.gelon{background:#1d2a33;border-color:#8fc4ea;color:#8fc4ea}
+#tc-bas h4{margin:2px 0 0;font-size:13px;letter-spacing:.12em;color:#7d7061;font-weight:600}
+#tc-bas .eleves{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+#tc-bas .eleves button{height:40px;font-size:15px}
+#tc-bas .eleves button.on{background:#22301f;border-color:#7fb77e;color:#7fb77e}
+#tc-bas .minut{display:flex;gap:8px;align-items:center}
+#tc-bas .minut .t{flex:1.3;text-align:center;font-size:30px;font-variant-numeric:tabular-nums;color:#e4b45c}
+#tc-bas .minut button{flex:1;height:48px;font-size:17px}
+#tc-accueil{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:24px 18px;gap:18px}
+#tc-accueil .rien{text-align:center;color:#7d7061;font-size:19px}
+#tc-accueil .band{background:#1b1712;border:1px solid #e4b45c;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+#tc-accueil .band .q{font-size:20px;line-height:1.3}
+#tc-accueil .band .q b{color:#e4b45c}
+#tc-accueil .band .s{font-size:15px;color:#b9ab94}
+#tc-accueil .band button{height:60px;font-size:22px;font-weight:600;font-family:inherit;background:#3a2c14;border:1px solid #e4b45c;color:#e4b45c;border-radius:12px}
+</style>
+<script id="tc-script">
+(function(){
+  if (!/[?&]telecommande=1/.test(location.search)) return;
+  var T = { sc: null, rejoint: /[?&]rejoint=1/.test(location.search), haut: null, bas: null, acc: null };
+  function $(i){ return document.getElementById(i); }
+  function poserSi(z, h){ if (z.__h !== h) { z.innerHTML = h; z.__h = h; } }   /* la règle du redessin (§12.56) : rien ne se redessine s'il n'a pas changé */
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function initiales(n){ var m = String(n || '').trim().split(/\s+/); return ((m[1] || '').charAt(0) + (m[0] || '').charAt(0)).toUpperCase() || '?'; }
+  function poser(){
+    document.body.classList.add('tc-on');
+    T.haut = document.createElement('div'); T.haut.id = 'tc-haut'; document.body.appendChild(T.haut);
+    T.bas = document.createElement('div'); T.bas.id = 'tc-bas'; document.body.appendChild(T.bas);
+    T.acc = document.createElement('div'); T.acc.id = 'tc-accueil'; document.body.appendChild(T.acc);
+    T.acc.addEventListener('click', function(ev){ if (ev.target && ev.target.id === 'tc-reprendre') { T.rejoint = true; maj(); } });
+  }
+  /* la scène reçue par le tableau distant (le même chemin que l'ordinateur de la classe) */
+  function brancher(){ if (typeof window.dr_tabSceneRecue !== 'function' || window.dr_tabSceneRecue.__tc) return;
+    var o0 = window.dr_tabSceneRecue; var f = function(o, c){ var r = o0.apply(this, arguments); if (o && typeof o === 'object') T.sc = o; return r; }; f.__tc = true; window.dr_tabSceneRecue = f; }
+  function ctx(){ try { return (typeof SES === 'object' && SES) ? SES.ctx : null; } catch (e) { return null; } }
+  function sorte(c){ return c && c.test ? 'Essai (mode test)' : c && c.repetition ? 'Répétition' : 'Heure'; }
+  function eleves(c){ var L = []; try { if (typeof ELEVES !== 'undefined' && ELEVES && ELEVES.length) L = ELEVES.slice(); } catch (e) {}
+    if (!L.length) { if (!T.clDem && typeof dr_tabLire === 'function') { T.clDem = true; dr_tabLire('/classes', function(x){ T.cl = x || {}; }); }   /* la liste de la classe, lue au hub (lecture seule) */
+      try { var cl = T.cl || {}; var nom = String((c && c.classeNom) || '').toLowerCase(); var k = Object.keys(cl).find(function(z){ return z === (c && c.classeSlug) || String((cl[z] || {}).nom || z).toLowerCase() === nom; }); var el = k && cl[k] && cl[k].eleves; if (el) L = (Array.isArray(el) ? el : Object.values(el)).map(function(e){ return typeof e === 'string' ? e : ((e.nom || '') + ' ' + (e.prenom || '')).trim(); }).filter(Boolean); } catch (e) {} }
+    if (!L.length) try { var cd = (typeof classesData !== 'undefined' && classesData) || window.CLASSES || {}; var k = c && c.classeSlug; var x = cd[k] || Object.values(cd).find(function(z){ return z && (z.nom === (c && c.classeNom)); }); if (x && x.eleves) L = (Array.isArray(x.eleves) ? x.eleves : Object.values(x.eleves)).map(function(e){ return typeof e === 'string' ? e : ((e.prenom || '') + ' ' + (e.nom || '')).trim(); }); } catch (e) {}
+    return L; }
+  function mm(ms){ ms = Math.max(0, Math.round(ms / 1000)); return String(Math.floor(ms / 60)).padStart(2, '0') + ':' + String(ms % 60).padStart(2, '0'); }
+  function maj(){ brancher(); var c = ctx();
+    if (!c || !T.rejoint) { T.haut.style.display = 'none'; T.bas.style.display = 'none'; T.acc.style.display = '';
+      poserSi(T.acc, !c ? '<div class="rien">Aucune séance en cours.<br>Lance l’heure sur l’ordinateur de la classe :<br>elle paraîtra ici.</div>'
+        : '<div class="band"><div class="q">' + (sorte(c) === 'Heure' ? 'Heure en cours avec les <b>' + esc(c.classeNom || c.classeSlug || '') + '</b>' : '<b>' + sorte(c) + '</b> en cours') + '</div>'
+          + '<div class="s">' + esc((c.debut || '') + (c.fin ? ' – ' + c.fin : '')) + ' · lancée sur un autre appareil</div>'
+          + '<button id="tc-reprendre" title="Ce téléphone devient la télécommande de cette séance : ce que tu fais ici, la classe le voit au tableau, et l’ordinateur le suit">Reprendre ici, en télécommande</button></div>');
+      return; }
+    T.acc.style.display = 'none'; T.haut.style.display = ''; T.bas.style.display = '';
+    var o = T.sc || {}; var fil = o.fil || null; var et = o.etiquette != null ? (typeof o.etiquette === 'string' ? o.etiquette : (o.etiquette.t || o.etiquette.txt || '')) : '';
+    var e = null; try { e = (DR_TAB.ecrans || []).find(function(x){ return x && x.eid === o.eid; }) || null; } catch (x) {}
+    var titre = et || (e && e.act) || ''; var tot = null; try { if (e && typeof elements === 'function') tot = elements(e).length; } catch (x) {}
+    poserSi(T.haut, '<div class="cl"><b>' + esc(c.classeNom || c.classeSlug || '') + '</b><span class="vif" title="La télécommande suit la séance en direct">● en direct</span></div>'
+      + '<div class="di">' + (fil ? 'Diapo <b>' + (fil.r + 1) + ' sur ' + fil.n + '</b> · ' : '') + esc(titre) + '</div>');
+    var nd = (typeof o.nDev === 'number') ? o.nDev : null; var vu = nd != null ? (tot ? nd + ' / ' + tot + ' dévoilés' : nd + ' dévoilé' + (nd > 1 ? 's' : '')) : '';
+    var L = eleves(c); var qui = Array.isArray(o.qui) ? o.qui : []; var m = o.minut || null;
+    var reste = m ? (m.pause ? (m.reste || 0) : (m.fin ? m.fin - Date.now() : (m.duree || 0) * 1000)) : 180000;
+    poserSi(T.bas, '<div class="voit"><span>' + esc(vu) + '</span><span class="gel"></span></div>'
+      + '<div class="rang"><button class="gros" title="Revoile le dernier élément montré à la classe">◀</button><button class="gros or" title="Dévoile l’élément suivant au tableau ; tout dévoilé, passe à la diapo suivante (avec sa page)">▶</button></div>'
+      + '<div class="rang"><button class="moyen" title="Gèle le tableau : la classe garde ce qu’elle voit, tu peux préparer la suite">❄ Geler</button></div>'
+      + '<h4>QUI A PARLÉ · ' + qui.length + (o.quiTotal ? ' / ' + o.quiTotal : '') + '</h4>'
+      + '<div class="eleves">' + (L.length ? L.map(function(n){ var on = qui.some(function(q){ return String(q).trim() === String(n).trim() || initiales(q) === initiales(n); }); return '<button class="' + (on ? 'on' : '') + '" title="' + esc(n) + ' a parlé : un appui le note, un second l’enlève">' + esc(initiales(n)) + '</button>'; }).join('') : '<span style="grid-column:1/-1;color:#7d7061">la liste de la classe</span>') + '</div>'
+      + '<h4>MINUTEUR</h4><div class="minut"><button title="Une minute de moins">−</button><span class="t"></span><button title="Une minute de plus">+</button><button title="Le minuteur part, au tableau">Départ</button><button title="Met le minuteur en pause">Pause</button><button title="Arrête le minuteur et le retire du tableau">■</button></div>');
+    var tt = T.bas.querySelector('.minut .t'); if (tt && tt.textContent !== mm(reste)) tt.textContent = mm(reste);   /* l'horloge ne pose que ses chiffres */
+    placer(); }
+  /* le tableau (ce que voit la classe), tel que le dessine le tableau distant, entre l'en-tête et les boutons */
+  function placer(){ var b = document.querySelector('.mur.tableau') || $('mur2'); var root = $('ses-tab') || (b && b.parentElement); if (!b || !root || !T.haut) return;
+    root.style.transform = ''; var r = b.getBoundingClientRect(); var h = T.haut.getBoundingClientRect().bottom + 6; root.style.transform = 'translateY(' + Math.round(h - r.top) + 'px)';
+    var r2 = b.getBoundingClientRect(); T.bas.style.top = Math.round(r2.bottom + 6) + 'px'; }
+  function demarrer(){ poser(); maj(); setInterval(maj, 400); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(demarrer, 50); }); else setTimeout(demarrer, 50);
+})();
+</script>

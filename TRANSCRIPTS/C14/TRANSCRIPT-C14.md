@@ -4104,3 +4104,33 @@ alors on fait ça tout de suite. je t'écoute. puis je promeus une fois que ce t
 02/11/2026 14:52
 
 MEMO
+
+---
+
+## Tour 148 — 02/11/2026 15:02
+
+**Paul (15:02) :** le fichier rendu par son IA, en pièce jointe, sans texte (fichier « corrige_… » de l'essai ; il porte la copie de [l'élève] : gardé au privé, jamais au sas).
+
+**Ce qui a été fait (C14) :** le retour lu au privé : 30 lignes, les mêmes identifiants ; 17 réussites et 18 remarques, chacune finie par « fin » ; S30 nulle part ; aucune « copie transmise », aucune remarque sur la marge ; un doute (S14) ; 8 stickers sans remarque, ceux qui dépendent d'un autre ; le contexte : ses 4 réponses, sa question confirmée, 60 269 signes de documents retrouvés sur sa clé, les diaporamas, les modèles. Chargé par le geste dans la candidate, sur le vrai site lu, écritures interceptées (84), aucune erreur ; la bande parcourue jusqu'à « ✓ Copie corrigée » ; son fichier École Directe fabriqué et ouvert. Deux défauts de l'app trouvés : le contexte coupé à 60 000 signes sans le dire (`stContexteGarder`, `ST_CONTEXTE_MAX` = 1 000 000, au-delà l'app le dit) ; « cette copie : 66 fautes proposées » comptait les mots (il compte les arrêts). Le banc garde maintenant un contexte de 80 781 signes. Banc complet : 167/0. Maquette `3cd69bb2` ; candidate refaite : 907 072 o, md5 `7e2efea4ec829f94c655274ba5ff258d`.
+
+**Claude (15:18, avec 3 captures de l'essai) :**
+
+À jouer : ton promeus (735) · en cours : rien · ouvert : la banque de stickers, la taxonomie et la concordance (ton message de 14:48), 722, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+730. L'essai va. J'ai chargé le fichier de ton IA dans la 1.4.24, sur une copie de ton site, sans rien écrire sur le vrai. Tout est reconnu : 30 lignes, 54 fautes, 17 réussites, 18 remarques, le contexte, son commentaire général.
+
+731. Ton IA a fait ce qu'on lui demande. Elle t'a posé ses questions d'abord : tes 4 réponses sont dans le contexte. Son commentaire général suit ta réponse (« Pour préparer l'affichage du 11 novembre, réécris ta lettre en profondeur… »). Aucune remarque ne dit « copie transmise », aucune ne parle de la marge, et S30 n'apparaît nulle part. Son seul doute (S14 : il lui manquait des références) est dans la bande, pour toi seul.
+
+732. J'ai parcouru sa bande jusqu'au bout : 54 fautes, 17 stickers posés sur sa copie, les remarques, le commentaire, puis « ✓ Copie corrigée », 100 %. Son fichier pour École Directe a 10 cadres, 12 numéros de remarque, la note, et le commentaire général tout en bas. Il ne dit jamais le doute de l'IA.
+
+733. L'essai a trouvé deux défauts de l'app, corrigés. Ton contexte fait 77 000 signes (les documents de ta clé), et l'app n'en gardait que 60 000, sans le dire : elle le garde maintenant en entier. Et le haut de la recopie disait « 66 fautes proposées » quand la bande en comptait 54, parce qu'il comptait les mots : il dit 54. Banc complet refait : 167 vérifications, 0 défaut.
+
+734. Deux écarts de ton IA, sans effet : 2 fautes sans leur lettre de type (l'app leur donne le type de son moteur), et une phrase de réussite de 26 mots au lieu de 25.
+
+735. Promeus ? Dès ton mot : la 1.4.24 en ligne, puis j'enlève S30 de tes deux grilles. Ensuite, « 🗑 Tout effacer » sur tes deux classes, et tu réexportes. Donne le premier paquet à la même conversation que l'essai : ton IA a déjà tes réponses.
+
+À tester : les 3 captures jointes ; après la mise en ligne, la liste que je t'enverrai.
+
+02/11/2026 15:18
+
+MEMO

@@ -1388,3 +1388,13 @@ MEMO
   > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (la mesure de la base) · ouvert : rien
   >
   > MEMO
+- **22:06 — Paul, une capture, sans texte** : le pilote en mode test, « 3E Charles de Gaulle · 08:00-08:55 · heure 1/2 », « Diapo 8 sur 19 · heure 1 · activité 4 (2/5) — Je regarde le paratexte », « ❄ tableau gelé » ; à droite, « LE TABLEAU, EN CE MOMENT » : l'étiquette « ACTIVITÉ 5 — DE LA TOILE AU POÈME » sur une diapo vide, « gelé — la classe est sur la diapo 13 » ; le bandeau « ❄ La classe est sur la diapo 13 — De la toile au poème. » ; le bouton ❄ allumé dans la barre ; « 5 / 5 dévoilés » ; la participation « 0 SUR 29 PRÉSENTS ».
+- **22:06 — message à Paul, mot pour mot :**
+
+  > 283. Je lis ta capture ainsi : en mode test, le tableau est gelé sur la diapo 13 (« De la toile au poème »), toi tu es revenu à la diapo 8 au pilote, et l'aperçu « Le tableau, en ce moment » montre la diapo 13 vide, avec sa seule étiquette. Qu'est-ce qui ne va pas : le tableau qui reste gelé sur la 13 alors que tu ne l'as pas voulu (et sur quel appareil avais-tu gelé : l'ordinateur ou la télécommande ?), la diapo 13 vide au tableau, ou autre chose ?
+  >
+  > 02/11/2026 22:06
+  >
+  > À jouer : rien · en cours : l'exécutant de l'appel · ouvert : 283
+  >
+  > MEMO

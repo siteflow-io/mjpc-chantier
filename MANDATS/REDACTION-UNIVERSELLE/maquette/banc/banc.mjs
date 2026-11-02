@@ -7,6 +7,7 @@ import { eprouverSauvegarde } from "./sauvegarde.mjs";
 import { eprouverBilan } from "./bilan.mjs";
 import { eprouverEffacer } from "./effacer.mjs";
 import { eprouverEnlever } from "./enlever.mjs";
+import { eprouverEcho } from "./echo.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -126,6 +127,7 @@ await eprouverAbsent({ pg, verif, cap, att });
 await eprouverStickers({ pg, verif, cap, att, dir: DIR, out: OUT });
 await eprouverBilan({ pg, verif, cap, att });   // [C14 406] après les stickers : des copies corrigées avec eux
 await eprouverSauvegarde({ pg, verif, cap, att });
+await eprouverEcho({ pg, verif, cap, att });   // [C14 1.4.27] (Paul 16:53) l'écho du site
 await eprouverEnlever({ pg, verif, cap, att });   // [C14 710] (Paul 14:09) un sticker enlevé de la grille
 await eprouverEffacer({ pg, verif, cap, att });   // [C14 669] (Paul 12:46) tout en dernier : la classe vidée de ses corrigés, la recopie intacte   // [C14] (Paul 13:12) en dernier : elle marque absents tous les élèves sauf un
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);

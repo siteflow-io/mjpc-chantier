@@ -250,3 +250,16 @@ function avCartesResumer() {
     if (AV.resumeLe !== RU.id + "|" + RU.classe + "|" + Math.floor(t / 60000)) { AV.resumeLe = RU.id + "|" + RU.classe + "|" + Math.floor(t / 60000); (state.classe || []).forEach(n => K.add(eleveId(n))); }
     K.forEach(k => { try { avCarteResumer(k); } catch (e) {} }); } catch (e) {}
 }
+/* [C14 1.4.27] (Paul 02/11 16:53 : « pourquoi systématiquement après une relecture de bande j'ai encore des choses non validées? […] le principe devrait être presqu'en
+   gardant le doigt appuyé sur entrée je puisse valider l'intégralité de la correction » ; « 43 ok », 17:10). Mesuré : le site renvoie chaque copie enregistrée, ses champs
+   rangés par ordre alphabétique ; l'app ne reconnaissait jamais sa propre écriture (24 copies sur 24) et remettait la copie comme au moment de l'envoi : une décision
+   prise pendant l'aller-retour disparaissait de la copie enregistrée. Maintenant : la signature est celle du site (scFb, champs triés) ; l'écho d'une écriture d'ici plus ancienne
+   que la dernière est ignoré, même arrivé en retard ; la copie ouverte n'est jamais remplacée tant qu'elle porte une décision pas encore enregistrée. */
+function ruMien(k, sg) { RU.mien = RU.mien || {}; const L = RU.mien[k] = RU.mien[k] || []; if (L[L.length - 1] !== sg) L.push(sg); if (L.length > 20) L.shift(); }
+function ruEstMien(k, sg) { return !!(RU.mien && RU.mien[k] && RU.mien[k].indexOf(sg) >= 0); }
+/* l'écho d'une écriture d'ici plus ancienne que la dernière : périmé, ignoré ; l'écho de la dernière, lui, s'applique si la copie a bougé entre-temps (il la remet comme au site) */
+function ruEchoAncien(k, sg) { const L = RU.mien && RU.mien[k]; return !!(L && L.indexOf(sg) >= 0 && L[L.length - 1] !== sg); }
+function ruGarderLocal(k) {
+  try { if (typeof RC === "undefined" || !RC.ouvert || RC.copie !== k) return false; const cp = state.copies[k]; if (!cp) return false;
+    const v = Object.assign({}, cp, { nom: nomEleveDe(k) || cp.nom || "" }); return JSON.stringify(scFb(scCles(v, true))) !== RU.sig[k]; } catch (e) { return false; }
+}

@@ -3910,3 +3910,31 @@ pas compris. Et toujours pas compris l'essai et ce que je dois faire.
 02/11/2026 13:30
 
 MEMO
+
+---
+
+## Tour 142 — 02/11/2026 13:31
+
+**Paul (13:31) :**
+
+689 on s'en fiche de ça! Le numéro de l'architecture n'a aucun impact sur le fait que l'architecture est là ou pas. Donc je ne veux pas cette case. Si ça m'avait gêné depuis le début je l'aurai dit. D'autant plus que la grille d'éval ne prend pas en compte que l'élève écrit ou non le numéro de la structure dans la marge. Moi ce qui m'intéresse c'est le contenu de la rédac et sa géographie, ce que fait très bien pour l'instant l'UI de recopie. La géographie manquante concernait surtout les paragraphes.
+
+**Ce qui a été fait (C14) :** la case de la marge retirée de la recopie, de l'export, de la consigne, de l'aide et de « Tout effacer » (maquette `d7a71f81`) ; le banc récrit (l'en-tête gardé, aucune case de marge, aucune ligne de l'export avec « marge ») ; banc complet 159/0. Candidate 1.4.23-RU refaite : 889 551 o, md5 `833415c30cd77674a1462e6f7a5a8df9`. Lu dans la grille du vrai site : S30 est validé, `neCompte` vrai (il ne compte pas dans la note). Le fichier d'essai refait sans marge (13:37), avec la nouvelle version ; envoyé.
+
+**Claude (13:39, avec le nouveau fichier d'essai) :**
+
+À jouer : 699 (l'essai, avec le nouveau fichier) · en cours : rien · ouvert : 698, 700, 642, la bande en onglet (à cadrer), 401 seconde moitié, le test iPhone École Directe, 442, le dossier des copies (351-360), « corriger des textes tapés »
+
+697. Compris, c'est fait : la case de la marge est retirée, et l'IA ne reçoit plus rien sur la marge. Pour la géographie, il reste les ¶ des paragraphes (632), et la ligne vide au-dessus de la lettre qui te rappelle « en-tête : la date, le lieu ». Banc complet : 159 vérifications, 0 défaut.
+
+698. Un fait sur ta grille, vérifié : S30, « Tu notes le numéro de chaque architecture dans la marge », y est toujours, validé. Tu as raison, il ne compte pas dans la note. Mais l'IA écrit une remarque pour lui, et l'élève la lit : ce matin, sur les 24 copies, « Aucun numéro d'architecture n'apparaît dans la copie transmise ». Tu le retires de ta grille ?
+
+699. L'essai : jette le fichier d'avant, il portait la marge. Voici le nouveau, « Redaction-1-…_13h37.json » : sa copie seule, avec la date. Les étapes ne changent pas : tu le donnes à ton IA dans une nouvelle conversation ; elle te pose ses questions ; tu lui réponds ; elle te rend un fichier « corrige_… » ; tu me l'envoies ici.
+
+700. 688, reposée : la 1.4.23 remplace la 1.4.22. Elle contient 626, 632, 633, 638 et 669, sans le bouton de rattrapage ni la case de la marge. Je te la donne à promouvoir maintenant, puisque 638 bloque tes copies complètes ? Ou bien après l'essai ?
+
+À tester : 699.
+
+02/11/2026 13:39
+
+MEMO

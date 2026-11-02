@@ -1081,3 +1081,18 @@ MEMO
   > À jouer : rien · en cours : l'exécutant (la session corrigée, la télécommande, la répétition ; son estimation pour « qui a la main ») · ouvert : rien
   >
   > MEMO
+- **16:21 — l'exécutant de ㉞ (message)** : « qui a la main » demande environ 45 minutes de plus (25 de code, 20 de sonde et de captures) : prouvé vers 17:40 ; sans, 16:55 tient. Où il en est : le cas de Paul sur la télécommande, vert en vraie heure — 21 lettres sur 21 au tableau en 3 à 317 ms, les gestes au téléphone avant et après la réponse en ≤ 0,5 s, rien ne recule ; un défaut : le tout premier ▶ de la télécommande arrive en 1,2 à 1,8 s (les suivants en 130 à 280 ms) ; il le cherche, puis T, H, R, RT.
+- **16:21 — la conscience** : à l'exécutant (message) — le même ordre quel que soit le choix de Paul : finir et pousser ce qui est prouvé à 16:55 (avec les captures de la télécommande), puis coder « qui a la main » (les phrases, les infobulles des boutons grisés, la sonde du parcours de Paul), prouvé à 17:40.
+- **16:21 — message à Paul, mot pour mot :**
+
+  > 246. L'exécutant chiffre « qui a la main » à 45 minutes de plus (25 de code, 20 de preuve) : prouvé vers 17:40, mon banc complet ensuite, le « promeus » vers 18:30. Ma proposition : une seule mise en ligne vers 18:30, avec tout (la session sur tous les appareils, la télécommande, la répétition, « qui a la main »), pour qu'aucune dette ne parte. Si tu préfères deux mises en ligne : vers 17:45 tout sauf « qui a la main », puis « qui a la main » vers 18:30 ; entre les deux, la limite de 240-241 existe si tu agis sur les deux appareils au même moment.
+  >
+  > 247. Ce qui est déjà mesuré sur la télécommande, en vraie heure : ton parcours de 16:10 est vert — tes gestes au téléphone, puis une réponse écrite à l'ordinateur : 21 lettres sur 21 au tableau, entre 3 et 317 millièmes de seconde ; rien ne recule. Un défaut en cours de correction : le tout premier ▶ de la télécommande met 1,2 à 1,8 seconde (les suivants, 0,1 à 0,3).
+  >
+  > À tester : rien de neuf.
+  >
+  > 02/11/2026 16:21
+  >
+  > À jouer : rien · en cours : l'exécutant (le premier ▶, la répétition, puis « qui a la main ») · ouvert : 246
+  >
+  > MEMO

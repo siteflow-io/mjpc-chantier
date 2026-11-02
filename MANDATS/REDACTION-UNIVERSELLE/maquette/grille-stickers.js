@@ -191,9 +191,21 @@ function stGardeExport() {
   return null;
 }
 function stAEnvoyer(k) { const r = (scCopie(k).recopie || {}).stickersIA; return !r || !r.complet || !!r.redemande; }   // [C14 632] redemandée : elle repart pour ses stickers
-/* [C14 632] redemander les stickers des copies dont la liste est revenue entière (les paragraphes vus, après coup) ; le retour suivant la remplace, tes décisions restent */
-function stRedemandables() { return SC.copies.filter(k => { const r = (scCopie(k).recopie || {}).stickersIA; return r && r.complet && !r.redemande && rcLignesEcrites(k).length; }); }
+/* [C14 632, 656] (Paul 07:56 : « donc tu as fait un bouton patch en fait? […] il faut absolument que son infobulle contextualise ce qu'il fait et surtout qu'il y ait
+   une garde sur les conséquences de son utilisation ») : un rattrapage, une seule fois, pour les copies dont les stickers ont été jugés avant que l'IA voie les
+   paragraphes (leur dernier envoi n'avait pas « par ») ; la fenêtre dit d'abord ce que ça change ; le bouton disparaît quand il n'y en a plus */
+function stRedemandables() { return SC.copies.filter(k => { const rec = scCopie(k).recopie || {}, r = rec.stickersIA; return r && r.complet && !r.redemande && !(rec.envoi && rec.envoi.par) && rcLignesEcrites(k).length; }); }
 function stRedemandeesN() { return SC.copies.filter(k => !!(((scCopie(k).recopie || {}).stickersIA) || {}).redemande).length; }
+function stRedemanderDemander() {
+  if (!stEnvoiGrille()) { toast("Pas encore : ta grille de stickers n’est pas prête."); return; } const K = stRedemandables(); if (!K.length) return;
+  const finies = K.filter(k => typeof svCopieCorrigee === "function" && svCopieCorrigee(k)), rq = K.filter(k => { const r = stRq(k); return r && r.relu; }), pl = (n, s, p) => n + " " + (n > 1 ? p : s);
+  if (typeof rcFluxFermer === "function") rcFluxFermer();
+  scModale('<h3>↻ Les paragraphes : redemander les stickers</h3><p>Les stickers de ' + pl(K.length, "copie ont été jugés", "copies ont été jugés") + ' par l’IA avant qu’elle voie les paragraphes : les stickers de paragraphes n’y pouvaient pas être trouvés. ' + (K.length > 1 ? "Elles repartiront" : "Elle repartira") + ' pour leurs seuls stickers, avec leurs paragraphes, au prochain « ⇪ Exporter pour l’IA » (8 copies par fichier).</p>'
+    + '<p><b>Ce qui reste :</b> tes décisions, fautes et stickers, gardés ou non ; tes cadres ; ta recopie.</p>'
+    + '<p><b>Ce qui change :</b> le retour de l’IA remplace leurs remarques' + (rq.length ? " (" + pl(rq.length, "copie les a déjà relues", "copies les ont déjà relues") + ")" : "") + ' : tu les reliras au bout de leur bande, et leur bande s’arrêtera sur les stickers nouveaux. ' + (finies.length ? pl(finies.length, "copie est", "copies sont") + " « ✓ Copie corrigée » aujourd’hui : " + (finies.length > 1 ? "elles repasseront" : "elle repassera") + " à 99 % jusqu’à ta relecture. " : "") + 'Leur note peut changer. Leurs fichiers École Directe déjà téléchargés ne seront plus à jour : refais-les après « ✓ Copie corrigée ».</p>'
+    + '<button class="sc-btn" id="stRedemanderOui" title="' + escapeAttr("Les " + K.length + " copies repartent pour leurs seuls stickers au prochain export. Rien ne part tant que tu n’as pas exporté.") + '">↻ Oui, redemander (' + K.length + ')</button>');
+  const b = document.getElementById("stRedemanderOui"); if (b) b.onclick = () => { scModaleFermer(); stRedemander(); };
+}
 function stRedemander() {
   if (!stEnvoiGrille()) { toast("Pas encore : ta grille de stickers n’est pas prête."); return; } const K = stRedemandables(); if (!K.length) return;
   const le = new Date().toISOString(); K.forEach(k => { scCopie(k).recopie.stickersIA.redemande = le; }); saveState(); rcEtatIA();

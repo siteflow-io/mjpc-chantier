@@ -556,3 +556,4 @@ MEMO
   > 02/11/2026 11:43
   >
   > MEMO
+- **11:50 — l'exécutant des correctifs signale le disque plein** (3 Mo libres à 11:47 ; il a retiré de son seul dossier les images et PDF inutiles à ses sondes, sans commit, réversible). **11:53 — la conscience libère 6 Go** : ses trois dossiers de travail finis et poussés retirés (`wt-minut`, inutilisé ; `wt-k7`, `8776a13` sur `deroule/diapos-ouverture` ; `wt-micro`, `da11a4c` sur `micro/molette`) ; 7 Go libres. Message à l'exécutant : remettre son dossier entier pour les sondes et le banc. Vu dans les sorties du cinquième : l'étape 11 rejouée seule cinq fois, 4 VERT, 1 ROUGE (passage 4, 11:30-11:36, avant le disque plein : le premier mouvement du point 510 ms après la flèche, limite 350 ms) — à lire dans sa NOTE, à l'audit.

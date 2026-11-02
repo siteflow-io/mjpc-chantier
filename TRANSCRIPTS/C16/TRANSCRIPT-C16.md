@@ -1484,3 +1484,5 @@ MEMO
   > À jouer : les tests de 21:48 · en cours : l'exécutant de l'appel (ses derniers tests) ; l'exécutant de la fin d'heure (la lecture) · ouvert : rien
   >
   > MEMO
+- **23:28 — un incident de la machine** : le conteneur a redémarré. Arrêtés : les deux exécutants (l'appel, la fin d'heure), la chaîne finale de l'exécutant de l'appel, la boucle d'attente de l'exécutant de la fin d'heure. Les fichiers sont intacts (les dossiers de travail, le scratchpad, les dépôts).
+- **23:30 — la conscience** : les deux exécutants repris là où ils en étaient (même historique) : l'appel relance sa chaîne finale et pousse dès que tout est vert ; la fin d'heure continue sa lecture, le délai de 03:45 redit.

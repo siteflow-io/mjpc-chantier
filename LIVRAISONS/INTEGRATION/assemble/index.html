@@ -22883,9 +22883,13 @@ function dr_sesOccupe(){
 function dr_sesRecu(v){
   const ici = DR_SES.ici; if (!ici || !v || typeof v !== 'object') return;
   if (v.par === DR_SES.id || v.sig !== ici.sig) { if (v && v.sig !== ici.sig && dr_sesAttend()) DR_SES.attendrePremier = 0; return; }
-  const cleV = v.par + '|' + v.ts; if (cleV === DR_SES.recuCle || (DR_SES.hist && DR_SES.hist.has(cleV))) return; DR_SES.recuCle = cleV; dr_sesMemo(cleV, v);   /* chaque état reçu est gardé dès son arrivée, même s'il ne se pose jamais (un autre, plus récent, l'a remplacé en attente) : il peut servir de base à un état suivant */   /* un état neuf au hub (le dernier écrit) : jamais rejeté parce que la montre de son appareil retarde */
+  const cleV = v.par + '|' + v.ts; if (!v.__etatVu) { if (cleV === DR_SES.recuCle || (DR_SES.hist && DR_SES.hist.has(cleV))) return; DR_SES.recuCle = cleV; dr_sesMemo(cleV, v); }   /* chaque état reçu est gardé dès son arrivée, même s'il ne se pose jamais (un autre, plus récent, l'a remplacé en attente) : il peut servir de base à un état suivant */   /* un état neuf au hub (le dernier écrit) : jamais rejeté parce que la montre de son appareil retarde */
   DR_SES.recu = Math.max(DR_SES.recu, v.ts); DR_SES.vu = Math.max(DR_SES.vu, v.ts);
   try { DR_TAB.dernierTs = Math.max(DR_TAB.dernierTs || 0, (+v.sts || 0) + 50, v.ts); } catch (e) {}   /* ma prochaine scène passe après la sienne */
+  /* LE PLUS RÉCENT GAGNE (le retour sûr, banc de la conscience 20:10) : un état vivant plus ancien que l'état de l'heure écrit par une version d'avant
+     (qui n'écrit pas d'état vivant : la 8.79.0, la 8.77.1-⑩) ne s'applique jamais — ni à la reprise, ni à la réception */
+  if (DR_SES.etatAncien && v.ts < DR_SES.etatAncien) return;
+  if (DR_SES.attendrePremier && !v.__etatVu && (ici.sorte === 'heure' || ici.sorte === 'essai')) { dr_sesPremierVerifier(v); return; }
   if (v.close) { DR_SES.attendrePremier = 0; dr_sesClosAilleurs(v); return; }
   /* un geste d'ici pas encore parti (l'envoi attend 20 ms) part AVANT que l'état reçu se pose : il n'est jamais pris pour un effet de la pose */
   if (DR_SES.envT && !DR_SES.attendrePremier && !dr_sesOccupe()) { clearTimeout(DR_SES.envT); DR_SES.envT = null; try { dr_sesEnvoyerMaintenant(); } catch (e) {} }
@@ -22904,6 +22908,24 @@ function dr_sesRecu(v){
   dr_sesAppliquer(v);
   if (perdue) dr_sesEnvoyerMaintenant(false, true);   /* avant de se taire : son dernier état, la réponse en cours comprise, part à celui qui a la main */
   if (premier && window.DR_TC && !DR_TC.mainPrise) { DR_TC.mainPrise = true; setTimeout(() => dr_tcPrendreMain(), 0); }   /* le QR scanné : la télécommande a la main */
+}
+/* le premier état vivant reçu en rejoignant une heure (ou un essai) : avant de le poser, l'état de l'heure au hub. Écrit par une version d'avant (sans `vifTs`)
+   PLUS TARD que cet état vivant, c'est lui le plus récent — la reprise l'a déjà posé ici (dr_reprendreCours) : l'état vivant périmé ne se pose pas, cet appareil
+   prend la main et envoie l'état repris (sa base : l'état périmé, connu de tous — ce que la version d'avant a fait depuis passe pour un changement d'ici, rien ne
+   se perd). Mesuré par la sonde du retour sûr (R3) : la nouvelle version reprenait « 0 / 6 dévoilés » au lieu de « 3 / 6 », et perdait ce que la classe avait
+   écrit dans la 8.77.1-⑩. */
+function dr_sesPremierVerifier(v){
+  const ici = DR_SES.ici, cle = v.par + '|' + v.ts; DR_SES.premierCle = cle;
+  const suite = e => {
+    if (DR_SES.ici !== ici || DR_SES.premierCle !== cle) return;   /* un état plus récent est arrivé entre-temps : c'est lui qui se vérifie */
+    const maj = +(e && e.maj) || 0;
+    if (e && typeof e === 'object' && !(+e.vifTs) && maj > (+v.ts || 0)) {
+      DR_SES.etatAncien = Math.max(DR_SES.etatAncien || 0, maj); DR_SES.attendrePremier = 0;
+      DR_SES.dernier = cle; dr_sesConnu(cle); DR_SES.socle = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut }; DR_SES.recuBase = true;
+      DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; DR_SES.prise = true; DR_SES.forcer = true; DR_SES.envoye = ''; if (window.DR_TC) DR_TC.mainPrise = true;
+      try { dr_sesMainAfficher(); } catch (x) {} clearTimeout(DR_SES.envT); try { dr_sesEnvoyerMaintenant(); } catch (x) {} return; }
+    v.__etatVu = true; dr_sesRecu(v); };
+  try { if (typeof dr_lire === 'function') dr_lire((ici.C || ici.base) + '/etat', suite); else suite(null); } catch (e) { suite(null); }
 }
 function dr_sesJeTiens(){ return !DR_SES.main || DR_SES.main === DR_SES.id; }
 /* à l'ordinateur : « La télécommande a la main » (ou un autre ordinateur), posé une fois, seul son texte change */
@@ -23033,7 +23055,7 @@ function dr_sesClosAilleurs(v){
 }
 
 /* ─── suivre : dès que cette page pilote une session, elle écoute son état vivant ; elle se tait quand la session s'arrête ici ─── */
-function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.connus = new Set(); DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.mainTs = 0; DR_SES.prise = false; DR_SES.contenu = false; DR_SES.envoiTs = 0; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
+function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.connus = new Set(); DR_SES.etatAncien = 0; DR_SES.premierCle = null; DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.mainTs = 0; DR_SES.prise = false; DR_SES.contenu = false; DR_SES.envoiTs = 0; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
 function dr_sesVeiller(){
   const ici = dr_sesIci();
   if (!ici) { if (DR_SES.ici) dr_sesSuivreFin(); return; }
@@ -23059,6 +23081,9 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
   document.addEventListener('focusout', ev => { const a = ev.target; if (a && a.isContentEditable && DR_SES.frappe && Date.now() - DR_SES.frappe < 400 && !DR_SES.appui) setTimeout(() => { const b = document.activeElement; if (!b || b === document.body) { try { getSelection().removeAllRanges(); } catch (e) {} DR_SES.coupe = Date.now(); DR_SES.coupeEv = 0; } }, 0); }, true);   /* un texte quitté en pleine frappe sans qu'on l'ait voulu (pas un clic, pas Échap, pas Entrée) : les lettres suivantes ne tombent pas sur les raccourcis */
   document.addEventListener('focusout', () => setTimeout(() => { if (DR_SES.attente && !dr_sesOccupe()) { dr_sesEnvoyerMaintenant(); if (DR_SES.attente) { const a = DR_SES.attente; DR_SES.attente = null; dr_sesAppliquer(a); } } }, 30), true);
 }
+/* l'état de l'heure dit le dernier état vivant que cet appareil connaissait (`vifTs`) : une version d'avant n'écrit pas ce champ — c'est ainsi qu'on la reconnaît (dr_sesPremierVerifier) */
+(function(){ const f = window.dr_etatHeure; if (typeof f !== 'function' || f.__ses) return;
+  const g = function () { const e = f.apply(this, arguments); try { if (e && typeof e === 'object' && DR_SES.ici) e.vifTs = Math.max(+DR_SES.recu || 0, +DR_SES.envoiTs || 0) || 1; } catch (x) {} return e; }; g.__ses = true; window.dr_etatHeure = g; })();
 /* les gestes qui changent la session : le rendu (`dr_tout`), la sauvegarde (`dr_copieAuto`), le minuteur (`dr_minuteurEnvoyer`) — après eux, l'envoi */
 ['dr_tout', 'dr_copieAuto', 'dr_minuteurEnvoyer'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const r = f.apply(this, arguments); try { if (!DR_SES.appl && DR_SES.ici) dr_sesEnvoyer(); } catch (e) {} return r; }; g.__ses = true; window[n] = g; });

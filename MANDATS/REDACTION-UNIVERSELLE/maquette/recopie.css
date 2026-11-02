@@ -128,11 +128,7 @@
 /* [C14 638] la copie corrigée, au bout de la bande */
 #rcBandeCarte.rc-bande-ok{border-color:#3f7a3a!important;background:#f3fbef}
 #rcBandeCarte.rc-bande-ok .rc-bande-mot{color:#2f6b2a}
-/* [C14 669] la marge de l'élève, recopiée à gauche de sa ligne : discrète, visible sur la ligne en cours ou quand elle a quelque chose */
-.rc-marge{position:absolute;right:calc(100% + 16px);top:2px;width:calc(34px * var(--rc-echelle,1));height:calc(100% - 4px);box-sizing:border-box;padding:0 2px;border:1px dashed transparent;border-radius:3px;background:transparent;font:700 calc(15px * var(--rc-echelle,1))/1 Georgia,serif;color:#7a4b9a;text-align:center;outline:0}
-.rc-ligne.on .rc-marge{border-color:#b9a3cc;background:#fbf8ff}
-.rc-ligne.rc-a-marge .rc-marge{border-color:#cdb8de;background:#f6f0fb}
-.rc-marge:focus{border-style:solid;border-color:#7a4b9a;background:#fff}
+/* [C14 669] l'en-tête, la ligne vide au-dessus de la lettre */
 .rc-saisie::placeholder{color:#a08a6e;font-style:italic}
 .st-rq-manque,.rc-st-manque{display:block;color:#8a5a00;font-style:italic}
 .st-contexte{max-height:50vh;overflow:auto;white-space:pre-wrap;background:#faf7f0;border:1px solid #e6dcc8;padding:8px;font:13px/1.4 system-ui}

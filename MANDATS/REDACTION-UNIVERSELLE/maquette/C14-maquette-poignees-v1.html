@@ -6804,11 +6804,7 @@ body.sc-ouvert #toast{z-index:990}   /* les messages de l'appli se lisent par-de
 /* [C14 638] la copie corrigée, au bout de la bande */
 #rcBandeCarte.rc-bande-ok{border-color:#3f7a3a!important;background:#f3fbef}
 #rcBandeCarte.rc-bande-ok .rc-bande-mot{color:#2f6b2a}
-/* [C14 669] la marge de l'élève, recopiée à gauche de sa ligne : discrète, visible sur la ligne en cours ou quand elle a quelque chose */
-.rc-marge{position:absolute;right:calc(100% + 16px);top:2px;width:calc(34px * var(--rc-echelle,1));height:calc(100% - 4px);box-sizing:border-box;padding:0 2px;border:1px dashed transparent;border-radius:3px;background:transparent;font:700 calc(15px * var(--rc-echelle,1))/1 Georgia,serif;color:#7a4b9a;text-align:center;outline:0}
-.rc-ligne.on .rc-marge{border-color:#b9a3cc;background:#fbf8ff}
-.rc-ligne.rc-a-marge .rc-marge{border-color:#cdb8de;background:#f6f0fb}
-.rc-marge:focus{border-style:solid;border-color:#7a4b9a;background:#fff}
+/* [C14 669] l'en-tête, la ligne vide au-dessus de la lettre */
 .rc-saisie::placeholder{color:#a08a6e;font-style:italic}
 .st-rq-manque,.rc-st-manque{display:block;color:#8a5a00;font-style:italic}
 .st-contexte{max-height:50vh;overflow:auto;white-space:pre-wrap;background:#faf7f0;border:1px solid #e6dcc8;padding:8px;font:13px/1.4 system-ui}
@@ -8247,19 +8243,10 @@ function rcRapprocherLignes() {
       input.onclick = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); rcSelectionner(id, false, false); rcGarder(); };
       input.oninput = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); const ligne = rcDocument(pageRow).lignes[id]; const vide = !(ligne.texte || "").trim(); ligne.texte = input.value; rcAjusterTaille(input); if (vide !== !(input.value || "").trim()) { rcMarques(); rcEtatLigne(); rcRapprocherLignes(); } rcGarder(); };
       input.onchange = () => { if (rcRetroactif(RC.copie, pageRow, id)) { rcGarder(); rcEtatIA(); } };   // [C14 1.4.12] une modif change partout (Paul 23:09)
-      /* [C14 669] (Paul 12:46 : « Pour ce qui est de la géographie de la copie, là pour le coup il faut des solutions techniques ») : ce que l'élève a écrit dans la marge,
-         à la hauteur de cette ligne (le numéro d'une architecture devant son accolade) : tu le recopies ici, tel quel ; l'IA le reçoit */
-      const mg = rcNoeud("input", { class: "rc-marge", type: "text", maxlength: "8", spellcheck: "false", autocomplete: "off", "data-ligne": id, "aria-label": "La marge de cette ligne",
-        title: "La marge : ce que l’élève a écrit dans la marge à la hauteur de cette ligne (le numéro d’une architecture devant son accolade, par exemple), recopié tel quel. L’IA le reçoit avec la ligne. Vide : rien dans la marge." });
-      mg.value = d.lignes[id].marge || "";
-      mg.onfocus = () => { if (pageRow !== RC.page) rcActiverPage(pageRow); if (RC.ligne !== id) rcSelectionner(id, false, false); };
-      mg.oninput = () => { const v = mg.value.trim().slice(0, 8); rcLigneMaj(RC.copie, pageRow, id, l => { if (v) l.marge = v; else delete l.marge; }); row.classList.toggle("rc-a-marge", !!v); rcGarder(); };
-      mg.onkeydown = ev => { if (ev.key === "Enter" || ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); input.focus(); } };
-      row.appendChild(mg); row.appendChild(input); feuille.appendChild(row);
+      row.appendChild(input); feuille.appendChild(row);
     }
     const place = feuille.children[rang]; if (place !== row) feuille.insertBefore(row, place || null);
-    { const inp = row.querySelector("input.rc-saisie"); if (inp && document.activeElement !== inp && inp.value !== (d.lignes[id].texte || "")) inp.value = d.lignes[id].texte || "";
-      const mg = row.querySelector("input.rc-marge"); if (mg && document.activeElement !== mg && mg.value !== (d.lignes[id].marge || "")) mg.value = d.lignes[id].marge || ""; row.classList.toggle("rc-a-marge", !!(d.lignes[id].marge || "").trim()); }
+    { const inp = row.querySelector("input.rc-saisie"); if (inp && document.activeElement !== inp && inp.value !== (d.lignes[id].texte || "")) inp.value = d.lignes[id].texte || ""; }
     const num = rcNumeros(d)[id], input = row.querySelector("input.rc-saisie"); input.setAttribute("aria-label", "Recopie de la ligne " + (num || "vide"));
     input.placeholder = enTete.has(id) ? "en-tête : la date, le lieu, s’il y en a" : "";   // [C14 669] l'IA ne voyait pas la date laissée sur une ligne vide
     input.title = "Recopie de la ligne" + (num ? " " + num : " (vide : elle n'aura un numéro que si tu y écris)") + " : garde les fautes, les mots barrés et la ponctuation. Entrée passe à la suivante.";
@@ -8526,8 +8513,8 @@ const RC_PAQUET_IA = 8;   // [C14 1.4.10] (Paul 17:03 : « charger plus que 4 co
 const RC_CONSIGNE_IA = "Tu reçois des rédactions d'élèves de 3e, recopiées ligne par ligne par leur professeur, fautes comprises. Pour chaque ligne, rends la même ligne corrigée : orthographe, accords, conjugaison, ponctuation, majuscules. Corrige mot pour mot : ne reformule pas, ne change pas l'ordre des mots, n'ajoute ni ne retire aucun mot, sauf si la grammaire l'exige (un mot manquant, un mot en trop). Ne touche pas au style ni au vocabulaire quand ils ne sont pas fautifs. Garde exactement les mêmes copies, pages et lignes, dans le même ordre ; une ligne vide reste vide ; un mot coupé en fin de ligne reste coupé au même endroit. Un mot entre crochets [comme ceci] a été barré par l'élève : laisse-le tel quel. Les guillemets restent « français ». Dans chaque ligne corrigée, écris juste après chaque mot ou signe que tu as corrigé ou ajouté une lettre entre accolades, le type de la faute : {G} grammaire (accord, conjugaison, homophone grammatical), {L} lexique (l'orthographe du mot lui-même), {C} accent, majuscule ou trait d'union, {P} ponctuation, {E} élision (apostrophe), {M} mot manquant que tu ajoutes ; là où tu retires un mot en trop, écris {X} à sa place. Exemple : « Il sont allé a Paris » devient « Ils{G} sont allés{G} à{G} Paris ». Rends uniquement, sans aucun commentaire et sans recopier cette consigne, un JSON compact sur une seule ligne : {\"format\":\"mjpc-recopie-ia-3\",\"lignes\":{\"identifiant de la ligne\":\"la ligne corrigée, avec ses lettres\"}}, avec toutes les lignes reçues, dans le même ordre, même celles qui n'ont pas de faute.";
 /* [C14 1.4.12] (Paul 31/10 23:19, « Ok » à 336) : quand le sujet laisse le choix entre plusieurs sujets, l'IA dit, en lisant la copie, lequel l'élève a traité ;
    plus aucun geste. Ton choix déjà fait sur une copie reste le tien. */
-/* [C14 632, 669] la copie telle qu'elle est sur la feuille, dite à l'IA : ses paragraphes, et ce que l'élève a écrit dans la marge */
-const RC_CONSIGNE_PARAGRAPHES = " La copie telle qu'elle est sur la feuille : une ligne qui porte \"par\": true commence un nouveau paragraphe (l'élève est allé à la ligne, a sauté une ligne ou a fait un retrait) ; la première ligne de la copie en commence un aussi. Juge les paragraphes de la lettre, leur nombre et leur ordre, d'après ces marques. Une ligne qui porte \"marge\" a, dans la marge à sa hauteur, ce que l'élève y a écrit, recopié tel quel par le professeur (le numéro d'une architecture devant son accolade, par exemple : la phrase qu'il désigne passe par cette ligne) ; une ligne sans \"marge\" n'a rien dans la marge.";
+/* [C14 632] la copie telle qu'elle est sur la feuille, dite à l'IA : ses paragraphes (Paul 13:31 : « La géographie manquante concernait surtout les paragraphes ») */
+const RC_CONSIGNE_PARAGRAPHES = " La copie telle qu'elle est sur la feuille : une ligne qui porte \"par\": true commence un nouveau paragraphe (l'élève est allé à la ligne, a sauté une ligne ou a fait un retrait) ; la première ligne de la copie en commence un aussi. Juge les paragraphes de la lettre, leur nombre et leur ordre, d'après ces marques.";
 /* [C14 669] (Paul 12:46, 12:52) : avant de corriger, l'IA demande ce qu'elle ne connaît pas ; elle propose toujours, le professeur dispose ; le contexte revient pour les paquets suivants */
 const RC_CONSIGNE_AVANT = "Avant toute correction : lis le sujet, la grille et ces copies, puis fais la liste de tout ce dont tu as besoin et que tu n'as pas en contenu : les textes lus en classe que le sujet ou la grille citent, les modèles d'entraînement auxquels ils renvoient, tout ce qu'ils nomment sans le donner. Pose ces questions au professeur, toutes ensemble, et attends ses réponses avant de corriger. Si le fichier contient « contexte », c'est ce qu'il t'a déjà donné pour cette rédaction : ne redemande que ce qui n'y est pas ; s'il ne te manque rien, dis-le en une phrase et corrige. ";
 const RC_CONSIGNE_DOUTE = " Propose toujours : pour chaque sticker, décide s'il est réussi ou non, même quand tu n'es pas sûr ; ne te tais jamais par prudence. Si une information te manquait pour bien juger, ajoute à cette réussite ou à cette remarque \"manque\" : ce qui te manquait, en une phrase, pour le professeur, qui décidera. N'écris jamais dans « p » ni dans « r » ce qui te manquait, ni « copie transmise » : l'élève lit « p » et « r ».";
@@ -8586,7 +8573,7 @@ function rcExportIA(renvoi) {
   copies.forEach(k => { const s = scCopie(k), c = state.copies[k]; if (c && !c.id) { c.id = idCopie(); if (!c.creeLe) c.creeLe = le; }   // [C14 1.4.16] une copie part toujours avec son identité interne (une copie toute neuve n'en avait pas encore)
     s.recopie = s.recopie || {}; s.recopie.envoi = Object.assign({ n: nEnvoi, le, lignes: rcLignesEcrites(k).length, par: true }, sti && !rcCopieACorriger(k) ? { seul: true } : {}); /* [C14 656] par : ses paragraphes sont partis avec elle */ });   // [C14 1.4.11] le flux : l'envoi de chaque copie, numéroté et daté
   const o = { consigne: (sti ? RC_CONSIGNE_AVANT : "") + RC_CONSIGNE_IA + rcConsigneVariantes() + (sti ? RC_CONSIGNE_STICKERS + (typeof RC_CONSIGNE_POURQUOI === "string" ? RC_CONSIGNE_POURQUOI : "") + (typeof RC_CONSIGNE_REMARQUES === "string" ? RC_CONSIGNE_REMARQUES : "") + RC_CONSIGNE_PARAGRAPHES + RC_CONSIGNE_DOUTE + RC_CONSIGNE_CONTEXTE : ""), format: "mjpc-recopie-ia-3", copies: copies.map((k, i) => { const L = rcLignesEcrites(k), pages = [], seul = !!sti && !rcCopieACorriger(k), PAR = rcParagraphes(k); let n = 0;
-    L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push(Object.assign({ id: x.id, n: ++n, texte: x.l.texte }, PAR.has(x.id) ? { par: true } : {}, (x.l.marge || "").trim() ? { marge: x.l.marge.trim() } : {}));
+    L.forEach(x => { let pg = pages.find(q => q.page === x.page); if (!pg) pages.push(pg = { page: x.page, lignes: [] }); pg.lignes.push(Object.assign({ id: x.id, n: ++n, texte: x.l.texte }, PAR.has(x.id) ? { par: true } : {}));
       rcLigneMaj(k, x.pid, x.id, l => { l.envoiIA = { texte: l.texte, le }; }); });
     return Object.assign({ numero: i + 1, copie: (state.copies[k] || {}).id || null, pages }, seul ? { seulementStickers: true } : {}); }) };   // [C14 1.4.12] (Paul 15:59) l'identité interne de la copie, jamais son nom
   if (sti) { o.sujet = stEnonce(); o.grille = sti; const cx = typeof stContexte === "function" ? stContexte() : null; if (cx) o.contexte = cx.texte; }   // [C14 669] ce que tu lui as déjà donné
@@ -8626,7 +8613,7 @@ function rcIAEffacerDemander() {
   const r = rcIANettoyage(), q = RC.ui.querySelector("#rcIAEffacerQ"), n = r.copies.size, pl = (v, m) => v + " " + m + (v > 1 ? "s" : "");
   if (!n) { RC.ui.querySelector("#rcIAMessage").textContent = "Il n’y a rien à effacer : aucun corrigé de l’IA, rien de la bande."; return; }
   q.hidden = false;
-  q.innerHTML = "<b>Tout effacer, sur " + pl(n, "copie") + " : le corrigé de l’IA de " + pl(r.corriges, "ligne") + ", et tout ce qui vient de la bande : " + pl(r.decisions, "décision") + ", " + pl(r.marques, "marque") + " posée" + (r.marques > 1 ? "s" : "") + " par la bande, " + pl(r.places, "cadre") + " visé" + (r.places > 1 ? "s" : "") + ", l’arrêt où tu en étais" + (r.stickersIA ? ", les stickers rendus par l’IA sur " + pl(r.stickersIA, "copie") + " et tes " + pl(r.stickers || 0, "décision") + " sur eux" : "") + (r.remarques ? ", " + pl(r.remarques, "remarque") + " de l’IA" : "") + " ?</b> Ta recopie ne bouge pas : ni le texte, ni les lignes, ni leurs places, ni la marge, ni ce que tu as recopié de la marge de l’élève, ni la phrase qui t’a marqué. Les marques d’avant mises de côté et tes autres marques restent. Tout est d’abord rangé dans la corbeille MJPC (un an) et un export est téléchargé. <button id=\"rcIAEffacerOui\" class=\"sc-btn\" title=\"Ranger dans la corbeille, télécharger l’export, puis tout effacer\">Tout effacer</button> <button id=\"rcIAEffacerNon\" class=\"sc-btn\" title=\"Ne rien effacer\">Annuler</button>";
+  q.innerHTML = "<b>Tout effacer, sur " + pl(n, "copie") + " : le corrigé de l’IA de " + pl(r.corriges, "ligne") + ", et tout ce qui vient de la bande : " + pl(r.decisions, "décision") + ", " + pl(r.marques, "marque") + " posée" + (r.marques > 1 ? "s" : "") + " par la bande, " + pl(r.places, "cadre") + " visé" + (r.places > 1 ? "s" : "") + ", l’arrêt où tu en étais" + (r.stickersIA ? ", les stickers rendus par l’IA sur " + pl(r.stickersIA, "copie") + " et tes " + pl(r.stickers || 0, "décision") + " sur eux" : "") + (r.remarques ? ", " + pl(r.remarques, "remarque") + " de l’IA" : "") + " ?</b> Ta recopie ne bouge pas : ni le texte, ni les lignes, ni leurs places, ni la marge, ni la phrase qui t’a marqué. Les marques d’avant mises de côté et tes autres marques restent. Tout est d’abord rangé dans la corbeille MJPC (un an) et un export est téléchargé. <button id=\"rcIAEffacerOui\" class=\"sc-btn\" title=\"Ranger dans la corbeille, télécharger l’export, puis tout effacer\">Tout effacer</button> <button id=\"rcIAEffacerNon\" class=\"sc-btn\" title=\"Ne rien effacer\">Annuler</button>";
   q.querySelector("#rcIAEffacerNon").onclick = () => { q.hidden = true; };
   q.querySelector("#rcIAEffacerOui").onclick = rcIAEffacer;
 }
@@ -9462,9 +9449,6 @@ function rcClavier(ev) {
   if (RC.fluxOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcFluxFermer(); } ev.stopPropagation(); return true; }
   if (RC.phrase) { if (ev.key === "Escape") { ev.preventDefault(); rcPhraseFermer(); } ev.stopPropagation(); return true; }
   if (RC.iaOuvert) { if (ev.key === "Escape") { ev.preventDefault(); rcIAFermer(); } ev.stopPropagation(); return true; }
-  if (ev.target && ev.target.classList && ev.target.classList.contains("rc-marge")) {   // [C14 669] la case de la marge : on y tape ; Entrée ou Échap revient à la ligne
-    if (ev.key === "Enter" || ev.key === "Escape") { ev.preventDefault(); const c = RC.ui.querySelector('.rc-saisie[data-ligne="' + CSS.escape(ev.target.dataset.ligne) + '"]'); if (c) c.focus(); }
-    ev.stopPropagation(); return true; }
   if (ev.key === "Escape") { ev.preventDefault(); ev.stopPropagation(); rcFermer(); return true; }
   if (input && ev.key === '"' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { ev.preventDefault(); ev.stopPropagation(); rcGuillemet(ev.target); return true; }
   if (input && ev.key === "Backspace" && !ev.ctrlKey && !ev.metaKey && !ev.altKey && ev.target.selectionStart === 0 && ev.target.selectionEnd === 0) {
@@ -10021,7 +10005,6 @@ RU_AIDES.recopie = { ou: "Recopier", l: [
   ["« (guillemet droit)", "s'écrit en guillemets français, « » selon la place"],
   ["Ctrl + Z", "dans le champ : annuler la frappe ; hors du champ : annuler le dernier ajout, retrait ou recalage"],
   ["＋ Une ligne · − Cette ligne", "ajouter une ligne après celle en cours · retirer celle en cours"],
-  ["la case à gauche d'une ligne", "la marge : ce que l'élève y a écrit à la hauteur de cette ligne (le numéro d'une architecture), recopié tel quel ; l'IA le reçoit"],
   ["« en-tête : la date, le lieu »", "une ligne vide au-dessus de la lettre : recopie-y la date et le lieu s'il y en a, sinon l'IA dira qu'ils manquent"],
   ["¶ Paragraphe", "la ligne en cours commence un paragraphe : l'IA le saura ; l'app pose seule le ¶ après une ligne sautée, un retrait, ou une ligne d'avant qui s'arrête tôt sur une fin de phrase"],
   ["− ↔ Largeur ＋ · Ctrl + molette", "la taille de la photo et de la feuille ensemble"],

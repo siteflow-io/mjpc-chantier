@@ -92,7 +92,7 @@ function dr_ouvContenu(role, sk){
   if (role === 'presentation-chapitre') {
     const el = [], g = []; const titre = String(c.title || '').trim(); const q = String(c.problematique || '').trim(); const en = dr_invEntree(c, niv);
     if (titre) { el.push(titre); g.push('titre'); } else manques.push({ l: 'le chapitre n’a pas de titre', champ: 'titre' });
-    if (q) { el.push(q); g.push('question'); } else manques.push({ l: 'le chapitre n’a pas de question (sa problématique)', champ: 'question' });
+    if (q) { el.push(q); g.push('question'); } else manques.push({ l: 'le chapitre n’a pas de problématique', champ: 'question' });   /* C16 (les correctifs, ㉛) : « question » ne désigne plus la problématique (le nom interne du champ, `question`, n'est lu ni par Paul ni par l'élève) */
     if (!en) manques.push({ l: 'le chapitre n’a pas d’entrée du programme', champ: null });
     let quand = 'les dates selon la classe'; if (dates) { const tous = Object.keys(dates).reduce((a, k) => a.concat(dates[k]), []).sort(); quand = !tous.length ? '' : tous.length === 1 || tous[0] === tous[tous.length - 1] ? 'le ' + dr_ouvJourLong(tous[0]) : 'du ' + dr_ouvJourLong(tous[0]) + ' au ' + dr_ouvJourLong(tous[tous.length - 1]); }
     if (en || quand) { el.push(en || ''); g.push('entree'); }   /* l'entrée (Paul peut l'écrire) et les dates (le décor de la classe, `quand`) */
@@ -206,7 +206,7 @@ function dr_ouvCarteHtml(e, durChamp, masq){
       + ` <button class="btn" data-ouv-image-retirer="${cible}"${x ? '' : ' disabled'} title="${x ? (cible === 'chapitre' ? 'Plus d’image sur la présentation du chapitre (ni sur les débuts de séance qui la reprenaient) : la colonne de texte prend toute la largeur ; « À régler » ne la réclame plus' : 'Plus d’image sur ce début de séance : la colonne de texte prend toute la largeur') : 'Il n’y a pas d’image à retirer'}">Retirer</button></div>`; };
   if (dr_ouvChampsChapitre(e)) {
     if (e.role === 'presentation-chapitre') h += lab('TITRE DU CHAPITRE') + `<div class="l">${champ('dc-ouv-titre', 'titre', c.title, 'Le titre du chapitre — sur la présentation du chapitre, dans la liste de tes chapitres, sur la feuille sommaire ; il change pour toutes tes classes. Entrée le garde.')}</div>`;
-    h += lab('LA PROBLÉMATIQUE DU CHAPITRE') + `<div class="l">${champ('dc-ouv-question', 'question', c.problematique, 'La problématique du chapitre — sur la présentation du chapitre, sur la diapo « Notre question » de chaque séance et sur la feuille sommaire, pour toutes tes classes. Entrée la garde.', true)}</div>`;
+    h += lab('LA PROBLÉMATIQUE DU CHAPITRE') + `<div class="l">${champ('dc-ouv-question', 'question', c.problematique, 'La problématique du chapitre — sur la présentation du chapitre, sur la diapo « Notre problématique » de chaque séance et sur la feuille sommaire, pour toutes tes classes. Entrée la garde.', true)}</div>`;
     if (e.role === 'presentation-chapitre') h += image('chapitre', c.image === false ? null : dr_ouvImage(c.image));
   } else {
     const L = dr_ouvSeances(c, null); const rang = Math.max(0, L.findIndex(p => String(p.j) === String(sk))) + 1;

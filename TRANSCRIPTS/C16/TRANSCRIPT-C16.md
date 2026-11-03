@@ -2093,3 +2093,22 @@ MEMO
 - **16:29 — l'exécutant du lot 1, 360 poussé** (`a63e6bcf4`, assemblé md5 `29aa961e`) : W (vraie heure et essai « autre classe », répétition et répétition en mode test « autre séance », × Rejoindre / Lancer quand même / Annuler, avec le tableau distant) 73 sur 73, la base 37 échecs sur 73 (trois « undefined », aucun bouton n'agit). Rejoindre : l'appareil pilote la même session, rien de créé ; Lancer : il lance la sienne, le tableau la suit, pour une heure celle de l'autre est close au hub ; Annuler : rien. Mesuré hors mandat : après « Lancer quand même » sur une vraie heure, l'écran de l'autre appareil montre encore son heure lancée, sans être averti qu'elle est close. **La conscience** : relu, les trois boutons ont leur nom et une infobulle par cas (heure, essai, répétition) ; ni `AUDITS/`, ni `APP_VERSION`, ni fichier interdit ; aucun nom d'élève.
 - **16:31 — l'exécutant du lot 1, une question sur 361** : en répétition, l'en-tête « RÉPÉTITION · <classe> » prend la case du jour (`dr_hclasseNom` → `dr_proposer`) et ignore le choix fait au menu du nom (`dr_choisirClasse`) ; la liste, elle, suit ce choix (`dr_classe` → `dr_sourceSeance`). Mesuré au faux hub : une autre classe choisie au menu, l'en-tête dit toujours la classe d'essai, 33 pastilles (les deux classes) ; déjà ainsi sur la base. Il propose : en répétition, l'en-tête nomme la classe choisie, la même que la liste ; sinon l'inverse (la liste suit l'en-tête, le menu ne change plus rien en répétition). **La conscience** : la première voie ; sans choix au menu, rien ne change ; hors répétition, rien ne change ; preuve en plus que seul l'affichage change (la copie répétée, les chemins écrits, le tableau distant). Dit à Paul, qui peut faire basculer.
 - **16:32 — l'auditeur de l'horloge, poussée 4** (`2f45ff6cb`), lu dans le code, non mesuré : `MJPC_HORLOGE=date` ne décale que `Date`, du même écart sur tous les appareils, et rien du site ne le contourne ; l'heure du serveur du faux hub n'est comparée qu'à d'autres heures du serveur (`edtAppelDerniers`) : elle ne joue ni dans P2T ni dans X ; l'horloge simulée de Playwright 1.63.0 joue les minuteries échues une à une dans l'ordre de leur échéance : l'explication probable du « vert », à confirmer. Aucune mesure depuis 16:07:38 : l'exécutant du lot 1 enchaîne ses sondes ; sa file attend (XT, X sans Échap, l'horloge simulée, T, la sonde d'origine).
+- **16:32 — message à Paul, mot pour mot :**
+
+  > 387. Lot 1 : 359 (les 3 DYLAN) et 360 (la fenêtre « Une heure joue déjà ») sont prouvés et poussés ; 361 (la participation) est en cours.
+  >
+  > 388. 361, tranché par moi, à commenter : aujourd'hui, en répétition, le nom de classe choisi au menu change la liste des pastilles mais pas l'en-tête « RÉPÉTITION · … ». Désormais l'en-tête suit le menu, comme la liste ; sans choix au menu, rien ne change. Si tu préfères que le menu ne change rien en répétition, dis-le.
+  >
+  > 389. Mesuré par l'auditeur : en mode test, quand un second ordinateur fait « Reprendre », le téléphone se désactive tout seul, à cause d'une erreur du site (il prend ce second ordinateur pour une ancienne version). En vraie heure : je ne sais pas encore. C'est le premier des échecs de 384.
+  >
+  > 390. Une question pour savoir si le second échec est une dette. Le 02/11 à 16:19, tu as dit : « si l'app voit que j'ai repris le contrôle sur l'ordi, le téléphone se désactive ». Aujourd'hui, n'importe quelle touche sur l'ordinateur reprend la main, même Échap pour fermer une fenêtre. Est-ce que tu veux ça, ou seulement les gestes sur la diapo (flèche, dévoiler, clic, frappe d'une réponse) ?
+  >
+  > 391. Mesuré aussi par l'exécutant, pas encore dans un lot : après « Lancer quand même » sur une vraie heure, l'autre ordinateur montre encore son heure lancée, sans être prévenu qu'elle est close.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 16:32
+  >
+  > À jouer : 390 à trancher, 385 à trancher · en cours : lot 1 (361), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

@@ -2314,3 +2314,25 @@ MEMO
   >
   > MEMO
 - **Incident de la conscience** : trois entrées ci-dessus portaient d'abord des heures tapées sans lire `date` (« 20:52 », « 20:53 », « 20:55 » — la dernière en avance : `date` lu à 20:54) ; corrigées en « entre 20:51 et 20:54 » (les deux lectures de `date` qui les encadrent).
+
+- **20:57 — Paul, mot pour mot :**
+
+  > Et le calendrier et la séance des Franklin demain, c'est fait? Je pourrai la jouer?
+- **21:00 — la conscience** : cherché « calendrier », « Franklin », « demain », « mercredi » dans le transcript C16, les transcripts C14 et C15 et les commits du sas depuis minuit : aucune demande sur le calendrier ni sur la séance des 3 FRANKLIN ARETHA de demain. Relus : 358 (le paquet `3_franklin_aretha` a sa `classe`, l'erreur des 3 DYLAN ne le touche pas), 291 et les tests de 06:50 (la case suivante « heure 2 · suite », les 9 reportées), 360 et 361 (les défauts en ligne réglés par le lot 1). Pas de lecture du hub (l'utilisation de Paul).
+- **21:00 — message à Paul, mot pour mot :**
+
+  > 421. Je ne sais pas. Je n'ai pas mesuré la case de demain. Et je n'ai trace d'aucune demande sur le calendrier ni sur cette séance, ni dans mon travail, ni au sas aujourd'hui. Si tu l'as demandé à une autre conscience, je ne le vois pas.
+  >
+  > 422. Ce qui est mesuré. Lundi à 08:57, leur heure 1 de la séance 1 est close avec 9 diapos reportées (lu à ton hub lundi). L'erreur des 3 DYLAN ne les touche pas (lu à ton hub ce midi). Depuis la 8.81.0, leur case suivante dit « heure 2 · suite » et commence par les 9 diapos reportées : prouvé sur mon faux hub, pas sur le tien.
+  >
+  > 423. Pour le savoir sans user ton utilisation, deux gestes, sans rien lancer. Dans l'emploi du temps, la case de demain des 3 FRANKLIN ARETHA dit-elle la séance que tu veux jouer ? Ouverte, commence-t-elle par l'appel, puis les diapos reportées ? Ferme sans lancer, et dis-moi ce que tu vois.
+  >
+  > 424. Tu pourras la jouer sur la version en ligne, avec deux précautions, tant que le lot 1 n'est pas en ligne. N'ouvre pas la même heure sur un second ordinateur : la fenêtre « Une heure joue déjà » te bloquerait, et le geste fait juste avant pourrait se perdre. À la participation, tape des initiales exactes : sinon elles peuvent aller à un autre élève.
+  >
+  > À tester : les deux gestes de 423, sans rien lancer.
+  >
+  > 03/11/2026 21:00
+  >
+  > À jouer : 420 à trancher, 423 · en cours : les dernières preuves de l'exécutant, puis mon banc · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

@@ -1691,3 +1691,19 @@ MEMO
   > MEMO
 - **09:07 — l'exécutant, ㉟ poussé** (`9c13d037c`, l'assemblé `bc7cc9cd`) : le port à la main des correctifs 7 et 9 (le `morph` et l'empreinte des vignettes, la colonne sans le retard de 80 ms, `dr_frappeReponse`) et l'état vivant envoyé à chaque touche. La mesure de cette nuit était fausse sur les espaces (une espace en fin de texte est d'abord insécable ; la sonde ne la voyait qu'à la touche suivante : les 42 espaces des trois réponses faisaient les « 41 lettres ») ; corrigé dans la sonde. K, trois passages : après 18 / 18 (le pilote, médiane 13-14 ms, au plus 32 ms, aucune lettre au-delà de 100 ms ; la fenêtre, médiane 14-15 ms, au plus 55 ms) ; avant 13 / 18 (la fenêtre, médiane 168-208 ms, jusqu'à 570 ms). Connu, pas expliqué : la fenêtre a parfois un second régime (une fois sous profil 164 / 278 ms). **⑯ pas prouvé** : D, médianes 237-265 ms après, 259-275 avant ; la v6 de ⑯ rejouée sur cette machine 223-235 ms ; le point glisse au tableau en 2 images (la v6 : 17 à 22) ; la cause : je ne sais pas.
 - **09:08 — la conscience** : sa vérification lancée à 09:08 sur `bc7cc9cd` (le parcours en vraie heure et en mode test, l'appel Q QT P2H P2T, la session T H QH QT A, la fin d'heure) ; le candidat 8.81.1-⑭-micro préparé sur ce commit (le zoom, le QR et ㉟).
+- **09:23 — la vérification de la conscience** (`9c13d037c`, l'assemblé `bc7cc9cd`) : le parcours P0-P12 vert en vraie heure (K15 : 28 permises) et en mode test (K15-test : 0 hors) ; l'appel Q QT P2H P2T 42 / 0 ; la session T H QH QT A 89 / 0 ; la fin d'heure 56 / 0. Le candidat 8.81.1-⑭-micro (le zoom, le QR, ㉟) : md5 `c21ddbb6`, 3 016 971 o.
+- **09:23 — message à Paul, mot pour mot :**
+
+  > 323. Vérifié par moi sur le fichier à mettre en ligne (le zoom, le QR et la frappe) : le parcours complet en vraie heure et en mode test, vert ; la télécommande et l'appel, 42 sur 42 ; la session partout, 89 sur 89 ; la fin d'heure, 56 sur 56. Chez l'exécutant : la frappe 18 sur 18 (3 passages : aucune lettre au-delà d'un dixième de seconde, au pilote comme à la fenêtre du tableau) ; le QR 200 scans sur 200 ; le zoom 108 sur 110 (les deux restants, c'est ⑯).
+  >
+  > 324. Pas dedans : ⑯, le retard du tableau (pas réglé, cause pas trouvée). Et pas de banc complet d'une heure : c'est un micro.
+  >
+  > 325. Je te propose de mettre en ligne la 8.81.1-⑭-micro (le zoom, le QR, la frappe). Écris « promeus » et elle est en ligne dans les 5 minutes, avant 9:45.
+  >
+  > À tester (après la mise en ligne, en rechargeant l'ordinateur et le téléphone, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.81.1) : 📱 puis le QR, plusieurs fois : la télécommande s'ouvre ; A+ au téléphone sur une diapo avec du texte : le curseur du pilote avance d'un cran, le tableau grossit ; en mode test, tape vite la réponse d'un élève : les lettres suivent tes doigts, au pilote et au tableau.
+  >
+  > 03/11/2026 09:23
+  >
+  > À jouer : ton « promeus » ou non · en cours : rien · ouvert : 316, 317, 325
+  >
+  > MEMO

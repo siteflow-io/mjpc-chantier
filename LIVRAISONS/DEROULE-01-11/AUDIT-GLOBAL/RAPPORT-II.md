@@ -45,6 +45,28 @@ Ce que montrent aussi les autres lecteurs, sur la production, paquet sans `class
 
 Ce que je ne sais pas : ce que Paul a fait lundi entre 12:08 et 14:42 (le vrai hub ne le dit pas). La forme du paquet (pas de `classe`, pas de `demarreLe`, une heure close sans décision) est celle que laisse « essai lancé en mode test, puis mode test quitté pendant l'heure ». Lundi, la clé de l'heure (créneau 08:00-08:55, lancée à 12:08) est celle d'une case **fictive** de la classe d'essai (les créneaux fictifs ne paraissent qu'en mode test, `edtCasesA`) : l'heure a donc été lancée en mode test. Le geste qui quitte le mode test pendant l'heure, à l'écran, n'est mesuré que par l'appel de la fonction ; le geste complet (ouvrir le Panneau prof pendant l'heure, cliquer la pastille) est mesuré plus bas s'il passe (partie M2).
 
+### 3.1 · Les situations du mandat, une par une (partie D, `sorties/sonde-II-promo-8812-D.txt`, production)
+Chaque situation sur un faux hub neuf ; puis je lis la prochaine case « prévue » de la classe (la projection du site, `edtProjeter`, quatre semaines). « Reproduit » : la case propose la séance 2 alors que la classe n'a pas fini la séance 1.
+
+| | situation | ce que propose la case | reproduit ? |
+|---|---|---|---|
+| D1 | 3E Charles de Gaulle : une heure de la séance 1 lancée, 6 diapos (l'ouverture et « Analyse d'images »), **close sans rien décider** (« Clore quand même » ; la garde le dit : « une diapo non faite sans décision ne revient pas : la séance sera tenue pour finie ») | mardi 15:07 : **séance 2**, heure 1 sur 3 | **oui** |
+| D2a | la case de la **veille** (lundi 08:57) passée sans être jouée ; mardi 14:00 | mardi 15:07 : séance 1 ; le lundi dit « passée · pas jouée » | non |
+| D2b | CLASSE TEST : la case du **matin du même jour** (mardi 22/09 10:07) passée sans être jouée ; 11:12 | 16:04 : séance 1 | non |
+| D2c | CLASSE TEST : la grille **ouverte à 10:07** (la case du matin en cours) **et laissée ouverte** jusqu'à 12:38 | la case de 16:04 dit toujours « Étude de texte accompagnée : « L'Albatros » heure 1/3 » (**séance 2**) ; rouverte, elle dit séance 1 | **oui, à l'écran** (ce que lance un clic : partie E, plus bas) |
+| D3 | la séance 1 **réservée** à 3E Charles de Gaulle (« Pour » de l'Atelier, le champ `classes`) | CLASSE TEST, mardi 10:07 : **séance 2** | **oui** |
+| D4 | l'heure **reportée d'une autre classe** : 3E Charles de Gaulle joue la séance 1 et reporte 9 diapos ; le paquet est écrit par le site (**avec** `classe`) | CLASSE TEST : séance 1 | non |
+| D5 | une heure lancée (7 diapos) puis **« Annuler cette heure »** : avant, un paquet et une heure pas close ; après, **aucun paquet** | lundi 08:57 : séance 1 | non |
+| D6 | une heure jouée et close **en mode test** : rien hors de `/site/tableau_test`, aucun paquet | séance 1 | non |
+| D6b | une **répétition** de la séance 1 (le bouton de l'Atelier) : écrit `/site/repetition/*` seulement, aucun paquet | séance 1 | non |
+| D7 | **l'appel coché avant l'heure** (1 absent, écrit sous `/site/edt/appel/…`, aucun paquet), puis l'heure jamais lancée | à 08:30 la case dit séance 1 ; à 10:30 le lundi est « passée · pas jouée », mardi séance 1 | non |
+| K1 | **le paquet sans `classe`** d'une autre classe (la forme du vrai hub, §3.0.1) | CLASSE TEST : **séance 2** (production, 8.80.0, 8.78.2) | **oui** |
+| M1 | un **essai en mode test, le mode test quitté pendant l'heure** (§3.0.2) : écrit ce paquet sans `classe` | CLASSE TEST : **séance 2** (production, 8.78.2) | **oui** |
+
+**Le compte : 5 situations sur 12 font proposer la séance 2** à une classe qui n'a pas fini (ou pas joué) la séance 1 : D1 (une heure close sans décision), D2c (la grille laissée ouverte, à l'écran), D3 (la séance 1 réservée à une autre classe), K1 (un paquet sans `classe`), M1 (un essai en mode test quitté pendant l'heure, qui écrit ce paquet). Pour une classe qui **n'a rien joué** (le cas des 3 DYLAN), seules D2c, D3, K1 et M1 la produisent ; au vrai hub, la conscience a lu un paquet sans `classe` (K1) et aucune heure des 3 DYLAN.
+
+Remarques mesurées : (1) en D6b et D7, ouvrir l'emploi du temps du faux hub écrit `/site/edt/grille/2026-2027`, `/site/edt/photos/2026-2027` et une archive `/corbeille/…/edt-mise-a-niveau-grille_…` : c'est la mise à niveau de la grille du faux hub (ancienne forme), pas le geste mesuré. (2) En D5, « Annuler cette heure » retire le paquet entier, `classe` compris : rien ne reste.
+
 ---
 
 (la suite des réponses, question par question, au fil des poussées)

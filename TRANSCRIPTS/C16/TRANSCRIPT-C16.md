@@ -2035,3 +2035,15 @@ MEMO
   > MEMO
 - **14:54 — 367, la conscience** : branche `banc/vraie-horloge` (`beea4c090`, base `9c13d037c`) : `MJPC_HORLOGE=date` (la date seule décalée ; minuteries, images et `performance` du navigateur) dans les sondes qui jugent un temps : sonde ⑩ (`EX/bancs/sonde-10.mjs`, le minuteur et les retards au tableau distant), le fil, l'appel, la fin d'heure, la session, la fin (D) ; la sonde de la frappe au tableau de l'exécutant de 10:05 (montre du navigateur, flux, tableau distant compté) reprise telle quelle pour l'étape 13. Sans la variable, chaque sonde fait ce qu'elle faisait. Aucune ligne du site. Le banc : `…/scratchpad/banc-horloge.sh` (les sondes de cette branche posées sur le commit candidat, `AUDITS/` de main).
 - **14:56 — 367, première mesure** : la sonde ⑩ et la sonde du fil, à la vraie horloge, sur la production 8.81.1 (en cours, la machine seule).
+- **14:58 — l'exécutant du lot 1** : le mandat est juste contre le code ; il commence par 359 ; ses choix : un essai joue = mode test et une heure de classe ouverte sur l'appareil ; les initiales exactes = la clé exacte d'un élève (« RD » le premier, « RD2 » le second), sans accent si un seul correspond ; un chemin de fuite de plus à mesurer puis fermer (un autre onglet reprend l'essai en mode réel par le miroir local). Hors mandat, vu : la fenêtre dit « séance 0 » pour un essai. **La conscience** : d'accord ; la frappe suit la même règle qu'Entrée (aucun vert sans initiales exactes, ni pendant la frappe ni après) ; « séance 0 », noté.
+- **14:58 — 379, la conscience** : `banc/vraie-horloge` `ced5eba45` : le témoin des sessions croisées (sonde-audit-I Q1 et Q1D, sonde-II K et M, base et candidat, les lignes qui changent) entre au banc.
+- **14:56 — 367** : la sonde ⑩ à la vraie horloge sur la production : 51 vérifications, 0 échec (le plus long retard au tableau distant 226 ms ; à l'horloge simulée, au banc de la 8.81.0 : 186 ms).
+- **14:58 — message à Paul, mot pour mot :**
+
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 14:58
+  >
+  > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

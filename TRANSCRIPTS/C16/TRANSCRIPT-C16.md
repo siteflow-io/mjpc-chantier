@@ -2112,3 +2112,4 @@ MEMO
   > À jouer : 390 à trancher, 385 à trancher · en cours : lot 1 (361), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **16:33 — l'auditeur de l'horloge** : ses mesures ne passent pas, faute de fenêtre (XT lancé à 16:32:18, arrêté à 16:32:59 par le navigateur de l'exécutant, écarté) ; il lui faut environ 15 minutes de machine seule (huit passages de 1 à 2 minutes). **La conscience** : le lot 1 garde la priorité ; la machine à l'auditeur, seul, quand l'exécutant aura fini, avant le banc.

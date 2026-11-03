@@ -1707,3 +1707,16 @@ MEMO
   > À jouer : ton « promeus » ou non · en cours : rien · ouvert : 316, 317, 325
   >
   > MEMO
+- **09:45 — Paul, mot pour mot** : « promeus »
+- **09:46 — la promotion 8.81.1-⑭-micro** : le candidat (md5 `c21ddbb6`, 3 016 971 o) poussé en production (commit `cf122ac`, blob `3b69aab74938`) ; servi bit à bit à 09:47:28 (`APP_VERSION="8.81.1-⑭-micro"`). Les documents de suite (production `5f5d9c6`) : le micro n°3 (`docs/MJPC6-MICROS.md`), le point de retour (blob `25383d503ecb`), le journal, le registre ✔ (le zoom, le QR, ㉟ ; ⑯ ouvert), l'index des fonctions (2 367), « où trouver quoi » avec l'adresse `index.html?n=3e&v=8.81.1`.
+- **09:47 — message à Paul, mot pour mot :**
+
+  > 326. En ligne : la 8.81.1-⑭-micro (le zoom, le QR, la frappe), servie à l'identique depuis 9:47. Recharge l'ordinateur et le téléphone. ⑯ n'est pas dedans.
+  >
+  > À tester (avant ton cours si tu as le temps, sinon après) : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.81.1 — le panneau dit 8.81.1-⑭-micro ; 📱 puis le QR, plusieurs fois ; A+ au téléphone : le curseur du pilote avance d'un cran.
+  >
+  > 03/11/2026 09:47
+  >
+  > À jouer : les gestes ci-dessus · en cours : rien · ouvert : 316, 317
+  >
+  > MEMO

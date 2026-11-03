@@ -1627,3 +1627,16 @@ MEMO
   > À jouer : les 7 gestes de 06:52 · en cours : l'exécutant du zoom, du QR, de la frappe et du retard (avant 11:30) · ouvert : 312
   >
   > MEMO
+- **07:57 — Paul, mot pour mot** : « ça prend trop de temps, beaucoup trop de temps!! »
+- **07:58 — la conscience** : à l'exécutant : le zoom et le QR seuls, prouvés et poussés avant 09:00, sans mesures longues ; ㉟ ⑯ ensuite.
+- **07:58 — message à Paul, mot pour mot :**
+
+  > 314. Entendu. Je coupe en deux. Le zoom et le QR d'abord, seuls : l'exécutant les pousse prouvés avant 9:00 ; je rejoue seulement ce qu'ils touchent (la télécommande, la session), un quart d'heure, et je te demande le « promeus » vers 9:15, en micro (8.81.1-⑭-micro), sans le banc complet d'une heure. ㉟ et ⑯ ensuite, sans te faire attendre pour le reste.
+  >
+  > À tester : les 7 gestes de 06:52 (8.81.0-⑭).
+  >
+  > 03/11/2026 07:58
+  >
+  > À jouer : les 7 gestes de 06:52 · en cours : le zoom et le QR (avant 9:00) · ouvert : 312
+  >
+  > MEMO

@@ -5087,3 +5087,30 @@ MEMO
 03/11/2026 10:26
 
 MEMO
+
+---
+
+## Tour 176 — 03/11/2026 17:25
+
+**Paul (17:25) :**
+
+promeus
+
+**Ce qui a été fait (C14) :** juste avant, la candidate rejouée sur le site en lecture seule (17:26) : chez les Franklin, toujours exactement les deux feuilles de 09:58, rien d'autre ; chez les Dylan, rien. 1.4.31 copiée au sas (`SAUVEGARDES/redaction-1.4.31-RU-avant-1.4.32-2026-11-03.html`, `bdd94988`) ; 1.4.32-RU en ligne : commit `e05f72c` (seul `redaction.html`), blob `645c333d3e55`, md5 `ca7893f8f938cee69c21ae652f646ff4`, 968 881 o, en ligne bit à bit à 17:28 ; docs : le point de retour, le journal, les dettes ✔, où trouver quoi (`&v=1.4.32-RU`).
+
+**Claude (17:30) :**
+
+À jouer : 121 · en cours : rien · ouvert : « ça lag » au collège, à mesurer ; la garde du retour de l'IA, à cadrer (95, 97, 98, 107) ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+120. La 1.4.32 est en ligne : à 17:28, j'ai vérifié que ton site sert exactement le bon fichier. Juste avant, je l'ai rejouée sur ton site sans rien y écrire : elle retrouve toujours exactement les deux feuilles des Franklin, et rien d'autre. https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.32-RU
+
+121. La réparation se fait à la prochaine ouverture des scans des Franklin. Fais-la de préférence sur l'ordinateur du collège, là où sont les photos des deux pages 3. Si tu ouvres d'abord ailleurs, ce n'est pas grave : la page 3 en double disparaît quand même, et au collège, recharger ton paquet (« 📄 Charger des copies ») rend sa photo à la page 2.
+
+À tester, sur l'ordinateur du collège :
+- Recharge la page, ouvre les Franklin, puis les scans : le message « 2 feuilles retrouvées » apparaît, le bandeau « 2 pages de ce paquet ne sont pas dans ce navigateur » disparaît, la page 2 des deux élèves a sa photo et leur page 3 a disparu.
+- « 🧪 Tester comme l'élève » sur ces deux élèves : leur page 2 avec sa photo, ta recopie et tes marques dessus.
+- « 📦 Tout rendre », si leurs fichiers ne sont pas encore partis.
+
+03/11/2026 17:30
+
+MEMO

@@ -1,0 +1,71 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties C · 2026-11-03 12:12 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie C · 12:12 UTC
+  [C] jeudi 17/09 14:00, la semaine de 3E Charles de Gaulle : 2026-09-14 08:57-09:52 · passee ‖ 2026-09-15 15:07-16:02 · passee ‖ 2026-09-16 10:07-11:02 · passee ‖ 2026-09-18 10:07-11:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1
+  [C] C1 la case du lundi (passée, pas jouée) : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Case passée sans heure jouée : la séance n’y a pas eu lieu. Elle continue à la case suivante de la classe — aucune heure n’est perdue dans la file. Déplacer cette heure, ou en ajouter une… Jusqu’à la fin de l’année. Un « créneau libre » n’est pas un déplacement : c’est une heure de plus, épinglée, qui compte dans la prévision. — choisir parmi »
+  [C] C1 ses boutons : ["✕","Banaliser cette heure"]
+  [C] C1 « Déplacer cette heure, ou en ajouter une… » : 909 créneaux ; les 6 premiers : jeu 17/9 · 08:00-08:55  — créneau libre, heure ajoutée | jeu 17/9 · 08:57-09:52  — créneau libre, heure ajoutée | jeu 17/9 · 10:07-11:02  — créneau libre, heure ajoutée | jeu 17/9 · 11:04-11:59  — créneau libre, heure ajoutée | jeu 17/9 · 13:00-13:55  — créneau libre, heure ajoutée | jeu 17/9 · 13:57-14:52  — créneau libre, heure ajoutée · dont 0 avant aujourd’hui, 8 aujourd’hui
+  ok     C1 · la case « passée · pas jouée » ne propose aucun lancement (ni « Ouvrir le pilotage et lancer », ni « Rattraper ») — ["✕","Banaliser cette heure"]
+  [C] C2 « jeu 17/9 · 16:04-16:59  — créneau libre, heure ajoutée » choisi : écrit PUT /site/edt/decisions/2026-2027
+  [C] C2 la semaine après : 2026-09-14 08:57-09:52 · passee ‖ 2026-09-15 15:07-16:02 · passee ‖ 2026-09-16 10:07-11:02 · passee ‖ 2026-09-17 16:04-16:59 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 · ajoutée · épinglée ‖ 2026-09-18 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [C] C2 la case où lancer : 2026-09-17 16:04-16:59 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 · ajoutée · épinglée
+  [C] C2 l’heure lancée (true) : la clé de l’heure au hub : 2026-09-17_16h04-16h59_3E_Charles_de_Gaulle · la date rangée : celle du jour du lancement (_drCleHeureDe, Date.now()), le créneau : celui de la case
+  [C] C3 la fin d’heure : 9 phrases avec une heure ou un jour :
+        étape 1 : aucune vendredi 18 septembre, 10 h 07 lundi 21 septembre, 08 h 57 mardi 22 septembre, 15 h 07 — la prochaine heure de la classe est proposée en premier Sans échéance ◀ Étape précédente Étape suivante ▶ (ce qui n'a pas ét   ⟵ vendredi, 18 septembre, 10 h 07, lundi, 21 septembre, 08 h 57, mardi, 22 septembre, 15 h 07
+        étape 1 : vendredi 18 septembre, 10 h 07) ○ 2 · ce qui n'a pas été fait — 9 diapos :   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 2 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé ○ 3 · le travail à faire ○ 4 · le récit relu — à relire à la fin de l'heure ○ 5 · le mot aux absents (1) (f   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 3 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé 9 reportées ▶ 3 · le travail à faire ○ 4 · le récit relu — à relire à la fin de l'heure ○ 5 · le mot aux ab   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 4 : Il est 16:49 :   ⟵ 16:49
+        étape 4 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé 9 reportées ○ 3 · le travail à faire ▶ 4 · le récit relu — à relire à la fin de l'heure ○ 5 · le mot aux ab   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 5 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé 9 reportées ○ 3 · le travail à faire ○ 4 · le récit relu — à relire à la fin de l'heure ▶ 5 · le mot aux ab   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 6 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé 9 reportées ○ 3 · le travail à faire ○ 4 · le récit relu — à relire à la fin de l'heure ○ 5 · le mot aux ab   ⟵ vendredi, 18 septembre, 10 h 07
+        étape 7 : vendredi 18 septembre, 10 h 07) ✔ vendredi 18 septembre, 10 h 07 ✔ 2 · ce qui n'a pas été fait — tout est décidé 9 reportées ○ 3 · le travail à faire ○ 4 · le récit relu — à relire à la fin de l'heure ○ 5 · le mot aux ab   ⟵ vendredi, 18 septembre, 10 h 07
+  [C] C3 la Relecture : 4 faces : Le récit · heure 1 | Ce qui s'est passé · heure 1 | Papier · heure 1 | Le chapitre
+  [C] C3   « Le récit · heure 1 » : 11 phrases avec une heure ou un jour
+        Relecture — 3E Charles de Gaulle · heure 1 (jeudi 17 septembre 2026) · Poésie et peinture :   ⟵ jeudi, 17 septembre
+        le Romantisme en question 16:04:00 → 16:49:13 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre 3E Charles de Gaulle Ce qu'on a fait aujourd'hui 3E Charles de Gaulle · Poésie et p   ⟵ 16:04, 16:49
+        le Romantisme en question · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 16 h 04 et s'est terminée à 14 h 01.   ⟵ jeudi, 17 septembre, 16 h 04, 14 h 01
+        Présentation du chapitre À 16 h 04, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 16 h 04
+        Notre problématique À 16 h 04, on a lu notre problématique :   ⟵ 16 h 04
+        Les compétences du chapitre À 16 h 04, on a regardé les compétences que le chapitre va travailler.   ⟵ 16 h 04
+        Le parcours du chapitre À 16 h 04, on a regardé le parcours du chapitre (séance 1 sur 9).   ⟵ 16 h 04
+        le Romantisme en question À 16 h 04, on a lu l’objectif de la séance :   ⟵ 16 h 04
+        Activité 1 — Analyse d’images À 16 h 04, la consigne était :   ⟵ 16 h 04
+        Activité 2 — Mise en commun À 16 h 04, on a observé Le Radeau de la Méduse, Théodore Géricault, 1819.   ⟵ 16 h 04
+        (bilan de la séance non attesté) Copier pour École Directe — contenu de séance Copier — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là jeudi à 16 h 04.   ⟵ jeudi, 16 h 04
+  [C] C3   « Ce qui s'est passé · heure 1 » : 8 phrases avec une heure ou un jour
+        Relecture — 3E Charles de Gaulle · heure 1 (jeudi 17 septembre 2026) · Poésie et peinture :   ⟵ jeudi, 17 septembre
+        le Romantisme en question 16:04:00 → 16:49:13 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre 3E Charles de Gaulle LE FIL DE L'HEURE — CE QUE LA CLASSE A VU, ET CE QUE TU AS SAI   ⟵ 16:04, 16:49
+        le Romantisme en question3 s 16:04:12 — élément 1 dévoilé 16:04:13 — élément 2 dévoilé 16:04:13 — élément 3 dévoilé 16:04:13 — élément 4 dévoilé 16:04:14 — élément 5 dévoilé 16:04:14 — élément 6 dévoilé 16:04:14La classe   ⟵ 16:04
+        Le Radeau de la Méduse0 s 16:04:18La classe passe à la diapo 9 — Groupe 1 :   ⟵ 16:04
+        l’hypothèse44 min 54 s 16:04:19 — élément 1 dévoilé 16:04:20 — un élève a répondu :   ⟵ 16:04
+        ⚠ élève non identifié — à corriger 16:04:22 — un élève a répondu :   ⟵ 16:04
+        ⚠ élève non identifié — à corriger 16:04:24 — un élève a répondu :   ⟵ 16:04
+        l’hypothèse H1 — 3 min 0 / 1 reportée à la prochaine heure de la classe 18 Le bilan (bilan) H1 — 5 min 0 / 1 reportée à la prochaine heure de la classe 19 Fin d'heure (fin) H1 — 5 min 0 / 4 pas jouée PARTICIPATION person   ⟵ 16:04
+  [C] C3   « Papier · heure 1 » : 10 phrases avec une heure ou un jour
+        Papier — 3E Charles de Gaulle · heure 1 (jeudi 17 septembre 2026) · Poésie et peinture :   ⟵ jeudi, 17 septembre
+        le Romantisme en question 16:04:00 → 16:49:13 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre 3E Charles de Gaulle 🖨 Imprimer le papier Le papier découle du récit :   ⟵ 16:04, 16:49
+        le Romantisme en question DATEjeudi 17 septembre 2026 Ce qu'on a fait aujourd'hui À relire — vendredi 18 septembre Cette heure a commencé à 16 h 04 et s'est terminée à 14 h 01.   ⟵ 17 septembre, vendredi, 18 septembre, 16 h 04, 14 h 01
+        PRÉSENTATION DU CHAPITRE À 16 h 04, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 16 h 04
+        NOTRE PROBLÉMATIQUE À 16 h 04, on a lu notre problématique :   ⟵ 16 h 04
+        LES COMPÉTENCES DU CHAPITRE À 16 h 04, on a regardé les compétences que le chapitre va travailler.   ⟵ 16 h 04
+        LE PARCOURS DU CHAPITRE À 16 h 04, on a regardé le parcours du chapitre (séance 1 sur 9).   ⟵ 16 h 04
+        LE ROMANTISME EN QUESTION À 16 h 04, on a lu l’objectif de la séance :   ⟵ 16 h 04
+        ACTIVITÉ 1 — ANALYSE D’IMAGES À 16 h 04, la consigne était :   ⟵ 16 h 04
+        ACTIVITÉ 2 — MISE EN COMMUN À 16 h 04, on a observé Le Radeau de la Méduse, Théodore Géricault, 1819.   ⟵ 16 h 04
+  [C] C3   « Le chapitre » : 1 phrases avec une heure ou un jour
+        le Romantisme en question 1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre 3E Charles de Gaulle 1 · LE TRACÉ   ⟵ jeudi, 17 septembre, vendredi, 18 septembre, 10 h 07
+  [C] C3 le texte copié pour École Directe (dr_recitContenuED, ce que « Copier » met dans le presse-papiers) : 1 phrases avec une heure ou un jour
+        1 · Le tracé des travaux à faire Heure 1 — donné le jeudi 17 septembre 2026, pour vendredi 18 septembre, 10 h 07 rien Copier pour École Directe Heure 2 — jeudi 17 septembre 2026 · à venir :   ⟵ jeudi, 17 septembre, vendredi, 18 septembre, 10 h 07
+  [C] C4 après la clôture (avec report) : 2026-09-14 08:57-09:52 · passee ‖ 2026-09-15 15:07-16:02 · passee ‖ 2026-09-16 10:07-11:02 · passee ‖ 2026-09-17 16:04-16:59 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 9 diapos, close, 9 reportées, séance pas finie · ajoutée ‖ 2026-09-18 10:07-11:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h2 suite ‖ 2026-09-21 08:57-09:52 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-22 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h2/3 ‖ 2026-09-23 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h3/3 ‖ 2026-09-24 16:04-16:59 · prevu « Interro de cours et analyse logique — les bases  » (séance 3) h1/3 ‖ 2026-09-25 10:07-11:02 · prevu « Interro de cours et analyse logique — les bases  » (séance 3) h2/3
+  [C] C4 la case passée du lundi reste : 2026-09-14 08:57-09:52 · passee · la prochaine : 2026-09-18 10:07-11:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h2 suite
+  ok     C9 · C : aucune erreur JS, aucune boîte système
+  ok     C9 · C (l’heure jouée) : aucune écriture refusée par le hub (HTTP 400) — 239 écritures — []
+  ok     C9 · C (l’heure jouée) : aucune écriture hors des chemins permis (K15) — []
+  [C] C4 l’heure de la suite, lancée le 2026-09-18 : Où en sommes-nous ? → Groupe 2 : Le lac → Groupe 2 : l’hypothèse → Groupe 3 : Pêcheurs en mer → Groupe 3 : l’hypothèse → Groupe 4 : Cathédrale gothique au bord de l’eau → Groupe 4 : l’hypothèse → Groupe 5 : Le Voyageur contemplant une mer de nuages → Groupe 5 : l’hypothèse → Le bilan → Fin d'heure
+  [C] C4 sa réactivation : [{"el":["Activité 1 — Analyse d’images","Activité 2 — Mise en commun"],"id":"bndxsxy","t":"texte","txt":"La dernière fois"},{"el":["Activité 2 — Mise en commun","Le bilan"],"id":"b122c35z","t":"texte","txt":"À reprendre"}]
+  ok     C9 · C4 : aucune erreur JS, aucune boîte système
+
+--- fin : 5 vérifications, 0 échec(s)

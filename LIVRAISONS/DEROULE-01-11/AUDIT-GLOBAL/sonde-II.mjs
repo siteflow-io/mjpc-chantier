@@ -196,7 +196,7 @@ const finir = (k, o, quoi) => { const e = o.errs.concat(o.boites); ERRS.push(...
    P  une séance pas finie : l'heure pas close (onglet fermé), l'heure close sans décision ; « Reprendre l'heure »
    A  une autre séance que celle proposée : la séance 4 jouée à la place de la 1 (par la réservation « Pour ») — ce que devient la 1
    N  la numérotation : une heure jouée avec des activités numérotées 3 et 4, puis renumérotées 1 et 2 — ce que chaque lecteur montre */
-const V8800 = process.env.MJPC_V8800 || null, V8782 = process.env.MJPC_V8782 || null;
+const V8800 = process.env.MJPC_V8800 || null, V8782 = process.env.MJPC_V8782 || null, V879 = process.env.MJPC_V879 || null;
 const SE = k => '/site/3e/chapitres/0/seances/' + k;
 const ORDRE = k => (((((HUBN.site || {})['3e'] || {}).chapitres || {})[0] || {}).seances || {})[k] ? +HUBN.site['3e'].chapitres[0].seances[k].ordre : null;
 const djDe = k => lireH(SE(k) + '/deroule_joue') || {};
@@ -253,7 +253,7 @@ const partieK = async () => {
 
 /* ══ M · le mode test quitté pendant l'heure ; la page rechargée pendant un essai ══ */
 const partieM = async () => {
-  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782]].filter(x => x[1] && fs.existsSync(x[1]));
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
   for (const [nom, f] of F) {
     hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; const a = await pilule(pg); const e0 = ECR.length;
     dire('  [M] ' + nom + ' · mode test : ' + a.geste + ' → m8TestOn() = ' + a.test); const L = await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(3000);
@@ -439,8 +439,70 @@ const partieE = async () => { const j = '2026-09-22', c1 = '10:07-11:02', c2 = '
   await o.pg.keyboard.press('Escape').catch(() => {}); const o2 = await ouvrir({ h: '12:40', jour: j }); const P = await projeter(o2.pg); dire('  [E] la même case, grille rouverte à 12:40 (sans le lancement ci-dessus, un autre appareil) : ' + dirCase(P.find(x => DYL.test(x.classe) && x.iso === j && x.cr === c2)));
   finir('E9', o, 'E'); finir('E9', o2, 'E bis'); await o.ctx.close(); await o2.ctx.close(); };
 
+/* ══ G · le geste complet : pendant l'essai, « 🛠 Panneau prof », puis la pastille « Mode test actif » ══ */
+const partieG = async () => {
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  for (const [nom, f] of F) { hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; const a = await pilule(pg); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(500);
+    await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(1500); const e1 = ECR.length;
+    const vb = await pg.isVisible('#tprof-btn').catch(() => false); if (vb) await pg.click('#tprof-btn').catch(() => {}); await p(1200); await capt(pg, 'G-' + nom.split(' ')[0] + '-panneau-pendant-heure');
+    const pill = await pg.evaluate(() => { const b = document.getElementById('tprof-testpill'); if (!b) return null; const r = b.getBoundingClientRect(); return { visible: b.offsetParent !== null && r.width > 0, texte: (b.innerText || '').replace(/\s+/g, ' ').trim(), bulle: b.title || '' }; });
+    if (pill && pill.visible) await pg.click('#tprof-testpill').catch(() => {}); await p(1200); const t = await pg.evaluate(() => m8TestOn()); const dial = o.boites.slice();
+    await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(600); await pg.keyboard.press('ArrowRight'); await p(400); await pg.keyboard.press('ArrowRight'); await p(15000);
+    const w = ecritsDepuis(e1).filter(x => !/tableau_test/.test(x));
+    dire('  [G] ' + nom + ' · pendant l’essai : « 🛠 Panneau prof » visible ' + vb + ' ; la pastille : ' + JSON.stringify(pill) + ' ; cliquée → m8TestOn() = ' + t + ' ; une boîte ou un avertissement : ' + (dial.join(' ; ') || 'aucun') + ' · 2 diapos, 15 s : ' + w.length + ' chemins au « vrai » hub : ' + w.join(', '));
+    dire('  [G]   le paquet : ' + (paquets().join(' | ') || 'aucun'));
+    verif('G1', pill && pill.visible && t === false && w.some(x => /deroule_joue/.test(x)), nom + ' : pendant un essai, le Panneau prof s’ouvre, la pastille se clique, le mode test s’éteint sans un mot, et l’heure écrit au vrai deroule_joue', { vb, pill, t, w: w.slice(0, 4) });
+    finir('G9', o, nom); await o.ctx.close(); } };
+
+/* ══ Q · le texte que « Copier pour École Directe » met dans le presse-papiers : une heure jouée DANS son créneau (lundi 09:00), close ══ */
+const partieQ = async () => { hubAvec(); const o = await ouvrir({ h: '09:00', jour: '2026-09-14' }); const pg = o.pg;
+  await caseDe(pg, '2026-09-14', '08:57-09:52', CHA); await p(1000); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('#edt-appel .edt-el')).filter(x => !x.disabled)[0]; if (b) b.click(); }); await p(1200); await fermerEdt(pg);
+  await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-g1-hyp'); const ap = await ici_(pg); if (/0 \//.test(ap.compte)) { await pg.keyboard.press('ArrowRight'); await p(500); } await repondre(pg); await p(800); await finReporter(pg); await p(2500);
+  await pg.evaluate(() => { const b = document.getElementById('dr-clos-relire'); if (b) b.click(); }).catch(() => {}); await p(3500); await garde(pg); await pg.evaluate(() => { const b = document.querySelector('#ecran-relecture [data-f="recit"]'); if (b) b.click(); }); await p(1800);
+  const ed = await pg.evaluate(() => { try { const rec0 = document.querySelector('#rel .recit') || document.querySelector('.recit'); const tete = document.querySelector('#rel .dr-recit-tete'); const qb = document.querySelector('#rel .dr-recit-queue .bilan'); const html0 = (tete ? tete.innerHTML : '') + dr_recitContenuED(rec0) + (qb ? qb.outerHTML : ''); return dr_recitTexteDe(html0); } catch (e) { return 'ERREUR ' + e.message; } });
+  const t = lisible(ed); await capt(pg, 'Q-relecture-recit'); const hs = horaires(t); dire('  [Q] une heure jouée dans son créneau (lundi 08:57, lancée à 09:00), 3 réponses, 9 diapos reportées, close · le texte de « Copier pour École Directe » : ' + t.length + ' signes, ' + hs.length + ' phrases avec une heure ou un jour :'); hs.forEach(x => dire('        ' + x));
+  const abs = lisible(await pg.evaluate(() => { const z = Array.from(document.querySelectorAll('#ecran-relecture *')).find(x => /LE MOT POUR CHAQUE ABSENT/i.test(x.innerText || '') && x.children.length < 30); return z ? z.innerText : ''; })); dire('  [Q] le mot aux absents : ' + horaires(abs).join(' | '));
+  finir('Q9', o, 'Q'); await o.ctx.close(); };
+
+/* ══ R · le rattrapage d'une classe ordinaire (CLASSE TEST : l'horloge du pilote est la vraie — `dr_horlogeCase` ne recale que la classe d'essai) ══ */
+const partieR = async () => { hubAvec(); const auj = '2026-09-17'; const o = await ouvrir({ h: '14:00', jour: auj }); const pg = o.pg; const P = await projeter(o.pg);
+  dire('  [R] jeudi 17/09 14:00, la semaine de CLASSE TEST : ' + semaine(P, DYL).join(' ‖ '));
+  const pas = P.find(x => DYL.test(x.classe) && x.nature === 'passee'); const m = await caseDe(pg, pas.iso, pas.cr, DYL); dire('  [R] la case passée ' + pas.iso + ' ' + pas.cr + ' : boutons ' + JSON.stringify(m.btns));
+  const opts = await pg.evaluate(() => Array.from(document.querySelectorAll('#edt-ou option')).filter(x => x.value).map(x => ({ v: x.value, l: x.textContent })));
+  const libre = opts.find(x => /\|\+$/.test(x.v) && x.v.slice(0, 10) === auj && x.v.split('|')[1] > '14:00'); if (!libre) { dire('  [R] aucun créneau libre aujourd’hui après 14:00'); await o.ctx.close(); return; }
+  await pg.selectOption('#edt-ou', libre.v).catch(() => {}); await p(2500); const aj = libre.v.split('|'); await fermerEdt(pg); dire('  [R] « ' + libre.l + ' » choisi depuis la case passée');
+  await caseDe(pg, aj[0], aj[1], DYL); await p(1000); await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('#edt-appel .edt-el')).filter(x => !x.disabled)[0]; if (b) b.click(); }); await p(1200); await fermerEdt(pg);
+  const e1 = ECR.length; const L = await lancerIci(pg, aj[0], aj[1], DYL); const h0 = await pg.evaluate(() => new Date().toTimeString().slice(0, 5)); await jouerJusqua(pg, 'aud-g1-hyp'); const ap = await ici_(pg); if (/0 \//.test(ap.compte)) { await pg.keyboard.press('ArrowRight'); await p(500); } await repondre(pg); await p(800);
+  const sl = Object.keys(djDe(sk0(HUBN)[0]))[0]; dire('  [R] lancée à ' + h0 + ' (montre du navigateur), la case de ' + aj[1] + ' : la clé au hub : ' + Object.keys(((djDe(sk0(HUBN)[0])[sl] || {}).heures) || {}).join(', '));
+  await allerT5(pg); const H5 = []; for (let n = 1; n <= 7; n++) { await ouvrirEtape(pg, n); if (n === 2) await clic(pg, '#f-tous'); const tt = lisible(await pg.evaluate(() => { const z = document.querySelector('#fin .pp-corps, #fin .pp-sec, #fin'); return z ? z.innerText : ''; })); horaires(tt).forEach(x => H5.push('étape ' + n + ' : ' + x)); }
+  await clore(pg); await p(2500); dire('  [R] la fin d’heure : ' + [...new Set(H5)].length + ' phrases avec une heure ou un jour :'); [...new Set(H5)].slice(0, 8).forEach(x => dire('        ' + x));
+  await pg.evaluate(() => { const b = document.getElementById('dr-clos-relire'); if (b) b.click(); }).catch(() => {}); await p(3500); await garde(pg);
+  const faces = await pg.evaluate(() => Array.from(document.querySelectorAll('#ecran-relecture [data-f]')).filter(b => b.offsetParent !== null).map(b => ({ f: b.dataset.f, h: b.dataset.h || '', l: (b.innerText || '').trim() })));
+  for (const fa of faces) { await pg.evaluate(([f, h]) => { const b = Array.from(document.querySelectorAll('#ecran-relecture [data-f="' + f + '"]')).find(x => (x.dataset.h || '') === h); if (b) b.click(); }, [fa.f, fa.h]); await p(1800); await capt(pg, 'R-relecture-' + fa.f + fa.h);
+    const t = lisible(await pg.evaluate(() => { const z = document.getElementById('ecran-relecture'); return z ? z.innerText : ''; })); const hs = horaires(t); dire('  [R]   « ' + fa.l + ' » : ' + hs.length + ' phrases avec une heure ou un jour'); hs.slice(0, 14).forEach(x => dire('        ' + x)); }
+  await pg.evaluate(() => { const b = document.querySelector('#ecran-relecture [data-f="recit"]'); if (b) b.click(); }); await p(1800);
+  const ed = lisible(await pg.evaluate(() => { try { const rec0 = document.querySelector('#rel .recit') || document.querySelector('.recit'); const tete = document.querySelector('#rel .dr-recit-tete'); const qb = document.querySelector('#rel .dr-recit-queue .bilan'); return dr_recitTexteDe((tete ? tete.innerHTML : '') + dr_recitContenuED(rec0) + (qb ? qb.outerHTML : '')); } catch (e) { return 'ERREUR ' + e.message; } }));
+  dire('  [R] le texte de « Copier pour École Directe » (récit) : ' + horaires(ed).length + ' phrases avec une heure ou un jour :'); horaires(ed).forEach(x => dire('        ' + x));
+  await pg.keyboard.press('Escape').catch(() => {}); const P2 = await projeter(pg); dire('  [R] après : ' + semaine(P2, DYL, '2026-09-26').slice(0, 8).join(' ‖ '));
+  finir('R9', o, 'R'); k15('R9', e1, 'R'); await o.ctx.close(); };
+
+/* ══ H · le geste complet, par l'écran : pendant l'essai, « ✕ Fermer l'atelier » (il « ramène au panneau prof »), puis la pastille ══ */
+const partieH = async () => {
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  for (const [nom, f] of F) { hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; await pilule(pg); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(500);
+    await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(1500); const e1 = ECR.length;
+    const fe = await clicTexte(pg, 'button', 'Fermer l’atelier'); await p(2000); const vb = await pg.isVisible('#tprof-btn').catch(() => false); const vp0 = await pg.isVisible('#tprof-testpill').catch(() => false);
+    if (!vp0 && vb) { await pg.click('#tprof-btn').catch(() => {}); await p(1200); } const vp = await pg.isVisible('#tprof-testpill').catch(() => false); await capt(pg, 'H-' + nom.split(' ')[0] + '-panneau-pendant-essai');
+    const lanceeAvant = await pg.evaluate(() => ({ lancee: !!S.lancee, close: !!S.close }));
+    if (vp) await pg.click('#tprof-testpill').catch(() => {}); await p(1000); const t = await pg.evaluate(() => m8TestOn()); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(20000);
+    const w = ecritsDepuis(e1).filter(x => !/tableau_test/.test(x)); const lanceeApres = await pg.evaluate(() => ({ lancee: !!S.lancee, close: !!S.close }));
+    dire('  [H] ' + nom + ' · pendant l’essai : « ✕ Fermer l’atelier » ' + fe + ' ; « 🛠 Panneau prof » visible ' + vb + ' ; la pastille visible ' + vp + ' ; cliquée → m8TestOn() = ' + t + ' ; l’heure : avant ' + JSON.stringify(lanceeAvant) + ', 20 s après ' + JSON.stringify(lanceeApres) + ' · ' + w.length + ' chemins au « vrai » hub : ' + w.join(', '));
+    dire('  [H]   le paquet : ' + (paquets().join(' | ') || 'aucun') + ' · boîtes : ' + (o.boites.join(' ; ') || 'aucune'));
+    const P = await projeter(pg); dire('  [H]   la case du lundi : ' + dirCase(P.find(x => CHA.test(x.classe) && x.iso === '2026-09-14')) + ' · CLASSE TEST : ' + dirCase(premiere(P, DYL)));
+    finir('H9', o, nom); await o.ctx.close(); } };
+
 dire(''); dire('══ AUDIT GLOBAL II · ' + NOMF + ' · md5 ' + md5(FICHIER) + ' ══');
-for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['C', partieC], ['P', partieP], ['A', partieA], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
+for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['G', partieG], ['H', partieH], ['Q', partieQ], ['R', partieR], ['C', partieC], ['P', partieP], ['A', partieA], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-II-' + NOMF + '-' + PARTIES.join('') + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

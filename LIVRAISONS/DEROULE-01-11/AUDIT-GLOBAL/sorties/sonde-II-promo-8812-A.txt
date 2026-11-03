@@ -1,0 +1,23 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties A · 2026-11-03 12:13 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie A · 12:13 UTC
+  [A] les séances 1 à 3 réservées à CLASSE TEST (« Pour », le champ `classes`) : 3E Charles de Gaulle : 2026-09-14 08:57-09:52 · prevu « Le poème sans vers : dictée et réécriture » (séance 4) h1/3 ‖ 2026-09-15 15:07-16:02 · prevu « Le poème sans vers : dictée et réécriture » (séance 4) h2/3 ‖ 2026-09-16 10:07-11:02 · rienDePret
+  [A] lundi : la case lance « Le poème sans vers : dictée et réécriture », 12 diapos jouées, close · séance 4 · paquet « 3E Charles de Gaulle » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E Charles de Gaulle » · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (close, 12 diapos, 0 décisions)
+  [A] la réservation retirée ; mardi 14:00 : 2026-09-14 08:57-09:52 · jouee « Le poème sans vers : dictée et réécriture » (séance 4) — 12 diapos, close ‖ 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-16 10:07-11:02 · rienDePret ‖ 2026-09-18 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [A] la case du lundi : 2026-09-14 08:57-09:52 · jouee « Le poème sans vers : dictée et réécriture » (séance 4) — 12 diapos, close · la prochaine : 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1
+  [A] la file (4 semaines) : S1 h1/1 · S2 h1/3 · S2 h2/3 · S2 h3/3 · S3 h1/3 · S3 h2/3 · S3 h3/3 · S4 h2/3 · S4 h3/3 · S5 h1/3 · S5 h2/3 · S5 h3/3 · S6 h1/2 · S6 h2/2 · S7 h1/3
+  [A] les cartes : 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè · 0/9 ‖ CLASSE TEST dans les temps Poésie et peinture au XIXe siè · 0/9
+  [A] edtSeanceEtat, séance par séance (ce que lisent la file, la case, « Le parcours du chapitre ») : S1 — · S2 — · S3 — · S4 commencée · S5 — · S6 — · S7 — · S8 — · S9 —
+  [A] mardi : la case lance la séance 1 : « Présentation du chapitre » → « Notre problématique » → « Les compétences du chapitre » → « Le parcours du chapitre » → « Séance 1 · Poésie et peinture : le Romantisme en question » → « Analyse d’images »
+  [A] « Le parcours du chapitre » au pilote : « Le parcours du chapitre Séance 1 sur 9 1 mar. 15/9 Poésie et peinture : le Romantisme en question Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu’ils ont en commun : l’homme face à la nature, l’émotion avant la règle. 2 ven. 18/9 Étude de texte accompagnée : « L'Albatros » Lire « L’Albatros » de Baudelaire, repérer la comparaison filée et comprendre ce que le poème dit du poète parmi les hommes. 3 mer. 23/9 Interro de cours et analyse logique — les bases (1) Réciter les bases du cours, puis analyser des phrases complexes : propositions, subordonnées, fonctions. 4 lun. 14 »
+  [A] ses marques « faite » : []
+  [A] la réactivation de mardi : aucune diapo de réactivation
+  [A] à l’écran du pilote, les mots « non faite / pas faite / non jouée / pas jouée / sautée / manquée » : 0
+  ok     A9 · A : aucune erreur JS, aucune boîte système
+  [A] dans la semaine de l’emploi du temps : 2 fois ces mots :  — 4 HUGO hors MJPC CLASSE TEST passée · pas jouée 3E Charles de Gaulle aucune séance prêt | URING classe non encore importée 15:07 CLASSE TEST passée · pas jouée 3E Charles de Gaulle Poésie et peinture
+  [A] « Mes chapitres » : 0 mentions de jouée / faite / finie
+  ok     A9 · A mes chapitres : aucune erreur JS, aucune boîte système
+
+--- fin : 2 vérifications, 0 échec(s)

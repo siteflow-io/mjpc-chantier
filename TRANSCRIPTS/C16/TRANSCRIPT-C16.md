@@ -1640,3 +1640,21 @@ MEMO
   > À jouer : les 7 gestes de 06:52 · en cours : le zoom et le QR (avant 9:00) · ouvert : 312
   >
   > MEMO
+- **08:10 — Paul, mot pour mot** (capture : l'Atelier, « LES ACTIVITÉS DU CHAPITRE (4) », A15 à A18, « + activité · renuméroter (continu) ») : « Il faut accélérer!! par ailleurs, regarde ma capture: ça c'est une dette: la fonction renuméroter, une fois cliquée doit repasser en "numéroter par séance" et ça doit agir (donc on recommence à 1 à chaque première activité de séance): mais attention aux conséquences. 312 à fermer, c'était la deuxième chose, le qr code. »
+- **08:11 — message à Paul, mot pour mot :**
+
+  > 315. 312 fermé : la seconde chose était le QR, il est avec le zoom (avant 9:00).
+  >
+  > 316. La numérotation : notée au registre. Le lien bascule à chaque clic : « renuméroter (continu) » ↔ « numéroter par séance » ; par séance, chaque séance repart à A1.
+  >
+  > 317. Les conséquences : ce qui est déjà écrit (les récits des heures jouées, ce qui a été copié pour École Directe, les Relectures) garde les numéros d'alors ; tout ce qui s'affiche ensuite (les diapos, la fin d'heure, « Où en sommes-nous ? », l'emploi du temps) prend les nouveaux. Les reports et « À reprendre » tiennent par l'activité elle-même, jamais par son numéro : je le fais vérifier avant de toucher à rien.
+  >
+  > 318. Je la lance juste après le zoom et le QR, vers 9:15.
+  >
+  > À tester : les 7 gestes de 06:52 (8.81.0-⑭).
+  >
+  > 03/11/2026 08:11
+  >
+  > À jouer : les 7 gestes de 06:52 · en cours : le zoom et le QR (avant 9:00) · ouvert : 316, 317
+  >
+  > MEMO

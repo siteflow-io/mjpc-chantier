@@ -2136,3 +2136,4 @@ MEMO
   >
   > MEMO
 - **17:05 — l'auditeur de l'horloge, poussée 5** (`9d9682715`) : X par le chemin de la touche Échap, c'est la sonde (la règle de Paul, 17:04) ; la sonde corrigée reprend sans touche (`MJPC_SANS_ECHAP=1`, sa copie) ; s'il reste un échec sans touche, ce sera le site. Sa file est prête, environ 25 minutes de machine seule ; il attend le signal.
+- **17:18 — Paul, mot pour mot** : « 393 394 395, le choix le plus court et le plus économe en utilisation. »

@@ -2419,3 +2419,5 @@ MEMO
   > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **Incident de la conscience** : le message de fin après le second rappel de poussée (« Rien à tester de plus pour l'instant. / 03/11/2026 22:10 / À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚ / MEMO ») portait une heure tapée sans lire `date` dans le même tour (dernière lecture : 22:07) ; `date` lu juste après : 03/11/2026 22:13:04.

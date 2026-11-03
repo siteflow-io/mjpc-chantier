@@ -11,6 +11,7 @@ import { eprouverEcho } from "./echo.mjs";
 import { eprouverReprendre, eprouverBandeSuite } from "./reprendre.mjs";
 import { eprouverPoints } from "./points.mjs";
 import { eprouverTypes } from "./types.mjs";
+import { eprouverDetail } from "./detail.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -138,6 +139,7 @@ await eprouverReprendre({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37,
 await eprouverBandeSuite({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37, C14 72-73) « ▶ La bande », copie après copie
 await eprouverPoints({ pg, verif, cap, att });   // [C14 1.4.29] (Paul 22:33, 22:41 ; C14 80-81) les points de la grille, la note dans les fichiers des élèves
 await eprouverTypes({ pg, verif, cap, att });   // [C14 1.4.30] (Paul 03/11 00:39, 00:53 ; C14 94) le type de chaque faute dit vrai de ses mots
+await eprouverDetail({ pg, verif, cap, att });   // [C14 1.4.31] (Paul 03/11 07:57 ; C14 109) la correction détaillée dans les fichiers des élèves
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }
 console.log(ok.join('\n')); if (err.length) console.log('ERREURS\n' + err.join('\n'));

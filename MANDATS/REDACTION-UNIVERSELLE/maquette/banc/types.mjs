@@ -46,6 +46,9 @@ export async function eprouverTypes({ pg, verif, cap, att }) {
   if (!cT) { verif("1.4.30 : la copie part à l’IA (" + exs.length + " envoi(s))", false); return; }
   const ret = { format: "mjpc-recopie-ia-3", lignes: {}, reussites: {}, aReprendre: {}, commentaires: {} };
   exs.flatMap(e => e.copies).forEach(c => { c.pages.flatMap(p => p.lignes).forEach(l => { const i = L.indexOf(l.id); if (!c.seulementStickers) ret.lignes[l.id] = i >= 0 ? CORR[i] : l.texte; }); ret.reussites[c.copie] = [{ s: "fin" }]; ret.commentaires[c.copie] = "Relis chaque faute soulignée, puis récris dans ton cahier la phrase où elle se trouve."; });
+  /* [C14 1.4.31] (Paul 07:53, 08:11) comme au site : l'IA cite les mêmes mots pour trois stickers d'une même ligne de la grille (« le pain manque ») */
+  const TROIS = await pg.evaluate(() => { const G = {}; stActifs().filter(s => s.etat === "valide" && s.portee !== "lettre" && !stDesParagraphes(s)).forEach(s => { (G[s.ligne] = G[s.ligne] || []).push(s.num); }); return (Object.values(G).find(v => v.length >= 3) || []).slice(0, 3); });
+  ret.reussites[idT] = TROIS.map(n => ({ s: n, l: L[0], m: "le pain manque" })).concat([{ s: "fin" }]);
   const m1 = await charger(ret);
   // la bande, au clavier : à chaque arrêt, le type lu sur sa carte
   await choisir(kT); await pg.click("#rcBandeOuvrir"); await att(600); if (await pg.evaluate(() => RC.bd && RC.bd.attente)) { await pg.keyboard.press("Enter"); await att(300); }

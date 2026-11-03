@@ -230,6 +230,7 @@ RU_AIDES.fiches = { ou: "Données — Fiches élèves", l: [
   ["🧪 Tester comme l’élève", "son fichier dans un nouvel onglet, comme il le verra ; rien ne va au site"],
   ["Télécharger", "le fichier d’un élève, nommé comme dans ta liste de classe (« NOM Prénom.html »)"],
   ["Afficher la note dans les fichiers des élèves", "cochée, l’élève lit sa note ; décochée, son fichier garde toute sa grille, sans aucun point ; une case par classe"],
+  ["Afficher la correction détaillée dans les fichiers des élèves", "cochée, son fichier a « 📝 Ma copie corrigée » : sa lettre ligne par ligne, chaque faute gardée barrée et suivie de sa bonne forme ; décochée au départ ; une case par classe"],
   ["📦 Tout rendre", "un seul zip : un fichier par élève, nommés comme dans ta liste de classe, pour l’extension d’École Directe ; un élève absent n’a pas de fichier"]] };
 RU_AIDES.reglages = { ou: "Réglages — la grille et ses stickers", l: [
   ["⇪ Faire la grille avec l’IA", "un fichier pour ton IA : le sujet, ta grille, les stickers déjà là ; elle te pose d’abord ses questions, puis propose ses stickers"],

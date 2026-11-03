@@ -2057,3 +2057,5 @@ MEMO
   > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **15:02 — 367** : la sonde du fil à la vraie horloge sur la production : 100 vérifications, 0 échec (le point glisse : 23 positions entre le départ et l'arrivée ; à l'horloge simulée, au banc de la 8.81.0 : 19).
+- **15:03 — 367, la référence** : les étapes 13 (la frappe au tableau), 14 (la session), 15 (l'appel), 16 (la fin d'heure), à la vraie horloge, sur la production (`9c13d037c`, assemblé `bc7cc9cd`) ; la machine à la conscience, l'exécutant du lot 1 prévenu.

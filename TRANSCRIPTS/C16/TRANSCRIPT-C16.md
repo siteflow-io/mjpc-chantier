@@ -2383,3 +2383,39 @@ MEMO
   > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **21:18 — message de fin à Paul, mot pour mot :**
+
+  > Rien à tester de plus pour l'instant.
+  >
+  > 03/11/2026 21:18
+  >
+  > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **21:32 — message de fin à Paul, mot pour mot :**
+
+  > Rien à tester pour l'instant.
+  >
+  > 03/11/2026 21:32
+  >
+  > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **22:06 — Paul, mot pour mot :**
+
+  > Rapport?
+- **22:07 — la conscience** : le banc relu (`banc-cpl/heures.txt`, consoles) : 14 la session 105/0 (21:11:15 → 21:17:30) ; 15 l'appel 147/0, 13 mesures à part, 0 rouge (→ 21:32:31) ; 16 la fin d'heure 56/0 (→ 21:39:22) ; banc.sh : 1 assemblage, 2 collisions (0 id, 0 globale ; 2 classes CSS `tprof-overlay` `doc-viewer-overlay`, les mêmes qu'aux bancs de la 8.81.0) ; 3 et 4 parcours verts ; 5 K1-K13 106/0 ; 6 Atelier 53/53 ; 7 §12.66 27/0 ; 8 ⑩ 51/0 ; 9 bloc question 33 ok ; 10 ouverture 126/0 ; 11 fil 100/0 ; 12 en cours.
+- **22:07 — message à Paul, mot pour mot :**
+
+  > 427. Mon banc, à 22:06 : tout est vert jusqu'ici. La session : 105 vérifications, 0 échec. L'appel : 147, 0 échec, avec les nouvelles parties (le geste fait juste avant « Reprendre », « Reprendre » dans les trois sessions, « Rejoindre »). La fin d'heure : 56, 0 échec. Le parcours, en vrai et en mode test : vert. Les contrôles : 106, 0 échec. L'Atelier : 53 sur 53. Le tableau distant en mode test : 27, 0 échec. Le bloc question : 33 sur 33. Les diapos d'ouverture : 126, 0 échec. Le fil, les flèches et la molette : 100, 0 échec.
+  >
+  > 428. Reste : le retour sûr (en cours), la frappe au tableau, la relance d'une heure trois fois (base et après), puis le témoin. Fin vers 22:40 ; l'heure exacte, je ne sais pas (le témoin n'est pas mesuré).
+  >
+  > À tester : les deux gestes de 423, sans rien lancer.
+  >
+  > 03/11/2026 22:07
+  >
+  > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

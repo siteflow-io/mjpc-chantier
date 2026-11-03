@@ -1771,3 +1771,18 @@ MEMO
   > À jouer : le regard au tableau pendant la frappe · en cours : la fenêtre du tableau et ⑯ (avant 13:00) · ouvert : 316, 317
   >
   > MEMO
+- **11:15 — l'exécutant de la frappe au tableau, point d'étape** (rien poussé) : les deux régimes viennent de l'horloge simulée de Playwright (`page.clock` remplace aussi setTimeout, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page dans une seule tâche) : avec elle, D sur la base tantôt 69-130, tantôt 200-265 ms, la v6 tantôt 65-79, tantôt 223-235 ; avec la montre du navigateur (`MJPC_HORLOGE=date`), un seul régime. « Le point glisse en 2 images » était faux : 21 à 25 images. Sur la production (montre du navigateur, cinq passages, la machine seule) : K vraie heure et mode test 70 / 70 (pilote 11-13 ms, fenêtre 25-28, distant 39-42, au plus 103) ; R et RT 12 / 12 à chaque passage ; D (mode test) : la base 90 / 71 / 67 ms, la v6 69 / 61 / 48 (une image de retard) ; la cause : après `pousser`, le pilote fait encore 25 à 40 ms dans la même tâche (vueDroite, ouOnEnEst, volet, participation). Essayé et retiré : la colonne dans la tâche suivante (pas de gain).
+- **11:06 — la conscience** : accord pour une seule tentative sur ⑯ (céder la main après `pousser`), prouvée par D, K, R, sinon retirée ; la NOTE dira quelles sondes du banc utilisent l'horloge simulée.
+- **11:06 — message à Paul, mot pour mot :**
+
+  > 336. Les « deux régimes » de la fenêtre du tableau venaient eux aussi du test (son horloge simulée), pas du site. Mesuré avec la vraie horloge du navigateur, sur la version en ligne, cinq passages : une lettre paraît au pilote en 0,012 s, à la fenêtre du tableau en 0,026 s, au tableau distant en 0,04 s (au plus 0,1 s), en vraie heure comme en mode test ; la répétition, 12 gestes sur 12 sous la demi-seconde, à chaque passage. Ça va.
+  >
+  > 337. ⑯ : le premier mouvement au tableau arrive en 0,07 à 0,09 s, une image (0,01 à 0,02 s) derrière la meilleure version d'avant. La cause est mesurée : le pilote finit son propre dessin avant de laisser la fenêtre dessiner. L'exécutant essaie de lui faire céder la main d'abord ; si ce n'est pas un gain mesuré, il le retire. Avant 13:00.
+  >
+  > À tester : le même regard qu'en 333, pendant ton heure.
+  >
+  > 03/11/2026 11:06
+  >
+  > À jouer : le regard au tableau pendant la frappe · en cours : ⑯ (avant 13:00) · ouvert : 316, 317
+  >
+  > MEMO

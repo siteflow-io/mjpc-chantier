@@ -2450,3 +2450,20 @@ MEMO
   > À jouer : demain, « promeus » · en cours : mon banc, le témoin · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **22:49 — message de fin à Paul** : 429-430, mot pour mot comme ci-dessus (22:48), l'heure 03/11/2026 22:49 lue par `date`.
+- **22:52 — Paul, mot pour mot :**
+
+  > 430 programme un ctrl
+- **22:55 — la conscience** : un contrôle programmé (une tâche à heure fixe, `trig_01U5XtMxCpXLSSUqm1JNGhXB`) pour le 04/11 à 01:30, dans cette session : relire le banc et le témoin ; relancer le témoin s'il s'est arrêté (`temoin-reste.sh`) ; sinon lire `temoin-diff.txt` contre les mandats ; préparer la demande de « promeus » ou écrire le rouge ; le transcript.
+- **22:55 — message à Paul, mot pour mot :**
+
+  > 431. Programmé : un contrôle à 01:30. Il relit le banc ; si le témoin s'est arrêté, il le relance ; s'il a fini, il lit chaque changement contre le mandat. Puis il prépare ta demande de « promeus », ou il t'écrit le rouge.
+  >
+  > À tester : rien ce soir.
+  >
+  > 03/11/2026 22:55
+  >
+  > À jouer : demain, « promeus » · en cours : mon banc, le témoin ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

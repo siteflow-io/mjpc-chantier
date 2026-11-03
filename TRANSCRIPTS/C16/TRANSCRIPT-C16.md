@@ -2066,3 +2066,22 @@ MEMO
 - **15:29 — les rejeux** : P2T, X, XT et T, trois fois chacun, à la vraie horloge, sur la production.
 - **15:30 — l'exécutant du lot 1** : à 15:29:30 le fichier de la machine était absent, il a lancé sa sonde ; revenu à 15:29:45, il l'a arrêtée par son PID à 15:29:50 (10 s de navigateur, pendant le début du premier rejeu). Le code des trois morceaux est écrit et assemblé, sa sonde prête ; rien de poussé ; il attend. **La conscience** : la machine vers 16:00 ; en attendant, relire le diff contre le mandat, commencer la NOTE ; P2T, X, XT, T ne sont pas à lui.
 - **Incident de la conscience, déclaré (15:30)** : les heures en bas des messages de 15:05, 15:13, 15:23 et 15:31 ont été tapées sans lire `date` (celle de 15:31 était en avance : `date` disait 15:30 juste après). Les messages, mot pour mot (le même bloc à chaque fois, seule l'heure change) : « À tester : rien pour l'instant. / 03/11/2026 15:05 (puis 15:13, 15:23, 15:31) / À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚ / MEMO ». Désormais `date` est lue dans le même tour, juste avant chaque message.
+- **15:41 — les rejeux finis** (vraie horloge, production, trois fois) : l'appel P2T rouge 3 sur 3, XT 3 sur 3, X 1 sur 3 ; la session T vert 3 sur 3. Avec la référence : P2T 4/4, XT 4/4, X 2/4, T 1/4. La machine rendue à l'exécutant du lot 1 à 15:41.
+- **15:42 — un auditeur neuf lancé** (`MANDATS/DEROULE-01-11/MANDAT-AUDIT-HORLOGE.md`, `e29299c0a`) : le site ou la sonde, pour P2T, X, XT et T ; il ne change rien au site ; le navigateur seulement quand la machine est libre.
+- **15:43 — message à Paul, mot pour mot :**
+
+  > 383. 367, mes tests à la vraie horloge, rejoués sur la version en ligne. Ça va : la frappe au tableau distant (la moitié des lettres en moins de 41 ms, aucune au-delà de 73 ms : les « 4 secondes » n'existaient pas), la fin d'heure, le minuteur, le fil des diapos.
+  >
+  > 384. Ça ne va pas, à la vraie horloge, sur la version en ligne, alors que mes anciens tests les disaient bons. En mode test, la télécommande se dit « désactivée » et n'ouvre pas l'appel : 4 fois sur 4. Deux absents marqués au même moment, l'un à la télécommande et l'autre au clic droit de l'ordinateur : au moins un des deux se perd, 4 fois sur 4 en mode test, 2 fois sur 4 en vraie heure. Un dévoilement fait à l'ordinateur n'est pas encore au téléphone 3 secondes après : 1 fois sur 4. Si tu le verrais en classe : je ne sais pas. Un auditeur cherche la cause (le site ou mon test), sans toucher au site ; le lot 1 garde la priorité sur la machine.
+  >
+  > 385. À trancher par toi, si c'est le site : ce sont des dettes déjà en ligne ; ta règle dit pas de mise en ligne avec une dette. Le lot 1 attendrait qu'elles soient réglées, sauf si tu décides de le mettre en ligne avant.
+  >
+  > 386. Le lot 1 : son code est écrit (359, 360, 361), ses preuves commencent maintenant. Vu au passage par son exécutant, pas mesuré : la fenêtre « Une heure joue déjà » dit « séance 0 » pour un essai.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 15:43
+  >
+  > À jouer : 385 à trancher · en cours : lot 1 (359, 360, 361), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

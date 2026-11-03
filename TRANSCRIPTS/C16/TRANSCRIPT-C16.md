@@ -1556,3 +1556,4 @@ MEMO
   > À jouer : les 8 planches, puis ton « promeus » ou non · en cours : rien · ouvert : 304
   >
   > MEMO
+- **06:44 — Paul, mot pour mot** : « Promeus »

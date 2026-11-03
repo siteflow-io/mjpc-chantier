@@ -1,0 +1,127 @@
+C16 · lot 1 (359, 360, 361) · 2026-11-03 15:41 UTC · base/index.html md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · parties P · la montre du navigateur (seule la date est décalée)
+
+— partie P · 15:41 UTC
+  [P] répétition, la classe proposée : l’en-tête « 3E Charles de Gaulle », 29 pastilles, « 0 sur 29 présents »
+  ok     P1 · répétition (la classe proposée) de la séance de 3E Charles de Gaulle : les pastilles sont ses 29 élèves — elle est la classe d’essai, une seule fois — {"classe":"3E Charles de Gaulle","n":29}
+  ok     P1 · répétition (la classe proposée) : le compteur dit « … sur 29 présents » — 0 sur 29 présents
+  [P] répétition, l’autre classe choisie dans l’en-tête (CLASSE TEST) : l’en-tête « 3E Charles de Gaulle », 29 pastilles, « 0 sur 29 présents »
+  ok     P1 · répétition (l’autre classe choisie dans l’en-tête (CLASSE TEST)) de la séance de 3E Charles de Gaulle : les pastilles sont ses 29 élèves — elle est la classe d’essai, une seule fois — {"classe":"3E Charles de Gaulle","n":29}
+  ok     P1 · répétition (l’autre classe choisie dans l’en-tête (CLASSE TEST)) : le compteur dit « … sur 29 présents » — 0 sur 29 présents
+  ÉCHEC  P1 · répétition : la classe choisie au menu du nom (CLASSE TEST) est celle de l’en-tête — 3E Charles de Gaulle
+  [P] répétition · 29 pastilles · les cas : (a) « EB » (b) « AE » (c) « EL » (d) « AA » · les initiales exactes (a) : ÉLÈVE 3
+  ok     P3 · répétition · (a) les initiales exactes d’un élève — « EB », Entrée : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : ÉLÈVE 3 ; « 1 sur 29 présents »
+  ok     P3 · répétition · (a) les initiales exactes d’un élève — « EB », Tab : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  ok     P3 · répétition · (a) les initiales exactes d’un élève — « EB », clic dans la réponse : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  [P]   le cas (b) sur la diapo emt9v3yqon4gew
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne) — « AE », Entrée : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : ÉLÈVE 1 ; « 2 sur 29 présents »
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne) — « AE », Tab : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · répétition · (b) ces lettres inversées (initiales de personne) — « AE », clic dans la réponse : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (c) sur la diapo emt9v3yqobz8x8
+  ok     P2 · répétition · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · répétition · (c) le début d’un prénom (initiales de personne) — « EL », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · répétition · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · répétition · (c) le début d’un prénom (initiales de personne) — « EL », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · répétition · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ok     P2 · répétition · (c) le début d’un prénom (initiales de personne) — « EL », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EL », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (d) sur la diapo emt9v3yqoixnue
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom — « AA », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom — « AA », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · répétition · (d) des initiales de personne, début d’aucun prénom — « AA », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   répétition · le VIF n’est pas à l’écran (la colonne de droite n’a pas le champ des initiales) : pas de frappe possible, rien à mesurer
+  ok     P5 · répétition · (a) les initiales exactes d’un élève — palette « EB » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 3
+  [P]   répétition · le VIF n’est pas à l’écran (la colonne de droite n’a pas le champ des initiales) : pas de frappe possible, rien à mesurer
+  ÉCHEC  P4 · répétition · (b) ces lettres inversées (initiales de personne) — palette « AE » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  [P]   répétition · le VIF n’est pas à l’écran (la colonne de droite n’a pas le champ des initiales) : pas de frappe possible, rien à mesurer
+  ok     P4 · répétition · (c) le début d’un prénom (initiales de personne) — palette « EL » : « un élève EAun élève EKun élève EP » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  [P]   répétition · le VIF n’est pas à l’écran (la colonne de droite n’a pas le champ des initiales) : pas de frappe possible, rien à mesurer
+  ok     P4 · répétition · (d) des initiales de personne, début d’aucun prénom — palette « AA » : « Aucun élève avec ces initiales. » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P6 · répétition · rien d’écrit dans la copie d’une classe — []
+  ok     P9 · P R : aucune erreur JS, aucune boîte système
+  ok     P1 · essai en mode test (3E Charles de Gaulle) : les pastilles sont les 29 élèves de la classe de l’heure, comme avant — {"classe":"3E Charles de Gaulle","n":29}
+  [P] essai en mode test · 29 pastilles · les cas : (a) « EB » (b) « AE » (c) « EL » (d) « AA » · les initiales exactes (a) : ÉLÈVE 3
+  ok     P3 · essai en mode test · (a) les initiales exactes d’un élève — « EB », Entrée : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : ÉLÈVE 3 ; « 1 sur 29 présents »
+  ok     P3 · essai en mode test · (a) les initiales exactes d’un élève — « EB », Tab : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  ok     P3 · essai en mode test · (a) les initiales exactes d’un élève — « EB », clic dans la réponse : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  [P]   le cas (b) sur la diapo emt9v3yqon4gew
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne) — « AE », Entrée : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : ÉLÈVE 1 ; « 2 sur 29 présents »
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne) — « AE », Tab : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · essai en mode test · (b) ces lettres inversées (initiales de personne) — « AE », clic dans la réponse : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (c) sur la diapo emt9v3yqobz8x8
+  ok     P2 · essai en mode test · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · essai en mode test · (c) le début d’un prénom (initiales de personne) — « EL », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · essai en mode test · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · essai en mode test · (c) le début d’un prénom (initiales de personne) — « EL », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · essai en mode test · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ok     P2 · essai en mode test · (c) le début d’un prénom (initiales de personne) — « EL », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EL », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (d) sur la diapo emt9v3yqoixnue
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom — « AA », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom — « AA », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · essai en mode test · (d) des initiales de personne, début d’aucun prénom — « AA », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P4 · essai en mode test · (a) les lettres « EB » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"EB","fiche":true}
+  ok     P5 · essai en mode test · (a) les initiales exactes d’un élève — VIF « EB » : la suggestion « → un élève (Entrée) » ; pendant la frappe 0 parole(s), fiche : ÉLÈVE 3 ; après Entrée, posée(s) : ÉLÈVE 3
+  ok     P5 · essai en mode test · (a) les initiales exactes d’un élève — palette « EB » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 3
+  ok     P4 · essai en mode test · (b) les lettres « AE » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"AE","fiche":true}
+  ÉCHEC  P4 · essai en mode test · (b) ces lettres inversées (initiales de personne) — VIF « AE » : la suggestion « → un élève (Entrée) » ; pendant la frappe 0 parole(s), fiche : ÉLÈVE 1 ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ÉCHEC  P4 · essai en mode test · (b) ces lettres inversées (initiales de personne) — palette « AE » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ok     P4 · essai en mode test · (c) les lettres « EL » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"EL","fiche":false}
+  ÉCHEC  P4 · essai en mode test · (c) le début d’un prénom (initiales de personne) — VIF « EL » : la suggestion « un élève EAun élève EKun élève EP » ; pendant la frappe 0 parole(s), fiche : personne ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ok     P4 · essai en mode test · (c) le début d’un prénom (initiales de personne) — palette « EL » : « un élève EAun élève EKun élève EP » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P4 · essai en mode test · (d) les lettres « AA » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"AA","fiche":false}
+  ok     P4 · essai en mode test · (d) des initiales de personne, début d’aucun prénom — VIF « AA » : la suggestion « Aucun élève avec ces initiales. » ; pendant la frappe 0 parole(s), fiche : personne ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P4 · essai en mode test · (d) des initiales de personne, début d’aucun prénom — palette « AA » : « Aucun élève avec ces initiales. » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P6 · mode test · aucune écriture hors de /site/tableau_test (K15-test) — 143 écritures — []
+  ok     P9 · P T : aucune erreur JS, aucune boîte système
+  ok     P1 · vraie heure (3E Charles de Gaulle) : les pastilles sont les 29 élèves de la classe de l’heure, comme avant — {"classe":"3E Charles de Gaulle","n":29}
+  [P] vraie heure · 29 pastilles · les cas : (a) « EB » (b) « AE » (c) « EL » (d) « AA » · les initiales exactes (a) : ÉLÈVE 3
+  ok     P3 · vraie heure · (a) les initiales exactes d’un élève — « EB », Entrée : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : ÉLÈVE 3 ; « 1 sur 29 présents »
+  ok     P3 · vraie heure · (a) les initiales exactes d’un élève — « EB », Tab : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  ok     P3 · vraie heure · (a) les initiales exactes d’un élève — « EB », clic dans la réponse : pendant la frappe ÉLÈVE 3, 0 vert(s) neuf(s) ; après, gardées « EB », à ÉLÈVE 3, vert(s) neuf(s) : aucun ; « 1 sur 29 présents »
+  [P]   le cas (b) sur la diapo emt9v3yqon4gew
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne) — « AE », Entrée : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : ÉLÈVE 1 ; « 2 sur 29 présents »
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne) — « AE », Tab : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":"un élève","i":"EA"},"neufsF":[]}
+  ÉCHEC  P2 · vraie heure · (b) ces lettres inversées (initiales de personne) — « AE », clic dans la réponse : pendant la frappe ÉLÈVE 1, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (c) sur la diapo emt9v3yqobz8x8
+  ok     P2 · vraie heure · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · vraie heure · (c) le début d’un prénom (initiales de personne) — « EL », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · vraie heure · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ÉCHEC  P2 · vraie heure · (c) le début d’un prénom (initiales de personne) — « EL », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EA », à ÉLÈVE 1, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · vraie heure · (c) le début d’un prénom (initiales de personne), pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"EL"},"neufsF":[]}
+  ok     P2 · vraie heure · (c) le début d’un prénom (initiales de personne) — « EL », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « EL », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  [P]   le cas (d) sur la diapo emt9v3yqoixnue
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom — « AA », Entrée : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom — « AA », Tab : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom, pendant la frappe : personne n’est désigné, personne ne passe au vert — {"fr":{"eleve":null,"i":"AA"},"neufsF":[]}
+  ok     P2 · vraie heure · (d) des initiales de personne, début d’aucun prénom — « AA », clic dans la réponse : pendant la frappe personne, 0 vert(s) neuf(s) ; après, gardées « AA », à personne, vert(s) neuf(s) : aucun ; « 2 sur 29 présents »
+  ok     P4 · vraie heure · (a) les lettres « EB » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"EB","fiche":true}
+  ok     P5 · vraie heure · (a) les initiales exactes d’un élève — VIF « EB » : la suggestion « → un élève (Entrée) » ; pendant la frappe 0 parole(s), fiche : ÉLÈVE 3 ; après Entrée, posée(s) : ÉLÈVE 3
+  ok     P5 · vraie heure · (a) les initiales exactes d’un élève — palette « EB » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 3
+  ok     P4 · vraie heure · (b) les lettres « AE » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"AE","fiche":true}
+  ÉCHEC  P4 · vraie heure · (b) ces lettres inversées (initiales de personne) — VIF « AE » : la suggestion « → un élève (Entrée) » ; pendant la frappe 0 parole(s), fiche : ÉLÈVE 1 ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ÉCHEC  P4 · vraie heure · (b) ces lettres inversées (initiales de personne) — palette « AE » : « → un élève — 1/2/3, ou note puis Entrée » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ok     P4 · vraie heure · (c) les lettres « EL » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"EL","fiche":false}
+  ÉCHEC  P4 · vraie heure · (c) le début d’un prénom (initiales de personne) — VIF « EL » : la suggestion « un élève EAun élève EKun élève EP » ; pendant la frappe 0 parole(s), fiche : personne ; après Entrée, posée(s) : ÉLÈVE 1 (rien ne compte)
+  ok     P4 · vraie heure · (c) le début d’un prénom (initiales de personne) — palette « EL » : « un élève EAun élève EKun élève EP » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P4 · vraie heure · (d) les lettres « AA » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note) — {"vifVal":"AA","fiche":false}
+  ok     P4 · vraie heure · (d) des initiales de personne, début d’aucun prénom — VIF « AA » : la suggestion « Aucun élève avec ces initiales. » ; pendant la frappe 0 parole(s), fiche : personne ; après Entrée, posée(s) : aucune (rien ne compte)
+  ok     P4 · vraie heure · (d) des initiales de personne, début d’aucun prénom — palette « AA » : « Aucun élève avec ces initiales. » ; pendant la frappe 0 parole(s) ; après Entrée, posée(s) : aucune (rien ne compte)
+  ÉCHEC  P6 · vraie heure · au hub, le journal de la classe : 13 parole(s), toutes de l’élève aux initiales exactes (ÉLÈVE 3) — ["ÉLÈVE 3","ÉLÈVE 1"]
+  ok     P9 · P H : aucune erreur JS, aucune boîte système
+
+--- fin : 104 vérifications, 33 échec(s)

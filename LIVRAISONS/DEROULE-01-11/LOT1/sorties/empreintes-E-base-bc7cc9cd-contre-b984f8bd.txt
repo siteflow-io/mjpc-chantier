@@ -1,0 +1,13 @@
+  ok     sans-choix · copie : identique
+  ok     sans-choix · ctxTableau : identique
+  ok     sans-choix · ecrits : identique
+  ok     sans-choix · pointeur : identique
+  ok     sans-choix · scene : identique
+  ok     sans-choix · tableau : identique
+  ok     choix · copie : identique
+  ok     choix · ctxTableau : identique
+  ok     choix · ecrits : identique
+  ok     choix · pointeur : identique
+  ok     choix · scene : identique
+  ok     choix · tableau : identique
+--- fin : 12 comparaisons, 0 différence(s)

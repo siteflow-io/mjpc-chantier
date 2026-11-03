@@ -605,9 +605,13 @@ function dr_classe(){
   const cl = (slug && typeof classesData !== 'undefined' && (classesData[slug] || (typeof edtCleClasse === 'function' && classesData[edtCleClasse(slug)]))) || {};   /* E1 (§12.31-1 bis) : un nom passé pour une clé se résout comme dans l'emploi du temps */
   /* E4 (§12.38 (2), Paul 23:16) : en répétition, les gestes d'élève se jouent sur les élèves de « CLASSE TEST » (quatre élèves inventés), jamais sur ceux d'une vraie classe
      (ni « _TEST », copié d'une classe réelle) ; la classe de l'heure répétée (son nom, sa réactivation, ses heures) reste celle-ci */
-  const rep = typeof S !== 'undefined' && S && S.repetition; const clEl = rep ? dr_classeTest() : cl;   /* E1 (§12.51, Paul 10:17) : la classe test est 3E Charles de Gaulle — avant : le nœud « CLASSE TEST » (quatre élèves inventés) */
-  const eleves = (typeof extractEleves === 'function' && clEl && Object.keys(clEl).length) ? (extractEleves(clEl) || []) : ((clEl.eleves) || []);
-  const cleEl = (rep ? 'classe-test|' : '') + slug;
+  const rep = typeof S !== 'undefined' && S && S.repetition;
+  const elevesDe = x => ((typeof extractEleves === 'function' && x && Object.keys(x).length) ? (extractEleves(x) || []) : ((x && x.eleves) || [])).filter(n => typeof n === 'string' && n.trim());
+  /* C16 (lot 1, 361 ; Paul, 03/11 14:43) : en répétition, les élèves de la classe de la séance répétée (celle de l'en-tête « RÉPÉTITION · … »), PUIS ceux de
+     la classe d'essai (3E Charles de Gaulle, `dr_classeTest`) qui n'y sont pas déjà — avant : la classe d'essai seule, quelle que soit la classe répétée
+     (§12.51, Paul 28/10 10:17 : « je dois bien évidemment voir mes élèves de la classe test ») ; hors répétition : la classe de l'heure, inchangé */
+  let eleves = elevesDe(cl); if (rep) { const t = elevesDe(dr_classeTest()); eleves = eleves.concat(t.filter(n => !eleves.includes(n))); }
+  const cleEl = (rep ? 'repetition+essai|' : '') + slug;
   if (slug !== DR_MEM.classeSlug || cleEl !== DR_MEM.elevesDe || ELEVES.length !== eleves.length) { DR_MEM.classeSlug = slug; DR_MEM.elevesDe = cleEl; ELEVES.length = 0; eleves.forEach(n => ELEVES.push(n)); dr_initiales(); }
   const ed = cl.ed || {};
   return { slug: slug || '', nom: cl.nom || slug || '', eleves: ELEVES, ed, espaceED: ed.espace != null ? ed.espace : null, lienED: ed.lien || '', prochaines: (typeof edtProchainesDe === 'function' && slug) ? (edtProchainesDe(slug, 3) || []) : [] };
@@ -727,7 +731,10 @@ function dr_jouerCopie(copie){ try {
 } catch (e) { DR_COPIE_AVANT = null; return null; } }
 /* E1 (§12.27-8, dette 13 · 38) : #hclasse dit la classe de l'heure — celle d'AT_DR_COURS (posée par E2 au lancement, à la reprise, à l'ouverture
    « Où en est la classe ») —, et avant tout lancement la classe proposée (celle que dit « ▶ Lancer avec … », dr_proposer d'E2) ; suivie au rendu et à la seconde */
-function dr_hclasseNom(leger){ try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) return AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug; } catch (e) {} if (leger) return null; try { if (typeof dr_proposer === 'function') { const p = dr_proposer(); if (p && p.classeNom) return p.classeNom; } } catch (e) {} return dr_classe().nom; }
+function dr_hclasseNom(leger){ try { if (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && (AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug)) return AT_DR_COURS.classeNom || AT_DR_COURS.classeSlug; } catch (e) {} if (leger) return null;
+  /* C16 (lot 1, 361 ; la conscience, 03/11, accord de la première voie) : en répétition, la classe choisie au menu du nom est celle de l'en-tête — la même que les
+     pastilles (`dr_classe`, la source) ; avant, l'en-tête gardait la case du jour (`dr_proposer`) et le choix ne s'y voyait pas. Sans choix, rien ne change. */
+  try { const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || null; const ch = DR_MEM.classeChoisie; if (typeof S === 'object' && S && S.repetition && ec && ch && ch.cle === ec.level + '|' + ec.chnum + '|' + String(ATVUES.snum)) return dr_classe().nom; } catch (e) {} try { if (typeof dr_proposer === 'function') { const p = dr_proposer(); if (p && p.classeNom) return p.classeNom; } } catch (e) {} return dr_classe().nom; }
 function dr_hclasseMaj(leger){ const hc = document.getElementById('hclasse'); if (!hc) return; const n = dr_hclasseNom(leger); if (n == null) return; if (hc.textContent !== n) hc.textContent = n;
   /* E1 (§12.38-1) : hors d'une heure lancée, le nom se clique (les autres classes de la séance) et l'en-tête dit l'heure n/N et la date de la source */
   const enCours = typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS && AT_DR_COURS.classeSlug; const src = enCours ? null : dr_sourceSeance();

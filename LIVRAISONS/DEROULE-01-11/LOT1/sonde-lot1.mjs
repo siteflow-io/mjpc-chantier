@@ -9,8 +9,10 @@
 //  M  359 · le mode test pendant un essai : la pastille (M1) ; la page rechargée et « Reprendre » (M2) ; un autre onglet du même navigateur, l'onglet de
 //     l'essai fermé, puis l'annonce d'essai retirée par une répétition en mode test arrêtée ailleurs (M3) — ce qui part au vrai `deroule_joue`, compté
 //  W  360 · la fenêtre « … joue déjà sur un autre appareil » : les quatre cas de l'auditeur I §1.2 × les trois boutons (nom, infobulle, ce que fait le clic)
-//  P  361 · la participation : la liste en répétition (la classe répétée + la classe d'essai) ; des initiales exactes, inversées, début de prénom, de personne,
-//     pendant la frappe, à Entrée, à Tab, au clic dans la réponse ; le VIF et la palette ; dans les trois sessions (répétition, mode test, vraie heure)
+//  P  361 · la participation : la liste en répétition (la classe répétée + la classe d'essai ; l'en-tête suit le choix au menu) ; des initiales exactes, inversées,
+//     début de prénom, de personne, pendant la frappe, à Entrée, à Tab, au clic dans la réponse ; le VIF et la palette ; dans les trois sessions
+//  E  361 · seul l'affichage change : une répétition sans puis avec un choix au menu — la copie répétée, les chemins écrits, /site/repetition, le tableau
+//     distant ; l'EMPREINTE se compare entre deux passes (comparer-empreintes.py)
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
 const { storeOuverture } = await import(path.join(RACINE, 'LIVRAISONS/DEROULE-01-11/DIAPOS-OUVERTURE/hub-ouverture.mjs'));
@@ -23,7 +25,7 @@ if (!pw) { console.log('Playwright introuvable'); process.exit(2); }
 const R = []; let nb = 0, echecs = 0; let anonF = s => s; const dire = s => { s = anonF(String(s)); R.push(s); console.log(s); };
 const verif = (k, ok, quoi, det) => { nb++; if (!ok) echecs++; dire((ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + anonF(typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1200) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'K,M,W,P').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'K,M,W,P,E').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
 const md5 = f => createHash('md5').update(fs.readFileSync(f)).digest('hex');
@@ -317,7 +319,8 @@ const partieP = async () => {
       juger(lst0, 'la classe proposée');
       const autre = /CLASSE TEST/.test(lst0.classe) ? '3E Charles de Gaulle' : 'CLASSE TEST';
       await a.pg.click('#hclasse').catch(() => {}); await p(600); await a.pg.evaluate(c => { const b = document.querySelector('#dr-classes-choix [data-cl="' + c + '"]'); if (b) b.click(); }, autre).catch(() => {}); await p(1800);
-      juger(await lire(), 'l’autre classe choisie dans l’en-tête (' + autre + ')');
+      const l2 = await lire(); juger(l2, 'l’autre classe choisie dans l’en-tête (' + autre + ')');
+      verif('P1', new RegExp(autre.replace(/ /g, '\\s+')).test(l2.classe), 'répétition : la classe choisie au menu du nom (' + autre + ') est celle de l’en-tête', l2.classe);
       if (autre !== 'CLASSE TEST') { await a.pg.click('#hclasse').catch(() => {}); await p(600); await a.pg.evaluate(() => { const b = document.querySelector('#dr-classes-choix [data-cl="CLASSE TEST"]'); if (b) b.click(); }).catch(() => {}); await p(1800); }
       await capt(a.pg, 'P-R-liste-classe-test'); }
     else verif('P1', /Charles/.test(lst0.classe) && egal(lst0.eleves, CHA0), NOMK[k] + ' (3E Charles de Gaulle) : les pastilles sont les ' + CHA0.length + ' élèves de la classe de l’heure, comme avant', { classe: lst0.classe, n: lst0.eleves.length });
@@ -332,8 +335,9 @@ const partieP = async () => {
     const CAS = [['a', 'les initiales exactes d’un élève', exact], ['b', 'ces lettres inversées (initiales de personne)', ana], ['c', 'le début d’un prénom (initiales de personne)', pref], ['d', 'des initiales de personne, début d’aucun prénom', rien]].filter(x => x[2]);
     dire('  [P] ' + NOMK[k] + ' · ' + L.length + ' pastilles · les cas : ' + CAS.map(x => '(' + x[0] + ') « ' + x[2] + ' »').join(' ') + ' · les initiales exactes (a) : ' + rangDe(L, nomEx));
     /* la ligne de réponse : pendant la frappe, puis Entrée, Tab, ou un clic dans la réponse */
-    let n = 0;
-    for (const [id, quoi, ini] of CAS) for (const valider of ['Entrée', 'Tab', 'clic dans la réponse']) {
+    let n = 0; const QS = ['emt9v3yqo6pvd5', 'emt9v3yqon4gew', 'emt9v3yqobz8x8', 'emt9v3yqoixnue'];   /* les quatre diapos à question de la séance 1 : un cas par diapo (trois lignes chacune ; au-delà, la diapo se pagine) */
+    for (const [ci, [id, quoi, ini]] of CAS.entries()) { const ou = (await allerA(a.pg, QS[ci % QS.length])) ? QS[ci % QS.length] : ((await allerA(a.pg, QB)) ? QB : null); if (ci && ou) dire('  [P]   le cas (' + id + ') sur la diapo ' + ou);
+    for (const valider of ['Entrée', 'Tab', 'clic dans la réponse']) {
       const champs = await a.pg.$$('#mur .rep[data-r] .ini'); const champ = champs[champs.length - 1]; if (!champ) { verif('P2', false, 'une ligne de réponse libre', null); continue; }
       const pos = await champ.evaluate(el => { const r = el.closest('.rep'); return { bi: +r.dataset.bi, ri: +r.dataset.r }; }); const av = await etatPart(a.pg);
       await champ.click(); await p(150); await a.pg.keyboard.type(ini, { delay: 70 }); await p(450);
@@ -346,16 +350,20 @@ const partieP = async () => {
       const dit = '« ' + ini + ' », ' + valider + ' : pendant la frappe ' + rangDe(L, fr && fr.eleve) + ', ' + neufsF.length + ' vert(s) neuf(s) ; après, gardées « ' + (ap && ap.i) + ' », à ' + rangDe(L, ap && ap.eleve) + ', vert(s) neuf(s) : ' + (neufsA.map(x => rangDe(L, Object.keys(INI).find(m => INI[m] === x))).join(', ') || 'aucun') + ' ; « ' + va.presents + ' »';
       if (id === 'a') { verif('P3', fr && fr.eleve === nomEx && ap && ap.eleve === nomEx && ap.i === exact && va.verts.includes(exact), NOMK[k] + ' · (a) ' + quoi + ' — ' + dit, null); }
       else { verif('P2', fr && !fr.eleve && !neufsF.length, NOMK[k] + ' · (' + id + ') ' + quoi + ', pendant la frappe : personne n’est désigné, personne ne passe au vert', { fr, neufsF });
-        verif('P2', ap && !ap.eleve && ap.i === ini && !neufsA.length && va.presents === av.presents, NOMK[k] + ' · (' + id + ') ' + quoi + ' — ' + dit, null); } }
+        verif('P2', ap && !ap.eleve && ap.i === ini && !neufsA.length && va.presents === av.presents, NOMK[k] + ' · (' + id + ') ' + quoi + ' — ' + dit, null); } } }
     /* le VIF (F2) et la palette (Maj + Espace) : une suggestion qui ne compte pas */
     for (const [id, quoi, ini] of CAS) {
-      const av = await etatPart(a.pg); await a.pg.keyboard.press('Escape').catch(() => {}); await p(200); await a.pg.click('#vif').catch(() => {}); await p(200);
-      await a.pg.keyboard.type(ini, { delay: 70 }); await p(500); const vf = await etatPart(a.pg); const sug = norm(await texteDe(a.pg, '#vif-sug'));
+      const av = await etatPart(a.pg); await a.pg.keyboard.press('Escape').catch(() => {}); await p(200);
+      const vifVu = await a.pg.isVisible('#vif').catch(() => false);
+      if (!vifVu) dire('  [P]   ' + NOMK[k] + ' · le VIF n’est pas à l’écran (la colonne de droite n’a pas le champ des initiales) : pas de frappe possible, rien à mesurer');
+      else { await a.pg.click('#vif').catch(() => {}); await p(200);
+      await a.pg.keyboard.type(ini, { delay: 70 }); await p(500); const vifVal = await a.pg.evaluate(() => (document.getElementById('vif') || {}).value || ''); const fiche0 = await etatPart(a.pg); const vf = fiche0; const sug = norm(await texteDe(a.pg, '#vif-sug'));
+      verif('P4', vifVal === ini || !!fiche0.fiche, NOMK[k] + ' · (' + id + ') les lettres « ' + ini + ' » sont bien arrivées dans le VIF (ou la fiche s’est ouverte, le curseur passé à la note)', { vifVal, fiche: !!fiche0.fiche });
       await a.pg.keyboard.press('Enter'); await p(500); const fi = await etatPart(a.pg); if (fi.fiche) { await a.pg.keyboard.press('Enter'); await p(700); }
       const va = await etatPart(a.pg); await a.pg.evaluate(() => { const z = document.getElementById('vif'); if (z) { z.value = ''; z.blur(); } const pp = document.getElementById('ppop'); if (pp) pp.classList.remove('on'); }); await p(300);
       const posees = va.parts.slice(av.parts.length); const dit = 'VIF « ' + ini + ' » : la suggestion « ' + sug.slice(0, 120) + ' » ; pendant la frappe ' + (vf.parts.length - av.parts.length) + ' parole(s), fiche : ' + rangDe(L, vf.fiche && Object.keys(INI).find(m => INI[m] === vf.fiche)) + ' ; après Entrée, posée(s) : ' + (posees.map(x => rangDe(L, x)).join(', ') || 'aucune');
       if (id === 'a') verif('P5', posees.length === 1 && posees[0] === nomEx, NOMK[k] + ' · (a) ' + quoi + ' — ' + dit, null);
-      else verif('P4', vf.parts.length === av.parts.length && !posees.length && va.verts.length === av.verts.length && va.oraux.length === av.oraux.length && va.paroles === av.paroles, NOMK[k] + ' · (' + id + ') ' + quoi + ' — ' + dit + ' (rien ne compte)', null);
+      else verif('P4', vf.parts.length === av.parts.length && !posees.length && va.verts.length === av.verts.length && va.oraux.length === av.oraux.length && va.paroles === av.paroles, NOMK[k] + ' · (' + id + ') ' + quoi + ' — ' + dit + ' (rien ne compte)', null); }
       const av2 = await etatPart(a.pg); await a.pg.keyboard.press('Shift+Space'); await p(500); const pal = await a.pg.isVisible('#dr-vif-pal-in').catch(() => false);
       if (pal) { await a.pg.keyboard.type(ini, { delay: 70 }); await p(500); const sg2 = norm(await texteDe(a.pg, '#dr-vif-pal-sug')); const pf = await etatPart(a.pg); await a.pg.keyboard.press('Enter'); await p(800); const pa = await etatPart(a.pg);
         if (await a.pg.isVisible('#dr-vif-pal-in').catch(() => false)) { await a.pg.keyboard.press('Escape'); await p(400); }
@@ -370,10 +378,35 @@ const partieP = async () => {
     if (k === 'R') verif('P6', ecritsDepuis(0, /deroule_joue/).length === 0, 'répétition · rien d’écrit dans la copie d’une classe', ecritsDepuis(0, /deroule_joue/));
     finir('P9', a, 'P ' + k); await a.ctx.close().catch(() => {}); } };
 
+/* ══ E · 361 : seul l'affichage change — une répétition (hors mode test), sans puis avec un choix au menu du nom : la copie répétée, les chemins écrits,
+   l'annonce et la scène de /site/repetition, ce que montre le tableau distant ; l'EMPREINTE se compare entre la base et l'après (comparer-empreintes.py) ══ */
+const sansTemps = v => { if (!v || typeof v !== 'object') return v; if (Array.isArray(v)) return v.map(sansTemps); const o = {}; Object.keys(v).sort().forEach(k => { if (!/^(ts|t|maj|trameMaj|origine|vifTs|envoiTs|recu|debutReel|repT0)$/.test(k)) o[k] = sansTemps(v[k]); }); return o; };
+const partieE = async () => {
+  for (const choix of [false, true]) {
+    HUBN = ranger(store()) || {}; ECR = []; REFUSES.length = 0; ABOS.length = 0; scene('2026-09-14', '09:00');
+    const T = await ouvrir({ qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(600);
+    const a = await ouvrir({ qui: 'A' }); await repeter(a, null); await garde(a.pg); await p(1000);
+    if (choix) { await a.pg.click('#hclasse').catch(() => {}); await p(600); await a.pg.evaluate(() => { const b = document.querySelector('#dr-classes-choix [data-cl="CLASSE TEST"]'); if (b) b.click(); }).catch(() => {}); await p(1800); }
+    const ent = norm(await texteDe(a.pg, '#hclasse')); const nEl = await a.pg.evaluate(() => ELEVES.length);
+    const copie = await a.pg.evaluate(() => { try { return { snum: String(ATVUES.snum), eids: seance().ecrans.map(e => e.eid), ordre: (typeof ordreHeure === 'function' ? ordreHeure(S.heure || 1) : []) }; } catch (e) { return { err: e.message }; } });
+    const tab = []; for (let n = 0; n < 4; n++) { await gesteClic(a.pg); await p(700); tab.push(await T.pg.evaluate(() => { const m = (typeof DR_TAB === 'object' && DR_TAB.montre) || null; return m ? (m.eid || '?') + '#' + (m.nDev || 0) : null; }).catch(() => null)); }
+    await p(2500); const ctxT = await T.pg.evaluate(() => (typeof SES === 'object' && SES && SES.ctx) ? JSON.parse(JSON.stringify(SES.ctx)) : null).catch(() => null);
+    const ptr = sansTemps(lireH('/site/repetition/pointeur')); const sc = lireH('/site/repetition/scene'); const scene0 = sc ? { eid: sc.eid, nDev: sc.nDev, di: sc.di } : null;
+    await a.pg.evaluate(() => { const b = document.getElementById('rep-stop'); if (b) b.click(); }).catch(() => {}); await p(3000);
+    const ecr = [...new Set(ECR.filter(x => !x.refus && x.qui === 'A').map(x => x.m + ' ' + x.c))].sort(); const ecrT = [...new Set(ECR.filter(x => !x.refus && x.qui === 'tableau').map(x => x.m + ' ' + x.c))];
+    const quand = choix ? 'avec le choix de CLASSE TEST au menu' : 'sans choix au menu';
+    dire('  [E] ' + quand + ' : l’en-tête « ' + ent + ' », ' + nEl + ' pastilles · ' + ecr.length + ' chemins écrits : ' + ecr.join(', '));
+    const grille = x => / \/site\/edt\/(grille|photos)\/|edt-mise-a-niveau-grille/.test(x);   /* la mise à niveau de la grille du faux hub (sa forme ancienne), à l'ouverture de l'emploi du temps — relevée par l'auditeur II, pas un geste de la répétition */
+    verif('E1', !ecr.some(x => /deroule_joue|cours_actif/.test(x)) && !ecrT.some(x => !/ \/site\/cle_vue$/.test(x)), 'répétition ' + quand + ' : rien d’écrit pour une classe (ni deroule_joue, ni cours_actif) ; le tableau distant n’écrit que /site/cle_vue (le dossier des images, comme toujours)', { ecr, ecrT });
+    verif('E1', ecr.filter(x => !grille(x)).length > 0 && ecr.filter(x => !grille(x)).every(x => / \/site\/repetition(\/|$)/.test(x)), 'répétition ' + quand + ' : ce que la répétition écrit va à /site/repetition (hors la mise à niveau de la grille du faux hub)', ecr);
+    verif('E1', tab.filter(Boolean).length === 4, 'répétition ' + quand + ' : le tableau distant suit les quatre ▶', tab);
+    dire('  [E] EMPREINTE ' + (choix ? 'choix' : 'sans-choix') + ' ' + JSON.stringify({ copie, ecrits: ecr, pointeur: ptr, scene: scene0, tableau: tab, ctxTableau: sansTemps(ctxT) }));
+    finir('E9', a, 'E ' + quand); await a.ctx.close().catch(() => {}); await T.ctx.close().catch(() => {}); } };
+
 const NOMS0 = (() => { const st = storeOuverture(RACINE, { champs: true }); const el = []; const aj = v => { if (v == null) return; if (typeof v === 'string') el.push(v); else if (typeof v === 'object') Object.values(v).forEach(aj); }; Object.values(st.classes || {}).forEach(c => aj(c && c.eleves)); return [...new Set(el.join(' ').split(/\s+/).filter(x => x.length >= 3))].sort((a, b) => b.length - a.length); })();
 const anon = t => { let x = String(t); NOMS0.forEach(n => { x = x.split(n).join('«nom»'); }); return x.replace(/«nom»(\s+«nom»)+/g, '«nom»').replace(/«nom»/g, 'un élève'); };
 anonF = anon;
-for (const [k, f] of [['K', partieK], ['M', partieM], ['W', partieW], ['P', partieP]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
+for (const [k, f] of [['K', partieK], ['M', partieM], ['W', partieW], ['P', partieP], ['E', partieE]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-lot1-' + TAG + '-' + PARTIES.join('') + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(echecs ? 1 : 0);

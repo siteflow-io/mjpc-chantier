@@ -1,0 +1,19 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H · 2026-11-03 12:23 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie H · 12:23 UTC
+  [H] production 8.81.1 · pendant l’essai : « ✕ Fermer l’atelier » false ; « 🛠 Panneau prof » visible false ; la pastille visible false ; cliquée → m8TestOn() = true ; l’heure : avant {"lancee":true,"close":false}, 20 s après {"lancee":true,"close":false} · 0 chemins au « vrai » hub : 
+  [H]   le paquet : aucun · boîtes : aucune
+  [H]   la case du lundi : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 7 diapos, pas close · CLASSE TEST : 2026-09-14 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1
+  ok     H9 · production 8.81.1 : aucune erreur JS, aucune boîte système
+  [H] 8.78.2 · pendant l’essai : « ✕ Fermer l’atelier » false ; « 🛠 Panneau prof » visible false ; la pastille visible false ; cliquée → m8TestOn() = true ; l’heure : avant {"lancee":true,"close":false}, 20 s après {"lancee":true,"close":false} · 0 chemins au « vrai » hub : 
+  [H]   le paquet : aucun · boîtes : aucune
+  [H]   la case du lundi : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 7 diapos, pas close · CLASSE TEST : 2026-09-14 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1
+  ok     H9 · 8.78.2 : aucune erreur JS, aucune boîte système
+  [H] 8.79.0 · pendant l’essai : « ✕ Fermer l’atelier » false ; « 🛠 Panneau prof » visible false ; la pastille visible false ; cliquée → m8TestOn() = true ; l’heure : avant {"lancee":true,"close":false}, 20 s après {"lancee":true,"close":false} · 0 chemins au « vrai » hub : 
+  [H]   le paquet : aucun · boîtes : aucune
+  [H]   la case du lundi : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 7 diapos, pas close · CLASSE TEST : 2026-09-14 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1
+  ok     H9 · 8.79.0 : aucune erreur JS, aucune boîte système
+
+--- fin : 3 vérifications, 0 échec(s)

@@ -253,7 +253,7 @@ const partieK = async () => {
 
 /* ══ M · le mode test quitté pendant l'heure ; la page rechargée pendant un essai ══ */
 const partieM = async () => {
-  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879], ['8.80.0', V8800]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
   for (const [nom, f] of F) {
     hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; const a = await pilule(pg); const e0 = ECR.length;
     dire('  [M] ' + nom + ' · mode test : ' + a.geste + ' → m8TestOn() = ' + a.test); const L = await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(3000);
@@ -441,7 +441,7 @@ const partieE = async () => { const j = '2026-09-22', c1 = '10:07-11:02', c2 = '
 
 /* ══ G · le geste complet : pendant l'essai, « 🛠 Panneau prof », puis la pastille « Mode test actif » ══ */
 const partieG = async () => {
-  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879], ['8.80.0', V8800]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
   for (const [nom, f] of F) { hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; const a = await pilule(pg); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(500);
     await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(1500); const e1 = ECR.length;
     const vb = await pg.isVisible('#tprof-btn').catch(() => false); if (vb) await pg.click('#tprof-btn').catch(() => {}); await p(1200); await capt(pg, 'G-' + nom.split(' ')[0] + '-panneau-pendant-heure');
@@ -488,7 +488,7 @@ const partieR = async () => { hubAvec(); const auj = '2026-09-17'; const o = awa
 
 /* ══ H · le geste complet, par l'écran : pendant l'essai, « ✕ Fermer l'atelier » (il « ramène au panneau prof »), puis la pastille ══ */
 const partieH = async () => {
-  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879], ['8.80.0', V8800]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
   for (const [nom, f] of F) { hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; await pilule(pg); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(500);
     await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(1500); const e1 = ECR.length;
     const fe = await clicTexte(pg, 'button', 'Fermer l’atelier'); await p(2000); const vb = await pg.isVisible('#tprof-btn').catch(() => false); const vp0 = await pg.isVisible('#tprof-testpill').catch(() => false);
@@ -501,8 +501,21 @@ const partieH = async () => {
     const P = await projeter(pg); dire('  [H]   la case du lundi : ' + dirCase(P.find(x => CHA.test(x.classe) && x.iso === '2026-09-14')) + ' · CLASSE TEST : ' + dirCase(premiere(P, DYL)));
     finir('H9', o, nom); await o.ctx.close(); } };
 
+/* ══ J · pendant l'essai, « ↗ Le site dans un nouvel onglet » : le mode test de l'onglet neuf, ce qu'il propose, ce qu'il écrit ══ */
+const partieJ = async () => {
+  const F = [['production 8.81.1', FICHIER], ['8.78.2', V8782], ['8.79.0', V879], ['8.80.0', V8800]].filter(x => x[1] && fs.existsSync(x[1]) && (!process.env.MJPC_SEUL || process.env.MJPC_SEUL.split(',').includes(x[0].split(' ')[0])));
+  for (const [nom, f] of F) { hubAvec(); const o = await ouvrir({ fichier: f, h: '09:00', jour: '2026-09-14' }); const pg = o.pg; await pilule(pg); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await p(500);
+    await lancerIci(pg, '2026-09-14', '08:57-09:52', CHA); await jouerJusqua(pg, 'aud-a1-consigne'); await p(1500); const e1 = ECR.length;
+    const [nv] = await Promise.all([o.ctx.waitForEvent('page', { timeout: 8000 }).catch(() => null), clicTexte(pg, 'button,a', 'Le site dans un nouvel onglet')]); if (!nv) { dire('  [J] ' + nom + ' : « ↗ Le site dans un nouvel onglet » n’a pas ouvert d’onglet'); finir('J9', o, nom); await o.ctx.close(); continue; }
+    await nv.waitForLoadState('load').catch(() => {}); await p(5000); const u = nv.url().replace(/^file:\/\/[^?]*/, '…');
+    const etat = await nv.evaluate(() => ({ test: typeof m8TestOn === 'function' ? m8TestOn() : null, rep: (() => { const b = document.getElementById('ses-reprise-oui'); return !!(b && b.offsetParent !== null); })(), repT: ((document.getElementById('ses-reprise-txt') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 200), pill: !!document.getElementById('tprof-btn') && document.getElementById('tprof-btn').offsetParent !== null })).catch(e => ({ err: e.message }));
+    await capt(nv, 'J-' + nom.split(' ')[0] + '-nouvel-onglet'); dire('  [J] ' + nom + ' · « ↗ Le site dans un nouvel onglet » (' + u + ') : ' + JSON.stringify(etat));
+    let w = []; if (etat.rep) { await nv.click('#ses-reprise-oui').catch(() => {}); await p(8000); const t2 = await nv.evaluate(() => m8TestOn()); for (let k = 0; k < 2; k++) { await nv.keyboard.press('ArrowRight'); await p(500); } await p(15000); w = ecritsDepuis(e1).filter(x => !/tableau_test/.test(x)); dire('  [J]   « Reprendre » dans l’onglet neuf : m8TestOn() = ' + t2 + ' · 2 diapos, 15 s : ' + w.length + ' chemins au « vrai » hub : ' + w.join(', ')); }
+    else { await p(10000); w = ecritsDepuis(e1).filter(x => !/tableau_test/.test(x)); dire('  [J]   aucune reprise proposée ; en 10 s : ' + w.length + ' chemins au « vrai » hub' + (w.length ? ' : ' + w.join(', ') : '')); }
+    dire('  [J]   le paquet : ' + (paquets().join(' | ') || 'aucun')); finir('J9', o, nom); await o.ctx.close(); } };
+
 dire(''); dire('══ AUDIT GLOBAL II · ' + NOMF + ' · md5 ' + md5(FICHIER) + ' ══');
-for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['G', partieG], ['H', partieH], ['Q', partieQ], ['R', partieR], ['C', partieC], ['P', partieP], ['A', partieA], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
+for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['G', partieG], ['H', partieH], ['J', partieJ], ['Q', partieQ], ['R', partieR], ['C', partieC], ['P', partieP], ['A', partieA], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-II-' + NOMF + '-' + PARTIES.join('') + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

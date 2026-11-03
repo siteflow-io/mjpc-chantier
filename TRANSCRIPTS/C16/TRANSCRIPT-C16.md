@@ -2137,3 +2137,17 @@ MEMO
   > MEMO
 - **17:05 — l'auditeur de l'horloge, poussée 5** (`9d9682715`) : X par le chemin de la touche Échap, c'est la sonde (la règle de Paul, 17:04) ; la sonde corrigée reprend sans touche (`MJPC_SANS_ECHAP=1`, sa copie) ; s'il reste un échec sans touche, ce sera le site. Sa file est prête, environ 25 minutes de machine seule ; il attend le signal.
 - **17:18 — Paul, mot pour mot** : « 393 394 395, le choix le plus court et le plus économe en utilisation. »
+- **17:19 — message à Paul, mot pour mot :**
+
+  > 396. 393 : c'est le premier choix. Une seule série de tests et une seule mise en ligne pour le lot 1 et la réparation : c'est le plus court au total et le moins coûteux.
+  >
+  > 397. Une question, pour savoir quoi réparer. Tu ouvres l'heure sur un second ordinateur et tu cliques « Reprendre » : est-ce que le téléphone doit se désactiver, puisque tu as repris le contrôle sur un ordinateur ? Aujourd'hui, en mode test : oui, toujours. En vraie heure : je ne sais pas encore.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 17:19
+  >
+  > À jouer : 397 à trancher · en cours : lot 1 (ses dernières vérifications), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **17:19 — à l'auditeur de l'horloge** : deux ajouts : P2H seul ×2 sans touche (le second ordinateur qui « Reprendre » en vraie heure désactive-t-il le téléphone ?) ; dans P2T, un geste fait juste avant au téléphone ou à l'ordinateur se perd-il quand le second ordinateur est pris pour une version d'avant ?

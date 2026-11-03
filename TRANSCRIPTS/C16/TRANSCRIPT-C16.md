@@ -1738,3 +1738,22 @@ MEMO
   > MEMO
 - **10:01 — Paul, mot pour mot** : « 329 oui »
 - **10:02 — la conscience** : la mesure lancée sur le fichier en ligne (8.81.1-⑭-micro) : la partie K (la frappe, 244 touches, le faux hub qui refuse), deux passages MJPC seul, puis deux passages avec, à côté, un second navigateur visible qui redessine sans cesse 3 000 lignes (une appli chargée ; ce n'est pas la rédaction, qui n'est pas touchée). Un onglet caché : pas mesuré.
+- **10:06 — la mesure 329** (la partie K de `9c13d037c`, `MJPC_K_MODES=refus`, sur la production 8.81.1-⑭-micro, la machine seule) : MJPC seul, deux passages : le pilote 14 ms, la fenêtre 201 et 173 ms (132 à 137 lettres au-delà de 100 ms), le tableau distant 3 991 et 3 795 ms (médianes) ; avec un second navigateur visible qui redessine 3 000 lignes (100 % d'un processeur) : le pilote 17 ms, la fenêtre 511 puis 148 ms, le tableau distant 3 865 puis 4 252 ms. Les sorties de l'exécutant (K, ce matin) : le tableau distant 3 472 à 4 174 ms dans toutes, avant comme après ; la fenêtre 14-15 ms après chez lui, 164 ms une fois sous profil.
+- **10:12-10:16 — la conscience** : le mandat `MANDATS/DEROULE-01-11/MANDAT-FRAPPE-TABLEAU.md` ; l'exécutant neuf lancé (`deroule/frappe-tableau`, sur `9c13d037c`) ; le registre corrigé (㉟ pas réglé au tableau).
+- **10:08 — message à Paul, mot pour mot :**
+
+  > 330. Mesuré sur la version en ligne, MJPC seul : au pilote, une lettre paraît en 0,014 s ; à la fenêtre du tableau, en 0,17 à 0,20 s ; au tableau distant (l'adresse du tableau sur l'ordi de la classe), en 4 s environ. Avec un onglet lourd visible à côté : le pilote ne bouge pas (0,017 s), la fenêtre du tableau une fois 0,51 s, une fois 0,15 s, le tableau distant pareil. Donc une autre appli visible peut ralentir la fenêtre du tableau, mais l'essentiel du lag est là sans elle.
+  >
+  > 331. Je me suis trompé à 9:24 : j'ai écrit « aucune lettre au-delà d'un dixième de seconde au pilote comme à la fenêtre du tableau ». C'est vrai au pilote, pas à la fenêtre : sur le même code, l'exécutant mesurait 0,015 s, moi 0,17 à 0,20 s ; elle a deux régimes, la cause n'est pas trouvée. ㉟ n'est réglée qu'au pilote. Je l'ai corrigé au registre.
+  >
+  > 332. Le tableau distant à 4 s par lettre : c'est dans toutes les mesures depuis hier, avant comme après ; le test de la frappe ne le comptait pas. Au vrai hub : je ne sais pas. Ça ne va pas.
+  >
+  > 333. Lancé à 10:14, dans ton ordre de 07:19 (« 35 et 16 oui ») : un exécutant neuf sur la frappe au tableau (le distant et la fenêtre) et ⑯, la cause d'abord ; dernière livraison prouvée avant 13:00. Rien en ligne pendant tes cours. La numérotation par séance (316, 317) : je ne l'ai pas lancée à 9:15 comme je l'avais dit ; elle vient juste après, pour ne pas fausser les mesures sur la même machine.
+  >
+  > À tester, si tu le peux pendant ton heure : tape la réponse d'un élève au pilote et regarde le tableau de la classe : les lettres arrivent-elles tout de suite, ou d'un bloc quelques secondes après ?
+  >
+  > 03/11/2026 10:08
+  >
+  > À jouer : le regard au tableau pendant la frappe · en cours : la frappe au tableau et ⑯ (avant 13:00) · ouvert : 316, 317
+  >
+  > MEMO

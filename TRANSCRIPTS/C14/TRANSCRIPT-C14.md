@@ -5008,3 +5008,30 @@ MEMO
 03/11/2026 08:37
 
 MEMO
+
+---
+
+## Tour 174 — 03/11/2026 08:48
+
+**Paul (08:48) :**
+
+Promeus
+
+**Ce qui a été fait (C14) :** 1.4.30 copiée au sas (`SAUVEGARDES/redaction-1.4.30-RU-avant-1.4.31-2026-11-03.html`, `8ed8af04`) ; 1.4.31-RU en ligne : commit `b739246` (seul `redaction.html`), blob `a07911154ae2`, md5 `5453881b42bd58381e5adfef761d8c72`, 964 277 o, en ligne bit à bit à 08:49 (cinq lectures de suite, puis trois autres) ; docs : le point de retour, le journal, les dettes ✔, où trouver quoi (`&v=1.4.31-RU`). Vrai site, avec le fichier en ligne, en lecture seule : les 53 fichiers ouverts sur ordinateur et téléphone, 718 étoiles, aucune n'en touche une autre, 155 étoiles de cadres partagés cliquées, 155 ouvrent leur sticker ; la case cochée en mémoire : 886/886 et 1 374/1 374 fautes dans « Ma copie corrigée » ; les 53 notes identiques ; 0 erreur.
+
+**Claude (08:53) :**
+
+À jouer : 115 · en cours : rien · ouvert : la garde du retour de l'IA, à cadrer (95, 97, 98, 107) ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers, la taxonomie et la concordance ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+114. La 1.4.31 est en ligne : à 08:49, j'ai vérifié que ton site sert exactement le bon fichier. Relue ensuite sur ton site, sans rien y écrire : les 53 fichiers n'ont plus d'étoiles qui se touchent, chaque étoile ouvre son sticker, « Ma copie corrigée » montre toutes tes fautes gardées, et aucune note n'a bougé. https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.31-RU
+
+115. Recharge ta page. Puis, dans chaque classe : « 📨 Fichiers École Directe », coche « Afficher la correction détaillée… » si tu la veux, puis « 📦 Tout rendre ».
+
+À tester, après avoir rechargé :
+- Franklin : « 📨 Fichiers École Directe » → coche la troisième case → « 🧪 Tester comme l'élève » sur la copie de ta capture de 07:53. Sur « dans nos chaussures. », un seul cadre et quatre étoiles côte à côte : clique chacune, elle ouvre son sticker.
+- Dans le même fichier, « 📝 Ma copie corrigée » : sa lettre, chaque faute barrée et sa bonne forme.
+- « 📦 Tout rendre » chez les Franklin, puis chez les Dylan.
+
+03/11/2026 08:53
+
+MEMO

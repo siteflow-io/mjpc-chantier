@@ -9,9 +9,17 @@ L'outil : `sonde-appel-trace.mjs` (ce dossier) = `APPEL/sonde-appel.mjs` de `ced
 
 ---
 
-## 1 · P2T (mode test) — LE SITE
+## 0 · LA RÈGLE (Paul, 03/11, transmise par la conscience)
+- 17:04 : « n'importe quelle touche » reprend la main.
+- 17:20 : quand un second ordinateur fait « Reprendre », le téléphone se désactive, dans tous les cas (vraie heure, mode test, répétition). **Tout geste sur un ordinateur, « Reprendre » compris, désactive le téléphone** ; le téléphone reprend par « Reprendre avec la télécommande ».
 
-**Verdict : c'est le site.** Ce que Paul verrait : il lance un essai (mode test) à l'ordinateur, scanne le QR avec son téléphone, puis clique « Reprendre » sur un second ordinateur (le bandeau « Essai en cours (mode test) »). Sans aucun autre geste, **le second ordinateur prend la main** ; le téléphone dit « Télécommande désactivée : l'ordinateur a repris la main » ; « Appel » n'ouvre pas la liste (l'appui est refusé, `dr-session.js:680`) ; tant que Paul n'appuie pas sur « Reprendre avec la télécommande », la télécommande ne fait rien.
+Lu avec cette règle, ce qui suit change de sens : le téléphone désactivé après « Reprendre » est **voulu** ; l'attente des sondes P2T, P2H, X et XT (la télécommande garde la main après la reprise d'un second ordinateur) **ne va pas**. Ce qui reste à juger : par quel chemin le site désactive le téléphone (et s'il le fait toujours), et si ce chemin fait perdre un geste.
+
+## 1 · P2T (mode test) — le résultat est voulu, le chemin est un hasard du site
+
+**Ce que Paul verrait** : il lance un essai (mode test) à l'ordinateur, scanne le QR avec son téléphone, puis clique « Reprendre » sur un second ordinateur (le bandeau « Essai en cours (mode test) »). **Le second ordinateur prend la main** ; le téléphone dit « Télécommande désactivée : l'ordinateur a repris la main » ; « Appel » n'ouvre pas la liste (l'appui est refusé, `dr-session.js:680`) jusqu'à « Reprendre avec la télécommande ». C'est la règle de 17:20.
+
+**Mais le site ne le fait pas parce que « Reprendre » est un geste** : le clic sur le bandeau est exclu des gestes (`dr-session.js:332-333`, `#ses-reprise`). Il le fait **par erreur**, le chemin A ci-dessous : le second ordinateur se prend pour une version d'avant. Ce chemin dépend de l'ordre de deux minuteries. Quand il ne se produit pas (mesuré en X, `m5` : manqué de 24 ms), **le téléphone reste actif** après « Reprendre », contre la règle : une dette du site, à compter (P2H et P2T, en file). Et le chemin A remplace le socle de la fusion par l'état reçu, puis envoie l'état de la reprise : un geste fait juste avant peut-il s'y perdre ? En file (la partie PG de ma copie).
 
 **Compté** (assemblé `bc7cc9cd`, vraie horloge `MJPC_HORLOGE=date`) :
 - la conscience : P2T rouge 4 sur 4 (base + 3 rejeux) ;
@@ -47,6 +55,8 @@ Le même ordre dans les passages piégés écartés (`m2`, `m3` : 24 et 30 ms tr
 ---
 
 ## 2 · X (vraie heure) et XT (mode test) — la même prise de main, par deux chemins
+
+**Avec la règle de 17:20**, le téléphone désactivé avant la paire est voulu : la paire se joue autrement. Le téléphone reprend la main (« Reprendre avec la télécommande »), puis son appui et le clic droit de l'ordinateur partent à 40 ms. La question devient : l'appui du téléphone, fait quand il avait la main, est-il gardé (chaque appareil, le hub) ? Ma copie le joue ainsi avec `MJPC_X_REGLE=1`, en file. Ce qui suit dit pourquoi la paire de la sonde d'origine était rouge.
 
 **Ce qui échoue** : dans X et XT, seule la première paire est rouge (« la télécommande et le clic droit de l'ordinateur, deux élèves »). Le décor est celui de P2 : l'ordinateur lance, la télécommande scanne, le second ordinateur « Reprendre ». L'appui de la télécommande ne se fait que si son bouton n'est pas grisé (`GESTE`, sonde-appel.mjs : `if (b && !b.disabled)`). Le second ordinateur a pris la main : la télécommande est désactivée, son appui ne part pas ; l'élève qu'elle devait marquer ne l'est nulle part ; la vérification « aucun ne se perd » est fausse sur chaque appareil.
 

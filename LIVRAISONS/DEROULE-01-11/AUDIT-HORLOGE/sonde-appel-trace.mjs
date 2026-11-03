@@ -538,8 +538,14 @@ const px = async (fichier, mode) => { const test = mode === 'XT'; reset(); const
   const paires = [[{ pg: tl.pg, k: 'tc', nom: H2, qui: 'la télécommande' }, { pg: o.pg, k: 'pilote', nom: G, qui: 'le clic droit de l’ordinateur' }]];
   if (o3) paires.push([{ pg: o3.pg, k: 'case', nom: I, qui: 'la case du troisième' }, { pg: o2.pg, k: 'pilote', nom: J2, qui: 'le clic droit du second ordinateur' }]);
   else paires.push([{ pg: o2.pg, k: 'pilote', nom: I, qui: 'le clic droit du second ordinateur' }, { pg: o.pg, k: 'pilote', nom: J2, qui: 'le clic droit de l’ordinateur' }]);
+  /* AUDIT-HORLOGE, la règle de Paul (17:04, 17:20) : tout geste sur un ordinateur, « Reprendre » compris, désactive le téléphone ; il reprend par « Reprendre avec la
+     télécommande ». MJPC_X_REGLE=1 : avant la première paire, le téléphone reprend la main, puis rouvre l'appel ; ensuite les deux gestes à 40 ms, comme avant. */
+  if (process.env.MJPC_X_REGLE) { const avantR = await tl.pg.evaluate(() => DR_SES.main === DR_SES.id).catch(() => null); await tcTap(tl, '#tc-bas button[data-a="main"]'); await p(1200); if (!(await tl.pg.$('#tc-bas button[data-a="abs"]'))) await tcAppelOuvrir(tl); await p(300);
+    const apresR = await tl.pg.evaluate(() => ({ main: DR_SES.main === DR_SES.id, noms: document.querySelectorAll('#tc-bas button[data-a="abs"]').length, grises: Array.from(document.querySelectorAll('#tc-bas button[data-a="abs"]')).filter(b => b.disabled).length })).catch(() => null);
+    dire('      [règle] avant la paire : le téléphone avait la main : ' + avantR + ' ; « Reprendre avec la télécommande » → ' + JSON.stringify(apresR)); }
   for (const [g1, g2] of paires) { const c = await croiser(g1, g2); await p(2500); const r = await partout([g1.nom, g2.nom], { [g1.nom]: true, [g2.nom]: true });
     dire('      pendant l’heure, ' + g1.qui + ' et ' + g2.qui + ', deux élèves à ' + c.ecart + ' ms : ' + JSON.stringify(r) + (TRACE ? ' [trace : le premier geste fait : ' + c.ok1 + ', le second : ' + c.ok2 + ']' : ''));
+    if (TRACE) { const r1 = await partout([g1.nom], { [g1.nom]: true }), r2 = await partout([g2.nom], { [g2.nom]: true }); dire('      [trace] l’élève de ' + g1.qui + ' gardé : ' + JSON.stringify(r1) + ' ; l’élève de ' + g2.qui + ' gardé : ' + JSON.stringify(r2)); }
     verif(mode, c.ok && Math.abs(c.ecart) < 100 && tous(r), 'pendant l’heure : ' + g1.qui + ' et ' + g2.qui + ' sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil' + (test ? '' : ', le hub') + ')', { ecart: c.ecart, r }); }
   /* le même élève : le dernier geste compte (sa volonté : ce que son appareil en a fait) ; la télécommande reprend d'abord la main (« Reprendre avec la télécommande ») */
   await tcTap(tl, '#tc-bas button[data-a="main"]'); await p(1200); if (!(await tl.pg.$('#tc-bas button[data-a="abs"]'))) await tcAppelOuvrir(tl); await p(300);
@@ -614,6 +620,41 @@ const pmain = async fichier => { const TROIS = 3 * 60000; MESURE = true; const p
   await cas(+TROIS, -TROIS, '(b) le téléphone en retard de 3 min, l’ordinateur en avance de 3 min', true);
   MESURE = false; };
 
+/* ═══ PG (AUDIT-HORLOGE, la question de la conscience, 17:2x) · mode test : quand le second ordinateur est pris pour une version d'avant (dr_sesPremierVerifier :
+   le socle remplacé, forcer, l'envoi), un geste fait juste avant au téléphone (la télécommande) ou à l'ordinateur se perd-il ? Le décor de P2T ; la reprise du second
+   ordinateur SANS touche ; `delai` ms après son clic sur « Reprendre » : un geste (tc-qui : une prise de parole à la télécommande ; tc-suiv : ▶ à la télécommande ;
+   ord-suiv : ▶ au clic de l'ordinateur). 5 s après : chaque pilote (et le tableau distant pour ▶) a-t-il le geste ? La prise de main par A : lue au piège. ═══ */
+const pgPerdu = async fichier => {
+  const DEL = String(process.env.MJPC_PG_DELAIS || '200,500,800').split(',').map(Number); const GES = String(process.env.MJPC_PG_GESTES || 'tc-qui,tc-suiv,ord-suiv').split(',');
+  dire('\n— PG · un geste juste avant la prise de main du second ordinateur (mode test, reprise sans touche) —'); const bilan = [];
+  for (const g of GES) for (const delai of DEL) { reset();
+    const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(800);
+    const o = await ouvrir({ fichier, test: true, qui: 'ordinateur' }); const lance = await lancerClasse(o); await garde(o.pg); for (let i = 0; i < 2; i++) { await gesteClic(o.pg); await p(300); }
+    const tl = await ouvrirTelecommande(o, fichier, true); const o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 });
+    if (!tl || !lance) { dire('      PG ' + g + ' ' + delai + ' ms : décor raté (lancée ' + lance + ', télécommande ' + !!tl + ')'); for (const x of [tl, o2, o, T]) if (x) await x.ctx.close().catch(() => {}); continue; }
+    await piege(o2.pg); await p(1500);
+    const nom = LISTE[5]; const ini = await o.pg.evaluate(n => { try { return iniDe(n); } catch (e) { return null; } }, nom).catch(() => null);
+    const vu = await o2.pg.waitForSelector('#ses-reprise-oui', { state: 'visible', timeout: 9000 }).then(() => true).catch(() => false);
+    if (!vu) { dire('      PG ' + g + ' ' + delai + ' ms : pas de bandeau au second ordinateur'); for (const x of [tl, o2, o, T]) if (x) await x.ctx.close().catch(() => {}); continue; }
+    const tClic = await o2.pg.evaluate(() => Date.now()).catch(() => null); await o2.pg.click('#ses-reprise-oui').catch(() => {}); await p(delai);
+    const tGeste = await o.pg.evaluate(() => Date.now()).catch(() => null);
+    if (g === 'tc-qui') await tcTap(tl, '#tc-bas button[data-a="qui"][data-ini="' + ini + '"]'); else if (g === 'tc-suiv') await tcTap(tl, '#tc-bas button[data-a="suiv"]'); else await gesteClic(o.pg);
+    await p(150); const src = g === 'ord-suiv' ? o.pg : tl.pg; const cible = await cleDe(src);
+    const parle = pg => pg.evaluate(n => (S.parts || []).some(x => x && x.nom === n && (x.heure == null || x.heure === S.heure)), nom).catch(() => null);
+    const avant = g === 'tc-qui' ? await parle(tl.pg) : cible;
+    await p(5000);
+    const r = {}; for (const [n, pg] of [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) r[n] = g === 'tc-qui' ? await parle(pg) : (await cleDe(pg)) === cible;
+    if (g !== 'tc-qui') r.tableau = (((await tabDe(T.pg)) || {}).cle || '').split('#').slice(0, 2).join('#') === String(cible || '').split('#').slice(0, 2).join('#');
+    const log = await o2.pg.evaluate(() => window.__mainLog || []).catch(() => []); const priseA = log.some(l => / main null → \S+ ← suite/.test(l));
+    const verifiee = log.filter(l => /premierVerifier/.test(l)).map(l => l.replace(/ v\.par=\S+/, '')).join(' ; ');
+    const perdu = Object.values(r).some(x => x !== true);
+    bilan.push({ g, delai, priseA, perdu });
+    dire('      PG ' + g + ' ' + delai + ' ms après « Reprendre » (clic ' + rel(tClic) + ', geste ' + rel(tGeste) + ') : le geste fait ' + (g === 'tc-qui' ? (avant ? 'oui (la parole notée à la télécommande)' : 'NON') : (cible ? 'oui (' + cible + ')' : 'NON')) + ' ; prise de main par A au second : ' + (priseA ? 'OUI' : 'non') + ' [' + verifiee + '] ; 5 s après, le geste chez : ' + JSON.stringify(r));
+    if (TRACE) { traceVif('PG ' + g + ' ' + delai); dire('      [piège PG · second] ' + log.length + ' :\n        ' + log.join('\n        ')); }
+    for (const x of [tl, o2, o, T]) await x.ctx.close().catch(() => {}); }
+  const nA = bilan.filter(b => b.priseA), nP = nA.filter(b => b.perdu);
+  dire('      PG · bilan : ' + bilan.length + ' passage(s) ; prise de main par A : ' + nA.length + ' ; parmi eux, le geste perdu : ' + nP.length + ' ; sans A, le geste perdu : ' + bilan.filter(b => !b.priseA && b.perdu).length + ' — ' + bilan.map(b => b.g + '/' + b.delai + ':' + (b.priseA ? 'A' : '-') + (b.perdu ? 'PERDU' : 'gardé')).join(' '));
+};
 const NOMV = process.env.MJPC_NOM || 'v';
 if (joue('M')) await mesure(FICHIER);
 if (joue('M') || joue('MM')) await pmain(FICHIER);
@@ -623,6 +664,7 @@ for (const m of ['P3H', 'P3T']) if (joue(m)) await p3(FICHIER, m);
 if (joue('P4')) await p4(FICHIER);
 for (const m of ['Q', 'QT']) if (joue(m)) await pq(FICHIER, m);
 for (const m of ['X', 'XT']) if (joue(m)) await px(FICHIER, m);
+if (joue('PG')) await pgPerdu(FICHIER);
 for (const m of ['Z', 'ZT']) if (joue(m)) await pz(FICHIER, m);
 dire('\n' + nb + ' vérifications, ' + echecs + ' échec(s)' + (mnb ? ' ; à part, ' + mnb + ' mesure(s) qui ne comptent pas (ZT, la main : ㉞ : la main jugée aux montres), ' + mrouges + ' rouge(s)' : ''));
 await nav.close();

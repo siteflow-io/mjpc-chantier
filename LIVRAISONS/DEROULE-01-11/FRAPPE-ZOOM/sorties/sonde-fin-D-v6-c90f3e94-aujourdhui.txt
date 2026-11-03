@@ -1,0 +1,19 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-03 08:01 UTC · md5 c90f3e94d67ceb394eb6cc59eea4f7f1 · images de 3e : un dossier local
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 3 fois par passage ══
+  ── ce fichier (md5 c90f3e94d67ceb394eb6cc59eea4f7f1)
+    l’étape 11 (2e → 3e diapo de l’heure : Les compétences du chapitre → Le parcours du chapitre) :
+      au tableau — premier mouvement : min 221 · médiane 229 · max 410 ms (221, 229, 410) ; arrivée : min 803 · médiane 813 · max 814 ms (803, 813, 814) ; images entre départ et arrivée : 17, 20, 21 ; à 90 ms : 0 px, 0 px, 0 px (de 163.5 à 181)
+      au pilote  — premier mouvement : min 66 · médiane 70 · max 99 ms (66, 70, 99) ; arrivée : min 613 · médiane 621 · max 622 ms (613, 621, 622)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 219 · médiane 235 · max 243 ms (219, 235, 243) ; arrivée : min 807 · médiane 810 · max 817 ms (807, 810, 817) ; images entre départ et arrivée : 18, 19, 18 ; à 90 ms : 0 px, 0 px, 0 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 66 · médiane 67 · max 80 ms (66, 67, 80) ; arrivée : min 630 · médiane 642 · max 650 ms (630, 642, 650)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 222 · médiane 223 · max 229 ms (222, 223, 229) ; arrivée : min 799 · médiane 814 · max 817 ms (799, 814, 817) ; images entre départ et arrivée : 22, 19, 22 ; à 90 ms : 0 px, 0 px, 0 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 50 · médiane 59 · max 59 ms (50, 59, 59) ; arrivée : min 607 · médiane 624 · max 625 ms (607, 624, 625)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

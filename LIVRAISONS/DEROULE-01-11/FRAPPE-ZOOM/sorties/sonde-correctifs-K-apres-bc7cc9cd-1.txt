@@ -1,0 +1,12 @@
+C16 · sonde des correctifs · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400) · parties K · 2026-11-03 07:51 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+══ K · (㉟) 1536×864 · en classe, trois réponses d’élèves écrites au pilote (80 ms entre deux touches) : le délai de chaque lettre ══
+      K · faux hub qui refuse les clés interdites · 244 touches · pilote : médiane 14 ms · max 32 ms · 0 au-delà de 100 ms · 0 jamais vue(s) (sur 244) │ fenêtre du tableau : médiane 15 ms · max 55 ms · 0 au-delà de 100 ms · 0 jamais vue(s) (sur 244) │ tableau distant : médiane 3648 ms · max 4279 ms · 244 au-delà de 100 ms · 0 jamais vue(s) (sur 244) · envois refusés : 0
+  ok     K · faux hub qui refuse les clés interdites : les trois réponses tapées (244 touches)
+  ok     K · faux hub qui refuse les clés interdites : au pilote, chaque lettre paraît à l’image suivante — médiane 14 ms · max 32 ms · 0 au-delà de 100 ms · 0 jamais vue(s) (sur 244)
+  ok     K · faux hub qui refuse les clés interdites : à la fenêtre du tableau, la règle de 7 (médiane au plus 100 ms, chaque lettre sous 350 ms) — médiane 15 ms · max 55 ms · 0 au-delà de 100 ms · 0 jamais vue(s) (sur 244)
+  ok     K · faux hub qui refuse les clés interdites : rien n’est perdu — les trois réponses entières au pilote, à la fenêtre du tableau, au tableau distant, au hub (l’état de l’heure) — {"pilote":["Les cinq tableaux montrent une nature immense et un homme tout petit devant elle.","Le peintre veut nous faire ressentir la peur et l’émotion plutôt que suivre des règles.","On voit la tempête, la nuit, les montagnes : la nature est plus forte que l’homme.",""],"distant":["Les cinq tableaux montrent une nature immense et un homme tout petit devant elle.","Le peintre veut nous faire ressentir la peur et l’émotion plutôt que suivre des règles.","On voit la tempête, la nuit, les montagnes : la nature est plus forte que l’homme."]}
+  ok     K · faux hub qui refuse les clés interdites : aucun envoi refusé (0)
+  ok     K · faux hub qui refuse les clés interdites : aucune erreur JS, aucune boîte système
+
+--- fin : 6 vérification(s), 0 échec(s) · VERT

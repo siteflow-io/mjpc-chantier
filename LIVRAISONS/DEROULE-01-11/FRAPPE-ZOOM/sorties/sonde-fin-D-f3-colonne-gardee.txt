@@ -1,0 +1,19 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-03 08:05 UTC · md5 3aeb31e316d897585413567e2df15cad · images de 3e : un dossier local
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 3 fois par passage ══
+  ── ce fichier (md5 3aeb31e316d897585413567e2df15cad)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min -48 · médiane -46 · max -44 ms (-48, -46, -44) ; arrivée : min 528 · médiane 536 · max 543 ms (528, 536, 543) ; images entre départ et arrivée : 23, 24, 23 ; à 90 ms : 6.7 px, 6.7 px, 4.9 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 83 · médiane 91 · max 128 ms (83, 91, 128) ; arrivée : min 623 · médiane 624 · max 632 ms (623, 624, 632)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min -76 · médiane -74 · max -67 ms (-76, -74, -67) ; arrivée : min 504 · médiane 522 · max 525 ms (504, 522, 525) ; images entre départ et arrivée : 24, 24, 24 ; à 90 ms : 8.7 px, 6.7 px, 10.9 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 69 · médiane 72 · max 74 ms (69, 72, 74) ; arrivée : min 639 · médiane 650 · max 653 ms (639, 650, 653)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min -82 · médiane -79 · max -59 ms (-82, -79, -59) ; arrivée : min 489 · médiane 507 · max 518 ms (489, 507, 518) ; images entre départ et arrivée : 24, 24, 24 ; à 90 ms : 10.8 px, 8.7 px, 8.7 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 61 · médiane 64 · max 69 ms (61, 64, 69) ; arrivée : min 625 · médiane 632 · max 633 ms (625, 632, 633)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

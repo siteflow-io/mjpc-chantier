@@ -18,11 +18,28 @@ function brancherAjout(){ /* repris de l'ancien (moteur L648-656, ligne() L1441)
     ini.oninput = () => { const r = ligne(); const l = dr_candidats(ini.textContent); r.eleve = l.length === 1 ? nomDe(l[0]) : null; r.i = r.eleve ? iniDe(r.eleve) : ini.textContent.trim().toUpperCase(); ini.classList.toggle('vide', !r.i); S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'ini' }; if (r.r) dr_tout(); };
     ini.onkeydown = ev => { if (ev.key === 'Enter' || ev.key === 'Tab') { ev.preventDefault(); const r = ligne(); if (!r.eleve && ini.textContent.trim()) { const l = dr_candidats(ini.textContent); if (l.length) { r.eleve = nomDe(l[0]); r.i = l[0]; ini.textContent = r.i; ini.classList.remove('vide'); } } dit.focus({ preventScroll: true }); } if (ev.key === 'Escape') { ev.stopPropagation(); ini.blur(); } };
     ini.ondblclick = ev => { ev.preventDefault(); const r = ligne(); if (!r.r) return; r.refo = !r.refo; journal('reponse-reformulee', { eleve: r.eleve, refo: r.refo }); S._garderFocus = { bi, ri, quoi: 'ini' }; dr_tout(); };
-    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_tout(); };
+    dit.oninput = () => { const r = ligne(); const av = r.r; r.r = dit.textContent; S.blocActif = bi; S._garderFocus = { bi, ri, quoi: 'dit' }; dr_frappeReponse(!av, bi); };   /* C16 (㉟) : avant, chaque touche redessinait tout (dr_tout) */
     dit.onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); const r = ligne(); if (!r.r.trim()) return; r.validee = true; if (r.eleve) journal('parole', { nom: r.eleve, m: 'reponse' }); S.derniere = { type: 'reponse' }; S.blocActif = bi; S._garderFocus = { bi, ri: ri + 1, quoi: 'ini' }; dr_tout(); } if (ev.key === 'Escape') { ev.stopPropagation(); dit.blur(); } };
     dit.onfocus = () => { S.blocActif = bi; }; });
   if (S._garderFocus) { const g = S._garderFocus; const rep = mur.querySelector(`.rep[data-bi="${g.bi}"][data-r="${g.ri}"]`); if (rep) { const c = rep.querySelector(g.quoi === 'ini' ? '.ini' : '.dit'); if (c && document.activeElement !== c) { c.focus({ preventScroll: true }); const sel = window.getSelection(); const rg = document.createRange(); rg.selectNodeContents(c); rg.collapse(false); sel.removeAllRanges(); sel.addRange(rg); } } S._garderFocus = null; } }
 
+/* C16 (les correctifs, ㉟, repris par l'exécutant de la frappe ; Paul, 02/11 12:21 : « en écrivant les réponses des élèves […] c'était assez lent l'écriture ») — LA
+   FRAPPE SUIT LES DOIGTS. Avant, chaque touche d'une réponse redessinait tout le pilote (`dr_tout` : la diapo et sa pagination, la vue de droite, « Où on en est »,
+   la colonne…) dans la tâche même de la touche : la lettre ne paraissait qu'après, et la fenêtre du tableau (le même fil d'exécution) attendait aussi. Maintenant,
+   une touche dans une réponse déjà commencée envoie la diapo au tableau (la fenêtre, la scène du tableau distant), sans redessiner le pilote (le texte y est
+   déjà : Paul l'écrit) ; le dessin complet vient quand Paul s'arrête (400 ms sans touche), ou tout de suite si la lettre dévoile la question. Rien n'est perdu :
+   la réponse est dans l'état à chaque touche (`r.r`), et part au tableau à chaque touche. */
+let DR_FRAPPE_T = null;
+function dr_frappeReponse(neuve, bi){
+  const complet = () => { clearTimeout(DR_FRAPPE_T); DR_FRAPPE_T = null; dr_tout(); };
+  /* la première lettre d'une réponse ne redessine tout que si elle dévoile la question (dr_devoilerQuestionsRepondues) : la ligne libre suivante ne paraît qu'à
+     Entrée (le rendu n'en pose une que sous une réponse validée) */
+  if (neuve) { try { const e = ecran(); const k = elements(e).findIndex(x => x.b === +bi && x.e === 'q'); neuve = k >= 0 && k + 1 > etatDiapo().nDev; } catch (x) {} }
+  if (neuve || S.gel || S.atelier || !S.mur || S.mur.si !== S.si || S.mur.di !== S.di || typeof pousser !== 'function') { complet(); return; }
+  try { const e = ecran(); const et = etatComplet(); ['pages', 'pagesP', 'tranchesP', 'policeRatio', 'policeReduite', 'page', 'fsBloc'].forEach(k => { if (S.mur[k] !== undefined) et[k] = S.mur[k]; }); et._pageManuelle = true;
+    if (!S.repetition) { et.textes = p8TextesCopie(e, et.textes); et.retires = p8RetiresCopie(e); } et.pilote = false; pousser(et); } catch (x) { complet(); return; }
+  try { if (typeof DR_SES === 'object' && DR_SES && DR_SES.ici && typeof dr_sesEnvoyer === 'function') dr_sesEnvoyer(); } catch (x) {}   /* ㉞ : la lettre part aussi aux autres pilotes et au tableau distant (l'état vivant et la scène, dr_sesEnvoyerMaintenant) — sans le dessin complet, le rendu ne les envoyait plus */
+  clearTimeout(DR_FRAPPE_T); DR_FRAPPE_T = setTimeout(complet, 400); }
 // ───────── PARTICIPATION — le dispositif de l'ancien, repris tel quel : le panneau d'initiales (moteur L770-779), l'historique (L1099-1112), la fiche d'élève (ouvrirPart, corrigePart, posePart, supPart, allerRep), le VIF du pont (L16417-16498), la palette Maj+Espace du pont (L16517-16621) ─────────
 const trierIni = t => String(t).toUpperCase().replace(/[^A-Z]/g, '').split('').sort().join('');
 

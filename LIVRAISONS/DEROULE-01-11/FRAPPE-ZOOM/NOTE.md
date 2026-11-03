@@ -74,7 +74,33 @@ Ce que dit le téléphone pendant la coupure (`sorties/sonde-qr-zq-022705e3-mess
 - La sonde de l'appel, parties Q et QT (la télécommande : la diapo du pilote, A+ A−, qui a la main) : **20 vérifications, 0 échec** (`sorties/sonde-appel-zq-022705e3-Q.txt`).
 - La sonde de la session (T, H, QH, QT, R, RT, A) : **105 vérifications, 2 échecs** (`sorties/sonde-session-zq-022705e3.txt`) — les deux, le délai **en répétition** (R : 10 / 12 gestes sous 0,5 s, 578 et 582 ms ; RT : 11 / 12, 600 ms). **Le même échec sur la base**, rejouée aussitôt (`sorties/sonde-session-base-8757f0c8-R.txt` : R 11 / 12, 523 ms ; RT 11 / 12, 511 ms) : c'est ⑯ (la NOTE de ㉞ l'y rattache déjà), pas ce correctif — il se règle avec ⑯ (commit suivant, §3.3 du mandat : 12 / 12 à chaque passage). Tout le reste vert : la vraie heure, l'essai, la télécommande par le QR (QH, QT), la version d'avant (A) ; aucune erreur JS.
 
-## 8 · CE QUI RESTE (08:38)
+## 8 · CE QUI RESTAIT À 08:38 (le commit c6bcbfe14)
 1. **⑯** : la colonne des vignettes au pilote passe avant l'image de la fenêtre du tableau (le premier A+ vers un cran neuf : 495 à 601 ms à la fenêtre, 3 fois sur 22) et retarde la répétition (R, RT : 10 à 11 gestes sur 12 sous 0,5 s, sur la base comme ici). Commit suivant.
 2. **㉟** : la frappe. Commit suivant.
 3. Pas fait sur ce commit (la consigne de 07:58 : « pas de mesures longues ») : la sonde de l'appel entière, la sonde de la fin d'heure, le parcours P0-P12 (K15, K15-test). Ils seront joués sur le dernier commit.
+
+## 9 · ㉟ ET ⑯ — LE COMMIT SUIVANT (Paul, 08:49 : « pour 35 et 16 il faut que ça soit bon pour 9h45 » ; la conscience : K et D, trois passages avant / après, avant 09:15)
+### 9.1 · Ce qui est repris (le port à la main des correctifs 7 et 9, `deroule/correctifs` `dff4474b6` + `3d3b6e3cd`)
+1. **`morph`** (`dr-socle.js`) garde le dessin d'une vignette marquée `data-morph="garder"` ; son empreinte porte l'identité et les blocs de la diapo (`miniatures`, `dr-atelier.js`). Avant : la colonne redessinait toutes ses vignettes à chaque flèche et à chaque touche (profil de la base ci-dessus : `miniatures` 104 à 111 ms par geste).
+2. **La colonne dans la tâche du geste** (`dr_voletApres`) : le retard de 80 ms est retiré. Mesuré (§9.3) : gardé, la fenêtre du tableau échoue à la frappe 2 passages sur 3 ; retiré, 3 sur 3 verts.
+3. **La frappe** (`dr_frappeReponse`, `dr-classe.js`) : une touche dans une réponse envoie la diapo au tableau (la fenêtre, la scène) sans redessiner le pilote, où le texte est déjà ; le dessin complet quand Paul s'arrête (400 ms) ou si la lettre dévoile la question. **Ajouté** (㉞ est venu après les correctifs) : chaque touche fait partir l'état vivant (`dr_sesEnvoyer`) — sans lui, le téléphone et le tableau distant n'auraient plus eu les lettres qu'à l'arrêt de la frappe.
+4. **Pas repris non plus** : `dr_sceneAuto` « le premier geste tout de suite » (point 8) — ㉞ envoie déjà la scène avec chaque geste (`dr_sesEmettreScene`).
+
+### 9.2 · La mesure de la frappe était fausse sur les espaces (la sonde des correctifs, partie K)
+Le profil lettre par lettre (`MJPC_TRACE=1`, la session comprise ; `sorties/sonde-correctifs-K-trace-bc7cc9cd.txt`) : **chaque lettre « lente » au pilote (95 à 119 ms) est une espace**, sans aucun dessin dessous. Une espace tapée en fin de texte est d'abord une espace insécable (le navigateur la change en espace ordinaire à la lettre suivante) : la sonde, qui compare le texte exact, ne « voyait » l'espace qu'à la touche suivante (80 ms plus tard). Il y a 42 espaces dans les trois réponses : c'est le « 41 lettres sur 244 au-delà de 100 ms » de cette nuit. La sonde compte maintenant l'espace insécable comme une espace (`sondeFrappe`). Ce que voit la classe n'a jamais eu ce retard.
+
+### 9.3 · ㉟, LA PREUVE : LA PARTIE K, TROIS PASSAGES AVANT / APRÈS (08:51-09:00, la machine seule, en alternance ; le faux hub qui refuse, comme le vrai ; 1536 × 864)
+| | pilote : médiane / le plus lent / lettres au-delà de 100 ms | fenêtre du tableau : médiane / le plus lent | vérifications |
+|---|---|---|---|
+| **avant** (la base `8757f0c8`, la production) | 31 / 159 / 1 · 28 / 54 / 0 · 26 / 173 / 2 | **168 / 294 · 202 / 250 · 208 / 570** | 13 / 18 (5 échecs) |
+| **après** (`bc7cc9cd`, ce commit) | **14 / 32 / 0 · 14 / 29 / 0 · 13 / 25 / 0** | **15 / 55 · 14 / 35 · 14 / 36** | **18 / 18** |
+Les trois réponses entières au pilote, à la fenêtre, au tableau distant et au hub, à chaque passage (rien n'est perdu) ; aucun envoi refusé ; aucune erreur JS. `sorties/sonde-correctifs-K-avant-8757f0c8-1..3.txt`, `…-K-apres-bc7cc9cd-1..3.txt`. Le tableau distant (médiane 3,5 à 3,7 s, avant comme après) n'est pas compté : le faux hub de cette sonde n'a pas le flux, le distant y relit la scène par intervalles (§0, point 4).
+Le même code avec la colonne 80 ms après (`3aeb31e3`) : pilote vert, **fenêtre 10 / 1734 · 72 / 104 · 164 / 189 : 2 passages sur 3 rouges** (`sorties/sonde-correctifs-K-f3-colonne-gardee-1..3.txt`).
+Une mesure au profil (`sorties/sonde-correctifs-K-trace-bc7cc9cd.txt`, avec la trace et le profil, donc plus lente) a vu une fois la fenêtre à 164 / 278 ms sur ce même code : **la fenêtre a deux régimes d'une exécution à l'autre** (la NOTE des correctifs l'avait vu : 15 / 113 puis 190 / 300) ; la cause n'est pas trouvée. Les trois passages comptés ci-dessus sont tous dans le bon.
+
+### 9.4 · ⑯, LA PARTIE D : PAS PROUVÉ
+Trois passages par transition, le même assemblé et la base dans la même exécution (`sorties/sonde-fin-D-bc7cc9cd-et-base.txt`) — le premier mouvement au tableau, médianes : **après 265 / 242 / 237 ms ; avant 275 / 259 / 262 ms** ; au pilote 106 / 66 / 75 contre 84 / 71 / 71. Le niveau visé (64 à 84 ms, la v6 de ⑯ mesurée le 02/11 à 08:05) n'est pas atteint ; mais **la v6 elle-même, rejouée aujourd'hui sur cette machine, donne 229 / 235 / 223 ms** (`sorties/sonde-fin-D-v6-c90f3e94-aujourdhui.txt`) : sur la même machine, ce commit est au niveau de la base et à 10-30 ms de la v6. **Et le point ne glisse au tableau qu'en 2 images** (avant comme après), contre 17 à 22 pour la v6 : c'est le reste de ⑯, pas réglé, cause pas trouvée. Le même code avec la colonne 80 ms après glisse en 23-24 images mais sa mesure du premier mouvement est négative (−46 à −79 ms : la flèche notée après l'image) — inexploitable (`sorties/sonde-fin-D-f3-colonne-gardee.txt`).
+**Donc : ㉟ prouvé ; ⑯ pas prouvé.** Le délai en répétition (R, 10 à 11 gestes sur 12 sous 0,5 s, sur la base comme sur le commit du zoom) n'a pas été rejoué sur ce commit.
+
+### 9.5 · Pas fait sur ce commit (la consigne de 08:49 : « puis rien d'autre » ; la conscience rejoue le parcours et les sondes de l'appel et de la session)
+Le zoom n'est pas rejoué sur ce commit ; la sonde des correctifs ne l'est que pour sa partie K.

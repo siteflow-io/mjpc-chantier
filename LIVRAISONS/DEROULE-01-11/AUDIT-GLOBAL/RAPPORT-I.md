@@ -6,6 +6,16 @@
 
 *Dans le faux hub, la classe de MJPC des « 3 FRANKLIN Aretha » s'appelle « 3E Charles de Gaulle » (la grille la range ainsi : `classeMjpc`) — c'est elle qui joue le rôle des 3 FRANKLIN ARETHA ici. Les cases des « 3 DYLAN Bob » sont rattachées, en mémoire, à « CLASSE TEST » (une classe de 3e du faux hub) pour avoir « une autre classe ».*
 
+
+---
+
+## LES RÉPONSES, EN UNE PHRASE CHACUNE (mesurées ; le détail suit)
+
+1. **Les télescopages (㊶)** : le tableau distant ne réserve rien ; il suit toujours la session la plus haute de l'ordre « vraie heure > répétition > mode test », relu toutes les 3 s. Sur 16 couples même séance (deux appareils), **5 prennent le tableau à la session qui jouait sans rien lui dire**, 2 se mêlent sur la même adresse (essai et répétition en mode test) avant de laisser le tableau à l'horloge pendant que l'autre joue encore, 3 jouent sans tableau sans le savoir, 2 sont refusés en le disant (« tableau distant pris »), 4 rejoignent la même session. Une autre séance ou une autre classe de la même sorte ouvre **une modale aux trois boutons « undefined » qui ne lance ni ne rejoint rien (4 sur 4 : Paul est bloqué)**. Un onglet fermé ou un ordinateur en veille **ne libère jamais le tableau avant 4 h**, et une vraie heure abandonnée garde son image pour toujours.
+2. **Le minuteur (㉔ ㉕ ㉖ ㉗ ㊵)** : « Ce que voit la classe » ne le montre pas. Au tableau, il couvre du texte sur 7 des 26 diapos·crans de l'heure 1. Il est en monospace vert-jaune-rouge sur noir, quand le site est en Garamond or sur brun. Son panneau se pose entier sur la diapo du pilote (13 661 px², 3 sessions sur 3). À montres égales, les quatre affichages sont d'accord à 25 ms près ; **à montres différentes, pilote et télécommande diffèrent exactement de l'écart des montres (3 s mesurées)**, et la fenêtre du tableau et le tableau distant n'affichent pas le même chiffre.
+3. **La participation (Paul, 12:42)** : en répétition, les pastilles sont toujours celles de la « classe test » (la clé « 3E Charles de Gaulle »), quelle que soit la classe répétée. Dans les trois sessions, des initiales absentes de la liste vont, à Entrée, au premier élève qui a les mêmes lettres (même inversées) ou dont le prénom commence ainsi, et cet élève passe au vert. Sur de vraies listes, cela touche 17 à 36 % des élèves d'une autre classe.
+4. **Le réseau très lent (C16 303)** : pendant 30 à 36 s, rien ne dit à Paul que l'heure part. Il voit le Panneau prof « aucune session », puis un écran noir, puis le pilote « aucune heure lancée ». Un second clic sur le bouton est impossible (le bouton a disparu) ; un ▶ pendant l'attente est perdu au lancement ; « Fermer l'atelier » lance l'heure sans pilote à l'écran.
+
 ---
 
 ## 0 · LES RÈGLES DU CODE (lues avant de mesurer)
@@ -46,36 +56,6 @@
 - Le vert (`participation`, l. 19716-19723) : un élève de la liste à qui une réponse est attribuée (`r.eleve`), ou dont les initiales (`r.i`) sont celles de la réponse (`histoire`, l. 19704).
 
 *(Les mesures suivent, partie par partie.)*
-
----
-
-## 3 · LA PARTICIPATION (Paul, 12:42) — mesuré le 03/11 vers 13:05
-
-*Par le geste : un ordinateur (1536 × 864) lance la session ; il va à « Question-bilan » ; dans une ligne de réponse, il tape deux lettres dans la case des initiales, puis soit **Entrée** (comme Paul en classe), soit un **clic dans la réponse** ; il tape la réponse, Entrée. Chaque cas est fait sur un élève différent, pour que les verts se distinguent. `sorties/audit-I.jsonl`, partie Q3 ; captures `Q3-*-pilote.png` (scratchpad, elles portent des noms).*
-
-### 3.1 Quelle liste montrent les pastilles, et d'où elle vient
-| Session | La liste des pastilles | Le compteur | D'où (le code) |
-|---|---|---|---|
-| Répétition (de la copie de « 3E Charles de Gaulle », la classe des 3 FRANKLIN Aretha au faux hub) | les **29 élèves de « 3E Charles de Gaulle »** | « 0 sur 29 présents » | `dr_classe` l. 17320 : en répétition, `dr_classeTest()` (l. 17314) |
-| Essai en mode test (3E Charles de Gaulle) | les 29 élèves de « 3E Charles de Gaulle » | « 0 sur 29 présents » | `dr_classe` l. 17316 : la classe de l'heure (`AT_DR_COURS.classeSlug`) |
-| Vraie heure (3E Charles de Gaulle) | les 29 élèves de « 3E Charles de Gaulle » | « 0 sur 29 présents » | idem |
-
-- **En répétition, la liste n'est jamais celle de la classe répétée** : c'est toujours celle de la « classe test » — la classe dont la clé (ou le nom) est « 3E Charles de Gaulle » (l. 17314), sinon le nœud « CLASSE TEST ». Au faux hub, cette clé est la classe des 3 FRANKLIN Aretha (la grille : `classe: '3 FRANKLIN Aretha'`, `classeMjpc: '3E Charles de Gaulle'`). Le cas de Paul : une répétition lancée de la copie des 3 FRANKLIN ARETHA, pour faire l'heure des 3 DYLAN → les pastilles sont celles des 3 FRANKLIN.
-- Au vrai hub, quelle classe est la « classe test » : je ne sais pas (le vrai hub n'est pas lu ici). La capture de Paul (« 5 SUR 29 PRÉSENTS » sous l'en-tête « 3 FRANKLIN ARETHA ») va avec une classe des 3 FRANKLIN dont la clé est encore « 3E Charles de Gaulle » : à lire au vrai hub (`/classes`, la clé et le `nom`).
-
-### 3.2 Des initiales tapées qui ne sont pas celles de la liste — compté, les trois sessions (mêmes résultats dans les trois)
-| Ce qui est tapé (deux lettres) | Puis **Entrée** | Puis un **clic dans la réponse** (sans Entrée) |
-|---|---|---|
-| (a) les initiales exactes d'un élève de la liste (« EB », l'ÉLÈVE 3) | gardées « EB », la réponse **à l'ÉLÈVE 3, qui passe au vert** ; « 1 sur 29 » | gardées « EB », la réponse à l'ÉLÈVE 3 (un seul candidat à la frappe) |
-| (b) ces lettres à l'envers, initiales de personne (« AE ») | **réécrites « EA »**, la réponse **à l'ÉLÈVE 1 (initiales EA), qui passe au vert** ; « 2 sur 29 » | réécrites « EA », la réponse à l'ÉLÈVE 1 (un seul candidat à la frappe) |
-| (c) le début d'un prénom de la liste, initiales de personne (« EL ») | **réécrites « EA »**, la réponse **à l'ÉLÈVE 1** (son prénom commence par ces lettres) | gardées « EL », à personne |
-| (d) des initiales de personne, début d'aucun prénom (« AA ») | gardées « AA », à personne, aucun vert, le compteur ne bouge pas | gardées « AA », à personne |
-
-- Le code : `ini.oninput` (l. 19666) prend l'élève quand il n'y a qu'un candidat ; `ini.onkeydown` (l. 19667) prend **le premier candidat** à Entrée ou Tab ; les candidats (`dr_candidats`, l. 19694-19698) : les initiales exactes, sinon les mêmes lettres dans un autre ordre, sinon le début des initiales ou d'un prénom. Le vert (l. 19717-19723) suit la réponse attribuée.
-- **Combien d'élèves d'une autre classe tombent sur un élève de la liste**, mesuré avec la fonction que la touche Entrée appelle (`dr_candidats`), sur les vraies listes de classe du faux hub, la liste montrée étant celle de « 3E Charles de Gaulle » : **4E BANKSY 5 sur 29 · 4E PYTHAGORE 10 sur 28 · 5e HERGÉ 8 sur 31** (de 17 % à 36 % des élèves). Les autres restent « à personne ».
-- Le cas de Paul (capture de 12:04, « cinq pastilles en vert » alors que les initiales tapées étaient celles des 3 DYLAN) : c'est ce mécanisme — en répétition, la liste est celle des 3 FRANKLIN ; chaque initiale des 3 DYLAN qui a les mêmes lettres (dans un ordre ou dans l'autre) qu'un élève des 3 FRANKLIN, ou qui commence un prénom des 3 FRANKLIN, donne la réponse à cet élève et le met en vert. Les cinq de la capture : je ne sais pas lesquels (pas mesuré sur le vrai hub).
-- « J'espère que c'est uniquement le cas de la répétition » : **non pour le mécanisme, oui pour la liste**. En mode test et en vraie heure, la liste est celle de la classe de l'heure : des initiales de cette classe tombent juste. Mais le même mécanisme (Entrée prend le premier candidat, même par lettres inversées ou début de prénom) vaut dans les trois sessions, mesuré à l'identique : une faute de frappe ou des lettres inversées donnent la réponse à un autre élève de la classe.
-- Ce que ça télescope (tout ce qui lit `r.eleve` / `r.i`) : les pastilles et le compteur « n sur N présents » (`participation`), la fiche d'élève (`histoire`, l. 19702), « qui a participé » au tableau (`quiAParticipe`, l. 19726, envoyé dans la scène par `dr_versMur` l. 21507-21508), le journal (`journal('parole', …)` à Entrée dans la réponse, l. 19670) et donc le récit et la Relecture de l'heure (les paroles par élève, `dr_partsHeure`, l. 20461). En répétition, ce qui est écrit est oublié à « ■ Arrêter » (`arreterRepetition`, l. 19117) ; en mode test, cela reste au magasin du mode test ; en vraie heure, cela part au hub.
 
 ---
 
@@ -156,26 +136,7 @@
 
 ---
 
-## 4 · LE LANCEMENT SUR UN RÉSEAU TRÈS LENT (registre, C16 303) — mesuré le 03/11 à 13:48
-
-*Par le geste, à la montre du navigateur, l'autre auditeur sans navigateur ouvert (0 processus `chrom` à 13:47:54, aucune sonde de la partie II en cours pendant la mesure) : l'ordinateur (1536 × 864) ouvre l'emploi du temps, clique la case des 3E Charles de Gaulle du 14/09 08:57 ; puis le faux hub rend **chaque lecture de cet ordinateur 3 s plus tard** (comme la mesure du registre) et l'ordinateur clique « ▶ Ouvrir le pilotage et lancer ». Ce qui est à l'écran est relevé à 0,5 · 1 · 2 · 3 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 20 · 25 · 30 · 36 s ; captures écran entier `Q4-*-NNs.png`.*
-
-### 4.1 Ce que Paul voit (un seul clic)
-| Après le clic | À l'écran | Un signe que ça charge ? |
-|---|---|---|
-| 0,5 s → 6 s | l'emploi du temps s'est **fermé aussitôt** (`edtLancer` l. 27138 : `edtFermer(); edtModaleFermer();`, avant toute lecture) ; derrière, le **Panneau prof, « Tableau de bord », « Session : aucune session »** | **aucun** : pas de message, pas d'indicateur, curseur normal |
-| 8 s → 10 s | **un écran noir**, avec seulement « ✕ Fermer l'atelier » en haut à droite (l'Atelier qui se monte) | aucun |
-| 12 s → 30 s | **le pilote, « 3E Charles de Gaulle · aucune heure lancée »**, la diapo 1 grisée, « ▶ Dévoiler » actif, « Où on en est » (« l'heure dépasse de 7 min »), la participation « 0 sur 29 présents » | aucun : rien ne dit que l'heure est en train de partir |
-| entre 30 et 36 s | l'heure est lancée (`S.lancee`) | — |
-- Les mêmes temps que le registre (12,6 s puis 33,7 s) à l'échelle près de ces relevés : le pilote paraît vers 12 s, l'heure part entre 30 et 36 s.
-- Au hub, pour un clic : `/site/cours_actif` posé **1 fois**, une seule heure dans la copie (`heures/2026-09-14_08h57-09h52_…`), **1** « lancement » au journal ; 11 écritures en tout ; aucune erreur.
-
-### 4.2 Ce que fait un second clic
-- **Sur le même bouton : impossible.** À 3 s, « ▶ Ouvrir le pilotage et lancer » n'est plus à l'écran, ni la case (l'emploi du temps est fermé dès le premier clic) : le second clic de la sonde ne trouve rien (`clique: false, case: false`). Résultat au hub identique au clic seul (1 `cours_actif`, 1 heure, 1 lancement).
-
----
-
-## 2 · LE MINUTEUR (㉔ ㉕ ㉖ ㉗, ㊵) — mesuré le 03/11 de 13:56 à 14:25
+## 2 · LE MINUTEUR (㉔ ㉕ ㉖ ㉗, ㊵) — mesuré le 03/11 de 13:55 à 14:19
 
 *Par le geste, à la montre du navigateur, sans l'autre auditeur (aucune sonde de la partie II en cours de 13:47 à la fin des mesures : relevé toutes les 30 s, `ps`). Quatre appareils : l'ordinateur du pilote (1536 × 864) avec sa fenêtre du tableau (« ⧉ Ouvrir le tableau », 1280 × 720), le tableau distant (`?vue=tableau`, un autre appareil, 1280 × 720), le téléphone (390 × 844, tactile) devenu télécommande par le QR. La session lancée, l'ordinateur va à la diapo la plus remplie de l'heure 1 et la dévoile entière ; il ouvre le panneau du ⏱ (mesuré), le referme ; puis **à la télécommande** : « Départ » (5:00), à 1 min et 5 min les quatre affichages lus au même instant (et le reste en millisecondes de chaque appareil), « Pause », 8 s, « Pause » de nouveau (= reprendre : `dr_tcMinut` l. 23631 appelle `dr_minuteurPause`, qui fait repartir un minuteur en pause, l. 20752). Même montre sur tous les appareils (comme des appareils réglés sur l'heure du réseau) ; puis montres décalées (2.6).*
 
@@ -199,7 +160,7 @@
 - Le code : `position:fixed; z-index:9000` (l. 16558), posé 8 px **au-dessus** du bouton ⏱ (`dr_minuteurPanneau`, l. 20742 : `top = r.top - h - 8`) ; le ⏱ est dans la barre juste sous la diapo, donc le panneau monte sur la diapo. Sur la diapo mesurée (« Les compétences du chapitre 1 »), il ne couvre aucune ligne de texte (il est sur le bas, à côté de la légende) ; sur une diapo dont le texte descend jusqu'en bas, il le couvrirait : pas mesuré diapo par diapo. Capture `Q2-R-1-pilote-panneau.png` (scratchpad).
 
 ### 2.3 « Ce que voit la classe » montre-t-il le minuteur (㉔)
-- Sans clic, la colonne de droite dit « Diapo suivante » (aucun minuteur) ; avec « ⧉ Ce que voit la classe » cliqué : mesuré en 2.5.
+- Sans clic, la colonne de droite dit « Diapo suivante ». **Avec « ⧉ Ce que voit la classe » cliqué** (répétition, minuteur parti et montré au tableau, le pilote à 04:58) : la colonne dit « Le tableau, en ce moment », **sans minuteur** (aucun élément du minuteur, aucun « mm:ss » dans la vue), alors que le tableau distant et la fenêtre l'affichent au même instant (captures `Q2R-ce-que-voit-la-classe.png`, `Q2R-tableau-meme-moment.png`, scratchpad).
 - Le code : `vueDroite` (l. 18308-18310) rend la diapo seule dans la colonne (`rendre(inner, copie)`) ; le minuteur du tableau (`#dr-tab-minut`) n'existe que dans la page du tableau (l. 21770).
 
 ### 2.4 Son allure, comparée au site (㉖) — styles calculés par le navigateur
@@ -210,3 +171,100 @@
 | Fond | **noir pur `#000`**, ombre portée | brun très sombre (page `#0d0b0a`, boutons `#3a2c14`) |
 | Coins, bord | coins 9 px, **sans bord** | coins 8 px, **bord or de 1 px** |
 - Côte à côte (sans nom d'élève) : `allure-minuteur.png` (ce dossier) — le minuteur du tableau, le panneau du pilote et ses boutons, le minuteur de la télécommande.
+
+### 2.5 Au tableau, le minuteur passe-t-il par-dessus le texte (㉕) — toutes les diapos de l'heure 1
+*Répétition, minuteur parti et « au tableau » ; chaque diapo de l'heure 1 (13), entièrement dévoilée, au cran 1 (« texte au tableau » par défaut) puis au cran 4 (le plus grand) ; à chaque fois, au tableau distant et dans la fenêtre du tableau (1280 × 720) : le rectangle du minuteur (1020, 23 · 237 × 79, le même à tous les crans) contre le rectangle de chaque ligne de texte affichée.*
+- **Le minuteur couvre du texte sur 7 des 26 diapos·crans mesurés**, identiquement au tableau distant et dans la fenêtre : cran 1 — « Séance 1 sur 9 » (le plan, 2 825 px²), la consigne « Observe, discute, fa… » (1 712 px²), « Chaque groupe présente son tableau et son hypothèse en… » (2 681 px² : « hypothèse en » caché) ; cran 4 — les mêmes trois (2 825, 1 928, 1 430 px²) et le titre du cahier de textes (6 944 px²). Image (sans nom d'élève) : `minuteur-recouvre-texte.png` (ce dossier).
+- Il ne change ni de place ni de taille avec le texte (l. 21781 : position fixe en haut à droite du cadre, 5 % de la largeur) ; le texte ne s'écarte pas de lui.
+
+- **« ▶ Dévoiler » sur le pilote « aucune heure lancée » (à 16 s, trois clics)** : les trois clics passent, le pilote dit « 3 / 3 dévoilés » ; l'heure part ensuite (entre 30 et 36 s) et **revient à « 0 / 3 dévoilés »** : ce que Paul a dévoilé pendant l'attente est perdu. Au hub, un seul lancement.
+- **« ✕ Fermer l'atelier » sur l'écran noir (à 8 s)** : Paul revient au Panneau prof (« Session : aucune session ») ; **l'heure part quand même, en arrière-plan, sans pilote à l'écran** (à 36 s : `S.lancee` vrai, `/site/cours_actif` posé, l'Atelier fermé ; capture `Q4-fermer-36s.png` : le Panneau prof, « aucune session »). Le tableau distant suivrait cette heure (§0.2).
+- **Rouvrir l'emploi du temps et relancer (à 3 s)** : mesuré en 4.3.
+
+### 2.6 Le décalage des minuteurs (㊵) — montres décalées, en répétition, « Départ » à la télécommande
+*La même mesure, avec la montre du téléphone **3 s en avance** sur celle de l'ordinateur, et celle du tableau distant 2 s en retard (des écarts ordinaires entre un téléphone et un ordinateur d'établissement ; ceux des appareils de Paul : je ne sais pas). Relevés à 1,5 s et 20 s après « Départ », puis « Pause » et « Pause » de nouveau.*
+| Moment | Pilote (l'ordinateur) | Fenêtre du tableau (sur l'ordinateur) | Télécommande (le téléphone) | Tableau distant |
+|---|---|---|---|---|
+| 1,5 s après « Départ » | **05:02** (301 412 ms) | **05:02** | 04:59 (298 408) | 04:59 (298 411) |
+| 20 s | **04:42** | **04:42** | 04:39 | 04:39 |
+| « Pause » + 1,5 s et + 9,5 s | 04:38 | 04:38 | 04:38 | 04:38 (tous à 277 986 ms) |
+| « Reprendre » + 1,5 s | **04:40** | **04:40** | 04:37 | 04:37 |
+| « Reprendre » + 11,5 s | **04:30** | **04:30** | 04:27 | 04:27 |
+- **Le décalage se reproduit, et il vaut exactement l'écart des deux montres (3 s ici)** : le téléphone pose la fin du minuteur à sa montre (`dr_minuteurDepart`, l. 20747, appelé par la télécommande, l. 23630) ; l'ordinateur la compte à la sienne (l. 20707). Le tableau distant se recale sur l'écart le plus grand vu pendant l'heure entre l'heure des scènes reçues et la sienne (`dr_tabMinutRecevoir`, l. 21981) — ici la montre du téléphone, la plus en avance, qui écrit les scènes quand la télécommande a la main — et montre donc le même chiffre que la télécommande ; **la fenêtre du tableau, sur l'ordinateur, montre celui du pilote** : la classe ne voit pas le même chiffre selon le tableau qu'elle regarde. En pause, les quatre sont d'accord (le reste figé part tel quel) ; à la reprise, l'écart revient.
+- Avec la même montre partout (2.1) : aucun écart. La version jouée par Paul ce matin et l'écart de ses montres : je ne sais pas.
+
+---
+
+## 3 · LA PARTICIPATION (Paul, 12:42) — mesuré le 03/11 vers 13:05
+
+*Par le geste : un ordinateur (1536 × 864) lance la session ; il va à « Question-bilan » ; dans une ligne de réponse, il tape deux lettres dans la case des initiales, puis soit **Entrée** (comme Paul en classe), soit un **clic dans la réponse** ; il tape la réponse, Entrée. Chaque cas est fait sur un élève différent, pour que les verts se distinguent. `sorties/audit-I.jsonl`, partie Q3 ; captures `Q3-*-pilote.png` (scratchpad, elles portent des noms).*
+
+### 3.1 Quelle liste montrent les pastilles, et d'où elle vient
+| Session | La liste des pastilles | Le compteur | D'où (le code) |
+|---|---|---|---|
+| Répétition (de la copie de « 3E Charles de Gaulle », la classe des 3 FRANKLIN Aretha au faux hub) | les **29 élèves de « 3E Charles de Gaulle »** | « 0 sur 29 présents » | `dr_classe` l. 17320 : en répétition, `dr_classeTest()` (l. 17314) |
+| Essai en mode test (3E Charles de Gaulle) | les 29 élèves de « 3E Charles de Gaulle » | « 0 sur 29 présents » | `dr_classe` l. 17316 : la classe de l'heure (`AT_DR_COURS.classeSlug`) |
+| Vraie heure (3E Charles de Gaulle) | les 29 élèves de « 3E Charles de Gaulle » | « 0 sur 29 présents » | idem |
+
+- **En répétition, la liste n'est jamais celle de la classe répétée** : c'est toujours celle de la « classe test » — la classe dont la clé (ou le nom) est « 3E Charles de Gaulle » (l. 17314), sinon le nœud « CLASSE TEST ». Au faux hub, cette clé est la classe des 3 FRANKLIN Aretha (la grille : `classe: '3 FRANKLIN Aretha'`, `classeMjpc: '3E Charles de Gaulle'`). Le cas de Paul : une répétition lancée de la copie des 3 FRANKLIN ARETHA, pour faire l'heure des 3 DYLAN → les pastilles sont celles des 3 FRANKLIN.
+- **Mesuré aussi : la répétition « pour » une autre classe** (le nom de la classe dans l'en-tête cliqué, le menu propose « 3E Charles de Gaulle » et « CLASSE TEST », CLASSE TEST choisie) : la liste reste **les 29 élèves de « 3E Charles de Gaulle »** (« 0 sur 29 présents ») ; les quatre cas d'initiales donnent les mêmes résultats qu'en 3.2.
+- Au vrai hub, quelle classe est la « classe test » : je ne sais pas (le vrai hub n'est pas lu ici). La capture de Paul (« 5 SUR 29 PRÉSENTS » sous l'en-tête « 3 FRANKLIN ARETHA ») va avec une classe des 3 FRANKLIN dont la clé est encore « 3E Charles de Gaulle » : à lire au vrai hub (`/classes`, la clé et le `nom`).
+
+### 3.2 Des initiales tapées qui ne sont pas celles de la liste — compté, les trois sessions (mêmes résultats dans les trois)
+| Ce qui est tapé (deux lettres) | Puis **Entrée** | Puis un **clic dans la réponse** (sans Entrée) |
+|---|---|---|
+| (a) les initiales exactes d'un élève de la liste (« EB », l'ÉLÈVE 3) | gardées « EB », la réponse **à l'ÉLÈVE 3, qui passe au vert** ; « 1 sur 29 » | gardées « EB », la réponse à l'ÉLÈVE 3 (un seul candidat à la frappe) |
+| (b) ces lettres à l'envers, initiales de personne (« AE ») | **réécrites « EA »**, la réponse **à l'ÉLÈVE 1 (initiales EA), qui passe au vert** ; « 2 sur 29 » | réécrites « EA », la réponse à l'ÉLÈVE 1 (un seul candidat à la frappe) |
+| (c) le début d'un prénom de la liste, initiales de personne (« EL ») | **réécrites « EA »**, la réponse **à l'ÉLÈVE 1** (son prénom commence par ces lettres) | gardées « EL », à personne |
+| (d) des initiales de personne, début d'aucun prénom (« AA ») | gardées « AA », à personne, aucun vert, le compteur ne bouge pas | gardées « AA », à personne |
+
+- Le code : `ini.oninput` (l. 19666) prend l'élève quand il n'y a qu'un candidat ; `ini.onkeydown` (l. 19667) prend **le premier candidat** à Entrée ou Tab ; les candidats (`dr_candidats`, l. 19694-19698) : les initiales exactes, sinon les mêmes lettres dans un autre ordre, sinon le début des initiales ou d'un prénom. Le vert (l. 19717-19723) suit la réponse attribuée.
+- **Combien d'élèves d'une autre classe tombent sur un élève de la liste**, mesuré avec la fonction que la touche Entrée appelle (`dr_candidats`), sur les vraies listes de classe du faux hub, la liste montrée étant celle de « 3E Charles de Gaulle » : **4E BANKSY 5 sur 29 · 4E PYTHAGORE 10 sur 28 · 5e HERGÉ 8 sur 31** (de 17 % à 36 % des élèves). Les autres restent « à personne ».
+- Le cas de Paul (capture de 12:04, « cinq pastilles en vert » alors que les initiales tapées étaient celles des 3 DYLAN) : c'est ce mécanisme — en répétition, la liste est celle des 3 FRANKLIN ; chaque initiale des 3 DYLAN qui a les mêmes lettres (dans un ordre ou dans l'autre) qu'un élève des 3 FRANKLIN, ou qui commence un prénom des 3 FRANKLIN, donne la réponse à cet élève et le met en vert. Les cinq de la capture : je ne sais pas lesquels (pas mesuré sur le vrai hub).
+- « J'espère que c'est uniquement le cas de la répétition » : **non pour le mécanisme, oui pour la liste**. En mode test et en vraie heure, la liste est celle de la classe de l'heure : des initiales de cette classe tombent juste. Mais le même mécanisme (Entrée prend le premier candidat, même par lettres inversées ou début de prénom) vaut dans les trois sessions, mesuré à l'identique : une faute de frappe ou des lettres inversées donnent la réponse à un autre élève de la classe.
+- Ce que ça télescope (tout ce qui lit `r.eleve` / `r.i`) : les pastilles et le compteur « n sur N présents » (`participation`), la fiche d'élève (`histoire`, l. 19702), « qui a participé » au tableau (`quiAParticipe`, l. 19726, envoyé dans la scène par `dr_versMur` l. 21507-21508), le journal (`journal('parole', …)` à Entrée dans la réponse, l. 19670) et donc le récit et la Relecture de l'heure (les paroles par élève, `dr_partsHeure`, l. 20461). En répétition, ce qui est écrit est oublié à « ■ Arrêter » (`arreterRepetition`, l. 19117) ; en mode test, cela reste au magasin du mode test ; en vraie heure, cela part au hub.
+
+---
+
+## 4 · LE LANCEMENT SUR UN RÉSEAU TRÈS LENT (registre, C16 303) — mesuré le 03/11 à 13:48
+
+*Par le geste, à la montre du navigateur, l'autre auditeur sans navigateur ouvert (0 processus `chrom` à 13:47:54, aucune sonde de la partie II en cours pendant la mesure) : l'ordinateur (1536 × 864) ouvre l'emploi du temps, clique la case des 3E Charles de Gaulle du 14/09 08:57 ; puis le faux hub rend **chaque lecture de cet ordinateur 3 s plus tard** (comme la mesure du registre) et l'ordinateur clique « ▶ Ouvrir le pilotage et lancer ». Ce qui est à l'écran est relevé à 0,5 · 1 · 2 · 3 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 20 · 25 · 30 · 36 s ; captures écran entier `Q4-*-NNs.png`.*
+
+### 4.1 Ce que Paul voit (un seul clic)
+| Après le clic | À l'écran | Un signe que ça charge ? |
+|---|---|---|
+| 0,5 s → 6 s | l'emploi du temps s'est **fermé aussitôt** (`edtLancer` l. 27138 : `edtFermer(); edtModaleFermer();`, avant toute lecture) ; derrière, le **Panneau prof, « Tableau de bord », « Session : aucune session »** | **aucun** : pas de message, pas d'indicateur, curseur normal |
+| 8 s → 10 s | **un écran noir**, avec seulement « ✕ Fermer l'atelier » en haut à droite (l'Atelier qui se monte) | aucun |
+| 12 s → 30 s | **le pilote, « 3E Charles de Gaulle · aucune heure lancée »**, la diapo 1 grisée, « ▶ Dévoiler » actif, « Où on en est » (« l'heure dépasse de 7 min »), la participation « 0 sur 29 présents » | aucun : rien ne dit que l'heure est en train de partir |
+| entre 30 et 36 s | l'heure est lancée (`S.lancee`) | — |
+- Les mêmes temps que le registre (12,6 s puis 33,7 s) à l'échelle près de ces relevés : le pilote paraît vers 12 s, l'heure part entre 30 et 36 s.
+- Au hub, pour un clic : `/site/cours_actif` posé **1 fois**, une seule heure dans la copie (`heures/2026-09-14_08h57-09h52_…`), **1** « lancement » au journal ; 11 écritures en tout ; aucune erreur.
+
+### 4.2 Ce que fait un second clic
+- **Sur le même bouton : impossible.** À 3 s, « ▶ Ouvrir le pilotage et lancer » n'est plus à l'écran, ni la case (l'emploi du temps est fermé dès le premier clic) : le second clic de la sonde ne trouve rien (`clique: false, case: false`). Résultat au hub identique au clic seul (1 `cours_actif`, 1 heure, 1 lancement).
+
+### 4.3 Rouvrir l'emploi du temps pendant l'attente (à 3 s)
+- Le Panneau prof est à l'écran : « 📅 Emploi du temps » (`showProfSection('edt')`, l. 1644) ouvre sa page, qui dit **« Lecture des objets de l'année… »** (capture `Q4-rouvrir-edt.png`) ; en 16 s, **aucune case n'y paraît** (chaque lecture prend 3 s), puis le pilote du premier clic passe devant. Un second lancement par ce chemin : **pas possible pendant l'attente** (mesuré : aucune case trouvée en 16 s). Au hub : un seul `cours_actif`, une seule heure, un seul lancement (13 écritures, aucune erreur).
+- **Compté (4 gestes possibles pendant l'attente)** : aucun ne lance une seconde heure ; **deux font perdre quelque chose ou cachent l'heure** (« ▶ Dévoiler » : le dévoilement perdu ; « ✕ Fermer l'atelier » : l'heure lancée sans pilote, le Panneau prof disant « aucune session ») ; rien, pendant 30 à 36 s, ne dit à Paul que l'heure est en train de partir.
+
+---
+
+## 5 · POUR CHAQUE CHOSE QUE PAUL VEUT (partie I) : CE QUE L'EXISTANT FAIT, CE QUI MANQUE, CE QUE ÇA TÉLESCOPE — mesuré, sans proposition
+
+### 5.1 « L'adresse du tableau distant, quand elle est occupée, ne peut JAMAIS être utilisée par une autre session » (12:26)
+- **Ce que l'existant fait déjà** (mesuré, §1) : une vraie heure passe devant tout (`dr_tabLirePointeur`, l. 21884) ; une répétition lancée pendant une vraie heure n'écrit rien et le dit (« tableau distant pris », l. 19621) ; la même session relancée ailleurs est rejointe (4 sur 4) ; une session de la même sorte, autre séance ou autre classe, ouvre une modale (l. 23325, 23320, 23400).
+- **Ce qui manque** (mesuré) : 5 couples sur 16 prennent le tableau sans rien dire, 2 se mêlent sur `/site/tableau_test`, 3 jouent sans le tableau sans le savoir (§1.1) ; aucun lancement ne lit les annonces des autres sortes (§0.3 : l'heure ne lit pas la répétition ni l'essai ; l'essai ne lit ni l'heure ni la répétition en mode test ; la répétition ne lit pas l'essai) ; l'essai et la répétition en mode test partagent les mêmes chemins (`/site/tableau_test/{pointeur, scene, ecrans, vif}`) ; aucune annonce n'a de battement, rien ne libère le tableau quand l'appareil disparaît (4 h ; une vraie heure garde son image pour toujours, §1.6) ; le témoin « ● session » reste vert quand la session a perdu le tableau.
+- **Ce que ça télescope** (tout ce qui lit ou écrit les mêmes annonces) : `/site/cours_actif` est lu par le tableau distant (l. 21885), le bandeau « Reprendre » de tous les appareils (`dr_sesVeilleDemarrer`/`dr_sesBandeau`, l. 23338-23367), la reprise (`sesRepriseOui` ~l. 24340, `dr_reprendreCours`), la modale de lancement (l. 23323-23326), la répétition (« tableau distant pris », l. 19620-19621), la clôture certaine de l'heure d'avant (`dr_cloreHeureRestee`, l. 20483-20489 : lancer une autre heure **clôt** l'heure annoncée), l'effacement du pointeur à la clôture (`dr_coursActifEffacerSi`, l. 20481) ; `/site/repetition/pointeur` et `/site/tableau_test/pointeur` sont lus par le tableau distant, le bandeau (l. 23340-23342), le lancement d'une répétition (l. 23395-23400) et d'un essai (l. 23318-23320), retirés à l'arrêt seulement « s'ils sont encore les nôtres » (l. 19633, 21656) ; la télécommande lit l'état vivant de sa session (`vif`) et ne dit rien du tableau (§1.5).
+
+### 5.2 « Attention au "jamais bloqué" » (12:42)
+- **Mesuré** : la seule modale qui propose « Rejoindre / Lancer quand même / Annuler » (`dr_sesDemander`) montre trois boutons « undefined » et ne fait rien (§1.2, 4 sur 4) ; une vraie heure abandonnée tient le tableau 4 h contre toute répétition (« tableau distant pris ») et tout essai (sans le dire) (§1.6) ; pendant ces 4 h, lancer une autre heure passe par la même modale (le code, l. 23324-23325 ; mesuré avec l'heure vivante). La sortie mesurée : la même case, « Reprendre l'heure », puis « Clore l'heure ».
+
+### 5.3 Le chrono (12:16) : la modale sur le pilotage (㉗), l'allure au tableau (㉖), le décalage à la télécommande (㊵) ; et ㉔ ㉕
+- **Mesuré** : §2.2 (le panneau entier sur la diapo), §2.4 (monospace vert-noir contre Garamond or-brun), §2.6 (l'écart des montres, entier, entre pilote et télécommande, et entre la fenêtre et le tableau distant), §2.3 (absent de « Ce que voit la classe »), §2.5 (7 diapos·crans sur 26 où il couvre du texte).
+- **Ce que ça télescope** (tout ce qui lit ou écrit le minuteur) : l'état vivant (`dr_sesPhoto`, l. 22999 : `minut`, fusionné à trois voies, l. 23135, posé l. 23143, 23197), la scène du tableau (`dr_scene`, l. 21589 : `sc.minut`), la fenêtre du tableau (`postMessage`, l. 21521, 20759), le recalage du tableau distant (`dr_tabMinutRecevoir`, l. 21980-21983), la télécommande (`dr_tcMaj` l. 23596, `dr_tcMinut` l. 23628-23637), le journal (`journal('minuteur', …)`, l. 20748, 20751-20752, 20755, 20778) et donc ce qui relit le journal de l'heure.
+
+### 5.4 Les noms en vert qui ne correspondent pas aux initiales tapées (12:42)
+- **Mesuré** : §3 (la liste de la classe test en répétition ; Entrée prend le premier candidat, même par lettres inversées ou début de prénom ; dans les trois sessions).
+- **Ce que ça télescope** : §3.2, dernier point (les pastilles, le compteur, la fiche d'élève, « qui a participé » au tableau, le journal, le récit et la Relecture).
+
+*Fin de la partie I. Auditeur I, 03/11/2026.*

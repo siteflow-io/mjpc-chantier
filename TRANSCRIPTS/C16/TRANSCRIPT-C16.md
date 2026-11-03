@@ -1786,3 +1786,18 @@ MEMO
   > À jouer : le regard au tableau pendant la frappe · en cours : ⑯ (avant 13:00) · ouvert : 316, 317
   >
   > MEMO
+- **11:29 — Paul, mot pour mot** : « La séance de dylan dans l'edt est à la séance 2 aujourd'hui, je n'ai donc pas pu lancer la séance 1. »
+- **11:31 — la conscience** : lu dans le code (`edtSeanceEtat`, `edtSeanceJouee`, `edtFileDAttente`, `edtProjeter`) ; le Chrome de Paul pas joignable (l'extension « not connected ») : le vrai hub pas lu ; le registre.
+- **11:31 — message à Paul, mot pour mot :**
+
+  > 338. Noté au registre. Lu dans le code, pas vérifié sur tes données (ton Chrome n'est pas joignable en ce moment) : la case propose la séance 2 quand la séance 1 compte comme faite pour les 3 DYLAN, c'est-à-dire qu'une heure des 3 DYLAN a été jouée en vraie heure et close sans « Reporter ». Une seule question : as-tu lancé une heure des 3 DYLAN avant aujourd'hui, en vraie heure (pas en mode test), même un instant ?
+  >
+  > 339. Si oui, l'emploi du temps l'a tenue pour faite, et il te manque un geste : rouvrir une séance depuis sa case (« pas finie : la reprendre »). Si non, c'est un défaut : je le fais mesurer. Dans les deux cas, pour que je lise tes vraies données (sans rien écrire), ouvre Chrome sur ton ordinateur avec l'extension Claude.
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 11:31
+  >
+  > À jouer : ta réponse à 338 · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 338
+  >
+  > MEMO

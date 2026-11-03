@@ -1757,3 +1757,17 @@ MEMO
   > À jouer : le regard au tableau pendant la frappe · en cours : la frappe au tableau et ⑯ (avant 13:00) · ouvert : 316, 317
   >
   > MEMO
+- **10:20 — l'exécutant de la frappe au tableau** (pas encore poussé) : les 4 s du tableau distant venaient de la sonde (dans la partie K, chaque page a sa propre montre figée ; celle du distant avait 3 354 ms d'avance) ; les montres recalées, sans flux : le distant 479 / 929 ms (la lecture toutes les 0,9 s, la sonde K n'a pas de flux) ; avec le flux du faux hub et les montres qui avancent, sur la production : vraie heure 14/26, 14/36, 39/71 ms (pilote, fenêtre, distant ; médiane / au plus) ; mode test 12/24, 14/38, 37/68 ; 14 / 14. Le hub : 193 écritures par réponse (une scène et un état vivant par lettre), 1 549 Ko pour trois réponses. Reste : la fenêtre à deux régimes (une fois sur quatre : médiane 79 ms, au plus 1 729, une lettre jamais vue), ⑯, K D R sur cinq passages.
+- **10:20 — message à Paul, mot pour mot :**
+
+  > 334. Je corrige 332 : les 4 s du tableau distant venaient du test, pas du site. Dans ce test, chaque appareil avait sa propre horloge, et celle du tableau distant avançait de 3,4 s sur celle du pilote. L'exécutant l'a mesuré : les horloges remises d'accord, sur la version en ligne, une lettre paraît au tableau distant en 0,04 s (au plus 0,07 s), à la fenêtre du tableau en 0,014 s, au pilote en 0,014 s, en vraie heure comme en mode test. Au vrai hub, avec ton réseau : je ne sais pas.
+  >
+  > 335. Ce qui reste : la fenêtre du tableau a encore, une fois sur quatre, un régime lent (une lettre jusqu'à 1,7 s, une jamais vue) ; et ⑯. L'exécutant continue, avant 13:00.
+  >
+  > À tester : le même regard qu'en 333, pendant ton heure : tape une réponse, regarde le tableau de la classe.
+  >
+  > 03/11/2026 10:20
+  >
+  > À jouer : le regard au tableau pendant la frappe · en cours : la fenêtre du tableau et ⑯ (avant 13:00) · ouvert : 316, 317
+  >
+  > MEMO

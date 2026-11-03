@@ -4900,3 +4900,29 @@ il faut aussi une garde au json d'injection: une ia ne peut jamais mettre plusie
 03/11/2026 01:17
 
 MEMO
+
+---
+
+## Tour 172 — 03/11/2026 06:44
+
+**Paul (06:44) :**
+
+Promeus
+
+**Ce qui a été fait (C14) :** 1.4.29 copiée au sas (`SAUVEGARDES/redaction-1.4.29-RU-avant-1.4.30-2026-11-03.html`, `098e4be5`) ; 1.4.30-RU en ligne : commit `e66149c` (posé après la 8.81.0 de C16, promue au même moment ; seul `redaction.html` touché), blob `fbdc6a211a86`, md5 `8d209be7b46b7425626f9f5c062acbb5`, 956 958 o, en ligne bit à bit à 06:48 (cinq lectures de suite, puis trois autres) ; docs (`6a298aa`, puis les dettes) : le point de retour, le journal, les dettes ✔, où trouver quoi (`&v=1.4.30-RU`). Trouvé en passant : le titre de l'entrée des dettes « des mots manquants » avait été abîmé par C14 à 00:55 (un remplacement mal placé) ; rétabli. Vrai site, avec le fichier en ligne, en lecture seule : 53 copies sur 53 corrigées à 100 %, 0 arrêt à revoir, les 53 notes inchangées ; dans les fichiers des élèves, plus aucun « mot manquant » sur un mot écrit sans mot ajouté ; 0 erreur.
+
+**Claude (06:52) :**
+
+À jouer : 106 · en cours : rien · ouvert : la garde du retour de l'IA, à cadrer (plusieurs mots pour une seule faute, des types propres à la rédaction ; 95, 97, 98) ; le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+105. La 1.4.30 est en ligne : à 06:48, j'ai vérifié que ton site sert exactement le bon fichier. Relue ensuite sur ton site, sans rien y écrire : tes 53 copies sont corrigées à 100 %, rien à revoir, aucune note n'a bougé, et plus aucun « mot manquant » sur un mot écrit par l'élève. https://siteflow-io.github.io/monsieurjaipascompris/redaction.html?mode=prof&v=1.4.30-RU
+
+106. Recharge ta page, puis, dans chaque classe : « 📨 Fichiers École Directe » → « 📦 Tout rendre ». C'est tout.
+
+À tester, après avoir rechargé :
+- Franklin : « 📨 Fichiers École Directe » → « 🧪 Tester comme l'élève » sur l'élève de 00:39. Dans « La langue », tu dois voir « ∅ Mot manquant · 5 », et aucune pastille ∅ sous « augmentes », « soigné », « affaibli » ou « rencontré ».
+- « 📦 Tout rendre » chez les Franklin, puis chez les Dylan.
+
+03/11/2026 06:52
+
+MEMO

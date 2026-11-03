@@ -2483,3 +2483,43 @@ MEMO
 
 - **23:11 — messages de fin à Paul** (deux, mot pour mot) : « La tâche du banc s'est arrêtée à sa limite de 2 h, pendant le témoin ; j'ai relancé seul ce qui manque (le témoin sur la nouvelle version) à 23:11 ; la base était finie. / À tester : rien ce soir. / 03/11/2026 23:11 / À jouer : demain, « promeus » · en cours : le témoin (repris à 23:11) ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚ / MEMO » ; puis « Le transcript est poussé. » avec le même bloc (23:11 lu).
 - **entre 23:11 et 23:16 — incident de la machine** : le conteneur a redémarré ; la reprise du témoin (lancée 23:11:19) perdue. Les fichiers du dossier de travail sont restés (le candidat `48c2205e`, le témoin de la base). Relancée à 23:16:46 (`temoin-reste.sh` : I et II sur le candidat, puis le diff). Le contrôle de 01:30 reste programmé.
+
+- **23:18 — message de fin à Paul, mot pour mot :**
+
+  > La machine a redémarré : le témoin sur la nouvelle version était interrompu ; les fichiers sont restés ; relancé à 23:16. Le contrôle de 01:30 reste programmé.
+  >
+  > À tester : rien ce soir.
+  >
+  > 03/11/2026 23:18
+  >
+  > À jouer : demain, « promeus » · en cours : le témoin (relancé à 23:16) ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **23:59 — le témoin fini** (`temoin-reste.sh`, 23:16:32 → 23:59:32) : I et II, base (production 8.81.1, `promo-8812`) et candidat (`48c2205e`), code 0 ; II : 7 vérifications, base 0 échec, candidat 2 « échecs » ; 178 lignes changées (`temoin-diff.txt`), réduites aux mots (`temoin-diff-mots.txt`, scratchpad, jamais poussé).
+- **00:02 — la conscience, le témoin lu contre les mandats** : (a) les durées des chronos et les heures des cases (00:26 → 00:28, 09:20 → 09:22) : le temps de passage, pas un comportement ; (b) 360 : la fenêtre a ses trois boutons (« undefined » ×3 → « Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») ; « Lancer » lance B, le tableau passe à B, B arrêté → l'horloge ; (c) le complément : H+H, B relance la même heure : B a la main, A dit « Un autre ordinateur a la main » (la base : A gardait la main) ; l'appareil qui rejoint n'écrit plus sa scène de reprise (T+T : le tableau reste à A, même clé ; R+T·télécommande : la base reculait de `#2` à `#0` après le QR, le candidat reste à `#2`) ; conséquence : au second ordinateur, « ● session » absent jusqu'à son premier envoi (il dit vrai) ; (d) 359 : K1 et M1 du témoin II reproduisaient le défaut sur la base (« ok ») et ne le reproduisent plus (« ÉCHEC » : séance 1 proposée ; quitter le mode test pendant l'essai refusé, 0 chemin écrit au vrai hub). Tout expliqué. Mais H+H·autre, au candidat : après « Lancer celle-ci quand même » de B (« L’heure de 3E Charles de Gaulle (08:57-09:52) n’était pas close : elle vient de l’être »), A reste « lancee: true », « main: moi », « ● session » : le 391 (C16 16:32 ; NOTE du lot 1 §4 ; registre `ae835fa`), rendu atteignable par 360 (sur la base, le bouton ne faisait rien). Pas de mise en ligne sans le mot de Paul sur ce point.
+- **00:02 — message à Paul, mot pour mot :**
+
+  > 432. Le banc est fini, à la vraie horloge, sur la version à mettre en ligne (le lot 1 et la réparation : 8.82.0-⑮). Tout est vert : la session 105, l'appel 147, la fin d'heure 56, le parcours en vrai et en mode test, les contrôles 106, l'Atelier 53, le tableau distant en mode test 27, le bloc question 33, les diapos d'ouverture 126, le fil 100, le retour sûr, la frappe au tableau, la relance d'une heure 3 fois sur 3 ; 0 échec.
+  >
+  > 433. Le témoin rejoue les sessions croisées (deux ordinateurs, la télécommande) sur la version en ligne puis sur la nouvelle : 178 lignes changent, toutes expliquées. Les durées des chronos ; la fenêtre « Une heure joue déjà » qui a enfin ses trois boutons ; « Reprendre » qui prend la main ; le tableau qui ne recule plus quand un appareil rejoint ; les 3 DYLAN qui retrouvent la séance 1.
+  >
+  > 434. Un point à trancher par toi, le 391 d'hier 16:32, revu au témoin. Maintenant que « Lancer celle-ci quand même » marche, il clôt bien l'heure de l'autre ordinateur ; mais l'écran de cet autre ordinateur la montre encore lancée, sans être prévenu. En ligne aujourd'hui, ce bouton ne fait rien : ce défaut est caché derrière. Ça ne va pas.
+  >
+  > 435. Premier choix, le mien : tu dis « promeus » ; 391 est réglé juste après, en premier. D'ici là, ne clique pas « Lancer celle-ci quand même » quand l'heure est ouverte sur un autre ordinateur. Second choix : 391 d'abord, puis un nouveau banc (2 h 45 cette nuit) ; la mise en ligne recule d'autant.
+  >
+  > À tester, après la mise en ligne, en mode test, avant ta classe, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.82.0 :
+  >
+  > 1. Le panneau du prof dit 8.82.0-⑮.
+  > 2. L'emploi du temps, sans rien lancer : la prochaine case des 3 DYLAN propose la séance 1.
+  > 3. Un essai lancé en mode test : la pastille du mode test refuse d'en sortir tant que l'essai n'est pas clos.
+  > 4. L'essai ouvert sur l'ordinateur, la télécommande par le QR ; sur un second ordinateur, « Reprendre » : le téléphone dit « Télécommande désactivée : l'ordinateur a repris la main », ses boutons grisés ; au second ordinateur, « ● session » paraît à ton premier geste.
+  > 5. « Reprendre avec la télécommande » : le téléphone reprend la main ; son ▶ fait avancer les deux ordinateurs et le tableau.
+  > 6. Un ▶ au téléphone, puis tout de suite « Reprendre » au second ordinateur : le ▶ reste partout, tableau compris.
+  > 7. Au second ordinateur, l'essai d'une autre classe : la fenêtre « … joue déjà sur un autre appareil » a ses trois boutons, chacun avec son infobulle ; « Annuler » ne change rien.
+  > 8. En répétition d'une séance des 3 FRANKLIN ARETHA : à droite, leur liste puis ta classe d'essai ; des initiales pas exactes, puis Entrée : personne ne passe au vert.
+  >
+  > 04/11/2026 00:02
+  >
+  > À jouer : 435 à trancher, puis « promeus » · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
+  >
+  > MEMO

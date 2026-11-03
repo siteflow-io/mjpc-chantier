@@ -1,0 +1,25 @@
+C16 · sonde de la frappe au tableau · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · montres du navigateur (seule la date décalée) · modes classe test · 2026-11-03 09:50 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+══ K · 1536×864 · trois réponses d’élèves écrites au pilote (80 ms entre deux touches) : le délai de chaque lettre au pilote, à la fenêtre du tableau (1280×720) et au tableau distant (1280×720) ══
+      K · vraie heure · 244 touches · pilote : médiane 11 ms · max 21 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244) │ fenêtre du tableau : médiane 26 ms · max 39 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244) │ tableau distant : médiane 42 ms · max 64 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+      K · vraie heure · écart des montres à l’horloge de la sonde, avant / après la frappe : pilote 1 / 0 ms · fenêtre du tableau 1 / 1 ms · tableau distant 1 / 1 ms (recalées)
+      K · vraie heure · écrit au hub pendant la frappe (3 réponses, 244 touches) : 576 écritures (192 par réponse), 1544 Ko — scene 248 (280 Ko, 1.1 Ko chacune), vif 248 (1138 Ko, 4.6 Ko chacune), journal 26 (41 Ko, 1.6 Ko chacune), etat 26 (64 Ko, 2.5 Ko chacune), 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle 26 (20 Ko, 0.8 Ko chacune), tableau cle_vue 2 (0 Ko, 0.1 Ko chacune)
+  ok     K · vraie heure : l’heure lancée, les trois réponses tapées (244 touches)
+  ok     K · vraie heure : au pilote, chaque lettre paraît à l’image suivante — médiane 11 ms · max 21 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · vraie heure : à la fenêtre du tableau, la règle de 7 (médiane au plus 100 ms, chaque lettre sous 350 ms) — médiane 26 ms · max 39 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · vraie heure : au tableau distant, la règle de 7 (médiane au plus 100 ms, chaque lettre sous 350 ms) — médiane 42 ms · max 64 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · vraie heure : rien n’est perdu — les trois réponses entières au pilote, à la fenêtre du tableau, au tableau distant, au hub (l’état de l’heure) — {"pilote":4,"distant":3}
+  ok     K · vraie heure : aucun envoi refusé (0), le témoin « ● session » sans « coupée » — []
+  ok     K · vraie heure : aucune erreur JS, aucune boîte système
+      K · mode test · 244 touches · pilote : médiane 11 ms · max 23 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244) │ fenêtre du tableau : médiane 26 ms · max 37 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244) │ tableau distant : médiane 40 ms · max 58 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+      K · mode test · écart des montres à l’horloge de la sonde, avant / après la frappe : pilote 1 / 1 ms · fenêtre du tableau 1 / 1 ms · tableau distant 1 / 0 ms (recalées)
+      K · mode test · écrit au hub pendant la frappe (3 réponses, 244 touches) : 500 écritures (167 par réponse), 1397 Ko — scene 250 (283 Ko, 1.1 Ko chacune), vif 248 (1114 Ko, 4.5 Ko chacune), tableau cle_vue 2 (0 Ko, 0.1 Ko chacune)
+  ok     K · mode test : l’heure lancée, les trois réponses tapées (244 touches)
+  ok     K · mode test : au pilote, chaque lettre paraît à l’image suivante — médiane 11 ms · max 23 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · mode test : à la fenêtre du tableau, la règle de 7 (médiane au plus 100 ms, chaque lettre sous 350 ms) — médiane 26 ms · max 37 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · mode test : au tableau distant, la règle de 7 (médiane au plus 100 ms, chaque lettre sous 350 ms) — médiane 40 ms · max 58 ms · 0 au-delà de 100 ms · 0 à 350 ms ou plus · 0 jamais vue(s) (sur 244)
+  ok     K · mode test : rien n’est perdu — les trois réponses entières au pilote, à la fenêtre du tableau, au tableau distant, au hub (l’image du tableau, /site/tableau_test) — {"pilote":4,"distant":3}
+  ok     K · mode test : aucun envoi refusé (0), le témoin « ● session » sans « coupée » — []
+  ok     K · mode test : aucune erreur JS, aucune boîte système
+
+--- fin : 14 vérification(s), 0 échec(s) · VERT

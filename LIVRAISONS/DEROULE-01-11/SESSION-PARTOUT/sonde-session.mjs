@@ -88,6 +88,13 @@ const fauxFlux = () => { const ES = {}; let n = 0;
     if (s2.indexOf('firebasedatabase.app') < 0) { setTimeout(() => { if (self.onerror) self.onerror({}); }, 0); return; }
     const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, ''));
     window.__hubEcoute(id, c).then(d => setTimeout(() => window.__esPousser(id, d), 0)); }; };
+/* C16 (la frappe au tableau) : MJPC_HORLOGE=date — seule la date des appareils est décalée (le 14/09, 09:00 au lancement de la sonde, elle avance, la même pour tous) ;
+   les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`) remplace aussi
+   setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche (playwright-core,
+   clockSource : `_runTo`) : mesuré, elle donne deux régimes au même code (FRAPPE-TABLEAU/NOTE.md). Sans la variable : inchangé. */
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
+const T0DATE = Date.now();
 const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q = '?n=3e', test = false, prof = true, h = '09:00', jour = '2026-09-14', tel = false }) => {
   const ctx = await nav.newContext(Object.assign({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }, tel ? { isMobile: true, hasTouch: true } : {}));
   await ctx.exposeBinding('__hubEcoute', (src, id, ch) => { ABOS.push({ pg: src.page, id, ch: ch.replace(/\/+$/, '') }); return JSON.stringify(lireH(ch)); }); await ctx.addInitScript(fauxFlux); const errs = [], boites = [];
@@ -98,7 +105,8 @@ const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q 
   /* l'horloge : le 14/09, 09:00 au lancement de la sonde, puis elle AVANCE, la même pour tous les appareils (une horloge figée faisait de l'heure des scènes un compteur
      que deux pilotes faisaient monter chacun de leur côté — un artefact que la classe ne vit jamais) ; MJPC_HORLOGE=figee : l'ancienne */
   const t09 = new Date(jour + 'T' + h + ':00+02:00').getTime();
-  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL)) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
+  if (process.env.MJPC_HORLOGE === 'date') await ctx.addInitScript(fauxDate, t09 - T0REEL);
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else if (process.env.MJPC_HORLOGE !== 'date') await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL)) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) await profPrep(pg, test);
   return { ctx, pg, errs, boites, qui }; };

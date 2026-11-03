@@ -1,0 +1,37 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-03 09:25 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 2 fois par passage ══
+        profil pilote : devoiler 70 ms ×1 [0→70], dr_tout 69 ms ×1 [1→70], allerSuivante 69 ms ×1 [1→70], rendre 39 ms ×3 [2→52], dr_versMur 1 ms ×1 [13→14], dr_auMur 1 ms ×1 [13→14], pousser 1 ms ×1 [13→14], vueDroite 20 ms ×1 [14→34], ouOnEnEst 3 ms ×1 [34→37], p85hPages 2 ms ×13 [37→40], volet 16 ms ×1 [37→53], dr_voletApres 16 ms ×1 [37→53], miniatures 11 ms ×1 [42→53], participation 17 ms ×1 [53→70], brancherAtelier 7 ms ×1 [105→112], dr_sesEnvoyerMaintenant 3 ms ×2 [128→995], dr_sesVeiller 3 ms ×5 [185→1786]
+        profil tableau : rendre 20 ms ×1 [79→99], dr_rendreMur 20 ms ×1 [79→99]
+        messages reçus par la fenêtre : 100 · images de la fenêtre : 104 118 130 142 158 174 191 207 223 240 257 272 287 302 · images du pilote : 120 131 143 158 174 191 208 224 241 258 270 286 302 318
+        profil pilote : dr_tout 36 ms ×1 [0→36], allerSuivante 36 ms ×1 [0→36], devoiler 36 ms ×1 [0→36], rendre 16 ms ×2 [1→19], dr_versMur 1 ms ×1 [9→10], dr_auMur 1 ms ×1 [9→10], pousser 1 ms ×1 [9→10], vueDroite 9 ms ×1 [10→19], ouOnEnEst 4 ms ×2 [19→378], p85hPages 2 ms ×13 [21→23], volet 5 ms ×1 [21→26], dr_voletApres 5 ms ×1 [21→26], miniatures 2 ms ×1 [24→26], participation 10 ms ×1 [26→36], brancherAtelier 4 ms ×1 [59→63], dr_sesEnvoyerMaintenant 3 ms ×2 [75→400], dr_sesVeiller 3 ms ×4 [200→1401], dr_ecrire 2 ms ×4 [261→1286]
+        profil tableau : rendre 8 ms ×1 [44→52], dr_rendreMur 8 ms ×1 [44→52]
+        messages reçus par la fenêtre : 52 · images de la fenêtre : -3 36 52 62 77 93 109 125 150 157 174 189 206 223 · images du pilote : 63 90 94 111 125 150 157 175 190 206 223 240 256 273
+        profil pilote : dimensionner 4 ms ×1 [0→4], dr_tout 41 ms ×1 [0→41], allerSuivante 41 ms ×1 [0→41], devoiler 41 ms ×1 [0→41], rendre 13 ms ×3 [4→28], p8Poser 2 ms ×5 [5→28], paginer 3 ms ×1 [6→9], dr_versMur 0 ms ×1 [10→10], dr_auMur 0 ms ×1 [10→10], pousser 0 ms ×1 [10→10], vueDroite 7 ms ×1 [10→17], ouOnEnEst 6 ms ×1 [17→23], p85hPages 2 ms ×13 [23→25], volet 6 ms ×1 [23→29], dr_voletApres 6 ms ×1 [23→29], miniatures 3 ms ×1 [26→29], participation 12 ms ×1 [29→41], dr_sesVeiller 4 ms ×5 [149→1750]
+        profil tableau : rendre 7 ms ×1 [56→63], dr_rendreMur 7 ms ×1 [56→63], p8Poser 2 ms ×2 [57→62], paginer 3 ms ×1 [59→62]
+        messages reçus par la fenêtre : 63 · images de la fenêtre : 64 77 90 106 122 138 154 171 187 204 220 238 254 272 · images du pilote : 65 82 91 106 122 138 154 171 188 205 220 239 254 272
+        profil pilote : dr_tout 33 ms ×1 [0→33], allerSuivante 33 ms ×1 [0→33], devoiler 33 ms ×1 [0→33], rendre 8 ms ×2 [4→13], p8Poser 2 ms ×3 [5→13], dr_versMur 0 ms ×1 [7→7], dr_auMur 0 ms ×1 [7→7], pousser 0 ms ×1 [7→7], vueDroite 5 ms ×1 [8→13], ouOnEnEst 3 ms ×1 [13→16], p85hPages 2 ms ×13 [16→19], volet 7 ms ×1 [16→23], dr_voletApres 7 ms ×1 [16→23], miniatures 3 ms ×1 [20→23], participation 10 ms ×1 [23→33], brancherAtelier 2 ms ×1 [47→49], dr_sesEnvoyerMaintenant 3 ms ×2 [54→198], dr_sesVeiller 3 ms ×4 [198→1398]
+        profil tableau : rendre 3 ms ×1 [44→47], dr_rendreMur 3 ms ×1 [44→47], p8Poser 2 ms ×2 [45→47]
+        messages reçus par la fenêtre : 47 · images de la fenêtre : 48 59 74 90 106 122 138 156 170 189 203 218 237 251 · images du pilote : 49 58 74 90 106 122 138 154 170 192 203 219 237 252
+        profil pilote : devoiler 30 ms ×1 [0→30], dimensionner 2 ms ×1 [1→3], dr_tout 29 ms ×1 [1→30], allerSuivante 29 ms ×1 [1→30], rendre 9 ms ×3 [3→20], paginer 3 ms ×1 [4→7], pousser 1 ms ×1 [7→8], dr_versMur 0 ms ×1 [8→8], dr_auMur 0 ms ×1 [8→8], vueDroite 5 ms ×1 [8→13], ouOnEnEst 3 ms ×1 [13→16], p85hPages 2 ms ×13 [16→18], volet 4 ms ×1 [16→20], dr_voletApres 4 ms ×1 [16→20], participation 9 ms ×1 [20→29], dr_sesVeiller 5 ms ×5 [49→1636], dr_sesEnvoyerMaintenant 5 ms ×2 [74→631], dr_ecrire 2 ms ×4 [259→1513]
+        profil tableau : rendre 7 ms ×1 [39→46], dr_rendreMur 7 ms ×1 [39→46], paginer 5 ms ×1 [40→45]
+        messages reçus par la fenêtre : 46 · images de la fenêtre : 51 55 82 89 103 124 138 152 171 183 199 215 231 247 · images du pilote : 49 60 79 90 104 122 138 151 167 183 199 215 231 247
+        profil pilote : dr_tout 26 ms ×1 [0→26], allerSuivante 26 ms ×1 [0→26], devoiler 26 ms ×1 [0→26], rendre 5 ms ×2 [2→9], pousser 1 ms ×1 [3→4], dr_versMur 0 ms ×1 [4→4], dr_auMur 0 ms ×1 [4→4], vueDroite 5 ms ×1 [4→9], ouOnEnEst 2 ms ×1 [9→11], p85hPages 2 ms ×13 [11→13], volet 4 ms ×1 [11→15], dr_voletApres 4 ms ×1 [11→15], participation 11 ms ×1 [15→26], dr_sesEnvoyerMaintenant 3 ms ×2 [48→124], dr_sesVeiller 3 ms ×5 [125→1726], dr_ecrire 2 ms ×4 [254→1008]
+        profil tableau : rendre 2 ms ×1 [39→41], dr_rendreMur 2 ms ×1 [39→41]
+        messages reçus par la fenêtre : 41 · images de la fenêtre : 43 51 66 83 98 115 130 147 165 185 198 211 229 247 · images du pilote : 42 51 66 83 98 114 130 147 165 185 199 210 228 247
+  ── ce fichier (md5 bc7cc9cdfef2011bc1b1a1848edad3f8)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min 77 · médiane 130 · max 130 ms (77, 130) ; arrivée : min 655 · médiane 688 · max 688 ms (655, 688) ; images entre départ et arrivée : 24, 24 ; à 90 ms : 0 px, 0 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 90 · médiane 143 · max 143 ms (90, 143) ; arrivée : min 622 · médiane 657 · max 657 ms (622, 657)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 74 · médiane 90 · max 90 ms (74, 90) ; arrivée : min 650 · médiane 682 · max 682 ms (650, 682) ; images entre départ et arrivée : 24, 24 ; à 90 ms : 0.1 px, 0.2 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 58 · médiane 82 · max 82 ms (58, 82) ; arrivée : min 635 · médiane 656 · max 656 ms (635, 656)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 66 · médiane 82 · max 82 ms (66, 82) ; arrivée : min 644 · médiane 663 · max 663 ms (644, 663) ; images entre départ et arrivée : 24, 24 ; à 90 ms : 0.2 px, 0.2 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 51 · médiane 60 · max 60 ms (51, 60) ; arrivée : min 613 · médiane 627 · max 627 ms (613, 627)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

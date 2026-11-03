@@ -1,0 +1,69 @@
+Les sondes du sas qui règlent la montre par l'horloge simulée de Playwright (page.clock : setFixedTime, install…), relevé le 03/11 vers 11:30 (grep sur LIVRAISONS/ et AUDITS/, branche deroule/frappe-tableau).
+Sous cette horloge, setTimeout, setInterval, requestAnimationFrame et performance sont simulés ; toute mesure de délai y est faussée, et deux contextes n'ont pas la même montre (performance).
+MJPC_HORLOGE=date (la date seule décalée) existe dans : FRAPPE-TABLEAU/sonde-frappe-tableau.mjs (par défaut), DERNIERES-DETTES/sonde-fin.mjs et SESSION-PARTOUT/sonde-session.mjs (sur demande).
+
+AUDITS/CONTROLES-DEROULE/controles.mjs · appels à l'horloge simulée : 1
+AUDITS/INTEGRATION-DEROULE/parcours.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/APPEL/sonde-appel.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/CORRECTIFS/sonde-correctifs.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/DERNIERES-DETTES/sonde-fin.mjs · appels à l'horloge simulée : 1 · MJPC_HORLOGE=date possible
+LIVRAISONS/DEROULE-01-11/DIAPOS-OUVERTURE/sonde-ouverture.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/FIL-NAVIGATION/sonde-fil.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/FIN-HEURE/sonde-fin-heure.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/FRAPPE-TABLEAU/diag-fin.mjs · appels à l'horloge simulée : 1 · MJPC_HORLOGE=date possible
+LIVRAISONS/DEROULE-01-11/FRAPPE-TABLEAU/sonde-frappe-tableau.mjs · appels à l'horloge simulée : 2 · MJPC_HORLOGE=date possible
+LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-qr.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-zoom.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/QUATRE-DETTES/sonde-dettes.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/DEROULE-01-11/QUESTION-ORDRE/cap-question.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/QUESTION-ORDRE/sonde-question.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/RETOUR-SUR/sonde-retour.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/DEROULE-01-11/SESSION-PARTOUT/sonde-session.mjs · appels à l'horloge simulée : 1 · MJPC_HORLOGE=date possible
+LIVRAISONS/INTEGRATION/E1/bancs/banc.mjs · appels à l'horloge simulée : 17
+LIVRAISONS/INTEGRATION/E1/bancs/env.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E2/bancs/banc.mjs · appels à l'horloge simulée : 0
+LIVRAISONS/INTEGRATION/E2/bancs/hub.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/banc-1226.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E3/bancs/banc-1227.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/banc-1228.mjs · appels à l'horloge simulée : 31
+LIVRAISONS/INTEGRATION/E3/bancs/banc.mjs · appels à l'horloge simulée : 6
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-1312.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-bilan.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-react-charge.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-react-piece.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-reactivation.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/mesure-tient.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-1231.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-1233.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-1233b.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-1234.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-1234b.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-clore.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E3/bancs/sonde-page-niveau.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1236.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1237.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1238.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1242.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1243.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1245.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1246.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1247.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1249.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1255.mjs · appels à l'horloge simulée : 4
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1259.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E4/bancs/banc-1261.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E4/bancs/banc.mjs · appels à l'horloge simulée : 13
+LIVRAISONS/INTEGRATION/E4/bancs/sonde-1253.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/sonde-1253b.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/bancs/sonde-1257.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E4/bancs/sonde-1257c.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E4/relecteurs/continu-0330/lance.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/relecteurs/final-0440/l182.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/relecteurs/final-0750/l152.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/relecteurs/final-0840/l152b.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/E4/relecteurs/final-0840/l184.mjs · appels à l'horloge simulée : 2
+LIVRAISONS/INTEGRATION/E4/relecteurs/final-0840/l184q.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/EX/bancs/sonde-10.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/EX/bancs/sonde-1262.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/EX/bancs/sonde-1265.mjs · appels à l'horloge simulée : 1
+LIVRAISONS/INTEGRATION/EX/bancs/sonde-1266.mjs · appels à l'horloge simulée : 1

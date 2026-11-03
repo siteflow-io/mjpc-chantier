@@ -1,0 +1,31 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-03 09:41 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · avant md5 c90f3e94d67ceb394eb6cc59eea4f7f1 · images de 3e : un dossier local
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 3 fois par passage ══
+  ── ce fichier (md5 bc7cc9cdfef2011bc1b1a1848edad3f8)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min 90 · médiane 90 · max 92 ms (90, 90, 92) ; arrivée : min 643 · médiane 645 · max 660 ms (643, 645, 660) ; images entre départ et arrivée : 23, 23, 23 ; à 90 ms : 0 px, 0.2 px, 0 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 84 · médiane 87 · max 100 ms (84, 87, 100) ; arrivée : min 627 · médiane 627 · max 644 ms (627, 627, 644)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 48 · médiane 67 · max 86 ms (48, 67, 86) ; arrivée : min 632 · médiane 648 · max 664 ms (632, 648, 664) ; images entre départ et arrivée : 23, 23, 23 ; à 90 ms : 0.1 px, 0.2 px, 0.5 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 49 · médiane 62 · max 99 ms (49, 62, 99) ; arrivée : min 633 · médiane 644 · max 664 ms (633, 644, 664)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 57 · médiane 74 · max 88 ms (57, 74, 88) ; arrivée : min 628 · médiane 630 · max 653 ms (628, 630, 653) ; images entre départ et arrivée : 23, 23, 23 ; à 90 ms : 0.5 px, 0.1 px, 0.5 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 83 · médiane 84 · max 117 ms (83, 84, 117) ; arrivée : min 646 · médiane 649 · max 653 ms (646, 649, 653)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+  ── l’assemblé d’avant (md5 c90f3e94d67ceb394eb6cc59eea4f7f1)
+    l’étape 11 (2e → 3e diapo de l’heure : Les compétences du chapitre → Le parcours du chapitre) :
+      au tableau — premier mouvement : min 66 · médiane 69 · max 78 ms (66, 69, 78) ; arrivée : min 621 · médiane 628 · max 629 ms (621, 628, 629) ; images entre départ et arrivée : 21, 20, 19 ; à 90 ms : 0.9 px, 0.5 px, 0.5 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 62 · médiane 63 · max 79 ms (62, 63, 79) ; arrivée : min 613 · médiane 613 · max 623 ms (613, 613, 623)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 58 · médiane 61 · max 73 ms (58, 61, 73) ; arrivée : min 640 · médiane 645 · max 656 ms (640, 645, 656) ; images entre départ et arrivée : 20, 18, 20 ; à 90 ms : 0.2 px, 0.2 px, 0.2 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 48 · médiane 75 · max 77 ms (48, 75, 77) ; arrivée : min 630 · médiane 657 · max 662 ms (630, 657, 662)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 47 · médiane 53 · max 54 ms (47, 53, 54) ; arrivée : min 626 · médiane 630 · max 634 ms (626, 630, 634) ; images entre départ et arrivée : 20, 21, 19 ; à 90 ms : 0.5 px, 0.5 px, 0.5 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 64 · médiane 64 · max 78 ms (64, 64, 78) ; arrivée : min 625 · médiane 627 · max 629 ms (625, 627, 629)
+  ok     D · l’assemblé d’avant · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · l’assemblé d’avant : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 5 vérifications, 0 échec(s) · VERT

@@ -1,0 +1,37 @@
+C16 · sonde des dernières dettes · parties D · 2026-11-03 10:19 UTC · md5 790f96e2593e9140253ea4d454b66724 · images de 3e : un dossier local
+
+══ D · (⑯) 1536×864 · le temps entre la flèche et le premier mouvement du point, image par image, 2 fois par passage ══
+        profil pilote : devoiler 20 ms ×1 [2→22], allerSuivante 20 ms ×1 [2→22], dr_tout 20 ms ×1 [2→22], rendre 42 ms ×3 [5→93], pousser 1 ms ×1 [21→22], dr_versMur 1 ms ×1 [21→22], dr_auMur 1 ms ×1 [21→22], brancherAtelier 3 ms ×1 [32→35], vueDroite 18 ms ×1 [57→75], ouOnEnEst 7 ms ×1 [75→82], volet 13 ms ×1 [82→95], dr_voletApres 13 ms ×1 [82→95], miniatures 10 ms ×1 [85→95], participation 21 ms ×1 [95→116], dr_sesEnvoyerMaintenant 3 ms ×1 [151→154], dr_sesVeiller 5 ms ×4 [249→1438]
+        profil tableau : rendre 21 ms ×1 [36→57], dr_rendreMur 21 ms ×1 [36→57]
+        messages reçus par la fenêtre : 57 · images de la fenêtre : 35 123 137 140 150 165 181 202 214 231 · images du pilote : 28 119 133 147 160 178 194 211 227 246
+        profil pilote : devoiler 12 ms ×1 [2→13], dr_tout 12 ms ×1 [2→13], allerSuivante 12 ms ×1 [2→13], rendre 16 ms ×2 [4→37], pousser 1 ms ×1 [12→13], dr_versMur 0 ms ×1 [13→13], dr_auMur 0 ms ×1 [13→13], vueDroite 8 ms ×1 [29→37], ouOnEnEst 5 ms ×2 [37→521], volet 4 ms ×1 [40→44], dr_voletApres 4 ms ×1 [40→44], participation 9 ms ×1 [44→53], dr_sesEnvoyerMaintenant 4 ms ×2 [61→544], dr_ttEmettre 2 ms ×1 [62→64], dr_sesVeiller 5 ms ×4 [335→1536]
+        profil tableau : rendre 7 ms ×1 [23→29], dr_rendreMur 7 ms ×1 [23→29]
+        messages reçus par la fenêtre : 29 · images de la fenêtre : 13 53 65 74 91 108 124 141 157 174 · images du pilote : 18 56 69 82 92 109 125 142 159 176
+        profil pilote : devoiler 8 ms ×1 [2→9], dr_tout 8 ms ×1 [2→9], allerSuivante 8 ms ×1 [2→9], rendre 11 ms ×3 [4→58], p8Poser 4 ms ×5 [4→58], pousser 1 ms ×1 [9→9], dr_versMur 0 ms ×1 [9→9], dr_auMur 0 ms ×1 [9→9], brancherAtelier 2 ms ×1 [11→13], vueDroite 4 ms ×1 [37→41], ouOnEnEst 6 ms ×1 [41→47], volet 11 ms ×1 [47→58], dr_voletApres 11 ms ×1 [47→58], p85hPages 3 ms ×13 [48→51], miniatures 4 ms ×1 [55→58], participation 14 ms ×1 [59→72], dr_sesEnvoyerMaintenant 2 ms ×2 [80→918], dr_sesVeiller 3 ms ×4 [314→1515]
+        profil tableau : rendre 10 ms ×1 [27→36], dr_rendreMur 10 ms ×1 [27→36], p8Poser 3 ms ×2 [28→36], paginer 5 ms ×1 [30→36]
+        messages reçus par la fenêtre : 36 · images de la fenêtre : 10 26 78 87 91 103 119 136 153 170 · images du pilote : 13 74 82 106 121 138 155 172 188 204
+        profil pilote : devoiler 7 ms ×1 [2→9], allerSuivante 6 ms ×1 [2→9], dr_tout 6 ms ×1 [2→9], rendre 6 ms ×2 [5→28], p8Poser 3 ms ×3 [5→28], pousser 1 ms ×1 [8→8], dr_versMur 0 ms ×1 [8→8], dr_auMur 0 ms ×1 [8→8], brancherAtelier 2 ms ×1 [10→12], vueDroite 3 ms ×1 [25→28], ouOnEnEst 4 ms ×1 [28→32], volet 5 ms ×1 [32→37], dr_voletApres 5 ms ×1 [32→37], participation 11 ms ×1 [37→48], dr_sesEnvoyerMaintenant 3 ms ×2 [54→388], dr_sesVeiller 3 ms ×4 [389→1585]
+        profil tableau : dr_rendreMur 2 ms ×1 [23→25], rendre 2 ms ×1 [23→25]
+        messages reçus par la fenêtre : 25 · images de la fenêtre : 9 22 54 74 79 92 106 122 139 156 · images du pilote : 13 49 57 72 76 94 108 125 141 158
+        profil pilote : dr_tout 12 ms ×1 [2→14], allerSuivante 12 ms ×1 [2→14], devoiler 12 ms ×1 [2→14], rendre 10 ms ×3 [7→47], paginer 4 ms ×1 [8→12], pousser 1 ms ×1 [12→13], dr_versMur 0 ms ×1 [13→13], dr_auMur 0 ms ×1 [13→13], brancherAtelier 2 ms ×1 [15→17], vueDroite 4 ms ×1 [34→39], ouOnEnEst 3 ms ×1 [39→42], volet 6 ms ×1 [42→47], dr_voletApres 6 ms ×1 [42→47], p85hPages 2 ms ×13 [42→45], participation 10 ms ×1 [47→58], dr_sesEnvoyerMaintenant 9 ms ×2 [65→890], dr_sesVeiller 5 ms ×4 [285→1486]
+        profil tableau : dr_rendreMur 4 ms ×1 [30→34], rendre 4 ms ×1 [30→34]
+        messages reçus par la fenêtre : 34 · images de la fenêtre : 14 29 74 84 104 113 128 143 160 177 · images du pilote : 18 61 75 110 125 140 157 174 193 207
+        profil pilote : dr_tout 5 ms ×1 [2→7], allerSuivante 5 ms ×1 [2→7], devoiler 5 ms ×1 [2→7], rendre 7 ms ×2 [4→25], pousser 1 ms ×1 [6→7], dr_versMur 0 ms ×1 [6→7], dr_auMur 0 ms ×1 [6→7], brancherAtelier 4 ms ×1 [9→13], vueDroite 5 ms ×1 [21→25], ouOnEnEst 3 ms ×1 [25→28], volet 5 ms ×1 [28→33], dr_voletApres 5 ms ×1 [28→33], participation 9 ms ×1 [33→42], dr_sesEnvoyerMaintenant 3 ms ×2 [49→389], dr_sesVeiller 3 ms ×4 [389→1585]
+        profil tableau : dr_rendreMur 2 ms ×1 [17→19]
+        messages reçus par la fenêtre : 19 · images de la fenêtre : 8 43 51 64 77 92 109 126 142 160 · images du pilote : 14 45 51 59 73 89 106 123 139 156
+  ── ce fichier (md5 790f96e2593e9140253ea4d454b66724)
+    l’étape 11 (2e → 3e diapo de l’heure : Notre problématique → Les compétences du chapitre) :
+      au tableau — premier mouvement : min 65 · médiane 137 · max 137 ms (65, 137) ; arrivée : min 624 · médiane 631 · max 631 ms (624, 631) ; images entre départ et arrivée : 23, 23 ; à 90 ms : 0 px, 0.5 px (de 152.7 à 181)
+      au pilote  — premier mouvement : min 56 · médiane 119 · max 119 ms (56, 119) ; arrivée : min 592 · médiane 594 · max 594 ms (592, 594)
+    la diapo d’avant → le tableau des cinq œuvres (Tableau 1 → Les cinq tableaux) :
+      au tableau — premier mouvement : min 79 · médiane 103 · max 103 ms (79, 103) ; arrivée : min 656 · médiane 686 · max 686 ms (656, 686) ; images entre départ et arrivée : 23, 23 ; à 90 ms : 0 px, 0.1 px (de 294 à 322.3)
+      au pilote  — premier mouvement : min 49 · médiane 82 · max 82 ms (49, 82) ; arrivée : min 609 · médiane 621 · max 621 ms (609, 621)
+    le tableau → la diapo suivante, sans tableau (Les cinq tableaux → Le tableau de Turner) :
+      au tableau — premier mouvement : min 51 · médiane 84 · max 84 ms (51, 84) ; arrivée : min 625 · médiane 644 · max 644 ms (625, 644) ; images entre départ et arrivée : 23, 23 ; à 90 ms : 0.2 px, 0.5 px (de 322.3 à 350.6)
+      au pilote  — premier mouvement : min 51 · médiane 75 · max 75 ms (51, 75) ; arrivée : min 607 · médiane 607 · max 607 ms (607, 607)
+  ok     D · ce fichier · le point glisse à chaque passage (au moins une position entre le départ et l’arrivée, au tableau)
+  ok     D · ce fichier : aucune erreur JS, aucune boîte système
+
+  ok     ㉘ · le faux hub rangé comme le vrai (qui refuse les clés interdites) : 0 écriture(s) refusée(s) sur toute la sonde — []
+
+— fin : 3 vérifications, 0 échec(s) · VERT

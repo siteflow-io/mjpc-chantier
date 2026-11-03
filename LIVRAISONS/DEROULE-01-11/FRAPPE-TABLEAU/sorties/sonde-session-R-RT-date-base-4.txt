@@ -1,0 +1,32 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties R RT · 2026-11-03 09:54 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— la répétition, hors mode test · v —
+  ok     R · l’ordinateur joue la répétition (l’Atelier, onglet Pilotage)
+      R · téléphone : bandeau en 2 ms : « Répétition en cours Reprendre »
+  ok     R · le téléphone voit « Répétition en cours » en moins de 2 s — {"t":2,"b":"Répétition en cours Reprendre"}
+      R · téléphone, « Reprendre » : en répétition true · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     R · le téléphone reprend la répétition là où elle en est — ["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]
+      R · six gestes en alternance — ordinateur 106, 214, 200 · téléphone 155, 169, 103 · tableau distant 111, 157, 216, 171, 202, 106 ms
+  ok     R · en répétition, chaque geste paraît sur l’autre appareil et au tableau distant (≤ 0,5 s ; 12 / 12) — {"tel":[155,169,103],"ord":[106,214,200],"tab":[111,157,216,171,202,106]}
+      R · « ■ Arrêter » à l’ordinateur : téléphone en répétition false · tableau distant à l’horloge · pointeur —
+  ok     R · « ■ Arrêter » sur un appareil : la répétition s’arrête partout, le tableau distant revient à l’horloge, plus de pointeur — {"r2":false,"tb":{"attente":true,"cle":null,"vide":true},"ptr":false}
+      R · écritures au hub pendant la répétition : 37 — chemins : /corbeille/2026-09-14/edt-mise-a-niveau-grille_090008, /site/edt/grille/2026-2027, /site/repetition/scene, /site/repetition/ecrans, /site/repetition/pointeur, /site/repetition/vif
+  ok     R · en répétition, rien d’écrit pour la classe : aucune écriture dans la copie de la classe, ni cours_actif, ni la présence (0) — []
+  ok     R · aucune écriture refusée par le faux hub (0) — []
+  ok     R · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— la répétition, en mode test · v —
+  ok     RT · l’ordinateur joue la répétition (l’Atelier, onglet Pilotage)
+      RT · téléphone : bandeau en 2 ms : « Répétition en cours (mode test) Reprendre »
+  ok     RT · le téléphone voit « Répétition en cours » en moins de 2 s — {"t":2,"b":"Répétition en cours (mode test) Reprendre"}
+      RT · téléphone, « Reprendre » : en répétition true · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     RT · le téléphone reprend la répétition là où elle en est — ["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]
+      RT · six gestes en alternance — ordinateur 159, 149, 238 · téléphone 151, 180, 162 · tableau distant 175, 153, 157, 185, 242, 164 ms
+  ok     RT · en répétition, chaque geste paraît sur l’autre appareil et au tableau distant (≤ 0,5 s ; 12 / 12) — {"tel":[151,180,162],"ord":[159,149,238],"tab":[175,153,157,185,242,164]}
+      RT · « ■ Arrêter » à l’ordinateur : téléphone en répétition false · tableau distant à l’horloge · pointeur —
+  ok     RT · « ■ Arrêter » sur un appareil : la répétition s’arrête partout, le tableau distant revient à l’horloge, plus de pointeur — {"r2":false,"tb":{"attente":true,"cle":null,"vide":true},"ptr":false}
+  ok     RT · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     RT · aucune écriture refusée par le faux hub (0) — []
+  ok     RT · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+16 vérifications, 0 échec(s)

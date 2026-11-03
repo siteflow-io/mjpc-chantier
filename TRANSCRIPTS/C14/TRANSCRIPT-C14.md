@@ -4849,3 +4849,54 @@ Le tout ferait la 1.4.30. Ton mot ?
 03/11/2026 00:47
 
 MEMO
+
+---
+
+## Tour 171 — 03/11/2026 00:48
+
+**Paul (00:48) :**
+
+ok ça marche mais assure moi que la seule chose que j'aurai à faire après la modification sera d'exporter les fichiers et c'est tout. Je ne veux plus relire encore une fois les corrections, je n'en peux plus
+
+**Claude (00:50) :**
+
+À jouer : rien, je code · en cours : la 1.4.30 (94 à 98) · ouvert : le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+99. Oui. Après la mise en ligne et le script, tu n'auras qu'une chose à faire : dans chaque classe, ouvrir « 📨 Fichiers École Directe » et cliquer « 📦 Tout rendre ».
+- Tu ne relis rien : chaque faute retypée ou coupée garde ta décision, gardée ou refusée.
+- Aucune copie ne redescend sous 100 %, rien ne revient dans la bande et rien ne repart à l'IA.
+- Je le vérifie copie par copie sur ton site, avant de te demander le promeus puis après le script. Si une seule copie se rouvrait, je ne te demanderais pas le promeus.
+
+100. Une seule chose peut changer d'elle-même : une faute coupée en deux compte pour deux dans « Orthographe et grammaire ». Avant ton promeus, je te dirai combien de notes bougent. Tu n'auras rien à faire pour autant.
+
+À tester : rien pour l'instant. Va te reposer, je te dis quand c'est prêt.
+
+03/11/2026 00:50
+
+MEMO
+
+**Paul (00:53, pendant le codage) :**
+
+il faut aussi une garde au json d'injection: une ia ne peut jamais mettre plusieurs mots en erreur, ou alors ça passe en nouveau type d'erreur propre à la rédaction: répétition, etc (à ton mot pour savoir quels types). A cadrer (et à consigner) Mais pour l'instant tu me fais juste 99 pour que demain les élèves aient des fichiers qui ne racontent pas n'importe quoi. Demain à 5H30 il faut que tout soit ok et que je n'ai qu'un promeus à faire.
+
+**Ce qui a été fait (C14) :** consigné aux dettes (prod) : la garde du retour de l'IA, à cadrer, avec 95, 97 et 98 reportés. La 1.4.30 réduite à 94 : le type d'une faute se contrôle contre ses mots là où il se lit (`rcCodeValide`, `rcCodeMarque` : la bande, le bilan `avFautes`, les fichiers des élèves `scEleveDonnees`) et au chargement d'un retour (`rcLettres`) ; aucune copie réécrite. Banc ajouté (`banc/types.mjs`) ; banc court vert ; banc complet 197 vérifications, 0 défaut ; les mêmes gestes rejoués sur la 1.4.29 : le défaut reproduit. Vrai site, en lecture seule (`prive/enquete/types-1430.mjs`, `notes-cmp.mjs`) : 53 copies sur 53 corrigées à 100 %, 0 arrêt à revoir, les 53 notes identiques à la 1.4.29 ; « mot manquant » 33 → 29 (Dylan), 85 → 55 (Franklin) ; dans les fichiers, plus aucun « mot manquant » sur un mot écrit sans mot ajouté. Maquette `340803ff`. Au sas : `LIVRAISONS/REDACTION/redaction-1.4.30-RU-candidat.html` (956 958 o, md5 `8d209be7b46b7425626f9f5c062acbb5`), `NOTE-1.4.30-RU.md`, `captures-1.4.30/` (avant/après : la bande, le fichier). Dettes : en candidate.
+
+**Claude (01:17) :**
+
+À jouer : 104 · en cours : rien · ouvert : la garde du retour de l'IA, à cadrer (plusieurs mots pour une seule faute, des types propres à la rédaction ; 95, 97, 98) ; le cadrage de la correction par l'élève, en pause (24, 27, l'app d'exercices du site) ; 738 ; la banque de stickers, la taxonomie et la concordance (14:48) ; 722 ; 401 seconde moitié ; le test iPhone École Directe (plus tard) ; 442 ; le dossier des copies (351-360) ; « corriger des textes tapés »
+
+101. La 1.4.30 est prête au sas, pas en ligne. Elle ne fait que 99, comme tu l'as demandé : le type de chaque faute dit vrai de ses mots. Un « mot manquant » n'apparaît plus que là où un mot manque vraiment ; sinon le type se relit dans les mots, comme en dictée (« soigné → soigner » : grammaire). Banc complet : 197 vérifications, 0 défaut. Rejoué sur la 1.4.29, les mêmes gestes donnent bien le défaut. Les captures avant/après sont jointes.
+
+102. Sur ton site, sans rien y écrire, avec cette version : tes 53 copies restent corrigées à 100 %, aucune faute à revoir, aucune décision ne bouge, aucune note ne change. Aucun script n'est nécessaire : rien n'est réécrit dans tes copies, le bon type se lit au moment où il s'affiche. Dans les fichiers des élèves, plus aucun « mot manquant » sur un mot qu'ils ont écrit. Le fichier de 00:39 garde 5 « mots manquants », et chacun en est un vrai (n', que, à, quoi, par).
+
+103. Le 100 tombe : rien n'est coupé, rien ne se recompte. Une virgule en trop, que l'IA appelait « mot en trop », se lit maintenant « ponctuation ». « augmentes → augmentent » se lit « lexique », parce que c'est ce que dit le moteur de la dictée. La garde du retour de l'IA et les types propres à la rédaction attendent leur cadrage ; ils sont consignés.
+
+104. Promeus ? Après la mise en ligne, tu recharges, puis, dans chaque classe, « 📨 Fichiers École Directe » → « 📦 Tout rendre ». C'est tout.
+
+À tester, après ton promeus et un rechargement :
+- Franklin : « 📨 Fichiers École Directe » → « 🧪 Tester comme l'élève » sur l'élève de 00:39. Dans « La langue », « ∅ Mot manquant · 5 », et aucune pastille ∅ sous « augmentes », « soigné », « affaibli » ou « rencontré ».
+- Puis « 📦 Tout rendre », chez les Franklin et chez les Dylan.
+
+03/11/2026 01:17
+
+MEMO

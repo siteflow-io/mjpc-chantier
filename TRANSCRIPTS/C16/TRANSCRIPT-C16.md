@@ -2480,3 +2480,6 @@ MEMO
   >
   > MEMO
 - **23:11 — la conscience** : la tâche du banc arrêtée à sa limite de 2 h (lancée 21:11), pendant le témoin I sur le candidat ; I et II sur la base finis (code 0). Le reste du témoin relancé seul (23:11:27), `temoin-reste.sh` : les mêmes commandes que `temoin-sessions.sh`, seulement ce qui manque (I et II sur le candidat), puis le diff ; le candidat vérifié `48c2205e` avant.
+
+- **23:11 — messages de fin à Paul** (deux, mot pour mot) : « La tâche du banc s'est arrêtée à sa limite de 2 h, pendant le témoin ; j'ai relancé seul ce qui manque (le témoin sur la nouvelle version) à 23:11 ; la base était finie. / À tester : rien ce soir. / 03/11/2026 23:11 / À jouer : demain, « promeus » · en cours : le témoin (repris à 23:11) ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚ / MEMO » ; puis « Le transcript est poussé. » avec le même bloc (23:11 lu).
+- **entre 23:11 et 23:16 — incident de la machine** : le conteneur a redémarré ; la reprise du témoin (lancée 23:11:19) perdue. Les fichiers du dossier de travail sont restés (le candidat `48c2205e`, le témoin de la base). Relancée à 23:16:46 (`temoin-reste.sh` : I et II sur le candidat, puis le diff). Le contrôle de 01:30 reste programmé.

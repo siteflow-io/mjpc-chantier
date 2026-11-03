@@ -1,0 +1,37 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties Q QT · 2026-11-03 07:28 UTC · md5 022705e3dd582f4ca8d484e0129532d7 · images de 3e : un dossier local
+
+— Q · la télécommande : la diapo du pilote, « Texte au tableau » (vraie heure) —
+  ok     Q · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : le dessin du pilote, 390 × 219 px sur un écran de 390 px, 2 élément(s) en gris (opacité 0.45) — au pilote de l’ordinateur : 2 ; le rendu de la classe retiré ; les gestes sur la diapo : none
+  ok     Q · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":390,"vw":390,"gris":2,"pilote":2}
+      ▶ à la télécommande : 1 en gris (7 ms)
+  ok     Q · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":2,"apres":1}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     Q · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ok     Q · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":{"l":"32 pt","moins":{"dis":false,"title":"A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt"},"plus":{"dis":false,"title":"A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt"},"haut":290,"basDiapo":281},"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 38 pt » en 40 ms, le tableau en 15 ms, la télécommande dit « 38 pt » ; A− : le pilote en 69 ms, le tableau en 18 ms, la télécommande « 32 pt »
+  ok     Q · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":40,"tt1":15,"tp2":69,"tt2":18}
+      l’ordinateur reprend la main : A− A+ grisés (« Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « … ») ; un appui sur A+ grisé : la taille inchangée
+  ok     Q · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":true}
+  ok     Q · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 56 écritures) — []
+  ok     Q · aucune écriture refusée par le faux hub (0) — []
+  ok     Q · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+— QT · la télécommande : la diapo du pilote, « Texte au tableau » (mode test) —
+  ok     QT · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : le dessin du pilote, 390 × 219 px sur un écran de 390 px, 2 élément(s) en gris (opacité 0.45) — au pilote de l’ordinateur : 2 ; le rendu de la classe retiré ; les gestes sur la diapo : none
+  ok     QT · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":390,"vw":390,"gris":2,"pilote":2}
+      ▶ à la télécommande : 1 en gris (8 ms)
+  ok     QT · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":2,"apres":1}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     QT · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ok     QT · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque bouton son infobulle — {"c0":{"l":"32 pt","moins":{"dis":false,"title":"A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt"},"plus":{"dis":false,"title":"A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt"},"haut":290,"basDiapo":281},"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 38 pt » en 54 ms, le tableau en 1 ms, la télécommande dit « 38 pt » ; A− : le pilote en 50 ms, le tableau en 1 ms, la télécommande « 32 pt »
+  ok     QT · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":54,"tt1":1,"tp2":50,"tt2":1}
+      l’ordinateur reprend la main : A− A+ grisés (« Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « … ») ; un appui sur A+ grisé : la taille inchangée
+  ok     QT · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":true}
+  ok     QT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     QT · aucune écriture refusée par le faux hub (0) — []
+  ok     QT · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+20 vérifications, 0 échec(s)

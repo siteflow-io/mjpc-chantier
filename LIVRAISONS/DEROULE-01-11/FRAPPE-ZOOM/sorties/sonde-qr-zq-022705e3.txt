@@ -1,0 +1,59 @@
+C16 · sonde du QR de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H T · 2026-11-03 07:01 UTC · md5 022705e3dd582f4ca8d484e0129532d7 · images de 3e : un dossier local
+
+— H · le QR de la télécommande (vraie heure), 20 scans par cas —
+      H·lent-ferme : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 9847 ms, le plus long 10164 ms
+  ok     H·lent-ferme · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     H·lent-ferme · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·lent-ferme · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 110 écritures) — []
+  ok     H·lent-ferme · aucune écriture refusée par le faux hub (0) — []
+      H·montre15 : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2084 ms, le plus long 2334 ms
+  ok     H·montre15 · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     H·montre15 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·montre15 · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 95 écritures) — []
+  ok     H·montre15 · aucune écriture refusée par le faux hub (0) — []
+      H·montre20 : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2124 ms, le plus long 2337 ms
+  ok     H·montre20 · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     H·montre20 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·montre20 · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 106 écritures) — []
+  ok     H·montre20 · aucune écriture refusée par le faux hub (0) — []
+      H·rate : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2925 ms, le plus long 3092 ms
+  ok     H·rate · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     H·rate · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·rate · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 98 écritures) — []
+  ok     H·rate · aucune écriture refusée par le faux hub (0) — []
+      (la coupure : 12 lecture(s) du téléphone échouée(s))
+      H·coupe : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 9177 ms, le plus long 9929 ms
+  ok     H·coupe · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     H·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·coupe · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 128 écritures) — []
+  ok     H·coupe · aucune écriture refusée par le faux hub (0) — []
+
+— T · le QR de la télécommande (mode test), 20 scans par cas —
+      T·lent-ferme : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 9906 ms, le plus long 10057 ms
+  ok     T·lent-ferme · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     T·lent-ferme · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·lent-ferme · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·lent-ferme · aucune écriture refusée par le faux hub (0) — []
+      T·montre15 : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2087 ms, le plus long 2247 ms
+  ok     T·montre15 · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     T·montre15 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·montre15 · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·montre15 · aucune écriture refusée par le faux hub (0) — []
+      T·montre20 : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2089 ms, le plus long 2212 ms
+  ok     T·montre20 · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     T·montre20 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·montre20 · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·montre20 · aucune écriture refusée par le faux hub (0) — []
+      T·rate : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 2829 ms, le plus long 2962 ms
+  ok     T·rate · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     T·rate · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·rate · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·rate · aucune écriture refusée par le faux hub (0) — []
+      (la coupure : 12 lecture(s) du téléphone échouée(s))
+      T·coupe : pilote 20 sur 20 — du scan à la télécommande sur la séance : médiane 9237 ms, le plus long 9325 ms
+  ok     T·coupe · chaque scan ouvre la télécommande sur la séance (20 / 20) — {"pilote":20}
+  ok     T·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·coupe · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·coupe · aucune écriture refusée par le faux hub (0) — []
+
+40 vérifications, 0 échec(s)

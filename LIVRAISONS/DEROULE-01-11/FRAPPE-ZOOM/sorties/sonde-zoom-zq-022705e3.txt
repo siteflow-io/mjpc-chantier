@@ -1,0 +1,61 @@
+C16 · sonde du zoom de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H T A · 2026-11-03 07:26 UTC · md5 022705e3dd582f4ca8d484e0129532d7 · images de 3e : un dossier local
+
+— H · le zoom de la télécommande (vraie heure) —
+  ok     H · l’heure lancée, sur une diapo de texte toute dévoilée ; la fenêtre du tableau ouverte ; la télécommande (QR) sur la séance — {"lance":true,"va":true,"tl":true,"F":true}
+      au départ : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+      A+ au téléphone (l’appui 197 ms) : pilote S.taille 2, curseur 2, « 38 pt → 33 » · fenêtre 2 (41.38 px) · distant 2 (41.38 px) · téléphone « 38 pt »
+         depuis l’appui : pilote S.taille 249 ms, curseur 249 ms, fenêtre 495 ms, distant 191 ms, téléphone 146 ms
+  ok     H · A+ au téléphone : le curseur « texte au tableau » du pilote d’un cran plus haut (sa valeur et son étiquette), la fenêtre du tableau et le tableau distant plus grands, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":249,"pilV":249,"fen":495,"dist":191,"tc":146,"noeud":2018}
+      A− au téléphone (l’appui 242 ms) : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+         depuis l’appui : pilote S.taille 149 ms, curseur 149 ms, fenêtre 279 ms, distant 57 ms, téléphone 133 ms
+  ok     H · A− au téléphone : le curseur d’un cran plus bas, la fenêtre et le distant plus petits, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":149,"pilV":149,"fen":279,"dist":57,"tc":133,"noeud":2052}
+      le curseur du pilote à la souris sur le cran 3 : pilote S.taille 3, curseur 3, « 44 pt → 33 » · fenêtre 3 (41.44 px) · distant 3 (41.44 px) · téléphone « 44 pt »
+         depuis le clic : pilote 157 ms, fenêtre 158 ms, distant 275 ms, téléphone 342 ms
+  ok     H · le curseur bougé au pilote : la fenêtre du tableau montre le cran en moins de 0,5 s ; le distant et le téléphone, le même cran en moins d’1 s (ce délai, un geste du pilote vers les autres appareils, est celui de ⑯ : mesuré, dit) — {"pilT":157,"pilV":157,"fen":158,"dist":275,"tc":342,"noeud":1923}
+      le plus petit : pilote S.taille 0, curseur 0, « 26 pt » · fenêtre 0 (32.76 px) · distant 0 (32.76 px) · téléphone « 26 pt · le plus petit » · A− grisé, écrit à l’écran : « A− 26 pt · le plus petit A+ »
+  ok     H · le plus petit cran : A− grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 26 pt · le plus petit A+","moins":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus petit des cinq crans"}}
+      le plus grand : pilote S.taille 4, curseur 4, « 52 pt → 33 » · fenêtre 4 (41.02 px) · distant 4 (41.02 px) · téléphone « 52 pt · le plus grand » · A+ grisé, écrit à l’écran : « A− 52 pt · le plus grand A+ »
+  ok     H · le plus grand cran : A+ grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 52 pt · le plus grand A+","plus":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus grand des cinq crans"}}
+  ok     H · qui a la main : l’ordinateur la reprend, A− A+ grisés au téléphone, un appui n’y fait rien — {"g":true,"avant":4,"apres":4}
+  ok     H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 107 écritures) — []
+  ok     H · aucune écriture refusée par le faux hub (0) — []
+  ok     H · le pilote, la fenêtre du tableau, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+  ok     H · aucune écriture refusée par le faux hub (0) — []
+
+— T · le zoom de la télécommande (mode test) —
+  ok     T · l’heure lancée, sur une diapo de texte toute dévoilée ; la fenêtre du tableau ouverte ; la télécommande (QR) sur la séance — {"lance":true,"va":true,"tl":true,"F":true}
+      au départ : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+      A+ au téléphone (l’appui 168 ms) : pilote S.taille 2, curseur 2, « 38 pt → 33 » · fenêtre 2 (41.38 px) · distant 2 (41.38 px) · téléphone « 38 pt »
+         depuis l’appui : pilote S.taille 249 ms, curseur 249 ms, fenêtre 251 ms, distant 128 ms, téléphone 136 ms
+  ok     T · A+ au téléphone : le curseur « texte au tableau » du pilote d’un cran plus haut (sa valeur et son étiquette), la fenêtre du tableau et le tableau distant plus grands, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":249,"pilV":249,"fen":251,"dist":128,"tc":136,"noeud":1974}
+      A− au téléphone (l’appui 106 ms) : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+         depuis l’appui : pilote S.taille 139 ms, curseur 139 ms, fenêtre 156 ms, distant 75 ms, téléphone 66 ms
+  ok     T · A− au téléphone : le curseur d’un cran plus bas, la fenêtre et le distant plus petits, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":139,"pilV":139,"fen":156,"dist":75,"tc":66,"noeud":1912}
+      le curseur du pilote à la souris sur le cran 3 : pilote S.taille 3, curseur 3, « 44 pt → 33 » · fenêtre 3 (41.44 px) · distant 3 (41.44 px) · téléphone « 44 pt »
+         depuis le clic : pilote 153 ms, fenêtre 154 ms, distant 279 ms, téléphone 312 ms
+  ok     T · le curseur bougé au pilote : la fenêtre du tableau montre le cran en moins de 0,5 s ; le distant et le téléphone, le même cran en moins d’1 s (ce délai, un geste du pilote vers les autres appareils, est celui de ⑯ : mesuré, dit) — {"pilT":153,"pilV":153,"fen":154,"dist":279,"tc":312,"noeud":1913}
+      le plus petit : pilote S.taille 0, curseur 0, « 26 pt » · fenêtre 0 (32.76 px) · distant 0 (32.76 px) · téléphone « 26 pt · le plus petit » · A− grisé, écrit à l’écran : « A− 26 pt · le plus petit A+ »
+  ok     T · le plus petit cran : A− grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 26 pt · le plus petit A+","moins":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus petit des cinq crans"}}
+      le plus grand : pilote S.taille 4, curseur 4, « 52 pt → 33 » · fenêtre 4 (41.02 px) · distant 4 (41.02 px) · téléphone « 52 pt · le plus grand » · A+ grisé, écrit à l’écran : « A− 52 pt · le plus grand A+ »
+  ok     T · le plus grand cran : A+ grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 52 pt · le plus grand A+","plus":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus grand des cinq crans"}}
+  ok     T · qui a la main : l’ordinateur la reprend, A− A+ grisés au téléphone, un appui n’y fait rien — {"g":true,"avant":4,"apres":4}
+  ok     T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · le pilote, la fenêtre du tableau, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+
+— A · le zoom de la télécommande (vraie heure, le pilote sur une version d’avant : 8b2310e7) —
+  mesure vert   A · l’heure lancée, sur une diapo de texte toute dévoilée ; la fenêtre du tableau ouverte ; la télécommande (QR) sur la séance — {"lance":true,"va":true,"tl":true,"F":true}
+      au départ : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+      A+ au téléphone (l’appui 166 ms) : pilote S.taille 2, curseur 1, « 38 pt → 33 » · fenêtre 2 (41.38 px) · distant 2 (41.38 px) · téléphone « 38 pt »
+         depuis l’appui : pilote S.taille 232 ms, curseur ∞, fenêtre 232 ms, distant 113 ms, téléphone 72 ms
+  mesure ROUGE  A · A+ au téléphone : le curseur « texte au tableau » du pilote d’un cran plus haut (sa valeur et son étiquette), la fenêtre du tableau et le tableau distant plus grands, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":232,"pilV":null,"fen":232,"dist":113,"tc":72,"noeud":1971}
+      A− au téléphone (l’appui 116 ms) : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+         depuis l’appui : pilote S.taille 101 ms, curseur 101 ms, fenêtre 110 ms, distant 40 ms, téléphone 58 ms
+  mesure vert   A · A− au téléphone : le curseur d’un cran plus bas, la fenêtre et le distant plus petits, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":101,"pilV":101,"fen":110,"dist":40,"tc":58,"noeud":1931}
+  mesure vert   A · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 73 écritures) — []
+  mesure vert   A · aucune écriture refusée par le faux hub (0) — []
+  mesure vert   A · le pilote, la fenêtre du tableau, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+  mesure vert   A · aucune écriture refusée par le faux hub (0) — []
+
+22 vérifications, 0 échec(s) · mesures 7, ROUGES 1

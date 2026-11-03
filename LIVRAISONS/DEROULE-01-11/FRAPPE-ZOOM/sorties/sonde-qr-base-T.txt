@@ -1,0 +1,31 @@
+C16 · sonde du QR de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T · 2026-11-03 07:00 UTC · md5 8757f0c849391392d95d7efe01d97bd4 · images de 3e : un dossier local
+
+— T · le QR de la télécommande (mode test), 3 scans par cas —
+      T·lent-ferme : plus valable 3 sur 3 — du scan à la télécommande sur la séance : médiane 7618 ms, le plus long 7635 ms
+  ÉCHEC  T·lent-ferme · chaque scan ouvre la télécommande sur la séance (0 / 3) — {"plus valable":3}
+  ok     T·lent-ferme · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·lent-ferme · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·lent-ferme · aucune écriture refusée par le faux hub (0) — []
+      T·montre15 : plus valable 3 sur 3 — du scan à la télécommande sur la séance : médiane 1339 ms, le plus long 1390 ms
+  ÉCHEC  T·montre15 · chaque scan ouvre la télécommande sur la séance (0 / 3) — {"plus valable":3}
+  ok     T·montre15 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·montre15 · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·montre15 · aucune écriture refusée par le faux hub (0) — []
+      T·montre20 : plus valable 3 sur 3 — du scan à la télécommande sur la séance : médiane 1339 ms, le plus long 1409 ms
+  ÉCHEC  T·montre20 · chaque scan ouvre la télécommande sur la séance (0 / 3) — {"plus valable":3}
+  ok     T·montre20 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·montre20 · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·montre20 · aucune écriture refusée par le faux hub (0) — []
+      T·rate : plus valable 3 sur 3 — du scan à la télécommande sur la séance : médiane 1335 ms, le plus long 1375 ms
+  ÉCHEC  T·rate · chaque scan ouvre la télécommande sur la séance (0 / 3) — {"plus valable":3}
+  ok     T·rate · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·rate · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·rate · aucune écriture refusée par le faux hub (0) — []
+      (la coupure : 9 lecture(s) du téléphone échouée(s))
+      T·coupe : plus valable 3 sur 3 — du scan à la télécommande sur la séance : médiane 1361 ms, le plus long 1362 ms
+  ÉCHEC  T·coupe · chaque scan ouvre la télécommande sur la séance (0 / 3) — {"plus valable":3}
+  ok     T·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·coupe · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·coupe · aucune écriture refusée par le faux hub (0) — []
+
+20 vérifications, 5 échec(s)

@@ -1,0 +1,34 @@
+C16 · sonde du zoom de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T · 2026-11-03 06:39 UTC · md5 4aa7a4d97065b032b73db3f41024bb73 · images de 3e : un dossier local
+
+— T · le zoom de la télécommande (mode test) —
+  ok     T · l’heure lancée, sur une diapo de texte toute dévoilée ; la fenêtre du tableau ouverte ; la télécommande (QR) sur la séance — {"lance":true,"va":true,"tl":true,"F":true}
+      au départ : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+         (profil) pilote : rendre 230 ms/40 (max 39) · volet 203 ms/1 (max 203) · miniatures 111 ms/1 (max 111) · dr_sesAppliquer 95 ms/1 (max 95) · p85hPages 88 ms/13 (max 20) · dr_tout 74 ms/1 (max 74) · participation 27 ms/2 (max 14) · ouOnEnEst 6 ms/1 (max 6) · vueDroite 4 ms/1 (max 4) · pousser 1 ms/1 (max 1) · dr_sesEnvoyerMaintenant 0 ms/2 (max 0) · p8RendreNotes 0 ms/1 (max 0)
+         (profil) fenêtre : rendre 16 ms/1 (max 16) · dr_rendreMur 16 ms/1 (max 16)
+         (profil) téléphone : volet 579 ms/1 (max 579) · rendre 572 ms/44 (max 111) · p85hPages 379 ms/19 (max 111) · miniatures 198 ms/1 (max 198) · dr_tout 54 ms/1 (max 54) · participation 21 ms/1 (max 21) · dr_sesEnvoyerMaintenant 10 ms/2 (max 9) · dr_tcMaj 9 ms/2 (max 5) · vueDroite 8 ms/1 (max 8) · ouOnEnEst 7 ms/1 (max 7) · pousser 0 ms/1 (max 0) · p8RendreNotes 0 ms/1 (max 0)
+      A+ au téléphone (l’appui 278 ms) : pilote S.taille 2, curseur 2, « 38 pt → 33 » · fenêtre 2 (41.38 px) · distant 2 (41.38 px) · téléphone « 38 pt »
+         depuis l’appui : pilote S.taille 220 ms, curseur 220 ms, fenêtre 224 ms, distant 141 ms, téléphone 263 ms
+  ok     T · A+ au téléphone : le curseur « texte au tableau » du pilote d’un cran plus haut (sa valeur et son étiquette), la fenêtre du tableau et le tableau distant plus grands, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":220,"pilV":220,"fen":224,"dist":141,"tc":263,"noeud":2107}
+         (profil) pilote : volet 115 ms/1 (max 115) · rendre 106 ms/28 (max 16) · miniatures 104 ms/1 (max 104) · dr_sesAppliquer 80 ms/1 (max 80) · dr_tout 49 ms/1 (max 49) · participation 44 ms/2 (max 27) · ouOnEnEst 5 ms/1 (max 5) · vueDroite 4 ms/1 (max 4) · p85hPages 3 ms/13 (max 1) · pousser 1 ms/1 (max 1) · dr_sesEnvoyerMaintenant 0 ms/1 (max 0) · p8RendreNotes 0 ms/1 (max 0)
+         (profil) fenêtre : rendre 4 ms/1 (max 4) · dr_rendreMur 4 ms/1 (max 4)
+         (profil) téléphone : volet 121 ms/1 (max 121) · miniatures 117 ms/1 (max 117) · rendre 107 ms/32 (max 11) · dr_tout 28 ms/1 (max 28) · participation 18 ms/1 (max 18) · dr_sesEnvoyerMaintenant 4 ms/1 (max 4) · vueDroite 3 ms/1 (max 3) · ouOnEnEst 3 ms/1 (max 3) · dr_tcMaj 3 ms/2 (max 2) · p85hPages 3 ms/19 (max 1) · pousser 1 ms/1 (max 1) · p8RendreNotes 0 ms/1 (max 0)
+      A− au téléphone (l’appui 126 ms) : pilote S.taille 1, curseur 1, « 32 pt » · fenêtre 1 (40.32 px) · distant 1 (40.32 px) · téléphone « 32 pt »
+         depuis l’appui : pilote S.taille 161 ms, curseur 161 ms, fenêtre 161 ms, distant 63 ms, téléphone 66 ms
+  ok     T · A− au téléphone : le curseur d’un cran plus bas, la fenêtre et le distant plus petits, le téléphone dit le même cran — chacun en moins de 0,5 s — {"pilT":161,"pilV":161,"fen":161,"dist":63,"tc":66,"noeud":1944}
+         (profil) pilote : rendre 453 ms/68 (max 42) · volet 415 ms/2 (max 250) · miniatures 293 ms/2 (max 150) · dr_tout 163 ms/2 (max 95) · dr_sesAppliquer 135 ms/1 (max 135) · p85hPages 105 ms/26 (max 28) · participation 95 ms/3 (max 45) · vueDroite 17 ms/2 (max 11) · ouOnEnEst 9 ms/2 (max 5) · dr_sesEnvoyerMaintenant 3 ms/2 (max 2) · pousser 2 ms/2 (max 1) · p8RendreNotes 0 ms/2 (max 0)
+         (profil) fenêtre : rendre 86 ms/2 (max 64) · dr_rendreMur 86 ms/2 (max 64)
+         (profil) téléphone : rendre 767 ms/44 (max 200) · volet 737 ms/1 (max 737) · p85hPages 554 ms/19 (max 200) · miniatures 182 ms/1 (max 182) · dr_sesAppliquer 168 ms/1 (max 168) · dr_tout 140 ms/1 (max 140) · participation 74 ms/2 (max 53) · ouOnEnEst 14 ms/1 (max 14) · vueDroite 10 ms/1 (max 10) · dr_tcMaj 6 ms/1 (max 6) · dr_sesEnvoyerMaintenant 5 ms/2 (max 5) · p8RendreNotes 3 ms/1 (max 3) · pousser 1 ms/1 (max 1)
+      le curseur du pilote à la souris sur le cran 3 : pilote S.taille 3, curseur 3, « 44 pt → 33 » · fenêtre 3 (41.44 px) · distant 3 (41.44 px) · téléphone « 44 pt »
+         depuis le clic : pilote 145 ms, fenêtre 145 ms, distant 277 ms, téléphone 1119 ms
+  ÉCHEC  T · le curseur bougé au pilote : la fenêtre, le distant et le téléphone montrent le même cran, en moins de 0,5 s — {"pilT":145,"pilV":145,"fen":145,"dist":277,"tc":1119,"noeud":1931}
+      le plus petit : pilote S.taille 0, curseur 0, « 26 pt » · fenêtre 0 (32.76 px) · distant 0 (32.76 px) · téléphone « 26 pt · le plus petit » · A− grisé, écrit à l’écran : « A− 26 pt · le plus petit A+ »
+  ok     T · le plus petit cran : A− grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 26 pt · le plus petit A+","moins":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus petit des cinq crans"}}
+      le plus grand : pilote S.taille 4, curseur 4, « 52 pt → 33 » · fenêtre 4 (41.02 px) · distant 4 (41.02 px) · téléphone « 52 pt · le plus grand » · A+ grisé, écrit à l’écran : « A− 52 pt · le plus grand A+ »
+  ok     T · le plus grand cran : A+ grisé, sa raison écrite à l’écran du téléphone ; un appui n’y fait rien — {"ecrit":"A− 52 pt · le plus grand A+","plus":{"dis":true,"op":"0.4","title":"Le texte au tableau est déjà au plus grand des cinq crans"}}
+  ok     T · qui a la main : l’ordinateur la reprend, A− A+ grisés au téléphone, un appui n’y fait rien — {"g":true,"avant":4,"apres":4}
+  ok     T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · le pilote, la fenêtre du tableau, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+
+11 vérifications, 1 échec(s)

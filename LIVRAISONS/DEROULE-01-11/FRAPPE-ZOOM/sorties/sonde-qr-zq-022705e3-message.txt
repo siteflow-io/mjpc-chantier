@@ -1,0 +1,23 @@
+C16 · sonde du QR de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H T · 2026-11-03 07:24 UTC · md5 022705e3dd582f4ca8d484e0129532d7 · images de 3e : un dossier local
+
+— H · le QR de la télécommande (vraie heure), 5 scans par cas —
+      (le téléphone, pendant la panne : « Le téléphone n’arrive pas à joindre le site : le réseau ne répond pas. La télécommande réessaie d’elle-même… »)
+      (la coupure : 12 lecture(s) du téléphone échouée(s))
+  ok     H·coupe · pendant la panne, le téléphone dit en clair que le réseau ne répond pas (5 / 5), jamais « plus valable » — 5
+      H·coupe : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 9078 ms, le plus long 9180 ms
+  ok     H·coupe · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·coupe · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 50 écritures) — []
+  ok     H·coupe · aucune écriture refusée par le faux hub (0) — []
+
+— T · le QR de la télécommande (mode test), 5 scans par cas —
+      (le téléphone, pendant la panne : « Le téléphone n’arrive pas à joindre le site : le réseau ne répond pas. La télécommande réessaie d’elle-même… »)
+      (la coupure : 12 lecture(s) du téléphone échouée(s))
+  ok     T·coupe · pendant la panne, le téléphone dit en clair que le réseau ne répond pas (5 / 5), jamais « plus valable » — 5
+      T·coupe : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 9204 ms, le plus long 9260 ms
+  ok     T·coupe · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     T·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     T·coupe · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     T·coupe · aucune écriture refusée par le faux hub (0) — []
+
+10 vérifications, 0 échec(s)

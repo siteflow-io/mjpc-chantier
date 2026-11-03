@@ -254,6 +254,7 @@ function dr_sesAppliquer(v){
   DR_SES.appl = true;
   try {
     if (Array.isArray(v.ecrans) && v.cop !== dr_sesCopie()) { const copie = dr_sesClone(v.ecrans); dr_copieDuHub(copie); dr_adopterIdentites(copie); const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} DR_SES.copieEnv = dr_sesCopie(); }
+    const taille0 = S.taille;   /* C16 (le zoom) : un cran changé ailleurs prend ici le chemin du curseur « texte au tableau » (dr-socle.js, `$('taille').oninput`) */
     const garde = {}; DR_SES_LOCAL.forEach(k => { if (k in S) garde[k] = S[k]; }); Object.keys(S).forEach(k => { if (k.charAt(0) === '_') garde[k] = S[k]; });
     const S1 = dr_copieEtatDuHub(dr_etatRempli(dr_duHub(p.S || {})), seance().ecrans);
     DR_SES_LOCAL.forEach(k => { delete S1[k]; }); Object.keys(S1).forEach(k => { if (k.charAt(0) === '_') delete S1[k]; });
@@ -262,6 +263,7 @@ function dr_sesAppliquer(v){
     Object.keys(garde).forEach(k => { S[k] = garde[k]; });
     const eid = p.S && p.S.eidCourant; if (eid != null) { const i = indexDe(eid); if (i >= 0) S.di = i; }
     S.ecoule = Math.max(+garde.ecoule || 0, S.debutReel ? Math.round((Date.now() - S.debutReel) / 1000) : 0);
+    if (+S.taille !== +taille0) { S.page = null; const tr = document.getElementById('taille'); if (tr) tr.value = S.taille; }   /* comme le curseur bougé ici : la page repart de la première, le curseur se pose sur le cran, puis le dessin (tout, ci-dessous) */
     try { DR_CL.minut = p.minut ? Object.assign({ bips: {} }, p.minut) : null; dr_minuteurAfficher(); dr_minuteurBoucle(); } catch (e) {}
     try { document.body.classList.toggle('gel', !!S.gel); const bg = document.getElementById('bgel'); if (bg) bg.classList.toggle('gelon', !!S.gel); } catch (e) {}
     try { tout(); } catch (e) {}
@@ -282,6 +284,7 @@ function dr_sesAppliquer(v){
     else if (!dr_sesJeTiens()) DR_SES.contenu = true;   /* ce qu'ici a gardé, déjà parti ou fait sans geste : il part sans prendre la main (celui qui l'a le fusionne, et sa scène le montre) */
     DR_SES.envoye = ''; dr_sesEnvoyer(); }
   else if (tiens) { try { dr_sesEmettreScene(); } catch (e) {} }
+  if (window.DR_TC && typeof dr_tcMaj === 'function') setTimeout(dr_tcMaj, 0);   /* C16 (le zoom) : la télécommande montre aussitôt ce qui a changé ailleurs (le cran du curseur du pilote…) — avant, à son tour de 400 ms (mesuré : 800 à 1065 ms) */
 }
 /* l'heure (ou l'essai) close sur un autre appareil : ce pilote le dit et revient à l'accueil ; rien n'est réécrit (l'autre a tout écrit) */
 function dr_sesClosAilleurs(v){
@@ -520,9 +523,17 @@ function dr_tcQrOuvrir(){
   document.body.appendChild(d);
   DR_TC_QR = { ch, test, url, h: dr_sesEcouter(ch + '/scan', v => { if (v) dr_tcQrFermer(true); }, 700) };
 }
+/* C16 (le QR, Paul 03/11 07:37 : « Le QR code ne semble pas bien tenir ... 5 fois sur 6 j'ai ça » — « Ce QR code n'est plus valable », Chrome sur Android, en 4G).
+   Mesuré (sonde-qr.mjs) : la fenêtre du QR fermée pendant que le téléphone ouvrait la page (en 4G, la page de 3 Mo met plusieurs secondes ; la fenêtre ne se ferme
+   d'elle-même qu'une fois la page ouverte et le scan écrit) effaçait le nonce aussitôt : le téléphone lisait ensuite « plus valable ». Fermée sans scan, elle garde
+   donc le nonce le temps qu'un téléphone lent finisse d'ouvrir la page (2 minutes, comptées par cet ordinateur seul : aucune montre comparée) ; un scan arrivé
+   entre-temps le garde pour de bon. */
+const DR_TC_GRACE = 120000;
 function dr_tcQrFermer(scanne){
-  const q = DR_TC_QR; DR_TC_QR = null; const d = document.getElementById('dr-tc-qr'); if (d) d.remove(); if (!q) return; dr_sesTaire(q.h);
-  if (!scanne) dr_tcEcrire(q.ch, null, q.test);   /* fermée sans scan : le nonce ne sert plus ; scanné, il reste (le téléphone l'a gardé dans son onglet) */
+  const q = DR_TC_QR; DR_TC_QR = null; const d = document.getElementById('dr-tc-qr'); if (d) d.remove(); if (!q) return;
+  if (scanne) { dr_sesTaire(q.h); return; }   /* scanné : le nonce reste (le téléphone l'a gardé dans son onglet ; un second scan du même QR marche aussi) */
+  dr_sesTaire(q.h); let fini = false; const h = dr_sesEcouter(q.ch + '/scan', v => { if (v && !fini) { fini = true; clearTimeout(T); dr_sesTaire(h); } }, 2000);
+  const T = setTimeout(() => { if (fini) return; fini = true; dr_sesTaire(h); dr_tcEcrire(q.ch, null, q.test); }, DR_TC_GRACE);   /* fermée sans scan : passé ce temps, ce QR ne sert plus */
   /* scanné : la fenêtre se ferme, rien d'autre ne s'ouvre devant le pilote (une boîte à fermer, en classe, gênerait) */
 }
 if (!(typeof dr_estTableau === 'function' && dr_estTableau())) setInterval(() => { try { dr_tcBouton(); } catch (e) {} }, 400);
@@ -573,9 +584,14 @@ function dr_tcAccueil(h){ DR_TC.haut.style.display = 'none'; DR_TC.bas.style.dis
 function dr_tcDemarrer(){
   dr_tcPoser(); dr_tcAccueil('<div class="rien">📱 La télécommande s’ouvre…</div>');
   let garde = null; try { garde = JSON.parse(sessionStorage.getItem('mjpc-tc') || 'null'); } catch (e) {}
-  const ch = dr_tcChemin(DR_TC.nonce, DR_TC.test);
-  dr_sesLireHub(ch, rec => {
-    const ok = rec && rec.ts && (Date.now() - rec.ts) < 15 * 60000; const deja = garde && garde.nonce === DR_TC.nonce && garde.rec;
+  const ch = dr_tcChemin(DR_TC.nonce, DR_TC.test); let essai = 0;
+  /* C16 (le QR) : le QR vaut tant que son nonce existe au hub — aucune montre d'appareil (avant : la montre du téléphone moins celle de l'ordinateur, sous 15 min :
+     un ordinateur en retard de plus de 15 minutes rendait chaque QR « plus valable ») ; une lecture qui échoue (le réseau du téléphone) n'est pas un QR périmé :
+     elle se réessaie, et le téléphone le dit en clair (avant : « plus valable » dès la première lecture ratée) */
+  const lire = () => dr_sesLireHub(ch, rec => {
+    const deja = garde && garde.nonce === DR_TC.nonce && garde.rec;
+    if (rec === undefined && !deja) { essai++; dr_tcReseau(essai); clearTimeout(DR_TC.lireT); DR_TC.lireT = setTimeout(lire, Math.min(4000, 700 * essai)); return; }
+    const ok = !!(rec && typeof rec === 'object');
     if (!ok && !deja) { DR_TC.etat = 'perime'; dr_tcAccueil('<div class="rien">Ce QR code n’est plus valable.<br>Sur l’ordinateur, clique 📱 dans la barre du pilote : un nouveau code paraît.</div>'); return; }
     DR_TC.rec = ok ? rec : garde.rec; try { sessionStorage.setItem('mjpc-tc', JSON.stringify({ nonce: DR_TC.nonce, rec: DR_TC.rec })); } catch (e) {}
     try { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); } catch (e) {}   /* le QR vaut la session du professeur, pour cette page */
@@ -584,13 +600,17 @@ function dr_tcDemarrer(){
     dr_tcRejoindre();
     clearInterval(DR_TC.T); DR_TC.T = setInterval(dr_tcMaj, 400);
   });
+  lire();
 }
+/* C16 (le QR) : une lecture du téléphone qui échoue (le réseau) se réessaie et le dit ; elle ne passe jamais pour « aucune séance » ni « plus valable » */
+function dr_tcReseau(n){ DR_TC.etat = 'reseau'; dr_tcAccueil('<div class="rien">Le téléphone n’arrive pas à joindre le site : le réseau ne répond pas.<br>La télécommande réessaie d’elle-même' + (n > 1 ? ' (essai ' + n + ')' : '') + '…</div>'); }
+function dr_tcLire(ch, cb, n){ n = n || 0; dr_sesLireHub(ch, v => { if (v === undefined) { dr_tcReseau(n + 1); clearTimeout(DR_TC.lireT); DR_TC.lireT = setTimeout(() => dr_tcLire(ch, cb, n + 1), Math.min(4000, 700 * (n + 1))); return; } if (DR_TC.etat === 'reseau') DR_TC.etat = 'ouvre'; cb(v); }); }
 function dr_tcRejoindre(){
   if (DR_SES.ici || !DR_TC.rec) return; DR_TC.etat = 'ouvre'; const s = DR_TC.rec.sorte;
   const rien = () => { DR_TC.etat = 'rien'; dr_tcMaj(); };
-  if (s === 'essai') { dr_sesLireHub(DR_TT.chemin + '/pointeur', p => { if (dr_sesFrais(p) && p.quoi === 'heure') dr_sesReprendreEssai(p, ok => { if (!ok) rien(); }); else rien(); }); return; }
-  if (s === 'repetition') { dr_sesLireHub((DR_TC.test ? DR_TT.chemin : DR_REP.chemin) + '/pointeur', p => { if (dr_sesFrais(p) && (!DR_TC.test || p.quoi === 'repetition')) dr_sesReprendreRepetition(Object.assign({}, p, { test: DR_TC.test })); else rien(); }); return; }
-  dr_sesLireHub('/site/cours_actif', c => { if (!dr_sesFrais(c)) { rien(); return; } _drHeureCloseAu(c, close => { if (close) { rien(); return; } dr_reprendreCours(c); }); });
+  if (s === 'essai') { dr_tcLire(DR_TT.chemin + '/pointeur', p => { if (dr_sesFrais(p) && p.quoi === 'heure') dr_sesReprendreEssai(p, ok => { if (!ok) rien(); }); else rien(); }); return; }
+  if (s === 'repetition') { dr_tcLire((DR_TC.test ? DR_TT.chemin : DR_REP.chemin) + '/pointeur', p => { if (dr_sesFrais(p) && (!DR_TC.test || p.quoi === 'repetition')) dr_sesReprendreRepetition(Object.assign({}, p, { test: DR_TC.test })); else rien(); }); return; }
+  dr_tcLire('/site/cours_actif', c => { if (!dr_sesFrais(c)) { rien(); return; } _drHeureCloseAu(c, close => { if (close) { rien(); return; } dr_reprendreCours(c); }); });
 }
 function dr_tcClos(v){ DR_TC.etat = 'clos'; DR_TC.murCle = ''; dr_tcMaj(); }
 /* le dessin : seulement ce qui a changé (§12.56 (1)) ; pendant un appui, rien ne bouge */
@@ -604,7 +624,7 @@ function dr_tcMaj(){
   if (!ici || !(S.mur || S.gel)) {
     dr_tcAccueil(DR_TC.etat === 'clos' ? '<div class="rien">La séance est close.<br>La télécommande s’arrête ici.</div>'
       : DR_TC.etat === 'rien' ? '<div class="rien">Aucune séance en cours.<br>Lance l’heure sur l’ordinateur de la classe,<br>puis scanne de nouveau son QR code.</div><div class="band"><button data-a="rejoindre" title="Cherche de nouveau la séance qui joue">Chercher la séance</button></div>'
-      : DR_TC.etat === 'perime' ? (DR_TC.acc.__h || '') : '<div class="rien">📱 La séance s’ouvre…</div>'); return; }
+      : (DR_TC.etat === 'perime' || DR_TC.etat === 'reseau') ? (DR_TC.acc.__h || '') : '<div class="rien">📱 La séance s’ouvre…</div>'); return; }
   DR_TC.acc.style.display = 'none'; DR_TC.haut.style.display = ''; DR_TC.bas.style.display = ''; DR_TC.tab.style.display = '';
   const vu = S.gel || S.mur; const E = seance().ecrans; const e = E[vu.di] || {};
   let et = ''; try { const x = dr_etiquetteDe(vu); et = x == null ? '' : (typeof x === 'string' ? x : (x.t || x.txt || '')); } catch (x) {} const titre = et || e.act || '';
@@ -627,9 +647,9 @@ function dr_tcMaj(){
   const gel = !!S.gel; const tient = dr_sesJeTiens(); const nAbs = typeof dr_apAbsentDeLHeure === 'function' ? L.filter(n => dr_apAbsentDeLHeure(n, S.heure)).length : 0;
   const desact = tient ? '' : '<div class="desact" style="text-align:center;color:#8fc4ea;font-size:17px">Télécommande désactivée : l’ordinateur a repris la main</div>'
     + '<div class="rang"><button class="gros or" data-a="main" style="height:58px;font-size:21px" title="La télécommande reprend la main, là où l’ordinateur en est, la réponse qu’il écrivait comprise : ce que tu fais ici, la classe le voit au tableau">Reprendre avec la télécommande</button></div>';
-  const tv = Math.max(0, Math.min(4, +S.taille || 0)); const tlib = ((document.getElementById('taille-l') || {}).textContent || '').trim();
+  const tv = Math.max(0, Math.min(4, +S.taille || 0)); const tlib = TAILLES[tv].l + (tv <= 0 ? ' · le plus petit' : tv >= 4 ? ' · le plus grand' : '');   /* C16 (le zoom) : le cran du curseur du pilote (S.taille, le même partout) ; la borne atteinte, écrite à l'écran (une infobulle ne se voit pas au doigt). Avant : l'étiquette du dessin du téléphone, dont la réduction d'une diapo pleine se calcule à la taille du téléphone (mesuré : « 44 pt → 32 » au téléphone, « 44 pt → 33 » au pilote) */
   const taille = '<div class="rang taille"><button class="moyen" data-a="t-moins"' + (tv <= 0 ? ' data-borne="1"' : '') + ' title="' + (tv <= 0 ? 'Le texte au tableau est déjà au plus petit des cinq crans' : 'A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt') + '">A−</button>'
-    + '<span class="tl" title="Texte au tableau : la taille des lettres que voit la classe (l’étiquette du pilote)">' + dr_tcEsc(tlib) + '</span>'
+    + '<span class="tl" title="Texte au tableau : le cran du curseur « texte au tableau » du pilote (cinq crans, de 26 à 52 pt). Une diapo pleine ne grossit plus : sa police descend avant de passer en pages, le pilote le dit à côté de son curseur">' + dr_tcEsc(tlib) + '</span>'
     + '<button class="moyen" data-a="t-plus"' + (tv >= 4 ? ' data-borne="1"' : '') + ' title="' + (tv >= 4 ? 'Le texte au tableau est déjà au plus grand des cinq crans' : 'A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt') + '">A+</button></div>';
   const h = taille + desact + '<div class="voit"><span>' + (tot != null ? nd + ' / ' + tot + ' dévoilés' : nd + ' dévoilé' + (nd > 1 ? 's' : '')) + '</span><span class="gel">' + (gel ? '❄ tableau gelé' : '') + '</span></div>'
     + '<div class="rang"><button class="gros" data-a="prec" title="Revoile le dernier élément montré à la classe ; au début de la diapo, revient à la page ou à la diapo d’avant">◀</button><button class="gros or" data-a="suiv" title="Dévoile l’élément suivant au tableau ; tout dévoilé, passe à la diapo suivante (avec sa page)">▶</button></div>'

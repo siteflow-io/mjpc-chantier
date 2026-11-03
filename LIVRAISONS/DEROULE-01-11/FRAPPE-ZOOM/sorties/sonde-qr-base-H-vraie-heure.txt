@@ -1,0 +1,75 @@
+C16 · sonde du QR de la télécommande · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H T · 2026-11-03 06:52 UTC · md5 8757f0c849391392d95d7efe01d97bd4 · images de 3e : un dossier local
+
+— H · le QR de la télécommande (vraie heure), 5 scans par cas —
+      H·normal : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 3166 ms, le plus long 3274 ms
+  ok     H·normal · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·normal · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·normal · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 35 écritures) — []
+  ok     H·normal · aucune écriture refusée par le faux hub (0) — []
+      H·lent : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 18806 ms, le plus long 19155 ms
+  ok     H·lent · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·lent · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·lent · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 35 écritures) — []
+  ok     H·lent · aucune écriture refusée par le faux hub (0) — []
+      H·lent-ferme : plus valable 5 sur 5 — du scan à la télécommande sur la séance : médiane 8845 ms, le plus long 8891 ms
+  ÉCHEC  H·lent-ferme · chaque scan ouvre la télécommande sur la séance (0 / 5) — {"plus valable":5}
+  ok     H·lent-ferme · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·lent-ferme · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 27 écritures) — []
+  ok     H·lent-ferme · aucune écriture refusée par le faux hub (0) — []
+      H·rouvert : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 3341 ms, le plus long 3447 ms
+  ok     H·rouvert · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·rouvert · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·rouvert · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 45 écritures) — []
+  ok     H·rouvert · aucune écriture refusée par le faux hub (0) — []
+      H·second : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 2976 ms, le plus long 3340 ms
+  ok     H·second · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·second · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·second · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 33 écritures) — []
+  ok     H·second · aucune écriture refusée par le faux hub (0) — []
+      H·onglet : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 2952 ms, le plus long 2976 ms
+  ok     H·onglet · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·onglet · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·onglet · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 35 écritures) — []
+  ok     H·onglet · aucune écriture refusée par le faux hub (0) — []
+      H·montre5 : pilote 5 sur 5 — du scan à la télécommande sur la séance : médiane 3064 ms, le plus long 3310 ms
+  ok     H·montre5 · chaque scan ouvre la télécommande sur la séance (5 / 5) — {"pilote":5}
+  ok     H·montre5 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·montre5 · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 35 écritures) — []
+  ok     H·montre5 · aucune écriture refusée par le faux hub (0) — []
+      H·montre15 : plus valable 5 sur 5 — du scan à la télécommande sur la séance : médiane 1341 ms, le plus long 1376 ms
+  ÉCHEC  H·montre15 · chaque scan ouvre la télécommande sur la séance (0 / 5) — {"plus valable":5}
+  ok     H·montre15 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·montre15 · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 21 écritures) — []
+  ok     H·montre15 · aucune écriture refusée par le faux hub (0) — []
+      H·montre20 : plus valable 5 sur 5 — du scan à la télécommande sur la séance : médiane 1338 ms, le plus long 1402 ms
+  ÉCHEC  H·montre20 · chaque scan ouvre la télécommande sur la séance (0 / 5) — {"plus valable":5}
+  ok     H·montre20 · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·montre20 · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 21 écritures) — []
+  ok     H·montre20 · aucune écriture refusée par le faux hub (0) — []
+      H·rate : plus valable 5 sur 5 — du scan à la télécommande sur la séance : médiane 1353 ms, le plus long 1400 ms
+  ÉCHEC  H·rate · chaque scan ouvre la télécommande sur la séance (0 / 5) — {"plus valable":5}
+  ok     H·rate · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·rate · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 21 écritures) — []
+  ok     H·rate · aucune écriture refusée par le faux hub (0) — []
+      (la coupure : 9 lecture(s) du téléphone échouée(s))
+      H·coupe : plus valable 5 sur 5 — du scan à la télécommande sur la séance : médiane 1368 ms, le plus long 1389 ms
+  ÉCHEC  H·coupe · chaque scan ouvre la télécommande sur la séance (0 / 5) — {"plus valable":5}
+  ok     H·coupe · l’ordinateur et le téléphone : aucune erreur JS, aucune boîte système
+  ok     H·coupe · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 21 écritures) — []
+  ok     H·coupe · aucune écriture refusée par le faux hub (0) — []
+
+— T · le QR de la télécommande (mode test), 5 scans par cas —
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Target page, context or browser has been closed
+    at clicTexte (/home/claude/ex-frappe-zoom/LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-qr.mjs:110:40)
+    at lancerClasse (/home/claude/ex-frappe-zoom/LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-qr.mjs:113:25)
+    at async pqr (/home/claude/ex-frappe-zoom/LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-qr.mjs:255:79)
+    at async file:///home/claude/ex-frappe-zoom/LIVRAISONS/DEROULE-01-11/FRAPPE-ZOOM/sonde-qr.mjs:286:224 {
+  log: []
+}
+
+Node.js v22.23.4
+FINI

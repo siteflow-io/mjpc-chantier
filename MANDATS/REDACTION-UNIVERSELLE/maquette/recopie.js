@@ -803,7 +803,7 @@ function rcLettres(brut, eleve) {
   rcEcarts(eleve, net).segs.forEach(g => { let t = null;
     if (g.a2 > g.de2) { const f = L.find(x => x.t !== "X" && (() => { const j = avant(x.pos); return j >= g.de2 && j < g.a2; })()); if (f) t = f.t; }
     else if (L.some(x => x.t === "X" && trou(x.pos) === g.de2)) t = "X";
-    if (t && RC_TYPES[t]) types[rcCle(g)] = t; });
+    if (t && RC_TYPES[t]) types[rcCle(g)] = rcCodeValide(t, g); });   // [C14 1.4.30] un type qui ne dit pas vrai de ses mots se relit dans les mots
   return { texte: net, types: Object.keys(types).length ? types : null };
 }
 /* [C14 1.4.12] la ressemblance en lettres entre la ligne envoyée et la ligne rendue : 2 × la plus longue suite commune / la somme des longueurs.
@@ -931,7 +931,7 @@ function rcSeparerAnciens(k) {
       if (place) { avecMot.forEach(u => { const w = (place.x1 - place.x0) * u.eleve.length / tot, c = rcCle(u); rcLigneMaj(k, x.pid, x.id, L => { L.places = Object.assign({}, L.places, { [c]: { x0: cur, x1: cur + w } }); }); cur += w; }); }
       if (ancienne) { delete s.marques[mk];
         subs.forEach(u => { const c = rcCle(u), a = { k, pid: x.pid, id: x.id, l, g: u, cle: c }, q = rcPlaceSeg(a);
-          const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: u.corrige || null, bande: { ligne: x.id, cle: c, eleve: u.eleve, corrige: u.corrige, type: q.type.nom, code: (l.types && l.typesDe === l.corrige && l.types[c]) || rcCodeFaute(u) } };
+          const m = { page: x.pid, forme: "faute", sens: "lieu", passe: "langue", point: "orthographe", q: null, x0: q.x0, x1: q.x1, y0: q.y0, y1: q.y1, bonne: u.corrige || null, bande: { ligne: x.id, cle: c, eleve: u.eleve, corrige: u.corrige, type: q.type.nom, code: rcCodeArret({ l, g: u, cle: c }) } };   // [C14 1.4.30] le type contrôlé
           m.id = scId("marque"); m.eleve = k; m.creeLe = m.modifieLe = new Date().toISOString(); s.marques[m.id] = m;
           rcLigneMaj(k, x.pid, x.id, L => { L.marquesBande = Object.assign({}, L.marquesBande, { [c]: m.id }); }); }); }
       n++; });
@@ -1228,7 +1228,22 @@ function rcNotion(g) {
   return null;
 }
 /* [C14 1.4.10] le type donné par l'IA pour cet arrêt, s'il est là et à jour ; sinon le moteur de la dictée */
-function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? t : rcCodeFaute(a.g); }
+/* [C14 1.4.30] (Paul 03/11 00:39 : « tu ne trouves pas quelque chose de bizarre, notamment sur les mots manquants? » ; 00:48 « ok » ; 00:53 « tu me fais juste 99 pour que
+   demain les élèves aient des fichiers qui ne racontent pas n'importe quoi ») : le type d'une faute doit dire vrai de ses mots. L'IA écrit parfois {M} après un mot qu'elle a
+   corrigé (« augmentent{M} ») : mesuré au site, 59 « mots manquants » sur des mots que l'élève a écrits. « Mot manquant » : le corrigé a plus de mots que l'élève ;
+   « mot en trop » : l'élève en a plus ; « ponctuation » : aucun mot, ni d'un côté ni de l'autre. Sinon, le type se relit dans les mots : un mot de plus d'un côté
+   (« auquel → , à quoi » : un mot manquant), ou, à mots égaux, comme en dictée (« rencontré → rencontrer » : grammaire). Lu partout où un type se lit (la bande, le bilan,
+   les fichiers des élèves) : aucune copie n'est réécrite, aucune décision ne bouge, rien ne se rouvre. */
+function rcMotsDe(s) { return rcTokenize(s || "").filter(w => /[\p{L}\d]/u.test(w)); }
+function rcSansSignes(s) { return String(s || "").toLowerCase().replace(/[^\p{L}\d]/gu, ""); }
+function rcTypeTient(t, g) { const ne = rcMotsDe(g.eleve).length, nc = rcMotsDe(g.corrige).length, autres = rcSansSignes(g.eleve) !== rcSansSignes(g.corrige);
+  if (t === "M") return nc > ne && autres; if (t === "X") return ne > nc && autres; if (t === "P") return !ne && !nc; return true; }
+function rcCodeValide(t, g) { if (!RC_TYPES[t]) return rcCodeFaute(g); if (rcTypeTient(t, g)) return t;
+  const ne = rcMotsDe(g.eleve).length, nc = rcMotsDe(g.corrige).length, autres = rcSansSignes(g.eleve) !== rcSansSignes(g.corrige);
+  return nc > ne && autres ? "M" : ne > nc && autres ? "X" : rcCodeFaute(g); }
+function rcCodeArret(a) { const l = a && a.l, t = l && l.types && l.typesDe === l.corrige && l.types[a.cle]; return RC_TYPES[t] ? rcCodeValide(t, a.g) : rcCodeFaute(a.g); }
+/* le type d'une faute posée, tel qu'il se lit : celui qu'elle porte, s'il dit vrai de ses mots ; une faute oubliée par l'IA garde le sien (aucun) */
+function rcCodeMarque(m) { const b = m && m.bande; if (!b) return null; return RC_TYPES[b.code] ? rcCodeValide(b.code, { eleve: b.eleve || "", corrige: b.corrige || "" }) : (b.code || null); }
 function rcStyleArret(a) { return a && a.st ? stStyle(a) : RC_TYPES[rcCodeArret(a)]; }
 function rcPosMots(t) { const T = rcTokenize(t || ""), P = []; let i = 0; T.forEach(w => { const j = t.indexOf(w, i); P.push([j, j + w.length]); i = j + w.length; }); return P; }
 function rcArretsBande(k) { return rcArrets(k).concat(typeof stArrets === "function" ? stArrets(k) : []); }   // [C14 1.4.16] après les fautes, les stickers proposés

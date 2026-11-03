@@ -2291,3 +2291,25 @@ MEMO
   > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **20:51 — Paul, mot pour mot :**
+
+  > Bon en tout cas il faut que tout soit terminé à 22h. En effet, mon utilisation descend dangereusement.
+- **20:52 — la conscience** : la file de l'exécutant relevée : RPF après 15/0 ; parcours ×2 verts ; appel après 147/0 (20:33:43 → 20:48:42) ; PG base 9/8, RP base 26/3 (les défauts de la base, comme l'audit) ; en cours : fin d'heure FGSDT après.
+- **20:53 — à l'exécutant (message), mot pour mot :** « Paul, 20:51 : « il faut que tout soit terminé à 22h » (son utilisation baisse). On raccourcit, tout de suite. 1. Laisse finir le passage en cours (nr-fin-FGSDT-apres), puis arrête ta file 2, sauf nr-lot1-apres (K, M, W, P, E sur l'après). Plus aucun passage sur la base : elle a été mesurée cet après-midi sur b984f8bd, sur cette machine (appel, session, fin d'heure, parcours ; PG et RP de la base, tu les as). Pas de session ni de fin d'heure P/R sur l'après : mon banc les rejoue. 2. Pendant nr-lot1-apres, écris la NOTE avec ce qui est compté (T, PG, RP, RPF, appel après 147/0, parcours ×2, fin FGSDT, lot 1). Dans « ce que je ne sais pas », dis ce qui n'est pas rejoué et pourquoi (la décision de Paul, 20:51). 3. Pousse, écris-moi trois lignes, dis-moi que la machine est libre, et arrête-toi. Le moins de tours possible. »
+- **20:55 — la conscience** : les sondes de l'appel et de la session du complément reportées sur `banc/vraie-horloge` (`0ff3d8ffd`) : P2H, P2T, X, XT selon la règle, PG, RPH, RPT, RPR, RPF dans les parties par défaut de l'appel ; le faux hub corrigé. Durées du banc, par morceaux mesurés : session 6 min, appel 15 min (avec les parties nouvelles), fin d'heure 7 min, banc 1-12 30 min, frappe 11 min, R ×6 3 min 30 ; le témoin pas mesuré.
+- **20:54 — message à Paul, mot pour mot :**
+
+  > 418. 22h avec ta règle du banc complet : ça ne tient pas. Mon banc passe après les dernières preuves de l'exécutant, et il prend au moins 1 h 13 (mesuré par morceaux). Il finirait vers 22:30 au plus tôt.
+  >
+  > 419. Ce que j'ai fait tout de suite, pour user le moins : l'exécutant arrête ses tests en double. La base est déjà mesurée cet après-midi, et mon banc rejoue le reste. Il ne garde que les preuves du lot 1 sur la réparation, écrit sa note et s'arrête. Déjà prouvé après la réparation : rien perdu quand trois appareils se passent la main (10 sur 10) ; le geste fait juste avant « Reprendre » (5 passages, 0 perdu) ; « Reprendre » et « Rejoindre » désactivent le téléphone, en vraie heure, en mode test et en répétition (5 sur 5 chacun) ; la sonde de l'appel entière (147 vérifications, 0 échec).
+  >
+  > 420. Premier choix, le mien : mon banc tourne seul ce soir, presque sans user ton utilisation ; je ne lis que son résultat, et je te demande « promeus » demain. Second choix : mise en ligne ce soir avant 22h, sans mon banc entier. C'est contre ta règle, donc seulement sur ton mot.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 20:54
+  >
+  > À jouer : 420 à trancher · en cours : les dernières preuves de l'exécutant, puis mon banc · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

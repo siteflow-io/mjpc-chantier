@@ -1801,3 +1801,16 @@ MEMO
   > À jouer : ta réponse à 338 · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 338
   >
   > MEMO
+- **11:41 — Paul, mot pour mot** : « Je ne sais pas, va mesurer au hub »
+- **11:42 — la conscience** : l'extension Claude du Chrome de Paul toujours « not connected » ; le hub ne se lit que par elle (règle) : rien lu.
+- **11:42 — message à Paul, mot pour mot :**
+
+  > 340. Je ne peux pas lire le hub en ce moment : je n'y accède que par ton Chrome, et l'extension Claude ne répond pas (« not connected »). Il faut que ton ordinateur soit allumé, Chrome ouvert, l'extension Claude connectée au même compte qu'ici. Dis-moi « c'est ouvert » et je lis aussitôt, sans rien écrire : la séance 1 des 3 DYLAN, ses heures jouées, leur clôture et leurs décisions.
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 11:42
+  >
+  > À jouer : ouvrir Chrome avec l'extension Claude · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 340
+  >
+  > MEMO

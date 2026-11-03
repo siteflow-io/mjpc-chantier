@@ -2181,3 +2181,38 @@ MEMO
   > MEMO
 - **18:57 — registre** (production `ae835fa`) : l'entrée « LE BANC À LA VRAIE HORLOGE » (367, les règles de 17:04 et 17:20, le choix de 17:18, le lot 1 fini, la réparation lancée, ce qui est vu au passage).
 - **Incident de la conscience** : le message de fin de 18:56 (« Rien à tester pour l'instant. / 03/11/2026 18:56 / À jouer : rien · en cours : la réparation (399, 400) sur le lot 1 · ouvert : 362 à 366, ⑯, ㉚ / MEMO ») portait une heure tapée sans lire `date` dans le même tour (lue à 18:54) ; `date` juste après : 18:56:29.
+
+- **18:57 — message de fin à Paul, mot pour mot :**
+
+  > Rien à tester pour l'instant.
+  >
+  > 03/11/2026 18:57
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **20:11 — Paul, mot pour mot :**
+
+  > Où en est-on ?
+- **20:13 — la conscience** : la branche `deroule/lot1-complement` n'a encore rien poussé ; dans le dossier de l'exécutant, `dr-session.js` changé (seul fichier du site), les sondes de l'appel, de la session et de la fin d'heure changées, la NOTE commencée (causes 1 à 7, le reste à écrire). Sa file de mesures (après `48c2205e`, base `b984f8bd`) : T 10 passages, 24 vérifications chacun, 0 échec ; PG 3 passages, 9 vérifications chacun, 0 échec ; restent PG, les reprises (RPH, RPT, RPR, RPF), PG et les reprises sur la base, puis la non-régression base et après. Durée mesurée de la même étape pour le lot 1 : 16:52 → 18:18 (`dbca73a51`).
+- **20:13 — message à Paul, mot pour mot :**
+
+  > 403. La réparation avance ; rien n'est encore poussé. L'exécutant a trouvé les causes, par le geste et dans le code.
+  >
+  > 404. 399 : « Reprendre » sur le second ordinateur ne comptait pas comme un geste. Le téléphone ne se désactivait que par accident, et cet accident effaçait le geste fait juste avant. C'est changé : « Reprendre » prend la main, comme une touche ; la preuve est en cours. Il a trouvé en plus une autre perte : chaque appareil avait le ▶, mais le tableau gardait la diapo d'avant (6 fois sur 6). C'est réglé aussi.
+  >
+  > 405. 400 : la réponse tapée n'était pas perdue. Quand la frappe s'arrête juste après une espace, Chrome change cette espace en espace insécable, et mon test ne reconnaissait plus la phrase. Le site est corrigé aussi, là où cette espace pouvait vraiment faire perdre des lettres. Il a aussi trouvé pourquoi les appareils se renvoyaient leur état sans arrêt pendant plus de 8 secondes : c'est réglé. Le dévoilement absent arrivait pendant ce moment-là.
+  >
+  > 406. Une partie des pertes venait de mon faux hub, pas du site : il livrait parfois un état ancien après un état récent. Le vrai Firebase ne fait pas ça. Mes tests sont corrigés.
+  >
+  > 407. Mesuré après la réparation, à la vraie horloge. Trois appareils qui se passent la main : 10 passages sur 10, rien perdu. Le geste fait juste avant « Reprendre » : 3 passages faits, 0 geste perdu (avant : 14 perdus sur 14).
+  >
+  > 408. Reste : les derniers passages ; « Reprendre » en vraie heure, en mode test et en répétition, 5 fois chacun ; puis « rien ne change ailleurs », sur la base et sur la réparation. Pour le lot 1, cette dernière étape a pris 1 h 26, la note comprise. Ensuite mon banc, puis je te demande « promeus ». L'heure : je ne sais pas encore.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 20:13
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

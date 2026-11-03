@@ -1912,3 +1912,16 @@ MEMO
   > À jouer : rien · en cours : ⑯ ; l'audit global (jusqu'à 15:30) · ouvert : le plan
   >
   > MEMO
+- **12:47 — Paul, mot pour mot** : « je retourne en cours, je laisse cet ordinateur allumé »
+- **entre 12:55 et 13:05 — la conscience, au vrai hub par le Chrome de Paul** (un onglet, GET seulement, fermé ensuite ; aucune donnée d'élève lue) : `/site/3e/chapitres` (1, 2) ; `/chapitres/1/seances` (0 à 3) ; `/seances/0/deroule_joue` : « 3E Charles de Gaulle » et `3_franklin_aretha` ; `/seances/1/deroule_joue` : vide ; le paquet « 3E Charles de Gaulle » : heures, etat, journal, ecrans, scene — pas de `classe` ; son heure `2026-11-02_08h00-08h55_3E_Charles_de_Gaulle` : classe « 3E Charles de Gaulle », close, heure 1 sur 1, debutReel 02/11 12:08:53, finReel 14:42:50, 9 activités, 0 décision ; `3_franklin_aretha/classe` : « 3 FRANKLIN ARETHA ». Envoyé au second auditeur pour la preuve par le geste ; le registre.
+- **12:51 — message à Paul, mot pour mot :**
+
+  > 358. Les 3 DYLAN, lu au hub par ton Chrome (lecture seule, aucune donnée d'élève lue) : ils n'ont rien joué. Mais la séance 1 contient une heure close des 3E Charles de Gaulle (ta classe d'essai), sur le créneau de lundi 8:00, commencée lundi à 12:08 et finie à 14:42, rangée au vrai hub et pas au mode test, et sans le nom de sa classe à l'endroit où l'emploi du temps le cherche. Le code compte alors cette heure pour toutes les classes : la séance 1 passe pour faite dans toutes tes classes de 3e, sauf les 3 FRANKLIN ARETHA, qui ont leur propre heure reportée. C'est la cause, lue au hub et dans le code ; la preuve par le geste est en cours chez le second auditeur, avec la question : comment cette heure d'essai est arrivée au vrai hub (lundi 12:21, tu avais un essai en mode test sur l'ordinateur et sur le téléphone).
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 12:51
+  >
+  > À jouer : rien · en cours : ⑯ ; l'audit global (jusqu'à 15:30) · ouvert : le plan
+  >
+  > MEMO

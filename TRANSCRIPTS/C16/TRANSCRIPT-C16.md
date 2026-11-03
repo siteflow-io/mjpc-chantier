@@ -1595,3 +1595,20 @@ MEMO
   > À jouer : les 7 gestes de 06:52 · en cours : rien · ouvert : 309
   >
   > MEMO
+- **07:19 — Paul, mot pour mot** (capture : la barre du pilote, « texte au tableau » à 26 pt) : « 35 et 16 oui. en revanche que ça prenne pas trop de temps! hier tu as tourné la journée entière. Par ailleurs deux choses: à la télécommande, le zoom ne pilote rien au tableau, il est censé actionner la barre crantée "texte au tableau" qui marche très bien elle même. »
+- **07:21 — la conscience** : le mandat écrit (`MANDATS/DEROULE-01-11/MANDAT-FRAPPE-RETARD-ZOOM.md`), le registre (une entrée neuve, le zoom), l'exécutant neuf lancé (`deroule/frappe-zoom`, sur `fcb5004fd` ; le zoom d'abord ; dernière poussée prouvée avant 11:30).
+- **07:21 — message à Paul, mot pour mot :**
+
+  > 310. Le zoom de la télécommande : entendu. A− et A+ actionneront le curseur « texte au tableau » du pilote lui-même, d'un cran, par le même chemin que lorsque tu le bouges : le curseur bouge à l'ordinateur, le tableau suit, et le téléphone montre le même cran. L'exécutant mesure d'abord ton cas (l'ordinateur, le téléphone, le tableau, en vraie heure et en mode test), y compris un appareil pas rechargé depuis la mise en ligne de ce matin. Pourquoi rien ne bouge chez toi : je ne sais pas encore.
+  >
+  > 311. ㉟ et ⑯ : lancés, avec le zoom, par un seul exécutant. Le zoom d'abord ; sa dernière livraison prouvée avant 11:30 ; ce qui n'est pas prouvé à 11:30 ne part pas. Puis mon banc, environ une heure et quart, et je te demande le « promeus » avec les captures.
+  >
+  > 312. Tu as écrit « deux choses » : je n'en ai reçu qu'une, le zoom. Quelle est la seconde ?
+  >
+  > À tester : les 7 gestes de 06:52 (8.81.0-⑭).
+  >
+  > 03/11/2026 07:21
+  >
+  > À jouer : les 7 gestes de 06:52 · en cours : l'exécutant du zoom, de la frappe et du retard (avant 11:30) · ouvert : 312
+  >
+  > MEMO

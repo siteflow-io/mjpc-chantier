@@ -1832,3 +1832,32 @@ MEMO
   > À jouer : 342 et 344, à commenter ou non ; Chrome pour 343 · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 342, 343, 344
   >
   > MEMO
+- **12:16 — Paul, mot pour mot** : « Ok pour tout et pour le bouton sauf que le bouton il faut mesurer ce qu'il peut télescoper donc ta proposition même si elle paraît simple ne peut pas être appliqué tel quel elle est encadré sachant que une séance 4 faites à la place d'une séance 1 par exemple ne doit pas faire que la séance 1 doit être indiqué en non joué ou non fait ou je ne sais quoi. Par ailleurs ce matin en jouant avec la répétition pour l'heure de Dylan j'ai remarqué que la dette de la modale du chrono sur sur le pilotage était toujours pas réglé, et que le chrono s'affichait toujours dans la vue tableau avec une UI différentes du reste du site. De plus à la télécommande, toujours en répétition avec Dylan ce matin, il y a un décalage dans les chronos. Je ne sais pas si je jouais la version qui était en ligne, bref il faut que tu fasses un point là parce que ça commence à devenir le bordel »
+- **12:17 — la conscience** : le registre (㉔-㉗ jamais lancés, un oubli ; ㊵ ; 342 à auditer) ; le texte pour École Directe écrit d'après les captures (aucun nom d'élève).
+- **12:17 — message à Paul, mot pour mot :**
+
+  > 345. Le point. En ligne depuis 9:47 : la 8.81.1-⑭-micro (l'appel, la fin d'heure en diapos et la suite de la séance, le zoom, le QR, la frappe). Un appareil la joue si son panneau dit « v8.81.1-⑭-micro » ; sinon, il faut le recharger. Ce matin à 10:07, si ton ordinateur n'avait pas été rechargé depuis 9:47, il jouait la 8.81.0-⑭ : je ne sais pas lequel.
+  >
+  > 346. En cours : ⑯ (le retard du tableau, une image de trop), livraison avant 13:00. Rien ne part en ligne sans ton « promeus ».
+  >
+  > 347. Ouvert, tes dettes du minuteur, notées hier à 9:29 et jamais lancées, c'est mon oubli : ㉔ « ce que voit la classe » ne le montre pas ; ㉕ au tableau, il passe par-dessus le texte ; ㉖ son allure diffère du reste du site ; ㉗ son panneau couvre ta diapo au lieu de rester dans les boutons d'actions rapides. Et ce matin : ㊵ à la télécommande, en répétition, un décalage entre les minuteurs.
+  >
+  > 348. Ouvert, décidé mais pas lancé : la numérotation par séance (316, 317) ; « une autre séance… » (342), à auditer d'abord : une séance 4 faite à la place de la 1 ne rend jamais la 1 « non faite ».
+  >
+  > 349. Ouvert, à mesurer : les 3 DYLAN à la séance 2 (au hub, par ton Chrome) ; le lancement sur un réseau très lent (rien ne paraît pendant 12 s). Plus ancien : ㉚, le reste des 7 étapes de la fin d'heure.
+  >
+  > 350. L'ordre que je propose, un exécutant à la fois, une mise en ligne avec banc à la fin de chacun : ⑯ (en cours) ; le minuteur, ㉔ à ㉗ et ㊵, par une maquette que tu valides avant le code ; « une autre séance… » avec son audit ; la numérotation ; puis ㉚.
+  >
+  > 351. Le texte pour École Directe (344), les 3 DYLAN, ce matin, à coller :
+  >
+  > Poésie et peinture au XIXe siècle — Séance 1 : Poésie et peinture : le Romantisme en question. Mise en commun de l'analyse des tableaux : le groupe 1 a présenté Le Radeau de la Méduse de Théodore Géricault, le groupe 2 un paysage de lac d'Albert Bierstadt. Pour chaque tableau, on a dit ce qu'on voyait (le sujet, les couleurs, les personnages), puis on a formulé une hypothèse sur ce qu'est le Romantisme.
+  >
+  > Si l'analyse en groupe (l'activité 1) a aussi été faite ce matin, ajoute en tête : « Chaque groupe a observé un tableau en silence, en a discuté, puis a noté au brouillon les éléments importants. »
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 12:17
+  >
+  > À jouer : 350, à commenter ou non ; ton Chrome pour les 3 DYLAN · en cours : ⑯ (avant 13:00) · ouvert : 343, 350
+  >
+  > MEMO

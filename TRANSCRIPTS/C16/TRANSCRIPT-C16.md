@@ -2216,3 +2216,21 @@ MEMO
   > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **20:16 — Paul, mot pour mot :**
+
+  > Ça sera bon quand?
+- **20:18 — la conscience** : durées relevées. L'exécutant : PG 4 passages verts (9/0 chacun) ; file 1 restante : RPH/RPT/RPR ×5 après, PG et RP sur la base ; file 2 : RPF, parcours ×2, appel, fin d'heure (FGSDT, P ×2, R), session, lot 1, puis appel, session, RPF sur la base. Mesuré pour le lot 1 : la même étape, note comprise, 16:52 → 18:18 ; appel 9-10 min, session 6 min, fin FGSDT 4 min 30, parcours 35 s. Mon dernier banc entier (8.81.0, horloge simulée) : 02:33 → 03:46, 1 h 12. Pas mesuré : les reprises (RP, RPF), le témoin.
+- **20:18 — message à Paul, mot pour mot :**
+
+  > 409. Au plus tôt vers minuit, si tout reste vert. Un rouge retarde d'autant.
+  >
+  > 410. Le calcul, avec des durées mesurées aujourd'hui. Les derniers tests de l'exécutant et sa note : environ 2 h 10 (la même étape a pris 1 h 26 pour le lot 1 ; il y ajoute les tests de « Reprendre »). Mon banc : 1 h 12 la dernière fois, avec en plus le témoin et les nouvelles parties. Pas mesuré : la durée des tests de « Reprendre » et du témoin. C'est pour ça que je dis « au plus tôt ».
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 20:18
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

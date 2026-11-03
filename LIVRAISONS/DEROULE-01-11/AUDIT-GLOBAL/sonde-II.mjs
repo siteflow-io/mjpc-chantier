@@ -272,7 +272,9 @@ const partieM = async () => {
     const apres = await pg2.evaluate(() => ({ test: typeof m8TestOn === 'function' ? m8TestOn() : null, rep: (() => { const b = document.getElementById('ses-reprise-oui'); return !!(b && b.offsetParent !== null); })(), repT: ((document.getElementById('ses-reprise-txt') || {}).innerText || '').replace(/\s+/g, ' ').slice(0, 200) }));
     await p(12000); const w4 = ecritsDepuis(e2).filter(x => !/tableau_test/.test(x));
     dire('  [M]   ' + nom + ' · un essai en mode test, page RECHARGÉE : m8TestOn() après = ' + apres.test + ' · la reprise proposée : ' + apres.rep + (apres.repT ? ' (« ' + apres.repT + ' »)' : '') + ' · écritures hors /site/tableau_test en 12 s : ' + (w4.join(', ') || 'aucune'));
-    if (apres.rep) { const e3 = ECR.length; await pg2.click('#ses-reprise-oui').catch(() => {}); await p(8000); const w5 = ecritsDepuis(e3).filter(x => !/tableau_test/.test(x)); dire('  [M]   « Reprendre » cliqué : m8TestOn() = ' + await pg2.evaluate(() => m8TestOn()) + ' · écritures hors /site/tableau_test en 8 s : ' + (w5.join(', ') || 'aucune') + ' · paquets : ' + (paquets().join(' | ') || 'aucun')); }
+    if (apres.rep) { const e3 = ECR.length; await pg2.click('#ses-reprise-oui').catch(() => {}); await p(8000); const w5 = ecritsDepuis(e3).filter(x => !/tableau_test/.test(x)); dire('  [M]   « Reprendre » cliqué : m8TestOn() = ' + await pg2.evaluate(() => m8TestOn()) + ' · écritures hors /site/tableau_test en 8 s : ' + (w5.join(', ') || 'aucune') + ' · paquets : ' + (paquets().join(' | ') || 'aucun'));
+      if (process.env.MJPC_M2) { const o3 = await ouvrir({ fichier: f, h: '09:30', jour: '2026-09-14' }); const P3 = await projeter(o3.pg); dire('  [M]   M2 · vu d’un autre appareil (hors mode test), l’heure reprise pas close : CLASSE TEST ' + dirCase(premiere(P3, DYL)) + ' · 3E Charles de Gaulle ' + dirCase(premiere(P3, CHA))); await o3.ctx.close();
+        await pg2.keyboard.press('Escape').catch(() => {}); await jouerJusqua(pg2, 'aud-g1-hyp'); const cl2 = await finSansDecider(pg2); await p(2500); dire('  [M]   M2 · puis « Clore » (' + cl2.close + ') : ' + (paquets().join(' | ') || 'aucun')); const o4 = await ouvrir({ fichier: f, h: '15:00', jour: '2026-09-14' }); const P4 = await projeter(o4.pg); const d4 = premiere(P4, DYL); dire('  [M]   M2 · ensuite, CLASSE TEST : ' + dirCase(d4) + ' · 3E Charles de Gaulle : ' + dirCase(premiere(P4, CHA))); situation('M2', nom + ' : un essai en mode test, la page rechargée, « Reprendre », puis « Clore » — CLASSE TEST (rien joué)', d4); await o4.ctx.close(); } }
     finir('M9', o2, nom + ' rechargée'); await o2.ctx.close(); } };
 
 /* ══ D · les 3 DYLAN à la séance 2 : les situations du mandat ══ */
@@ -514,8 +516,24 @@ const partieJ = async () => {
     else { await p(10000); w = ecritsDepuis(e1).filter(x => !/tableau_test/.test(x)); dire('  [J]   aucune reprise proposée ; en 10 s : ' + w.length + ' chemins au « vrai » hub' + (w.length ? ' : ' + w.join(', ') : '')); }
     dire('  [J]   le paquet : ' + (paquets().join(' | ') || 'aucun')); finir('J9', o, nom); await o.ctx.close(); } };
 
+/* ══ B · la séance 4 jouée EN ENTIER (ses 3 heures) à la place de la 1, puis la réservation retirée ══ */
+const partieB = async () => {
+  hubAvec(st => { sk0(st).slice(0, 3).forEach(k => { st.site['3e'].chapitres[0].seances[k].classes = ['CLASSE TEST']; }); });
+  for (const [j, cr, h] of [['2026-09-14', '08:57-09:52', '09:00'], ['2026-09-15', '15:07-16:02', '15:10'], ['2026-09-18', '10:07-11:02', '10:10']]) {
+    const o = await ouvrir({ h, jour: j }); const L = await lancerIci(o.pg, j, cr, CHA); const t = await o.pg.evaluate(() => (seance().title || '') + ' · heure ' + S.heure); const v = await jouerJusqua(o.pg, null); const cl = await finSansDecider(o.pg); await p(1500);
+    dire('  [B] ' + j + ' ' + cr + ' : « ' + t + ' », ' + v.length + ' diapos, close ' + cl.close); finir('B9', o, 'B ' + j); await o.ctx.close(); }
+  dire('  [B] ' + paquets().join(' | ')); sk0(HUBN).slice(0, 3).forEach(k => posH(SE(k) + '/classes', null));
+  const o = await ouvrir({ h: '08:00', jour: '2026-09-21' }); const P = await projeter(o.pg, '2026-09-21'); dire('  [B] la réservation retirée, lundi 21/09 08:00 : ' + semaine(P, CHA, '2026-09-26').join(' ‖ '));
+  const ca = await cartes(o.pg); dire('  [B] les cartes : ' + ca.join(' ‖ '));
+  const term = await o.pg.evaluate(() => { try { const ch = (EDT_CHAP['3e'] || [])[0]; return edtListe(ch.seances).sort((a, b) => (+a.ordre) - (+b.ordre)).map(s => 'S' + s.ordre + ' ' + (edtSeanceEtat(s, '3E Charles de Gaulle').finie ? 'finie' : (edtHeuresJouees(s, '3E Charles de Gaulle') ? 'commencée' : '—'))); } catch (e) { return ['ERREUR ' + e.message]; } }); dire('  [B] edtSeanceEtat : ' + term.join(' · '));
+  const ma = premiere(P, CHA); await lancerIci(o.pg, ma.iso, ma.cr, CHA); const E = await eidsDe(o.pg); const plan = E.find(e => /parcours/i.test(e.act || ''));
+  if (plan) { await allerA(o.pg, plan.eid); await p(900); await capt(o.pg, 'B-parcours-seance4-finie'); dire('  [B] « Le parcours du chapitre » (l’heure de la séance ' + seanceDe(ma) + ') : « ' + lisible(await texteDe(o.pg, '#mur')).slice(0, 700) + ' »'); }
+  const re = E.find(e => e.role === 'reactivation'); dire('  [B] réactivation : ' + (re ? lisible(JSON.stringify(await o.pg.evaluate(id => (seance().ecrans.find(e => e.eid === id) || {}).blocs, re.eid))).slice(0, 300) : 'aucune'));
+  const tous = lisible(await o.pg.evaluate(() => document.body.innerText)); const mots = (tous.match(/[^.]{0,60}\b(non faite|pas faite|non jouée|pas jouée|sautée|manquée|retard)\b[^.]{0,40}/gi) || []); dire('  [B] à l’écran : « non faite / pas faite / non jouée / pas jouée / sautée / manquée / retard » : ' + mots.length + (mots.length ? ' : ' + mots.slice(0, 4).join(' | ') : ''));
+  finir('B9', o, 'B'); await o.ctx.close(); };
+
 dire(''); dire('══ AUDIT GLOBAL II · ' + NOMF + ' · md5 ' + md5(FICHIER) + ' ══');
-for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['G', partieG], ['H', partieH], ['J', partieJ], ['Q', partieQ], ['R', partieR], ['C', partieC], ['P', partieP], ['A', partieA], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
+for (const [k, f] of [['K', partieK], ['M', partieM], ['D', partieD], ['E', partieE], ['G', partieG], ['H', partieH], ['J', partieJ], ['Q', partieQ], ['R', partieR], ['C', partieC], ['P', partieP], ['A', partieA], ['B', partieB], ['N', partieN]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k + ' · ' + new Date().toISOString().slice(11, 16) + ' UTC'); try { await f(); } catch (e) { verif(k, false, 'la partie ' + k + ' a levé', String(e && e.stack || e).slice(0, 600)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-II-' + NOMF + '-' + PARTIES.join('') + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

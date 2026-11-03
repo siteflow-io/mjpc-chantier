@@ -1,0 +1,21 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties B · 2026-11-03 12:33 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie B · 12:33 UTC
+  [B] 2026-09-14 08:57-09:52 : «  · heure 1 », 12 diapos, close true
+  ok     B9 · B 2026-09-14 : aucune erreur JS, aucune boîte système
+  [B] 2026-09-15 15:07-16:02 : «  · heure 2 », 9 diapos, close true
+  ok     B9 · B 2026-09-15 : aucune erreur JS, aucune boîte système
+  [B] 2026-09-18 10:07-11:02 : «  · heure 3 », 9 diapos, close true
+  ok     B9 · B 2026-09-18 : aucune erreur JS, aucune boîte système
+  [B] séance 4 · paquet « 3E Charles de Gaulle » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E Charles de Gaulle » · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (close, 12 diapos, 0 décisions) ; 2026-09-15_15h07-16h02_3E_Charles_de_Gaulle (close, 10 diapos, 0 décisions) ; 2026-09-18_10h07-11h02_3E_Charles_de_Gaulle (close, 10 diapos, 0 décisions)
+  [B] la réservation retirée, lundi 21/09 08:00 : 2026-09-21 08:57-09:52 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-22 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-23 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h2/3 ‖ 2026-09-24 16:04-16:59 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h3/3 ‖ 2026-09-25 10:07-11:02 · prevu « Interro de cours et analyse logique — les bases  » (séance 3) h1/3
+  [B] les cartes : 3E Charles de Gaulle expérimentale dans les temps Poésie et peinture au XIXe siè · 1/9 ‖ CLASSE TEST dans les temps · 1 h de retard Poésie et peinture au XIXe siè · 0/9
+  [B] edtSeanceEtat : S1 — · S2 — · S3 — · S4 finie · S5 — · S6 — · S7 — · S8 — · S9 —
+  [B] « Le parcours du chapitre » (l’heure de la séance 1) : « Le parcours du chapitre Séance 1 sur 9 1 lun. 21/9 Poésie et peinture : le Romantisme en question Observer cinq tableaux du XIXe siècle et formuler avec la classe ce qu’ils ont en commun : l’homme face à la nature, l’émotion avant la règle. 2 mar. 22/9 Étude de texte accompagnée : « L'Albatros » Lire « L’Albatros » de Baudelaire, repérer la comparaison filée et comprendre ce que le poème dit du poète parmi les hommes. 3 ven. 25/9 Interro de cours et analyse logique — les bases (1) Réciter les bases du cours, puis analyser des phrases complexes : propositions, subordonnées, fonctions. 4 ✓ lun. 14/9 Le poème sans vers : dictée et réécriture Orthographier un poème en prose dicté, puis le réécri »
+  [B] réactivation : aucune
+  [B] à l’écran : « non faite / pas faite / non jouée / pas jouée / sautée / manquée / retard » : 0
+  ok     B9 · B : aucune erreur JS, aucune boîte système
+
+--- fin : 4 vérifications, 0 échec(s)

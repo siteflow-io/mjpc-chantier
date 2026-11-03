@@ -1,0 +1,20 @@
+C16 · sonde de la fin d’heure (㊲ ㊳) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties D · 2026-11-03 01:12 UTC · md5 8757f0c849391392d95d7efe01d97bd4 · images de 3e : un dossier local
+
+══ LA FIN D’HEURE · asm-apres · md5 8757f0c849391392d95d7efe01d97bd4 ══
+
+— partie D
+  [D] la case du lundi : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1 sur 2 L’appel — absents (0 sur 29) D’abord l’appe » · la semaine : 2026-09-14|08:57 Poésie et peinture : le Romantisme en question · h1/2 ‖ 2026-09-15|15:07 Poésie et peinture : le Romantisme en question · h2/2 ‖ 2026-09-16|10:07 rienDePret ‖ 2026-09-18|10:07 Étude de texte accompagnée : « L'Albatros » · h1/3
+  [D] heure 1 sur 2, étape 2 : [diapo] Diapo 10 — Groupe 2 : Le lac · pas montrée · activ — À l'heure suivante (si tu ne choisis rien) [posé]/Préparer à la maison/À la maison, pas le temps/En réserve/Non fait ‖ [diapo] Diapo 11 — Groupe 2 : l’hypothèse · pas montrée ·  — À l'heure suivante (si tu ne choisis rien) [posé]/Préparer à la maison/À la maison, pas le temps/En réserve/Non fait · le bouton : "Reporter les 2 diapos non faites au début de la prochaine heure de cette classe"
+  [D] après un clic : À l'heure suivante [posé], À l'heure suivante [posé]
+  ok     D5 · heure 1 sur 2 : le bouton pose « À l’heure suivante » sur les 2 diapos non faites — [{"cle":"aud-g2-img","kind":"diapo","n":1,"t":"Diapo 10 — Groupe 2 : Le lac · pas montrée · activité 2 · 3 min","choix":["À l'heure suivante [posé]","Préparer à la maison","À la maison, pas le temps","En réserve","Non fait"]},{"cle":"aud-g2-hyp","kind":"diapo","n":1,"t":"Diapo 11 — Groupe 2 : l’hypothèse · pas montrée · activité 2 · 3 min","choix":["À l'heure suivante [posé]","Préparer à la maison","À la maison, pas le temps","En réserve","Non fait"]}]
+  [D] au hub : « Groupe 2 : l’hypothèse » suivante ; « Groupe 2 : Le lac » suivante
+  [D] la file avant (sans la case jouée) : 2026-09-15|15:07 Poésie et peinture : le Romantisme en question h2/2 | 2026-09-18|10:07 Étude de texte accompagnée : « L'Albatros » h1/3 | 2026-09-21|08:57 Étude de texte accompagnée : « L'Albatros » h2/3 | 2026-09-22|15:07 Étude de texte accompagnée : « L'Albatros » h3/3 · après : 2026-09-15|15:07 Poésie et peinture : le Romantisme en question h2/2 | 2026-09-18|10:07 Étude de texte accompagnée : « L'Albatros » h1/3 | 2026-09-21|08:57 Étude de texte accompagnée : « L'Albatros » h2/3 | 2026-09-22|15:07 Étude de texte accompagnée : « L'Albatros » h3/3
+  ok     D5 · l’emploi du temps inchangé : la file de la classe test, 4 semaines, case par case (15 cases) — [["2026-09-15|15:07 Poésie et peinture : le Romantisme en question h2/2","2026-09-18|10:07 Étude de texte accompagnée : « L'Albatros » h1/3","2026-09-21|08:57 Étude de texte accompagnée : « L'Albatros » h2/3"],["2026-09-15|15:07 Poésie et peinture : le Romantisme en question h2/2","2026-09-18|10:07 Étude de texte accompagnée : « L'Albatros » h1/3","2026-09-21|08:57 Étude de texte accompagnée : « L'Albatros » h2/3"]]
+  ok     D7 · partie D, heure 1 : aucune erreur JS, aucune boîte système
+  [D] l’heure 2 : Où en sommes-nous ? → Groupe 2 : Le lac → Groupe 2 : l’hypothèse → Groupe 3 : Pêcheurs en mer → Groupe 3 : l’hypothèse → Groupe 4 : Cathédrale gothique au bord de l’eau → Groupe 4 : l’hypothèse → Groupe 5 : Le Voyageur contemplant une mer de nuages → Groupe 5 : l’hypothèse → Le bilan → Fin d'heure
+  ok     D5 · l’heure 2 commence (après la réactivation) par les 2 diapos glissées, puis la suite du plan — ["Où en sommes-nous ?","Groupe 2 : Le lac","Groupe 2 : l’hypothèse","Groupe 3 : Pêcheurs en mer","Groupe 3 : l’hypothèse"]
+  ok     D7 · partie D, heure 2 : aucune erreur JS, aucune boîte système
+  ok     D7 · partie D : aucune écriture refusée par le hub (HTTP 400) — 175 écritures — []
+  ok     D7 · partie D : aucune écriture hors des chemins permis (K15) — []
+
+--- fin : 7 vérifications, 0 échec(s) · VERT

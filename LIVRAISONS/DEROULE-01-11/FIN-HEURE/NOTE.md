@@ -2,7 +2,7 @@
 
 *Exécutant neuf, 02-03/11/2026. Mandat : `MANDATS/DEROULE-01-11/MANDAT-FIN-HEURE.md` (sas, main). Base : `4163180c9` (`deroule/appel`, posée par la conscience à 00:52). Branche : `deroule/fin-heure`. Mise à jour : 03/11 01:38.*
 
-**ÉTAT — POUSSÉE 1 (la fin d'heure, l'emploi du temps après la clôture, l'heure de la suite).** Prouvé par le geste, compté : preuves 1, 2, 3, 7 (vraie heure et mode test), 8 (la Relecture). La sonde : **33 vérifications, 0 échec** (`sorties/sonde-fin-heure-asm-apres-FSGT.txt`, assemblé md5 `772acfe3…`). **Pas encore prouvé, donc pas encore à promouvoir** : preuves 4 (l'heure de la forme de celle de Paul), 5 (deux heures), 6 (rien ne change ailleurs ; la sonde de l'appel rejouée), K15 du parcours. Elles attendent la machine (la conscience y passe son banc) ; la poussée 2 les portera.
+**ÉTAT — POUSSÉE 2 (02:20).** Assemblé final md5 `8757f0c8…` (la base `4163180c9` + ce mandat). Prouvé par le geste, compté, sur ce fichier : **preuves 1 à 8, 64 vérifications, 0 échec** (F S G T 34/0 ; P avec la 8.78.2-⑪-micro 8/0 ; P avec la 8.80.0-⑬ 8/0 ; D 7/0 ; R 7/0). **Reste à prouver (poussée 3, en cours sur la machine)** : la sonde de l'appel rejouée sur ce fichier, et le parcours P0-P12 (K15, K15-test). Depuis la poussée 1 (`d74a7ab8c`, 33/0 sur `772acfe3…`) : la case de la semaine dit « séance pas finie » sur sa propre ligne (en une ligne, la case la coupait : « Close · 9 diapo… ») ; la passe F S G T rejouée sur le fichier final.
 
 ## 0 · MISSION 0 — LE MANDAT RELU CONTRE LE CODE ET LE CONTRAT (avant de coder)
 
@@ -29,7 +29,7 @@
 8. **La Relecture, « Diapo par diapo »** : une décision ne se dit que sur la diapo qui la porte (décidée à cette heure, pas finie à cette heure) ; « reportée à la prochaine heure de la classe » (avant : « à la séance suivante »).
 
 ## 2 · LES PREUVES (§4), PAR LE GESTE — au faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400) et pousse son flux ; 1536 × 864
-La sonde : `sonde-fin-heure.mjs` (ce dossier ; le harnais de `APPEL/sonde-appel.mjs`, la trame de Paul de l'audit `trameDePaul`). Passe 1 : parties F, S, G, T sur l'assemblé `772acfe3…` (la base + ce mandat) : **33 vérifications, 0 échec**, aucune erreur JS, aucune boîte système, **aucune écriture refusée**, **aucune écriture hors des chemins permis** (K15 : 252 + 161 + 88 écritures) ; en mode test, **aucune écriture hors de /site/tableau_test** (97).
+La sonde : `sonde-fin-heure.mjs` (ce dossier ; le harnais de `APPEL/sonde-appel.mjs`, la trame de Paul de l'audit `trameDePaul`). Sur l'assemblé final `8757f0c8…` : F S G T **34 / 0**, P (8.78.2) **8 / 0**, P (8.80.0) **8 / 0**, D **7 / 0**, R **7 / 0** — aucune erreur JS, aucune boîte système, **aucune écriture refusée**, **aucune écriture hors des chemins permis** (K15) ; en mode test, **aucune écriture hors de /site/tableau_test**. Les sorties : `sorties/sonde-fin-heure-asm-apres-*.txt`.
 
 | preuve | ce qui est mesuré (passe 1) | résultat |
 |---|---|---|
@@ -46,12 +46,17 @@ La sonde : `sonde-fin-heure.mjs` (ce dossier ; le harnais de `APPEL/sonde-appel.
 | 3 · jouée et close sans report | l'étape 2 : 0 ligne ; au hub, 0 reportée à l'heure 2 ; la case du lundi « Close · 9 diapos jouées · 9 reportées. » (plus « séance pas finie »), celle du mardi « Close · 11 diapos jouées. » ; **la case suivante dit la séance 2** (« Étude de texte accompagnée », heure 1/3, le vendredi 18/09) | ✔ |
 | 7 · mode test | 9 lignes, le bouton visible (haut 475), un clic décide les 9, l'heure close ; aucune écriture hors de /site/tableau_test | ✔ |
 | 8 · la Relecture | « Diapo par diapo » : **9 lignes** disent « reportée » (les 8 et « Le bilan ») ; ni « Groupe 1 : Le Radeau de la Méduse » ni « Groupe 1 : l'hypothèse » (jouées) — avant : 10 lignes, dont les 2 jouées (audit, point 7) | ✔ |
+| 2 · la semaine | la case du lundi dans la grille : « 3E Charles de Gaulle » / « Poésie et peinture … » / « Close · 9 diapos jouées · 9 reportées » / « séance pas finie », **aucune ligne coupée** (mesuré : scrollWidth ≤ clientWidth) | ✔ |
+| 4 · l'heure du lundi matin, jouée et close par **la 8.78.2-⑪-micro** (le fichier de production de Paul à 08:57, md5 `50bb9e75…`) | la trame de Paul, jouée jusqu'à « Groupe 1 : l'hypothèse », montrée, **rien dévoilé** ; « Reporter à la séance suivante » sur l'activité 2 ; clôture. Ce que **cette version écrit** au hub : l'heure porte `activites, classe, clos, creneau, debutReel, decisionsParActivite, decisionsParEcran, echeance, fin, finReel, heure, lanceA, maj, minutesJouees, motAbsents, parActivite, sur, tempsUtilePrevu, travail, travailTexte` (`heure` 1, `sur` 1) ; chaque décision porte `choix, h, heure, moment, t` (**`heure` : 1, présente**) ; `decisionsParActivite.act2` → « reporter » ; `decisionsParEcran` : **9**, dont « Groupe 1 : l'hypothèse » ; « Le bilan » : **aucune décision** (une écriture refusée par le hub, de cette version-là — la scène, corrigée depuis ㉘ ; ce n'est pas ce mandat) | ✔ |
+| 4 · lue par l'assemblé final | la case du lundi « Close · 9 diapos jouées · 9 reportées — séance pas finie » (dans la grille : « séance pas finie » sur sa ligne, rien de coupé) ; le mardi « heure 2 · suite de la séance : elle commence par les 9 diapos reportées » ; la suite lancée, **l'ordre mesuré (12)** : « Où en sommes-nous ? » → **« Groupe 1 : l'hypothèse »** → les 8 autres dans l'ordre du plan → **« Le bilan »** → « Fin d'heure » ; la réactivation, construite à l'ouverture par cette version : « La dernière fois » (Activité 1, Activité 2), **« À reprendre » (Activité 2 — Mise en commun)** | ✔ |
+| 4 · la même chose avec **la 8.80.0-⑬** (production actuelle, md5 `8b2310e7…`) | mêmes champs au hub (`heure` présente, 1), 9 reportées dont « Groupe 1 : l'hypothèse », « Le bilan » sans décision ; la suite : la même, 8 / 0 | ✔ |
+| 5 · deux heures | la trame de Paul avec sa frontière à « Groupe 3 » (heure 1 sur 2) : à l'étape 2, **2 lignes** (« Groupe 2 : Le lac », « Groupe 2 : l'hypothèse ») ; **1 clic** pose « À l'heure suivante » sur les deux ; au hub, 2 décisions « suivante » (pas les 6 diapos de l'heure 2) ; **la file de la classe, 15 cases sur 4 semaines, identique avant et après**, case par case ; l'heure 2 s'ouvre sur la réactivation, puis les 2 glissées, puis « Groupe 3 … » | ✔ |
+| 6 · rien ne change ailleurs | la projection de l'emploi du temps (`edtProjeter`, nature, titre, heure n/N, séance), **4 semaines, 9 classes, 76 cases, 16 titres**, l'assemblé de la base contre l'assemblé final : **0 différence**, sur le faux hub neuf et après une heure close **sans report** (la trame jouée entière, 19 diapos) | ✔ |
 | §3.9 · ✎ Préparer | « ✎ Préparer » sur la case du mardi avant la clôture : **0 écriture au hub** ; après le report, cette case devient la suite et la séance 2 passe à la case d'après. Rien n'est rangé par case : ce que Paul aurait changé dans la séance 2 à l'Atelier reste dans la séance 2, qui vient une case plus tard. Rien ne se perd. | mesuré |
 
-## 3 · CE QUI MANQUE (pas prouvé à cette poussée — pas à promouvoir)
-1. Preuve 4 : l'heure de la forme de celle de Paul, écrite par la production 8.80.0 (`a6a63afc…`), lue par ce fichier (partie P).
-2. Preuve 5 : la séance de deux heures (partie D).
-3. Preuve 6 : la projection de l'emploi du temps, ancien et nouveau fichier, 4 semaines, toutes les classes (partie R) ; la sonde de l'appel rejouée ; le parcours (K15, K15-test).
+## 3 · CE QUI MANQUE (poussée 3, en cours)
+1. La sonde de l'appel (`APPEL/sonde-appel.mjs`, ses parties par défaut) rejouée sur l'assemblé final.
+2. Le parcours P0-P12 (`AUDITS/INTEGRATION-DEROULE/parcours.mjs`) : K15 et K15-test.
 
 ## 4 · LES ÉCARTS AU MANDAT
 - « À reprendre » groupe les diapos reportées par activité (§0, point 4).
@@ -63,6 +68,6 @@ Depuis la racine du dépôt, `S` un dossier hors du dépôt :
 ```
 node AUDITS/INTEGRATION-DEROULE/assembler.mjs LIVRAISONS/INTEGRATION/index.html $S/asm-apres/index.html
 MJPC_PARTIES=F,S,G,T MJPC_MEDIAS=$S/medias MJPC_CAPT=$S/captures node LIVRAISONS/DEROULE-01-11/FIN-HEURE/sonde-fin-heure.mjs $S/asm-apres/index.html $S/sorties
-MJPC_PARTIES=P,D MJPC_ANCIEN=<la 8.80.0 assemblée, a6a63afc…> node … ;  MJPC_PARTIES=R MJPC_ANCIEN=<l'assemblé de la base> node …
+MJPC_PARTIES=P MJPC_TAG=v8782 MJPC_ANCIEN=<la 8.78.2-⑪-micro, 50bb9e75…> node … ; MJPC_PARTIES=P MJPC_TAG=v8800 MJPC_ANCIEN=<la 8.80.0-⑬, 8b2310e7…> node … ; MJPC_PARTIES=D node … ; MJPC_PARTIES=R MJPC_ANCIEN=<l'assemblé de la base, 28ade58c…> node …
 ```
-Les captures (écran entier, 1536 × 864) sont dans le scratchpad de la session, dossier `c16-fin-heure/captures/`, nommées `asm-apres-<partie><n>-<quoi>.png` ; elles ne sont pas au dépôt. Les sorties ne portent aucun nom d'élève (« un élève ») ; la passe 1 a été nettoyée de trois bouts de prénom qu'une découpe du texte de la case laissait passer (la sonde anonymise désormais avant de découper).
+Les captures (écran entier, 1536 × 864) sont dans le scratchpad de la session, dossier `c16-fin-heure/captures/`, nommées `asm-apres-<partie><n>-<quoi>.png` ; elles ne sont pas au dépôt. Les sorties ne portent aucun nom d'élève (« un élève ») : vérifié préfixe par préfixe contre les classes du faux hub. La première passe a été nettoyée de trois bouts de prénom qu'une découpe du texte de la case laissait passer ; la sonde anonymise désormais le texte entier avant de le découper. Dans la sortie P (8.78.2), un libellé dit « la forme de un élève » : l'anonymisation y a remplacé le prénom du professeur (corrigé dans la sonde pour la passe suivante).

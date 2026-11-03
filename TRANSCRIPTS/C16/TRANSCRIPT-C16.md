@@ -2151,3 +2151,4 @@ MEMO
   >
   > MEMO
 - **17:19 — à l'auditeur de l'horloge** : deux ajouts : P2H seul ×2 sans touche (le second ordinateur qui « Reprendre » en vraie heure désactive-t-il le téléphone ?) ; dans P2T, un geste fait juste avant au téléphone ou à l'ordinateur se perd-il quand le second ordinateur est pris pour une version d'avant ?
+- **17:20 — Paul, mot pour mot** : « 397. oui le téléphone doit se désactiver dans tous les cas. »

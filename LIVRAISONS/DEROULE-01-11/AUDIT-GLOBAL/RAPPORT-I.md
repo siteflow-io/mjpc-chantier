@@ -76,3 +76,64 @@
 - Le cas de Paul (capture de 12:04, « cinq pastilles en vert » alors que les initiales tapées étaient celles des 3 DYLAN) : c'est ce mécanisme — en répétition, la liste est celle des 3 FRANKLIN ; chaque initiale des 3 DYLAN qui a les mêmes lettres (dans un ordre ou dans l'autre) qu'un élève des 3 FRANKLIN, ou qui commence un prénom des 3 FRANKLIN, donne la réponse à cet élève et le met en vert. Les cinq de la capture : je ne sais pas lesquels (pas mesuré sur le vrai hub).
 - « J'espère que c'est uniquement le cas de la répétition » : **non pour le mécanisme, oui pour la liste**. En mode test et en vraie heure, la liste est celle de la classe de l'heure : des initiales de cette classe tombent juste. Mais le même mécanisme (Entrée prend le premier candidat, même par lettres inversées ou début de prénom) vaut dans les trois sessions, mesuré à l'identique : une faute de frappe ou des lettres inversées donnent la réponse à un autre élève de la classe.
 - Ce que ça télescope (tout ce qui lit `r.eleve` / `r.i`) : les pastilles et le compteur « n sur N présents » (`participation`), la fiche d'élève (`histoire`, l. 19702), « qui a participé » au tableau (`quiAParticipe`, l. 19726, envoyé dans la scène par `dr_versMur` l. 21507-21508), le journal (`journal('parole', …)` à Entrée dans la réponse, l. 19670) et donc le récit et la Relecture de l'heure (les paroles par élève, `dr_partsHeure`, l. 20461). En répétition, ce qui est écrit est oublié à « ■ Arrêter » (`arreterRepetition`, l. 19117) ; en mode test, cela reste au magasin du mode test ; en vraie heure, cela part au hub.
+
+---
+
+## 1 · LES TÉLESCOPAGES (㊶) — mesuré le 03/11 de 13:08 à 13:45
+
+*Par le geste, à chaque fois sur un faux hub neuf : le tableau distant ouvert d'abord (`?vue=tableau`, un autre appareil) ; **A** lance sa session (une vraie heure par la case de l'emploi du temps « ▶ Ouvrir le pilotage et lancer » ; un essai = la même chose en mode test ; une répétition = l'Atelier, l'onglet « Pilotage » ; en mode test, pareil) et dévoile deux fois ; **B** (un autre ordinateur, ou un autre onglet du même navigateur) ouvre le site, puis lance la sienne par le même geste et dévoile deux fois ; A dévoile deux fois ; B s'arrête (« ■ Arrêter » ou « Clore l'heure ») ; A dévoile deux fois ; A s'arrête. À chaque étape : qui le tableau distant suit (l'identité de l'appareil dans la scène montrée, `origine`), ce que dit chaque appareil, ce qui s'écrit au hub (chemins comptés). « Même séance » : la case 14/09 08:57 des 3E Charles de Gaulle, séance 1 ; « autre classe » : la case des 3 DYLAN (CLASSE TEST) le même jour ; « autre séance » : la répétition de la séance 2. H = vraie heure, T = essai en mode test, R = répétition, RT = répétition en mode test. Brut : `sorties/audit-I.jsonl` (partie Q1), `sorties/sonde-audit-I-q1b.txt`.*
+
+### 1.1 Deux appareils, même séance, même classe (16 combinaisons, A puis B)
+| A puis B | Le geste de B (sur la case, ou l'onglet « Pilotage ») | Le tableau distant suit | Ce que disent A et B | Quand B s'arrête | B écrit au hub |
+|---|---|---|---|---|---|
+| H + H | la case dit « ▶ Reprendre l'heure » : B **rejoint** la même heure | le dernier qui agit (B, puis A) | « Un autre ordinateur a la main » chez celui qui ne l'a pas | B clôt : clos partout, tableau à l'horloge | les chemins de l'heure (`C/…`, `/site/cours_actif`) |
+| H + T | en mode test, la case dit « ▶ Reprendre l'heure » : **B devient un essai qui copie l'heure** (« Heure reprise ») | A | A et B : « ● session » ; rien ne dit à B que son essai n'est pas au tableau | A garde le tableau | `/site/tableau_test/{pointeur, scene, ecrans, vif}` |
+| H + R | répétition | A | B : « tableau distant pris : 3E Charles de Gaulle est en cours » | A | rien |
+| H + RT | répétition en mode test | A | B : « tableau distant pris : … est en cours » | A | rien |
+| **T + H** | « Ouvrir le pilotage et lancer », **sans modale** | **B — l'essai de A perd le tableau** | **rien chez A** (« ● session ») | le tableau **revient à l'essai de A** | les chemins de l'heure |
+| T + T | « Ouvrir le pilotage et lancer » : B **rejoint** l'essai (« Heure reprise ») | le dernier qui agit | « Un autre ordinateur a la main » | clos partout, horloge | `/site/tableau_test/*` |
+| **T + R** | répétition, sans modale | **B — l'essai de A perd le tableau** | **rien chez A, rien chez B** | revient à l'essai de A | `/site/repetition/*` |
+| **T + RT** | répétition en mode test, sans modale : **elle réécrit l'annonce de l'essai** (`/site/tableau_test/pointeur`) | **les deux, mêlés** : la scène de B, puis celle de A au geste de A, sous l'annonce de B | rien chez A ni chez B | **l'horloge — alors que l'essai de A continue** (A dévoile, le tableau reste à l'horloge) | `/site/tableau_test/*` (les mêmes chemins que A) |
+| **R + H** | « Ouvrir le pilotage et lancer », sans modale | **B — la répétition de A perd le tableau** | rien chez A | revient à la répétition de A | les chemins de l'heure |
+| R + T | « Ouvrir le pilotage et lancer », sans modale | A | **rien chez B** : son essai n'est pas au tableau, son témoin dit « ● session » | A | `/site/tableau_test/*` |
+| R + R | répétition : B **rejoint** | le dernier qui agit | « Un autre ordinateur a la main » | arrêtée partout, horloge | `/site/repetition/*` |
+| R + RT | répétition en mode test, sans modale | A | **rien chez B** | A | `/site/tableau_test/*` |
+| **RT + H** | « Ouvrir le pilotage et lancer », sans modale | **B** | rien chez A | revient à A | les chemins de l'heure |
+| **RT + T** | essai, sans modale : **il réécrit l'annonce de la répétition** | **les deux, mêlés** (B, puis A au geste de A) | rien | **l'horloge — la répétition de A continue** | `/site/tableau_test/*` |
+| **RT + R** | répétition, sans modale | **B** | rien chez A | revient à A | `/site/repetition/*` |
+| RT + RT | répétition en mode test : B **rejoint** | le dernier qui agit | « Un autre ordinateur a la main » | arrêtée partout, horloge | `/site/tableau_test/*` |
+
+**Compté (16)** : 4 rejoignent la même session (H+H, T+T, R+R, RT+RT) ; 2 refusent le tableau en le disant (H+R, H+RT : « tableau distant pris ») ; **5 prennent le tableau à la session qui jouait, sans rien lui dire** (T+H, T+R, R+H, RT+H, RT+R) ; **2 se mêlent sur la même adresse, puis le tableau tombe à l'horloge pendant que l'autre joue encore** (T+RT, RT+T) ; **3 jouent sans le tableau, sans le savoir** (H+T devenu essai, R+T, R+RT). Pendant ce temps, le témoin « ● session » de la session qui a perdu le tableau reste vert (il dit seulement que ses écritures passent, l. 21662-21665).
+
+### 1.2 Deux appareils, une autre séance ou une autre classe (4 combinaisons) : LA MODALE
+| A puis B | Ce que B voit | Les boutons | Un clic |
+|---|---|---|---|
+| H + H, autre classe | « Une heure joue déjà sur un autre appareil : les 3E Charles de Gaulle (09:16-09:52). La lancer ici la clôt. Que veux-tu faire ? » | **trois boutons « undefined »** | la modale se ferme ; **rien n'est lancé ni rejoint** (B : « aucune heure lancée ») ; A continue, le tableau le suit |
+| T + T, autre classe | « Un essai (mode test) joue déjà sur un autre appareil : 3E Charles de Gaulle · séance 0. Que veux-tu faire ? » (« séance 0 » : la clé, pas le numéro que voit Paul) | trois « undefined » | rien n'est lancé ni rejoint |
+| R + R, autre séance | « Une répétition joue déjà sur un autre appareil (séance 1). Que veux-tu faire ? » | trois « undefined » | rien n'est lancé ni rejoint |
+| RT + RT, autre séance | la même | trois « undefined » | rien n'est lancé ni rejoint |
+- Le code : `dr_sesDemander` (l. 23329-23335) donne `{ label, title, prim, action }` ; `atModaleChoix` (l. 14654-14672) écrit `b.lib` (« undefined ») et appelle `b.fn` (absent) : le clic ne fait que retirer la modale. **Dans ces quatre cas, Paul est bloqué** : ni « Rejoindre », ni « Lancer quand même », ni l'autre heure. Captures : `Q1-H+H·autre-B-dialogue.png` et suivantes.
+- Ces quatre modales ne paraissent que pour une session **de la même sorte** (heure/heure, essai/essai, répétition/répétition) : entre deux sortes différentes, aucune modale (1.1).
+
+### 1.3 Un même appareil (deux onglets du même navigateur, 6 combinaisons)
+| A puis B | Le tableau distant | Ce qui change par rapport à deux appareils |
+|---|---|---|
+| H + R | A ; B « tableau distant pris » | le bandeau « Heure en cours… Reprendre » ne paraît pas dans le second onglet (l. 23359 : l'heure est tenue par un autre onglet) |
+| R + H | **B** ; la répétition de A ne le sait pas | rien |
+| H + T | A ; B (mode test) « Reprendre l'heure » → un essai qui copie l'heure | pas de bandeau dans le second onglet |
+| T + H | **B** ; l'essai de A ne le sait pas | rien |
+| R + T | A ; l'essai de B n'est pas au tableau, sans le savoir | rien |
+| T + R | **B** ; l'essai de A ne le sait pas | rien |
+
+### 1.4 Trois sessions (3 combinaisons)
+| A, puis B, puis C | Le tableau distant |
+|---|---|
+| H, puis R, puis T | A (l'heure) tout du long ; B « tableau distant pris » ; C (mode test) « Reprendre l'heure » → un essai qui copie l'heure, pas au tableau |
+| T, puis RT, puis R | B prend l'annonce de A (mêlés), puis **C prend le tableau aux deux** ; quand B s'arrête, C le garde ; A ne voit rien |
+| R, puis T, puis H | A ; l'essai de B jamais au tableau ; **C (l'heure) prend le tableau à A** ; A ne voit rien |
+- La règle mesurée, la même que le code (§0.2) : **le tableau distant suit la session la plus haute de l'ordre « vraie heure > répétition > mode test (essai et répétition en mode test, à égalité : le dernier qui écrit) »**, relue toutes les 3 s, quel que soit l'ordre des lancements. Aucune session ne garde le tableau parce qu'elle l'a eu la première.
+
+### 1.5 Avec la télécommande
+| A (avec sa télécommande) puis B | Ce que la télécommande montre et fait |
+|---|---|
+| H, puis R | la télécommande pilote l'heure de A, le tableau la suit (« 3E Charles de Gaulle ● en direct · Diapo 2 sur 13 · heure 1 ») ; B « tableau distant pris » |

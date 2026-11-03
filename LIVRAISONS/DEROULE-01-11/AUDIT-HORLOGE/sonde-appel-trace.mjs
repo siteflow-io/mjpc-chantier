@@ -643,13 +643,14 @@ const pgPerdu = async fichier => {
     const parle = pg => pg.evaluate(n => (S.parts || []).some(x => x && x.nom === n && (x.heure == null || x.heure === S.heure)), nom).catch(() => null);
     const avant = g === 'tc-qui' ? await parle(tl.pg) : cible;
     await p(5000);
-    const r = {}; for (const [n, pg] of [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) r[n] = g === 'tc-qui' ? await parle(pg) : (await cleDe(pg)) === cible;
-    if (g !== 'tc-qui') r.tableau = (((await tabDe(T.pg)) || {}).cle || '').split('#').slice(0, 2).join('#') === String(cible || '').split('#').slice(0, 2).join('#');
+    const sp = c => String(c || '').split('#').slice(0, 2).join('#');   /* la diapo et le dévoilement, sans la page (elle dépend de la taille de l'écran : DR_SES_VUE) */
+    const r = {}, cles = {}; for (const [n, pg] of [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) { if (g === 'tc-qui') r[n] = await parle(pg); else { cles[n] = await cleDe(pg); r[n] = sp(cles[n]) === sp(cible); } }
+    if (g !== 'tc-qui') { const tb = (await tabDe(T.pg)) || {}; cles.tableau = tb.cle || (tb.attente ? 'en attente' : null); r.tableau = sp(tb.cle) === sp(cible); }
     const log = await o2.pg.evaluate(() => window.__mainLog || []).catch(() => []); const priseA = log.some(l => / main null → \S+ ← suite/.test(l));
     const verifiee = log.filter(l => /premierVerifier/.test(l)).map(l => l.replace(/ v\.par=\S+/, '')).join(' ; ');
     const perdu = Object.values(r).some(x => x !== true);
     bilan.push({ g, delai, priseA, perdu });
-    dire('      PG ' + g + ' ' + delai + ' ms après « Reprendre » (clic ' + rel(tClic) + ', geste ' + rel(tGeste) + ') : le geste fait ' + (g === 'tc-qui' ? (avant ? 'oui (la parole notée à la télécommande)' : 'NON') : (cible ? 'oui (' + cible + ')' : 'NON')) + ' ; prise de main par A au second : ' + (priseA ? 'OUI' : 'non') + ' [' + verifiee + '] ; 5 s après, le geste chez : ' + JSON.stringify(r));
+    dire('      PG ' + g + ' ' + delai + ' ms après « Reprendre » (clic ' + rel(tClic) + ', geste ' + rel(tGeste) + ') : le geste fait ' + (g === 'tc-qui' ? (avant ? 'oui (la parole notée à la télécommande)' : 'NON') : (cible ? 'oui (' + cible + ')' : 'NON')) + ' ; prise de main par A au second : ' + (priseA ? 'OUI' : 'non') + ' [' + verifiee + '] ; 5 s après, le geste chez : ' + JSON.stringify(r) + (g !== 'tc-qui' ? ' ; ce que montre chacun : ' + JSON.stringify(cles) : ''));
     if (TRACE) { traceVif('PG ' + g + ' ' + delai); dire('      [piège PG · second] ' + log.length + ' :\n        ' + log.join('\n        ')); }
     for (const x of [tl, o2, o, T]) await x.ctx.close().catch(() => {}); }
   const nA = bilan.filter(b => b.priseA), nP = nA.filter(b => b.perdu);

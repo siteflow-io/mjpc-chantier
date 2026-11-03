@@ -70,6 +70,29 @@ Le même ordre dans les passages piégés écartés (`m2`, `m3` : 24 et 30 ms tr
 
 *(suite : XT mesuré, l'horloge simulée pour X et XT, P2H, T — en cours)*
 
+## 3 · MESURÉ SUR LA MACHINE SEULE (donnée par la conscience à 18:17:20 ; chaque passage surveillé par `mesurer.sh`, tous « propres »)
+
+*(Un premier passage, 18:17:37, arrêté à tort : la première version de `mesurer.sh` a pris un processus de rendu de mon propre navigateur, fermé entre `ps` et la lecture de son parent, pour un navigateur étranger. Corrigé à 18:19 : seuls les navigateurs principaux, sans `--type=`, qui ne descendent pas du passage et qui sont encore là au contrôle suivant.)*
+
+| passage | ce qui est joué | résultat |
+|---|---|---|
+| `m19-1` 18:20:11 | X selon la règle (`MJPC_X_REGLE=1`) | **10 sur 10.** Avant la paire, le téléphone n'avait plus la main (désactivé par la touche Échap du second ordinateur, chemin B : voulu). « Reprendre avec la télécommande » → la main, 29 noms, 0 grisé. Puis l'appui du téléphone et le clic droit de l'ordinateur, à 39 ms : **l'élève du téléphone gardé** sur l'ordinateur, le second, le téléphone, la case du troisième et le hub ; l'élève de l'ordinateur aussi. |
+| `m20-1` 18:21:24 | XT selon la règle | **8 sur 8.** Même chose en mode test, à 42 ms : l'appui du téléphone gardé sur les trois appareils. |
+| `m17-1` 18:22:14 | P2H, reprise **sans touche** | **Le téléphone reste actif** après « Reprendre » du second ordinateur (les trois appareils disent : la main est au téléphone). Contre la règle de 17:20 : **dette du site**. Pourquoi : le chemin A n'a pas eu lieu. La sauvegarde immédiate (`dr_etatAuto(vite)`, 22 899) a été remplacée par celle de 900 ms avant de partir ; `C/etat` relu au hub portait le `vifTs` de l'ordinateur. Lu dans le code : le clic sur le bandeau n'est pas un geste (`dr-session.js:332-333`) ; aucun autre chemin ne s'est vu dans le piège. (Les étapes b et d de ce passage sont rouges à cause de ma variante : sans Échap, le clic droit de la sonde sur le second ordinateur n'ouvre pas son menu, « PAS FAIT » ; pourquoi, je ne sais pas, sans capture.) |
+| `m16-1` 18:23:38 | P2T (sonde d'origine, avec Échap) | Les 4 mêmes rouges. **Chemin A** : `C/etat` écrit sans `vifTs` à 20 609, `DR_SES.ici` posé à 20 612 (3 ms trop tard), la main prise à 21 401 par `suite`. Le téléphone désactivé : le résultat voulu, par le mauvais chemin. |
+| `m18-1` 18:24:23 | PG (9 cas) | Voir ci-dessous. |
+| `m7-1` 18:28:36 | T de la session | **24 sur 24** (vert). Le second ordinateur y prend aussi la main à sa reprise par le chemin A (39 111, `suite`). |
+
+**PG — un geste fait juste avant la prise de main par A se perd-il ? Oui.** Le décor de P2T, la reprise du second ordinateur sans touche. 200, 500 ou 800 ms après son clic sur « Reprendre », un geste : une prise de parole à la télécommande (`tc-qui`), ▶ à la télécommande (`tc-suiv`), ▶ au clic de l'ordinateur (`ord-suiv`). Puis 5 s d'attente.
+- Le chemin A a joué dans **8 cas sur 9**. Dans les 8, le geste a disparu.
+  - La prise de parole (3 cas sur 3) : absente des trois pilotes, **y compris de la télécommande qui l'avait notée**.
+  - ▶ (5 cas) : absent de l'appareil même qui l'avait fait (même écran, même page) ; pour les autres appareils et le tableau, ma comparaison incluait la page (elle dépend de la taille de l'écran) : à relire, relance de PG en fin de file.
+- Le 9ᵉ cas (`ord-suiv`, 800 ms) : pas de chemin A (l'état du ▶ de l'ordinateur, 240 430, plus récent que l'écriture du second, 240 333). Le geste est chez l'ordinateur et la télécommande ; pour le second et le tableau, même réserve sur la page.
+
+**Pourquoi le geste se perd** (la suite d'appels, mesurée dans le cas `tc-suiv` 500 ms ; le code, `dr-session.js`) : le ▶ du téléphone part à 131 749. Le second ordinateur, qui reprend, reçoit cet état en premier ; plus ancien que sa propre écriture de `C/etat`, il le prend pour « une version d'avant » : `DR_SES.socle` = cet état (ligne 177), `DR_SES.dernier` = sa clé, la main, `forcer` (ligne 178). Puis il envoie (ligne 179) **sa photo à lui, celle de la reprise, lue avant le ▶**, en la déclarant bâtie sur cet état (`base`). Chez les autres, la fusion à trois voies (`dr_sesFus`, lignes 236-246) voit : la base a le geste, l'état reçu ne l'a plus, ici rien n'a changé → **le geste est retiré**, comme si le second ordinateur l'avait défait. Pour la prise de parole (une liste aux identifiants) : l'élément est dans la base, absent de l'état reçu → retiré (ligne 239). Le téléphone, qui a perdu la main, cède ensuite son dernier état (133 112) ; ce qu'il contenait, je ne l'ai pas relevé. Aucun message à l'écran : une **perte silencieuse**.
+
+En classe : Paul note une prise de parole (ou dévoile) au téléphone ; dans la seconde qui suit, un second ordinateur fait « Reprendre ». La prise de parole disparaît partout, sans rien dire.
+
 ## 4 · Les montres de la sonde et l'heure du faux hub (lu dans le code ; ce qui est mesuré est dit)
 
 - **`MJPC_HORLOGE=date`** (sonde-appel.mjs:89-90, 114 ; sonde-session.mjs, même code) ne remplace que `Date` dans chaque page, avec le même décalage pour tous les appareils (`t09 - T0REEL`, plus `decal`, qui vaut 0 dans P2, X et XT). Dans le site, rien ne contourne ce `Date` (aucun `Intl…format()` sans date, aucun `performance.timeOrigin`, aucun `constructor()` de date ; `ev.timeStamp`, dr-session.js:330, ne sert qu'à l'écart entre deux touches). Les heures comparées par le chemin A (`maj` contre `v.ts`) sont deux montres de page décalées pareil : le réglage des montres n'y joue pas.

@@ -2117,3 +2117,21 @@ MEMO
 - **16:52 — l'exécutant du lot 1** : ses sondes finales tournent (il écrit « depuis 17:0x » ; l'horloge dit 16:52 à la réception : son heure est fausse), celles de `banc/vraie-horloge` à la vraie horloge, pour chaque étape (le parcours, en mode test, l'appel, la fin d'heure, la session) l'après `b984f8bd` puis la base `bc7cc9cd`, la machine libre avant chaque passage ; un premier départ à 16:5x avec l'ancienne horloge, arrêté par PID, rien gardé.
 - **16:53 — l'exécutant du lot 1** : ses heures d'avant étaient estimées, il le reconnaît ; les vraies : les sondes finales démarrées à 16:52:39 (le parcours sur `b984f8bd` : 30 vérifications, 0 échec, vert ; la base depuis 16:53:19) ; désormais chaque heure vient de la commande.
 - **17:04 — Paul, mot pour mot** : « 390 n'importe quelle touche. 385. Pas compris »
+- **17:05 — à l'auditeur de l'horloge** : Paul a tranché, toute touche reprend la main ; pour X, la main prise après Échap est voulue, c'est l'attente de la sonde ; restent X et XT sans clavier, P2T sur machine seule, T, l'horloge simulée.
+- **17:05 — message à Paul, mot pour mot :**
+
+  > 392. 390 noté : n'importe quelle touche reprend la main. Donc, pour les deux absents marqués au même moment (384), le site fait ce que tu veux sur ce point ; c'est mon test qui attendait autre chose. L'auditeur mesure s'il reste un défaut quand personne ne touche le clavier.
+  >
+  > 393. 385, dit autrement. Le lot 1 (les 3 DYLAN, la fenêtre, la participation) sera bientôt prêt. Mais mes tests ont trouvé un défaut déjà en ligne, qui n'a rien à voir avec le lot 1 : en mode test, un second ordinateur qui fait « Reprendre » désactive le téléphone (389). Ta règle dit : pas de mise en ligne tant qu'il reste une dette. Deux choix.
+  >
+  > 394. Premier choix : je fais régler ce défaut d'abord, puis je te propose le lot 1 et cette réparation ensemble. Ça retarde le lot 1 ; de combien : je ne sais pas.
+  >
+  > 395. Second choix : je te propose le lot 1 dès qu'il est prouvé, et la réparation du défaut vient juste après, en premier.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 17:05
+  >
+  > À jouer : 393 à trancher (premier ou second choix) · en cours : lot 1 (ses dernières vérifications), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

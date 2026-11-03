@@ -2340,3 +2340,30 @@ MEMO
 - **21:10 — l'exécutant du complément (message à la conscience)** : fini ; dernier commit `71060474d` (la NOTE et les sorties, anonymisées ; le site reste `9b408b030`, assemblé `48c2205e`). Compté sur l'après : T 10/10 (240, 0 échec) ; PG 45 cas, 0 geste perdu (base : 8 perdus sur 9) ; RP vraie heure, mode test, répétition 5/5 chacune ; « Rejoindre » (fenêtre, répétition) 5/5 ; l'appel entière 147/0 ; parcours K15 et K15-test verts ; fin d'heure FGSDT 41/0 ; lot 1 KMWPE 215/0. Pas rejoué (Paul, 20:51) : la session entière, la fin d'heure P/R, le retour sûr R3, rien sur la base. Ne sait pas : la cause exacte du dévoilement absent du téléphone (pas reproduit en 13 passages de T) ; « Rejoindre » dans la fenêtre pour l'heure et l'essai (même chemin dans le code). La machine libre ; il s'arrête (174 outils, 607 470 jetons, 2 h 17).
 - **21:11 — audit de la conscience sur `71060474d`** : un commit, 31 fichiers, tous sous `LIVRAISONS/DEROULE-01-11/LOT1-COMPLEMENT/` (la NOTE, les sorties) ; rien dans le site, ni `AUDITS/`, ni les fichiers interdits. Les sorties lues pour les noms : seuls « Charles Gaulle » (la classe d'essai), des titres de diapos (« Le Romantisme », « Albatros », « Groupe ») ; aucun nom d'élève. Ça va.
 - **21:11 — le banc complet à la vraie horloge lancé** (`banc-horloge.sh`) : candidat `71060474d` (assemblé `48c2205e`, refait par le banc à l'identique), sondes `banc/vraie-horloge` `0ff3d8ffd`, base des R et du témoin : la production 8.81.1 ; machine seule (0 navigateur avant). Début 21:11:15.
+
+- **21:11 — message de fin à Paul, mot pour mot :**
+
+  > La réparation est finie et poussée ; mon banc complet tourne depuis 21:11. 420 attend ton choix.
+  >
+  > À tester : les deux gestes de 423, sans rien lancer.
+  >
+  > 03/11/2026 21:11
+  >
+  > À jouer : 420 à trancher, 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **21:12 — Paul, mot pour mot :**
+
+  > 420 premier choix
+- **21:13 — registre** (production `0fd7117`) : la réparation finie ; (4) le tableau qui recule, (5) les états renvoyés sans arrêt, (6) l'espace tapée en dernier — trouvés et réglés au sas, pas en ligne ; ce qui n'est pas rejoué et pourquoi ; le choix de 21:12. La production `index.html` inchangée (md5 `c21ddbb6`).
+- **21:13 — message à Paul, mot pour mot :**
+
+  > 425. Noté. Mon banc tourne seul ; je ne lis que son résultat. Je te demande « promeus » demain, avec les gestes à tester.
+  >
+  > À tester : les deux gestes de 423, sans rien lancer.
+  >
+  > 03/11/2026 21:13
+  >
+  > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

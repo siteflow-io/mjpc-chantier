@@ -1,0 +1,1177 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T · 2026-11-03 18:14 UTC · md5 c6aca6d0e267bd59a89f2e5b09c6ead2 · images de 3e : un dossier local
+
+— l’essai en mode test · t3-espace-apres —
+  ok     T · l’ordinateur lance l’heure par la case de l’emploi du temps
+      T · second ordinateur : bandeau en 3 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":3,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · téléphone : bandeau en 2 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le téléphone voit le bandeau en moins de 2 s — {"t":2,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209507|0","ici":"essai|1789369209507|0","recu":1789369222467,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209507|0","ici":"essai|1789369209507|0","recu":1789369222686,"di":0,"mur":true}
+      T · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     T · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      T · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 105, 102, 136, 84, 91 · téléphone 179, 141, 96, 150, 234 · tableau distant 108, 186, 104, 145, 146, 99, 91, 152, 94, 121
+  ok     T · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":234}
+      T · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     T · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      T · un second ordinateur reprend aussi (bandeau en 2 ms) ; l’ordinateur va à « Question-bilan » (fait) : ordinateur emt9v3yqo6pvd5#2#0 · second emt9v3yqo6pvd5#2#0 · téléphone emt9v3yqo6pvd5#2#1
+      T · le texte gardé au second ordinateur quand l’ordinateur a pris la main : «  »
+      T · la réponse tapée au second ordinateur (« Le Romantisme met en scène la nature contre la règle »), l’ordinateur qui dévoile (▶ ← ▶), la participation de un élève (EA) au téléphone : {"ordinateur":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ÉCHEC  T · la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là («  ») est chez les trois pilotes, rien de perdu — {"ordinateur":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la participation saisie au téléphone pendant ce temps : chez les trois pilotes — {"ordinateur":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement) — {"ordinateur":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":false,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+      [réponse · ordinateur] « Le Romantisme met⍽ »
+      [réponse · second] « Le Romantisme met⍽ »
+      [réponse · telephone] « Le Romantisme met⍽ »
+      [trace T après le dévoilement] ordinateur {"id":"symiqg3ni","main":"symiqg3ni","mainTs":"53655","att":false,"occ":false,"appui":false,"act":"BUTTON#garde-gel","cle":"emt9v3yqon4gew#1","now":"62090"}
+                 second {"id":"s4cifkkt9","main":"symiqg3ni","mainTs":"53655","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"62093"}
+                 telephone {"id":"spfpddsdv","main":"symiqg3ni","mainTs":"53655","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"62953"}
+      [vif T depuis le second ordinateur] 167 état(s) vivant(s) au hub :
+        ordinateur2 @38387 par=s4cifkkt9 ts=38386 main=s4cifkkt9 mainTs=38386 tc=false où=inv-plan-s0#1 base=symiqg3ni|32023
+        telephone @38494 par=spfpddsdv ts=38492 main=s4cifkkt9 mainTs=38386 tc=false où=inv-plan-s0#1 base=s4cifkkt9|38386 CÈDE
+        ordinateur @41861 par=symiqg3ni ts=41860 main=symiqg3ni mainTs=41860 tc=false où=emt9v3yqo6pvd5#0 base=spfpddsdv|38492
+        ordinateur2 @42017 par=s4cifkkt9 ts=42015 main=symiqg3ni mainTs=41860 tc=false où=emt9v3yqo6pvd5#0 base=symiqg3ni|41860 CÈDE
+        ordinateur @42875 par=symiqg3ni ts=42874 main=symiqg3ni mainTs=41860 tc=false où=emt9v3yqo6pvd5#1 base=s4cifkkt9|42015
+        ordinateur @43219 par=symiqg3ni ts=43216 main=symiqg3ni mainTs=41860 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|42874
+        ordinateur2 @46228 par=s4cifkkt9 ts=46225 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|43216
+        ordinateur2 @46377 par=s4cifkkt9 ts=46315 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|46225
+        ordinateur @46568 par=symiqg3ni ts=46480 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|46225 CÈDE
+        ordinateur2 @46588 par=s4cifkkt9 ts=46569 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|46315
+        ordinateur2 @46726 par=s4cifkkt9 ts=46724 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|46480
+        telephone @46843 par=spfpddsdv ts=46840 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|46480
+        ordinateur @46979 par=symiqg3ni ts=46974 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|46840
+        ordinateur2 @47051 par=s4cifkkt9 ts=47045 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|46974
+        ordinateur2 @47118 par=s4cifkkt9 ts=47116 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47045
+        ordinateur2 @47206 par=s4cifkkt9 ts=47169 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47116
+        ordinateur2 @47314 par=s4cifkkt9 ts=47311 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47169
+        ordinateur2 @47361 par=s4cifkkt9 ts=47357 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47311
+        ordinateur2 @47427 par=s4cifkkt9 ts=47422 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47357
+        ordinateur2 @47509 par=s4cifkkt9 ts=47495 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47422
+        ordinateur2 @47638 par=s4cifkkt9 ts=47633 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47495
+        ordinateur2 @47761 par=s4cifkkt9 ts=47714 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47633
+        ordinateur2 @47972 par=s4cifkkt9 ts=47964 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47714
+        ordinateur2 @48048 par=s4cifkkt9 ts=48047 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|47964
+        ordinateur2 @48242 par=s4cifkkt9 ts=48191 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48047
+        telephone @48354 par=spfpddsdv ts=48353 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48047
+        ordinateur2 @48378 par=s4cifkkt9 ts=48359 main=s4cifkkt9 mainTs=46225 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48191
+        ordinateur2 @48508 par=s4cifkkt9 ts=48498 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|48353 CÈDE
+        ordinateur @48558 par=symiqg3ni ts=48556 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|48353
+        telephone @48577 par=spfpddsdv ts=48571 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48191
+        ordinateur2 @48690 par=s4cifkkt9 ts=48688 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|48556
+        ordinateur @48744 par=symiqg3ni ts=48741 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48359
+        telephone @48813 par=spfpddsdv ts=48806 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48359
+        ordinateur @48975 par=symiqg3ni ts=48973 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48498
+        ordinateur2 @48987 par=s4cifkkt9 ts=48979 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|48741
+        ordinateur @49113 par=symiqg3ni ts=49095 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|48571
+        ordinateur @49201 par=symiqg3ni ts=49149 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48688
+        ordinateur2 @49359 par=s4cifkkt9 ts=49356 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|48806
+        telephone @49404 par=spfpddsdv ts=49402 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48688
+        telephone @49531 par=spfpddsdv ts=49529 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|48741
+        ordinateur2 @49575 par=s4cifkkt9 ts=49572 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|48973
+        ordinateur @49607 par=symiqg3ni ts=49604 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|49356
+        ordinateur2 @49710 par=s4cifkkt9 ts=49708 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|49095
+        ordinateur @49755 par=symiqg3ni ts=49753 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|49402
+        telephone @49824 par=spfpddsdv ts=49813 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|48973
+        telephone @50003 par=spfpddsdv ts=50002 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|48979
+        ordinateur2 @50171 par=s4cifkkt9 ts=50169 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|49402
+        ordinateur2 @50309 par=s4cifkkt9 ts=50304 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|49529
+        ordinateur @50321 par=symiqg3ni ts=50316 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|49708
+        ordinateur @50558 par=symiqg3ni ts=50554 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|50002
+        ordinateur2 @50587 par=s4cifkkt9 ts=50585 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|49753
+        ordinateur2 @50675 par=s4cifkkt9 ts=50674 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|49813
+        ordinateur @50688 par=symiqg3ni ts=50681 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50169
+        telephone @50804 par=spfpddsdv ts=50803 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|49149
+        ordinateur @50920 par=symiqg3ni ts=50917 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50304
+        ordinateur @51207 par=symiqg3ni ts=51190 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50585
+        telephone @51349 par=spfpddsdv ts=51345 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|49572
+        ordinateur2 @51469 par=s4cifkkt9 ts=51405 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|50554
+        telephone @51472 par=spfpddsdv ts=51469 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|49604
+        ordinateur @51485 par=symiqg3ni ts=51479 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50674
+        ordinateur2 @51612 par=s4cifkkt9 ts=51610 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|50681
+        telephone @51732 par=spfpddsdv ts=51674 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|49708
+        ordinateur2 @51787 par=s4cifkkt9 ts=51785 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|50803
+        ordinateur @51863 par=symiqg3ni ts=51857 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|51345
+        ordinateur @52092 par=symiqg3ni ts=52090 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|51405
+        telephone @52151 par=spfpddsdv ts=52142 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50304
+        ordinateur2 @52317 par=s4cifkkt9 ts=52252 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|51345
+        telephone @52317 par=spfpddsdv ts=52260 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|50316
+        ordinateur @52386 par=symiqg3ni ts=52374 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|51469
+        telephone @52470 par=spfpddsdv ts=52468 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|50585
+        ordinateur2 @52524 par=s4cifkkt9 ts=52519 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|51469
+        telephone @52701 par=spfpddsdv ts=52700 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|50681
+        telephone @52954 par=spfpddsdv ts=52799 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|50917
+        telephone @52955 par=spfpddsdv ts=52905 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|51190
+        telephone @53066 par=spfpddsdv ts=53018 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|51405
+        telephone @53537 par=spfpddsdv ts=53134 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|51479
+        ordinateur @53537 par=symiqg3ni ts=53164 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|51674
+        telephone @53538 par=spfpddsdv ts=53254 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|51610
+        ordinateur2 @53538 par=s4cifkkt9 ts=53358 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|51857
+        ordinateur @53543 par=symiqg3ni ts=53429 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=s4cifkkt9|51785
+        ordinateur2 @54088 par=s4cifkkt9 ts=53641 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|52260
+        ordinateur @54089 par=symiqg3ni ts=53655 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|52142
+        telephone @54089 par=spfpddsdv ts=53663 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|52090
+        ordinateur2 @54108 par=s4cifkkt9 ts=53730 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|52374
+        ordinateur @54354 par=symiqg3ni ts=53791 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|52260
+        ordinateur2 @54354 par=s4cifkkt9 ts=53842 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|52468
+        ordinateur @54357 par=symiqg3ni ts=53956 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|52468
+        ordinateur2 @54358 par=s4cifkkt9 ts=53983 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|52700
+        ordinateur2 @54363 par=s4cifkkt9 ts=54048 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|52905
+        ordinateur @54525 par=symiqg3ni ts=54114 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|52519
+        ordinateur @54526 par=symiqg3ni ts=54255 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|52700
+        telephone @54527 par=spfpddsdv ts=54290 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|53429
+        ordinateur2 @54527 par=s4cifkkt9 ts=54359 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=symiqg3ni|53429
+        ordinateur @54528 par=symiqg3ni ts=54391 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|52905
+        ordinateur @55006 par=symiqg3ni ts=54716 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|53018
+        ordinateur2 @55006 par=s4cifkkt9 ts=54733 main=spfpddsdv mainTs=48353 tc=false où=emt9v3yqo6pvd5#2 base=spfpddsdv|53663
+        ordinateur @55006 par=symiqg3ni ts=54820 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|53663
+        ordinateur @55119 par=symiqg3ni ts=54895 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|54048
+        telephone @55443 par=spfpddsdv ts=55147 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|54391 CÈDE
+        ordinateur2 @55445 par=s4cifkkt9 ts=55154 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|54391
+        ordinateur2 @55488 par=s4cifkkt9 ts=55377 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|54820
+        telephone @55488 par=spfpddsdv ts=55409 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|54820
+        telephone @55731 par=spfpddsdv ts=55729 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|54895
+        ordinateur2 @55876 par=s4cifkkt9 ts=55874 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|55409
+        telephone @56073 par=spfpddsdv ts=55983 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|55154
+        ordinateur2 @56073 par=s4cifkkt9 ts=56036 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|55729
+        ordinateur @56216 par=symiqg3ni ts=56213 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|55874
+        ordinateur @56433 par=symiqg3ni ts=56365 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|56036
+        telephone @56567 par=spfpddsdv ts=56542 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|56213
+        telephone @56801 par=spfpddsdv ts=56797 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|56365
+        ordinateur2 @56849 par=s4cifkkt9 ts=56847 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|56542
+        ordinateur2 @57027 par=s4cifkkt9 ts=57024 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|56797
+        ordinateur @57196 par=symiqg3ni ts=57194 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|56847
+        ordinateur @57408 par=symiqg3ni ts=57406 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=s4cifkkt9|57024
+        telephone @57426 par=spfpddsdv ts=57409 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|57194
+        telephone @57623 par=spfpddsdv ts=57621 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=symiqg3ni|57406
+        ordinateur @57709 par=symiqg3ni ts=57683 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|57409
+        ordinateur2 @57710 par=s4cifkkt9 ts=57675 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|57409
+        ordinateur @57922 par=symiqg3ni ts=57915 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|57621
+        ordinateur2 @57946 par=s4cifkkt9 ts=57965 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#0 base=spfpddsdv|57621
+        ordinateur2 @58032 par=s4cifkkt9 ts=58030 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|57915
+        ordinateur @58100 par=symiqg3ni ts=58099 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|57675
+        ordinateur @58180 par=symiqg3ni ts=58179 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|57965
+        telephone @58483 par=spfpddsdv ts=58479 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|57965
+        ordinateur @58592 par=symiqg3ni ts=58590 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|58479
+        ordinateur2 @58727 par=s4cifkkt9 ts=58725 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|58590
+        telephone @58749 par=spfpddsdv ts=58731 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|58030
+        telephone @58820 par=spfpddsdv ts=58818 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|58099
+        ordinateur @58976 par=symiqg3ni ts=58971 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|58731
+        telephone @59039 par=spfpddsdv ts=59004 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|58179
+        ordinateur2 @59234 par=s4cifkkt9 ts=59232 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|58818
+        ordinateur2 @59276 par=s4cifkkt9 ts=59274 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|58971
+        ordinateur2 @59428 par=s4cifkkt9 ts=59388 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|59004
+        telephone @59441 par=spfpddsdv ts=59439 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|58725
+        ordinateur @59525 par=symiqg3ni ts=59519 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|59232
+        telephone @59769 par=spfpddsdv ts=59767 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|59274
+        ordinateur @59968 par=symiqg3ni ts=59965 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|59388
+        ordinateur @60078 par=symiqg3ni ts=60077 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|59439
+        ordinateur2 @60232 par=s4cifkkt9 ts=60229 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|60077
+        ordinateur @60245 par=symiqg3ni ts=60247 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|59767
+        ordinateur2 @60398 par=s4cifkkt9 ts=60396 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|60247
+        telephone @60489 par=spfpddsdv ts=60487 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|59519
+        telephone @60683 par=spfpddsdv ts=60681 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|59965
+        ordinateur2 @60754 par=s4cifkkt9 ts=60749 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|60487
+        ordinateur2 @60902 par=s4cifkkt9 ts=60873 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|60681
+        ordinateur @60948 par=symiqg3ni ts=60943 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|60749
+        telephone @60969 par=spfpddsdv ts=60968 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|60229
+        ordinateur @61100 par=symiqg3ni ts=61098 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|60873
+        telephone @61189 par=spfpddsdv ts=61188 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|60396
+        ordinateur @61219 par=symiqg3ni ts=61218 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|60968
+        ordinateur @61354 par=symiqg3ni ts=61353 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|61188
+        ordinateur2 @61445 par=s4cifkkt9 ts=61428 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|61218
+        ordinateur2 @61540 par=s4cifkkt9 ts=61532 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|61353
+        telephone @61640 par=spfpddsdv ts=61639 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|60943
+        ordinateur2 @61770 par=s4cifkkt9 ts=61766 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|61639
+        telephone @61773 par=spfpddsdv ts=61767 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|61098
+        ordinateur @61828 par=symiqg3ni ts=61827 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|61766
+        ordinateur2 @61931 par=s4cifkkt9 ts=61930 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|61767
+        ordinateur @62031 par=symiqg3ni ts=62030 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|61930
+        telephone @62163 par=spfpddsdv ts=62157 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|61428
+        ordinateur @62285 par=symiqg3ni ts=62284 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|62157
+        telephone @62404 par=spfpddsdv ts=62394 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=s4cifkkt9|61532
+        ordinateur2 @62450 par=s4cifkkt9 ts=62423 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|62284
+        telephone @62640 par=spfpddsdv ts=62638 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|61827
+        ordinateur @62671 par=symiqg3ni ts=62670 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|62394
+        ordinateur2 @62815 par=s4cifkkt9 ts=62814 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=spfpddsdv|62638
+        ordinateur2 @62951 par=s4cifkkt9 ts=62947 main=symiqg3ni mainTs=53655 tc=false où=emt9v3yqon4gew#1 base=symiqg3ni|62670
+      [piège T depuis le second ordinateur · ordinateur] 306 :
+        38393 reçu s4cifkkt9|38386 (inv-plan-s0#1) main=s4cifkkt9|38386 occupé=false ici inv-plan-s0#1
+        38394 main spfpddsdv → s4cifkkt9 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        38448 dr_sesAppliquer s4cifkkt9|38386 (inv-plan-s0#1) base symiqg3ni|32023 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        38498 reçu spfpddsdv|38492 (inv-plan-s0#1) main=s4cifkkt9|38386 occupé=false ici inv-plan-s0#1
+        38558 dr_sesAppliquer spfpddsdv|38492 (inv-plan-s0#1) base s4cifkkt9|38386 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        41858 main s4cifkkt9 → symiqg3ni ← dr_sesEnvoyerMaintenant
+        41860 envoi 41860 (emt9v3yqo6pvd5#0) tient base spfpddsdv|38492 rép ∅
+        42040 reçu s4cifkkt9|42015 (emt9v3yqo6pvd5#0) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#0
+        42150 dr_sesAppliquer s4cifkkt9|42015 (emt9v3yqo6pvd5#0) base symiqg3ni|41860 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        42874 envoi 42874 (emt9v3yqo6pvd5#1) tient base s4cifkkt9|42015 rép ∅
+        43217 envoi 43216 (emt9v3yqo6pvd5#2) tient base symiqg3ni|42874 rép ∅
+        46235 reçu s4cifkkt9|46225 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46236 main symiqg3ni → s4cifkkt9 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        46480 dr_sesAppliquer s4cifkkt9|46225 (emt9v3yqo6pvd5#2) base symiqg3ni|43216 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici ∅ → 1:L ; gardé []
+        46481 envoi 46480 (emt9v3yqo6pvd5#2) suit CÈDE base s4cifkkt9|46225 rép 1:L
+        46528 reçu s4cifkkt9|46315 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46689 dr_sesAppliquer s4cifkkt9|46315 (emt9v3yqo6pvd5#2) base s4cifkkt9|46225 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 1:L → 2:Le ; gardé ["S.policeRatioCourante"]
+        46710 reçu s4cifkkt9|46569 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46797 dr_sesAppliquer s4cifkkt9|46569 (emt9v3yqo6pvd5#2) base s4cifkkt9|46315 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 2:Le → 3:Le⍽ ; gardé ["S.policeRatioCourante"]
+        46812 reçu s4cifkkt9|46724 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46870 dr_sesAppliquer s4cifkkt9|46724 (emt9v3yqo6pvd5#2) base symiqg3ni|46480 [connue] rép reçue 4:Le R : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 4:Le R ; gardé []
+        46884 reçu spfpddsdv|46840 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46939 dr_sesAppliquer spfpddsdv|46840 (emt9v3yqo6pvd5#2) base symiqg3ni|46480 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R ; gardé ["parDiapo"] CONTENU
+        46975 envoi 46974 (emt9v3yqo6pvd5#2) suit base spfpddsdv|46840 rép 4:Le R
+        47055 reçu s4cifkkt9|47045 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47177 dr_sesAppliquer s4cifkkt9|47045 (emt9v3yqo6pvd5#2) base symiqg3ni|46974 [connue] rép reçue 7:e Roma : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 7:e Roma ; gardé []
+        47207 reçu s4cifkkt9|47116 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47255 dr_sesAppliquer s4cifkkt9|47116 (emt9v3yqo6pvd5#2) base s4cifkkt9|47045 [connue] rép reçue 8: Roman : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 7:e Roma → 8: Roman ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47270 reçu s4cifkkt9|47169 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47347 dr_sesAppliquer s4cifkkt9|47169 (emt9v3yqo6pvd5#2) base s4cifkkt9|47116 [connue] rép reçue 9:Romant : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 8: Roman → 9:Romant ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47403 reçu s4cifkkt9|47311 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47502 dr_sesAppliquer s4cifkkt9|47311 (emt9v3yqo6pvd5#2) base s4cifkkt9|47169 [connue] rép reçue 10:omanti : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 9:Romant → 10:omanti ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47523 reçu s4cifkkt9|47357 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47599 dr_sesAppliquer s4cifkkt9|47357 (emt9v3yqo6pvd5#2) base s4cifkkt9|47311 [connue] rép reçue 11:mantis : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 10:omanti → 11:mantis ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47602 reçu s4cifkkt9|47422 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47704 dr_sesAppliquer s4cifkkt9|47422 (emt9v3yqo6pvd5#2) base s4cifkkt9|47357 [connue] rép reçue 12:antism : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 11:mantis → 12:antism ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47740 reçu s4cifkkt9|47495 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47846 dr_sesAppliquer s4cifkkt9|47495 (emt9v3yqo6pvd5#2) base s4cifkkt9|47422 [connue] rép reçue 13:ntisme : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 12:antism → 13:ntisme ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47865 reçu s4cifkkt9|47633 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47924 dr_sesAppliquer s4cifkkt9|47633 (emt9v3yqo6pvd5#2) base s4cifkkt9|47495 [connue] rép reçue 14:tisme⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 13:ntisme → 14:tisme⍽ ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        47926 reçu s4cifkkt9|47714 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47972 dr_sesAppliquer s4cifkkt9|47714 (emt9v3yqo6pvd5#2) base s4cifkkt9|47633 [connue] rép reçue 15:isme m : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 14:tisme⍽ → 15:isme m ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        48006 reçu s4cifkkt9|47964 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48055 dr_sesAppliquer s4cifkkt9|47964 (emt9v3yqo6pvd5#2) base s4cifkkt9|47714 [connue] rép reçue 16:sme me : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 15:isme m → 16:sme me ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        48091 reçu s4cifkkt9|48047 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48138 dr_sesAppliquer s4cifkkt9|48047 (emt9v3yqo6pvd5#2) base s4cifkkt9|47964 [connue] rép reçue 17:me met : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 16:sme me → 17:me met ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        48258 reçu s4cifkkt9|48191 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48299 dr_sesAppliquer s4cifkkt9|48191 (emt9v3yqo6pvd5#2) base s4cifkkt9|48047 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 17:me met → 18:e met⍽ ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        48368 reçu spfpddsdv|48353 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48369 main s4cifkkt9 → spfpddsdv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48537 dr_sesAppliquer spfpddsdv|48353 (emt9v3yqo6pvd5#2) base s4cifkkt9|48047 [connue] rép reçue 17:me met : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        48555 reçu s4cifkkt9|48359 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48556 envoi 48556 (emt9v3yqo6pvd5#2) suit base spfpddsdv|48353 rép 18:e met⍽
+        48722    parts : base [] ici [pme3apf] reçu [] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre DIFFÉRENT
+        48722 dr_sesAppliquer s4cifkkt9|48359 (emt9v3yqo6pvd5#2) base s4cifkkt9|48191 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts","S.derniere","S.vifDT","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        48740 reçu s4cifkkt9|48498 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48741 envoi 48741 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|48359 rép 19: met e
+        48948    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        48948 dr_sesAppliquer s4cifkkt9|48498 (emt9v3yqo6pvd5#2) base spfpddsdv|48353 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts"] CONTENU
+        48971 reçu spfpddsdv|48571 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48974 envoi 48973 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|48498 rép 19: met e
+        49073 dr_sesAppliquer spfpddsdv|48571 (emt9v3yqo6pvd5#2) base s4cifkkt9|48191 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        49091 reçu s4cifkkt9|48688 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49096 envoi 49095 (emt9v3yqo6pvd5#2) suit base spfpddsdv|48571 rép 19: met e
+        49146 dr_sesAppliquer s4cifkkt9|48688 (emt9v3yqo6pvd5#2) base symiqg3ni|48556 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        49149 reçu spfpddsdv|48806 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49149 envoi 49149 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|48688 rép 19: met e
+        49204 dr_sesAppliquer spfpddsdv|48806 (emt9v3yqo6pvd5#2) base s4cifkkt9|48359 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        49217 reçu s4cifkkt9|48979 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49267 dr_sesAppliquer s4cifkkt9|48979 (emt9v3yqo6pvd5#2) base symiqg3ni|48741 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        49366 reçu s4cifkkt9|49356 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49569    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49569 dr_sesAppliquer s4cifkkt9|49356 (emt9v3yqo6pvd5#2) base spfpddsdv|48806 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        49603 reçu spfpddsdv|49402 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49604 envoi 49604 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|49356 rép 18:e met⍽
+        49733    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49734 dr_sesAppliquer spfpddsdv|49402 (emt9v3yqo6pvd5#2) base s4cifkkt9|48688 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        49753 reçu spfpddsdv|49529 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49754 envoi 49753 (emt9v3yqo6pvd5#2) suit base spfpddsdv|49402 rép 18:e met⍽
+        49909 dr_sesAppliquer spfpddsdv|49529 (emt9v3yqo6pvd5#2) base symiqg3ni|48741 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        49936 reçu s4cifkkt9|49572 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50155 dr_sesAppliquer s4cifkkt9|49572 (emt9v3yqo6pvd5#2) base symiqg3ni|48973 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        50198 reçu s4cifkkt9|49708 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50271 dr_sesAppliquer s4cifkkt9|49708 (emt9v3yqo6pvd5#2) base symiqg3ni|49095 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo"] CONTENU
+        50315 reçu spfpddsdv|49813 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50316 envoi 50316 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|49708 rép 18:e met⍽
+        50436 dr_sesAppliquer spfpddsdv|49813 (emt9v3yqo6pvd5#2) base symiqg3ni|48973 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        50456 reçu spfpddsdv|50002 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50551    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50551 dr_sesAppliquer spfpddsdv|50002 (emt9v3yqo6pvd5#2) base s4cifkkt9|48979 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        50554 reçu s4cifkkt9|50169 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50557 envoi 50554 (emt9v3yqo6pvd5#2) suit base spfpddsdv|50002 rép 18:e met⍽
+        50645    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50645 dr_sesAppliquer s4cifkkt9|50169 (emt9v3yqo6pvd5#2) base spfpddsdv|49402 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts"] CONTENU
+        50680 reçu s4cifkkt9|50304 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50681 envoi 50681 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|50169 rép 19: met e
+        50867    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50867 dr_sesAppliquer s4cifkkt9|50304 (emt9v3yqo6pvd5#2) base spfpddsdv|49529 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","parDiapo"] CONTENU
+        50916 reçu s4cifkkt9|50585 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50917 envoi 50917 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|50304 rép 19: met e
+        51137 dr_sesAppliquer s4cifkkt9|50585 (emt9v3yqo6pvd5#2) base symiqg3ni|49753 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        51189 reçu s4cifkkt9|50674 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51191 envoi 51190 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|50585 rép 19: met e
+        51387    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51387 dr_sesAppliquer s4cifkkt9|50674 (emt9v3yqo6pvd5#2) base spfpddsdv|49813 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","parDiapo"] CONTENU
+        51477 reçu spfpddsdv|50803 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51480 envoi 51479 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|50674 rép 19: met e
+        51664 dr_sesAppliquer spfpddsdv|50803 (emt9v3yqo6pvd5#2) base symiqg3ni|49149 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        51702 reçu spfpddsdv|51345 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51808    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51808 dr_sesAppliquer spfpddsdv|51345 (emt9v3yqo6pvd5#2) base s4cifkkt9|49572 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","parDiapo"] CONTENU
+        51843 reçu s4cifkkt9|51405 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51858 envoi 51857 (emt9v3yqo6pvd5#2) suit base spfpddsdv|51345 rép 19: met e
+        51955 dr_sesAppliquer s4cifkkt9|51405 (emt9v3yqo6pvd5#2) base symiqg3ni|50554 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        52037 reçu spfpddsdv|51469 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52091 envoi 52090 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|51405 rép 19: met e
+        52287 dr_sesAppliquer spfpddsdv|51469 (emt9v3yqo6pvd5#2) base symiqg3ni|49604 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        52369 reçu s4cifkkt9|51610 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52384 envoi 52374 (emt9v3yqo6pvd5#2) suit base spfpddsdv|51469 rép 19: met e
+        52731 dr_sesAppliquer s4cifkkt9|51610 (emt9v3yqo6pvd5#2) base symiqg3ni|50681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        52772 reçu spfpddsdv|51674 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53105    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53105 dr_sesAppliquer spfpddsdv|51674 (emt9v3yqo6pvd5#2) base s4cifkkt9|49708 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        53164 reçu s4cifkkt9|51785 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53164 envoi 53164 (emt9v3yqo6pvd5#2) suit base spfpddsdv|51674 rép 18:e met⍽
+        53370    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53370 dr_sesAppliquer s4cifkkt9|51785 (emt9v3yqo6pvd5#2) base spfpddsdv|50803 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        53429 reçu spfpddsdv|52142 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53436 envoi 53429 (emt9v3yqo6pvd5#2) suit base s4cifkkt9|51785 rép 18:e met⍽
+        53552    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53552 dr_sesAppliquer spfpddsdv|52142 (emt9v3yqo6pvd5#2) base s4cifkkt9|50304 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts"] CONTENU
+        53642 reçu spfpddsdv|52260 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        53653 main spfpddsdv → symiqg3ni ← dr_sesEnvoyerMaintenant < dr_sesRecu < window.dr_sesRecu < · < donner
+        53654 envoi 53655 (emt9v3yqon4gew#0) tient base spfpddsdv|52142 rép 19: met e
+        53755 dr_sesAppliquer spfpddsdv|52260 (emt9v3yqo6pvd5#2) base symiqg3ni|50316 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 19: met e ; gardé ["S.eidCourant","S.page","parDiapo"]
+        53778 reçu spfpddsdv|52260 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        53789 reçu spfpddsdv|52468 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        53790 envoi 53791 (emt9v3yqon4gew#0) tient base spfpddsdv|52260 rép 19: met e
+        53926    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53935 dr_sesAppliquer spfpddsdv|52468 (emt9v3yqo6pvd5#2) base s4cifkkt9|50585 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.eidCourant","S.page","parDiapo"]
+        53954 reçu s4cifkkt9|52519 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        53955 envoi 53956 (emt9v3yqon4gew#0) tient base spfpddsdv|52468 rép 19: met e
+        54076    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54076 dr_sesAppliquer s4cifkkt9|52519 (emt9v3yqo6pvd5#2) base spfpddsdv|51469 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.eidCourant","S.page","parDiapo"]
+        54112 reçu spfpddsdv|52700 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54114 envoi 54114 (emt9v3yqon4gew#0) tient base s4cifkkt9|52519 rép 19: met e
+        54223 dr_sesAppliquer spfpddsdv|52700 (emt9v3yqo6pvd5#2) base symiqg3ni|50681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.eidCourant","S.page","parDiapo"]
+        54253 reçu spfpddsdv|52905 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54254 envoi 54255 (emt9v3yqon4gew#0) tient base spfpddsdv|52700 rép 18:e met⍽
+        54356 dr_sesAppliquer spfpddsdv|52905 (emt9v3yqo6pvd5#2) base symiqg3ni|51190 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.eidCourant","S.page","parDiapo"]
+        54374 reçu spfpddsdv|52905 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54388 reçu spfpddsdv|53018 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54390 envoi 54391 (emt9v3yqon4gew#0) tient base spfpddsdv|52905 rép 18:e met⍽
+        54647    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54647 dr_sesAppliquer spfpddsdv|53018 (emt9v3yqo6pvd5#2) base s4cifkkt9|51405 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts","S.eidCourant","S.page","parDiapo"]
+        54711 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54715 envoi 54716 (emt9v3yqon4gew#0) tient base spfpddsdv|53018 rép 19: met e
+        54794 dr_sesAppliquer spfpddsdv|53663 (emt9v3yqo6pvd5#2) base symiqg3ni|52090 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 19: met e ; gardé ["S.eidCourant","S.page","parDiapo"]
+        54809 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54812 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54818 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54820 envoi 54820 (emt9v3yqon4gew#0) tient base spfpddsdv|53663 rép 19: met e
+        54868    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54868 dr_sesAppliquer s4cifkkt9|54048 (emt9v3yqo6pvd5#2) base spfpddsdv|52905 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts","S.eidCourant","S.page","parDiapo"]
+        54869 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54870 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54870 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54871 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54871 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqon4gew#0
+        54894 envoi 54895 (emt9v3yqon4gew#0) tient base s4cifkkt9|54048 rép 18:e met⍽
+        55503 reçu s4cifkkt9|55154 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55737 dr_sesAppliquer s4cifkkt9|55154 (emt9v3yqon4gew#0) base symiqg3ni|54391 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        55767 reçu s4cifkkt9|55154 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55768 reçu spfpddsdv|55409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55920 dr_sesAppliquer spfpddsdv|55409 (emt9v3yqon4gew#0) base symiqg3ni|54820 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        55950 reçu spfpddsdv|55409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55954 reçu spfpddsdv|55729 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56075 dr_sesAppliquer spfpddsdv|55729 (emt9v3yqon4gew#0) base symiqg3ni|54895 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56099 reçu s4cifkkt9|55874 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56197    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56197 dr_sesAppliquer s4cifkkt9|55874 (emt9v3yqon4gew#0) base spfpddsdv|55409 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        56209 reçu s4cifkkt9|56036 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56212 envoi 56213 (emt9v3yqon4gew#0) tient base s4cifkkt9|55874 rép 18:e met⍽
+        56290    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56291 dr_sesAppliquer s4cifkkt9|56036 (emt9v3yqon4gew#0) base spfpddsdv|55729 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        56294 reçu s4cifkkt9|56036 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56364 envoi 56365 (emt9v3yqon4gew#0) tient base s4cifkkt9|56036 rép 18:e met⍽
+        56596 reçu spfpddsdv|56542 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56712 dr_sesAppliquer spfpddsdv|56542 (emt9v3yqon4gew#0) base symiqg3ni|56213 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56816 reçu spfpddsdv|56797 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56940 dr_sesAppliquer spfpddsdv|56797 (emt9v3yqon4gew#0) base symiqg3ni|56365 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56973 reçu s4cifkkt9|56847 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57156    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57156 dr_sesAppliquer s4cifkkt9|56847 (emt9v3yqon4gew#0) base spfpddsdv|56542 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        57192 reçu s4cifkkt9|57024 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57194 envoi 57194 (emt9v3yqon4gew#0) tient base s4cifkkt9|56847 rép 18:e met⍽
+        57344    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57344 dr_sesAppliquer s4cifkkt9|57024 (emt9v3yqon4gew#0) base spfpddsdv|56797 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        57406 envoi 57406 (emt9v3yqon4gew#0) tient base s4cifkkt9|57024 rép 18:e met⍽
+        57432 reçu spfpddsdv|57409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57562 dr_sesAppliquer spfpddsdv|57409 (emt9v3yqon4gew#0) base symiqg3ni|57194 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        57680 reçu spfpddsdv|57621 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        57685 envoi 57683 (emt9v3yqon4gew#1) tient base spfpddsdv|57409 rép 18:e met⍽
+        57835 dr_sesAppliquer spfpddsdv|57621 (emt9v3yqon4gew#0) base symiqg3ni|57406 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.page","parDiapo","vuMax"]
+        57906 reçu s4cifkkt9|57675 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        57919 envoi 57915 (emt9v3yqon4gew#1) tient base spfpddsdv|57621 rép 18:e met⍽
+        58077    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58077 dr_sesAppliquer s4cifkkt9|57675 (emt9v3yqon4gew#0) base spfpddsdv|57409 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.page","parDiapo","vuMax"]
+        58090 reçu s4cifkkt9|57675 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58097 reçu s4cifkkt9|57965 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58098 envoi 58099 (emt9v3yqon4gew#1) tient base s4cifkkt9|57675 rép 18:e met⍽
+        58172    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58172 dr_sesAppliquer s4cifkkt9|57965 (emt9v3yqon4gew#0) base spfpddsdv|57621 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.page","parDiapo","vuMax"]
+        58177 reçu s4cifkkt9|58030 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58178 envoi 58179 (emt9v3yqon4gew#1) tient base s4cifkkt9|57965 rép 18:e met⍽
+        58262 dr_sesAppliquer s4cifkkt9|58030 (emt9v3yqon4gew#1) base symiqg3ni|57915 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58495 reçu spfpddsdv|58479 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58549    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58549 dr_sesAppliquer spfpddsdv|58479 (emt9v3yqon4gew#1) base s4cifkkt9|57965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.page"]
+        58590 envoi 58590 (emt9v3yqon4gew#1) tient base spfpddsdv|58479 rép 18:e met⍽
+        58747 reçu s4cifkkt9|58725 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58873 dr_sesAppliquer s4cifkkt9|58725 (emt9v3yqon4gew#1) base symiqg3ni|58590 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58895 reçu spfpddsdv|58731 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58967    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58967 dr_sesAppliquer spfpddsdv|58731 (emt9v3yqon4gew#1) base s4cifkkt9|58030 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        58969 reçu spfpddsdv|58818 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58971 envoi 58971 (emt9v3yqon4gew#1) tient base spfpddsdv|58731 rép 18:e met⍽
+        59101 dr_sesAppliquer spfpddsdv|58818 (emt9v3yqon4gew#1) base symiqg3ni|58099 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59120 reçu spfpddsdv|59004 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59171 dr_sesAppliquer spfpddsdv|59004 (emt9v3yqon4gew#1) base symiqg3ni|58179 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59240 reçu s4cifkkt9|59232 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59490    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59490 dr_sesAppliquer s4cifkkt9|59232 (emt9v3yqon4gew#1) base spfpddsdv|58818 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        59517 reçu s4cifkkt9|59274 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59519 envoi 59519 (emt9v3yqon4gew#1) tient base s4cifkkt9|59232 rép 18:e met⍽
+        59827 dr_sesAppliquer s4cifkkt9|59274 (emt9v3yqon4gew#1) base symiqg3ni|58971 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59893 reçu s4cifkkt9|59388 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59960    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59960 dr_sesAppliquer s4cifkkt9|59388 (emt9v3yqon4gew#1) base spfpddsdv|59004 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        59963 reçu spfpddsdv|59439 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59965 envoi 59965 (emt9v3yqon4gew#1) tient base s4cifkkt9|59388 rép 18:e met⍽
+        60052    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60052 dr_sesAppliquer spfpddsdv|59439 (emt9v3yqon4gew#1) base s4cifkkt9|58725 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        60076 reçu spfpddsdv|59767 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60077 envoi 60077 (emt9v3yqon4gew#1) tient base spfpddsdv|59439 rép 18:e met⍽
+        60194    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60194 dr_sesAppliquer spfpddsdv|59767 (emt9v3yqon4gew#1) base s4cifkkt9|59274 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        60241 reçu s4cifkkt9|60229 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60242 envoi 60247 (emt9v3yqon4gew#1) tient base spfpddsdv|59767 rép 18:e met⍽
+        60370 dr_sesAppliquer s4cifkkt9|60229 (emt9v3yqon4gew#1) base symiqg3ni|60077 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60422 reçu s4cifkkt9|60396 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60500 dr_sesAppliquer s4cifkkt9|60396 (emt9v3yqon4gew#1) base symiqg3ni|60247 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60531 reçu spfpddsdv|60487 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60656 dr_sesAppliquer spfpddsdv|60487 (emt9v3yqon4gew#1) base symiqg3ni|59519 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60690 reçu spfpddsdv|60681 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60788 dr_sesAppliquer spfpddsdv|60681 (emt9v3yqon4gew#1) base symiqg3ni|59965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60829 reçu s4cifkkt9|60749 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60914    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60914 dr_sesAppliquer s4cifkkt9|60749 (emt9v3yqon4gew#1) base spfpddsdv|60487 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        60941 reçu s4cifkkt9|60873 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60942 envoi 60943 (emt9v3yqon4gew#1) tient base s4cifkkt9|60749 rép 18:e met⍽
+        61076    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61076 dr_sesAppliquer s4cifkkt9|60873 (emt9v3yqon4gew#1) base spfpddsdv|60681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        61097 reçu spfpddsdv|60968 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61098 envoi 61098 (emt9v3yqon4gew#1) tient base s4cifkkt9|60873 rép 18:e met⍽
+        61184    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61184 dr_sesAppliquer spfpddsdv|60968 (emt9v3yqon4gew#1) base s4cifkkt9|60229 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        61216 reçu spfpddsdv|61188 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61218 envoi 61218 (emt9v3yqon4gew#1) tient base spfpddsdv|60968 rép 18:e met⍽
+        61296    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61296 dr_sesAppliquer spfpddsdv|61188 (emt9v3yqon4gew#1) base s4cifkkt9|60396 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        61352 envoi 61353 (emt9v3yqon4gew#1) tient base spfpddsdv|61188 rép 18:e met⍽
+        61453 reçu s4cifkkt9|61428 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61540 dr_sesAppliquer s4cifkkt9|61428 (emt9v3yqon4gew#1) base symiqg3ni|61218 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61553 reçu s4cifkkt9|61532 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61625 dr_sesAppliquer s4cifkkt9|61532 (emt9v3yqon4gew#1) base symiqg3ni|61353 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61658 reçu spfpddsdv|61639 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61730 dr_sesAppliquer spfpddsdv|61639 (emt9v3yqon4gew#1) base symiqg3ni|60943 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61777 reçu s4cifkkt9|61766 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61816    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61816 dr_sesAppliquer s4cifkkt9|61766 (emt9v3yqon4gew#1) base spfpddsdv|61639 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        61825 reçu spfpddsdv|61767 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61826 envoi 61827 (emt9v3yqon4gew#1) tient base s4cifkkt9|61766 rép 18:e met⍽
+        61887 dr_sesAppliquer spfpddsdv|61767 (emt9v3yqon4gew#1) base symiqg3ni|61098 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61939 reçu s4cifkkt9|61930 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62013    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62013 dr_sesAppliquer s4cifkkt9|61930 (emt9v3yqon4gew#1) base spfpddsdv|61767 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        62030 envoi 62030 (emt9v3yqon4gew#1) tient base s4cifkkt9|61930 rép 18:e met⍽
+        62170 reçu spfpddsdv|62157 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62259    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62259 dr_sesAppliquer spfpddsdv|62157 (emt9v3yqon4gew#1) base s4cifkkt9|61428 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        62283 envoi 62284 (emt9v3yqon4gew#1) tient base spfpddsdv|62157 rép 18:e met⍽
+        62456 reçu spfpddsdv|62394 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62629    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62630 dr_sesAppliquer spfpddsdv|62394 (emt9v3yqon4gew#1) base s4cifkkt9|61532 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        62668 reçu s4cifkkt9|62423 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62670 envoi 62670 (emt9v3yqon4gew#1) tient base spfpddsdv|62394 rép 18:e met⍽
+        62795 dr_sesAppliquer s4cifkkt9|62423 (emt9v3yqon4gew#1) base symiqg3ni|62284 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62819 reçu spfpddsdv|62638 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62903 dr_sesAppliquer spfpddsdv|62638 (emt9v3yqon4gew#1) base symiqg3ni|61827 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62929 reçu s4cifkkt9|62814 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62996    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62996 dr_sesAppliquer s4cifkkt9|62814 (emt9v3yqon4gew#1) base spfpddsdv|62638 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"]
+        63015 reçu s4cifkkt9|62947 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63017 envoi 63017 (emt9v3yqon4gew#1) tient base s4cifkkt9|62814 rép 18:e met⍽
+        63156 dr_sesAppliquer s4cifkkt9|62947 (emt9v3yqon4gew#1) base symiqg3ni|62670 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+      [piège T depuis le second ordinateur · second] 309 :
+        37745 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        38273 reçu symiqg3ni|32023 (inv-plan-s0#1) main=spfpddsdv|31905 occupé=false ici inv-plan-s0#1
+        38273 reçu symiqg3ni|32023 (inv-plan-s0#1) main=spfpddsdv|31905 occupé=false ici inv-plan-s0#1
+        38274 main null → spfpddsdv ← dr_sesRecu < window.dr_sesRecu < suite < ·
+        38383 dr_sesAppliquer symiqg3ni|32023 (inv-plan-s0#1) base spfpddsdv|31905 [INCONNUE] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        38384 main spfpddsdv → s4cifkkt9 ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite
+        38386 envoi 38386 (inv-plan-s0#1) tient base symiqg3ni|32023 rép ∅
+        38499 reçu spfpddsdv|38492 (inv-plan-s0#1) main=s4cifkkt9|38386 occupé=false ici inv-plan-s0#1
+        38652 dr_sesAppliquer spfpddsdv|38492 (inv-plan-s0#1) base s4cifkkt9|38386 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        41878 reçu symiqg3ni|41860 (emt9v3yqo6pvd5#0) main=symiqg3ni|41860 occupé=false ici inv-plan-s0#1
+        41878 main s4cifkkt9 → symiqg3ni ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        42010 dr_sesAppliquer symiqg3ni|41860 (emt9v3yqo6pvd5#0) base spfpddsdv|38492 [connue] rép reçue ∅ : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        42015 envoi 42015 (emt9v3yqo6pvd5#0) suit CÈDE base symiqg3ni|41860 rép ∅
+        42883 reçu symiqg3ni|42874 (emt9v3yqo6pvd5#1) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#0
+        42984 dr_sesAppliquer symiqg3ni|42874 (emt9v3yqo6pvd5#1) base s4cifkkt9|42015 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1 ; rép ici ∅ → ∅ ; gardé []
+        43226 reçu symiqg3ni|43216 (emt9v3yqo6pvd5#2) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#1
+        43323 dr_sesAppliquer symiqg3ni|43216 (emt9v3yqo6pvd5#2) base symiqg3ni|42874 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2 ; rép ici ∅ → ∅ ; gardé ["S.policeRatioCourante"]
+        46222 main symiqg3ni → s4cifkkt9 ← dr_sesEnvoyerMaintenant
+        46226 envoi 46225 (emt9v3yqo6pvd5#2) tient base symiqg3ni|43216 rép 1:L
+        46316 envoi 46315 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|46225 rép 2:Le
+        46570 envoi 46569 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|46315 rép 3:Le⍽
+        46611 reçu symiqg3ni|46480 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        46655 dr_sesPoserAutour symiqg3ni|46480 (emt9v3yqo6pvd5#2) base s4cifkkt9|46225 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 3:Le⍽ rend true
+        46724 envoi 46724 (emt9v3yqo6pvd5#2) tient base symiqg3ni|46480 rép 4:Le R
+        46856 reçu spfpddsdv|46840 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        46917 dr_sesPoserAutour spfpddsdv|46840 (emt9v3yqo6pvd5#2) base symiqg3ni|46480 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 5:Le Ro → 5:Le Ro rend true
+        46983 reçu symiqg3ni|46974 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47002 dr_sesPoserAutour symiqg3ni|46974 (emt9v3yqo6pvd5#2) base spfpddsdv|46840 [connue] rép reçue 4:Le R : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 6:Le Rom → 6:Le Rom rend true
+        47047 envoi 47045 (emt9v3yqo6pvd5#2) tient base symiqg3ni|46974 rép 7:e Roma
+        47116 envoi 47116 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47045 rép 8: Roman
+        47169 envoi 47169 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47116 rép 9:Romant
+        47312 envoi 47311 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47169 rép 10:omanti
+        47356 envoi 47357 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47311 rép 11:mantis
+        47421 envoi 47422 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47357 rép 12:antism
+        47495 envoi 47495 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47422 rép 13:ntisme
+        47633 envoi 47633 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47495 rép 14:tisme⍽
+        47714 envoi 47714 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47633 rép 15:isme m
+        47964 envoi 47964 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47714 rép 16:sme me
+        48047 envoi 48047 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|47964 rép 17:me met
+        48192 envoi 48191 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48047 rép 18:e met⍽
+        48358 envoi 48359 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48191 rép 19: met e
+        48372 reçu spfpddsdv|48353 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=true ici emt9v3yqo6pvd5#2
+        48372 main s4cifkkt9 → spfpddsdv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48497 dr_sesAppliquer spfpddsdv|48353 (emt9v3yqo6pvd5#2) base s4cifkkt9|48047 [connue] rép reçue 17:me met : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        48498 envoi 48498 (emt9v3yqo6pvd5#2) suit CÈDE base spfpddsdv|48353 rép 19: met e
+        48580 reçu symiqg3ni|48556 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48653    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        48654 dr_sesAppliquer symiqg3ni|48556 (emt9v3yqo6pvd5#2) base spfpddsdv|48353 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts","parDiapo"] CONTENU
+        48685 reçu spfpddsdv|48571 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48689 envoi 48688 (emt9v3yqo6pvd5#2) suit base symiqg3ni|48556 rép 18:e met⍽
+        48831 dr_sesAppliquer spfpddsdv|48571 (emt9v3yqo6pvd5#2) base s4cifkkt9|48191 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.pagesCourantes","S.pagesPCourantes"]
+        48852 reçu symiqg3ni|48741 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48938 dr_sesAppliquer symiqg3ni|48741 (emt9v3yqo6pvd5#2) base s4cifkkt9|48359 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.policeRatioCourante","parDiapo"] CONTENU
+        48976 reçu spfpddsdv|48806 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48980 envoi 48979 (emt9v3yqo6pvd5#2) suit base symiqg3ni|48741 rép 18:e met⍽
+        49084 dr_sesAppliquer spfpddsdv|48806 (emt9v3yqo6pvd5#2) base s4cifkkt9|48359 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        49355 reçu symiqg3ni|48973 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49357 envoi 49356 (emt9v3yqo6pvd5#2) suit base spfpddsdv|48806 rép 18:e met⍽
+        49552 dr_sesAppliquer symiqg3ni|48973 (emt9v3yqo6pvd5#2) base s4cifkkt9|48498 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo"] CONTENU
+        49571 reçu symiqg3ni|49095 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49572 envoi 49572 (emt9v3yqo6pvd5#2) suit base symiqg3ni|48973 rép 18:e met⍽
+        49673    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49673 dr_sesAppliquer symiqg3ni|49095 (emt9v3yqo6pvd5#2) base spfpddsdv|48571 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts"] CONTENU
+        49707 reçu symiqg3ni|49149 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49709 envoi 49708 (emt9v3yqo6pvd5#2) suit base symiqg3ni|49095 rép 19: met e
+        49880 dr_sesAppliquer symiqg3ni|49149 (emt9v3yqo6pvd5#2) base s4cifkkt9|48688 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        49916 reçu spfpddsdv|49402 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50135 dr_sesAppliquer spfpddsdv|49402 (emt9v3yqo6pvd5#2) base s4cifkkt9|48688 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        50168 reçu spfpddsdv|49529 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50169 envoi 50169 (emt9v3yqo6pvd5#2) suit base spfpddsdv|49402 rép 19: met e
+        50264    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50264 dr_sesAppliquer spfpddsdv|49529 (emt9v3yqo6pvd5#2) base symiqg3ni|48741 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        50304 reçu symiqg3ni|49604 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50305 envoi 50304 (emt9v3yqo6pvd5#2) suit base spfpddsdv|49529 rép 18:e met⍽
+        50435 dr_sesAppliquer symiqg3ni|49604 (emt9v3yqo6pvd5#2) base s4cifkkt9|49356 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        50471 reçu symiqg3ni|49753 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50567    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50567 dr_sesAppliquer symiqg3ni|49753 (emt9v3yqo6pvd5#2) base spfpddsdv|49402 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        50584 reçu spfpddsdv|49813 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50586 envoi 50585 (emt9v3yqo6pvd5#2) suit base symiqg3ni|49753 rép 18:e met⍽
+        50672    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50672 dr_sesAppliquer spfpddsdv|49813 (emt9v3yqo6pvd5#2) base symiqg3ni|48973 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        50673 reçu spfpddsdv|50002 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50674 envoi 50674 (emt9v3yqo6pvd5#2) suit base spfpddsdv|49813 rép 18:e met⍽
+        50954 dr_sesAppliquer spfpddsdv|50002 (emt9v3yqo6pvd5#2) base s4cifkkt9|48979 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        51042 reçu symiqg3ni|50316 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51143 dr_sesAppliquer symiqg3ni|50316 (emt9v3yqo6pvd5#2) base s4cifkkt9|49708 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        51168 reçu symiqg3ni|50554 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51343    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51343 dr_sesAppliquer symiqg3ni|50554 (emt9v3yqo6pvd5#2) base spfpddsdv|50002 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        51404 reçu symiqg3ni|50681 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51405 envoi 51405 (emt9v3yqo6pvd5#2) suit base symiqg3ni|50554 rép 18:e met⍽
+        51582 dr_sesAppliquer symiqg3ni|50681 (emt9v3yqo6pvd5#2) base s4cifkkt9|50169 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo"] CONTENU
+        51609 reçu spfpddsdv|50803 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51610 envoi 51610 (emt9v3yqo6pvd5#2) suit base symiqg3ni|50681 rép 18:e met⍽
+        51756    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51756 dr_sesAppliquer spfpddsdv|50803 (emt9v3yqo6pvd5#2) base symiqg3ni|49149 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","parDiapo"] CONTENU
+        51782 reçu symiqg3ni|50917 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51786 envoi 51785 (emt9v3yqo6pvd5#2) suit base spfpddsdv|50803 rép 18:e met⍽
+        51879 dr_sesAppliquer symiqg3ni|50917 (emt9v3yqo6pvd5#2) base s4cifkkt9|50304 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé []
+        51902 reçu symiqg3ni|51190 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52039 dr_sesAppliquer symiqg3ni|51190 (emt9v3yqo6pvd5#2) base s4cifkkt9|50585 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        52123 reçu spfpddsdv|51345 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52215 dr_sesAppliquer spfpddsdv|51345 (emt9v3yqo6pvd5#2) base s4cifkkt9|49572 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        52251 reçu spfpddsdv|51469 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52252 envoi 52252 (emt9v3yqo6pvd5#2) suit base spfpddsdv|51345 rép 19: met e
+        52484    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52484 dr_sesAppliquer spfpddsdv|51469 (emt9v3yqo6pvd5#2) base symiqg3ni|49604 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","parDiapo"] CONTENU
+        52507 reçu symiqg3ni|51479 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52520 envoi 52519 (emt9v3yqo6pvd5#2) suit base spfpddsdv|51469 rép 19: met e
+        52807 dr_sesAppliquer symiqg3ni|51479 (emt9v3yqo6pvd5#2) base s4cifkkt9|50674 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        52860 reçu spfpddsdv|51674 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53223 dr_sesAppliquer spfpddsdv|51674 (emt9v3yqo6pvd5#2) base s4cifkkt9|49708 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        53271 reçu symiqg3ni|51857 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53348    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53348 dr_sesAppliquer symiqg3ni|51857 (emt9v3yqo6pvd5#2) base spfpddsdv|51345 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts"] CONTENU
+        53357 reçu symiqg3ni|52090 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53358 envoi 53358 (emt9v3yqo6pvd5#2) suit base symiqg3ni|51857 rép 19: met e
+        53440 dr_sesAppliquer symiqg3ni|52090 (emt9v3yqo6pvd5#2) base s4cifkkt9|51405 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        53455 reçu spfpddsdv|52142 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53536 dr_sesAppliquer spfpddsdv|52142 (emt9v3yqo6pvd5#2) base s4cifkkt9|50304 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        53549 reçu spfpddsdv|52260 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53624    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53624 dr_sesAppliquer spfpddsdv|52260 (emt9v3yqo6pvd5#2) base symiqg3ni|50316 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","parDiapo"] CONTENU
+        53638 reçu spfpddsdv|52260 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53639 reçu symiqg3ni|52374 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53641 envoi 53641 (emt9v3yqo6pvd5#2) suit base spfpddsdv|52260 rép 19: met e
+        53728    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53728 dr_sesAppliquer symiqg3ni|52374 (emt9v3yqo6pvd5#2) base spfpddsdv|51469 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts"] CONTENU
+        53730 reçu spfpddsdv|52468 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53731 envoi 53730 (emt9v3yqo6pvd5#2) suit base symiqg3ni|52374 rép 19: met e
+        53808 dr_sesAppliquer spfpddsdv|52468 (emt9v3yqo6pvd5#2) base s4cifkkt9|50585 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        53841 reçu spfpddsdv|52700 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53845 envoi 53842 (emt9v3yqo6pvd5#2) suit base spfpddsdv|52468 rép 19: met e
+        53965    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53965 dr_sesAppliquer spfpddsdv|52700 (emt9v3yqo6pvd5#2) base symiqg3ni|50681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        53982 reçu spfpddsdv|52905 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53983 envoi 53983 (emt9v3yqo6pvd5#2) suit base spfpddsdv|52700 rép 18:e met⍽
+        54040    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54040 dr_sesAppliquer spfpddsdv|52905 (emt9v3yqo6pvd5#2) base symiqg3ni|51190 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","parDiapo"] CONTENU
+        54041 reçu spfpddsdv|52905 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54047 reçu spfpddsdv|53018 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54048 envoi 54048 (emt9v3yqo6pvd5#2) suit base spfpddsdv|52905 rép 18:e met⍽
+        54206 dr_sesAppliquer spfpddsdv|53018 (emt9v3yqo6pvd5#2) base s4cifkkt9|51405 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé []
+        54239 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54313 dr_sesAppliquer symiqg3ni|53429 (emt9v3yqo6pvd5#2) base s4cifkkt9|51785 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"] CONTENU
+        54315 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54316 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54317 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54318 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54359 envoi 54359 (emt9v3yqo6pvd5#2) suit base symiqg3ni|53429 rép 19: met e
+        54392 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54606    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54606 dr_sesAppliquer spfpddsdv|53663 (emt9v3yqo6pvd5#2) base symiqg3ni|52090 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts"] CONTENU
+        54639 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54641 reçu spfpddsdv|53663 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54733 envoi 54733 (emt9v3yqo6pvd5#2) suit base spfpddsdv|53663 rép 19: met e
+        54949 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqo6pvd5#2
+        54949 main spfpddsdv → symiqg3ni ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        55115    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        55115 dr_sesAppliquer symiqg3ni|54391 (emt9v3yqon4gew#0) base spfpddsdv|52905 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        55143 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55147 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55151 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55151 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55153 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55154 envoi 55154 (emt9v3yqon4gew#0) suit base symiqg3ni|54391 rép 18:e met⍽
+        55298    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        55298 dr_sesAppliquer symiqg3ni|54820 (emt9v3yqon4gew#0) base spfpddsdv|53663 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","parDiapo"] CONTENU
+        55322 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55338 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55377 envoi 55377 (emt9v3yqon4gew#0) suit base symiqg3ni|54820 rép 18:e met⍽
+        55451 reçu symiqg3ni|54895 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55672 dr_sesAppliquer symiqg3ni|54895 (emt9v3yqon4gew#0) base s4cifkkt9|54048 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        55716 reçu spfpddsdv|55409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55827    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        55827 dr_sesAppliquer spfpddsdv|55409 (emt9v3yqon4gew#0) base symiqg3ni|54820 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        55857 reçu spfpddsdv|55409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55873 reçu spfpddsdv|55729 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55874 envoi 55874 (emt9v3yqon4gew#0) suit base spfpddsdv|55409 rép 18:e met⍽
+        56005    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56005 dr_sesAppliquer spfpddsdv|55729 (emt9v3yqon4gew#0) base symiqg3ni|54895 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        56036 envoi 56036 (emt9v3yqon4gew#0) suit base spfpddsdv|55729 rép 18:e met⍽
+        56232 reçu symiqg3ni|56213 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56340 dr_sesAppliquer symiqg3ni|56213 (emt9v3yqon4gew#0) base s4cifkkt9|55874 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56504 reçu symiqg3ni|56365 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56680 dr_sesAppliquer symiqg3ni|56365 (emt9v3yqon4gew#0) base s4cifkkt9|56036 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56699 reçu spfpddsdv|56542 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56830    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56830 dr_sesAppliquer spfpddsdv|56542 (emt9v3yqon4gew#0) base symiqg3ni|56213 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        56846 reçu spfpddsdv|56797 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56847 envoi 56847 (emt9v3yqon4gew#0) suit base spfpddsdv|56542 rép 18:e met⍽
+        56955    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56955 dr_sesAppliquer spfpddsdv|56797 (emt9v3yqon4gew#0) base symiqg3ni|56365 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        57024 envoi 57024 (emt9v3yqon4gew#0) suit base spfpddsdv|56797 rép 18:e met⍽
+        57208 reçu symiqg3ni|57194 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57304 dr_sesAppliquer symiqg3ni|57194 (emt9v3yqon4gew#0) base s4cifkkt9|56847 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        57416 reçu symiqg3ni|57406 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57511 dr_sesAppliquer symiqg3ni|57406 (emt9v3yqon4gew#0) base s4cifkkt9|57024 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        57543 reçu spfpddsdv|57409 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57656    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57656 dr_sesAppliquer spfpddsdv|57409 (emt9v3yqon4gew#0) base symiqg3ni|57194 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        57675 reçu spfpddsdv|57621 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57676 envoi 57675 (emt9v3yqon4gew#0) suit base spfpddsdv|57409 rép 18:e met⍽
+        57837    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57837 dr_sesAppliquer spfpddsdv|57621 (emt9v3yqon4gew#0) base symiqg3ni|57406 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        57941 reçu symiqg3ni|57915 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57943 envoi 57965 (emt9v3yqon4gew#0) suit base spfpddsdv|57621 rép 18:e met⍽
+        58010    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58010 dr_sesAppliquer symiqg3ni|57915 (emt9v3yqon4gew#1) base spfpddsdv|57621 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        58030 envoi 58030 (emt9v3yqon4gew#1) suit base symiqg3ni|57915 rép 18:e met⍽
+        58106 reçu symiqg3ni|58099 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58184 dr_sesAppliquer symiqg3ni|58099 (emt9v3yqon4gew#1) base s4cifkkt9|57675 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58204 reçu symiqg3ni|58179 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58301 dr_sesAppliquer symiqg3ni|58179 (emt9v3yqon4gew#1) base s4cifkkt9|57965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58502 reçu spfpddsdv|58479 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58636 dr_sesAppliquer spfpddsdv|58479 (emt9v3yqon4gew#1) base s4cifkkt9|57965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.page"]
+        58652 reçu symiqg3ni|58590 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58692    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58692 dr_sesAppliquer symiqg3ni|58590 (emt9v3yqon4gew#1) base spfpddsdv|58479 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        58725 envoi 58725 (emt9v3yqon4gew#1) suit base symiqg3ni|58590 rép 18:e met⍽
+        58765 reçu spfpddsdv|58731 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58993 dr_sesAppliquer spfpddsdv|58731 (emt9v3yqon4gew#1) base s4cifkkt9|58030 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59018 reçu spfpddsdv|58818 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59143    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59143 dr_sesAppliquer spfpddsdv|58818 (emt9v3yqon4gew#1) base symiqg3ni|58099 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        59222 reçu symiqg3ni|58971 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59232 envoi 59232 (emt9v3yqon4gew#1) suit base spfpddsdv|58818 rép 18:e met⍽
+        59270    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59270 dr_sesAppliquer symiqg3ni|58971 (emt9v3yqon4gew#1) base spfpddsdv|58731 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        59273 reçu spfpddsdv|59004 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59274 envoi 59274 (emt9v3yqon4gew#1) suit base symiqg3ni|58971 rép 18:e met⍽
+        59356    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59356 dr_sesAppliquer spfpddsdv|59004 (emt9v3yqon4gew#1) base symiqg3ni|58179 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        59388 envoi 59388 (emt9v3yqon4gew#1) suit base spfpddsdv|59004 rép 18:e met⍽
+        59455 reçu spfpddsdv|59439 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59537 dr_sesAppliquer spfpddsdv|59439 (emt9v3yqon4gew#1) base s4cifkkt9|58725 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59558 reçu symiqg3ni|59519 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59629 dr_sesAppliquer symiqg3ni|59519 (emt9v3yqon4gew#1) base s4cifkkt9|59232 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59797 reçu spfpddsdv|59767 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59894 dr_sesAppliquer spfpddsdv|59767 (emt9v3yqon4gew#1) base s4cifkkt9|59274 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59971 reçu symiqg3ni|59965 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60051 dr_sesAppliquer symiqg3ni|59965 (emt9v3yqon4gew#1) base s4cifkkt9|59388 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60089 reçu symiqg3ni|60077 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60196    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60196 dr_sesAppliquer symiqg3ni|60077 (emt9v3yqon4gew#1) base spfpddsdv|59439 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        60230 envoi 60229 (emt9v3yqon4gew#1) suit base symiqg3ni|60077 rép 18:e met⍽
+        60254 reçu symiqg3ni|60247 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60376    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60376 dr_sesAppliquer symiqg3ni|60247 (emt9v3yqon4gew#1) base spfpddsdv|59767 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        60397 envoi 60396 (emt9v3yqon4gew#1) suit base symiqg3ni|60247 rép 18:e met⍽
+        60500 reçu spfpddsdv|60487 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60734    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60734 dr_sesAppliquer spfpddsdv|60487 (emt9v3yqon4gew#1) base symiqg3ni|59519 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        60748 reçu spfpddsdv|60681 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60749 envoi 60749 (emt9v3yqon4gew#1) suit base spfpddsdv|60487 rép 18:e met⍽
+        60823    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60823 dr_sesAppliquer spfpddsdv|60681 (emt9v3yqon4gew#1) base symiqg3ni|59965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        60874 envoi 60873 (emt9v3yqon4gew#1) suit base spfpddsdv|60681 rép 18:e met⍽
+        60967 reçu symiqg3ni|60943 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61080 dr_sesAppliquer symiqg3ni|60943 (emt9v3yqon4gew#1) base s4cifkkt9|60749 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61095 reçu spfpddsdv|60968 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61171 dr_sesAppliquer spfpddsdv|60968 (emt9v3yqon4gew#1) base s4cifkkt9|60229 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61175 reçu symiqg3ni|61098 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61278 dr_sesAppliquer symiqg3ni|61098 (emt9v3yqon4gew#1) base s4cifkkt9|60873 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61297 reçu spfpddsdv|61188 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61371 dr_sesAppliquer spfpddsdv|61188 (emt9v3yqon4gew#1) base s4cifkkt9|60396 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61372 reçu symiqg3ni|61218 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61418    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61418 dr_sesAppliquer symiqg3ni|61218 (emt9v3yqon4gew#1) base spfpddsdv|60968 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        61427 reçu symiqg3ni|61353 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61428 envoi 61428 (emt9v3yqon4gew#1) suit base symiqg3ni|61218 rép 18:e met⍽
+        61504    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61504 dr_sesAppliquer symiqg3ni|61353 (emt9v3yqon4gew#1) base spfpddsdv|61188 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        61535 envoi 61532 (emt9v3yqon4gew#1) suit base symiqg3ni|61353 rép 18:e met⍽
+        61652 reçu spfpddsdv|61639 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61721    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61721 dr_sesAppliquer spfpddsdv|61639 (emt9v3yqon4gew#1) base symiqg3ni|60943 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        61767 envoi 61766 (emt9v3yqon4gew#1) suit base spfpddsdv|61639 rép 18:e met⍽
+        61806 reçu spfpddsdv|61767 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61920    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61920 dr_sesAppliquer spfpddsdv|61767 (emt9v3yqon4gew#1) base symiqg3ni|61098 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        61929 reçu symiqg3ni|61827 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61930 envoi 61930 (emt9v3yqon4gew#1) suit base spfpddsdv|61767 rép 18:e met⍽
+        61999 dr_sesAppliquer symiqg3ni|61827 (emt9v3yqon4gew#1) base s4cifkkt9|61766 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62034 reçu symiqg3ni|62030 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62073 dr_sesAppliquer symiqg3ni|62030 (emt9v3yqon4gew#1) base s4cifkkt9|61930 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62172 reçu spfpddsdv|62157 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62225 dr_sesAppliquer spfpddsdv|62157 (emt9v3yqon4gew#1) base s4cifkkt9|61428 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62291 reçu symiqg3ni|62284 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62405    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62405 dr_sesAppliquer symiqg3ni|62284 (emt9v3yqon4gew#1) base spfpddsdv|62157 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        62425 envoi 62423 (emt9v3yqon4gew#1) suit base symiqg3ni|62284 rép 18:e met⍽
+        62454 reçu spfpddsdv|62394 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62540 dr_sesAppliquer spfpddsdv|62394 (emt9v3yqon4gew#1) base s4cifkkt9|61532 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62646 reçu spfpddsdv|62638 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62786    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62786 dr_sesAppliquer spfpddsdv|62638 (emt9v3yqon4gew#1) base symiqg3ni|61827 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        62813 reçu symiqg3ni|62670 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62814 envoi 62814 (emt9v3yqon4gew#1) suit base spfpddsdv|62638 rép 18:e met⍽
+        62899    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62899 dr_sesAppliquer symiqg3ni|62670 (emt9v3yqon4gew#1) base spfpddsdv|62394 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        62947 envoi 62947 (emt9v3yqon4gew#1) suit base symiqg3ni|62670 rép 18:e met⍽
+        62973 reçu spfpddsdv|62967 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63055    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        63055 dr_sesAppliquer spfpddsdv|62967 (emt9v3yqon4gew#1) base symiqg3ni|62030 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts"] CONTENU
+        63065 reçu symiqg3ni|63017 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63066 envoi 63067 (emt9v3yqon4gew#1) suit base spfpddsdv|62967 rép 18:e met⍽
+        63106 dr_sesAppliquer symiqg3ni|63017 (emt9v3yqon4gew#1) base s4cifkkt9|62814 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+      [piège T depuis le second ordinateur · telephone] 336 :
+        38397 reçu s4cifkkt9|38386 (inv-plan-s0#1) main=s4cifkkt9|38386 occupé=false ici inv-plan-s0#1
+        38398 main spfpddsdv → s4cifkkt9 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        38492 dr_sesAppliquer s4cifkkt9|38386 (inv-plan-s0#1) base symiqg3ni|32023 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        38493 envoi 38492 (inv-plan-s0#1) suit CÈDE base s4cifkkt9|38386 rép ∅
+        41876 reçu symiqg3ni|41860 (emt9v3yqo6pvd5#0) main=symiqg3ni|41860 occupé=false ici inv-plan-s0#1
+        41876 main s4cifkkt9 → symiqg3ni ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        42128 dr_sesAppliquer symiqg3ni|41860 (emt9v3yqo6pvd5#0) base spfpddsdv|38492 [connue] rép reçue ∅ : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        42161 reçu s4cifkkt9|42015 (emt9v3yqo6pvd5#0) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#0
+        42241 dr_sesAppliquer s4cifkkt9|42015 (emt9v3yqo6pvd5#0) base symiqg3ni|41860 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        42888 reçu symiqg3ni|42874 (emt9v3yqo6pvd5#1) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#0
+        42980 dr_sesAppliquer symiqg3ni|42874 (emt9v3yqo6pvd5#1) base s4cifkkt9|42015 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        43229 reçu symiqg3ni|43216 (emt9v3yqo6pvd5#2) main=symiqg3ni|41860 occupé=false ici emt9v3yqo6pvd5#1
+        43288 dr_sesAppliquer symiqg3ni|43216 (emt9v3yqo6pvd5#2) base symiqg3ni|42874 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        46277 reçu s4cifkkt9|46225 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46277 main symiqg3ni → s4cifkkt9 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        46420 dr_sesAppliquer s4cifkkt9|46225 (emt9v3yqo6pvd5#2) base symiqg3ni|43216 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici ∅ → 1:L ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        46456 reçu s4cifkkt9|46315 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46644 dr_sesAppliquer s4cifkkt9|46315 (emt9v3yqo6pvd5#2) base s4cifkkt9|46225 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 1:L → 2:Le ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        46670 reçu symiqg3ni|46480 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46822 dr_sesAppliquer symiqg3ni|46480 (emt9v3yqo6pvd5#2) base s4cifkkt9|46225 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 2:Le → 2:Le ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        46840 reçu s4cifkkt9|46569 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        46841 envoi 46840 (emt9v3yqo6pvd5#2) suit base symiqg3ni|46480 rép 2:Le
+        47029 dr_sesAppliquer s4cifkkt9|46569 (emt9v3yqo6pvd5#2) base s4cifkkt9|46315 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 2:Le → 3:Le⍽ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        47052 reçu s4cifkkt9|46724 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47190 dr_sesAppliquer s4cifkkt9|46724 (emt9v3yqo6pvd5#2) base symiqg3ni|46480 [connue] rép reçue 4:Le R : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 4:Le R ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        47219 reçu symiqg3ni|46974 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47361 dr_sesAppliquer symiqg3ni|46974 (emt9v3yqo6pvd5#2) base spfpddsdv|46840 [connue] rép reçue 4:Le R : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R ; gardé []
+        47411 reçu s4cifkkt9|47045 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47412 dr_sesPoserAutour s4cifkkt9|47045 (emt9v3yqo6pvd5#2) base symiqg3ni|46974 [connue] rép reçue 7:e Roma : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47412 attente rien → s4cifkkt9|47045 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47413 reçu s4cifkkt9|47116 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47414 dr_sesPoserAutour s4cifkkt9|47116 (emt9v3yqo6pvd5#2) base s4cifkkt9|47045 [connue] rép reçue 8: Roman : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47414 attente s4cifkkt9|47045 → s4cifkkt9|47116 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47433 reçu s4cifkkt9|47169 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47433 dr_sesPoserAutour s4cifkkt9|47169 (emt9v3yqo6pvd5#2) base s4cifkkt9|47116 [connue] rép reçue 9:Romant : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47433 attente s4cifkkt9|47116 → s4cifkkt9|47169 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47434 reçu s4cifkkt9|47311 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47435 dr_sesPoserAutour s4cifkkt9|47311 (emt9v3yqo6pvd5#2) base s4cifkkt9|47169 [connue] rép reçue 10:omanti : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47435 attente s4cifkkt9|47169 → s4cifkkt9|47311 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47435 reçu s4cifkkt9|47357 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47436 dr_sesPoserAutour s4cifkkt9|47357 (emt9v3yqo6pvd5#2) base s4cifkkt9|47311 [connue] rép reçue 11:mantis : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47436 attente s4cifkkt9|47311 → s4cifkkt9|47357 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47462 reçu s4cifkkt9|47422 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=true ici emt9v3yqo6pvd5#2
+        47463 dr_sesPoserAutour s4cifkkt9|47422 (emt9v3yqo6pvd5#2) base s4cifkkt9|47357 [connue] rép reçue 12:antism : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 4:Le R rend false
+        47463 attente s4cifkkt9|47357 → s4cifkkt9|47422 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47518 reçu s4cifkkt9|47495 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47518 attente s4cifkkt9|47422 → rien ← dr_sesEnvoyerMaintenant < dr_sesRecu < window.dr_sesRecu < · < donner
+        47572 dr_sesAppliquer s4cifkkt9|47422 (emt9v3yqo6pvd5#2) base s4cifkkt9|47357 [connue] rép reçue 12:antism : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 4:Le R → 12:antism ; gardé ["S.policeRatioCourante","S.vifCands"]
+        47661 dr_sesAppliquer s4cifkkt9|47495 (emt9v3yqo6pvd5#2) base s4cifkkt9|47422 [connue] rép reçue 13:ntisme : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 12:antism → 13:ntisme ; gardé ["S.policeRatioCourante","S.vifCands"]
+        47679 reçu s4cifkkt9|47633 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47741 dr_sesAppliquer s4cifkkt9|47633 (emt9v3yqo6pvd5#2) base s4cifkkt9|47495 [connue] rép reçue 14:tisme⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 13:ntisme → 14:tisme⍽ ; gardé ["S.policeRatioCourante","S.vifCands"]
+        47791 reçu s4cifkkt9|47714 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        47894 dr_sesAppliquer s4cifkkt9|47714 (emt9v3yqo6pvd5#2) base s4cifkkt9|47633 [connue] rép reçue 15:isme m : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 14:tisme⍽ → 15:isme m ; gardé ["S.policeRatioCourante","S.vifCands"]
+        48008 reçu s4cifkkt9|47964 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48186 dr_sesAppliquer s4cifkkt9|47964 (emt9v3yqo6pvd5#2) base s4cifkkt9|47714 [connue] rép reçue 16:sme me : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 15:isme m → 16:sme me ; gardé ["S.policeRatioCourante","S.vifCands"]
+        48218 reçu s4cifkkt9|48047 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48328 main s4cifkkt9 → spfpddsdv ← dr_sesAppliquer < window.<computed> < dr_sesRecu < window.dr_sesRecu < ·
+        48328    parts : base [] ici [pme3apf] reçu [] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre DIFFÉRENT
+        48328 dr_sesAppliquer s4cifkkt9|48047 (emt9v3yqo6pvd5#2) base s4cifkkt9|47964 [connue] rép reçue 17:me met : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 16:sme me → 17:me met ; gardé ["S.parts","S.policeRatioCourante","S.derniere","S.vifDT"]
+        48350 reçu s4cifkkt9|48191 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48352 envoi 48353 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48047 rép 17:me met
+        48550    parts : base [] ici [pme3apf] reçu [] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre DIFFÉRENT
+        48550 dr_sesAppliquer s4cifkkt9|48191 (emt9v3yqo6pvd5#2) base s4cifkkt9|48047 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 17:me met → 18:e met⍽ ; gardé ["S.parts","S.policeRatioCourante","S.derniere","S.vifDT"]
+        48567 reçu s4cifkkt9|48359 (emt9v3yqo6pvd5#2) main=s4cifkkt9|46225 occupé=false ici emt9v3yqo6pvd5#2
+        48571 envoi 48571 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48191 rép 18:e met⍽
+        48784    parts : base [] ici [pme3apf] reçu [] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre DIFFÉRENT
+        48784 dr_sesAppliquer s4cifkkt9|48359 (emt9v3yqo6pvd5#2) base s4cifkkt9|48191 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts","S.policeRatioCourante","S.derniere","S.vifDT"]
+        48804 reçu s4cifkkt9|48498 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        48808 envoi 48806 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48359 rép 19: met e
+        48958 dr_sesAppliquer s4cifkkt9|48498 (emt9v3yqo6pvd5#2) base spfpddsdv|48353 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        48991 reçu symiqg3ni|48556 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49136 dr_sesAppliquer symiqg3ni|48556 (emt9v3yqo6pvd5#2) base spfpddsdv|48353 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        49230 reçu s4cifkkt9|48688 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49387    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49387 dr_sesAppliquer s4cifkkt9|48688 (emt9v3yqo6pvd5#2) base symiqg3ni|48556 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        49400 reçu symiqg3ni|48741 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49401 envoi 49402 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48688 rép 18:e met⍽
+        49486 dr_sesAppliquer symiqg3ni|48741 (emt9v3yqo6pvd5#2) base s4cifkkt9|48359 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.policeRatioCourante","parDiapo"]
+        49524 reçu symiqg3ni|48973 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49529 envoi 49529 (emt9v3yqo6pvd5#2) tient base symiqg3ni|48741 rép 18:e met⍽
+        49723    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49723 dr_sesAppliquer symiqg3ni|48973 (emt9v3yqo6pvd5#2) base s4cifkkt9|48498 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"]
+        49809 reçu s4cifkkt9|48979 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        49813 envoi 49813 (emt9v3yqo6pvd5#2) tient base symiqg3ni|48973 rép 18:e met⍽
+        49950    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        49950 dr_sesAppliquer s4cifkkt9|48979 (emt9v3yqo6pvd5#2) base symiqg3ni|48741 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        49991 reçu symiqg3ni|49095 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50001 envoi 50002 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|48979 rép 18:e met⍽
+        50341 dr_sesAppliquer symiqg3ni|49095 (emt9v3yqo6pvd5#2) base spfpddsdv|48571 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé []
+        50419 reçu symiqg3ni|49149 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50754    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        50754 dr_sesAppliquer symiqg3ni|49149 (emt9v3yqo6pvd5#2) base s4cifkkt9|48688 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        50799 reçu s4cifkkt9|49356 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        50802 envoi 50803 (emt9v3yqo6pvd5#2) tient base symiqg3ni|49149 rép 19: met e
+        50998 dr_sesAppliquer s4cifkkt9|49356 (emt9v3yqo6pvd5#2) base spfpddsdv|48806 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        51058 reçu s4cifkkt9|49572 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51282    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51283 dr_sesAppliquer s4cifkkt9|49572 (emt9v3yqo6pvd5#2) base symiqg3ni|48973 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        51340 reçu symiqg3ni|49604 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51347 envoi 51345 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|49572 rép 18:e met⍽
+        51453    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51453 dr_sesAppliquer symiqg3ni|49604 (emt9v3yqo6pvd5#2) base s4cifkkt9|49356 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        51465 reçu s4cifkkt9|49708 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51469 envoi 51469 (emt9v3yqo6pvd5#2) tient base symiqg3ni|49604 rép 18:e met⍽
+        51643    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        51643 dr_sesAppliquer s4cifkkt9|49708 (emt9v3yqo6pvd5#2) base symiqg3ni|49095 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"]
+        51671 reçu symiqg3ni|49753 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51676 envoi 51674 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|49708 rép 18:e met⍽
+        51836 dr_sesAppliquer symiqg3ni|49753 (emt9v3yqo6pvd5#2) base spfpddsdv|49402 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        51864 reçu s4cifkkt9|50169 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        51969 dr_sesAppliquer s4cifkkt9|50169 (emt9v3yqo6pvd5#2) base spfpddsdv|49402 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé []
+        51984 reçu s4cifkkt9|50304 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52124 dr_sesAppliquer s4cifkkt9|50304 (emt9v3yqo6pvd5#2) base spfpddsdv|49529 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["parDiapo"]
+        52137 reçu symiqg3ni|50316 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52142 envoi 52142 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|50304 rép 19: met e
+        52240    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52240 dr_sesAppliquer symiqg3ni|50316 (emt9v3yqo6pvd5#2) base s4cifkkt9|49708 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        52257 reçu symiqg3ni|50554 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52261 envoi 52260 (emt9v3yqo6pvd5#2) tient base symiqg3ni|50316 rép 18:e met⍽
+        52355 dr_sesAppliquer symiqg3ni|50554 (emt9v3yqo6pvd5#2) base spfpddsdv|50002 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        52374 reçu s4cifkkt9|50585 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52464    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52464 dr_sesAppliquer s4cifkkt9|50585 (emt9v3yqo6pvd5#2) base symiqg3ni|49753 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        52466 reçu s4cifkkt9|50674 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52467 envoi 52468 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|50585 rép 18:e met⍽
+        52570 dr_sesAppliquer s4cifkkt9|50674 (emt9v3yqo6pvd5#2) base spfpddsdv|49813 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        52581 reçu symiqg3ni|50681 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52682    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52682 dr_sesAppliquer symiqg3ni|50681 (emt9v3yqo6pvd5#2) base s4cifkkt9|50169 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"]
+        52697 reçu symiqg3ni|50917 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52699 envoi 52700 (emt9v3yqo6pvd5#2) tient base symiqg3ni|50681 rép 18:e met⍽
+        52786    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52786 dr_sesAppliquer symiqg3ni|50917 (emt9v3yqo6pvd5#2) base s4cifkkt9|50304 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        52788 reçu symiqg3ni|51190 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52800 envoi 52799 (emt9v3yqo6pvd5#2) tient base symiqg3ni|50917 rép 19: met e
+        52885    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52885 dr_sesAppliquer symiqg3ni|51190 (emt9v3yqo6pvd5#2) base s4cifkkt9|50585 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        52902 reçu s4cifkkt9|51405 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        52904 envoi 52905 (emt9v3yqo6pvd5#2) tient base symiqg3ni|51190 rép 19: met e
+        52997    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        52997 dr_sesAppliquer s4cifkkt9|51405 (emt9v3yqo6pvd5#2) base symiqg3ni|50554 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"]
+        53015 reçu symiqg3ni|51479 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53018 envoi 53018 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|51405 rép 19: met e
+        53117    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53117 dr_sesAppliquer symiqg3ni|51479 (emt9v3yqo6pvd5#2) base s4cifkkt9|50674 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        53131 reçu s4cifkkt9|51610 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53133 envoi 53134 (emt9v3yqo6pvd5#2) tient base symiqg3ni|51479 rép 19: met e
+        53243    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53243 dr_sesAppliquer s4cifkkt9|51610 (emt9v3yqo6pvd5#2) base symiqg3ni|50681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        53252 reçu s4cifkkt9|51785 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53254 envoi 53254 (emt9v3yqo6pvd5#2) tient base s4cifkkt9|51610 rép 18:e met⍽
+        53363 dr_sesAppliquer s4cifkkt9|51785 (emt9v3yqo6pvd5#2) base spfpddsdv|50803 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        53393 reçu symiqg3ni|51857 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53495 dr_sesAppliquer symiqg3ni|51857 (emt9v3yqo6pvd5#2) base spfpddsdv|51345 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 18:e met⍽ → 19: met e ; gardé []
+        53508 reçu symiqg3ni|52090 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53622    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        53622 dr_sesAppliquer symiqg3ni|52090 (emt9v3yqo6pvd5#2) base s4cifkkt9|51405 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"]
+        53661 reçu symiqg3ni|52374 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53662 envoi 53663 (emt9v3yqo6pvd5#2) tient base symiqg3ni|52090 rép 19: met e
+        53773 dr_sesAppliquer symiqg3ni|52374 (emt9v3yqo6pvd5#2) base spfpddsdv|51469 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        53798 reçu s4cifkkt9|52519 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        53961 dr_sesAppliquer s4cifkkt9|52519 (emt9v3yqo6pvd5#2) base spfpddsdv|51469 [connue] rép reçue 19: met e : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé []
+        54057 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54230    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        54230 dr_sesAppliquer symiqg3ni|53429 (emt9v3yqo6pvd5#2) base s4cifkkt9|51785 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 19: met e ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"]
+        54247 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54249 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54250 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54251 reçu symiqg3ni|53429 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54289 envoi 54290 (emt9v3yqo6pvd5#2) tient base symiqg3ni|53429 rép 19: met e
+        54458 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54701 dr_sesAppliquer s4cifkkt9|54048 (emt9v3yqo6pvd5#2) base spfpddsdv|52905 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 19: met e → 18:e met⍽ ; gardé []
+        54728 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54731 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54734 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54735 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54736 reçu s4cifkkt9|54048 (emt9v3yqo6pvd5#2) main=spfpddsdv|48353 occupé=false ici emt9v3yqo6pvd5#2
+        54944 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqo6pvd5#2
+        54945 main spfpddsdv → symiqg3ni ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        55146 dr_sesAppliquer symiqg3ni|54391 (emt9v3yqon4gew#0) base spfpddsdv|52905 [connue] rép reçue 18:e met⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo"] CONTENU
+        55155 envoi 55147 (emt9v3yqon4gew#0) suit CÈDE base symiqg3ni|54391 rép 18:e met⍽
+        55187 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55189 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55189 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55192 reçu symiqg3ni|54391 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55193 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55370 dr_sesAppliquer symiqg3ni|54820 (emt9v3yqon4gew#0) base spfpddsdv|53663 [connue] rép reçue 19: met e : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo"] CONTENU
+        55385 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55389 reçu symiqg3ni|54820 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55409 envoi 55409 (emt9v3yqon4gew#0) suit base symiqg3ni|54820 rép 18:e met⍽
+        55445 reçu symiqg3ni|54895 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55696    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        55696 dr_sesAppliquer symiqg3ni|54895 (emt9v3yqon4gew#0) base s4cifkkt9|54048 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        55728 reçu s4cifkkt9|55154 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55729 envoi 55729 (emt9v3yqon4gew#0) suit base symiqg3ni|54895 rép 18:e met⍽
+        55928    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        55928 dr_sesAppliquer s4cifkkt9|55154 (emt9v3yqon4gew#0) base symiqg3ni|54391 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.page","S.parts","S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        55964 reçu s4cifkkt9|55154 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55982 reçu s4cifkkt9|55874 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        55983 envoi 55983 (emt9v3yqon4gew#0) suit base s4cifkkt9|55154 rép 18:e met⍽
+        56156 dr_sesAppliquer s4cifkkt9|55874 (emt9v3yqon4gew#0) base spfpddsdv|55409 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56182 reçu s4cifkkt9|56036 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56390 dr_sesAppliquer s4cifkkt9|56036 (emt9v3yqon4gew#0) base spfpddsdv|55729 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        56404 reçu s4cifkkt9|56036 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56408 reçu symiqg3ni|56213 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56518    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56518 dr_sesAppliquer symiqg3ni|56213 (emt9v3yqon4gew#0) base s4cifkkt9|55874 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        56542 reçu symiqg3ni|56365 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        56543 envoi 56542 (emt9v3yqon4gew#0) suit base symiqg3ni|56213 rép 18:e met⍽
+        56736    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        56736 dr_sesAppliquer symiqg3ni|56365 (emt9v3yqon4gew#0) base s4cifkkt9|56036 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        56799 envoi 56797 (emt9v3yqon4gew#0) suit base symiqg3ni|56365 rép 18:e met⍽
+        56861 reçu s4cifkkt9|56847 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57006 dr_sesAppliquer s4cifkkt9|56847 (emt9v3yqon4gew#0) base spfpddsdv|56542 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        57035 reçu s4cifkkt9|57024 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57101 dr_sesAppliquer s4cifkkt9|57024 (emt9v3yqon4gew#0) base spfpddsdv|56797 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        57205 reçu symiqg3ni|57194 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57372    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57372 dr_sesAppliquer symiqg3ni|57194 (emt9v3yqon4gew#0) base s4cifkkt9|56847 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        57410 envoi 57409 (emt9v3yqon4gew#0) suit base symiqg3ni|57194 rép 18:e met⍽
+        57440 reçu symiqg3ni|57406 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57593    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        57594 dr_sesAppliquer symiqg3ni|57406 (emt9v3yqon4gew#0) base s4cifkkt9|57024 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        57621 envoi 57621 (emt9v3yqon4gew#0) suit base symiqg3ni|57406 rép 18:e met⍽
+        57717 reçu s4cifkkt9|57675 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        57949 dr_sesAppliquer s4cifkkt9|57675 (emt9v3yqon4gew#0) base spfpddsdv|57409 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58018 reçu s4cifkkt9|57675 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        58019 reçu symiqg3ni|57915 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#0
+        58222 dr_sesAppliquer symiqg3ni|57915 (emt9v3yqon4gew#1) base spfpddsdv|57621 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        58287 reçu s4cifkkt9|57965 (emt9v3yqon4gew#0) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58444 dr_sesAppliquer s4cifkkt9|57965 (emt9v3yqon4gew#0) base spfpddsdv|57621 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["parDiapo","vuMax"] CONTENU
+        58478 reçu s4cifkkt9|58030 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58481 envoi 58479 (emt9v3yqon4gew#1) suit base s4cifkkt9|57965 rép 18:e met⍽
+        58714    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58714 dr_sesAppliquer s4cifkkt9|58030 (emt9v3yqon4gew#1) base symiqg3ni|57915 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.page","S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        58730 reçu symiqg3ni|58099 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58731 envoi 58731 (emt9v3yqon4gew#1) suit base s4cifkkt9|58030 rép 18:e met⍽
+        58816    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58816 dr_sesAppliquer symiqg3ni|58099 (emt9v3yqon4gew#1) base s4cifkkt9|57675 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        58817 reçu symiqg3ni|58179 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        58818 envoi 58818 (emt9v3yqon4gew#1) suit base symiqg3ni|58099 rép 18:e met⍽
+        58908    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        58908 dr_sesAppliquer symiqg3ni|58179 (emt9v3yqon4gew#1) base s4cifkkt9|57965 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        58996 reçu symiqg3ni|58590 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59004 envoi 59004 (emt9v3yqon4gew#1) suit base symiqg3ni|58179 rép 18:e met⍽
+        59153 dr_sesAppliquer symiqg3ni|58590 (emt9v3yqon4gew#1) base spfpddsdv|58479 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59224 reçu s4cifkkt9|58725 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59418    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59418 dr_sesAppliquer s4cifkkt9|58725 (emt9v3yqon4gew#1) base symiqg3ni|58590 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.page","S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        59438 reçu symiqg3ni|58971 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59439 envoi 59439 (emt9v3yqon4gew#1) suit base s4cifkkt9|58725 rép 18:e met⍽
+        59550 dr_sesAppliquer symiqg3ni|58971 (emt9v3yqon4gew#1) base spfpddsdv|58731 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59575 reçu s4cifkkt9|59232 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59667 dr_sesAppliquer s4cifkkt9|59232 (emt9v3yqon4gew#1) base spfpddsdv|58818 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        59684 reçu s4cifkkt9|59274 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59763    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        59763 dr_sesAppliquer s4cifkkt9|59274 (emt9v3yqon4gew#1) base symiqg3ni|58971 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        59764 reçu s4cifkkt9|59388 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        59768 envoi 59767 (emt9v3yqon4gew#1) suit base s4cifkkt9|59274 rép 18:e met⍽
+        60140 dr_sesAppliquer s4cifkkt9|59388 (emt9v3yqon4gew#1) base spfpddsdv|59004 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60202 reçu symiqg3ni|59519 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60469    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60469 dr_sesAppliquer symiqg3ni|59519 (emt9v3yqon4gew#1) base s4cifkkt9|59232 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        60486 reçu symiqg3ni|59965 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60487 envoi 60487 (emt9v3yqon4gew#1) suit base symiqg3ni|59519 rép 18:e met⍽
+        60661    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60661 dr_sesAppliquer symiqg3ni|59965 (emt9v3yqon4gew#1) base s4cifkkt9|59388 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        60681 reçu symiqg3ni|60077 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60682 envoi 60681 (emt9v3yqon4gew#1) suit base symiqg3ni|59965 rép 18:e met⍽
+        60817 dr_sesAppliquer symiqg3ni|60077 (emt9v3yqon4gew#1) base spfpddsdv|59439 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        60836 reçu s4cifkkt9|60229 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60953    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        60953 dr_sesAppliquer s4cifkkt9|60229 (emt9v3yqon4gew#1) base symiqg3ni|60077 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        60967 reçu symiqg3ni|60247 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        60968 envoi 60968 (emt9v3yqon4gew#1) suit base s4cifkkt9|60229 rép 18:e met⍽
+        61017 dr_sesAppliquer symiqg3ni|60247 (emt9v3yqon4gew#1) base spfpddsdv|59767 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61024 reçu s4cifkkt9|60396 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61159    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61159 dr_sesAppliquer s4cifkkt9|60396 (emt9v3yqon4gew#1) base symiqg3ni|60247 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        61187 reçu s4cifkkt9|60749 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61188 envoi 61188 (emt9v3yqon4gew#1) suit base s4cifkkt9|60396 rép 18:e met⍽
+        61287 dr_sesAppliquer s4cifkkt9|60749 (emt9v3yqon4gew#1) base spfpddsdv|60487 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61306 reçu s4cifkkt9|60873 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61423 dr_sesAppliquer s4cifkkt9|60873 (emt9v3yqon4gew#1) base spfpddsdv|60681 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61471 reçu symiqg3ni|60943 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61590    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61590 dr_sesAppliquer symiqg3ni|60943 (emt9v3yqon4gew#1) base s4cifkkt9|60749 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        61638 reçu symiqg3ni|61098 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61639 envoi 61639 (emt9v3yqon4gew#1) suit base symiqg3ni|60943 rép 18:e met⍽
+        61753    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        61753 dr_sesAppliquer symiqg3ni|61098 (emt9v3yqon4gew#1) base s4cifkkt9|60873 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        61766 reçu symiqg3ni|61218 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        61767 envoi 61767 (emt9v3yqon4gew#1) suit base symiqg3ni|61098 rép 18:e met⍽
+        61925 dr_sesAppliquer symiqg3ni|61218 (emt9v3yqon4gew#1) base spfpddsdv|60968 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        61954 reçu symiqg3ni|61353 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62070 dr_sesAppliquer symiqg3ni|61353 (emt9v3yqon4gew#1) base spfpddsdv|61188 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62091 reçu s4cifkkt9|61428 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62150    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62150 dr_sesAppliquer s4cifkkt9|61428 (emt9v3yqon4gew#1) base symiqg3ni|61218 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        62154 reçu s4cifkkt9|61532 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62161 envoi 62157 (emt9v3yqon4gew#1) suit base s4cifkkt9|61428 rép 18:e met⍽
+        62353    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62353 dr_sesAppliquer s4cifkkt9|61532 (emt9v3yqon4gew#1) base symiqg3ni|61353 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        62393 reçu s4cifkkt9|61766 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62399 envoi 62394 (emt9v3yqon4gew#1) suit base s4cifkkt9|61532 rép 18:e met⍽
+        62500 dr_sesAppliquer s4cifkkt9|61766 (emt9v3yqon4gew#1) base spfpddsdv|61639 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62518 reçu symiqg3ni|61827 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62617    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62617 dr_sesAppliquer symiqg3ni|61827 (emt9v3yqon4gew#1) base s4cifkkt9|61766 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        62637 reçu s4cifkkt9|61930 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62638 envoi 62638 (emt9v3yqon4gew#1) suit base symiqg3ni|61827 rép 18:e met⍽
+        62803 dr_sesAppliquer s4cifkkt9|61930 (emt9v3yqon4gew#1) base spfpddsdv|61767 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        62826 reçu symiqg3ni|62030 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62938    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        62938 dr_sesAppliquer symiqg3ni|62030 (emt9v3yqon4gew#1) base s4cifkkt9|61930 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        62958 reçu symiqg3ni|62284 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        62968 envoi 62967 (emt9v3yqon4gew#1) suit base symiqg3ni|62030 rép 18:e met⍽
+        63318 dr_sesAppliquer symiqg3ni|62284 (emt9v3yqon4gew#1) base spfpddsdv|62157 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        63342 reçu s4cifkkt9|62423 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63400    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        63400 dr_sesAppliquer s4cifkkt9|62423 (emt9v3yqon4gew#1) base symiqg3ni|62284 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        63405 reçu symiqg3ni|62670 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63406 envoi 63406 (emt9v3yqon4gew#1) suit base s4cifkkt9|62423 rép 18:e met⍽
+        63510 dr_sesAppliquer symiqg3ni|62670 (emt9v3yqon4gew#1) base spfpddsdv|62394 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        63549 reçu s4cifkkt9|62814 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63685 dr_sesAppliquer s4cifkkt9|62814 (emt9v3yqon4gew#1) base spfpddsdv|62638 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+        63703 reçu s4cifkkt9|62947 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63785    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        63785 dr_sesAppliquer s4cifkkt9|62947 (emt9v3yqon4gew#1) base symiqg3ni|62670 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        63789 reçu symiqg3ni|63017 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63789 envoi 63789 (emt9v3yqon4gew#1) suit base s4cifkkt9|62947 rép 18:e met⍽
+        63972    parts : base [pme3apf] ici [pme3apf] reçu [pme3apf] → [pme3apf] ; ici/reçu mêmes champs ; après/reçu mêmes champs ; ordre le même
+        63972 dr_sesAppliquer symiqg3ni|63017 (emt9v3yqon4gew#1) base s4cifkkt9|62814 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        63996 reçu s4cifkkt9|63067 (emt9v3yqon4gew#1) main=symiqg3ni|53655 occupé=false ici emt9v3yqon4gew#1
+        63997 envoi 63996 (emt9v3yqon4gew#1) suit base symiqg3ni|63017 rép 18:e met⍽
+        64125 dr_sesAppliquer s4cifkkt9|63067 (emt9v3yqon4gew#1) base spfpddsdv|62967 [connue] rép reçue 18:e met⍽ : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 18:e met⍽ → 18:e met⍽ ; gardé []
+      T · qui a la main : l’ordinateur tape « Pensez », chaque lettre au tableau en 57, 41, 32, 35, 58, 53 ms ; le téléphone note GA : le champ de l’ordinateur fermé en 10 ms, il dit « Un autre ordinateur a la main » ; le téléphone dévoile (emt9v3yqo6pvd5#2#0 → emt9v3yqo6pvd5#2#1, au tableau en 35 ms), revenu en arrière 0 fois sur 47 ; à la fin emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · {"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}
+  ok     T · qui a la main : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s — [57,41,32,35,58,53]
+  ok     T · qui a la main : le téléphone note une participation, il prend la main ; le champ de l’ordinateur se ferme tel qu’il est et l’ordinateur le dit — {"ferme":10,"dit3":"Un autre ordinateur a la main"}
+  ok     T · qui a la main : le dévoilement du téléphone paraît au tableau (≤ 0,5 s) et n’y recule jamais — {"dDev":35,"recul":0}
+  ok     T · qui a la main : rien de perdu — la réponse tapée, la participation et le dévoilement, chez les deux pilotes et au tableau — {"kf":["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"],"V2":{"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}}
+      T · F5 au téléphone : bandeau en 3 ms, « Reprendre » : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1
+  ok     T · F5 au téléphone : la session reprend, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+      T · F5 à l’ordinateur : la case de l’emploi du temps, « Ouvrir le pilotage et lancer »
+      T · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1 · pointeur le même (ts 1789369209507)
+  ok     T · F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+  ok     T · relancer le même essai ailleurs : aucune deuxième session (le pointeur d’essai inchangé) — [1789369209507,1789369209507]
+      T · après les F5, un geste au téléphone : ordinateur 195 ms, tableau 200 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":195,"tab":200}
+      T · après les F5, un geste au téléphone : ordinateur 119 ms, tableau 123 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":119,"tab":123}
+      T · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 32, 41 ms
+  ok     T · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [32,41]
+      T · avant la clôture, au hub : pointeur d’essai là, scène d’essai là, cours_actif —
+      T · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     T · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     T · au hub : plus de pointeur ni de scène d’essai — {"ptr":null,"sc":null,"vif":null,"ca":null}
+      T · le tableau distant (pas en mode test) a écrit 7 fois : PUT /site/cle_vue (la clé USB, sa seule écriture, préexistante)
+      T · écritures au hub pendant l’essai : 345 — chemins : /site/tableau_test/scene, /site/tableau_test/ecrans, /site/tableau_test/pointeur, /site/tableau_test/vif
+  ok     T · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+24 vérifications, 1 échec(s)

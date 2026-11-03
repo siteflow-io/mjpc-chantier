@@ -1,0 +1,315 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties PG · 2026-11-03 18:33 UTC · md5 48c2205eba3f341cc87bd2ecb631887e · images de 3e : un dossier local
+
+— PG · un geste juste avant la prise de main du second ordinateur (mode test, reprise sans touche) —
+  ok     PG · tc-qui 200 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true},"cles":{}}
+      PG tc-qui 200 ms après « Reprendre » (clic 21226, geste 21472) : la télécommande active ; le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : non [23029 premierVerifier v.ts=21653] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true}
+      [vif PG tc-qui 200] 8 état(s) vivant(s) au hub :
+        ordinateur @9865 par=sha5kv5i8 ts=9852 main=sha5kv5i8 mainTs=9852 tc=false
+        ordinateur @12715 par=sha5kv5i8 ts=12714 main=sha5kv5i8 mainTs=9852 tc=false
+        ordinateur @13117 par=sha5kv5i8 ts=13116 main=sha5kv5i8 mainTs=9852 tc=false
+        telephone @16200 par=sbxpcngx5 ts=16195 main=sbxpcngx5 mainTs=16195 tc=true
+        ordinateur @16353 par=sha5kv5i8 ts=16349 main=sbxpcngx5 mainTs=16195 tc=true CÈDE
+        telephone @21686 par=sbxpcngx5 ts=21653 main=sbxpcngx5 mainTs=16195 tc=true
+        ordinateur2 @23156 par=sfqbuff1j ts=23153 main=sfqbuff1j mainTs=23153 tc=false
+        telephone @23328 par=sbxpcngx5 ts=23315 main=sfqbuff1j mainTs=23153 tc=false CÈDE
+      [piège PG · second] 15 :
+        22092 dr_lire …/etat : maj=16349 vifTs=16349
+        22354 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        22534 dr_ecrire …/etat : maj=22534 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        22706 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        22949 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        23028 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        23028 reçu sbxpcngx5|21653 sig = ici attendrePremier=22710 main=sbxpcngx5|16195
+        23029 premierVerifier v.par=sbxpcngx5 v.ts=21653
+        23029 dr_lire …/etat : maj=22534 vifTs=-1789369199999
+        23029 reçu sbxpcngx5|21653 (vérifié) sig = ici attendrePremier=22710 main=sbxpcngx5|16195
+        23029 main null → sbxpcngx5 ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        23151 main sbxpcngx5 → sfqbuff1j ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        23348 reçu sbxpcngx5|23315 sig = ici attendrePremier=0 main=sfqbuff1j|23153
+        23833 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        24738 dr_ecrire …/etat : maj=24738 vifTs=23315 (DR_SES.ici posé) ← ·
+      [scènes PG tc-qui 200] 3 :
+        ordinateur @9861 ts=9851 inv-presentation-chapitre-s0#0
+        ordinateur @12713 ts=12713 inv-presentation-chapitre-s0#1
+        ordinateur @13116 ts=13115 inv-presentation-chapitre-s0#2
+        le tableau : {"ts":13115,"montre":"inv-presentation-chapitre-s0#2"}
+  ok     PG · tc-qui 500 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true},"cles":{}}
+      PG tc-qui 500 ms après « Reprendre » (clic 47906, geste 48452) : la télécommande active ; le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : non [49720 premierVerifier v.ts=48702] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true}
+      [vif PG tc-qui 500] 8 état(s) vivant(s) au hub :
+        ordinateur @36409 par=s93avplgb ts=36399 main=s93avplgb mainTs=36399 tc=false
+        ordinateur @39394 par=s93avplgb ts=39389 main=s93avplgb mainTs=36399 tc=false
+        ordinateur @39791 par=s93avplgb ts=39789 main=s93avplgb mainTs=36399 tc=false
+        telephone @42891 par=suq4sg8lt ts=42883 main=suq4sg8lt mainTs=42883 tc=true
+        ordinateur @43140 par=s93avplgb ts=43136 main=suq4sg8lt mainTs=42883 tc=true CÈDE
+        telephone @48707 par=suq4sg8lt ts=48702 main=suq4sg8lt mainTs=42883 tc=true
+        ordinateur2 @49780 par=sy21ruhcu ts=49779 main=sy21ruhcu mainTs=49779 tc=false
+        telephone @49881 par=suq4sg8lt ts=49879 main=sy21ruhcu mainTs=49779 tc=false CÈDE
+      [piège PG · second] 16 :
+        48776 dr_lire …/etat : maj=43136 vifTs=43136
+        49105 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        49231 dr_ecrire …/etat : maj=49231 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        49377 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        49383 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        49703 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        49719 reçu suq4sg8lt|48702 sig = ici attendrePremier=49378 main=suq4sg8lt|42883
+        49720 premierVerifier v.par=suq4sg8lt v.ts=48702
+        49720 dr_lire …/etat : maj=49231 vifTs=-1789369199999
+        49720 reçu suq4sg8lt|48702 (vérifié) sig = ici attendrePremier=49378 main=suq4sg8lt|42883
+        49720 main null → suq4sg8lt ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        49777 main suq4sg8lt → sy21ruhcu ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        49883 reçu suq4sg8lt|49879 sig = ici attendrePremier=0 main=sy21ruhcu|49779
+        50287 dr_ecrire …/etat : maj=50287 vifTs=49879 (DR_SES.ici posé) ← ·
+        50563 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        51469 dr_ecrire …/etat : maj=51469 vifTs=49879 (DR_SES.ici posé) ← ·
+      [scènes PG tc-qui 500] 3 :
+        ordinateur @36403 ts=36398 inv-presentation-chapitre-s0#0
+        ordinateur @39393 ts=39388 inv-presentation-chapitre-s0#1
+        ordinateur @39789 ts=39788 inv-presentation-chapitre-s0#2
+        le tableau : {"ts":39788,"montre":"inv-presentation-chapitre-s0#2"}
+  ok     PG · tc-qui 800 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true},"cles":{}}
+      PG tc-qui 800 ms après « Reprendre » (clic 74874, geste 75721) : la télécommande active ; le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : non [76356 premierVerifier v.ts=76069] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true}
+      [vif PG tc-qui 800] 9 état(s) vivant(s) au hub :
+        ordinateur @63618 par=s3zxvjjfd ts=63615 main=s3zxvjjfd mainTs=63615 tc=false
+        ordinateur @66417 par=s3zxvjjfd ts=66415 main=s3zxvjjfd mainTs=63615 tc=false
+        ordinateur @66780 par=s3zxvjjfd ts=66779 main=s3zxvjjfd mainTs=63615 tc=false
+        telephone @69816 par=sfled0h4y ts=69815 main=sfled0h4y mainTs=69815 tc=true
+        ordinateur @69862 par=s3zxvjjfd ts=69866 main=sfled0h4y mainTs=69815 tc=true CÈDE
+        telephone @76070 par=sfled0h4y ts=76069 main=sfled0h4y mainTs=69815 tc=true
+        ordinateur2 @76425 par=spex2pdpz ts=76419 main=spex2pdpz mainTs=76419 tc=false
+        telephone @76576 par=sfled0h4y ts=76569 main=spex2pdpz mainTs=76419 tc=false CÈDE
+        ordinateur2 @76693 par=spex2pdpz ts=76680 main=spex2pdpz mainTs=76419 tc=false
+      [piège PG · second] 15 :
+        75451 dr_lire …/etat : maj=69866 vifTs=69866
+        75728 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        75819 dr_ecrire …/etat : maj=75819 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        75846 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        76327 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        76353 reçu sfled0h4y|76069 sig = ici attendrePremier=75846 main=sfled0h4y|69815
+        76356 premierVerifier v.par=sfled0h4y v.ts=76069
+        76356 dr_lire …/etat : maj=75819 vifTs=-1789369199999
+        76356 reçu sfled0h4y|76069 (vérifié) sig = ici attendrePremier=75846 main=sfled0h4y|69815
+        76356 main null → sfled0h4y ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        76417 main sfled0h4y → spex2pdpz ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        76468 reçu s3zxvjjfd|69866 sig = ici attendrePremier=0 main=sfled0h4y|69815
+        76678 reçu sfled0h4y|76569 sig = ici attendrePremier=0 main=spex2pdpz|76419
+        76735 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        77640 dr_ecrire …/etat : maj=77640 vifTs=76680 (DR_SES.ici posé) ← ·
+      [scènes PG tc-qui 800] 3 :
+        ordinateur @63617 ts=63614 inv-presentation-chapitre-s0#0
+        ordinateur @66415 ts=66414 inv-presentation-chapitre-s0#1
+        ordinateur @66779 ts=66778 inv-presentation-chapitre-s0#2
+        le tableau : {"ts":66778,"montre":"inv-presentation-chapitre-s0#2"}
+  ok     PG · tc-suiv 200 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":true},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}}
+      PG tc-suiv 200 ms après « Reprendre » (clic 102560, geste 102818) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [104559 premierVerifier v.ts=102959] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":true} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}
+      [vif PG tc-suiv 200] 8 état(s) vivant(s) au hub :
+        ordinateur @90998 par=s0cll8zvo ts=90995 main=s0cll8zvo mainTs=90995 tc=false
+        ordinateur @93833 par=s0cll8zvo ts=93829 main=s0cll8zvo mainTs=90995 tc=false
+        ordinateur @94232 par=s0cll8zvo ts=94231 main=s0cll8zvo mainTs=90995 tc=false
+        telephone @97359 par=sctnszz7i ts=97356 main=sctnszz7i mainTs=97356 tc=true
+        ordinateur @97547 par=s0cll8zvo ts=97545 main=sctnszz7i mainTs=97356 tc=true CÈDE
+        telephone @102964 par=sctnszz7i ts=102959 main=sctnszz7i mainTs=97356 tc=true
+        ordinateur2 @104634 par=srgewsg1t ts=104633 main=srgewsg1t mainTs=104633 tc=false
+        telephone @104689 par=sctnszz7i ts=104684 main=srgewsg1t mainTs=104633 tc=false CÈDE
+      [piège PG · second] 15 :
+        103449 dr_lire …/etat : maj=97545 vifTs=97545
+        103731 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        103882 dr_ecrire …/etat : maj=103882 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        104148 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        104159 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        104492 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        104558 reçu sctnszz7i|102959 sig = ici attendrePremier=104149 main=sctnszz7i|97356
+        104559 premierVerifier v.par=sctnszz7i v.ts=102959
+        104559 dr_lire …/etat : maj=103882 vifTs=-1789369199999
+        104559 reçu sctnszz7i|102959 (vérifié) sig = ici attendrePremier=104149 main=sctnszz7i|97356
+        104559 main null → sctnszz7i ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        104630 main sctnszz7i → srgewsg1t ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        104728 reçu sctnszz7i|104684 sig = ici attendrePremier=0 main=srgewsg1t|104633
+        105042 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        105945 dr_ecrire …/etat : maj=105945 vifTs=104684 (DR_SES.ici posé) ← ·
+      [scènes PG tc-suiv 200] 5 :
+        ordinateur @90947 ts=90939 inv-presentation-chapitre-s0#0
+        ordinateur @93829 ts=93828 inv-presentation-chapitre-s0#1
+        ordinateur @94212 ts=94210 inv-presentation-chapitre-s0#2
+        telephone @102961 ts=102958 inv-presentation-chapitre-s0#3
+        telephone @103120 ts=103119 inv-presentation-chapitre-s0#3
+        le tableau : {"ts":103119,"montre":"inv-presentation-chapitre-s0#3"}
+  ok     PG · tc-suiv 500 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":true},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}}
+      PG tc-suiv 500 ms après « Reprendre » (clic 129018, geste 129614) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [130749 premierVerifier v.ts=129796] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":true} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}
+      [vif PG tc-suiv 500] 8 état(s) vivant(s) au hub :
+        ordinateur @117734 par=s6f4m799f ts=117731 main=s6f4m799f mainTs=117731 tc=false
+        ordinateur @120460 par=s6f4m799f ts=120459 main=s6f4m799f mainTs=117731 tc=false
+        ordinateur @120822 par=s6f4m799f ts=120818 main=s6f4m799f mainTs=117731 tc=false
+        telephone @123946 par=soes6kvbf ts=123943 main=soes6kvbf mainTs=123943 tc=true
+        ordinateur @124116 par=s6f4m799f ts=124112 main=soes6kvbf mainTs=123943 tc=true CÈDE
+        telephone @129800 par=soes6kvbf ts=129796 main=soes6kvbf mainTs=123943 tc=true
+        ordinateur2 @130830 par=snspjzre1 ts=130825 main=snspjzre1 mainTs=130825 tc=false
+        telephone @130968 par=soes6kvbf ts=130946 main=snspjzre1 mainTs=130825 tc=false CÈDE
+      [piège PG · second] 16 :
+        129949 dr_lire …/etat : maj=124112 vifTs=124112
+        130215 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        130286 dr_ecrire …/etat : maj=130286 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        130288 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        130583 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        130748 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        130749 reçu soes6kvbf|129796 sig = ici attendrePremier=130288 main=soes6kvbf|123943
+        130749 premierVerifier v.par=soes6kvbf v.ts=129796
+        130749 dr_lire …/etat : maj=130286 vifTs=-1789369199999
+        130749 reçu soes6kvbf|129796 (vérifié) sig = ici attendrePremier=130288 main=soes6kvbf|123943
+        130749 main null → soes6kvbf ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        130823 main soes6kvbf → snspjzre1 ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        130978 reçu soes6kvbf|130946 sig = ici attendrePremier=0 main=snspjzre1|130825
+        131493 dr_ecrire …/etat : maj=131493 vifTs=130946 (DR_SES.ici posé) ← ·
+        131546 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        132450 dr_ecrire …/etat : maj=132450 vifTs=130946 (DR_SES.ici posé) ← ·
+      [scènes PG tc-suiv 500] 5 :
+        ordinateur @117673 ts=117666 inv-presentation-chapitre-s0#0
+        ordinateur @120442 ts=120440 inv-presentation-chapitre-s0#1
+        ordinateur @120821 ts=120817 inv-presentation-chapitre-s0#2
+        telephone @129795 ts=129794 inv-presentation-chapitre-s0#3
+        telephone @129934 ts=129930 inv-presentation-chapitre-s0#3
+        le tableau : {"ts":129930,"montre":"inv-presentation-chapitre-s0#3"}
+  ÉCHEC  PG · tc-suiv 800 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":false,"second":false,"télécommande":false,"tableau":false},"cles":{"ordinateur":"inv-presentation-chapitre-s0#2#0","second":"inv-presentation-chapitre-s0#2#0","télécommande":"inv-presentation-chapitre-s0#2#0","tableau":"inv-presentation-chapitre-s0#2#0"}}
+      PG tc-suiv 800 ms après « Reprendre » (clic 155987, geste 156835) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [157440 premierVerifier v.ts=157048] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#2#0","second":"inv-presentation-chapitre-s0#2#0","télécommande":"inv-presentation-chapitre-s0#2#0","tableau":"inv-presentation-chapitre-s0#2#0"}
+      [vif PG tc-suiv 800] 9 état(s) vivant(s) au hub :
+        ordinateur @145156 par=ss2flm642 ts=145152 main=ss2flm642 mainTs=145152 tc=false
+        ordinateur @147463 par=ss2flm642 ts=147461 main=ss2flm642 mainTs=145152 tc=false
+        ordinateur @147857 par=ss2flm642 ts=147856 main=ss2flm642 mainTs=145152 tc=false
+        telephone @150864 par=slsy25xti ts=150860 main=slsy25xti mainTs=150860 tc=true
+        ordinateur @150977 par=ss2flm642 ts=150974 main=slsy25xti mainTs=150860 tc=true CÈDE
+        telephone @157051 par=slsy25xti ts=157048 main=slsy25xti mainTs=150860 tc=true
+        ordinateur2 @157523 par=s5p8z3vt9 ts=157516 main=s5p8z3vt9 mainTs=157516 tc=false
+        telephone @157658 par=slsy25xti ts=157655 main=s5p8z3vt9 mainTs=157516 tc=false CÈDE
+        ordinateur2 @157805 par=s5p8z3vt9 ts=157804 main=s5p8z3vt9 mainTs=157516 tc=false
+      [piège PG · second] 15 :
+        156593 dr_lire …/etat : maj=150974 vifTs=150974
+        156846 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        156954 dr_ecrire …/etat : maj=156954 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        156957 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        157357 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        157440 reçu slsy25xti|157048 sig = ici attendrePremier=156957 main=slsy25xti|150860
+        157440 premierVerifier v.par=slsy25xti v.ts=157048
+        157440 dr_lire …/etat : maj=156954 vifTs=-1789369199999
+        157440 reçu slsy25xti|157048 (vérifié) sig = ici attendrePremier=156957 main=slsy25xti|150860
+        157440 main null → slsy25xti ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        157514 main slsy25xti → s5p8z3vt9 ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        157530 reçu ss2flm642|150974 sig = ici attendrePremier=0 main=slsy25xti|150860
+        157711 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        157713 reçu slsy25xti|157655 sig = ici attendrePremier=0 main=s5p8z3vt9|157516
+        158615 dr_ecrire …/etat : maj=158615 vifTs=157804 (DR_SES.ici posé) ← ·
+      [scènes PG tc-suiv 800] 6 :
+        ordinateur @145142 ts=145139 inv-presentation-chapitre-s0#0
+        ordinateur @147461 ts=147460 inv-presentation-chapitre-s0#1
+        ordinateur @147842 ts=147841 inv-presentation-chapitre-s0#2
+        telephone @157048 ts=157047 inv-presentation-chapitre-s0#3
+        telephone @157397 ts=157356 inv-presentation-chapitre-s0#3
+        ordinateur2 @157627 ts=157616 inv-presentation-chapitre-s0#2
+        le tableau : {"ts":157616,"montre":"inv-presentation-chapitre-s0#2"}
+  ok     PG · ord-suiv 200 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":true},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}}
+      PG ord-suiv 200 ms après « Reprendre » (clic 183161, geste 183416) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [184637 premierVerifier v.ts=183611] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":true} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}
+      [vif PG ord-suiv 200] 9 état(s) vivant(s) au hub :
+        ordinateur @171718 par=s0blb2lhp ts=171706 main=s0blb2lhp mainTs=171706 tc=false
+        ordinateur @174716 par=s0blb2lhp ts=174714 main=s0blb2lhp mainTs=171706 tc=false
+        ordinateur @175097 par=s0blb2lhp ts=175095 main=s0blb2lhp mainTs=171706 tc=false
+        telephone @178158 par=sbuh9wx0q ts=178157 main=sbuh9wx0q mainTs=178157 tc=true
+        ordinateur @178243 par=s0blb2lhp ts=178242 main=sbuh9wx0q mainTs=178157 tc=true CÈDE
+        ordinateur @183546 par=s0blb2lhp ts=183544 main=s0blb2lhp mainTs=183544 tc=false
+        telephone @183612 par=sbuh9wx0q ts=183611 main=s0blb2lhp mainTs=183544 tc=false CÈDE
+        ordinateur2 @184757 par=sfoe6yty0 ts=184751 main=sfoe6yty0 mainTs=184751 tc=false
+        ordinateur @185030 par=s0blb2lhp ts=185012 main=sfoe6yty0 mainTs=184751 tc=false CÈDE
+      [piège PG · second] 15 :
+        183967 dr_lire …/etat : maj=178242 vifTs=178242
+        184175 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        184273 dr_ecrire …/etat : maj=184273 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        184275 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        184277 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        184629 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        184637 reçu sbuh9wx0q|183611 sig = ici attendrePremier=184276 main=s0blb2lhp|183544
+        184637 premierVerifier v.par=sbuh9wx0q v.ts=183611
+        184637 dr_lire …/etat : maj=184273 vifTs=-1789369199999
+        184637 reçu sbuh9wx0q|183611 (vérifié) sig = ici attendrePremier=184276 main=s0blb2lhp|183544
+        184637 main null → s0blb2lhp ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        184749 main s0blb2lhp → sfoe6yty0 ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        184804 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        185053 reçu s0blb2lhp|185012 sig = ici attendrePremier=0 main=sfoe6yty0|184751
+        185708 dr_ecrire …/etat : maj=185708 vifTs=185012 (DR_SES.ici posé) ← ·
+      [scènes PG ord-suiv 200] 5 :
+        ordinateur @171715 ts=171705 inv-presentation-chapitre-s0#0
+        ordinateur @174715 ts=174713 inv-presentation-chapitre-s0#1
+        ordinateur @175095 ts=175094 inv-presentation-chapitre-s0#2
+        ordinateur @183545 ts=183543 inv-presentation-chapitre-s0#3
+        ordinateur @183656 ts=183661 inv-presentation-chapitre-s0#3
+        le tableau : {"ts":183661,"montre":"inv-presentation-chapitre-s0#3"}
+  ok     PG · ord-suiv 500 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":true},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}}
+      PG ord-suiv 500 ms après « Reprendre » (clic 209518, geste 210108) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [211248 premierVerifier v.ts=210393] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":true} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}
+      [vif PG ord-suiv 500] 9 état(s) vivant(s) au hub :
+        ordinateur @198290 par=syk2wjits ts=198283 main=syk2wjits mainTs=198283 tc=false
+        ordinateur @201119 par=syk2wjits ts=201116 main=syk2wjits mainTs=198283 tc=false
+        ordinateur @201490 par=syk2wjits ts=201489 main=syk2wjits mainTs=198283 tc=false
+        telephone @204528 par=szbl4iz0s ts=204527 main=szbl4iz0s mainTs=204527 tc=true
+        ordinateur @204583 par=syk2wjits ts=204582 main=szbl4iz0s mainTs=204527 tc=true CÈDE
+        ordinateur @210296 par=syk2wjits ts=210280 main=syk2wjits mainTs=210280 tc=false
+        telephone @210394 par=szbl4iz0s ts=210393 main=syk2wjits mainTs=210280 tc=false CÈDE
+        ordinateur2 @211318 par=shwtzn6zd ts=211314 main=shwtzn6zd mainTs=211314 tc=false
+        ordinateur @211627 par=syk2wjits ts=211619 main=shwtzn6zd mainTs=211314 tc=false CÈDE
+      [piège PG · second] 16 :
+        210216 dr_lire …/etat : maj=204582 vifTs=204582
+        210563 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        210741 dr_ecrire …/etat : maj=210741 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        210743 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        210749 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        211246 dr_sesVeiller remplace DR_SES.ici (même sig : true) pendant attendrePremier
+        211247 reçu szbl4iz0s|210393 sig = ici attendrePremier=210743 main=syk2wjits|210280
+        211248 premierVerifier v.par=szbl4iz0s v.ts=210393
+        211248 dr_lire …/etat : maj=210741 vifTs=-1789369199999
+        211248 reçu szbl4iz0s|210393 (vérifié) sig = ici attendrePremier=210743 main=syk2wjits|210280
+        211248 main null → syk2wjits ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        211311 main syk2wjits → shwtzn6zd ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        211648 reçu syk2wjits|211619 sig = ici attendrePremier=0 main=shwtzn6zd|211314
+        211777 dr_ecrire …/etat : maj=211777 vifTs=211619 (DR_SES.ici posé) ← ·
+        212088 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        212991 dr_ecrire …/etat : maj=212991 vifTs=211619 (DR_SES.ici posé) ← ·
+      [scènes PG ord-suiv 500] 5 :
+        ordinateur @198253 ts=198250 inv-presentation-chapitre-s0#0
+        ordinateur @201116 ts=201115 inv-presentation-chapitre-s0#1
+        ordinateur @201475 ts=201472 inv-presentation-chapitre-s0#2
+        ordinateur @210280 ts=210279 inv-presentation-chapitre-s0#3
+        ordinateur @210480 ts=210479 inv-presentation-chapitre-s0#3
+        le tableau : {"ts":210479,"montre":"inv-presentation-chapitre-s0#3"}
+  ok     PG · ord-suiv 800 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":true},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}}
+      PG ord-suiv 800 ms après « Reprendre » (clic 236524, geste 237364) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [238071 premierVerifier v.ts=237626] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":true} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#3#0"}
+      [vif PG ord-suiv 800] 9 état(s) vivant(s) au hub :
+        ordinateur @225031 par=s8lpclric ts=225027 main=s8lpclric mainTs=225027 tc=false
+        ordinateur @227992 par=s8lpclric ts=227985 main=s8lpclric mainTs=225027 tc=false
+        ordinateur @228358 par=s8lpclric ts=228357 main=s8lpclric mainTs=225027 tc=false
+        telephone @231365 par=swn4qiyou ts=231364 main=swn4qiyou mainTs=231364 tc=true
+        ordinateur @231436 par=s8lpclric ts=231431 main=swn4qiyou mainTs=231364 tc=true CÈDE
+        ordinateur @237510 par=s8lpclric ts=237507 main=s8lpclric mainTs=237507 tc=false
+        telephone @237628 par=swn4qiyou ts=237626 main=s8lpclric mainTs=237507 tc=false CÈDE
+        ordinateur2 @238177 par=sx07akypp ts=238174 main=sx07akypp mainTs=238174 tc=false
+        ordinateur @238397 par=s8lpclric ts=238395 main=sx07akypp mainTs=238174 tc=false CÈDE
+      [piège PG · second] 15 :
+        237177 dr_lire …/etat : maj=231431 vifTs=231431
+        237408 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        237576 dr_ecrire …/etat : maj=237576 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        237579 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        237586 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        238071 reçu swn4qiyou|237626 sig = ici attendrePremier=237579 main=s8lpclric|237507
+        238071 premierVerifier v.par=swn4qiyou v.ts=237626
+        238072 dr_lire …/etat : maj=237576 vifTs=-1789369199999
+        238072 reçu swn4qiyou|237626 (vérifié) sig = ici attendrePremier=237579 main=s8lpclric|237507
+        238072 main null → s8lpclric ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        238171 main s8lpclric → sx07akypp ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        238205 reçu s8lpclric|237507 sig = ici attendrePremier=0 main=s8lpclric|237507
+        238338 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        238406 reçu s8lpclric|238395 sig = ici attendrePremier=0 main=sx07akypp|238174
+        239245 dr_ecrire …/etat : maj=239244 vifTs=238395 (DR_SES.ici posé) ← ·
+      [scènes PG ord-suiv 800] 5 :
+        ordinateur @225029 ts=225026 inv-presentation-chapitre-s0#0
+        ordinateur @227985 ts=227984 inv-presentation-chapitre-s0#1
+        ordinateur @228357 ts=228356 inv-presentation-chapitre-s0#2
+        ordinateur @237508 ts=237506 inv-presentation-chapitre-s0#3
+        ordinateur @237704 ts=237703 inv-presentation-chapitre-s0#3
+        le tableau : {"ts":237703,"montre":"inv-presentation-chapitre-s0#3"}
+      PG · bilan : 9 cas ; gestes faits : 9, refusés (la télécommande déjà désactivée) : 0 ; gestes perdus : 1 ; prise de main par A (le piège) : 0, parmi eux un geste perdu : 0 — tc-qui/200:-gardé tc-qui/500:-gardé tc-qui/800:-gardé tc-suiv/200:-gardé tc-suiv/500:-gardé tc-suiv/800:-PERDU ord-suiv/200:-gardé ord-suiv/500:-gardé ord-suiv/800:-gardé
+
+9 vérifications, 1 échec(s)

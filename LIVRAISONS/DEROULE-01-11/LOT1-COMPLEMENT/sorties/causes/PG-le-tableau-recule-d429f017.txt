@@ -1,0 +1,40 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties PG · 2026-11-03 18:31 UTC · md5 d429f0178a72b5aae8d5816c5b8652fb · images de 3e : un dossier local
+
+— PG · un geste juste avant la prise de main du second ordinateur (mode test, reprise sans touche) —
+  ÉCHEC  PG · tc-suiv 500 ms après « Reprendre » au second ordinateur : le geste fait est, 5 s après, sur chaque pilote et au tableau (aucun geste perdu) — {"fait":true,"actif":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"tableau":false},"cles":{"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#2#0"}}
+      PG tc-suiv 500 ms après « Reprendre » (clic 21031, geste 21611) : la télécommande active ; le geste fait oui (inv-presentation-chapitre-s0#2#0 → inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [22591 premierVerifier v.ts=21802] ; 5 s après, le geste chez : {"ordinateur":true,"second":true,"télécommande":true,"tableau":false} ; ce que montre chacun : {"ordinateur":"inv-presentation-chapitre-s0#3#0","second":"inv-presentation-chapitre-s0#3#0","télécommande":"inv-presentation-chapitre-s0#3#0","tableau":"inv-presentation-chapitre-s0#2#0"}
+      [vif PG tc-suiv 500] 8 état(s) vivant(s) au hub :
+        ordinateur @9676 par=s5nt4ya2f ts=9673 main=s5nt4ya2f mainTs=9673 tc=false
+        ordinateur @12479 par=s5nt4ya2f ts=12474 main=s5nt4ya2f mainTs=9673 tc=false
+        ordinateur @12848 par=s5nt4ya2f ts=12846 main=s5nt4ya2f mainTs=9673 tc=false
+        telephone @15838 par=srchwypkx ts=15836 main=srchwypkx mainTs=15836 tc=true
+        ordinateur @15979 par=s5nt4ya2f ts=15976 main=srchwypkx mainTs=15836 tc=true CÈDE
+        telephone @21825 par=srchwypkx ts=21802 main=srchwypkx mainTs=15836 tc=true
+        ordinateur2 @22704 par=sw2ef5dgg ts=22670 main=sw2ef5dgg mainTs=22670 tc=false
+        telephone @22866 par=srchwypkx ts=22860 main=sw2ef5dgg mainTs=22670 tc=false CÈDE
+      [piège PG · second] 14 :
+        21749 dr_lire …/etat : maj=15976 vifTs=15976
+        22142 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        22234 dr_ecrire …/etat : maj=22234 vifTs=-1789369199999 (DR_SES.ici null) ← ·
+        22236 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < ·
+        22460 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        22591 reçu srchwypkx|21802 sig = ici attendrePremier=22236 main=srchwypkx|15836
+        22591 premierVerifier v.par=srchwypkx v.ts=21802
+        22591 dr_lire …/etat : maj=22234 vifTs=-1789369199999
+        22591 reçu srchwypkx|21802 (vérifié) sig = ici attendrePremier=22236 main=srchwypkx|15836
+        22591 main null → srchwypkx ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        22669 main srchwypkx → sw2ef5dgg ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite < eval
+        22678 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        22875 reçu srchwypkx|22860 sig = ici attendrePremier=0 main=sw2ef5dgg|22670
+        23589 dr_ecrire …/etat : maj=23589 vifTs=22860 (DR_SES.ici posé) ← ·
+      [scènes PG tc-suiv 500] 6 :
+        ordinateur @9627 ts=9622 inv-presentation-chapitre-s0#0
+        ordinateur @12474 ts=12473 inv-presentation-chapitre-s0#1
+        ordinateur @12847 ts=12845 inv-presentation-chapitre-s0#2
+        telephone @21802 ts=21801 inv-presentation-chapitre-s0#3
+        telephone @22088 ts=22086 inv-presentation-chapitre-s0#3
+        ordinateur2 @22594 ts=22575 inv-presentation-chapitre-s0#2
+        le tableau : {"ts":22575,"montre":"inv-presentation-chapitre-s0#2"}
+      PG · bilan : 1 cas ; gestes faits : 1, refusés (la télécommande déjà désactivée) : 0 ; gestes perdus : 1 ; prise de main par A (le piège) : 0, parmi eux un geste perdu : 0 — tc-suiv/500:-PERDU
+
+1 vérifications, 1 échec(s)

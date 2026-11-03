@@ -1,0 +1,403 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T · 2026-11-03 18:10 UTC · md5 c6aca6d0e267bd59a89f2e5b09c6ead2 · images de 3e : un dossier local
+
+— l’essai en mode test · t1-apres —
+  ok     T · l’ordinateur lance l’heure par la case de l’emploi du temps
+      T · second ordinateur : bandeau en 2 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":2,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · téléphone : bandeau en 2 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le téléphone voit le bandeau en moins de 2 s — {"t":2,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209792|0","ici":"essai|1789369209792|0","recu":1789369222682,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209792|0","ici":"essai|1789369209792|0","recu":1789369222810,"di":0,"mur":true}
+      T · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     T · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      T · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 80, 169, 143, 160, 212 · téléphone 114, 311, 114, 92, 193 · tableau distant 87, 115, 171, 346, 165, 120, 162, 95, 219, 204
+  ok     T · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":346}
+      T · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     T · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      T · un second ordinateur reprend aussi (bandeau en 11 ms) ; l’ordinateur va à « Question-bilan » (fait) : ordinateur emt9v3yqo6pvd5#2#0 · second emt9v3yqo6pvd5#2#0 · téléphone emt9v3yqo6pvd5#2#1
+      T · le texte gardé au second ordinateur quand l’ordinateur a pris la main : « Le Romantis »
+      T · la réponse tapée au second ordinateur (« Le Romantisme met en scène la nature contre la règle »), l’ordinateur qui dévoile (▶ ← ▶), la participation de un élève (EA) au téléphone : {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là (« Le Romantis ») est chez les trois pilotes, rien de perdu — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la participation saisie au téléphone pendant ce temps : chez les trois pilotes — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement) — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+      [réponse · ordinateur] « Le Romantis »
+      [réponse · second] « Le Romantis »
+      [réponse · telephone] « Le Romantis »
+      [trace T après le dévoilement] ordinateur {"id":"s817oti21","main":"s817oti21","mainTs":"51066","att":false,"occ":false,"appui":false,"act":"BUTTON#garde-gel","cle":"emt9v3yqon4gew#1","now":"54731"}
+                 second {"id":"sgkx7cnzr","main":"s817oti21","mainTs":"51066","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"54742"}
+                 telephone {"id":"sbm70ycrb","main":"s817oti21","mainTs":"51066","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"54773"}
+      [vif T depuis le second ordinateur] 51 état(s) vivant(s) au hub :
+        ordinateur2 @39299 par=sgkx7cnzr ts=39297 main=sgkx7cnzr mainTs=39297 tc=false où=inv-plan-s0#1 base=sbm70ycrb|32586
+        telephone @39530 par=sbm70ycrb ts=39528 main=sgkx7cnzr mainTs=39297 tc=false où=inv-plan-s0#1 base=sgkx7cnzr|39297 CÈDE
+        ordinateur @42525 par=s817oti21 ts=42501 main=s817oti21 mainTs=42501 tc=false où=emt9v3yqo6pvd5#0 base=sbm70ycrb|39528
+        ordinateur2 @42824 par=sgkx7cnzr ts=42768 main=s817oti21 mainTs=42501 tc=false où=emt9v3yqo6pvd5#0 base=s817oti21|42501 CÈDE
+        ordinateur @43718 par=s817oti21 ts=43714 main=s817oti21 mainTs=42501 tc=false où=emt9v3yqo6pvd5#1 base=sgkx7cnzr|42768
+        ordinateur @44063 par=s817oti21 ts=44050 main=s817oti21 mainTs=42501 tc=false où=emt9v3yqo6pvd5#2 base=s817oti21|43714
+        ordinateur2 @47087 par=sgkx7cnzr ts=47082 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=s817oti21|44050
+        ordinateur2 @47161 par=sgkx7cnzr ts=47154 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47082
+        ordinateur2 @47234 par=sgkx7cnzr ts=47230 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47154
+        ordinateur @47367 par=s817oti21 ts=47359 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47082 CÈDE
+        ordinateur2 @47384 par=sgkx7cnzr ts=47357 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47230
+        ordinateur2 @47506 par=sgkx7cnzr ts=47504 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=s817oti21|47359
+        ordinateur2 @47558 par=sgkx7cnzr ts=47556 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47504
+        ordinateur2 @47633 par=sgkx7cnzr ts=47631 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47556
+        ordinateur2 @47711 par=sgkx7cnzr ts=47709 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47631
+        ordinateur2 @47782 par=sgkx7cnzr ts=47780 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=sgkx7cnzr|47709
+        telephone @47882 par=sbm70ycrb ts=47881 main=sgkx7cnzr mainTs=47082 tc=false où=emt9v3yqo6pvd5#2 base=s817oti21|47359
+        ordinateur @48256 par=s817oti21 ts=48252 main=s817oti21 mainTs=48252 tc=false où=emt9v3yqon4gew#0 base=sbm70ycrb|47881
+        ordinateur2 @48339 par=sgkx7cnzr ts=48315 main=s817oti21 mainTs=48252 tc=false où=emt9v3yqon4gew#0 base=s817oti21|48252 CÈDE
+        telephone @49058 par=sbm70ycrb ts=49053 main=sbm70ycrb mainTs=49053 tc=false où=emt9v3yqon4gew#0 base=sgkx7cnzr|48315
+        ordinateur @49265 par=s817oti21 ts=49262 main=sbm70ycrb mainTs=49053 tc=false où=emt9v3yqon4gew#0 base=sbm70ycrb|49053 CÈDE
+        telephone @49938 par=sbm70ycrb ts=49933 main=sbm70ycrb mainTs=49053 tc=false où=emt9v3yqon4gew#0 base=s817oti21|49262
+        ordinateur @51068 par=s817oti21 ts=51066 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|49933
+        telephone @51189 par=sbm70ycrb ts=51187 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|51066 CÈDE
+        ordinateur2 @51208 par=sgkx7cnzr ts=51234 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|51066
+        ordinateur2 @51413 par=sgkx7cnzr ts=51410 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|51187
+        telephone @51448 par=sbm70ycrb ts=51420 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|51234
+        ordinateur @51625 par=s817oti21 ts=51621 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|51410
+        ordinateur @51774 par=s817oti21 ts=51773 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|51420
+        telephone @51811 par=sbm70ycrb ts=51823 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|51621
+        ordinateur2 @52037 par=sgkx7cnzr ts=52034 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|51773
+        ordinateur2 @52279 par=sgkx7cnzr ts=52276 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|51823
+        telephone @52391 par=sbm70ycrb ts=52384 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|52034
+        ordinateur @52589 par=s817oti21 ts=52583 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|52276
+        ordinateur @52788 par=s817oti21 ts=52787 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|52384
+        telephone @52840 par=sbm70ycrb ts=52838 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|52583
+        ordinateur2 @52972 par=sgkx7cnzr ts=52970 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|52787
+        ordinateur2 @53128 par=sgkx7cnzr ts=53127 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|52838
+        telephone @53186 par=sbm70ycrb ts=53184 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|52970
+        ordinateur @53403 par=s817oti21 ts=53338 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|53127
+        ordinateur @53568 par=s817oti21 ts=53566 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|53184
+        telephone @53663 par=sbm70ycrb ts=53661 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|53338
+        ordinateur2 @53700 par=sgkx7cnzr ts=53698 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|53566
+        ordinateur2 @53863 par=sgkx7cnzr ts=53852 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|53661
+        telephone @53960 par=sbm70ycrb ts=53956 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|53698
+        ordinateur @54027 par=s817oti21 ts=54024 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|53852
+        ordinateur @54132 par=s817oti21 ts=54127 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|53956
+        telephone @54195 par=sbm70ycrb ts=54194 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|54024
+        ordinateur2 @54449 par=sgkx7cnzr ts=54447 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=s817oti21|54127
+        telephone @54616 par=sbm70ycrb ts=54612 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sgkx7cnzr|54447
+        ordinateur2 @54619 par=sgkx7cnzr ts=54615 main=s817oti21 mainTs=51066 tc=false où=emt9v3yqon4gew#1 base=sbm70ycrb|54194
+      [piège T depuis le second ordinateur · ordinateur] 94 :
+        39339 reçu sgkx7cnzr|39297 (inv-plan-s0#1) main=sgkx7cnzr|39297 occupé=false ici inv-plan-s0#1
+        39350 main sbm70ycrb → sgkx7cnzr ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        39642 dr_sesAppliquer sgkx7cnzr|39297 (inv-plan-s0#1) base sbm70ycrb|32586 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        39677 reçu sbm70ycrb|39528 (inv-plan-s0#1) main=sgkx7cnzr|39297 occupé=false ici inv-plan-s0#1
+        39815 dr_sesAppliquer sbm70ycrb|39528 (inv-plan-s0#1) base sgkx7cnzr|39297 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        42498 main sgkx7cnzr → s817oti21 ← dr_sesEnvoyerMaintenant
+        42506 envoi 42501 (emt9v3yqo6pvd5#0) tient base sbm70ycrb|39528 rép ∅
+        42839 reçu sgkx7cnzr|42768 (emt9v3yqo6pvd5#0) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#0
+        42980 dr_sesAppliquer sgkx7cnzr|42768 (emt9v3yqo6pvd5#0) base s817oti21|42501 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        43714 envoi 43714 (emt9v3yqo6pvd5#1) tient base sgkx7cnzr|42768 rép ∅
+        44049 envoi 44050 (emt9v3yqo6pvd5#2) tient base s817oti21|43714 rép ∅
+        47106 reçu sgkx7cnzr|47082 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47111 main s817oti21 → sgkx7cnzr ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47358 dr_sesAppliquer sgkx7cnzr|47082 (emt9v3yqo6pvd5#2) base s817oti21|44050 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici ∅ → 1:L ; gardé []
+        47359 envoi 47359 (emt9v3yqo6pvd5#2) suit CÈDE base sgkx7cnzr|47082 rép 1:L
+        47370 reçu sgkx7cnzr|47154 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47419 dr_sesAppliquer sgkx7cnzr|47154 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47082 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 1:L → 2:Le ; gardé ["S.policeRatioCourante"]
+        47420 reçu sgkx7cnzr|47230 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47520 dr_sesAppliquer sgkx7cnzr|47230 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47154 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 2:Le → 3:Le⍽ ; gardé ["S.policeRatioCourante"]
+        47540 reçu sgkx7cnzr|47357 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47605 dr_sesAppliquer sgkx7cnzr|47357 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47230 [connue] rép reçue 5:Le Ro : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 5:Le Ro ; gardé ["S.policeRatioCourante"]
+        47617 reçu sgkx7cnzr|47504 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47668 dr_sesAppliquer sgkx7cnzr|47504 (emt9v3yqo6pvd5#2) base s817oti21|47359 [connue] rép reçue 7:e Roma : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 5:Le Ro → 7:e Roma ; gardé []
+        47680 reçu sgkx7cnzr|47556 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47725 dr_sesAppliquer sgkx7cnzr|47556 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47504 [connue] rép reçue 8: Roman : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 7:e Roma → 8: Roman ; gardé []
+        47728 reçu sgkx7cnzr|47631 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47798 dr_sesAppliquer sgkx7cnzr|47631 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47556 [connue] rép reçue 9:Romant : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 8: Roman → 9:Romant ; gardé []
+        47814 reçu sgkx7cnzr|47709 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47869 dr_sesAppliquer sgkx7cnzr|47709 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47631 [connue] rép reçue 10:omanti : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 9:Romant → 10:omanti ; gardé []
+        47896 reçu sgkx7cnzr|47780 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48001 dr_sesAppliquer sgkx7cnzr|47780 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47709 [connue] rép reçue 11:mantis : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 10:omanti → 11:mantis ; gardé []
+        48017 reçu sbm70ycrb|47881 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48124 dr_sesAppliquer sbm70ycrb|47881 (emt9v3yqo6pvd5#2) base s817oti21|47359 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 11:mantis → 3:Le⍽ ; gardé []
+        48250 main sgkx7cnzr → s817oti21 ← dr_sesEnvoyerMaintenant
+        48251 envoi 48252 (emt9v3yqon4gew#0) tient base sbm70ycrb|47881 rép 3:Le⍽
+        48385 reçu sgkx7cnzr|48315 (emt9v3yqon4gew#0) main=s817oti21|48252 occupé=false ici emt9v3yqon4gew#0
+        48557 dr_sesAppliquer sgkx7cnzr|48315 (emt9v3yqon4gew#0) base s817oti21|48252 [connue] rép reçue 3:Le⍽ : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 3:Le⍽ → 3:Le⍽ ; gardé []
+        49089 reçu sbm70ycrb|49053 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        49107 main s817oti21 → sbm70ycrb ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        49262 dr_sesAppliquer sbm70ycrb|49053 (emt9v3yqon4gew#0) base sgkx7cnzr|48315 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 3:Le⍽ → 11:mantis ; gardé []
+        49262 envoi 49262 (emt9v3yqon4gew#0) suit CÈDE base sbm70ycrb|49053 rép 11:mantis
+        49946 reçu sbm70ycrb|49933 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        50080 dr_sesAppliquer sbm70ycrb|49933 (emt9v3yqon4gew#0) base s817oti21|49262 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51064 main sbm70ycrb → s817oti21 ← dr_sesEnvoyerMaintenant
+        51065 envoi 51066 (emt9v3yqon4gew#1) tient base sbm70ycrb|49933 rép 11:mantis
+        51193 reçu sbm70ycrb|51187 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51319 dr_sesAppliquer sbm70ycrb|51187 (emt9v3yqon4gew#1) base s817oti21|51066 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51345 reçu sgkx7cnzr|51234 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51474 dr_sesAppliquer sgkx7cnzr|51234 (emt9v3yqon4gew#1) base s817oti21|51066 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.page"]
+        51525 reçu sgkx7cnzr|51410 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51607 dr_sesAppliquer sgkx7cnzr|51410 (emt9v3yqon4gew#1) base sbm70ycrb|51187 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        51619 reçu sbm70ycrb|51420 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51623 envoi 51621 (emt9v3yqon4gew#1) tient base sgkx7cnzr|51410 rép 11:mantis
+        51732 dr_sesAppliquer sbm70ycrb|51420 (emt9v3yqon4gew#1) base sgkx7cnzr|51234 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        51772 envoi 51773 (emt9v3yqon4gew#1) tient base sbm70ycrb|51420 rép 11:mantis
+        51816 reçu sbm70ycrb|51823 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51904 dr_sesAppliquer sbm70ycrb|51823 (emt9v3yqon4gew#1) base s817oti21|51621 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52052 reçu sgkx7cnzr|52034 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52163 dr_sesAppliquer sgkx7cnzr|52034 (emt9v3yqon4gew#1) base s817oti21|51773 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52286 reçu sgkx7cnzr|52276 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52523 dr_sesAppliquer sgkx7cnzr|52276 (emt9v3yqon4gew#1) base sbm70ycrb|51823 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        52578 reçu sbm70ycrb|52384 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52588 envoi 52583 (emt9v3yqon4gew#1) tient base sgkx7cnzr|52276 rép 11:mantis
+        52730 dr_sesAppliquer sbm70ycrb|52384 (emt9v3yqon4gew#1) base sgkx7cnzr|52034 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        52786 envoi 52787 (emt9v3yqon4gew#1) tient base sbm70ycrb|52384 rép 11:mantis
+        52852 reçu sbm70ycrb|52838 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52984 dr_sesAppliquer sbm70ycrb|52838 (emt9v3yqon4gew#1) base s817oti21|52583 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53016 reçu sgkx7cnzr|52970 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53137 dr_sesAppliquer sgkx7cnzr|52970 (emt9v3yqon4gew#1) base s817oti21|52787 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53158 reçu sgkx7cnzr|53127 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53306 dr_sesAppliquer sgkx7cnzr|53127 (emt9v3yqon4gew#1) base sbm70ycrb|52838 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        53335 reçu sbm70ycrb|53184 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53370 envoi 53338 (emt9v3yqon4gew#1) tient base sgkx7cnzr|53127 rép 11:mantis
+        53459 dr_sesAppliquer sbm70ycrb|53184 (emt9v3yqon4gew#1) base sgkx7cnzr|52970 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        53565 envoi 53566 (emt9v3yqon4gew#1) tient base sbm70ycrb|53184 rép 11:mantis
+        53667 reçu sbm70ycrb|53661 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53749 dr_sesAppliquer sbm70ycrb|53661 (emt9v3yqon4gew#1) base s817oti21|53338 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53772 reçu sgkx7cnzr|53698 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53848 dr_sesAppliquer sgkx7cnzr|53698 (emt9v3yqon4gew#1) base s817oti21|53566 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53890 reçu sgkx7cnzr|53852 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53983 dr_sesAppliquer sgkx7cnzr|53852 (emt9v3yqon4gew#1) base sbm70ycrb|53661 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        54014 reçu sbm70ycrb|53956 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54025 envoi 54024 (emt9v3yqon4gew#1) tient base sgkx7cnzr|53852 rép 11:mantis
+        54105 dr_sesAppliquer sbm70ycrb|53956 (emt9v3yqon4gew#1) base sgkx7cnzr|53698 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        54130 envoi 54127 (emt9v3yqon4gew#1) tient base sbm70ycrb|53956 rép 11:mantis
+        54201 reçu sbm70ycrb|54194 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54278 dr_sesAppliquer sbm70ycrb|54194 (emt9v3yqon4gew#1) base s817oti21|54024 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54455 reçu sgkx7cnzr|54447 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54700 dr_sesAppliquer sgkx7cnzr|54447 (emt9v3yqon4gew#1) base s817oti21|54127 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54756 reçu sbm70ycrb|54612 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54811 dr_sesAppliquer sbm70ycrb|54612 (emt9v3yqon4gew#1) base sgkx7cnzr|54447 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+        54812 reçu sgkx7cnzr|54615 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54813 envoi 54814 (emt9v3yqon4gew#1) tient base sbm70ycrb|54612 rép 11:mantis
+        54907 dr_sesAppliquer sgkx7cnzr|54615 (emt9v3yqon4gew#1) base sbm70ycrb|54194 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"]
+      [piège T depuis le second ordinateur · second] 96 :
+        38645 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        39178 reçu sbm70ycrb|32586 (inv-plan-s0#1) main=sbm70ycrb|32436 occupé=false ici inv-plan-s0#1
+        39179 reçu sbm70ycrb|32586 (inv-plan-s0#1) main=sbm70ycrb|32436 occupé=false ici inv-plan-s0#1
+        39179 main null → sbm70ycrb ← dr_sesRecu < window.dr_sesRecu < suite < ·
+        39288 dr_sesAppliquer sbm70ycrb|32586 (inv-plan-s0#1) base s817oti21|32487 [INCONNUE] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        39289 main sbm70ycrb → sgkx7cnzr ← dr_sesEnvoyerMaintenant < dr_sesPrendreRejoint < dr_sesRecu < window.dr_sesRecu < suite
+        39297 envoi 39297 (inv-plan-s0#1) tient base sbm70ycrb|32586 rép ∅
+        39546 reçu sbm70ycrb|39528 (inv-plan-s0#1) main=sgkx7cnzr|39297 occupé=false ici inv-plan-s0#1
+        39899 dr_sesAppliquer sbm70ycrb|39528 (inv-plan-s0#1) base sgkx7cnzr|39297 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        42679 reçu s817oti21|42501 (emt9v3yqo6pvd5#0) main=s817oti21|42501 occupé=false ici inv-plan-s0#1
+        42679 main sgkx7cnzr → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        42768 dr_sesAppliquer s817oti21|42501 (emt9v3yqo6pvd5#0) base sbm70ycrb|39528 [connue] rép reçue ∅ : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        42769 envoi 42768 (emt9v3yqo6pvd5#0) suit CÈDE base s817oti21|42501 rép ∅
+        43766 reçu s817oti21|43714 (emt9v3yqo6pvd5#1) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#0
+        43852 dr_sesAppliquer s817oti21|43714 (emt9v3yqo6pvd5#1) base sgkx7cnzr|42768 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1 ; rép ici ∅ → ∅ ; gardé []
+        44074 reçu s817oti21|44050 (emt9v3yqo6pvd5#2) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#1
+        44114 dr_sesAppliquer s817oti21|44050 (emt9v3yqo6pvd5#2) base s817oti21|43714 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2 ; rép ici ∅ → ∅ ; gardé ["S.policeRatioCourante"]
+        47079 main s817oti21 → sgkx7cnzr ← dr_sesEnvoyerMaintenant
+        47083 envoi 47082 (emt9v3yqo6pvd5#2) tient base s817oti21|44050 rép 1:L
+        47154 envoi 47154 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47082 rép 2:Le
+        47229 envoi 47230 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47154 rép 3:Le⍽
+        47383 envoi 47357 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47230 rép 5:Le Ro
+        47425 reçu s817oti21|47359 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=true ici emt9v3yqo6pvd5#2
+        47458 dr_sesPoserAutour s817oti21|47359 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47082 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 6:Le Rom → 6:Le Rom rend true
+        47505 envoi 47504 (emt9v3yqo6pvd5#2) tient base s817oti21|47359 rép 7:e Roma
+        47557 envoi 47556 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47504 rép 8: Roman
+        47630 envoi 47631 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47556 rép 9:Romant
+        47708 envoi 47709 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47631 rép 10:omanti
+        47779 envoi 47780 (emt9v3yqo6pvd5#2) tient base sgkx7cnzr|47709 rép 11:mantis
+        47887 reçu sbm70ycrb|47881 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=true ici emt9v3yqo6pvd5#2
+        47889 dr_sesPoserAutour sbm70ycrb|47881 (emt9v3yqo6pvd5#2) base s817oti21|47359 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 12:antism → 12:antism rend false
+        47889 attente rien → sbm70ycrb|47881 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48264 reçu s817oti21|48252 (emt9v3yqon4gew#0) main=s817oti21|48252 occupé=true ici emt9v3yqo6pvd5#2
+        48264 main sgkx7cnzr → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48264 attente sbm70ycrb|47881 → rien ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48314 dr_sesAppliquer s817oti21|48252 (emt9v3yqon4gew#0) base sbm70ycrb|47881 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0 ; rép ici 19: met e → 3:Le⍽ ; gardé ["parDiapo"] CONTENU
+        48315 envoi 48315 (emt9v3yqon4gew#0) suit CÈDE base s817oti21|48252 rép 3:Le⍽
+        49064 reçu sbm70ycrb|49053 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        49064 main s817oti21 → sbm70ycrb ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        49208 dr_sesAppliquer sbm70ycrb|49053 (emt9v3yqon4gew#0) base sgkx7cnzr|48315 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 3:Le⍽ → 11:mantis ; gardé []
+        49285 reçu s817oti21|49262 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        49362 dr_sesAppliquer s817oti21|49262 (emt9v3yqon4gew#0) base sbm70ycrb|49053 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 11:mantis → 11:mantis ; gardé []
+        49999 reçu sbm70ycrb|49933 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        50085 dr_sesAppliquer sbm70ycrb|49933 (emt9v3yqon4gew#0) base s817oti21|49262 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51080 reçu s817oti21|51066 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#0
+        51080 main sbm70ycrb → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        51182 dr_sesAppliquer s817oti21|51066 (emt9v3yqon4gew#1) base sbm70ycrb|49933 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        51200 reçu sbm70ycrb|51187 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51207 envoi 51234 (emt9v3yqon4gew#1) suit base s817oti21|51066 rép 11:mantis
+        51313 dr_sesAppliquer sbm70ycrb|51187 (emt9v3yqon4gew#1) base s817oti21|51066 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        51410 envoi 51410 (emt9v3yqon4gew#1) suit base sbm70ycrb|51187 rép 11:mantis
+        51463 reçu sbm70ycrb|51420 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51541 dr_sesAppliquer sbm70ycrb|51420 (emt9v3yqon4gew#1) base sgkx7cnzr|51234 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51630 reçu s817oti21|51621 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51724 dr_sesAppliquer s817oti21|51621 (emt9v3yqon4gew#1) base sgkx7cnzr|51410 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51784 reçu s817oti21|51773 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52006 dr_sesAppliquer s817oti21|51773 (emt9v3yqon4gew#1) base sbm70ycrb|51420 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        52026 reçu sbm70ycrb|51823 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52035 envoi 52034 (emt9v3yqon4gew#1) suit base s817oti21|51773 rép 11:mantis
+        52234 dr_sesAppliquer sbm70ycrb|51823 (emt9v3yqon4gew#1) base s817oti21|51621 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        52276 envoi 52276 (emt9v3yqon4gew#1) suit base sbm70ycrb|51823 rép 11:mantis
+        52398 reçu sbm70ycrb|52384 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52582 dr_sesAppliquer sbm70ycrb|52384 (emt9v3yqon4gew#1) base sgkx7cnzr|52034 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52622 reçu s817oti21|52583 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52753 dr_sesAppliquer s817oti21|52583 (emt9v3yqon4gew#1) base sgkx7cnzr|52276 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52820 reçu s817oti21|52787 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52947 dr_sesAppliquer s817oti21|52787 (emt9v3yqon4gew#1) base sbm70ycrb|52384 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        52968 reçu sbm70ycrb|52838 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52971 envoi 52970 (emt9v3yqon4gew#1) suit base s817oti21|52787 rép 11:mantis
+        53103 dr_sesAppliquer sbm70ycrb|52838 (emt9v3yqon4gew#1) base s817oti21|52583 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        53127 envoi 53127 (emt9v3yqon4gew#1) suit base sbm70ycrb|52838 rép 11:mantis
+        53194 reçu sbm70ycrb|53184 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53363 dr_sesAppliquer sbm70ycrb|53184 (emt9v3yqon4gew#1) base sgkx7cnzr|52970 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53453 reçu s817oti21|53338 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53590 dr_sesAppliquer s817oti21|53338 (emt9v3yqon4gew#1) base sgkx7cnzr|53127 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53601 reçu s817oti21|53566 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53679 dr_sesAppliquer s817oti21|53566 (emt9v3yqon4gew#1) base sbm70ycrb|53184 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        53698 reçu sbm70ycrb|53661 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53699 envoi 53698 (emt9v3yqon4gew#1) suit base s817oti21|53566 rép 11:mantis
+        53818 dr_sesAppliquer sbm70ycrb|53661 (emt9v3yqon4gew#1) base s817oti21|53338 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        53857 envoi 53852 (emt9v3yqon4gew#1) suit base sbm70ycrb|53661 rép 11:mantis
+        53989 reçu sbm70ycrb|53956 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54246 dr_sesAppliquer sbm70ycrb|53956 (emt9v3yqon4gew#1) base sgkx7cnzr|53698 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54281 reçu s817oti21|54024 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54380 dr_sesAppliquer s817oti21|54024 (emt9v3yqon4gew#1) base sgkx7cnzr|53852 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54391 reçu s817oti21|54127 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54445 dr_sesAppliquer s817oti21|54127 (emt9v3yqon4gew#1) base sbm70ycrb|53956 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        54446 reçu sbm70ycrb|54194 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54448 envoi 54447 (emt9v3yqon4gew#1) suit base s817oti21|54127 rép 11:mantis
+        54495 dr_sesAppliquer sbm70ycrb|54194 (emt9v3yqon4gew#1) base s817oti21|54024 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        54615 envoi 54615 (emt9v3yqon4gew#1) suit base sbm70ycrb|54194 rép 11:mantis
+        54630 reçu sbm70ycrb|54612 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54716 dr_sesAppliquer sbm70ycrb|54612 (emt9v3yqon4gew#1) base sgkx7cnzr|54447 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54825 reçu s817oti21|54814 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54916 dr_sesAppliquer s817oti21|54814 (emt9v3yqon4gew#1) base sbm70ycrb|54612 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts"] CONTENU
+        54950 envoi 54950 (emt9v3yqon4gew#1) suit base s817oti21|54814 rép 11:mantis
+      [piège T depuis le second ordinateur · telephone] 103 :
+        39354 reçu sgkx7cnzr|39297 (inv-plan-s0#1) main=sgkx7cnzr|39297 occupé=false ici inv-plan-s0#1
+        39358 main sbm70ycrb → sgkx7cnzr ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        39527 dr_sesAppliquer sgkx7cnzr|39297 (inv-plan-s0#1) base sbm70ycrb|32586 [connue] rép reçue ∅ : ici inv-plan-s0#1 → inv-plan-s0#1 ; rép ici ∅ → ∅ ; gardé []
+        39528 envoi 39528 (inv-plan-s0#1) suit CÈDE base sgkx7cnzr|39297 rép ∅
+        42679 reçu s817oti21|42501 (emt9v3yqo6pvd5#0) main=s817oti21|42501 occupé=false ici inv-plan-s0#1
+        42679 main sgkx7cnzr → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        43036 dr_sesAppliquer s817oti21|42501 (emt9v3yqo6pvd5#0) base sbm70ycrb|39528 [connue] rép reçue ∅ : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé []
+        43053 reçu sgkx7cnzr|42768 (emt9v3yqo6pvd5#0) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#0
+        43154 dr_sesAppliquer sgkx7cnzr|42768 (emt9v3yqo6pvd5#0) base s817oti21|42501 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        43723 reçu s817oti21|43714 (emt9v3yqo6pvd5#1) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#0
+        43799 dr_sesAppliquer s817oti21|43714 (emt9v3yqo6pvd5#1) base sgkx7cnzr|42768 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        44067 reçu s817oti21|44050 (emt9v3yqo6pvd5#2) main=s817oti21|42501 occupé=false ici emt9v3yqo6pvd5#1
+        44164 dr_sesAppliquer s817oti21|44050 (emt9v3yqo6pvd5#2) base s817oti21|43714 [connue] rép reçue ∅ : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2 ; rép ici ∅ → ∅ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        47107 reçu sgkx7cnzr|47082 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47111 main s817oti21 → sgkx7cnzr ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47313 dr_sesAppliquer sgkx7cnzr|47082 (emt9v3yqo6pvd5#2) base s817oti21|44050 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici ∅ → 1:L ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes"]
+        47342 reçu sgkx7cnzr|47154 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47531 dr_sesAppliquer sgkx7cnzr|47154 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47082 [connue] rép reçue 2:Le : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 1:L → 2:Le ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        47546 reçu sgkx7cnzr|47230 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47717 dr_sesAppliquer sgkx7cnzr|47230 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47154 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 2:Le → 3:Le⍽ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        47747 reçu s817oti21|47359 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47862 dr_sesAppliquer s817oti21|47359 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47082 [connue] rép reçue 1:L : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 3:Le⍽ ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","parDiapo"] CONTENU
+        47880 reçu sgkx7cnzr|47357 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        47881 envoi 47881 (emt9v3yqo6pvd5#2) suit base s817oti21|47359 rép 3:Le⍽
+        47992 dr_sesAppliquer sgkx7cnzr|47357 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47230 [connue] rép reçue 5:Le Ro : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 3:Le⍽ → 5:Le Ro ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48007 reçu sgkx7cnzr|47504 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48111 dr_sesAppliquer sgkx7cnzr|47504 (emt9v3yqo6pvd5#2) base s817oti21|47359 [connue] rép reçue 7:e Roma : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 5:Le Ro → 7:e Roma ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48133 reçu sgkx7cnzr|47556 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48242 dr_sesAppliquer sgkx7cnzr|47556 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47504 [connue] rép reçue 8: Roman : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 7:e Roma → 8: Roman ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48273 reçu sgkx7cnzr|47631 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48401 dr_sesAppliquer sgkx7cnzr|47631 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47556 [connue] rép reçue 9:Romant : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 8: Roman → 9:Romant ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48409 reçu sgkx7cnzr|47709 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48537 dr_sesAppliquer sgkx7cnzr|47709 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47631 [connue] rép reçue 10:omanti : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 9:Romant → 10:omanti ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48561 reçu sgkx7cnzr|47780 (emt9v3yqo6pvd5#2) main=sgkx7cnzr|47082 occupé=false ici emt9v3yqo6pvd5#2
+        48706 dr_sesAppliquer sgkx7cnzr|47780 (emt9v3yqo6pvd5#2) base sgkx7cnzr|47709 [connue] rép reçue 11:mantis : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 10:omanti → 11:mantis ; gardé ["S.page","S.pagesCourantes","S.pagesPCourantes","S.policeRatioCourante"]
+        48777 reçu s817oti21|48252 (emt9v3yqon4gew#0) main=s817oti21|48252 occupé=true ici emt9v3yqo6pvd5#2
+        48777 main sgkx7cnzr → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48783 dr_sesPoserAutour s817oti21|48252 (emt9v3yqon4gew#0) base sbm70ycrb|47881 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 11:mantis → 11:mantis rend false
+        48784 attente rien → s817oti21|48252 (emt9v3yqon4gew#0) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48795 reçu sgkx7cnzr|48315 (emt9v3yqon4gew#0) main=s817oti21|48252 occupé=true ici emt9v3yqo6pvd5#2
+        48796 dr_sesPoserAutour sgkx7cnzr|48315 (emt9v3yqon4gew#0) base s817oti21|48252 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 ; rép ici 11:mantis → 11:mantis rend false
+        48796 attente s817oti21|48252 → sgkx7cnzr|48315 (emt9v3yqon4gew#0) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48920 attente sgkx7cnzr|48315 → rien ← dr_sesEnvoyerMaintenant < ·
+        49030 main s817oti21 → sbm70ycrb ← dr_sesAppliquer < window.<computed> < dr_sesEnvoyerMaintenant < ·
+        49030 dr_sesAppliquer sgkx7cnzr|48315 (emt9v3yqon4gew#0) base s817oti21|48252 [connue] rép reçue 3:Le⍽ : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0 ; rép ici 11:mantis → 11:mantis ; gardé ["S.vifCands","parDiapo"]
+        49054 envoi 49053 (emt9v3yqon4gew#0) tient base sgkx7cnzr|48315 rép 11:mantis
+        49282 reçu s817oti21|49262 (emt9v3yqon4gew#0) main=sbm70ycrb|49053 occupé=false ici emt9v3yqon4gew#0
+        49415 dr_sesAppliquer s817oti21|49262 (emt9v3yqon4gew#0) base sbm70ycrb|49053 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0 ; rép ici 11:mantis → 11:mantis ; gardé []
+        49934 envoi 49933 (emt9v3yqon4gew#0) tient base s817oti21|49262 rép 11:mantis
+        51085 reçu s817oti21|51066 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#0
+        51086 main sbm70ycrb → s817oti21 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        51185 dr_sesAppliquer s817oti21|51066 (emt9v3yqon4gew#1) base sbm70ycrb|49933 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51187 envoi 51187 (emt9v3yqon4gew#1) suit CÈDE base s817oti21|51066 rép 11:mantis
+        51250 reçu sgkx7cnzr|51234 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51393 dr_sesAppliquer sgkx7cnzr|51234 (emt9v3yqon4gew#1) base s817oti21|51066 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.page","S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        51419 reçu sgkx7cnzr|51410 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51420 envoi 51420 (emt9v3yqon4gew#1) suit base sgkx7cnzr|51234 rép 11:mantis
+        51496 dr_sesAppliquer sgkx7cnzr|51410 (emt9v3yqon4gew#1) base sbm70ycrb|51187 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        51629 reçu s817oti21|51621 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51790 dr_sesAppliquer s817oti21|51621 (emt9v3yqon4gew#1) base sgkx7cnzr|51410 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        51808 reçu s817oti21|51773 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        51809 envoi 51823 (emt9v3yqon4gew#1) suit base s817oti21|51621 rép 11:mantis
+        51991 dr_sesAppliquer s817oti21|51773 (emt9v3yqon4gew#1) base sbm70ycrb|51420 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52055 reçu sgkx7cnzr|52034 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52367 dr_sesAppliquer sgkx7cnzr|52034 (emt9v3yqon4gew#1) base s817oti21|51773 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        52383 reçu sgkx7cnzr|52276 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52389 envoi 52384 (emt9v3yqon4gew#1) suit base sgkx7cnzr|52034 rép 11:mantis
+        52553 dr_sesAppliquer sgkx7cnzr|52276 (emt9v3yqon4gew#1) base sbm70ycrb|51823 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        52606 reçu s817oti21|52583 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52754 dr_sesAppliquer s817oti21|52583 (emt9v3yqon4gew#1) base sgkx7cnzr|52276 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        52836 reçu s817oti21|52787 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        52838 envoi 52838 (emt9v3yqon4gew#1) suit base s817oti21|52583 rép 11:mantis
+        52984 dr_sesAppliquer s817oti21|52787 (emt9v3yqon4gew#1) base sbm70ycrb|52384 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53033 reçu sgkx7cnzr|52970 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53167 dr_sesAppliquer sgkx7cnzr|52970 (emt9v3yqon4gew#1) base s817oti21|52787 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        53183 reçu sgkx7cnzr|53127 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53184 envoi 53184 (emt9v3yqon4gew#1) suit base sgkx7cnzr|52970 rép 11:mantis
+        53296 dr_sesAppliquer sgkx7cnzr|53127 (emt9v3yqon4gew#1) base sbm70ycrb|52838 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53449 reçu s817oti21|53338 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53644 dr_sesAppliquer s817oti21|53338 (emt9v3yqon4gew#1) base sgkx7cnzr|53127 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        53660 reçu s817oti21|53566 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53662 envoi 53661 (emt9v3yqon4gew#1) suit base s817oti21|53338 rép 11:mantis
+        53781 dr_sesAppliquer s817oti21|53566 (emt9v3yqon4gew#1) base sbm70ycrb|53184 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        53807 reçu sgkx7cnzr|53698 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53936 dr_sesAppliquer sgkx7cnzr|53698 (emt9v3yqon4gew#1) base s817oti21|53566 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        53956 reçu sgkx7cnzr|53852 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        53958 envoi 53956 (emt9v3yqon4gew#1) suit base sgkx7cnzr|53698 rép 11:mantis
+        54080 dr_sesAppliquer sgkx7cnzr|53852 (emt9v3yqon4gew#1) base sbm70ycrb|53661 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54113 reçu s817oti21|54024 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54177 dr_sesAppliquer s817oti21|54024 (emt9v3yqon4gew#1) base sgkx7cnzr|53852 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        54193 reçu s817oti21|54127 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54194 envoi 54194 (emt9v3yqon4gew#1) suit base s817oti21|54024 rép 11:mantis
+        54301 dr_sesAppliquer s817oti21|54127 (emt9v3yqon4gew#1) base sbm70ycrb|53956 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54467 reçu sgkx7cnzr|54447 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54592 dr_sesAppliquer sgkx7cnzr|54447 (emt9v3yqon4gew#1) base s817oti21|54127 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        54614 envoi 54612 (emt9v3yqon4gew#1) suit base sgkx7cnzr|54447 rép 11:mantis
+        54627 reçu sgkx7cnzr|54615 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        54745 dr_sesAppliquer sgkx7cnzr|54615 (emt9v3yqon4gew#1) base sbm70ycrb|54194 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        54822 reçu s817oti21|54814 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        55057 dr_sesAppliquer s817oti21|54814 (emt9v3yqon4gew#1) base sbm70ycrb|54612 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé []
+        55067 reçu s817oti21|54953 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+        55157 dr_sesAppliquer s817oti21|54953 (emt9v3yqon4gew#1) base sgkx7cnzr|54615 [connue] rép reçue 11:mantis : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1 ; rép ici 11:mantis → 11:mantis ; gardé ["S.parts","S.pagesCourantes","S.pagesPCourantes"] CONTENU
+        55158 reçu s817oti21|54953 (emt9v3yqon4gew#1) main=s817oti21|51066 occupé=false ici emt9v3yqon4gew#1
+      T · qui a la main : l’ordinateur tape « Pensez », chaque lettre au tableau en 73, 44, 29, 61, 68, 54 ms ; le téléphone note GA : le champ de l’ordinateur fermé en 31 ms, il dit « Un autre ordinateur a la main » ; le téléphone dévoile (emt9v3yqo6pvd5#2#0 → emt9v3yqo6pvd5#2#1, au tableau en 40 ms), revenu en arrière 0 fois sur 47 ; à la fin emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · {"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}
+  ok     T · qui a la main : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s — [73,44,29,61,68,54]
+  ok     T · qui a la main : le téléphone note une participation, il prend la main ; le champ de l’ordinateur se ferme tel qu’il est et l’ordinateur le dit — {"ferme":31,"dit3":"Un autre ordinateur a la main"}
+  ok     T · qui a la main : le dévoilement du téléphone paraît au tableau (≤ 0,5 s) et n’y recule jamais — {"dDev":40,"recul":0}
+  ok     T · qui a la main : rien de perdu — la réponse tapée, la participation et le dévoilement, chez les deux pilotes et au tableau — {"kf":["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"],"V2":{"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}}
+      T · F5 au téléphone : bandeau en 4 ms, « Reprendre » : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1
+  ok     T · F5 au téléphone : la session reprend, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+      T · F5 à l’ordinateur : la case de l’emploi du temps, « Ouvrir le pilotage et lancer »
+      T · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1 · pointeur le même (ts 1789369209792)
+  ok     T · F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+  ok     T · relancer le même essai ailleurs : aucune deuxième session (le pointeur d’essai inchangé) — [1789369209792,1789369209792]
+      T · après les F5, un geste au téléphone : ordinateur 130 ms, tableau 134 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":130,"tab":134}
+      T · après les F5, un geste au téléphone : ordinateur 158 ms, tableau 111 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"tab":111,"ord":158}
+      T · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 33, 33 ms
+  ok     T · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [33,33]
+      T · avant la clôture, au hub : pointeur d’essai là, scène d’essai là, cours_actif —
+      T · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     T · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     T · au hub : plus de pointeur ni de scène d’essai — {"ptr":null,"sc":null,"vif":null,"ca":null}
+      T · le tableau distant (pas en mode test) a écrit 7 fois : PUT /site/cle_vue (la clé USB, sa seule écriture, préexistante)
+      T · écritures au hub pendant l’essai : 188 — chemins : /site/tableau_test/scene, /site/tableau_test/ecrans, /site/tableau_test/pointeur, /site/tableau_test/vif
+  ok     T · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+24 vérifications, 0 échec(s)

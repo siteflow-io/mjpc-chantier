@@ -1925,3 +1925,4 @@ MEMO
   > À jouer : rien · en cours : ⑯ ; l'audit global (jusqu'à 15:30) · ouvert : le plan
   >
   > MEMO
+- **13:00 — la conscience** : 13:00 atteint pour ⑯ ; l'exécutant n'a rien poussé et aucun navigateur ne tourne depuis 12:44 : il pousse ce qui est prouvé, sans plus de navigateur ; la machine rendue aux deux auditeurs (MACHINE-MESURE retiré). L'auditeur I signale, lu dans le code : la fenêtre « Une heure joue déjà… / Rejoindre / Lancer quand même / Annuler » (`dr_sesDemander`) passe ses boutons en {label, action}, alors que `atModaleChoix` lit {lib, fn} : trois boutons « undefined » attendus ; à mesurer par le geste.

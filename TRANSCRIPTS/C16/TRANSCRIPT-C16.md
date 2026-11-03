@@ -2135,3 +2135,4 @@ MEMO
   > À jouer : 393 à trancher (premier ou second choix) · en cours : lot 1 (ses dernières vérifications), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **17:05 — l'auditeur de l'horloge, poussée 5** (`9d9682715`) : X par le chemin de la touche Échap, c'est la sonde (la règle de Paul, 17:04) ; la sonde corrigée reprend sans touche (`MJPC_SANS_ECHAP=1`, sa copie) ; s'il reste un échec sans touche, ce sera le site. Sa file est prête, environ 25 minutes de machine seule ; il attend le signal.

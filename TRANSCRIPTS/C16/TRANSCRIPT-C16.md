@@ -2421,3 +2421,32 @@ MEMO
   > MEMO
 
 - **Incident de la conscience** : le message de fin après le second rappel de poussée (« Rien à tester de plus pour l'instant. / 03/11/2026 22:10 / À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚ / MEMO ») portait une heure tapée sans lire `date` dans le même tour (dernière lecture : 22:07) ; `date` lu juste après : 03/11/2026 22:13:04.
+
+- **22:15 — message de fin à Paul, mot pour mot :**
+
+  > Le transcript est poussé ; mon banc en est au témoin, sa dernière étape.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 22:15
+  >
+  > À jouer : 423 · en cours : mon banc, le témoin (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **22:46 — Paul, mot pour mot :**
+
+  > Continue. Je vais me coucher. Demain matin je veux que tout soit nickel et que je n'ai plus qu'à faire promouvoir
+- **22:48 — la conscience** : le banc relu : banc.sh 1-12 code 0 (→ 22:09:01), la frappe (13) code 0 (→ 22:10:48), R ×3 base et candidat code 0 ; le témoin depuis 22:14 (I sur la base : plus de 30 min) ; la tâche du banc s'arrête à 23:11 (sa limite de 2 h) : le témoin sera relancé seul pour ce qui manque. « Rejoindre » dans la fenêtre pour l'heure et l'essai (pas mesuré par l'exécutant) lu dans le code : la fenêtre appelle les mêmes fonctions que le bandeau « Reprendre » (`dr_reprendreCours` pour l'heure, `dr_sesReprendreEssai` pour l'essai — index.html `sesReprendre`, dr-session.js l. 416 et 422), prouvé 5/5 au bandeau.
+- **22:48 — message à Paul, mot pour mot :**
+
+  > 429. Noté. Je lis « continue » ainsi : je finis le banc, je prépare tout pour la mise en ligne du lot 1 et de la réparation, et je n'en lance pas d'autre cette nuit (ton utilisation). Demain matin, tu trouveras ici ma demande de « promeus », avec le bilan du banc et les gestes à tester. Il te suffira de dire « promeus ».
+  >
+  > 430. À 22:46, le banc est vert partout ; il reste le témoin, plus long que prévu (la base seule : plus de 30 minutes). S'il montre un changement que le mandat n'explique pas, je te le dis demain, et pas de mise en ligne avant qu'il soit réglé.
+  >
+  > À tester : rien ce soir.
+  >
+  > 03/11/2026 22:48
+  >
+  > À jouer : demain, « promeus » · en cours : mon banc, le témoin · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

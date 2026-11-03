@@ -1736,3 +1736,5 @@ MEMO
   > À jouer : le gestionnaire de tâches, si tu as le temps · en cours : rien · ouvert : 316, 317, 329
   >
   > MEMO
+- **10:01 — Paul, mot pour mot** : « 329 oui »
+- **10:02 — la conscience** : la mesure lancée sur le fichier en ligne (8.81.1-⑭-micro) : la partie K (la frappe, 244 touches, le faux hub qui refuse), deux passages MJPC seul, puis deux passages avec, à côté, un second navigateur visible qui redessine sans cesse 3 000 lignes (une appli chargée ; ce n'est pas la rédaction, qui n'est pas touchée). Un onglet caché : pas mesuré.

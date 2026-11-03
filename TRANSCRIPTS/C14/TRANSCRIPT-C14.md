@@ -5035,3 +5035,55 @@ Promeus
 03/11/2026 08:53
 
 MEMO
+
+---
+
+## Tour 175 — 03/11/2026 09:58
+
+**Paul (09:58) :**
+
+*(une photo de l'écran des scans, au collège : « ⚠ 2 pages de ce paquet ne sont pas dans ce navigateur » ; deux élèves des Franklin avec une page 2 « photo à remettre » et une page 3)* Je me suis connecté sur un autre ordinateur au collège et j'ai chargé les copies. Ça lag à fond. 2 pages n'ont pas été reconnues en Franklin, une de [l'élève] et l'autre de [l'élève] ( je crois, car dans la bande du bas, leur deuxième page apparaissait en blanc ). Leurs feuilles étaient à la fin et du coup j'ai ça maintenant.
+
+**Claude (10:02) :**
+
+À jouer : 116 · en cours : la 1.4.32 (117), candidate vers 10:40 · ouvert : la garde du retour de l'IA, à cadrer ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+116. J'ai trouvé la cause sur ton site, sans rien y écrire. Les deuxièmes pages de [l'élève] et [l'élève] (Franklin) sont les deux seules de la classe chargées le 30/10, avant que l'app retienne d'où vient chaque photo. Sur l'ordinateur du collège, l'app a donc dû les reconnaître à leur image. La même photo, lue par un autre ordinateur, ressort un peu différente : à 9 et 15 points de l'originale, alors que la règle s'arrêtait à 8. La feuille la plus proche suivante est à plus de 100 points. L'app les a donc prises pour des feuilles nouvelles. Tu les as données à ces deux élèves, d'où une page 3 avec la photo, et une page 2 sans photo, qui porte ta recopie et tes marques. Rien n'est perdu.
+
+En attendant : tu peux déjà rendre les 27 autres fichiers (« 📦 Tout rendre », puis tu déposes tout sauf ces deux-là).
+
+117. La 1.4.32, que je code maintenant :
+- la règle passe à 20 points au plus, si la feuille suivante est loin derrière. Deux feuilles différentes de tes classes ne sont jamais à moins de 37 points ;
+- à l'ouverture des scans, l'app répare d'elle-même ce qui vient d'arriver. Une page toute neuve, sans recopie ni marque, qui ressemble à ce point à une page sans photo du même élève, lui donne sa photo puis disparaît.
+
+Après ton promeus, tu recharges ta page au collège, et la page 2 de chacune reprend sa photo. Ensuite, « Tout rendre » pour ces deux-là.
+
+Le ralentissement sur l'ordinateur du collège, je ne sais pas d'où il vient : je ne l'ai pas mesuré. Je le regarde après.
+
+À tester : rien de neuf en ligne pour l'instant.
+
+03/11/2026 10:02
+
+MEMO
+
+**Ce qui a été fait (C14) :** mesuré en lecture seule (`prive/enquete/pages-eleve.mjs`) : les pages des deux élèves, leurs empreintes (9 et 15 points ; la suivante à 114 et 101), leurs origines. Dettes : consigné, avec « ça lag » à mesurer. 1.4.32 codée (`scan.js` : `SC_PROCHE`, `SC_ECART`, `scDistHex`, `scPageProche` à 20 points, `scReunirPages` à l'ouverture des scans, `scDbOter` ; le bandeau « n'est pas ») ; banc ajouté (`banc/retrouver.mjs`) ; banc complet 205 vérifications, 0 défaut. Vrai site, en lecture seule (`prive/enquete/reunir-vrai.mjs`) : Franklin, « 2 feuilles retrouvées » (les deux de 09:58), 4 écritures interceptées (l'origine de chaque page 2, la page 3 retirée), 51 pages ; Dylan, rien. Maquette `d362058c`. Au sas : `LIVRAISONS/REDACTION/redaction-1.4.32-RU-candidat.html` (968 881 o, md5 `ca7893f8f938cee69c21ae652f646ff4`), `NOTE-1.4.32-RU.md`, `captures-1.4.32/` (avant, après).
+
+**Claude (10:26) :**
+
+À jouer : 119 · en cours : rien · ouvert : « ça lag » au collège, à mesurer ; la garde du retour de l'IA, à cadrer ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+118. La 1.4.32 est prête au sas, pas en ligne. Banc complet : 205 vérifications, 0 défaut. Ton cas y est rejoué : une feuille recopiée et marquée, sa photo absente, puis la même photo relue autrement. Les deux captures sont jointes : avant, la page « photo à remettre » et la page 3 en trop ; après, la page reprend sa photo et la page 3 disparaît. Essayée sur ton site, sans rien y écrire : chez les Franklin, elle retrouve exactement ces deux feuilles-là, et rien d'autre ; chez les Dylan, rien à faire.
+
+119. Promeus ? Ensuite, sur l'ordinateur du collège (c'est là que sont les photos) :
+- recharge la page ;
+- ouvre les Franklin, puis les scans. Un message te dit « 2 feuilles retrouvées » ; la page 2 de chacune reprend sa photo, et la page 3 disparaît ;
+- « 📨 Fichiers École Directe » → « 📦 Tout rendre ».
+
+À tester, après ton promeus, au collège :
+- Franklin : le bandeau « 2 pages de ce paquet ne sont pas dans ce navigateur » a disparu.
+- « 🧪 Tester comme l'élève » sur ces deux élèves : leur page 2 a sa photo, ta recopie et tes marques dessus.
+- « 📦 Tout rendre ».
+
+03/11/2026 10:26
+
+MEMO

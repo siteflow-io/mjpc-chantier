@@ -1,0 +1,15 @@
+# redaction 1.4.32-RU — candidate du 03/11/2026 (conscience n°14)
+
+*Sur les mots de Paul (03/11, 09:58, au collège, capture de l'écran des scans) : « Je me suis connecté sur un autre ordinateur au collège et j'ai chargé les copies. Ça lag à fond. 2 pages n'ont pas été reconnues en Franklin, une de [l'élève] et l'autre de [l'élève] ( je crois, car dans la bande du bas, leur deuxième page apparaissait en blanc ). Leurs feuilles étaient à la fin et du coup j'ai ça maintenant. » Tranché par C14 à 10:02 (117). Rien n'est en ligne : la mise en ligne attend son promeus.*
+
+- Fichier : `redaction-1.4.32-RU-candidat.html`, 968 881 o, md5 `ca7893f8f938cee69c21ae652f646ff4`. Base en ligne : 1.4.31-RU, md5 `5453881b42bd58381e5adfef761d8c72`. Maquette : branche `c14-poignees`, commit `d362058c`.
+
+## Ce que ça change pour Paul
+- **Mesuré au site (lecture seule).** Les deux deuxièmes pages sont les deux seules feuilles des Franklin chargées le 30/10, avant que l'app retienne d'où vient chaque photo (1.4.13). Au collège, l'app les cherchait donc par leur image : la même photo, relue par cet ordinateur, ressort à 9 et 15 points de l'originale ; la règle s'arrêtait à 8 ; la feuille suivante est à plus de 100 points. Deux pages nouvelles ont été créées et données aux deux élèves (page 3), leur vraie page 2 (recopie, marques) restant « photo à remettre ».
+- **117, la règle.** Une photo retrouve sa feuille jusqu'à 20 points, si la feuille suivante est au moins 16 points plus loin. Deux feuilles différentes des classes ne sont jamais à moins de 37 points (mesuré le 02/11).
+- **117, la réparation.** À l'ouverture des scans, une page toute neuve, sans recopie ni marque, donnée au même élève qu'une feuille sans origine dont elle a l'image, rend sa photo à cette feuille (retravaillée comme elle) et son origine, puis disparaît, ici et au site. Ta recopie, tes marques, la carte et le fichier de l'élève retrouvent leur photo. Rien d'autre n'est touché.
+- Le bandeau dit « 1 page de ce paquet n'est pas… » (il disait « ne est »).
+
+## Les preuves
+- Banc complet : **205 vérifications, 0 défaut** (nouvelles : une feuille où tu as recopié et posé des marques, comme avant la 1.4.13, sa photo absente du navigateur ; la même photo relue autrement, à 14 points, rechargée par « 📄 Charger des copies » : elle retrouve sa feuille, aucune page nouvelle ; puis ce qui est arrivé au collège, la page nouvelle telle que la 1.4.31 l'a écrite : à l'ouverture des scans, « 1 feuille retrouvée », la photo revient, la page en double disparaît, ici et au site ; recopie, marques, carte, fichier de l'élève intacts).
+- Vrai site, en lecture seule (écritures interceptées), avec cette version : Franklin, « 2 feuilles retrouvées » (les deux élèves de 09:58), et rien d'autre : la page 2 de chacune reçoit son origine, la page 3 en double est retirée (4 écritures, interceptées) ; 51 pages au lieu de 53. Dylan : rien à réparer, aucune écriture. 0 erreur. (Les photos ne sont pas sur le site : sur l'ordinateur du collège, la photo passe en plus de la page 3 à la page 2.)

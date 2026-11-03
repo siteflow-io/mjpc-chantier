@@ -2179,3 +2179,5 @@ MEMO
   > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1 · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **18:57 — registre** (production `ae835fa`) : l'entrée « LE BANC À LA VRAIE HORLOGE » (367, les règles de 17:04 et 17:20, le choix de 17:18, le lot 1 fini, la réparation lancée, ce qui est vu au passage).
+- **Incident de la conscience** : le message de fin de 18:56 (« Rien à tester pour l'instant. / 03/11/2026 18:56 / À jouer : rien · en cours : la réparation (399, 400) sur le lot 1 · ouvert : 362 à 366, ⑯, ㉚ / MEMO ») portait une heure tapée sans lire `date` dans le même tour (lue à 18:54) ; `date` juste après : 18:56:29.

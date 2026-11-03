@@ -1861,3 +1861,39 @@ MEMO
   > À jouer : 350, à commenter ou non ; ton Chrome pour les 3 DYLAN · en cours : ⑯ (avant 13:00) · ouvert : 343, 350
   >
   > MEMO
+- **12:26 — Paul, mot pour mot** : « Je me demande aussi s'il n'y a pas des télescopages dans tous les sens entre le mode test le tableau, la répétition, etc. Ça me semble être un sacré bazar. En fait c'est assez simple: l'adresse du tableau distant, quand elle est occupée, ne peut JAMAIS être utilisée par une autre session ou autre chose. C'est une session à la fois, que ce soit répétition, séance en mode test ou séance en vraie classe. Pour la séance de dylan aujourd'hui il manque aussi le fait de rattraper une séance après coup: cette séance que j'ai faite ce matin, je dois pouvoir la faire apparaître dans le site, même en la jouant en dehors de l'horaire réel. J'y retaperai les réponses des élèves etc, puis je ferai le flux que j'ai fait ce matin, à une différence près: l'horaire. Une séance rattrapée ne doit donc pas avoir de mention d'horaires dans le récit. Il faudra faire ça avec l'existant, le but n'est pas de recréer tout un autre moteur entier pour ca . J'attends ta proposition. Pour les réponses des élèves, écris moi ici le contenu des diapos et metz le au hub car si ça reste dans la conversation ça disparaîtra. Il n'y a que les initiales des élèves, aucun problème. »
+- **12:28 — la conscience** : lu dans le code (une case « passée · pas jouée » n'offre aujourd'hui aucun geste ; aucun rattrapage d'heure n'existe) ; les réponses recopiées des captures, rangées au sas (`RATTRAPAGES/3-DYLAN-2026-11-03.md`, initiales seulement, sur l'accord de Paul) ; le registre (㊶, ㊷).
+- **12:28 — message à Paul, mot pour mot :**
+
+  > 352. Le tableau distant, une session à la fois (㊶). Je propose : l'adresse du tableau appartient à la session qui l'a prise (une répétition, un essai en mode test ou une vraie heure) jusqu'à ce qu'elle soit arrêtée ou close. Une autre session ne peut pas s'y montrer : elle le dit en clair (« Le tableau est pris par la répétition des 3 FRANKLIN ARETHA, lancée à 10:07 sur un autre appareil ») et propose un seul geste, « Arrêter cette session », qui la clôt partout. Rien d'autre ne s'affiche par-dessus. Une session dont aucun appareil ne donne signe de vie depuis 10 minutes libère le tableau, pour qu'il ne reste jamais bloqué. D'abord, l'exécutant mesure par le geste tous les télescopages d'aujourd'hui (répétition, mode test, vraie heure, tableau distant, télécommande).
+  >
+  > 353. Rattraper une heure (㊷), avec l'existant. Je propose : dans l'emploi du temps, une case passée sans heure jouée (« passée · pas jouée ») propose « ▶ Rattraper cette heure » ; tu choisis la séance (celle que la file proposait, ou une autre du chapitre, le 342) ; l'heure se lance comme une vraie heure de la classe, rangée à la place de cette case (sa date, son créneau) : l'appel, les réponses, la fin d'heure, la Relecture, le cahier de textes, tout pareil. Une seule différence : le récit ne dit aucun horaire (ni « a commencé à… », ni « À 9 h 13, … »). Pour les 3 DYLAN : la case de ce matin à 10:07 est « passée · pas jouée » ; tu la rattrapes avec la séance 1. Et, comme tu l'as dit, une séance faite à la place d'une autre ne rend jamais l'autre « non faite ».
+  >
+  > 354. L'ordre : ⑯ finit (13:00) ; puis 353 avec 342 (un seul exécutant : la case et le lancement) ; puis 352 ; puis le minuteur (㉔ à ㉗, ㊵) ; puis la numérotation ; puis ㉚.
+  >
+  > 355. Les réponses de ce matin, mot pour mot. Je ne peux pas les écrire au hub (je n'y accède que par ton Chrome, et je n'y écris jamais) : elles sont rangées au dépôt du chantier, ici : https://github.com/siteflow-io/mjpc-chantier/blob/main/RATTRAPAGES/3-DYLAN-2026-11-03.md
+  >
+  > Diapo 9, « Groupe 1 : l'hypothèse » — Ce que vous avez vu, et votre hypothèse sur le Romantisme.
+  > PM — le titre est le Radeau de la Méduse. C'est une peinture de Théodore Géricault de 1818 à 1819 (date de création de la peinture).
+  > MC — Numéro 1, on peut apercevoir plusieurs personnes qui cherchent à appeler à l'aide. Je suppose qu'ils ont de l'espoir.
+  > YC — Sur le radeau il y a des cadavres et des gens qui sont entre la vie et la mort.
+  > EB — sur l'ensemble de la peinture on peut voir que les couleurs sont chaudes et sombres, comme du jaune, du orange et du noir.
+  > LD — Au numéro 5 on voit une personne qui tombe dans l'eau. Elle est morte et elle va se faire emporter par le courant.
+  > CB — N°3, le radeau commence à se casser car il y a beaucoup de monde dessus et la mer est agitée. Les cadavres tombent à l'eau.
+  > (page 2) PM — Le Romantisme c'est le fait de demander de la gentillesse ou de l'aide.
+  >
+  > Diapo 11, « Groupe 2 : l'hypothèse » — Ce que vous avez vu, et votre hypothèse sur le Romantisme.
+  > TG — C'est une peinture d'Albert Bierstadt, qui représente le lac de Whyte, à Estes Park dans le Colorado en 1877.
+  > LA — A l'arrière plan on a un ciel écarlate venant se refléter sur une partie du lac reflétant ses couleurs.
+  > AT — Au premier plan on voit un cerf et deux biches buvant dans le lac près du rivage. Ils ont l'air tranquille et paisibles.
+  > CH — A l'arrière plan on peut aussi voir des montagnes rocheuses et assez hautes avec un brouillard épais glissant autour d'elles.
+  > EG — Les couleurs principalement utilisées dans cette oeuvre sont des couleurs chaudes la plupart du temps utilisées au premier plan mais aussi des couleurs froides à l'arrière plan.
+  > (la page 2 de la diapo 11 : pas de capture)
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 12:28
+  >
+  > À jouer : 352, 353, 354, à commenter ou non · en cours : ⑯ (avant 13:00) · ouvert : 352, 353, 354
+  >
+  > MEMO

@@ -1,0 +1,98 @@
+C16 · lot 1 (359, 360, 361) · 2026-11-03 15:21 UTC · base/index.html md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · parties W · la montre du navigateur (seule la date est décalée)
+
+— partie W · 15:21 UTC
+
+  [W] vraie heure (autre classe) · la fenêtre : « Une heure joue déjà sur un autre appareil : les 3E Charles de Gaulle (09:00-09:52). La lancer ici la clôt. Que veux-tu faire ? » · boutons [{"t":"undefined","bulle":""},{"t":"undefined","bulle":""},{"t":"undefined","bulle":""}]
+  ÉCHEC  W1 · H+H · Rejoindre la séance en cours : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · H+H · Rejoindre la séance en cours : chaque bouton a son infobulle — ["","",""]
+  [W]   Rejoindre la séance en cours → A : {"sorte":"heure","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":false} · le tableau distant suit : A
+  ÉCHEC  W3 · H+H · Rejoindre la séance en cours : B pilote la séance qui joue (la même session que A) — rien n’est créé — {"A":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","B":null}
+  ok     W3 · H+H · Rejoindre la séance en cours : aucune heure créée pour l’autre classe — []
+  ok     W9 · H+H · Rejoindre la séance en cours A : aucune erreur JS, aucune boîte système
+  ok     W9 · H+H · Rejoindre la séance en cours B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · H+H · Lancer celle-ci quand même : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · H+H · Lancer celle-ci quand même : chaque bouton a son infobulle — ["","",""]
+  [W]   Lancer celle-ci quand même → A : {"sorte":"heure","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":false} · le tableau distant suit : A
+  ÉCHEC  W4 · H+H · Lancer celle-ci quand même : B a lancé la séance choisie (CLASSE TEST) — {"sesId":"ap_mu0w8dg1_6xqyh","lancee":false,"rep":false,"test":false,"sorte":null,"base":null,"sig":null,"seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ÉCHEC  W4 · H+H · Lancer celle-ci quand même : le tableau distant suit B — A
+  ÉCHEC  W4 · H+H · Lancer celle-ci quand même : l’heure de A (3E Charles de Gaulle) est close, sa trace enregistrée (« La lancer ici la clôt ») — {"cle":"2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","clos":false}
+  ok     W9 · H+H · Lancer celle-ci quand même A : aucune erreur JS, aucune boîte système
+  ok     W9 · H+H · Lancer celle-ci quand même B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · H+H · Annuler : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · H+H · Annuler : chaque bouton a son infobulle — ["","",""]
+  [W]   Annuler → A : {"sorte":"heure","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":false} · le tableau distant suit : A
+  ok     W5 · H+H · Annuler : la fenêtre se ferme, B ne lance rien — {"sesId":"ap_mu0w8dc8_umd9h","lancee":false,"rep":false,"test":false,"sorte":null,"base":null,"sig":null,"seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ok     W5 · H+H · Annuler : la séance de A continue, le tableau distant la suit — {"suit":"A","A":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle"}
+  ok     W9 · H+H · Annuler A : aucune erreur JS, aucune boîte système
+  ok     W9 · H+H · Annuler B : aucune erreur JS, aucune boîte système
+
+  [W] essai en mode test (autre classe) · la fenêtre : « Un essai (mode test) joue déjà sur un autre appareil : 3E Charles de Gaulle · séance 0. Que veux-tu faire ? » · boutons [{"t":"undefined","bulle":""},{"t":"undefined","bulle":""},{"t":"undefined","bulle":""}]
+  ÉCHEC  W1 · T+T · Rejoindre la séance en cours : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · T+T · Rejoindre la séance en cours : chaque bouton a son infobulle — ["","",""]
+  [W]   Rejoindre la séance en cours → A : {"sorte":"essai","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":true} · le tableau distant suit : A
+  ÉCHEC  W3 · T+T · Rejoindre la séance en cours : B pilote la séance qui joue (la même session que A) — rien n’est créé — {"A":"essai|1789369209618|0","B":null}
+  ok     W9 · T+T · Rejoindre la séance en cours A : aucune erreur JS, aucune boîte système
+  ok     W9 · T+T · Rejoindre la séance en cours B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · T+T · Lancer celle-ci quand même : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · T+T · Lancer celle-ci quand même : chaque bouton a son infobulle — ["","",""]
+  [W]   Lancer celle-ci quand même → A : {"sorte":"essai","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":true} · le tableau distant suit : A
+  ÉCHEC  W4 · T+T · Lancer celle-ci quand même : B a lancé la séance choisie (CLASSE TEST) — {"sesId":"ap_mu0w8dj8_bt3md","lancee":false,"rep":false,"test":true,"sorte":null,"base":null,"sig":null,"seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ÉCHEC  W4 · T+T · Lancer celle-ci quand même : le tableau distant suit B — A
+  ok     W4 · T+T · Lancer celle-ci quand même : la session de A continue (elle n’a plus le tableau distant) — {"sesId":"ap_mu0w81i4_tggdy","lancee":true,"rep":false,"test":true,"sorte":"essai","base":"/site/tableau_test","sig":"essai|1789369209653|0","seance":"0","classe":"3E Charles de Gaulle","cours":"3E Charles de Gaulle"}
+  ok     W9 · T+T · Lancer celle-ci quand même A : aucune erreur JS, aucune boîte système
+  ok     W9 · T+T · Lancer celle-ci quand même B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · T+T · Annuler : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · T+T · Annuler : chaque bouton a son infobulle — ["","",""]
+  [W]   Annuler → A : {"sorte":"essai","lancee":true,"rep":false,"seance":"0","cours":"3E Charles de Gaulle"} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"0","cours":null,"test":true} · le tableau distant suit : A
+  ok     W5 · T+T · Annuler : la fenêtre se ferme, B ne lance rien — {"sesId":"ap_mu0w8dij_ec04h","lancee":false,"rep":false,"test":true,"sorte":null,"base":null,"sig":null,"seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ok     W5 · T+T · Annuler : la séance de A continue, le tableau distant la suit — {"suit":"A","A":"essai|1789369209771|0"}
+  ok     W9 · T+T · Annuler A : aucune erreur JS, aucune boîte système
+  ok     W9 · T+T · Annuler B : aucune erreur JS, aucune boîte système
+
+  [W] répétition (autre séance) · la fenêtre : « Une répétition joue déjà sur un autre appareil (séance 1). Que veux-tu faire ? » · boutons [{"t":"undefined","bulle":""},{"t":"undefined","bulle":""},{"t":"undefined","bulle":""}]
+  ÉCHEC  W1 · R+R · Rejoindre la séance en cours : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · R+R · Rejoindre la séance en cours : chaque bouton a son infobulle — ["","",""]
+  [W]   Rejoindre la séance en cours → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":false} · le tableau distant suit : A
+  ÉCHEC  W3 · R+R · Rejoindre la séance en cours : B pilote la séance qui joue (la même session que A) — rien n’est créé — {"A":"repetition|1789369212742|0","B":null}
+  ok     W9 · R+R · Rejoindre la séance en cours A : aucune erreur JS, aucune boîte système
+  ok     W9 · R+R · Rejoindre la séance en cours B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · R+R · Lancer celle-ci quand même : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · R+R · Lancer celle-ci quand même : chaque bouton a son infobulle — ["","",""]
+  [W]   Lancer celle-ci quand même → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":false} · le tableau distant suit : A
+  ÉCHEC  W4 · R+R · Lancer celle-ci quand même : B a lancé la séance choisie (la séance 2) — {"sesId":"ap_mu0w8fp0_5q4zn","lancee":false,"rep":false,"test":false,"sorte":null,"base":null,"sig":null,"seance":"1","classe":"CLASSE TEST","cours":null}
+  ÉCHEC  W4 · R+R · Lancer celle-ci quand même : le tableau distant suit B — A
+  ok     W4 · R+R · Lancer celle-ci quand même : la session de A continue (elle n’a plus le tableau distant) — {"sesId":"ap_mu0w81iz_v5f56","lancee":false,"rep":true,"test":false,"sorte":"repetition","base":"/site/repetition","sig":"repetition|1789369212561|0","seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ok     W9 · R+R · Lancer celle-ci quand même A : aucune erreur JS, aucune boîte système
+  ok     W9 · R+R · Lancer celle-ci quand même B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · R+R · Annuler : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · R+R · Annuler : chaque bouton a son infobulle — ["","",""]
+  [W]   Annuler → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":false} · le tableau distant suit : A
+  ok     W5 · R+R · Annuler : la fenêtre se ferme, B ne lance rien — {"sesId":"ap_mu0w8fu0_mc5im","lancee":false,"rep":false,"test":false,"sorte":null,"base":null,"sig":null,"seance":"1","classe":"CLASSE TEST","cours":null}
+  ok     W5 · R+R · Annuler : la séance de A continue, le tableau distant la suit — {"suit":"A","A":"repetition|1789369212749|0"}
+  ok     W9 · R+R · Annuler A : aucune erreur JS, aucune boîte système
+  ok     W9 · R+R · Annuler B : aucune erreur JS, aucune boîte système
+
+  [W] répétition en mode test (autre séance) · la fenêtre : « Une répétition joue déjà sur un autre appareil (séance 1). Que veux-tu faire ? » · boutons [{"t":"undefined","bulle":""},{"t":"undefined","bulle":""},{"t":"undefined","bulle":""}]
+  ÉCHEC  W1 · RT+RT · Rejoindre la séance en cours : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · RT+RT · Rejoindre la séance en cours : chaque bouton a son infobulle — ["","",""]
+  [W]   Rejoindre la séance en cours → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":true} · le tableau distant suit : A
+  ÉCHEC  W3 · RT+RT · Rejoindre la séance en cours : B pilote la séance qui joue (la même session que A) — rien n’est créé — {"A":"repetition|1789369212998|0","B":null}
+  ok     W9 · RT+RT · Rejoindre la séance en cours A : aucune erreur JS, aucune boîte système
+  ok     W9 · RT+RT · Rejoindre la séance en cours B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · RT+RT · Lancer celle-ci quand même : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · RT+RT · Lancer celle-ci quand même : chaque bouton a son infobulle — ["","",""]
+  [W]   Lancer celle-ci quand même → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":true} · le tableau distant suit : A
+  ÉCHEC  W4 · RT+RT · Lancer celle-ci quand même : B a lancé la séance choisie (la séance 2) — {"sesId":"ap_mu0w8fyg_zs9to","lancee":false,"rep":false,"test":true,"sorte":null,"base":null,"sig":null,"seance":"1","classe":"CLASSE TEST","cours":null}
+  ÉCHEC  W4 · RT+RT · Lancer celle-ci quand même : le tableau distant suit B — A
+  ok     W4 · RT+RT · Lancer celle-ci quand même : la session de A continue (elle n’a plus le tableau distant) — {"sesId":"ap_mu0w81gz_gglk6","lancee":false,"rep":true,"test":true,"sorte":"repetition","base":"/site/tableau_test","sig":"repetition|1789369212887|0","seance":"0","classe":"3E Charles de Gaulle","cours":null}
+  ok     W9 · RT+RT · Lancer celle-ci quand même A : aucune erreur JS, aucune boîte système
+  ok     W9 · RT+RT · Lancer celle-ci quand même B : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · RT+RT · Annuler : les trois boutons disent leur nom (« Rejoindre la séance en cours », « Lancer celle-ci quand même », « Annuler ») — ["undefined","undefined","undefined"]
+  ÉCHEC  W2 · RT+RT · Annuler : chaque bouton a son infobulle — ["","",""]
+  [W]   Annuler → A : {"sorte":"repetition","lancee":false,"rep":true,"seance":"0","cours":null} · B : {"sorte":null,"lancee":false,"rep":false,"seance":"1","cours":null,"test":true} · le tableau distant suit : A
+  ok     W5 · RT+RT · Annuler : la fenêtre se ferme, B ne lance rien — {"sesId":"ap_mu0w8ft1_phlwk","lancee":false,"rep":false,"test":true,"sorte":null,"base":null,"sig":null,"seance":"1","classe":"CLASSE TEST","cours":null}
+  ok     W5 · RT+RT · Annuler : la séance de A continue, le tableau distant la suit — {"suit":"A","A":"repetition|1789369212801|0"}
+  ok     W9 · RT+RT · Annuler A : aucune erreur JS, aucune boîte système
+  ok     W9 · RT+RT · Annuler B : aucune erreur JS, aucune boîte système
+
+--- fin : 73 vérifications, 37 échec(s)

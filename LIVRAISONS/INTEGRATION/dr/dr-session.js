@@ -387,21 +387,27 @@ function dr_sesReprendreEssai(p, fini){
     if (dr_sesTest()) {
       dr_sesLireHub(DR_TT.chemin + '/pointeur', p => {
         if (dr_sesFrais(p) && p.quoi === 'heure' && meme(p) && !(DR_TT.sig && DR_TT.sig === p.ts + '|' + p.seance)) { dr_sesReprendreEssai(p); return; }   /* le même essai joue ailleurs : on le rejoint */
-        if (dr_sesFrais(p) && p.quoi === 'heure' && !meme(p)) { dr_sesDemander('Un essai (mode test) joue déjà sur un autre appareil : ' + (p.classeNom || p.classeSlug || '') + ' · séance ' + p.seance + '.', () => dr_sesReprendreEssai(p), suite); return; }
+        if (dr_sesFrais(p) && p.quoi === 'heure' && !meme(p)) { dr_sesDemander('Un essai (mode test) joue déjà sur un autre appareil : ' + (p.classeNom || p.classeSlug || '') + ' · séance ' + p.seance + '.', () => dr_sesReprendreEssai(p), suite,
+          { rejoindre: 'Cet appareil pilote l’essai qui joue (mode test), là où il en est : rien n’est créé, rien n’est arrêté', lancer: 'Lance ici l’essai que tu as choisi (mode test) ; le tableau distant le suit. L’essai de l’autre appareil continue, sans le tableau distant' }); return; }
         suite(); });
       return; }
     dr_sesLireHub('/site/cours_actif', c => {
       if (dr_sesFrais(c) && !meme(c) && !(typeof dr_heureTenue === 'function' && dr_heureTenue())) { _drHeureCloseAu(c, close => { if (close) { suite(); return; }
-        dr_sesDemander('Une heure joue déjà sur un autre appareil : les ' + (c.classeNom || c.classeSlug || '') + ' (' + (c.debut || '') + '-' + (c.fin || '') + '). La lancer ici la clôt.', () => { sesRepriseRetirer(); dr_reprendreCours(c); }, suite); }); return; }
+        dr_sesDemander('Une heure joue déjà sur un autre appareil : les ' + (c.classeNom || c.classeSlug || '') + ' (' + (c.debut || '') + '-' + (c.fin || '') + '). La lancer ici la clôt.', () => { sesRepriseRetirer(); dr_reprendreCours(c); }, suite,
+          { rejoindre: 'Cet appareil pilote l’heure qui joue, là où elle en est : rien n’est créé, rien n’est arrêté', lancer: 'Lance ici l’heure que tu as choisie et clôt celle qui joue sur l’autre appareil (sa trace est enregistrée) ; le tableau distant suit la nouvelle' }); }); return; }
       suite(); });
   };
   g.__ses = true; window.dr_lancer = g; })();
-function dr_sesDemander(msg, rejoindre, lancer){
+/* C16 (lot 1, 360 ; Paul, 03/11 14:43) : les trois boutons dans la forme que lit `atModaleChoix` ({ lib, fn, title }) — avant, { label, action } :
+   ils s'affichaient « undefined » et un clic ne faisait que fermer la fenêtre (audit global I §1.2 : Paul bloqué, 4 cas sur 4). `bulles` : ce que
+   coûte « Lancer quand même » dans ce cas-là (l'appelant le sait : une heure se clôt, un essai ou une répétition perd le tableau). */
+function dr_sesDemander(msg, rejoindre, lancer, bulles){
   if (typeof atModaleChoix !== 'function') { lancer(); return; }
+  const b = bulles || {};
   atModaleChoix(escapeHtml(msg) + '<br>Que veux-tu faire ?', [
-    { label: 'Rejoindre la séance en cours', title: 'Cet appareil pilote la séance qui joue, là où elle en est : rien n’est créé', prim: true, action: rejoindre },
-    { label: 'Lancer celle-ci quand même', title: 'Lance la séance que tu as choisie ; celle qui joue s’arrête', action: lancer },
-    { label: 'Annuler', title: 'Ne rien faire', action: () => {} } ]);
+    { lib: 'Rejoindre la séance en cours', title: b.rejoindre || 'Cet appareil pilote la séance qui joue, là où elle en est : rien n’est créé, rien n’est arrêté', prim: true, fn: rejoindre },
+    { lib: 'Lancer celle-ci quand même', title: b.lancer || 'Lance ici la séance que tu as choisie', fn: lancer },
+    { lib: 'Annuler', title: 'Ne lance rien : la séance qui joue continue, cet appareil reste où il était', fn: () => {} } ]);
 }
 
 /* ═══ LE BANDEAU, PARTOUT : abonné aux annonces du hub (l'heure, l'essai), sur tout appareil où le professeur est connecté ═══ */
@@ -467,7 +473,8 @@ function dr_sesReprendreRepetition(p){
     setTimeout(lancer, 1500);   /* le hub ne répond pas : la répétition part quand même, ici */
     dr_sesLireHub(ch, p => { if (fait) return; const rep = p && (test ? p.quoi === 'repetition' : true) && dr_sesFrais(p);
       if (rep && meme(p)) { DR_SES.rejoindre = { sig: p.ts + '|' + p.seance, p: Object.assign({}, p, { quoi: 'repetition' }) }; DR_SES.rejoint = Date.now(); lancer(); return; }
-      if (rep && !(test ? DR_TT.sig : DR_REP.sig)) { fait = true; dr_sesDemander('Une répétition joue déjà sur un autre appareil (séance ' + (p.seance != null ? (+p.seance + 1) : '?') + ').', () => dr_sesReprendreRepetition(p), () => { f.apply(self, args); }); return; }
+      if (rep && !(test ? DR_TT.sig : DR_REP.sig)) { fait = true; dr_sesDemander('Une répétition joue déjà sur un autre appareil (séance ' + (p.seance != null ? (+p.seance + 1) : '?') + ').', () => dr_sesReprendreRepetition(p), () => { f.apply(self, args); },
+        { rejoindre: 'Cet appareil joue la répétition en cours, là où elle en est (rien n’est écrit pour la classe) : rien n’est créé, rien n’est arrêté', lancer: 'Lance ici la répétition de cette séance ; le tableau distant la suit. La répétition de l’autre appareil continue, sans le tableau distant' }); return; }
       lancer(); }); };
   g.__ses = true; window.lancerRepetition = g; })();
 /* « ■ Arrêter » ici : l'état vivant part une dernière fois, « clos », pour les autres appareils ; puis l'arrêt d'avant (le pointeur, la scène) */

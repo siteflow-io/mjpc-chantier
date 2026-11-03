@@ -14665,7 +14665,7 @@ function atInfo(msg){
 function atModaleChoix(msg,boutons){
   var old=document.getElementById('at-modale');if(old)old.parentNode.removeChild(old);
   var d=document.createElement('div');d.id='at-modale';d.className='at-modale';
-  var bts=boutons.map(function(b,i){return '<button class="at-btn'+(b.prim?' at-btn-prim':'')+(b.danger?' at-btn-danger':'')+'" data-i="'+i+'">'+b.lib+'</button>';}).join('');
+  var bts=boutons.map(function(b,i){return '<button class="at-btn'+(b.prim?' at-btn-prim':'')+(b.danger?' at-btn-danger':'')+'" data-i="'+i+'"'+(b.title?' title="'+atEsc(b.title)+'"':'')+'>'+b.lib+'</button>';}).join('');   /* lot 1 (360) : `title`, l'infobulle du bouton (écrite pour Paul), si l'appelant la donne */
   d.innerHTML='<div class="at-modale-c"><div class="at-modale-m">'+msg+'</div><div class="at-modale-b">'+bts+'</div></div>';
   d.addEventListener('click',function(ev){
     var t=ev.target;

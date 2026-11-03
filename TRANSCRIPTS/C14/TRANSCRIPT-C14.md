@@ -5154,3 +5154,39 @@ Ton mot sur 123 à 128 ? 126 et 127 peuvent faire une 1.4.33 dès ce soir.
 03/11/2026 19:58
 
 MEMO
+
+## Tour 178 — 03/11/2026 19:52
+
+**Paul (19:52) :**
+
+Ok pour tout.
+
+**Ce qui a été fait (C14) :** 1.4.33 commencée (126, 127) sur la branche `c14-poignees` : `recopie.js`, `scan.js`, `eleve.js`, `avancement.js`, `grille-stickers.js` ; banc (`banc/ligature.mjs` nouveau, `banc/detail.mjs`, `banc/types.mjs`) ; mesures au vrai site en lecture seule (`prive/enquete/ligature-1433.mjs`, `qui-couvre.mjs`) ; un premier essai pour 126 (la faute dessinée au-dessus du cadre) mesuré, qui cachait des étoiles, remplacé ; un banc court. Aucune réponse envoyée avant le tour suivant.
+
+## Tour 179 — 03/11/2026 20:11
+
+**Paul (20:11) :**
+
+A mettre au cadrage sur github. Pas à coder sauf si tu as commencé dans ce cas tu t'arrêtes et tu sauvegardes le travail déjà fait
+
+**Ce qui a été fait (C14) :** arrêt (le banc court relancé, interrompu ; aucun processus resté) ; le travail commencé sauvegardé au sas, branche `c14-poignees`, commit `2c46eaa1` ; le cadrage écrit dans `MANDATS/REDACTION-UNIVERSELLE/A-CODER-CORRECTION-ELEVE.md` (section du 03/11) ; registre des dettes mis à jour.
+
+**Claude (20:19) :**
+
+À jouer : 132 et 133, ton mot · en cours : rien · ouvert : 126 et 127 (arrêtés, sauvegardés) ; 128, la maquette du parcours ; « ça lag » au collège ; la garde du retour de l'IA (95, 97, 98, 107) ; la correction par l'élève (24, 27) ; 738 ; la banque de stickers ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+129. C'est au cadrage, avec tes mots de 19:45, 19:52 et 20:11, les mesures, et 122 à 128 tels que tu les as validés (section du 03/11) : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/REDACTION-UNIVERSELLE/A-CODER-CORRECTION-ELEVE.md
+
+130. J'avais commencé 126 et 127 : arrêté, et sauvegardé au sas (branche « c14-poignees »). Rien n'est en ligne. 127 est codé et mesuré sur ton site sans rien y écrire : plus aucun « oe » / « œ » dans la bande ni au bilan, aucune copie ne se rouvre ; dans les fichiers des élèves, c'est vérifié au banc, pas encore sur ton site. 126 est codé, pas encore mesuré : je ne sais pas s'il tient. Mon premier essai pour 126 cachait des étoiles sous des fautes : je l'ai retiré. Ce qui reste pour reprendre est écrit au cadrage.
+
+131. Une erreur dans mon message de 19:58 : ce ne sont pas « 10 copies », ce sont 9 fautes « oe » gardées (la 10e diffère aussi par une majuscule : elle reste une faute). Et aucune note ne bouge : 53 sur 53 identiques.
+
+132. Trouvé en mesurant : des fautes dont le trait passe sous celui de leur voisine. Un clic ouvre alors la voisine : 11 fautes sur ordinateur, 50 sur téléphone. Je propose que le clic ouvre la faute la plus proche.
+
+133. Le parcours croise la correction par l'élève cadrée le 02/11 (il tape ses fautes dans son fichier). Je propose un seul parcours : aujourd'hui, la carte dit quoi chercher et quoi faire sur la feuille ; le jour où tu ouvres la correction, la même carte reçoit la case où il tape.
+
+À tester : rien de neuf en ligne.
+
+03/11/2026 20:19
+
+MEMO

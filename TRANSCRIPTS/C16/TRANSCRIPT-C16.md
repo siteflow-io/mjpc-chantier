@@ -2047,3 +2047,13 @@ MEMO
   > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **14:59 — rangé** : le travail arrêté de l'exécutant de 10:05 poussé tel quel sur `deroule/frappe-tableau` (`37beffe9a`, non prouvé, à ne reprendre que sur le mot de Paul) ; le brouillon du mandat du lot 2 (`c6a11cf81`).
+- **14:59 — message à Paul, mot pour mot :**
+
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 14:59
+  >
+  > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

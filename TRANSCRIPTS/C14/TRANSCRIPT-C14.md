@@ -5114,3 +5114,43 @@ promeus
 03/11/2026 17:30
 
 MEMO
+
+---
+
+## Tour 177 — 03/11/2026 19:45
+
+**Paul (19:45) :**
+
+Au cadrage de l'App rédaction, il faut ajouter la forme du html élève. Actuellement il n'est vraiment pas pratique et désorganisé. Les élèves ne comprennent pas comment se corriger sur papier grâce au html. Par ailleurs quand ils cliquent sur les erreurs de langue et qu'il y a un cadre, le cadre affiche son commentaire à droite. 
+Enfin, l'IA a relevé plusieurs fois oeil mal écrit parce que je l'ai tapé sans le e dans l'o et quand j'ai relu la bande je suis allé un peu vite. 
+Il faudrait que ce soit un flux progressif, qui afficherait les marques toutes au fur et à mesure sur la copie, et que l'élève comprenne exactement le problème à chaque fois, sans qu'on lui donne la réponse non plus. Que proposes tu?
+
+**Ce qui a été fait (C14) :** mesuré en lecture seule, avec le fichier en ligne (`prive/enquete/clic-oeil.mjs`) : dans les 53 fichiers, chaque faute soulignée cliquée en son milieu ; les « oe » tapés pour « œ » gardés en faute. Dettes : consigné (à cadrer), avec les mesures.
+
+**Claude (19:58) :**
+
+À jouer : 122 à 128, ton mot · en cours : rien · ouvert : « ça lag » au collège, à mesurer ; la garde du retour de l'IA, à cadrer (95, 97, 98, 107) ; le cadrage de la correction par l'élève (24, 27) ; 738 ; la banque de stickers ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+122. Mesuré sur ton site, sans rien y écrire :
+- dans tes 53 fichiers, un clic sur une faute soulignée ouvre le sticker dont le cadre la recouvre, et pas la faute : c'est le cas de 337 fautes sur 2 260, sur toutes les copies ;
+- « oe » tapé pour « œ » a été gardé en faute 10 fois (oeil, coeur, soeur).
+
+123. Ma proposition pour le fichier de l'élève : un parcours. Le fichier s'ouvre sur la copie seule, sans aucune marque, avec un bouton « Commencer ». Ensuite, une marque à la fois : elle apparaît sur la copie et y reste, l'écran se place dessus, et une carte dit à l'élève de quel problème il s'agit, où il est, ce qu'il doit chercher, et ce qu'il fait sur sa feuille. Par exemple : « Grammaire : un verbe à l'infinitif ou au participe passé ? Remplace-le par vendre ou vendu. Corrige au-dessus du mot. » La bonne forme n'apparaît jamais.
+
+124. L'ordre : d'abord la langue, ligne par ligne, de haut en bas, comme l'élève suit sa feuille. Puis ce qu'il a réussi (les étoiles apparaissent une à une), puis ce qu'il doit reprendre, puis ton commentaire général. À la fin, sa grille, avec la note si la case est cochée, et « 📝 Ma copie corrigée » seulement tout au bout, si tu la coches.
+
+125. Pour avancer : « Suivant » et « Précédent », avec un compteur « 12 / 43 ». L'élève peut s'arrêter et reprendre plus tard là où il en était. Sur téléphone, la carte reste en bas et la copie se place sur la bonne ligne. Une fois le parcours fini, il revoit librement toute sa copie marquée, comme aujourd'hui.
+
+126. Le clic : une faute passe toujours au-dessus d'un cadre de sticker. Cette correction ne dépend pas du parcours : elle peut partir tout de suite.
+
+127. « oe » / « œ » : ta recopie ne peut pas taper « œ ». Je propose qu'un écart « oe » / « œ » (et « ae » / « æ ») ne soit plus jamais une faute, ni dans la bande ni dans les fichiers. Les 10 déjà gardées sortiraient des fichiers à la lecture, sans réécrire tes copies. Je mesure avant l'effet sur les notes : 10 copies ont une faute de moins. Cela peut partir tout de suite aussi.
+
+128. Avant tout code : une maquette du nouveau fichier, sur une copie inventée, que tu manipules, avec des captures sur ordinateur et sur téléphone. Les phrases que lit l'élève, je te les propose dans la maquette : aucune ne part sans ton accord.
+
+Ton mot sur 123 à 128 ? 126 et 127 peuvent faire une 1.4.33 dès ce soir.
+
+À tester : rien de neuf en ligne.
+
+03/11/2026 19:58
+
+MEMO

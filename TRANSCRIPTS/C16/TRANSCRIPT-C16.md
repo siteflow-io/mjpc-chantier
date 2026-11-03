@@ -2085,3 +2085,5 @@ MEMO
   > À jouer : 385 à trancher · en cours : lot 1 (359, 360, 361), 367 (l'auditeur) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **15:47 — l'auditeur de l'horloge, poussée 1** (`audit/horloge` `cec46ef02`) : P2T, c'est le site. Un second ordinateur qui fait « Reprendre » sur l'essai prend la main sans aucun geste : sa propre écriture de l'état de l'heure (`dr_etatAuto`, dr-classe.js l. 741-744) part sans `vifTs` parce que `DR_SES.ici` n'est pas encore posé (dr-session.js l. 342, 400 ms) ; `dr_sesPremierVerifier` (dr-session.js l. 175-178) la prend pour une version d'avant, et la télécommande est désactivée. Rouge 7 sur 7 à la vraie horloge, vert 2 sur 2 à l'horloge simulée. Restent P2H, X, XT, T, et pourquoi l'horloge simulée. Lignes relues par la conscience au commit `9c13d037c` : elles disent ce qu'il dit.
+- **15:47 — la machine** : l'auditeur et l'exécutant du lot 1 ont eu chacun un navigateur en même temps (15:45-15:46). La conscience : l'auditeur écarte tout passage qui a chevauché ; l'exécutant rejoue seul un compte qui échouerait ; chacun vérifie, avant chaque passage, qu'aucun autre navigateur ne tourne ; le lot 1 garde la priorité.

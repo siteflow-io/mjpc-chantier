@@ -1674,3 +1674,18 @@ MEMO
   > À jouer : les 3 planches, puis ton « promeus » ou non · en cours : ㉟ ⑯ chez l'exécutant (avant 11:30) · ouvert : 316, 317, 320
   >
   > MEMO
+- **08:49 — Paul, mot pour mot** : « J'ai cours à 10 heures pour 35 et 16 il faut que ça soit bon pour 9h45 dernier délai »
+- **08:49 — la conscience** : à l'exécutant : ㉟ ⑯ prouvés et poussés avant 09:15 (K et D, trois passages) ; la conscience vérifie de 09:15 à 09:35.
+- **08:49 — message à Paul, mot pour mot :**
+
+  > 321. Entendu, 9:45 dernier délai. L'exécutant pousse ㉟ et ⑯ prouvés avant 9:15 ; je vérifie de 9:15 à 9:35 ; je te demande le « promeus » vers 9:35, et la mise en ligne est faite avant 9:45. Si ce n'est pas prouvé à 9:15, rien de ㉟ ⑯ ne part avant ton cours, et je te le dis.
+  >
+  > 322. Le zoom et le QR (320) n'attendent pas : un « promeus » maintenant, et ils sont en ligne dans les 5 minutes.
+  >
+  > À tester : après la mise en ligne, la liste de 320.
+  >
+  > 03/11/2026 08:49
+  >
+  > À jouer : ton « promeus » pour 320, ou non · en cours : ㉟ ⑯ chez l'exécutant (avant 9:15) · ouvert : 316, 317, 320
+  >
+  > MEMO

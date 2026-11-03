@@ -34,3 +34,8 @@
 - La machine n'a que 2 processeurs : un seul navigateur à la fois ; le fichier …/scratchpad/MACHINE-CONSCIENCE posé = pas de navigateur de ton côté. Tue tes processus par leur PID. Les heures : `TZ=Europe/Paris date`.
 - **Le temps (Paul : « que ça prenne pas trop de temps »)** : le zoom d'abord, prouvé et poussé seul (une poussée) ; puis ㉟ et ⑯. Ta dernière poussée prouvée arrive avant 11:30 (heure de Paris) ; ce qui n'est pas prouvé à 11:30 ne part pas, et tu dis où tu en es. Pousse à chaque morceau prouvé et dis-le à la conscience.
 - Tu livres sans dette : ce qui n'est pas prouvé n'entre pas dans le commit.
+
+## 6 · AJOUT, 03/11 07:40 — LE QR DE LA TÉLÉCOMMANDE QUI NE TIENT PAS (envoyé à l'exécutant)
+- **Paul, 07:37** (capture du téléphone : Chrome sur Android, en 4G, « Ce QR code n'est plus valable. Sur l'ordinateur, clique 📱 dans la barre du pilote : un nouveau code paraît. ») : « Le QR code ne semble pas bien tenir ... 5 fois sur 6 j'ai ça ».
+- Lu dans le code (pas mesuré) : `dr_tcQrOuvrir` pose le nonce avec la montre de l'ordinateur ; `dr_tcDemarrer` le juge valable 15 minutes avec la montre du téléphone ; une lecture ratée (`dr_sesLireHub`) se dit « plus valable » ; `dr_tcQrFermer(false)` efface le nonce.
+- Avec le zoom (même territoire) : mesurer la cause par le geste (téléphone lent, montres décalées, fenêtre fermée ou rouverte, second scan, onglet réutilisé ; vraie heure et mode test) ; décidé : un QR montré marche à chaque scan tant que sa fenêtre est ouverte ou qu'il a été scanné, sans dépendre d'aucune montre ; une lecture ratée est réessayée, un réseau muet est dit en clair. Preuve : 20 scans sur 20 dans chaque cas mesuré ; la partie Q de la sonde de l'appel et la sonde de la session rejouées.

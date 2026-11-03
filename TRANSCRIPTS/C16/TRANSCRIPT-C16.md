@@ -1612,3 +1612,18 @@ MEMO
   > À jouer : les 7 gestes de 06:52 · en cours : l'exécutant du zoom, de la frappe et du retard (avant 11:30) · ouvert : 312
   >
   > MEMO
+- **07:37 — Paul, mot pour mot** (capture du téléphone, 07:35 : Chrome, 4G, « Ce QR code n'est plus valable. Sur l'ordinateur, clique 📱 dans la barre du pilote : un nouveau code paraît. ») : « Le QR code ne semble pas bien tenir ... 5 fois sur 6 j'ai ça »
+- **07:38 — la conscience** : lu dans le code (`dr_tcQrOuvrir`, `dr_tcDemarrer`, `dr_sesLireHub`, `dr_tcQrFermer`) ; ajouté au mandat de l'exécutant du zoom (§6, même territoire), envoyé à l'exécutant.
+- **07:38 — message à Paul, mot pour mot :**
+
+  > 313. Le QR qui ne tient pas : entendu, c'est peut-être ta seconde chose de 07:19. Je l'ai ajouté à l'exécutant qui fait le zoom (c'est la même partie du code, la télécommande). Lu dans le code, sans preuve encore : le téléphone juge le code valable avec sa propre montre, contre celle de l'ordinateur ; et une lecture ratée sur un réseau lent (ta 4G) se dit aussi « plus valable ». Il mesure d'abord la vraie cause. Décidé : un QR montré à l'ordinateur marche à chaque scan, sans dépendre d'aucune montre ; si le réseau ne répond pas, le téléphone réessaie, puis le dit en clair. Preuve : 20 scans sur 20 dans chaque cas.
+  >
+  > En attendant, en classe : si le téléphone dit « plus valable », recharge la page du téléphone une fois ; si ça ne suffit pas, reclique 📱 à l'ordinateur. Pourquoi l'un ou l'autre marcherait : je ne sais pas, ce n'est pas mesuré.
+  >
+  > À tester : les 7 gestes de 06:52 (8.81.0-⑭).
+  >
+  > 03/11/2026 07:38
+  >
+  > À jouer : les 7 gestes de 06:52 · en cours : l'exécutant du zoom, du QR, de la frappe et du retard (avant 11:30) · ouvert : 312
+  >
+  > MEMO

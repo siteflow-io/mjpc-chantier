@@ -16,32 +16,46 @@ L'outil : `sonde-appel-trace.mjs` (ce dossier) = `APPEL/sonde-appel.mjs` de `ced
 **Compté** (assemblé `bc7cc9cd`, vraie horloge `MJPC_HORLOGE=date`) :
 - la conscience : P2T rouge 4 sur 4 (base + 3 rejeux) ;
 - **mes passages m1 à m4 (15:47:32-15:59:12) sont ÉCARTÉS des comptes** : l'exécutant du lot 1 a lancé ses sondes pendant cette période (ses sorties datées 15:42 puis 15:56:01-15:59:39 ; son navigateur vu à 15:58:30, pendant mon passage de 15:58:10) ; je ne peux pas prouver qu'aucun de mes passages n'a partagé les 2 processeurs avec lui. Ce qu'ils montrent (la suite d'appels ci-dessous) reste une description, à confirmer par des passages propres. Pour info seulement : P2T rouge 3 sur 3 à la vraie horloge, verte 2 sur 2 à l'horloge simulée ; P2H (sonde d'origine, vraie horloge) rouge 3 sur 3 ; P2H piégée rouge à la vraie horloge comme à l'horloge simulée (1 sur 1 chacune).
+- moi, sur machine libre et surveillée (`m5`, 16:05:43-16:07:38) : P2T rouge 1 sur 1, les mêmes 4 échecs, la même cause (le piège ci-dessous).
 - Désormais chaque passage passe par `mesurer.sh` (ce dossier) : machine libre avant, surveillée toutes les 0,5 s pendant (un navigateur qui ne descend pas du passage : le passage s'arrête et il est dit « CHEVAUCHÉ »), témoin retiré après.
 
 **La cause, dans le code** (`LIVRAISONS/INTEGRATION/dr/`) :
 1. Le second ordinateur qui reprend un essai pose dans son magasin `C/etat` avec `maj` = l'heure de l'état vivant lu (`dr-session.js:373`, `dr_sesReprendreEssai`).
-2. Il prépare aussitôt une sauvegarde : `dr_etatAuto` (`dr-classe.js:741-744`) écrit `C/etat` 900 ms plus tard, `dr_etatHeure()` → `maj: Date.now()` (`dr-classe.js:687`). La marque de « cette version » (`vifTs`) n'est ajoutée que si `DR_SES.ici` est déjà posé (`dr-session.js:341-342`).
-3. `DR_SES.ici` n'est posé que par `dr_sesVeiller`, qui tourne toutes les 400 ms (`dr-session.js:315-325`, ligne 319). S'il passe après l'écriture du point 2, `C/etat` porte une heure récente et **pas de `vifTs`**.
+2. À la fin de la reprise (`dr_reprendre`, `dr-classe.js:947-978`) : `S.lancee = true` (ligne 968), puis `tout(); dr_copieAuto(true);` (ligne 975) → `dr_etatAuto(vite)` (`dr-classe.js:741-744`) écrit `C/etat` **aussitôt** (minuterie de 0 ms), `dr_etatHeure()` → `maj: Date.now()` (`dr-classe.js:687`). La marque de « cette version » (`vifTs`) n'est ajoutée que si `DR_SES.ici` est déjà posé (`dr-session.js:341-342`).
+3. `DR_SES.ici` n'est posé que par `dr_sesVeiller`, qui tourne toutes les 400 ms (`dr-session.js:315-325`, ligne 319). Il faudrait qu'un tour de veille tombe entre la fin de la reprise et la minuterie de 0 ms (mesuré : 89 à 104 ms d'écart, la page dessine) ; sinon, `C/etat` porte une heure récente et **pas de `vifTs`**.
 4. Le premier état vivant reçu passe par `dr_sesPremierVerifier` (`dr-session.js:170-182`) : `C/etat` sans `vifTs` et plus récent que l'état vivant (ligne 175) est pris pour l'écriture d'une **version d'avant** (la 8.79.0, la 8.77.1-⑩) : l'appareil prend la main (ligne 178) et l'envoie à tous.
 5. La télécommande reçoit cet état : `main` n'est plus elle (`dr_sesRecu`, ligne 154) ; `dr_sesJeTiens()` faux (ligne 183) : « désactivée » (lignes 647-649), chaque bouton grisé (ligne 665), « Appel » refusé (ligne 680).
 
 Les trois autres échecs de P2T en découlent : b « grisés » (la liste n'a jamais été ouverte : 0 bouton), c (« Reprendre avec la télécommande », puis un appui sur l'élève de a, qui n'avait jamais été marqué : il est marqué au lieu d'être retiré, « 0 sur 27 présents »).
 
-**Le piège, mesuré au second ordinateur** (un passage à la vraie horloge, `m3`) :
+**Le piège, mesuré au second ordinateur** (passage `m5`, 16:05:43, machine libre et surveillée jusqu'à 16:07:38 ; P2T y a fini avant) :
 ```
-20682 dr_lire …/etat : maj=16378 vifTs=undefined          (la reprise : l'état posé par dr_sesReprendreEssai)
-21203 dr_ecrire …/etat : maj=21203 vifTs=undefined (DR_SES.ici null)   ← dr_etatAuto
-21233 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller          (DR_SES.ici posé, 30 ms trop tard)
-21929 premierVerifier v.ts=16378
-21929 dr_lire …/etat : maj=21203 vifTs=undefined          (21203 > 16378, sans vifTs : « une version d'avant »)
-21930 main null → (le second ordinateur) ← suite              (dr-session.js:178)
+20892 dr_lire …/etat : maj=16443 vifTs=undefined          (la reprise lit l'état posé par dr_sesReprendreEssai)
+21187 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < (anonymes)   (la fin de la reprise)
+21291 dr_ecrire …/etat : maj=21291 vifTs=undefined (DR_SES.ici null)
+21293 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller          (DR_SES.ici posé : 2 ms trop tard)
+21810 premierVerifier v.ts=16443
+21811 dr_lire …/etat : maj=21291 vifTs=undefined          (21291 > 16443, sans vifTs : « une version d'avant »)
+21811 main null → (le second ordinateur) ← suite              (dr-session.js:178)
 ```
-Le même ordre dans l'autre passage piégé (`m2`, sans le piège des écritures) : `C/etat` relu avec `maj=21279`, sans `vifTs`, et `DR_SES.ici` posé à 21303, 24 ms après.
+Le même ordre dans les passages piégés écartés (`m2`, `m3` : 24 et 30 ms trop tard).
 
 **La montre n'y est pour rien** : `maj` et `v.ts` sont tous deux l'heure d'une page (`Date.now()`), décalées de la même façon par `MJPC_HORLOGE=date` ; le hub n'intervient pas (en mode test, aucune heure du serveur : `{".sv":"timestamp"}` n'est écrit qu'en vraie heure, `dr-classe.js:1442`, `index.html:20040`). Ce qui joue, c'est l'ordre de deux minuteries de la page (900 ms et 400 ms) : celles du navigateur, comme en classe.
 
-**Pourquoi l'horloge simulée la disait verte** (mesuré, 2 passages sur 2) : à l'horloge simulée, la reprise est plus lente à aboutir (de la lecture de la reprise à `DR_SES.ici` : 1 064 ms et 909 ms, contre 551 ms et 430 ms à la vraie) et la première écriture de `C/etat` par le second ordinateur vient **après** `DR_SES.ici` (`m3` : 24 766 > 23 473), donc avec `vifTs` : la vérification relit l'état posé par la reprise (`maj` = `v.ts`), pas « plus récent », la main reste à la télécommande. Pourquoi la minuterie de 900 ms n'a rien écrit plus tôt sous `page.clock` : je ne sais pas (non mesuré).
+**Pourquoi l'horloge simulée la disait verte** (mesuré dans les passages écartés `m2`, `m3` ; à refaire sur machine libre, en file) : à l'horloge simulée, la reprise est plus lente à aboutir (de la lecture de la reprise à `DR_SES.ici` : 1 064 ms et 909 ms, contre 551 ms et 430 ms à la vraie) et la première écriture de `C/etat` par le second ordinateur vient **après** `DR_SES.ici` (`m3` : 24 766 > 23 473), donc avec `vifTs` : la vérification relit l'état posé par la reprise (`maj` = `v.ts`), pas « plus récent », la main reste à la télécommande. Pourquoi la minuterie de 900 ms n'a rien écrit plus tôt sous `page.clock` : je ne sais pas (non mesuré).
 
 ---
 
-*(suite : P2H, X et XT, T — en cours)*
+## 2 · X (vraie heure) et XT (mode test) — la même prise de main, par deux chemins
+
+**Ce qui échoue** : dans X et XT, seule la première paire est rouge (« la télécommande et le clic droit de l'ordinateur, deux élèves »). Le décor est celui de P2 : l'ordinateur lance, la télécommande scanne, le second ordinateur « Reprendre ». L'appui de la télécommande ne se fait que si son bouton n'est pas grisé (`GESTE`, sonde-appel.mjs : `if (b && !b.disabled)`). Le second ordinateur a pris la main : la télécommande est désactivée, son appui ne part pas ; l'élève qu'elle devait marquer ne l'est nulle part ; la vérification « aucun ne se perd » est fausse sur chaque appareil.
+
+**Mesuré** (`m5`, X, machine libre et surveillée) : le premier geste (la télécommande) **pas fait**, le second (le clic droit de l'ordinateur) fait ; « les noms de l'appel à la télécommande : 0 » (la liste n'avait pas pu s'ouvrir).
+
+**Les deux chemins par lesquels le second ordinateur prend la main à sa reprise** :
+- **A — le site** (section 1) : sa propre écriture de `C/etat` sans `vifTs`, prise pour une version d'avant. Dans `m5`, en X, A a été évité de justesse : l'écriture est arrivée 24 ms **après** `DR_SES.ici` (75 650 contre 75 626), avec `vifTs`.
+- **B — la touche Échap de la sonde, que le site compte comme un geste** : `reprendre` (sonde-appel.mjs:126-127) clique « Reprendre », attend 3,5 s, puis tape Échap. Pour le site, toute touche hors du bandeau et de la télécommande est un geste qui prend la main (`dr-session.js:333`) : au prochain envoi dans les 2 s (`dr-session.js:93-94`), l'ordinateur prend la main. Mesuré dans `m5`, X : Échap à 77 386, `main null → (le second ordinateur) ← dr_sesEnvoyerMaintenant` à 78 856 (1 470 ms après).
+
+B : est-ce le site ou la sonde ? La règle de Paul (16:19, citée `dr-session.js:90-91`) : un ordinateur prend la main « par un geste (dévoiler, changer de diapo, écrire, noter une participation, le minuteur…) ». Le site compte **toute** touche. Si Échap (fermer un message) ne doit pas prendre la main, c'est le site ; si elle doit la prendre, c'est la sonde, qui suppose que la télécommande garde la main après la reprise. Je ne sais pas ce que veut Paul. Je mesure X sans cette touche (`MJPC_SANS_ECHAP=1`, ma copie) pour séparer A de B : en file.
+
+*(suite : XT mesuré, l'horloge simulée pour X et XT, P2H, T — en cours)*

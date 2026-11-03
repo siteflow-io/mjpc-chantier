@@ -1814,3 +1814,21 @@ MEMO
   > À jouer : ouvrir Chrome avec l'extension Claude · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 340
   >
   > MEMO
+- **12:04 — Paul, mot pour mot** (trois captures : la répétition, en-tête « RÉPÉTITION · 3 FRANKLIN ARETHA · heure 1/2 · lun. 02/11 08:57 », les diapos 9 et 11 « Groupe 1 : l'hypothèse », « Groupe 2 : l'hypothèse », des réponses d'élèves écrites au pilote — non recopiées, ce sont des données d'élèves) : « bon alors vu que j'ai été bloqué pour lancer la séance des dylan, j'ai utilisé la répétition, donc évidemment rien n'est enregistré. j'ai donc pris des captures d'écran. »
+- **12:05 — message à Paul, mot pour mot :**
+
+  > 341. Compris. Tes captures restent ici, dans la conversation : rien au dépôt, ce sont des réponses d'élèves.
+  >
+  > 342. Ce qui t'a manqué ce matin : pouvoir lancer, depuis la case, la séance que tu veux quand l'emploi du temps en propose une autre. Je propose : dans la case, sous « ▶ Ouvrir le pilotage et lancer », un lien « une autre séance… » qui liste les séances du chapitre ; celle que tu choisis se lance comme une vraie heure de la classe, et l'emploi du temps suit (les séances d'après se recalent). Ainsi, plus jamais bloqué, quelle que soit l'erreur.
+  >
+  > 343. La cause pour les 3 DYLAN reste à lire au hub, par ton Chrome avec l'extension Claude ; dis-moi quand il est ouvert.
+  >
+  > 344. Pour l'heure de ce matin, rien n'est enregistré aux 3 DYLAN. Si tu veux, je t'écris à partir de tes captures le texte « ce qu'on a fait aujourd'hui » pour École Directe, sans aucun nom d'élève, à coller toi-même.
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 12:05
+  >
+  > À jouer : 342 et 344, à commenter ou non ; Chrome pour 343 · en cours : ⑯ (avant 13:00) · ouvert : 316, 317, 342, 343, 344
+  >
+  > MEMO

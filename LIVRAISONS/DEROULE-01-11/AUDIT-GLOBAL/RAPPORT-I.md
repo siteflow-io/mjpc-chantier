@@ -153,3 +153,60 @@
 - **Le tableau ne se libère jamais de lui-même avant 4 h** : aucune annonce n'a de battement (§0.2), fermer l'onglet n'écrit rien (l. 23285-23286). Après 4 h : l'horloge pour une répétition ou un essai ; **l'image reste pour toujours pour une vraie heure** (l. 24371).
 - Une vraie heure abandonnée sans « Clore » tient le tableau distant **4 h** contre toute répétition et tout essai : la répétition le dit (« tableau distant pris »), l'essai en mode test ne le dit pas (1.1, H + T).
 - Pour lancer une autre heure pendant ces 4 h : le même chemin que 1.2 (une heure fraîche, pas la même, pas close) → la modale aux trois boutons « undefined ». Mesuré avec A vivant (1.2) ; avec A disparu : pas mesuré à part (le code passe par la même ligne, l. 23324-23325). La seule sortie mesurée : rouvrir la même case (« ▶ Reprendre l'heure »), puis « Clore l'heure » (1.1, H + H).
+
+---
+
+## 4 · LE LANCEMENT SUR UN RÉSEAU TRÈS LENT (registre, C16 303) — mesuré le 03/11 à 13:48
+
+*Par le geste, à la montre du navigateur, l'autre auditeur sans navigateur ouvert (0 processus `chrom` à 13:47:54, aucune sonde de la partie II en cours pendant la mesure) : l'ordinateur (1536 × 864) ouvre l'emploi du temps, clique la case des 3E Charles de Gaulle du 14/09 08:57 ; puis le faux hub rend **chaque lecture de cet ordinateur 3 s plus tard** (comme la mesure du registre) et l'ordinateur clique « ▶ Ouvrir le pilotage et lancer ». Ce qui est à l'écran est relevé à 0,5 · 1 · 2 · 3 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 20 · 25 · 30 · 36 s ; captures écran entier `Q4-*-NNs.png`.*
+
+### 4.1 Ce que Paul voit (un seul clic)
+| Après le clic | À l'écran | Un signe que ça charge ? |
+|---|---|---|
+| 0,5 s → 6 s | l'emploi du temps s'est **fermé aussitôt** (`edtLancer` l. 27138 : `edtFermer(); edtModaleFermer();`, avant toute lecture) ; derrière, le **Panneau prof, « Tableau de bord », « Session : aucune session »** | **aucun** : pas de message, pas d'indicateur, curseur normal |
+| 8 s → 10 s | **un écran noir**, avec seulement « ✕ Fermer l'atelier » en haut à droite (l'Atelier qui se monte) | aucun |
+| 12 s → 30 s | **le pilote, « 3E Charles de Gaulle · aucune heure lancée »**, la diapo 1 grisée, « ▶ Dévoiler » actif, « Où on en est » (« l'heure dépasse de 7 min »), la participation « 0 sur 29 présents » | aucun : rien ne dit que l'heure est en train de partir |
+| entre 30 et 36 s | l'heure est lancée (`S.lancee`) | — |
+- Les mêmes temps que le registre (12,6 s puis 33,7 s) à l'échelle près de ces relevés : le pilote paraît vers 12 s, l'heure part entre 30 et 36 s.
+- Au hub, pour un clic : `/site/cours_actif` posé **1 fois**, une seule heure dans la copie (`heures/2026-09-14_08h57-09h52_…`), **1** « lancement » au journal ; 11 écritures en tout ; aucune erreur.
+
+### 4.2 Ce que fait un second clic
+- **Sur le même bouton : impossible.** À 3 s, « ▶ Ouvrir le pilotage et lancer » n'est plus à l'écran, ni la case (l'emploi du temps est fermé dès le premier clic) : le second clic de la sonde ne trouve rien (`clique: false, case: false`). Résultat au hub identique au clic seul (1 `cours_actif`, 1 heure, 1 lancement).
+
+---
+
+## 2 · LE MINUTEUR (㉔ ㉕ ㉖ ㉗, ㊵) — mesuré le 03/11 de 13:56 à 14:25
+
+*Par le geste, à la montre du navigateur, sans l'autre auditeur (aucune sonde de la partie II en cours de 13:47 à la fin des mesures : relevé toutes les 30 s, `ps`). Quatre appareils : l'ordinateur du pilote (1536 × 864) avec sa fenêtre du tableau (« ⧉ Ouvrir le tableau », 1280 × 720), le tableau distant (`?vue=tableau`, un autre appareil, 1280 × 720), le téléphone (390 × 844, tactile) devenu télécommande par le QR. La session lancée, l'ordinateur va à la diapo la plus remplie de l'heure 1 et la dévoile entière ; il ouvre le panneau du ⏱ (mesuré), le referme ; puis **à la télécommande** : « Départ » (5:00), à 1 min et 5 min les quatre affichages lus au même instant (et le reste en millisecondes de chaque appareil), « Pause », 8 s, « Pause » de nouveau (= reprendre : `dr_tcMinut` l. 23631 appelle `dr_minuteurPause`, qui fait repartir un minuteur en pause, l. 20752). Même montre sur tous les appareils (comme des appareils réglés sur l'heure du réseau) ; puis montres décalées (2.6).*
+
+### 2.1 Le temps affiché, à la télécommande (㊵) — même montre partout
+| Moment | Répétition (pilote · télécommande · tableau distant · fenêtre) | Mode test | Vraie heure |
+|---|---|---|---|
+| 1,5 s après « Départ » | 04:58 · 04:59 · 04:59 · 04:59 (reste : 297 972 · 297 979 · 297 997 ms) | 04:59 ×4 (298 390 · 298 390 · 298 398) | 04:59 ×4 (298 466 · 298 466 · 298 474) |
+| 1 min | 04:01 ×4 (240 056 · 240 056 · 240 077) | 04:01 ×4 (240 057 · 240 057 · 240 067) | 04:01 ×4 (240 083 · 240 084 · 240 091) |
+| 5 min moins 2 s | 00:03 ×4 (2 060 · 2 061 · 2 081) | 00:03 ×4 (2 057 · 2 057 · 2 060) | 00:03 ×4 (2 081 · 2 080 · 2 089) |
+| « Pause » + 1,5 s, puis + 9,5 s | 00:02 ×4, immobile (1 995 partout) | 00:02 ×4, immobile (1 980 partout) | 00:03 ×4, immobile (2 015 partout) |
+| « Reprendre » + 1,5 s | 00:01 ×4 (452 · 451 · 456) | 00:01 ×4 (449 · 450 · 456) | 00:01 ×4 (496 · 496 · 500) |
+- **Avec la même montre, l’écart est de 0 à 25 ms dans les trois sessions** (le tableau distant 3 à 25 ms derrière le pilote ; la télécommande à 0 à 7 ms) ; l'affichage diffère au plus d'une seconde, à l'instant où la seconde change (1,5 s : le pilote 04:58, les autres 04:59 — chaque écran redessine ses chiffres à son rythme). La pause fige les quatre au même chiffre ; la reprise repart du même reste.
+- Le décalage que Paul a vu le matin ne se reproduit donc pas avec des montres égales : voir 2.6 (montres décalées).
+
+### 2.2 Le panneau du ⏱ au pilote couvre-t-il la diapo (㉗) — rectangles mesurés, 1536 × 864
+| Session | Le panneau (x, y, largeur × hauteur) | La diapo du pilote | Recouvrement |
+|---|---|---|---|
+| Répétition | 616, 632 · 350 × 40 | 294, 179 · 876 × 492 (bas à 671) | **13 661 px² = le panneau entier est posé sur la diapo** (son bas) |
+| Mode test | 538, 676 · 350 × 40 | 216, 179 · 954 × 536 (bas à 715) | **13 661 px², le panneau entier sur la diapo** |
+| Vraie heure | 538, 676 · 350 × 40 | 216, 179 · 954 × 536 | **13 661 px², le panneau entier sur la diapo** |
+- Le code : `position:fixed; z-index:9000` (l. 16558), posé 8 px **au-dessus** du bouton ⏱ (`dr_minuteurPanneau`, l. 20742 : `top = r.top - h - 8`) ; le ⏱ est dans la barre juste sous la diapo, donc le panneau monte sur la diapo. Sur la diapo mesurée (« Les compétences du chapitre 1 »), il ne couvre aucune ligne de texte (il est sur le bas, à côté de la légende) ; sur une diapo dont le texte descend jusqu'en bas, il le couvrirait : pas mesuré diapo par diapo. Capture `Q2-R-1-pilote-panneau.png` (scratchpad).
+
+### 2.3 « Ce que voit la classe » montre-t-il le minuteur (㉔)
+- Sans clic, la colonne de droite dit « Diapo suivante » (aucun minuteur) ; avec « ⧉ Ce que voit la classe » cliqué : mesuré en 2.5.
+- Le code : `vueDroite` (l. 18308-18310) rend la diapo seule dans la colonne (`rendre(inner, copie)`) ; le minuteur du tableau (`#dr-tab-minut`) n'existe que dans la page du tableau (l. 21770).
+
+### 2.4 Son allure, comparée au site (㉖) — styles calculés par le navigateur
+| | Au tableau (`#dr-tab-minut`) | Le site (le pilote : son minuteur, ses boutons, la page) |
+|---|---|---|
+| Police | **`ui-monospace, Menlo, Consolas, monospace`**, gras, 64 px à 1280 de large | **« EB Garamond », Georgia, serif** (le chiffre du minuteur du pilote 15 px gras ; les boutons ; la page) |
+| Couleur des chiffres | **vert `#3ddc84`** au départ, puis jaune, orange, rouge selon le temps écoulé (l. 21782) ; or `#d4a017` par défaut | or `#e4b45c` (rgb 228, 180, 92) |
+| Fond | **noir pur `#000`**, ombre portée | brun très sombre (page `#0d0b0a`, boutons `#3a2c14`) |
+| Coins, bord | coins 9 px, **sans bord** | coins 8 px, **bord or de 1 px** |
+- Côte à côte (sans nom d'élève) : `allure-minuteur.png` (ce dossier) — le minuteur du tableau, le panneau du pilote et ses boutons, le minuteur de la télécommande.

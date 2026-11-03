@@ -1557,3 +1557,23 @@ MEMO
   >
   > MEMO
 - **06:44 — Paul, mot pour mot** : « Promeus »
+- **06:46 — la promotion 8.81.0-⑭** : le candidat (md5 `fb2ba5bb`, 3 008 841 o) poussé en production (commit `88957c5`, blob `25383d503ecb`) ; l'adresse publique le rend bit à bit à 06:48:13 (`APP_VERSION="8.81.0-⑭"`). Les documents de suite (production `174d848`) : le point de retour (blob `9a96d9508a05`), le journal, le registre ✔ (㊱ ㊲ ㊳), l'index des fonctions (2 364), « où trouver quoi » avec l'adresse `index.html?n=3e&v=8.81.0`.
+- **06:50 — message à Paul, mot pour mot :**
+
+  > 305. En ligne : la 8.81.0-⑭, l'appel et la fin d'heure ensemble. Le site la sert à l'identique depuis 06:48. Le point de retour (la 8.80.0-⑬), le journal, le registre, l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > À tester, geste par geste, avant ta classe, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.81.0 :
+  >
+  > 1. Le panneau du prof dit 8.81.0-⑭.
+  > 2. L'emploi du temps, sans rien lancer : la case d'hier matin des 3 FRANKLIN ARETHA dit « Close · … diapos jouées · 9 reportées » et « séance pas finie ».
+  > 3. Leur case suivante dit « Poésie et peinture : le Romantisme en question », « heure 2 · suite », et, ouverte, « elle commence par les 9 diapos reportées ». Leurs séances suivantes sont décalées d'une case.
+  > 4. Ouverte, cette case commence par l'appel : la liste de la classe, un clic marque un absent, un second clic le défait. Ne lance pas : ferme.
+  > 5. En mode test, une case à venir : l'appel d'abord, deux absents, « ▶ Ouvrir le pilotage et lancer — appel fait : 2 absents » ; à la première diapo, « … sur … présents ».
+  > 6. En mode test, la télécommande (📱 puis le QR) : le bouton « Appel » ouvre la liste ; un appui marque, l'ordinateur le montre ; la diapo avec ses grisés ; « A− · 32 pt · A+ » change le texte au tableau.
+  > 7. En mode test, « ⏩ aller à 5 minutes de la fin » : l'étape « ce qui n'a pas été fait » liste les diapos non faites ; le bouton « Reporter les n diapos non faites… » est en haut, sans défiler ; un clic les décide toutes.
+  >
+  > 03/11/2026 06:50
+  >
+  > À jouer : les 7 gestes ci-dessus · en cours : rien · ouvert : ㉟, ⑯, ㉚, le lancement sur un réseau très lent
+  >
+  > MEMO

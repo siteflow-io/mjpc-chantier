@@ -1505,3 +1505,16 @@ MEMO
 - **00:23 — la conscience** : ZT est un défaut de ㉞, en ligne depuis 21:43, hors du mandat de l'appel : il sera fermé à part. L'exécutant de l'appel garde ce qui est prouvé, sort ZT des vérifications qui comptent (gardé comme mesure), mesure sans corriger la partie M (le cas de la classe : l'ordinateur du pilote, montre en retard de 3 min, reprend-il la main à un téléphone en avance ? et l'inverse ; « Reprendre avec la télécommande » depuis un téléphone en retard), rejoue tout, pousse avant 01:00 si tout ce qui compte est vert.
 - **00:51 — l'exécutant de l'appel a poussé** `4163180c9` (l'assemblé md5 `28ade58c`) : le dernier geste à l'heure du hub, `absentA`, Z 6 / 0 ; sa sonde 114 / 0 ; ㉞ 105 / 0 après une retouche de sa sonde (son faux hub refusait la clé `.sv` que le vrai hub résout : 105 / 3 avant, toutes en A) — la retouche lue par la conscience : `resoudreSv` avant le contrôle des clés, rien d'autre ; le parcours vert (K15, K15-test). La mesure M (le cas de la classe, ordinateur et téléphone, montres à ±3 min, « Reprendre ») : 7 vertes sur 7. ZT (deux télécommandes à ±3 min) : un geste perdu sans le dire, un défaut de ㉞ en ligne depuis 21:43, porté au registre (`dr-session.js`, `dr_sesEnvoyerMaintenant`, `dr_sesRecu`).
 - **00:53 — la conscience** : la base de la fin d'heure posée (`c16-fin-heure/BASE` = `4163180c9`) ; le banc complet sur l'appel seul lancé à 00:52 (étape 14 ㉞, 15 l'appel, 1-12, 13), l'assemblé `28ade58c` refait à l'identique.
+- **00:56 — message à Paul** (fin de tour) : l'appel poussé et prouvé, le banc complet jusqu'à 2:15 environ ; la mesure de la main en classe verte (7 sur 7) ; un défaut en ligne, deux télécommandes aux montres décalées, au registre, à décider le matin ; la fin d'heure codée par-dessus l'appel, poussée prouvée avant 3:45.
+- **01:05 — Paul, mot pour mot** : « Il n'y a jamais deux télécommandes »
+- **01:06 — message à Paul, mot pour mot :**
+
+  > 297. Entendu : le cas des deux télécommandes sort de la liste, ce n'est pas une dette. Ton cas (l'ordinateur et une télécommande) est mesuré vert. Il ne reste rien d'ouvert sur l'appel.
+  >
+  > À tester : la liste de 21:48 (8.80.0-⑬).
+  >
+  > 03/11/2026 01:06
+  >
+  > À jouer : les tests de 21:48 · en cours : le banc de l'appel (jusqu'à 2:15 environ) ; l'exécutant de la fin d'heure (le code) · ouvert : 296
+  >
+  > MEMO

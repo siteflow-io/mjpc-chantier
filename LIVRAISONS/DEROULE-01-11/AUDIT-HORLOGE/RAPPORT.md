@@ -15,8 +15,8 @@ L'outil : `sonde-appel-trace.mjs` (ce dossier) = `APPEL/sonde-appel.mjs` de `ced
 
 **Compté** (assemblé `bc7cc9cd`, vraie horloge `MJPC_HORLOGE=date`) :
 - la conscience : P2T rouge 4 sur 4 (base + 3 rejeux) ;
-- moi, P2T seule : rouge 3 sur 3 (une fois sans piège, deux fois avec) ; dans les 3, l'état vivant du second ordinateur au hub dit `main` = lui, avant tout geste de sa part ;
-- moi, la même P2T à l'horloge simulée (`page.clock`, sans la variable) : verte 2 sur 2.
+- **mes passages m1 à m4 (15:47:32-15:59:12) sont ÉCARTÉS des comptes** : l'exécutant du lot 1 a lancé ses sondes pendant cette période (ses sorties datées 15:42 puis 15:56:01-15:59:39 ; son navigateur vu à 15:58:30, pendant mon passage de 15:58:10) ; je ne peux pas prouver qu'aucun de mes passages n'a partagé les 2 processeurs avec lui. Ce qu'ils montrent (la suite d'appels ci-dessous) reste une description, à confirmer par des passages propres. Pour info seulement : P2T rouge 3 sur 3 à la vraie horloge, verte 2 sur 2 à l'horloge simulée ; P2H (sonde d'origine, vraie horloge) rouge 3 sur 3 ; P2H piégée rouge à la vraie horloge comme à l'horloge simulée (1 sur 1 chacune).
+- Désormais chaque passage passe par `mesurer.sh` (ce dossier) : machine libre avant, surveillée toutes les 0,5 s pendant (un navigateur qui ne descend pas du passage : le passage s'arrête et il est dit « CHEVAUCHÉ »), témoin retiré après.
 
 **La cause, dans le code** (`LIVRAISONS/INTEGRATION/dr/`) :
 1. Le second ordinateur qui reprend un essai pose dans son magasin `C/etat` avec `maj` = l'heure de l'état vivant lu (`dr-session.js:373`, `dr_sesReprendreEssai`).

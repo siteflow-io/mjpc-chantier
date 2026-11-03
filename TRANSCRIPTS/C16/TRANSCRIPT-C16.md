@@ -2269,3 +2269,25 @@ MEMO
   > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **20:41 — Paul, mot pour mot :**
+
+  > Penses tu qu'une part des bugs actuels a été générée par une absence de recursive mas?
+- **20:42 — la conscience** : recherche web (RecursiveMAS, arXiv 2604.25917 : communication par états cachés entre agents, module RecursiveLink entraîné, modèles ouverts ; inutilisable entre agents qui ne s'échangent que du texte).
+- **20:42 — message à Paul, mot pour mot :**
+
+  > 416. Non, je ne pense pas. RecursiveMAS (un article d'avril 2026) fait travailler plusieurs modèles ensemble : ils se passent leurs « pensées » internes au lieu de texte, par un petit module entraîné entre eux. Il faut avoir la main sur l'intérieur des modèles (des modèles ouverts, comme Qwen ou Llama). Les exécutants et moi, nous ne pouvons échanger que du texte : ce n'est pas utilisable ici.
+  >
+  > 417. Et ce qui est mesuré pointe ailleurs. Les défauts réglés ce soir étaient déjà dans la version en ligne : des appareils qui écrivent en même temps et se marchent dessus (le geste effacé à la reprise, le tableau qui recule, les états renvoyés sans arrêt). Nos tests ne les voyaient pas : ils tournaient sur une horloge simulée, qui changeait l'ordre des minuteries, et sur un faux hub qui ne se comportait pas toujours comme Firebase. La faute principale est dans les tests, pas dans la façon dont les agents se parlent. Depuis 367, mon banc tourne à la vraie horloge.
+  >
+  > Sources :
+  > - [Recursive Multi-Agent Systems (arXiv 2604.25917)](https://arxiv.org/pdf/2604.25917)
+  > - [Recursive Multi-Agent Systems, résumé (Moonlight)](https://www.themoonlight.io/review/recursive-multi-agent-systems)
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 20:42
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

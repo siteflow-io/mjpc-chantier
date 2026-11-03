@@ -2367,3 +2367,19 @@ MEMO
   > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **21:14 — Paul, mot pour mot :**
+
+  > Il faudra que ce soit avant demain. 23h
+- **21:15 — la conscience** : le candidat préparé (scratchpad `promo-8820/index.html`) : l'assemblé `48c2205e` (refait à l'audit) avec la seule ligne `APP_VERSION="8.82.0-⑮"` ; md5 `658d7987`, 3 030 177 o ; la production d'aujourd'hui = `promo-8812` hors la ligne de version (vérifié).
+- **21:15 — message à Paul, mot pour mot :**
+
+  > 426. Noté : avant 23h. Mon banc finit vers 22:30 au plus tôt (mesuré par morceaux). S'il est vert, je te demande « promeus » aussitôt, avec les gestes à tester ; la mise en ligne prend ensuite quelques minutes. S'il a un rouge, pas de mise en ligne ce soir : je te le dis, avec la cause si je la sais.
+  >
+  > À tester : les deux gestes de 423, sans rien lancer.
+  >
+  > 03/11/2026 21:15
+  >
+  > À jouer : 423 · en cours : mon banc (lancé à 21:11) · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

@@ -2467,3 +2467,16 @@ MEMO
   > À jouer : demain, « promeus » · en cours : mon banc, le témoin ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **22:55 — message de fin à Paul, mot pour mot :**
+
+  > Le transcript est poussé ; le témoin a fini la base, il joue la nouvelle version.
+  >
+  > À tester : rien ce soir.
+  >
+  > 03/11/2026 22:55
+  >
+  > À jouer : demain, « promeus » · en cours : le témoin ; le contrôle de 01:30 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **23:11 — la conscience** : la tâche du banc arrêtée à sa limite de 2 h (lancée 21:11), pendant le témoin I sur le candidat ; I et II sur la base finis (code 0). Le reste du témoin relancé seul (23:11:27), `temoin-reste.sh` : les mêmes commandes que `temoin-sessions.sh`, seulement ce qui manque (I et II sur le candidat), puis le diff ; le candidat vérifié `48c2205e` avant.

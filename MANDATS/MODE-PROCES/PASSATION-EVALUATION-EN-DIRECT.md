@@ -54,9 +54,11 @@ numéros (la conversation suivante continue à 92).
 1. Relier la conversation au dossier du chapitre sur la clé de Paul :
    `E:\AAA COURS 2026 2027\4 ème\Chapitre sur la ville de paris, le procès` (la lettre de la clé
    peut changer d'un ordinateur à l'autre).
-2. Relire comment Paul a mené et noté le procès l'an dernier : le dossier
-   `Archives\Chapitre 3 - annee 2025-2026\` (les diaporamas de 2025-2026, dont « S3 à la fin »),
-   diapos et notes du présentateur.
+2. Relire comment Paul a mené et noté le procès l'an dernier : **le dossier avec les fiches du
+   procès** (Paul, 3/11, 18:12 : « ce n'est pas le diaporama, c'est le dossier avec les fiches du
+   procès »). Son chemin exact n'est pas connu : le chercher sur la clé (le dossier du chapitre, et
+   son sous-dossier `Archives\Chapitre 3 - annee 2025-2026\`) ; s'il n'y est pas, demander à Paul où
+   il est. Pas les diaporamas.
 3. Lire la page à recycler : `Séance 6, je cherche mes preuves\Point-groupes-S6.html` (55 785 octets
    le 2/11).
 4. Ce qui a cassé l'an dernier, personne ne le sait encore (ni les conversations ni le sas n'en

@@ -206,8 +206,9 @@ pour vendredi, on prépare le procès comme j'ai fait l'année dernière, la seu
 l'évaluation en live. Il me faut quelque chose qui ne casse pas comme l'année dernière pour noter
 tous les critères facilement. »
 
-**Non mesuré :** la clé de Paul n'était pas branchée le 3/11 à 17:46 ; le diaporama de 2025-2026
-(`Archives/Chapitre 3 - annee 2025-2026/`) n'a pas été relu. Ce qui a cassé l'an dernier : je ne sais
+**Non mesuré :** la clé de Paul n'était pas branchée le 3/11 à 17:46 ; le dossier avec les fiches
+du procès de l'an dernier (Paul, 18:12 : « ce n'est pas le diaporama, c'est le dossier avec les
+fiches du procès ») n'a pas été relu, et son chemin exact n'est pas connu. Ce qui a cassé l'an dernier : je ne sais
 pas (aucune trace dans les conversations ni au sas).
 
 ## 11. L'évaluation en direct — proposée le 3/11 (points 74 à 80), en attente de Paul

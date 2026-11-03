@@ -1926,3 +1926,4 @@ MEMO
   >
   > MEMO
 - **13:00 — la conscience** : 13:00 atteint pour ⑯ ; l'exécutant n'a rien poussé et aucun navigateur ne tourne depuis 12:44 : il pousse ce qui est prouvé, sans plus de navigateur ; la machine rendue aux deux auditeurs (MACHINE-MESURE retiré). L'auditeur I signale, lu dans le code : la fenêtre « Une heure joue déjà… / Rejoindre / Lancer quand même / Annuler » (`dr_sesDemander`) passe ses boutons en {label, action}, alors que `atModaleChoix` lit {lib, fn} : trois boutons « undefined » attendus ; à mesurer par le geste.
+- **13:00 — l'exécutant de la frappe au tableau et de ⑯ a été arrêté** (l'outil le dit : « stopped by the user », ne sera pas repris). Rien n'est poussé de son travail ; son dossier local (`/home/claude/ex-frappe-tableau`) garde ses sondes corrigées (la montre du navigateur, `MJPC_HORLOGE=date`), pas au sas. Ses mesures sont au journal (10:3x, 11:15). La conscience ne le relance pas sans le mot de Paul.

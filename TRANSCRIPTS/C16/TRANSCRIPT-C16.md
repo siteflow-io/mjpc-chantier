@@ -2237,3 +2237,35 @@ MEMO
 
 - **20:27 — l'exécutant du complément (message à la conscience)** : premier morceau poussé, `9b408b030` (`deroule/lot1-complement`, assemblé md5 `48c2205e`). Prouvé sur l'après, vraie horloge, machine seule : T 10/10 (240 vérifications, 0 échec) ; PG 5 passages × 9 cas, 0 geste perdu, 0 chemin A ; « Reprendre » au second ordinateur, vraie heure, mode test, répétition, 5/5 chacune (téléphone désactivé, sa phrase, puis réactivé). Causes en plus : le tableau qui recule, l'espace insécable (sonde), l'avalanche (clés non triées), le faux hub qui livrait un état vieux après un récent. Reste : la base (PG, RP), RPF ×5, la non-régression base et après, la NOTE.
 - **20:28 — audit de la conscience sur `9b408b030`** : un commit ; 5 fichiers : `dr-session.js` (seul fichier du site, +38 −12), l'assemblé, `sonde-appel.mjs`, `sonde-session.mjs`, `LOT1-COMPLEMENT/sonde-session-trace.mjs` (l'outil de l'auditeur, adapté). Ni `AUDITS/`, ni `APP_VERSION`, ni `redaction.html`, ni `correction_dictee.html`, ni la production. Réassemblé depuis les sources du commit : md5 `48c2205e`, identique octet pour octet. Aucun nom d'élève dans les ajouts. Le code lu : « Reprendre » n'est plus mis à part des gestes et prend la main une fois le premier état posé (`dr_sesPrendreRejoint`, pas sur la télécommande) ; `vifTs` toujours écrit par cette version (1 avant la session posée ; aussi dans l'état d'un essai repris) ; la session comparée par sa signature (chemin C) ; rien ne part au tableau pendant qu'un appareil rejoint (`dr_sesAttend`, existante) ; les clés triées dans `dr_sesRange` ; l'espace insécable comptée comme une espace dans `dr_sesFus`. Ça va. Rien écrit à Paul (rien à décider, promouvoir ni tester).
+
+- **20:28 — message de fin à Paul, mot pour mot :**
+
+  > Rien à tester pour l'instant.
+  >
+  > 03/11/2026 20:28
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO
+- **20:39 — Paul, mot pour mot :**
+
+  > Ok comment tu communiques en interne avec les exécutants?
+- **20:39 — message à Paul, mot pour mot :**
+
+  > 411. Je lance moi-même chaque exécutant, depuis ma session : un exécutant neuf, sans historique. Je lui donne un court texte qui l'envoie au mandat, écrit au sas (dans `MANDATS/`). Il lit le mandat lui-même.
+  >
+  > 412. Il travaille dans son propre dossier, sur sa propre branche du sas, jamais sur main. Nous partageons la même machine : un fichier posé dans mon dossier de travail dit qui a le navigateur, pour ne jamais en lancer deux à la fois.
+  >
+  > 413. Il m'écrit par un message interne, en trois lignes, à chaque morceau prouvé et poussé : ce qu'il a poussé, ce qui est prouvé (compté), ce qui reste. J'en ai reçu un à 20:27. Je peux lui répondre par le même chemin. Je l'ai fait cet après-midi avec l'exécutant du lot 1, pour lui dire de lire l'heure au lieu de l'estimer.
+  >
+  > 414. Je ne le crois pas sur parole. Je relis ce qu'il a poussé sur GitHub : les fichiers touchés, le fichier final refait à l'identique, le code, aucun nom d'élève. Puis je fais mon banc, une seule fois, avant de te demander « promeus ».
+  >
+  > 415. Tu ne vois pas ces messages. Ils sont recopiés dans le transcript, avec mes vérifications : https://github.com/siteflow-io/mjpc-chantier/blob/main/TRANSCRIPTS/C16/TRANSCRIPT-C16.md
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 20:39
+  >
+  > À jouer : rien · en cours : la réparation (399, 400) sur le lot 1, ses derniers tests · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

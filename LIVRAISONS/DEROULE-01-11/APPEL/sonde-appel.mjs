@@ -13,6 +13,12 @@
 //  P4 une heure jouée par la 8.79.0-⑫ (lignes « appel » sans élève, absents du pilote et de la case), relue par cette version
 //  Q  la télécommande (ajout de la conscience, Paul 22:18-22:22) : la diapo dessinée comme au pilote (les gris comptés), aucun geste dessus ; A+ puis A−
 //     au pilote et au tableau en moins de 0,5 s ; grisés quand l'ordinateur a la main     (Q vraie heure, QT mode test)
+//  LA RÈGLE DE PAUL (03/11 17:04 : « n'importe quelle touche » reprend la main ; 17:20 : « oui le téléphone doit se désactiver dans tous les cas ») — le complément
+//     du lot 1 : « Reprendre » sur un second ordinateur est un geste ; la télécommande se désactive et le dit, puis reprend la main par « Reprendre avec la
+//     télécommande » avant ses gestes (P2H, P2T, X, XT) ; la sonde PG de l'auditeur de l'horloge entre au banc ; RP (RPH, RPT, RPR) : « Reprendre » dans les trois
+//     sessions (vraie heure, mode test, répétition), MJPC_RP_N fois chacune ; RPF : « Rejoindre la séance en cours » dans la fenêtre « Une répétition joue déjà… ».
+//  PG un geste fait juste avant (200, 500, 800 ms après le clic sur « Reprendre » du second ordinateur : une prise de parole ou ▶ à la télécommande, ▶ à
+//     l'ordinateur) : 5 s après, il est sur chaque pilote et au tableau (aucun geste perdu)
 //  X  deux gestes d'appel croisés à moins de 100 ms (la case avant l'heure, le pilote, la télécommande, un second ordinateur, la case pendant l'heure) :
 //     deux élèves, aucun ne se perd ; un même élève, le dernier geste compte ; au hub et sur chaque appareil     (X vraie heure, XT mode test)
 import fs from 'fs'; import path from 'path'; import { createRequire } from 'module'; import { createHash } from 'crypto';
@@ -28,7 +34,7 @@ const R = []; let nb = 0, echecs = 0; let anonF = s => s; const dire = s => { s 
 let MESURE = false, mnb = 0, mrouges = 0;   /* MESURE : ce qui suit est mesuré et dit, sans compter (« mesure vert / mesure ROUGE ») — ZT et la mesure de la main (㉞ : la main jugée aux montres) */
 const verif = (k, ok, quoi, det) => { if (MESURE) { mnb++; if (!ok) mrouges++; } else { nb++; if (!ok) echecs++; } dire((MESURE ? (ok ? '  mesure vert   ' : '  mesure ROUGE  ') : ok ? '  ok     ' : '  ÉCHEC  ') + k + ' · ' + quoi + (det != null && det !== '' ? ' — ' + anonF(typeof det === 'string' ? det : JSON.stringify(det)).slice(0, 1400) : '')); return !!ok; };
 const p = ms => new Promise(r => setTimeout(r, ms));
-const PARTIES = String(process.env.MJPC_PARTIES || 'M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT,X,XT,Z,ZT').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
+const PARTIES = String(process.env.MJPC_PARTIES || 'M,P1H,P1T,P2H,P2T,P3H,P3T,P4,Q,QT,X,XT,Z,ZT,PG,RPH,RPT,RPR,RPF').split(',').map(x => x.trim()); const joue = k => PARTIES.includes(k);
 const TAILLES = String(process.env.MJPC_TAILLES || '1366x768,1536x864,1920x1080').split(',').map(t => t.split('x').map(Number));
 const IMG_DEFAUT = path.join(RACINE, 'MANDATS/CANONS-DIAPOS/1-presentation-du-chapitre.png');
 const IMG_OUV = { 'chapitre.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-chapitre.png'), 'seance-1.png': path.join(RACINE, 'MANDATS/CANONS-DIAPOS/captures-29-10/img-seance.png') };
@@ -95,12 +101,15 @@ const qrSvg = d => { try { if (process.env.MJPC_PYQR && fs.existsSync(process.en
 const pousserFlux = c => { const cc = c.replace(/\/+$/, ''); ABOS.forEach(a => { if (!(cc === a.ch || cc.startsWith(a.ch + '/') || a.ch.startsWith(cc + '/'))) return; if (a.pg.isClosed()) return;
   a.pg.evaluate(([id, d]) => { try { window.__esPousser && window.__esPousser(id, d); } catch (e) {} }, [a.id, JSON.stringify(lireH(a.ch))]).catch(() => {}); }); };
 const fauxFlux = () => { const ES = {}; let n = 0;
-  window.__esPousser = (id, d) => { const e = ES[id]; if (!e || e.ferme) return; const ev = { data: JSON.stringify({ path: '/', data: JSON.parse(d) }) }; (e.l.put || []).forEach(f => { try { f(ev); } catch (x) {} }); };
+  window.__esPousser = (id, d) => { const e = ES[id]; if (!e || e.ferme) return; e.pousse = true; const ev = { data: JSON.stringify({ path: '/', data: JSON.parse(d) }) }; (e.l.put || []).forEach(f => { try { f(ev); } catch (x) {} }); };
   window.EventSource = function (u) { const id = 'es' + (++n); const self = this; this.l = {}; this.ferme = false; ES[id] = this; const s2 = String(u);
     this.addEventListener = (t, f) => { (self.l[t] = self.l[t] || []).push(f); }; this.close = () => { self.ferme = true; }; this.onerror = null;
     if (s2.indexOf('firebasedatabase.app') < 0) { setTimeout(() => { if (self.onerror) self.onerror({}); }, 0); return; }
     const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, ''));
-    window.__hubEcoute(id, c).then(d => setTimeout(() => window.__esPousser(id, d), 0)); }; };
+    /* le complément du lot 1 : la valeur lue à l'abonnement n'est livrée que si aucune écriture plus récente ne l'a déjà été — le vrai flux (REST de Firebase) envoie
+       l'état du chemin au branchement, puis chaque changement dans l'ordre du serveur ; avant, ce faux hub la livrait parfois APRÈS une écriture plus récente
+       (mesuré, PG : l'état du geste reçu, puis 90 ms après un état écrit 6 s plus tôt — un ordre que le vrai flux ne donne jamais) */
+    window.__hubEcoute(id, c).then(d => setTimeout(() => { if (!self.pousse) window.__esPousser(id, d); }, 0)); }; };
 const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q = '?n=3e', test = false, prof = true, h = '09:00', jour = '2026-09-14', tel = false, decal = 0 }) => {   /* decal : la montre de cet appareil, en avance (+) ou en retard (−), en ms */
   const ctx = await nav.newContext(Object.assign({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }, tel ? { isMobile: true, hasTouch: true } : {}));
   await ctx.exposeBinding('__hubEcoute', (src, id, ch) => { ABOS.push({ pg: src.page, id, ch: ch.replace(/\/+$/, '') }); return JSON.stringify(lireH(ch)); }); await ctx.addInitScript(fauxFlux); const errs = [], boites = [];
@@ -123,8 +132,21 @@ const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array
 const lancerClasse = async (o, jour = '2026-09-14') => { const pg = o.pg; if (!(await clicTexte(pg, 'button', 'edtOuvrir()'))) await pg.evaluate(() => edtOuvrir()); await p(1500);
   const ok = await pg.evaluate(j => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const x = cs.find(e => (e.getAttribute('onclick') || '').indexOf(j) >= 0); if (!x) return false; x.click(); return true; }, jour); await p(800);
   const l = ok && await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'); await p(3500); await pg.keyboard.press('Escape'); await p(400); return !!l; };
-const reprendre = async o => { const pg = o.pg; const b = await pg.waitForSelector('#ses-reprise-oui', { state: 'visible', timeout: 9000 }).then(() => pg.click('#ses-reprise-oui')).then(() => true).catch(() => false);
-  if (!b) return false; await p(3500); await pg.keyboard.press('Escape'); await p(400); return true; };
+/* le complément du lot 1 : `avant` se lit 3,5 s après le clic sur « Reprendre », AVANT la touche Échap (une touche est un geste : elle prendrait la main d'elle-même) */
+const reprendre = async (o, avant) => { const pg = o.pg; const b = await pg.waitForSelector('#ses-reprise-oui', { state: 'visible', timeout: 9000 }).then(() => pg.click('#ses-reprise-oui')).then(() => true).catch(() => false);
+  if (!b) return false; await p(3500); if (avant) await avant(); if (!process.env.MJPC_SANS_ECHAP) await pg.keyboard.press('Escape'); await p(400); return true; };   /* AUDIT-HORLOGE : MJPC_SANS_ECHAP=1, la reprise sans la touche Échap */
+/* LA RÈGLE (le complément du lot 1) : qui a la main sur chaque pilote (le nom de l'appareil, lu à DR_SES.main) ; la télécommande désactivée, sa phrase */
+const PHRASE_DESACT = 'Télécommande désactivée : l’ordinateur a repris la main';
+const mainsDe = async liste => { const ids = {}; for (const [n, pg] of liste) ids[n] = pg ? await pg.evaluate(() => DR_SES.id).catch(() => null) : null; const nom = id => Object.keys(ids).find(k => ids[k] && ids[k] === id) || (id ? 'un autre' : 'personne');
+  const r = {}; for (const [n, pg] of liste) r[n] = pg ? nom(await pg.evaluate(() => DR_SES.main).catch(() => null)) : null; return r; };
+const tcDesact = async (tl, ms = 3000) => { let t = null; const t0 = Date.now(); while (Date.now() - t0 < ms) { t = await texteDe(tl.pg, '#tc-bas .desact'); if (t) break; await p(100); }
+  const grises = await tl.pg.evaluate(() => { const l = Array.from(document.querySelectorAll('#tc-bas button[data-a]')).filter(b => b.dataset.a !== 'main' && b.dataset.a !== 'appel-x' && !b.dataset.borne); return l.length > 0 && l.every(b => b.disabled && /désactivée/.test(b.title)); }).catch(() => false);
+  return { t, grises, bouton: !!(await tl.pg.$('#tc-bas button[data-a="main"]')) }; };
+const tous_ = (r, x) => Object.values(r).every(v => v === x);
+/* « Reprendre avec la télécommande » : la main à la télécommande sur chaque pilote, plus de phrase, les commandes rendues (≤ 2 s) */
+const tcReprendre = async (tl, liste) => { await tcTap(tl, '#tc-bas button[data-a="main"]'); let r = null, t = null; const t0 = Date.now();
+  while (Date.now() - t0 < 2000) { r = await mainsDe(liste); const d = await tl.pg.$('#tc-bas .desact'); const libre = await tl.pg.evaluate(() => Array.from(document.querySelectorAll('#tc-bas button[data-a="suiv"]')).every(b => !b.disabled)).catch(() => false); if (tous_(r, 'télécommande') && !d && libre) { t = Date.now() - t0; break; } await p(60); }
+  return { t, mains: r }; };
 const ouvrirTableau = async (o, W = 1280, H = 720) => { if (!(await o.pg.isVisible('#bvideoproj').catch(() => false))) return null; const [fen] = await Promise.all([o.ctx.waitForEvent('page', { timeout: 8000 }).catch(() => null), o.pg.click('#bvideoproj')]); await p(1500); if (fen) await fen.setViewportSize({ width: W, height: H }); await o.pg.bringToFront(); return fen; };
 const ouvrirAtelier = async o => { const pg = o.pg; if (!(await clicTexte(pg, 'button', 'atelierOuvrir()'))) await pg.evaluate(() => atelierOuvrir()); await p(1000); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(800);
   if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await p(1500);
@@ -236,6 +258,27 @@ const lireRelecture = async (pg, nom) => { const recit = (await texteDe(pg, '#ec
 const relireDepuisLaCase = async pg => { const ok = await pg.evaluate(() => { const b = document.querySelector('#edt-modale [data-relire]'); if (!b) return false; b.click(); return true; }).catch(() => false); await p(4000); await garde(pg); return ok; };
 const appelDe = passe => { const i = passe.search(/L.appel\b/i); if (i < 0) return ''; const j = passe.search(/Notes au fil/i);  return passe.slice(i, j > i ? j : i + 600); };
 const reset = () => { HUBN = ranger(store()) || {}; ECR = []; REFUSES.length = 0; ABOS.length = 0; RETARD = null; };
+/* AUDIT-HORLOGE (C16 367, l'auditeur) : MJPC_TRACE=1 — qui a la main sur chaque appareil, et chaque état vivant reçu par le faux hub (qui, quand, par, ts, main, mainTs).
+   Les heures en ms depuis le 14/09 09:00 (l'heure des pages au lancement de la sonde). Rien d'autre ne change. */
+const TRACE = !!process.env.MJPC_TRACE; const T09 = new Date('2026-09-14T09:00:00+02:00').getTime();
+const rel = t => (t == null || t === '' || isNaN(+t)) ? String(t) : String(+t - T09);
+const mainDe = async (nom, pg) => pg ? pg.evaluate(() => { try { return { id: DR_SES.id, main: DR_SES.main, mainTs: DR_SES.mainTs, mainTc: DR_SES.mainTc, ici: DR_SES.ici ? DR_SES.ici.sorte : null, att: DR_SES.attendrePremier || 0, rej: DR_SES.rejoint || 0, geste: DR_SES.geste || 0, applyTs: DR_SES.applyTs || 0, now: Date.now(), tc: window.DR_TC ? { mainPrise: !!DR_TC.mainPrise, etat: DR_TC.etat } : null, test: typeof m8TestOn === 'function' && !!m8TestOn() }; } catch (e) { return { err: String(e) }; } })
+  .then(x => nom + ' ' + JSON.stringify(Object.assign({}, x, { mainTs: rel(x.mainTs), now: rel(x.now), att: x.att ? rel(x.att) : 0, rej: x.rej ? rel(x.rej) : 0, geste: x.geste ? rel(x.geste) : 0, applyTs: x.applyTs ? rel(x.applyTs) : 0 }))).catch(e => nom + ' ' + String(e)) : nom + ' -';
+const traceMains = async (etiq, liste) => { if (!TRACE) return; const r = []; for (const [n, pg] of liste) r.push(await mainDe(n, pg)); dire('      [trace ' + etiq + '] ' + r.join('\n                 ')); };
+/* le piège : chaque changement de DR_SES.main, avec la pile d'appels (les fonctions du site) ; et ce que dr_sesPremierVerifier compare (v.ts, e.maj, e.vifTs) */
+const piege = pg => !TRACE || !pg ? null : pg.evaluate(T09 => { window.__mainLog = []; const r = t => (+t || 0) ? (+t - T09) : t; let v = DR_SES.main;
+  const pile = () => (new Error().stack || '').split('\n').slice(3, 9).map(s => s.trim().replace(/^at /, '').replace(/\s*\(.*\)$/, '').replace(/file:\/\/\S+/, '·')).join(' < ');
+  Object.defineProperty(DR_SES, 'main', { configurable: true, get() { return v; }, set(x) { if (x !== v) window.__mainLog.push(r(Date.now()) + ' main ' + v + ' → ' + x + ' ← ' + pile()); v = x; } });
+  const pv = window.dr_sesPremierVerifier; if (typeof pv === 'function') window.dr_sesPremierVerifier = function (x) { window.__mainLog.push(r(Date.now()) + ' premierVerifier v.par=' + x.par + ' v.ts=' + r(x.ts)); return pv.apply(this, arguments); };
+  let nRC = 0; const rc = window.dr_sesRecu; if (typeof rc === 'function') window.dr_sesRecu = function (v) { const ic = DR_SES.ici; if (v && typeof v === 'object' && v.par !== DR_SES.id && nRC++ < 30) window.__mainLog.push(r(Date.now()) + ' reçu ' + v.par + '|' + r(v.ts) + (v.__etatVu ? ' (vérifié)' : '') + ' sig ' + (ic ? (v.sig === ic.sig ? '= ici' : '≠ ici [' + String(v.sig).slice(-24) + ' / ' + String(ic.sig).slice(-24) + ']') : '(ici null)') + ' attendrePremier=' + (DR_SES.attendrePremier ? r(DR_SES.attendrePremier) : 0) + ' main=' + v.main + '|' + r(v.mainTs)); return rc.apply(this, arguments); };
+  const sv = window.dr_sesVeiller; if (typeof sv === 'function') { let avant = null; window.dr_sesVeiller = function () { const res = sv.apply(this, arguments); if (DR_SES.ici && avant && DR_SES.ici !== avant && DR_SES.attendrePremier) window.__mainLog.push(r(Date.now()) + ' dr_sesVeiller remplace DR_SES.ici (même sig : ' + (DR_SES.ici.sig === avant.sig) + ') pendant attendrePremier'); avant = DR_SES.ici; return res; }; }
+  let nEA = 0; const ea = window.dr_etatAuto; if (typeof ea === 'function') window.dr_etatAuto = function (vite) { if (nEA++ < 40) window.__mainLog.push(r(Date.now()) + ' dr_etatAuto(' + (vite ? 'vite' : '900 ms') + ') S.lancee=' + (typeof S !== 'undefined' && !!S.lancee) + ' DR_SES.ici ' + (DR_SES.ici ? 'posé' : 'null') + ' ← ' + pile()); return ea.apply(this, arguments); };
+  const de = window.dr_ecrire; if (typeof de === 'function') window.dr_ecrire = function (ch, val) { if (/\/etat$/.test(String(ch))) window.__mainLog.push(r(Date.now()) + ' dr_ecrire …/etat : maj=' + r(val && val.maj) + ' vifTs=' + r(val && val.vifTs) + ' (DR_SES.ici ' + (DR_SES.ici ? 'posé' : 'null') + ') ← ' + pile()); return de.apply(this, arguments); };
+  const dl = window.dr_lire; if (typeof dl === 'function') window.dr_lire = function (ch, cb) { if (/\/etat$/.test(String(ch))) return dl.call(this, ch, e => { window.__mainLog.push(r(Date.now()) + ' dr_lire …/etat : maj=' + r(e && e.maj) + ' vifTs=' + r(e && e.vifTs)); cb && cb(e); }); return dl.apply(this, arguments); };
+}, T09).catch(e => dire('      [piège] ' + e));
+const piegeLire = async (etiq, liste) => { if (!TRACE) return; for (const [n, pg] of liste) { const l = pg ? await pg.evaluate(() => window.__mainLog || null).catch(() => null) : null; dire('      [piège ' + etiq + ' · ' + n + '] ' + (l ? l.length + ' :\n        ' + l.join('\n        ') : '—')); } };
+const traceVif = etiq => { if (!TRACE) return; const l = ECR.filter(x => /\/vif$/.test(x.c) && x.bd && typeof x.bd === 'object').map(x => x.qui + ' @' + rel(x.t - T0REEL + T09) + ' par=' + x.bd.par + ' ts=' + rel(x.bd.ts) + ' main=' + x.bd.main + ' mainTs=' + rel(x.bd.mainTs) + ' tc=' + !!x.bd.mainTc + (x.bd.cede ? ' CÈDE' : '') + (x.bd.close ? ' CLOS' : ''));
+  dire('      [vif ' + etiq + '] ' + l.length + ' état(s) vivant(s) au hub :\n        ' + l.join('\n        ')); };
 
 /* ═══ M · LA MESURE DE L'EXISTANT (mission 0, §1.2) : vraie heure ; un ordinateur lance ; un second ordinateur ouvre la case de l'heure en cours ═══ */
 const mesure = async fichier => { reset(); const k = 'M', pre = 'appel-' + NOMV + '-M-';
@@ -320,13 +363,23 @@ const p2 = async (fichier, mode) => { const test = mode === 'P2T'; reset(); cons
   const o = await ouvrir({ fichier, test, qui: 'ordinateur' }); const lance = await lancerClasse(o); await garde(o.pg); for (let i = 0; i < 2; i++) { await gesteClic(o.pg); await p(300); }
   const fen = test ? null : await ouvrirTableau(o);
   const tl = await ouvrirTelecommande(o, fichier, test);
-  const o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const rep = await reprendre(o2);
+  await traceMains(mode + ' télécommande ouverte', [['ordinateur', o.pg], ['télécommande', tl && tl.pg]]);
+  const o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); await traceMains(mode + ' second ouvert', [['ordinateur', o.pg], ['télécommande', tl && tl.pg]]); await piege(o2.pg); await piege(o.pg); if (tl) await piege(tl.pg); let regle = null; const rep = await reprendre(o2, async () => { if (tl) regle = { d: await tcDesact(tl), mains: await mainsDe([['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) }; });
+  await traceMains(mode + ' second repris', [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl && tl.pg]]);
   const o3 = test ? null : await ouvrir({ fichier, qui: 'ordinateur3', W: 1366, H: 768 }); if (o3) await caseOuvrir(o3.pg);
   verif(mode, lance && !!tl && rep, 'l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance' + (o3 ? ' ; la case de l’heure ouverte sur un troisième' : ''), { lance, tl: !!tl, rep });
   if (!tl) { await T.ctx.close(); await o.ctx.close(); await o2.ctx.close(); if (o3) await o3.ctx.close(); return; }
   const pilotes = [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]];
+  /* la règle de Paul (le complément du lot 1) : « Reprendre » au second ordinateur, sans autre touche, est un geste — il a la main sur chaque pilote ; la télécommande
+     désactivée le dit ; puis « Reprendre avec la télécommande » la lui rend, avant ses gestes */
+  dire('      « Reprendre » au second ordinateur (3,5 s, sans autre touche) : la télécommande « ' + (regle && regle.d.t) + ' », commandes grisées ' + (regle && regle.d.grises) + ' ; qui a la main : ' + JSON.stringify(regle && regle.mains));
+  verif(mode, !!(regle && regle.d.t === PHRASE_DESACT && regle.d.grises && regle.d.bouton && tous_(regle.mains, 'second')), '« Reprendre » au second ordinateur est un geste : il a la main sur chaque pilote ; la télécommande désactivée le dit (« ' + PHRASE_DESACT + ' »), ses commandes grisées, « Reprendre avec la télécommande » à l’écran', regle);
+  const rt = await tcReprendre(tl, pilotes); await capt(tl.pg, pre + '1z-telecommande-reprend');
+  dire('      « Reprendre avec la télécommande » : ' + (rt.t != null ? 'la main à la télécommande sur chaque pilote en ' + rt.t + ' ms' : 'PAS REPRISE (2 s) ' + JSON.stringify(rt.mains)));
+  verif(mode, rt.t != null, '« Reprendre avec la télécommande » : la télécommande a la main sur chaque pilote, la phrase partie, ses commandes rendues (≤ 2 s)', rt);
   const suivre2 = async (nom, absent) => { const r = {}; await Promise.all(pilotes.map(async ([n, pg]) => { r[n] = await quand(async () => (await absentAu(pg, nom)) === absent, 2000); }).concat(o3 ? [(async () => { r.case = await quand(async () => { const c = await caseEtat(o3.pg); return !!(c && c.abs.includes(nom) === absent); }, 2000); })()] : [])); return r; };
   const tous = r => Object.values(r).every(x => x != null && x <= 2000);
+  await traceMains(mode + ' avant a', pilotes); traceVif(mode + ' avant a'); await piegeLire(mode + ' avant a', pilotes);
   /* a · la télécommande : « Appel », un élève marqué absent */
   const bt = await tl.pg.evaluate(() => { const b = document.querySelector('#tc-bas button[data-a="appel"]'); return b ? { t: (b.innerText || '').replace(/\s+/g, ' ').trim(), title: b.title } : null; }).catch(() => null);
   const ouvert = await tcAppelOuvrir(tl); const nbNoms = await tl.pg.evaluate(() => document.querySelectorAll('#tc-bas button[data-a="abs"]').length).catch(() => 0); await capt(tl.pg, pre + '2a-telecommande-appel');
@@ -478,7 +531,7 @@ const GESTE = ([kind, nom, at]) => new Promise(res => { const tir = () => { cons
     else if (kind === 'pilote') { const el = Array.from(document.querySelectorAll('#part [data-e]')).find(x => x.dataset.e === nom); if (el) { const r = el.getBoundingClientRect(); el.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true, clientX: r.left + 2, clientY: r.top + 2 }));
       const it = document.querySelector('#menu [data-a="absent"]') || document.querySelector('#menu [data-a="arrive"]'); if (it) { it.click(); ok = true; } } }
   } catch (e) {} res({ t, ok }); }; const go = () => { const r = at - Date.now(); if (r > 30) setTimeout(go, r - 25); else { while (Date.now() < at) {} tir(); } }; go(); });   /* les dernières millisecondes en attente active : l'heure fixée est tenue même sur une page occupée */
-const croiser = async (g1, g2, ecart = 40) => { const at = await g1.pg.evaluate(() => Date.now() + 900); const [r1, r2] = await Promise.all([g1.pg.evaluate(GESTE, [g1.k, g1.nom, at]), g2.pg.evaluate(GESTE, [g2.k, g2.nom, at + ecart])]); return { ok: r1.ok && r2.ok, ecart: r2.t - r1.t, dernier: r2.t >= r1.t ? 2 : 1 }; };
+const croiser = async (g1, g2, ecart = 40) => { const at = await g1.pg.evaluate(() => Date.now() + 900); const [r1, r2] = await Promise.all([g1.pg.evaluate(GESTE, [g1.k, g1.nom, at]), g2.pg.evaluate(GESTE, [g2.k, g2.nom, at + ecart])]); return { ok: r1.ok && r2.ok, ok1: r1.ok, ok2: r2.ok, ecart: r2.t - r1.t, dernier: r2.t >= r1.t ? 2 : 1 }; };
 const etatCase = async (pg, nom) => { const c = await caseEtat(pg); return c ? c.abs.includes(nom) : null; };
 const intentionCase = (pg, nom) => pg.evaluate(n => { try { const b = edtAppelBaseDe(EDT_MOD.cle); const k = edtAppelCleSure(edtSlugEleve(n)); const x = ((EDT_APPEL.mes[b.ch] || {})[k]); return x ? !!x.a : null; } catch (e) { return null; } }, nom).catch(() => null);
 const px = async (fichier, mode) => { const test = mode === 'XT'; reset(); const pre = 'appel-' + NOMV + '-' + mode + '-';
@@ -501,21 +554,30 @@ const px = async (fichier, mode) => { const test = mode === 'XT'; reset(); const
   }
   /* 2 · pendant l'heure : l'ordinateur (pilote), la télécommande, un second ordinateur (pilote), la case d'un troisième */
   const lance = await lancerClasse(o); await garde(o.pg); await gesteClic(o.pg); await p(300);
-  tl = await ouvrirTelecommande(o, fichier, test); o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); const rep2 = await reprendre(o2);
+  tl = await ouvrirTelecommande(o, fichier, test); o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }); await piege(o2.pg); await piege(o.pg); if (tl) await piege(tl.pg); let regle = null; const rep2 = await reprendre(o2, async () => { if (tl) regle = { d: await tcDesact(tl), mains: await mainsDe([['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) }; });
   if (!test) { o3 = await ouvrir({ fichier, qui: 'ordinateur3', W: 1366, H: 768 }); await caseOuvrir(o3.pg); }
-  if (tl) await tcAppelOuvrir(tl); await p(800);
+  await p(800);
   verif(mode, lance && !!tl && rep2, 'l’heure lancée ; la télécommande et le second ordinateur sur la séance' + (o3 ? ' ; la case ouverte sur un troisième' : ''), { lance, tl: !!tl, rep2 });
   if (!tl) { for (const x of [o3, o2, o]) if (x) await x.ctx.close().catch(() => {}); return; }
   const pilotes = [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]];
+  await traceMains(mode + ' avant les paires', pilotes); traceVif(mode + ' avant les paires'); await piegeLire(mode + ' avant les paires', pilotes);
+  if (TRACE) { const g = await tl.pg.evaluate(() => { const l = Array.from(document.querySelectorAll('#tc-bas button[data-a="abs"]')); return { n: l.length, grises: l.filter(b => b.disabled).length }; }).catch(() => null); dire('      [trace ' + mode + '] les noms de l’appel à la télécommande : ' + JSON.stringify(g)); }
   const partout = async (noms, voulu) => { const r = {}; for (const [n, pg] of pilotes) { const v = []; for (const nom of noms) v.push((await absentAu(pg, nom)) === voulu[nom]); r[n] = v.every(Boolean); }
     if (o3) { const c = await caseEtat(o3.pg); r.case = !!c && noms.every(nom => c.abs.includes(nom) === voulu[nom]); }
     if (!test) { const L = listeDe(heureHub().h); const v = []; for (const nom of noms) v.push(L.includes(await slugDe(o.pg, nom)) === voulu[nom]); r.hub = v.every(Boolean); } return r; };
-  /* la télécommande d'abord (elle a la main depuis son QR) ; un geste à l'ordinateur la lui prend ensuite */
+  /* la règle de Paul (le complément du lot 1) : « Reprendre » au second ordinateur l'a désactivée ; la télécommande reprend la main (« Reprendre avec la télécommande »),
+     rouvre l'appel ; puis chaque paire, à 40 ms ; un geste à l'ordinateur la lui prend ensuite */
+  verif(mode, !!(regle && regle.d.t === PHRASE_DESACT && regle.d.grises && tous_(regle.mains, 'second')), '« Reprendre » au second ordinateur est un geste : il a la main sur chaque pilote ; la télécommande désactivée le dit', regle);
+  const rtX = await tcReprendre(tl, pilotes); if (!(await tl.pg.$('#tc-bas button[data-a="abs"]'))) await tcAppelOuvrir(tl); await p(300);
+  const nomsX = await tl.pg.evaluate(() => ({ noms: document.querySelectorAll('#tc-bas button[data-a="abs"]').length, grises: Array.from(document.querySelectorAll('#tc-bas button[data-a="abs"]')).filter(b => b.disabled).length })).catch(() => null);
+  dire('      « Reprendre avec la télécommande » : ' + (rtX.t != null ? 'la main en ' + rtX.t + ' ms' : 'PAS REPRISE') + ' ; l’appel rouvert : ' + JSON.stringify(nomsX));
+  verif(mode, rtX.t != null && nomsX && nomsX.noms === 29 && !nomsX.grises, '« Reprendre avec la télécommande » : la télécommande a la main sur chaque pilote ; l’appel rouvert, ses 29 noms actifs', { rtX, nomsX });
   const paires = [[{ pg: tl.pg, k: 'tc', nom: H2, qui: 'la télécommande' }, { pg: o.pg, k: 'pilote', nom: G, qui: 'le clic droit de l’ordinateur' }]];
   if (o3) paires.push([{ pg: o3.pg, k: 'case', nom: I, qui: 'la case du troisième' }, { pg: o2.pg, k: 'pilote', nom: J2, qui: 'le clic droit du second ordinateur' }]);
   else paires.push([{ pg: o2.pg, k: 'pilote', nom: I, qui: 'le clic droit du second ordinateur' }, { pg: o.pg, k: 'pilote', nom: J2, qui: 'le clic droit de l’ordinateur' }]);
   for (const [g1, g2] of paires) { const c = await croiser(g1, g2); await p(2500); const r = await partout([g1.nom, g2.nom], { [g1.nom]: true, [g2.nom]: true });
-    dire('      pendant l’heure, ' + g1.qui + ' et ' + g2.qui + ', deux élèves à ' + c.ecart + ' ms : ' + JSON.stringify(r));
+    dire('      pendant l’heure, ' + g1.qui + ' et ' + g2.qui + ', deux élèves à ' + c.ecart + ' ms : ' + JSON.stringify(r) + (TRACE ? ' [trace : le premier geste fait : ' + c.ok1 + ', le second : ' + c.ok2 + ']' : ''));
+    if (TRACE) { const r1 = await partout([g1.nom], { [g1.nom]: true }), r2 = await partout([g2.nom], { [g2.nom]: true }); dire('      [trace] l’élève de ' + g1.qui + ' gardé : ' + JSON.stringify(r1) + ' ; l’élève de ' + g2.qui + ' gardé : ' + JSON.stringify(r2)); }
     verif(mode, c.ok && Math.abs(c.ecart) < 100 && tous(r), 'pendant l’heure : ' + g1.qui + ' et ' + g2.qui + ' sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil' + (test ? '' : ', le hub') + ')', { ecart: c.ecart, r }); }
   /* le même élève : le dernier geste compte (sa volonté : ce que son appareil en a fait) ; la télécommande reprend d'abord la main (« Reprendre avec la télécommande ») */
   await tcTap(tl, '#tc-bas button[data-a="main"]'); await p(1200); if (!(await tl.pg.$('#tc-bas button[data-a="abs"]'))) await tcAppelOuvrir(tl); await p(300);
@@ -590,6 +652,87 @@ const pmain = async fichier => { const TROIS = 3 * 60000; MESURE = true; const p
   await cas(+TROIS, -TROIS, '(b) le téléphone en retard de 3 min, l’ordinateur en avance de 3 min', true);
   MESURE = false; };
 
+/* ═══ PG (AUDIT-HORLOGE, la question de la conscience, 17:2x) · mode test : quand le second ordinateur est pris pour une version d'avant (dr_sesPremierVerifier :
+   le socle remplacé, forcer, l'envoi), un geste fait juste avant au téléphone (la télécommande) ou à l'ordinateur se perd-il ? Le décor de P2T ; la reprise du second
+   ordinateur SANS touche ; `delai` ms après son clic sur « Reprendre » : un geste (tc-qui : une prise de parole à la télécommande ; tc-suiv : ▶ à la télécommande ;
+   ord-suiv : ▶ au clic de l'ordinateur). 5 s après : chaque pilote (et le tableau distant pour ▶) a-t-il le geste ? La prise de main par A : lue au piège.
+   Le complément du lot 1 : au banc, compté — un geste fait est, 5 s après, sur chaque pilote et au tableau ; un geste de la télécommande refusé parce que la
+   reprise l'avait déjà désactivée (la règle de Paul) l'est visiblement (« Télécommande désactivée »). Le chemin A n'existe plus : le piège (MJPC_TRACE=1) le compte. ═══ */
+const pgPerdu = async fichier => {
+  const DEL = String(process.env.MJPC_PG_DELAIS || '200,500,800').split(',').map(Number); const GES = String(process.env.MJPC_PG_GESTES || 'tc-qui,tc-suiv,ord-suiv').split(',');
+  dire('\n— PG · un geste juste avant la prise de main du second ordinateur (mode test, reprise sans touche) —'); const bilan = [];
+  for (const g of GES) for (const delai of DEL) { reset();
+    const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(800);
+    const o = await ouvrir({ fichier, test: true, qui: 'ordinateur' }); const lance = await lancerClasse(o); await garde(o.pg); for (let i = 0; i < 2; i++) { await gesteClic(o.pg); await p(300); }
+    const tl = await ouvrirTelecommande(o, fichier, true); const o2 = await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 });
+    if (!tl || !lance) { verif('PG', false, g + ' ' + delai + ' ms : le décor (l’essai lancé, la télécommande)', { lance, tl: !!tl }); for (const x of [tl, o2, o, T]) if (x) await x.ctx.close().catch(() => {}); continue; }
+    await piege(o2.pg); await p(1500);
+    const nom = LISTE[5]; const ini = await o.pg.evaluate(n => { try { return iniDe(n); } catch (e) { return null; } }, nom).catch(() => null);
+    const vu = await o2.pg.waitForSelector('#ses-reprise-oui', { state: 'visible', timeout: 9000 }).then(() => true).catch(() => false);
+    if (!vu) { verif('PG', false, g + ' ' + delai + ' ms : le bandeau « Reprendre » au second ordinateur', vu); for (const x of [tl, o2, o, T]) if (x) await x.ctx.close().catch(() => {}); continue; }
+    const src0 = g === 'ord-suiv' ? o.pg : tl.pg; const k0 = await cleDe(src0);
+    const tClic = await o2.pg.evaluate(() => Date.now()).catch(() => null); await o2.pg.click('#ses-reprise-oui').catch(() => {}); await p(delai);
+    const tGeste = await o.pg.evaluate(() => Date.now()).catch(() => null);
+    if (g === 'tc-qui') await tcTap(tl, '#tc-bas button[data-a="qui"][data-ini="' + ini + '"]'); else if (g === 'tc-suiv') await tcTap(tl, '#tc-bas button[data-a="suiv"]'); else await gesteClic(o.pg);
+    await p(150); const src = g === 'ord-suiv' ? o.pg : tl.pg; const cible = await cleDe(src);
+    const actif = g === 'ord-suiv' ? true : await tl.pg.evaluate(() => !document.querySelector('#tc-bas .desact')).catch(() => null);   /* la télécommande, juste après son geste : encore active, ou désactivée par la reprise (un geste refusé l'est alors visiblement) */
+    const parle = pg => pg.evaluate(n => (S.parts || []).some(x => x && x.nom === n && (x.heure == null || x.heure === S.heure)), nom).catch(() => null);
+    const avant = g === 'tc-qui' ? await parle(tl.pg) : cible; const fait = g === 'tc-qui' ? !!avant : !!(cible && cible !== k0);
+    await p(5000);
+    const sp = c => String(c || '').split('#').slice(0, 2).join('#');   /* la diapo et le dévoilement, sans la page (elle dépend de la taille de l'écran : DR_SES_VUE) */
+    const r = {}, cles = {}; for (const [n, pg] of [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]) { if (g === 'tc-qui') r[n] = await parle(pg); else { cles[n] = await cleDe(pg); r[n] = sp(cles[n]) === sp(cible); } }
+    if (g !== 'tc-qui') { const tb = (await tabDe(T.pg)) || {}; cles.tableau = tb.cle || (tb.attente ? 'en attente' : null); r.tableau = sp(tb.cle) === sp(cible); }
+    const log = await o2.pg.evaluate(() => window.__mainLog || []).catch(() => []); const priseA = log.some(l => / main null → \S+ ← suite/.test(l));
+    const verifiee = log.filter(l => /premierVerifier/.test(l)).map(l => l.replace(/ v\.par=\S+/, '')).join(' ; ');
+    const perdu = Object.values(r).some(x => x !== true);
+    bilan.push({ g, delai, priseA, perdu: fait && perdu, fait });
+    verif('PG', fait ? !perdu : actif === false, g + ' ' + delai + ' ms après « Reprendre » au second ordinateur : ' + (fait ? 'le geste fait est, 5 s après, sur chaque pilote' + (g !== 'tc-qui' ? ' et au tableau' : '') + ' (aucun geste perdu)' : 'le geste refusé : la télécommande était déjà désactivée (la règle), elle le disait'), { fait, actif, r, cles });
+    dire('      PG ' + g + ' ' + delai + ' ms après « Reprendre » (clic ' + rel(tClic) + ', geste ' + rel(tGeste) + ') : la télécommande ' + (actif ? 'active' : 'déjà désactivée') + ' ; le geste fait ' + (g === 'tc-qui' ? (avant ? 'oui (la parole notée à la télécommande)' : 'NON') : (fait ? 'oui (' + k0 + ' → ' + cible + ')' : 'NON (' + k0 + ')')) + ' ; prise de main par A au second : ' + (priseA ? 'OUI' : 'non') + ' [' + verifiee + '] ; 5 s après, le geste chez : ' + JSON.stringify(r) + (g !== 'tc-qui' ? ' ; ce que montre chacun : ' + JSON.stringify(cles) : ''));
+    if (TRACE) { traceVif('PG ' + g + ' ' + delai); dire('      [piège PG · second] ' + log.length + ' :\n        ' + log.join('\n        '));
+      const sc = ECR.filter(x => /\/scene$/.test(x.c) && x.bd && typeof x.bd === 'object').map(x => x.qui + ' @' + rel(x.t - T0REEL + T09) + ' ts=' + rel(x.bd.ts) + ' ' + x.bd.eid + '#' + (x.bd.nDev || 0));
+      dire('      [scènes PG ' + g + ' ' + delai + '] ' + sc.length + ' :\n        ' + sc.join('\n        ') + '\n        le tableau : ' + JSON.stringify(await T.pg.evaluate(T09 => ({ ts: DR_TAB.ts - T09, montre: DR_TAB.montre ? DR_TAB.montre.eid + '#' + DR_TAB.montre.nDev : null }), T09).catch(e => String(e)))); }
+    for (const x of [tl, o2, o, T]) await x.ctx.close().catch(() => {}); }
+  const nA = bilan.filter(b => b.priseA), nP = nA.filter(b => b.perdu);
+  dire('      PG · bilan : ' + bilan.length + ' cas ; gestes faits : ' + bilan.filter(b => b.fait).length + ', refusés (la télécommande déjà désactivée) : ' + bilan.filter(b => !b.fait).length + ' ; gestes perdus : ' + bilan.filter(b => b.perdu).length + (TRACE ? ' ; prise de main par A (le piège) : ' + nA.length + ', parmi eux un geste perdu : ' + nP.length : '') + ' — ' + bilan.map(b => b.g + '/' + b.delai + ':' + (TRACE ? (b.priseA ? 'A' : '-') : '') + (!b.fait ? 'refusé' : b.perdu ? 'PERDU' : 'gardé')).join(' '));
+};
+/* ═══ RP (le complément du lot 1 ; Paul, 03/11 17:20 : « oui le téléphone doit se désactiver dans tous les cas ») · « REPRENDRE » SUR UN SECOND ORDINATEUR, DANS
+   LES TROIS SESSIONS : RPH la vraie heure, RPT l'essai en mode test, RPR la répétition (hors mode test). L'ordinateur lance ; la télécommande (QR) a la main ; un
+   second ordinateur clique « Reprendre » sur son bandeau, sans autre touche : il a la main sur chaque pilote, la télécommande désactivée le dit, ses commandes
+   grisées ; « Reprendre avec la télécommande » la lui rend (≤ 2 s) ; son ▶ : l'ordinateur et le second suivent. MJPC_RP_N fois (1 par défaut). ═══ */
+/* RPF : la fenêtre « Une répétition joue déjà sur un autre appareil » (le second ordinateur lance la répétition d'une autre séance) → « Rejoindre la séance en cours » */
+const modaleDe = pg => pg.evaluate(() => { const m = document.getElementById('at-modale'); if (!m) return null; return { texte: ((m.querySelector('.at-modale-m') || m).innerText || '').replace(/\s+/g, ' ').trim().slice(0, 300), boutons: Array.from(m.querySelectorAll('button[data-i]')).map(b => ({ t: (b.innerText || '').trim(), bulle: b.title || '' })) }; }).catch(() => null);
+const repeterAutre = async pg => { await pg.evaluate(() => { try { atelierOuvrir(); } catch (e) {} }); await p(1000); await clicTexte(pg, 'button,[onclick]', "atOnglet('chapitres')"); await p(800);
+  if (!(await clicTexte(pg, 'button,[onclick]', 'Éditer dans l’atelier'))) await clicTexte(pg, 'button,[onclick]', 'Modifier'); await p(1500);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="atelier"]'); if (b) b.click(); }); await p(2500);
+  await pg.evaluate(() => { try { atSomAllerEcran(0, '1'); } catch (e) {} }); await p(1800);
+  await pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); let d = null; for (let k = 0; k < 20 && !d; k++) { await p(200); d = await modaleDe(pg); } return d; };
+const prp = async (fichier, mode) => { const test = mode === 'RPT', repet = mode === 'RPR' || mode === 'RPF', fen = mode === 'RPF'; const N = Math.max(1, +process.env.MJPC_RP_N || 1);
+  dire('\n— ' + mode + ' · « Reprendre » sur un second ordinateur (' + (fen ? 'la répétition, par la fenêtre « Une répétition joue déjà… » → « Rejoindre la séance en cours »' : repet ? 'la répétition' : test ? 'l’essai, mode test' : 'la vraie heure') + '), ' + N + ' fois —'); const B = [];
+  for (let i = 1; i <= N; i++) { reset(); const pre = 'appel-' + NOMV + '-' + mode + '-' + i + '-';
+    const o = await ouvrir({ fichier, test, qui: 'ordinateur' }); let lance = false;
+    if (repet) { await ouvrirAtelier(o); await o.pg.evaluate(() => { const b = document.querySelector('.at-onglet[data-vue="pilotage"]'); if (b) b.click(); }); await p(3500); lance = await o.pg.evaluate(() => !!S.repetition).catch(() => false); }
+    else { lance = await lancerClasse(o); await garde(o.pg); }
+    await gesteClic(o.pg); await p(400);
+    const tl = lance ? await ouvrirTelecommande(o, fichier, test) : null; const o2 = tl ? await ouvrir({ fichier, test: false, qui: 'ordinateur2', W: 1366, H: 768 }) : null;
+    const b2 = o2 ? await attendreBandeau(o2.pg, 9000) : { b: null }; let dlg = null;
+    if (!lance || !tl || !b2.b) { verif(mode, false, i + ' · le décor : la séance lancée, la télécommande (QR), le bandeau « Reprendre » au second ordinateur', { lance, tl: !!tl, bandeau: b2.b }); for (const x of [tl, o2, o]) if (x) await x.ctx.close().catch(() => {}); continue; }
+    const pil = [['ordinateur', o.pg], ['second', o2.pg], ['télécommande', tl.pg]]; const m0 = await mainsDe(pil);
+    let t0 = Date.now();
+    if (fen) { dlg = await repeterAutre(o2.pg); t0 = Date.now(); await o2.pg.evaluate(() => { const x = document.querySelector('#at-modale button[data-i="0"]'); if (x) x.click(); }).catch(() => {}); }
+    else await o2.pg.click('#ses-reprise-oui').catch(() => {});
+    let d = null, m1 = null, tD = null; while (Date.now() - t0 < 10000) { m1 = await mainsDe(pil); d = await tl.pg.evaluate(() => { const x = document.querySelector('#tc-bas .desact'); return x ? (x.innerText || '').trim() : null; }).catch(() => null); if (d && tous_(m1, 'second')) { tD = Date.now() - t0; break; } await p(100); }
+    const d1 = await tcDesact(tl, 500); await capt(tl.pg, pre + 'telecommande-desactivee'); await capt(o2.pg, pre + 'second');
+    const rt = await tcReprendre(tl, pil); const k0 = await cleDe(tl.pg); await tcTap(tl, '#tc-bas button[data-a="suiv"]'); const sv = await suivre(tl.pg, [['ordinateur', o.pg, false], ['second', o2.pg, false]], 2000);
+    dire('      ' + i + ' · avant : ' + JSON.stringify(m0) + ' ; ' + (fen ? '« Rejoindre » au second (la fenêtre « ' + (dlg ? dlg.texte.slice(0, 90) + ' » · ' + dlg.boutons.map(x => x.t).join(' / ') : '— PAS DE FENÊTRE') + ')' : '« Reprendre » au second (le bandeau « ' + b2.b + ' »)') + ' : ' + (tD != null ? 'en ' + tD + ' ms' : 'PAS EN 10 s') + ', la télécommande « ' + d + ' », commandes grisées ' + d1.grises + ', qui a la main : ' + JSON.stringify(m1)
+      + ' ; « Reprendre avec la télécommande » : ' + (rt.t != null ? rt.t + ' ms' : 'PAS REPRISE ' + JSON.stringify(rt.mains)) + ' ; son ▶ (' + k0 + ' → ' + sv.cible + ') : l’ordinateur ' + ms(sv.r.ordinateur) + ', le second ' + ms(sv.r.second));
+    const ok1 = (!fen || !!(dlg && dlg.boutons[0] && dlg.boutons[0].t === 'Rejoindre la séance en cours')) && m0.ordinateur === 'télécommande' && m0['télécommande'] === 'télécommande' && tD != null && d === PHRASE_DESACT && d1.grises && d1.bouton;
+    verif(mode, ok1, i + ' · ' + (fen ? '« Rejoindre la séance en cours »' : '« Reprendre »') + ' au second ordinateur : il a la main sur chaque pilote ; la télécommande se désactive et le dit (« ' + PHRASE_DESACT + ' »), ses commandes grisées', { m0, tD, d, grises: d1.grises, m1 });
+    const ok2 = rt.t != null && sv.cible && sv.cible !== k0 && sv.r.ordinateur != null && sv.r.second != null;
+    verif(mode, ok2, i + ' · « Reprendre avec la télécommande » : elle a la main sur chaque pilote (≤ 2 s) ; son ▶ : l’ordinateur et le second suivent', { rt: rt.t, k0, cible: sv.cible, r: sv.r });
+    B.push(ok1 && ok2);
+    if (!repet) verifEcritures(mode, test); sansErreur(mode, [].concat(o.errs, o.boites, o2.errs, o2.boites, tl.errs, tl.boites), i + ' · l’ordinateur, le second, la télécommande');
+    for (const x of [tl, o2, o]) await x.ctx.close().catch(() => {}); }
+  dire('      ' + mode + ' · bilan : ' + B.filter(Boolean).length + ' sur ' + N + ' (la télécommande désactivée, sa phrase, puis réactivée).'); };
 const NOMV = process.env.MJPC_NOM || 'v';
 if (joue('M')) await mesure(FICHIER);
 if (joue('M') || joue('MM')) await pmain(FICHIER);
@@ -599,6 +742,8 @@ for (const m of ['P3H', 'P3T']) if (joue(m)) await p3(FICHIER, m);
 if (joue('P4')) await p4(FICHIER);
 for (const m of ['Q', 'QT']) if (joue(m)) await pq(FICHIER, m);
 for (const m of ['X', 'XT']) if (joue(m)) await px(FICHIER, m);
+if (joue('PG')) await pgPerdu(FICHIER);
+for (const m of ['RPH', 'RPT', 'RPR', 'RPF']) if (joue(m)) await prp(FICHIER, m);
 for (const m of ['Z', 'ZT']) if (joue(m)) await pz(FICHIER, m);
 dire('\n' + nb + ' vérifications, ' + echecs + ' échec(s)' + (mnb ? ' ; à part, ' + mnb + ' mesure(s) qui ne comptent pas (ZT, la main : ㉞ : la main jugée aux montres), ' + mrouges + ' rouge(s)' : ''));
 await nav.close();

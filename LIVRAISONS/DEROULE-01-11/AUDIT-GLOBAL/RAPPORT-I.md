@@ -137,3 +137,19 @@
 | A (avec sa télécommande) puis B | Ce que la télécommande montre et fait |
 |---|---|
 | H, puis R | la télécommande pilote l'heure de A, le tableau la suit (« 3E Charles de Gaulle ● en direct · Diapo 2 sur 13 · heure 1 ») ; B « tableau distant pris » |
+| T, puis RT | la télécommande pilote l'essai de A ; la répétition en mode test de B réécrit l'annonce : le tableau montre B, puis A (à l'ordinateur ou à la télécommande) sous l'annonce de B ; B s'arrête : **le tableau tombe à l'horloge**, l'essai de A et sa télécommande continuent sans tableau, sans le savoir |
+| R, puis T | la télécommande pilote la répétition de A, le tableau la suit ; l'essai de B n'y est jamais |
+- La télécommande ne dit rien du tableau distant : elle dit la diapo de sa session (« ● en direct · Diapo n sur N »), même quand le tableau montre une autre session.
+
+### 1.6 Un appareil qui disparaît (l'onglet fermé, l'ordinateur en veille) — 5 cas
+*A joue, A disparaît (le contexte du navigateur fermé ; ou la page gelée par le protocole de Chrome, `Page.setWebLifecycleState: frozen`, ce que fait un ordinateur en veille ou un onglet mis en sommeil) ; 6 s et 30 s après, ce que fait le tableau ; un autre appareil B ouvre le site et lance une session ; B s'arrête ; puis l'annonce de A est vieillie au hub de 4 h 01 (le seuil `frais` du code).*
+| A joue puis disparaît | Le tableau, 6 s et 30 s après | L'annonce de A au hub | B ouvre le site | B lance… | Quand B s'arrête | L'annonce de A vieillie de 4 h 01 |
+|---|---|---|---|---|---|---|
+| H, onglet fermé | **garde l'image de A** | **reste** (fraîche 4 h) | bandeau « Heure en cours avec les 3E Charles de Gaulle — Reprendre » | une répétition : **« tableau distant pris : 3E Charles de Gaulle est en cours »** | l'image de A | **le tableau garde l'image de A (pour toujours)** |
+| T, onglet fermé | garde l'image de A | reste | « Essai en cours (mode test) — Reprendre » | une répétition : **elle prend le tableau** | **le tableau revient à l'essai mort de A** | l'horloge |
+| R, onglet fermé | garde l'image de A | reste | « Répétition en cours — Reprendre » | une vraie heure : elle prend le tableau | revient à la répétition morte de A | l'horloge |
+| RT, onglet fermé | garde l'image de A | reste | « Répétition en cours (mode test) — Reprendre » | une vraie heure : elle prend le tableau | revient à la répétition morte de A | l'horloge |
+| H, veille (20 s gelée) | garde l'image de A | reste | « Heure en cours… — Reprendre » | une répétition : « tableau distant pris » | l'image de A ; A réveillé dévoile : le tableau le suit | garde l'image |
+- **Le tableau ne se libère jamais de lui-même avant 4 h** : aucune annonce n'a de battement (§0.2), fermer l'onglet n'écrit rien (l. 23285-23286). Après 4 h : l'horloge pour une répétition ou un essai ; **l'image reste pour toujours pour une vraie heure** (l. 24371).
+- Une vraie heure abandonnée sans « Clore » tient le tableau distant **4 h** contre toute répétition et tout essai : la répétition le dit (« tableau distant pris »), l'essai en mode test ne le dit pas (1.1, H + T).
+- Pour lancer une autre heure pendant ces 4 h : le même chemin que 1.2 (une heure fraîche, pas la même, pas close) → la modale aux trois boutons « undefined ». Mesuré avec A vivant (1.2) ; avec A disparu : pas mesuré à part (le code passe par la même ligne, l. 23324-23325). La seule sortie mesurée : rouvrir la même case (« ▶ Reprendre l'heure »), puis « Clore l'heure » (1.1, H + H).

@@ -1720,3 +1720,19 @@ MEMO
   > À jouer : les gestes ci-dessus · en cours : rien · ouvert : 316, 317
   >
   > MEMO
+- **09:59 — Paul, mot pour mot** : « est ce que le lag général de mjpc peut etre du au fait que je fais tourner les autres apps, par exemple redaction? »
+- **09:59 — message à Paul, mot pour mot :**
+
+  > 327. Je ne sais pas : ce n'est pas mesuré. Ce qu'on sait : toutes nos mesures sont faites avec MJPC seul, et le retard du tableau (⑯, environ un quart de seconde) y est déjà. Une partie du lag ne vient donc pas des autres applis. Ce qui est possible : un onglet visible en même temps (la rédaction dans une autre fenêtre, ou sur l'autre écran) prend sa part de l'ordinateur ; un onglet caché derrière, Chrome le ralentit beaucoup, il pèse peu.
+  >
+  > 328. Pour le savoir en trente secondes, pendant ton heure : dans Chrome, Maj + Échap ouvre le gestionnaire de tâches ; la colonne « Processeur » dit ce que prend chaque onglet. Si la rédaction y prend beaucoup, c'est une piste ; sinon, ce n'est pas elle.
+  >
+  > 329. Je peux aussi le mesurer moi-même au faux hub : MJPC seul, puis avec un second onglet lourd ouvert à côté, sans toucher à la rédaction. Dis-moi si tu le veux.
+  >
+  > À tester : Maj + Échap pendant ton heure, la colonne « Processeur ».
+  >
+  > 03/11/2026 09:59
+  >
+  > À jouer : le gestionnaire de tâches, si tu as le temps · en cours : rien · ouvert : 316, 317, 329
+  >
+  > MEMO

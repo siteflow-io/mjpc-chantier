@@ -82,12 +82,22 @@ const qrSvg = d => { try { if (process.env.MJPC_PYQR && fs.existsSync(process.en
 const pousserFlux = c => { const cc = c.replace(/\/+$/, ''); ABOS.forEach(a => { if (!(cc === a.ch || cc.startsWith(a.ch + '/') || a.ch.startsWith(cc + '/'))) return; if (a.pg.isClosed()) return;
   a.pg.evaluate(([id, d]) => { try { window.__esPousser && window.__esPousser(id, d); } catch (e) {} }, [a.id, JSON.stringify(lireH(a.ch))]).catch(() => {}); }); };
 const fauxFlux = () => { const ES = {}; let n = 0;
-  window.__esPousser = (id, d) => { const e = ES[id]; if (!e || e.ferme) return; const ev = { data: JSON.stringify({ path: '/', data: JSON.parse(d) }) }; (e.l.put || []).forEach(f => { try { f(ev); } catch (x) {} }); };
+  window.__esPousser = (id, d) => { const e = ES[id]; if (!e || e.ferme) return; e.pousse = true; const ev = { data: JSON.stringify({ path: '/', data: JSON.parse(d) }) }; (e.l.put || []).forEach(f => { try { f(ev); } catch (x) {} }); };
   window.EventSource = function (u) { const id = 'es' + (++n); const self = this; this.l = {}; this.ferme = false; ES[id] = this; const s2 = String(u);
     this.addEventListener = (t, f) => { (self.l[t] = self.l[t] || []).push(f); }; this.close = () => { self.ferme = true; }; this.onerror = null;
     if (s2.indexOf('firebasedatabase.app') < 0) { setTimeout(() => { if (self.onerror) self.onerror({}); }, 0); return; }
     const c = decodeURIComponent(s2.split('firebasedatabase.app')[1].split('?')[0].replace(/\.json$/, ''));
-    window.__hubEcoute(id, c).then(d => setTimeout(() => window.__esPousser(id, d), 0)); }; };
+    /* le complément du lot 1 : la valeur lue à l'abonnement n'est livrée que si aucune écriture plus récente ne l'a déjà été — le vrai flux (REST de Firebase) envoie
+       l'état du chemin au branchement, puis chaque changement dans l'ordre du serveur ; avant, ce faux hub la livrait parfois APRÈS une écriture plus récente
+       (mesuré, PG : l'état du geste reçu, puis 90 ms après un état écrit 6 s plus tôt — un ordre que le vrai flux ne donne jamais) */
+    window.__hubEcoute(id, c).then(d => setTimeout(() => { if (!self.pousse) window.__esPousser(id, d); }, 0)); }; };
+/* C16 (la frappe au tableau) : MJPC_HORLOGE=date — seule la date des appareils est décalée (le 14/09, 09:00 au lancement de la sonde, elle avance, la même pour tous) ;
+   les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`) remplace aussi
+   setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche (playwright-core,
+   clockSource : `_runTo`) : mesuré, elle donne deux régimes au même code (FRAPPE-TABLEAU/NOTE.md). Sans la variable : inchangé. */
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
+const T0DATE = Date.now();
 const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q = '?n=3e', test = false, prof = true, h = '09:00', jour = '2026-09-14', tel = false }) => {
   const ctx = await nav.newContext(Object.assign({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }, tel ? { isMobile: true, hasTouch: true } : {}));
   await ctx.exposeBinding('__hubEcoute', (src, id, ch) => { ABOS.push({ pg: src.page, id, ch: ch.replace(/\/+$/, '') }); return JSON.stringify(lireH(ch)); }); await ctx.addInitScript(fauxFlux); const errs = [], boites = [];
@@ -98,7 +108,8 @@ const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q 
   /* l'horloge : le 14/09, 09:00 au lancement de la sonde, puis elle AVANCE, la même pour tous les appareils (une horloge figée faisait de l'heure des scènes un compteur
      que deux pilotes faisaient monter chacun de leur côté — un artefact que la classe ne vit jamais) ; MJPC_HORLOGE=figee : l'ancienne */
   const t09 = new Date(jour + 'T' + h + ':00+02:00').getTime();
-  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL)) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
+  if (process.env.MJPC_HORLOGE === 'date') await ctx.addInitScript(fauxDate, t09 - T0REEL);
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else if (process.env.MJPC_HORLOGE !== 'date') await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL)) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) await profPrep(pg, test);
   return { ctx, pg, errs, boites, qui }; };
@@ -231,10 +242,11 @@ const parcours = async (fichier, mode, nomV) => { const test = mode === 'T'; HUB
       if (process.env.MJPC_DEBUG) { await p(1500); dire('      (débogage) après la sortie du champ, au second : ' + JSON.stringify(await o3.pg.evaluate(r => ({ rep: JSON.stringify(parDiapo).indexOf(r) >= 0, att: !!DR_SES.attente, cle: S.di, dbg: DR_SES.dbg, qbNow: JSON.stringify(parDiapo['0|emt9v3yqo6pvd5'] || null).slice(0, 200) }), REP).catch(e => String(e)))); } }
     await p(2500);
     /* qui a la main : l'ordinateur qui dévoile prend la main ; le champ du second se ferme tel qu'il est — le texte tapé jusque-là est gardé (les lettres d'après tombent hors du champ) */
-    const garde3 = await o3.pg.evaluate(R => { let k = ''; try { Object.values(parDiapo).forEach(d => Object.values((d && d.reps) || {}).forEach(l => (l || []).forEach(x => { if (x && x.r && R.indexOf(x.r) === 0 && x.r.length > k.length) k = x.r; }))); } catch (e) {} return k; }, REP).catch(() => '');
+    /* C16 (le complément du lot 1) : une espace tapée en dernier, Chrome la range insécable (« … met⍽ ») — comptée comme une espace (avant : le texte gardé passait pour « », rouge 1 fois sur 3 à 4) */
+    const garde3 = await o3.pg.evaluate(R => { let k = ''; try { Object.values(parDiapo).forEach(d => Object.values((d && d.reps) || {}).forEach(l => (l || []).forEach(x => { if (!x || !x.r) return; const xr = x.r.replace(/\u00a0/g, ' '); if (R.indexOf(xr) === 0 && xr.length > k.length) k = xr; }))); } catch (e) {} return k; }, REP).catch(() => '');
     dire('      ' + mode + ' · le texte gardé au second ordinateur quand l’ordinateur a pris la main : « ' + garde3 + ' »');
     const REPv = garde3 && garde3.length >= 3 ? garde3 : REP;
-    const vu = pg => pg.evaluate(([r, nom]) => { try { return { rep: JSON.stringify(parDiapo).indexOf(r) >= 0, part: (S.parts || []).some(x => x && x.nom === nom), cle: (() => { const m = S.mur; return m ? (m.eid || seance().ecrans[m.di].eid) + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null; })() }; } catch (e) { return String(e); } }, [REPv, ELV && ELV.nom]).catch(e => String(e));
+    const vu = pg => pg.evaluate(([r, nom]) => { try { return { rep: JSON.stringify(parDiapo).replace(/\u00a0/g, ' ').indexOf(r) >= 0, part: (S.parts || []).some(x => x && x.nom === nom), cle: (() => { const m = S.mur; return m ? (m.eid || seance().ecrans[m.di].eid) + '#' + (m.nDev || 0) + '#' + (m.page || 0) : null; })() }; } catch (e) { return String(e); } }, [REPv, ELV && ELV.nom]).catch(e => String(e));
     const V = { ordinateur: await vu(o.pg), second: await vu(o3.pg), telephone: await vu(tl.pg) };
     if (process.env.MJPC_DEBUG) dire('      (débogage) focus du second : ' + await o3.pg.evaluate(() => JSON.stringify(DR_SES.dbgF.slice(0, 40))).catch(e => String(e)));
     if (process.env.MJPC_DEBUG) for (const [q, pg] of [['ordinateur', o.pg], ['second', o3.pg], ['telephone', tl.pg]]) dire('      (débogage) ' + q + ' ' + await pg.evaluate(() => DR_SES.id + ' ' + JSON.stringify(DR_SES.dbgP)).catch(e => String(e)));

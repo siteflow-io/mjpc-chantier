@@ -23123,7 +23123,15 @@ function dr_sesRecu(v){
   dr_sesAppliquer(v);
   if (perdue) dr_sesEnvoyerMaintenant(false, true);   /* avant de se taire : son dernier état, la réponse en cours comprise, part à celui qui a la main */
   if (premier && window.DR_TC && !DR_TC.mainPrise) { DR_TC.mainPrise = true; setTimeout(() => dr_tcPrendreMain(), 0); }   /* le QR scanné : la télécommande a la main */
+  else if (premier && DR_SES.priseRejoint) dr_sesPrendreRejoint();
 }
+/* C16 (le complément du lot 1 ; Paul, 03/11 17:04 : « n'importe quelle touche » reprend la main ; 17:20 : « oui le téléphone doit se désactiver dans tous les cas »).
+   « REPRENDRE » SUR UN ORDINATEUR EST UN GESTE : le bandeau, « Rejoindre » dans la fenêtre « … joue déjà sur un autre appareil », la même séance relancée ici —
+   dans les trois sessions (l'heure, l'essai, la répétition). L'ordinateur pose d'abord le premier état reçu (là où la séance en est, les gestes faits juste avant
+   compris), puis il prend la main par le chemin des gestes : son état part, bâti sur cet état-là ; la télécommande se désactive et le dit. Avant : le clic n'était
+   pas un geste (le téléphone restait actif, 3 fois sur 5 en vraie heure) — il ne se désactivait que par accident (les chemins A et C de l'audit de l'horloge),
+   et le chemin A faisait perdre en silence le geste fait juste avant (14 fois sur 14). La télécommande, elle, prend la main par son QR (ci-dessus). */
+function dr_sesPrendreRejoint(){ DR_SES.priseRejoint = false; if (window.DR_TC || !DR_SES.ici) return; DR_SES.geste = Date.now(); clearTimeout(DR_SES.envT); DR_SES.envT = null; try { dr_sesEnvoyerMaintenant(); } catch (e) {} }
 /* le premier état vivant reçu en rejoignant une heure (ou un essai) : avant de le poser, l'état de l'heure au hub. Écrit par une version d'avant (sans `vifTs`)
    PLUS TARD que cet état vivant, c'est lui le plus récent — la reprise l'a déjà posé ici (dr_reprendreCours) : l'état vivant périmé ne se pose pas, cet appareil
    prend la main et envoie l'état repris (sa base : l'état périmé, connu de tous — ce que la version d'avant a fait depuis passe pour un changement d'ici, rien ne
@@ -23132,12 +23140,15 @@ function dr_sesRecu(v){
 function dr_sesPremierVerifier(v){
   const ici = DR_SES.ici, cle = v.par + '|' + v.ts; DR_SES.premierCle = cle;
   const suite = e => {
-    if (DR_SES.ici !== ici || DR_SES.premierCle !== cle) return;   /* un état plus récent est arrivé entre-temps : c'est lui qui se vérifie */
+    /* C16 (le complément du lot 1, le chemin C de l'audit de l'horloge) : la même session, comparée par sa signature — la veille repose `DR_SES.ici` toutes les
+       400 ms (un objet neuf, la même signature) : comparé par l'objet, un tour de veille pendant la lecture de l'état jetait le premier état reçu ; 3 s après,
+       l'appareil prenait la main sans base (mesuré : P2H, 2 fois sur 5) */
+    if (!DR_SES.ici || DR_SES.ici.sig !== ici.sig || DR_SES.premierCle !== cle) return;   /* un état plus récent est arrivé entre-temps : c'est lui qui se vérifie */
     const maj = +(e && e.maj) || 0;
     if (e && typeof e === 'object' && !(+e.vifTs) && maj > (+v.ts || 0)) {
       DR_SES.etatAncien = Math.max(DR_SES.etatAncien || 0, maj); DR_SES.attendrePremier = 0;
       DR_SES.dernier = cle; dr_sesConnu(cle); DR_SES.socle = { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, J: v.J, minut: v.minut }; DR_SES.recuBase = true;
-      DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; DR_SES.prise = true; DR_SES.forcer = true; DR_SES.envoye = ''; if (window.DR_TC) DR_TC.mainPrise = true;
+      DR_SES.main = DR_SES.id; DR_SES.mainTc = !!window.DR_TC; DR_SES.prise = true; DR_SES.forcer = true; DR_SES.envoye = ''; DR_SES.priseRejoint = false; if (window.DR_TC) DR_TC.mainPrise = true;
       try { dr_sesMainAfficher(); } catch (x) {} clearTimeout(DR_SES.envT); try { dr_sesEnvoyerMaintenant(); } catch (x) {} return; }
     v.__etatVu = true; dr_sesRecu(v); };
   try { if (typeof dr_lire === 'function') dr_lire((ici.C || ici.base) + '/etat', suite); else suite(null); } catch (e) { suite(null); }
@@ -23188,7 +23199,10 @@ function dr_sesPoserAutour(v){
    l'état d'ici non — sans cela, `reps: {}` ici contre rien là-bas passait pour un changement de l'autre pilote, et la réponse tapée ici était perdue (mesuré) */
 function dr_sesRange(v){ if (v === null || v === undefined || (typeof v === 'number' && !isFinite(v))) return undefined; if (typeof v !== 'object') return v;
   if (Array.isArray(v)) { const a = v.map(dr_sesRange); return a.some(x => x !== undefined) ? a.map(x => x === undefined ? null : x) : undefined; }
-  const o = {}; Object.keys(v).forEach(k => { const r = dr_sesRange(v[k]); if (r !== undefined) o[k] = r; }); const ks = Object.keys(o); if (!ks.length) return undefined;
+  /* C16 (le complément du lot 1, T de la session) : les clés TRIÉES, comme le hub les rend (dr-classe.js, `dr_commeLeHub`). Avant : dans l'ordre de leur écriture ici —
+     une prise de parole d'ici (`{id, nom, m, t…}`) contre la même relue du hub (`{heure, id, m, nom…}`) passait pour changée ici : la fusion la « gardait » et
+     l'appareil renvoyait son état sans fin (mesuré : trois pilotes, un état toutes les 100 à 300 ms pendant plus de 8 s — « mêmes champs, même ordre », gardé) */
+  const o = {}; Object.keys(v).sort().forEach(k => { const r = dr_sesRange(v[k]); if (r !== undefined) o[k] = r; }); const ks = Object.keys(o); if (!ks.length) return undefined;
   /* un objet aux clés 0, 1, 2… revient du hub en LISTE (la règle du hub : des clés entières, plus de la moitié présentes) : `reps: { 0: […] }` ici contre `reps: [[…]]`
      là-bas passait pour deux valeurs sans rapport, et la fusion prenait la sienne (mesuré : la réponse « Le Rom » du second ordinateur réduite à « L ») */
   if (ks.every(k => /^(0|[1-9]\d*)$/.test(k))) { const max = Math.max.apply(null, ks.map(Number)); if (ks.length * 2 > max) { const a = []; for (let i = 0; i <= max; i++) a.push(o[i] !== undefined ? o[i] : null); return a; } }
@@ -23203,7 +23217,10 @@ function dr_sesFus(b, m, t){
   if (m && t && typeof m === 'object' && typeof t === 'object' && !Array.isArray(m) && !Array.isArray(t)) { const o = {};
     new Set(Object.keys(m).concat(Object.keys(t))).forEach(k => { const r = dr_sesFus(b && typeof b === 'object' ? b[k] : undefined, m[k], t[k]); if (r !== undefined) o[k] = r; }); return o; }
   if (typeof m === 'string' && m !== '' && (t === '' || t == null)) return m;
-  if (typeof m === 'string' && typeof t === 'string' && m.length > t.length && m.startsWith(t) && (typeof b !== 'string' || m.startsWith(b))) return m;   /* le texte d'ici prolonge celui de l'autre : l'autre n'avait pas encore reçu les dernières lettres */   /* un texte écrit ici contre un texte vide là-bas : le texte écrit (rien de perdu) ; un objet retiré là-bas (le gel levé, une parole retirée) reste retiré */
+  /* C16 (le complément du lot 1) : l'espace insécable comptée comme une espace — une espace tapée en dernier, Chrome la range insécable dans le texte où l'on écrit, puis
+     ordinaire dès la lettre suivante (mesuré : « Le Romantisme met⍽ ») ; sans cela, « … met en » ne prolongeait plus « … met⍽ » et la fin tapée ici se perdait */
+  const ns = x => x.replace(/\u00a0/g, ' ');
+  if (typeof m === 'string' && typeof t === 'string' && m.length > t.length && ns(m).startsWith(ns(t)) && (typeof b !== 'string' || ns(m).startsWith(ns(b)))) return m;   /* le texte d'ici prolonge celui de l'autre : l'autre n'avait pas encore reçu les dernières lettres */   /* un texte écrit ici contre un texte vide là-bas : le texte écrit (rien de perdu) ; un objet retiré là-bas (le gel levé, une parole retirée) reste retiré */
   return t;
 }
 function dr_sesJournal(m, t){ const cle = x => JSON.stringify([x && x.t, x && x.type, x && x.di, x && x.k, x && x.nom]); const vus = new Set((t || []).map(cle)); const o = (t || []).concat((m || []).filter(x => !vus.has(cle(x)))); return o.sort((a, b) => ((a && a.t) || 0) - ((b && b.t) || 0)); }
@@ -23273,13 +23290,13 @@ function dr_sesClosAilleurs(v){
 }
 
 /* ─── suivre : dès que cette page pilote une session, elle écoute son état vivant ; elle se tait quand la session s'arrête ici ─── */
-function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.connus = new Set(); DR_SES.etatAncien = 0; DR_SES.premierCle = null; DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.mainTs = 0; DR_SES.prise = false; DR_SES.contenu = false; DR_SES.envoiTs = 0; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
+function dr_sesSuivreFin(){ dr_sesTaire(DR_SES.ec); DR_SES.ec = null; DR_SES.ici = null; DR_SES.socle = null; DR_SES.recuBase = false; DR_SES.hist = new Map(); DR_SES.connus = new Set(); DR_SES.etatAncien = 0; DR_SES.premierCle = null; DR_SES.dernier = null; DR_SES.recuCle = null; DR_SES.main = null; DR_SES.mainTc = false; DR_SES.mainTs = 0; DR_SES.prise = false; DR_SES.contenu = false; DR_SES.envoiTs = 0; DR_SES.priseRejoint = false; try { dr_sesMainAfficher(); } catch (e) {} DR_SES.envoye = ''; DR_SES.attente = null; DR_SES.recu = 0; DR_SES.copieEnv = ''; }
 function dr_sesVeiller(){
   const ici = dr_sesIci();
   if (!ici) { if (DR_SES.ici) dr_sesSuivreFin(); return; }
   if (DR_SES.ici && DR_SES.ici.sig === ici.sig) { DR_SES.ici = ici; if (dr_sesSig(dr_sesPhoto()) !== DR_SES.envoye) dr_sesEnvoyer(); return; }
   dr_sesSuivreFin(); DR_SES.ici = ici;
-  if (DR_SES.rejoint) { DR_SES.rejoint = 0; DR_SES.attendrePremier = Date.now(); DR_SES.copieEnv = dr_sesCopie(); }   /* la copie est venue avec la reprise : elle ne repart qu'à son prochain changement */   /* cet appareil a rejoint la session : le premier état reçu fait foi (3 s au plus) */
+  if (DR_SES.rejoint) { DR_SES.rejoint = 0; DR_SES.attendrePremier = Date.now(); DR_SES.priseRejoint = !window.DR_TC; DR_SES.copieEnv = dr_sesCopie(); }   /* un ordinateur qui rejoint : son « Reprendre » est un geste, il prendra la main une fois le premier état posé (dr_sesPrendreRejoint) */   /* la copie est venue avec la reprise : elle ne repart qu'à son prochain changement */   /* cet appareil a rejoint la session : le premier état reçu fait foi (3 s au plus) */
   DR_SES.ec = dr_sesEcouter(ici.base + '/vif', v => dr_sesRecu(v), 300);
   dr_sesEnvoyer();
 }
@@ -23291,25 +23308,34 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
     const a = document.activeElement; if (a && a !== document.body && (a.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) { DR_SES.coupe = 0; return; }
     const t = ev.timeStamp || 0; if (DR_SES.coupeEv ? t - DR_SES.coupeEv > 1500 : Date.now() - DR_SES.coupe > 5000) { DR_SES.coupe = 0; DR_SES.coupeEv = 0; return; }   /* l'écart entre deux touches, mesuré sur les touches elles-mêmes : une page occupée un instant ne l'arrête pas */
     if (ev.key && ev.key.length === 1 && !ev.ctrlKey && !ev.metaKey && !ev.altKey) { DR_SES.coupeEv = t; ev.preventDefault(); ev.stopImmediatePropagation(); } else if (ev.key !== 'Shift') { DR_SES.coupe = 0; DR_SES.coupeEv = 0; } }, true);
-  document.addEventListener('pointerdown', ev => { DR_SES.appui = true; DR_SES.coupe = 0; if (!(ev.target && ev.target.closest && ev.target.closest('#ses-reprise, #dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true);
-  ['keydown', 'input', 'click'].forEach(t => document.addEventListener(t, ev => { if (!(ev.target && ev.target.closest && ev.target.closest('#ses-reprise, #dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true));   /* un geste d'ici : il prend la main */
+  /* C16 (le complément du lot 1) : le bandeau « Reprendre » n'est plus mis à part — c'est un geste ; il prend la main une fois la séance rejointe (dr_sesPrendreRejoint) */
+  document.addEventListener('pointerdown', ev => { DR_SES.appui = true; DR_SES.coupe = 0; if (!(ev.target && ev.target.closest && ev.target.closest('#dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true);
+  ['keydown', 'input', 'click'].forEach(t => document.addEventListener(t, ev => { if (!(ev.target && ev.target.closest && ev.target.closest('#dr-tc-qr, #tc-bas, #tc-accueil'))) DR_SES.geste = Date.now(); }, true));   /* un geste d'ici : il prend la main */
   const relache = () => { DR_SES.appui = false; if (DR_SES.attente) setTimeout(() => { if (DR_SES.attente && !dr_sesOccupe()) { const a = DR_SES.attente; DR_SES.attente = null; dr_sesAppliquer(a); } }, 30); };
   document.addEventListener('pointerup', relache, true); document.addEventListener('pointercancel', relache, true);
   document.addEventListener('keydown', ev => { const a = ev.target; if (a && (a.isContentEditable || /^(INPUT|TEXTAREA)$/.test(a.tagName))) { if (ev.key && ev.key.length === 1 && !ev.ctrlKey && !ev.metaKey && !ev.altKey) DR_SES.frappe = Date.now(); else DR_SES.frappe = 0; } }, true);
   document.addEventListener('focusout', ev => { const a = ev.target; if (a && a.isContentEditable && DR_SES.frappe && Date.now() - DR_SES.frappe < 400 && !DR_SES.appui) setTimeout(() => { const b = document.activeElement; if (!b || b === document.body) { try { getSelection().removeAllRanges(); } catch (e) {} DR_SES.coupe = Date.now(); DR_SES.coupeEv = 0; } }, 0); }, true);   /* un texte quitté en pleine frappe sans qu'on l'ait voulu (pas un clic, pas Échap, pas Entrée) : les lettres suivantes ne tombent pas sur les raccourcis */
   document.addEventListener('focusout', () => setTimeout(() => { if (DR_SES.attente && !dr_sesOccupe()) { dr_sesEnvoyerMaintenant(); if (DR_SES.attente) { const a = DR_SES.attente; DR_SES.attente = null; dr_sesAppliquer(a); } } }, 30), true);
 }
-/* l'état de l'heure dit le dernier état vivant que cet appareil connaissait (`vifTs`) : une version d'avant n'écrit pas ce champ — c'est ainsi qu'on la reconnaît (dr_sesPremierVerifier) */
+/* l'état de l'heure dit le dernier état vivant que cet appareil connaissait (`vifTs`) : une version d'avant n'écrit pas ce champ — c'est ainsi qu'on la reconnaît (dr_sesPremierVerifier).
+   C16 (le complément du lot 1, le chemin A de l'audit de l'horloge) : TOUJOURS écrit par cette version, même avant que la session soit posée ici (1 : aucun état
+   vivant connu). Avant : seulement une fois `DR_SES.ici` posé — la sauvegarde immédiate de la fin d'une reprise (`dr_copieAuto(true)`, dr-classe.js) partait sans
+   lui quand la veille (400 ms) n'était pas encore passée ; l'appareil se prenait pour une version d'avant, prenait la main et envoyait l'état de sa reprise, lu
+   avant le geste qu'un autre venait de faire : ce geste était effacé partout (mesuré : 14 fois sur 14). */
 (function(){ const f = window.dr_etatHeure; if (typeof f !== 'function' || f.__ses) return;
-  const g = function () { const e = f.apply(this, arguments); try { if (e && typeof e === 'object' && DR_SES.ici) e.vifTs = Math.max(+DR_SES.recu || 0, +DR_SES.envoiTs || 0) || 1; } catch (x) {} return e; }; g.__ses = true; window.dr_etatHeure = g; })();
+  const g = function () { const e = f.apply(this, arguments); try { if (e && typeof e === 'object') e.vifTs = (DR_SES.ici ? Math.max(+DR_SES.recu || 0, +DR_SES.envoiTs || 0) : 0) || 1; } catch (x) {} return e; }; g.__ses = true; window.dr_etatHeure = g; })();
 /* les gestes qui changent la session : le rendu (`dr_tout`), la sauvegarde (`dr_copieAuto`), le minuteur (`dr_minuteurEnvoyer`) — après eux, l'envoi */
 ['dr_tout', 'dr_copieAuto', 'dr_minuteurEnvoyer'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const r = f.apply(this, arguments); try { if (!DR_SES.appl && DR_SES.ici) dr_sesEnvoyer(); } catch (e) {} return r; }; g.__ses = true; window[n] = g; });
 /* pendant qu'un état reçu se pose, rien ne repart d'ici (la scène, la copie, l'état : l'autre pilote les a écrits) ; et pendant qu'un état reçu attend la fin
    d'une frappe ici — il a changé ce que voit la classe (une autre diapo, un dévoilement, le gel : `dr_sesPoserAutour` ne l'a pas posé) —, la scène d'ici ne
    repart pas non plus (elle ferait reculer le tableau d'un geste) : elle repart, fusionnée, à la sortie du champ */
+/* C16 (le complément du lot 1, PG) : ni pendant qu'un appareil REJOINT la session (dr_sesAttend : la reprise en cours, puis le premier état reçu pas encore posé) — il
+   n'a encore personne pour pilote et se croyait « celui qui tient » : sa scène, celle de sa reprise (lue avant le geste qu'un autre venait de faire), partait au
+   tableau, plus récente que celle du geste ; le tableau reculait d'un élément et n'était plus corrigé (mesuré : ▶ à la télécommande ou à l'ordinateur juste
+   avant « Reprendre » au second ordinateur, 6 fois sur 6 — chaque pilote avait le geste, le tableau non) */
 ['dr_sceneAuto', 'dr_copieAuto', 'dr_ttEmettre', 'dr_repEmettre'].forEach(n => { const f = window[n]; if (typeof f !== 'function' || f.__sesMuet) return;
-  const g = function () { if (DR_SES.appl || (n !== 'dr_copieAuto' && ((DR_SES.ici && !dr_sesJeTiens()) || (DR_SES.attente && dr_sesOccupe())))) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });   /* le tableau ne suit que l'appareil qui a la main */
+  const g = function () { if (DR_SES.appl || (n !== 'dr_copieAuto' && ((DR_SES.ici && !dr_sesJeTiens()) || (DR_SES.attente && dr_sesOccupe()) || dr_sesAttend()))) return; return f.apply(this, arguments); }; g.__sesMuet = true; g.__ses = f.__ses; window[n] = g; });   /* le tableau ne suit que l'appareil qui a la main */
 /* clore ici : l'état vivant part une dernière fois, « clos », pour les autres pilotes ; puis la clôture d'avant (le pointeur, l'image d'essai) */
 (function(){ const f = window.dr_cloreFin; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const ici = dr_sesIci() || DR_SES.ici; if (ici) { DR_SES.ici = ici; try { dr_sesEnvoyerMaintenant(true); } catch (e) {} }
@@ -23332,7 +23358,7 @@ function dr_sesReprendreEssai(p, fini){
     const c = Object.assign({}, v.cours, { niveau: p.niveau, chapitre: p.chapitre, seance: p.seance, classeSlug: p.classeSlug || v.cours.classeSlug, classeNom: p.classeNom || v.cours.classeNom });
     const C = dr_sesChemC(c);
     const poser = (ch, val) => { try { _sitePut(ch, val); } catch (e) {} };
-    poser(C + '/etat', { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, maj: v.ts, heures: v.heures, reactivations: v.reactivations, heuresParDurees: v.heuresParDurees });
+    poser(C + '/etat', { S: v.S, parDiapo: v.parDiapo, vuMax: v.vuMax, maj: v.ts, vifTs: +v.ts || 1, heures: v.heures, reactivations: v.reactivations, heuresParDurees: v.heuresParDurees });   /* `vifTs` : écrit par cette version (jamais prise pour une version d'avant) */
     poser(C + '/journal', v.J || []); const ecr = Array.isArray(v.ecrans) ? v.ecrans : (Array.isArray(ecrTT) ? dr_clesDuHub(ecrTT) : null); if (ecr) poser(C + '/ecrans', ecr);   /* la copie de l'essai : celle de l'état vivant, sinon celle que voit le tableau (`/site/tableau_test/ecrans`) */
     poser('/site/cours_actif', Object.assign({}, c, { ts: Date.now() }));
     DR_SES.rejoindre = { sig: p.ts + '|' + p.seance, p };

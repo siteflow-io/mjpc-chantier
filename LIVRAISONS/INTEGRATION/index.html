@@ -1875,7 +1875,18 @@ function m8LireOuHub(chemin){
   if(m8TestOn()) return new Promise(function(res){ M8T.lire(chemin, function(v){ res(v); }); });
   return fetch(FIREBASE_BASE + chemin + '.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
 }
+/* C16 (lot 1, 359 ; Paul, 03/11 14:43) : UN ESSAI QUI JOUE GARDE LE MODE TEST — l'heure de classe ouverte ici (`AT_DR_REGIME` 'classe', `AT_DR_COURS` : du
+   lancement, écran d'ouverture compris, jusqu'à la clôture ou « Annuler cette heure ») alors que le mode test est actif. Le quitter à ce moment faisait écrire
+   la suite de l'essai au vrai hub, dans la copie de la classe, SANS le nom de la classe (audit global II §3.0.2, M1 : le paquet qui comptait pour toutes
+   les classes). Le refus est dit ; une fois l'essai clos, la pastille rebascule comme avant. */
+function m8EssaiEnCours(){
+  try{ return M8_TEST===true && typeof AT_DR_REGIME!=='undefined' && AT_DR_REGIME==='classe' && typeof AT_DR_COURS!=='undefined' && !!AT_DR_COURS && !(typeof S==='object'&&S&&S.repetition); }catch(e){ return false; }
+}
 function m8BasculerModeTest(){
+  if(m8EssaiEnCours()){
+    try{ atInfo('Un essai joue en mode test : clos-le d’abord.<br>Quitter le mode test pendant l’essai ferait écrire la suite de l’essai dans les vraies données de la classe.'); }catch(e){}
+    return;
+  }
   M8_TEST = !M8_TEST;
   if(!M8_TEST){ M8T.vider(); }
   try{ sessionStorage.setItem('mjpc_m8_test', M8_TEST ? '1' : '0'); }catch(e){}
@@ -16716,7 +16727,7 @@ function sesReprisePoser(){
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
     dr_lire('/site/cours_actif',function(c){
       var frais=function(x){ return x&&x.ts&&(Date.now()-x.ts)<=4*3600*1000; };
-      if(!frais(c)){ if(frais(loc))c=loc; else { sesRepriseRetirer(); return; } }   /* ce navigateur a vu partir l'onglet de l'heure (et pas sa clôture) : le pointeur absent ne suffit pas à la dire close — la trace en décide (`_drHeureCloseAu`, ci-dessous) ; contrôle n°65 (a) : le bandeau partait à la veille suivante quand le pointeur n'était pas lisible */
+      if(!frais(c)){ if(frais(loc)&&!loc.test)c=loc; else { sesRepriseRetirer(); return; } }   /* lot 1 (359) : jamais le miroir d'un essai */   /* ce navigateur a vu partir l'onglet de l'heure (et pas sa clôture) : le pointeur absent ne suffit pas à la dire close — la trace en décide (`_drHeureCloseAu`, ci-dessous) ; contrôle n°65 (a) : le bandeau partait à la veille suivante quand le pointeur n'était pas lisible */
       if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); return; }   /* un autre onglet d'ici la tient */
       _drHeureCloseAu(c,function(close){ if(close){ sesRepriseRetirer(); return; } if(typeof dr_heureTenue==='function'&&dr_heureTenue())return; sesReprisePeindre(c); });
     });
@@ -16733,6 +16744,7 @@ function sesReprendre(){
   if(typeof dr_heureTenueAilleurs==='function'&&dr_heureTenueAilleurs(_drSignatureCours(c))){ sesRepriseRetirer(); atInfo('Cette heure est ouverte dans un autre onglet de ce navigateur : continue-la là-bas.'); return; }
   (typeof dr_sesLireHub==='function'&&!(typeof m8TestOn==='function'&&m8TestOn())?dr_sesLireHub:dr_lire)('/site/cours_actif',function(p){   /* C16 (㉞) : le pointeur du hub lui-même */
     var loc=(typeof dr_heurePartie==='function')?dr_heurePartie():null;
+    if(c.test||(loc&&loc.test))loc=null;   /* lot 1 (359) : le miroir local d'un essai (mode test) ne se reprend jamais comme une heure (mode réel) */
     if((!p||!p.ts)&&loc)p=loc;
     if(!p||!p.ts||_drSignatureCours(p)!==_drSignatureCours(c)){ sesRepriseRetirer();
       atInfo('Ce cours n’est plus celui qui tourne : il a été clos ou remplacé par un autre. Rien n’est repris.'); return; }
@@ -18690,11 +18702,22 @@ function edtClesHeureTrace(iso,creneau,nomClasse){
   return a===b?[a]:[a,b];
 }
 function edtHeureTrouvee(h,ks){ if(!h)return null; for(var i=0;i<ks.length;i++){ if(h[ks[i]])return ks[i]; } return null; }
+/* C16 (lot 1, 359 ; Paul, 03/11 14:43) : UN PAQUET JOUÉ COMPTE-T-IL POUR CETTE CLASSE ? — `deroule_joue/<clé>` porte d'ordinaire le nom de sa classe
+   (`classe`, écrit au lancement par `atDrJouer`) : il compte pour elle seule. SANS `classe` (une forme écrite hors du lancement : un essai sorti du mode
+   test, mesuré par l'audit global II §3.0.2), il ne compte que pour la classe de SA CLÉ, comparée comme le site compare les classes (`edtCleClasse`).
+   Avant : sans `classe`, il comptait pour TOUTES les classes — une classe qui n'avait rien joué se voyait proposer la séance 2. La seule règle, lue par
+   tous ceux qui comptent les heures jouées d'une classe ; rien n'est réécrit au hub. */
+function edtPaquetPour(sl,b,nomClasse){
+  if(!b||typeof b!=='object')return false;
+  if(b.classe)return b.classe===nomClasse;
+  if(nomClasse==null||nomClasse==='')return false;
+  return String(edtCleClasse(sl))===String(edtCleClasse(nomClasse));
+}
 function edtTraceDe(seance,nomClasse,iso,creneau){
   var d=(seance&&seance.deroule_joue)||{},ks=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) */
   var res=null;
   Object.keys(d).forEach(function(sl){
-    var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+    var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return;   /* lot 1 (359) */
     var h=b.heures||{}, k=edtHeureTrouvee(h,ks); if(k)res=h[k];
   });
   return res;
@@ -18717,7 +18740,7 @@ function edtReportees(H,choix){
    (« heure n+1 · suite ») prend la prochaine case de la classe. Rend {jouees, sur, finie, suite, reportees (eid), derniere (la clé de l'heure)}. */
 function edtSeanceEtat(seance,nomClasse){
   var d=(seance&&seance.deroule_joue)||{}, hs=[];
-  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return; Object.keys(b.heures||{}).forEach(function(k){ hs.push({cle:k,H:b.heures[k]||{}}); }); });
+  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return; Object.keys(b.heures||{}).forEach(function(k){ hs.push({cle:k,H:b.heures[k]||{}}); }); });   /* lot 1 (359) */
   hs.sort(function(a,b){ return String(a.cle).localeCompare(String(b.cle)); });
   var sur=edtHeuresPour(seance,null), n=hs.length, der=hs[n-1]||null, rep=der?edtReportees(der.H,['reporter']):[];
   return {jouees:n, sur:sur, reportees:rep, derniere:der?der.cle:null, finie:n>=sur&&!rep.length, suite:n>=sur&&rep.length>0};
@@ -18731,7 +18754,7 @@ function edtSeanceJouee(seance,nomClasse){
 }
 function edtHeuresJouees(seance,nomClasse){   /* [E2] les heures déjà jouées d'une séance par cette classe (closes ou en cours) */
   var d=(seance&&seance.deroule_joue)||{},n=0;
-  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return; n+=Object.keys(b.heures||{}).length; });
+  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return; n+=Object.keys(b.heures||{}).length; });   /* lot 1 (359) */
   return n;
 }
 function edtHeuresPour(seance,creneau){
@@ -18784,7 +18807,7 @@ function edtSeanceDeTrace(nomClasse,iso,creneau){   /* [E2] la séance d'une heu
   var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cles=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) */
   for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);
     for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};
-      if(Object.keys(d).some(function(sl){ var b=d[sl]; return b&&!(b.classe&&b.classe!==nomClasse)&&edtHeureTrouvee(b.heures,cles); }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }
+      if(Object.keys(d).some(function(sl){ var b=d[sl]; return edtPaquetPour(sl,b,nomClasse)&&edtHeureTrouvee(b.heures,cles); }))return {titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i}; } }
   return null;
 }
 /* la file des séances qui attendent, pour une classe et un fil */
@@ -19922,7 +19945,7 @@ function edtCheminTrace(nomClasse,iso,creneau){
       var d=(se[k]&&se[k].deroule_joue)||{},cles=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) : sous la clé, puis sous le nom */
       var trouve=null;
       Object.keys(d).forEach(function(sl){
-        var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
+        var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return;   /* lot 1 (359) */
         var kk=edtHeureTrouvee(b.heures,cles); if(kk)trouve={slug:sl,trace:b.heures[kk],cle:kk};
       });
       if(trouve)return {chemin:'/site/'+niv+'/chapitres/'+l[i].__cle+'/seances/'+se[k].__i

@@ -616,7 +616,7 @@ function dr_nbHeures(creneau){
 function dr_heureProposee(slug, creneau){
   try { const ec = AT.edChap, sk = ATVUES.snum, sce = chapitresData[ec.level][ec.chnum].seances[sk];
     if (typeof edtHeuresJouees === 'function') { const n = edtHeuresJouees(sce, dr_nomClasse(slug)); const ici = _drCleHeureDe({ classeSlug: slug, debut: String(creneau).split('-')[0], fin: String(creneau).split('-')[1] });
-      const deja = Object.values(sce.deroule_joue || {}).some(b => b && (!b.classe || b.classe === dr_nomClasse(slug)) && (b.heures || {})[ici]); return n - (deja ? 1 : 0) + 1; }   /* compté comme la case de l'EDT (par le nom de la classe) */
+      const dj = sce.deroule_joue || {}; const deja = Object.keys(dj).some(sl => edtPaquetPour(sl, dj[sl], dr_nomClasse(slug)) && (dj[sl].heures || {})[ici]); return n - (deja ? 1 : 0) + 1; }   /* compté comme la case de l'EDT (par le nom de la classe) ; lot 1 (359) : la même règle que l'EDT (`edtPaquetPour`) — un paquet sans `classe` ne compte que pour la classe de sa clé */
     const hs = ((((sce || {}).deroule_joue || {})[slug] || {}).heures) || {};
     const ici = _drCleHeureDe({ classeSlug: slug, debut: String(creneau).split('-')[0], fin: String(creneau).split('-')[1] }); return Object.keys(hs).filter(k => k !== ici).length + 1; } catch (e) { return 1; }
 }
@@ -1699,7 +1699,7 @@ function dr_ongletEntendre(m){
   if (m.t === 'qui') { if (dr_heureTenue()) { const c = dr_coursIci(); if (c) dr_ongletDire({ t: 'tiens', sig: _drSignatureCours(c), c, etat: dr_heureLocaleObjet() }); } return; }
   if (m.etat && m.etat.C) O.etats[m.etat.C] = m.etat;   /* (e) l'état porté par le message */
   if (m.t === 'tiens') { O.tenus[m.sig] = Date.now(); delete O.partis[m.sig]; try { if (SES._reprise && _drSignatureCours(SES._reprise) === m.sig) sesRepriseRetirer(); } catch (e) {} return; }
-  if (m.t === 'part') { delete O.tenus[m.sig]; if (O.clos[m.sig]) return; O.partis[m.sig] = m.c; if (!dr_heureTenue() && dr_ongletProf()) try { sesReprisePeindre(m.c); } catch (e) {} return; }
+  if (m.t === 'part') { delete O.tenus[m.sig]; if (O.clos[m.sig]) return; O.partis[m.sig] = m.c; if (!dr_heureTenue() && dr_ongletProf() && !(m.c && m.c.test)) try { sesReprisePeindre(m.c); } catch (e) {} return; }   /* lot 1 (359) : un essai parti (mode test) ne se propose jamais comme une heure — son bandeau vient de son annonce d'essai (`dr_sesBandeau`) */
   if (m.t === 'clos') { delete O.tenus[m.sig]; delete O.partis[m.sig]; O.clos[m.sig] = true; O.etats = {}; try { if (SES._reprise && _drSignatureCours(SES._reprise) === m.sig) sesRepriseRetirer(); } catch (e) {} }
 }
 if (DR_CL.canal) DR_CL.canal.onmessage = ev => dr_ongletEntendre(ev.data);
@@ -1712,7 +1712,11 @@ function dr_heurePartie(){ const O = DR_CL.onglet; const k = Object.keys(O.parti
 /* l'onglet de l'heure : un signe de vie toutes les 2 s ; au départ, « je pars » et la marque */
 setInterval(() => { try { if (!dr_heureTenue()) return; const c = dr_coursIci(); if (!c) return; const sg = _drSignatureCours(c); dr_ongletDire({ t: 'tiens', sig: sg, c, etat: dr_heureLocaleObjet() });
   try { const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && _drSignatureCours(x.c) === sg) localStorage.removeItem(DR_LOC_PARTIE); } catch (e) {} } catch (e) {} }, 2000);
-window.addEventListener('pagehide', () => { try { if (!dr_heureTenue()) return; dr_heureLocaleEcrire(); const c = dr_coursIci(); if (!c) return; try { localStorage.setItem(DR_LOC_PARTIE, JSON.stringify({ c, t: Date.now() })); } catch (e) {} dr_ongletDire({ t: 'part', sig: _drSignatureCours(c), c, etat: dr_heureLocaleObjet() }); } catch (e) {} });
+/* C16 (lot 1, 359) : le miroir local d'un ESSAI le dit (`test`) — sans cette marque, un autre onglet hors mode test le proposait comme une heure (« Heure en
+   cours avec les … — Reprendre ») et le reprenait en mode réel : la suite de l'essai partait au vrai hub, sans le nom de la classe (le mécanisme de l'audit
+   global II §3.0.2, M2). Un essai ne se reprend que par son annonce d'essai, en mode test (`dr_sesReprendreEssai`). */
+function dr_coursMiroir(){ const c = dr_coursIci(); try { if (c && typeof m8TestOn === 'function' && m8TestOn()) c.test = true; } catch (e) {} return c; }
+window.addEventListener('pagehide', () => { try { if (!dr_heureTenue()) return; dr_heureLocaleEcrire(); const c = dr_coursMiroir(); if (!c) return; try { localStorage.setItem(DR_LOC_PARTIE, JSON.stringify({ c, t: Date.now() })); } catch (e) {} dr_ongletDire({ t: 'part', sig: _drSignatureCours(c), c, etat: dr_heureLocaleObjet() }); } catch (e) {} });
 function dr_ongletClos(){ const c = dr_coursIci(); if (!c) return; const sg = _drSignatureCours(c); DR_CL.onglet.clos[sg] = true; dr_ongletDire({ t: 'clos', sig: sg });
   try { localStorage.removeItem(DR_LOC_ETAT); const x = JSON.parse(localStorage.getItem(DR_LOC_PARTIE) || 'null'); if (x && x.c && _drSignatureCours(x.c) === sg) localStorage.removeItem(DR_LOC_PARTIE); } catch (e) {} }
 /* un onglet qui s'ouvre demande qui tient l'heure (la réponse arrive avant la première veille du bandeau) */

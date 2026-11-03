@@ -424,7 +424,7 @@ function dr_sesBandeau(){
     else if (dr_sesFrais(t) && t.quoi === 'heure') c = Object.assign({}, t, { __sorte: 'essai' });
     else if (dr_sesFrais(DR_SES.ann.rep)) c = Object.assign({}, DR_SES.ann.rep, { __sorte: 'repetition', test: false });   /* une heure lancée prime ; puis l'essai ; puis la répétition */
     else if (dr_sesFrais(t) && t.quoi === 'repetition') c = Object.assign({}, t, { __sorte: 'repetition', test: true });
-    if (!c) { const loc = (typeof dr_heurePartie === 'function') ? dr_heurePartie() : null; if (dr_sesFrais(loc) && !dr_sesTest()) c = Object.assign({}, loc, { __sorte: 'heure' }); }
+    if (!c) { const loc = (typeof dr_heurePartie === 'function') ? dr_heurePartie() : null; if (dr_sesFrais(loc) && !loc.test && !dr_sesTest()) c = Object.assign({}, loc, { __sorte: 'heure' }); }   /* lot 1 (359) : jamais le miroir d'un essai (`test`) comme une heure */
     if (!c) { if (SES._reprise) sesRepriseRetirer(); return; }
     if (c.__sorte === 'heure' && typeof dr_heureTenueAilleurs === 'function' && dr_heureTenueAilleurs(_drSignatureCours(c))) { if (SES._reprise) sesRepriseRetirer(); return; }   /* un autre onglet de ce navigateur la tient (§12.28-3 d) */
     const cle = c.__sorte + '|' + (c.__sorte !== 'heure' ? c.ts + '|' + c.seance : _drSignatureCours(c));

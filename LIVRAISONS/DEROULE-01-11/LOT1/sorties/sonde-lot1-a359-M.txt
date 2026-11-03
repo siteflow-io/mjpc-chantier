@@ -1,0 +1,31 @@
+C16 · lot 1 (359, 360, 361) · 2026-11-03 15:07 UTC · a359/index.html md5 255ddf582d0e230884d5a1895c62d1fd · parties M · la montre du navigateur (seule la date est décalée)
+
+— partie M · 15:07 UTC
+  [M1] mode test : clic sur la pastille → m8TestOn() = true
+  [M1] l’essai lancé (true), 7 diapos : écritures hors de /site/tableau_test : aucune
+  [M1] PENDANT l’essai, quitter le mode test : m8BasculerModeTest() — la fonction de la pastille (le Panneau prof n’est pas à cet écran) → m8TestOn() = true · la fenêtre : {"texte":"Un essai joue en mode test : clos-le d’abord. Quitter le mode test pendant l’essai ferait écrire la suite de l’essai dans les vraies données de la classe.","boutons":[{"t":"Compris","bulle":""}]}
+  ok     M1 · pendant l’essai, quitter le mode test est refusé : le mode test reste actif — true
+  ok     M2 · le refus le dit : « Un essai joue en mode test : clos-le d’abord » — Un essai joue en mode test : clos-le d’abord. Quitter le mode test pendant l’essai ferait écrire la suite de l’essai dans les vraies données de la classe.
+  [M1] la pastille, le Panneau prof ouvert par sa fonction : atteignable au pointeur false ; son clic (gestionnaire) → m8TestOn() = true · la fenêtre : « Un essai joue en mode test : clos-le d’abord. Quitter le mod »
+  ok     M1 · le clic de la pastille pendant l’essai : refusé, avec sa phrase ; le mode test reste actif — {"test":true,"modale":{"texte":"Un essai joue en mode test : clos-le d’abord. Quitter le mode test pendant l’essai ferait écrire la suite de l’essai dans les vraies données de la classe.","boutons":[{"t":"Compris","bulle":""}]}}
+  [M1] « Quitter le mode test » de la console du Panneau prof : absent de la page (sa section n’est pas dessinée)
+  [M1] ensuite, 3 diapos et 20 s : 0 chemins hors de /site/tableau_test : 
+  ok     M3 · l’essai entier, la pastille cliquée au milieu, jusqu’à « Clore » : aucune écriture hors de /site/tableau_test (K15-test) — 92 écritures — []
+  ok     M4 · au « vrai » hub, aucun paquet dans deroule_joue — []
+  [M1] l’essai clos (true) : m8BasculerModeTest() — la fonction de la pastille (le Panneau prof n’est pas à cet écran) → m8TestOn() = false
+  ok     M5 · l’essai clos, la pastille quitte le mode test comme avant, sans fenêtre — {"clos":true,"test":false,"modale":null}
+  ok     M9 · M1 : aucune erreur JS, aucune boîte système
+  [M2] l’essai, la page rechargée : m8TestOn() = false · le bandeau : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  [M2] « Reprendre » : m8TestOn() = true · écritures hors de /site/tableau_test : aucune
+  ok     M6 · l’essai, la page rechargée, « Reprendre » : aucune écriture hors de /site/tableau_test, aucun paquet — {"w":[],"paquets":[]}
+  ok     M9 · M2 : aucune erreur JS, aucune boîte système
+  [M3] le second onglet : « ↗ Le site dans un nouvel onglet » · m8TestOn() = false
+  [M3] l’onglet de l’essai fermé : le bandeau du second onglet, 3,5 s : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  [M3] un autre appareil, en mode test : une répétition lancée (true) puis arrêtée · l’annonce d’essai au hub : null
+  [M3] puis, le bandeau du second onglet, 3 s : aucun
+  [M3] « Reprendre » cliqué : false · m8TestOn() = false · le second onglet a écrit hors de /site/tableau_test : rien · aucun paquet
+  ok     M7 · le second onglet ne propose jamais l’essai comme une heure (« Heure en cours avec les … ») — 14 relevés — []
+  ok     M8 · le second onglet n’écrit rien hors de /site/tableau_test ; aucun paquet au « vrai » deroule_joue — {"w":[],"paquets":[]}
+  ok     M9 · M3 : aucune erreur JS, aucune boîte système
+
+--- fin : 12 vérifications, 0 échec(s)

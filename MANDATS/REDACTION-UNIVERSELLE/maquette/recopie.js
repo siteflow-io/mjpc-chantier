@@ -874,13 +874,18 @@ function rcIAChargerSuite(txt) {
   return true;
 }
 /* les fautes proposées d'une ligne : les mots qui diffèrent, alignés par la plus longue sous-suite commune */
+/* [C14 1.4.33] (Paul 03/11 19:45 : « l'IA a relevé plusieurs fois oeil mal écrit parce que je l'ai tapé sans le e dans l'o » ; « Ok pour tout », 19:52 ; C14 127) :
+   ta recopie ne tape ni « œ » ni « æ » : « oe » pour « œ », « ae » pour « æ » n'est jamais une faute, ni dans la bande ni dans les fichiers (mesuré au site : 10 arrêts, 9 fautes gardées, gardées telles quelles dans les copies, oubliées à la lecture) */
+function rcSansLigature(t) { return String(t == null ? "" : t).replace(/œ/g, "oe").replace(/Œ/g, "Oe").replace(/æ/g, "ae").replace(/Æ/g, "Ae"); }
+function rcMemeMot(a, b) { return a === b || rcSansLigature(a) === rcSansLigature(b); }
+function rcFauteDeLigature(m) { const b = m && m.bande; return !!(b && b.eleve && b.corrige && b.eleve !== b.corrige && rcSansLigature(b.eleve) === rcSansLigature(b.corrige)); }
 function rcEcartsBruts(a, b) {
   const A = rcTokenize(a || ""), B = rcTokenize(b || ""), n = A.length, m = B.length, T = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
-  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) T[i][j] = A[i] === B[j] ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) T[i][j] = rcMemeMot(A[i], B[j]) ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
   const segs = []; let i = 0, j = 0, sa = 0, sb = 0;
   const fermer = () => { if (i > sa || j > sb) segs.push({ de: sa, a: i, de2: sb, a2: j, eleve: A.slice(sa, i).join(" "), corrige: B.slice(sb, j).join(" ") }); };
   while (i < n || j < m) {
-    if (i < n && j < m && A[i] === B[j]) { fermer(); i++; j++; sa = i; sb = j; }
+    if (i < n && j < m && rcMemeMot(A[i], B[j])) { fermer(); i++; j++; sa = i; sb = j; }
     else if (j >= m || (i < n && T[i + 1][j] >= T[i][j + 1])) i++; else j++;
   }
   fermer();
@@ -898,7 +903,7 @@ function rcCouper(A, B, g) {
   if (!EA.length || !EB.length) return (EA.length ? EA : EB).map((t, i) => EA.length ? { de: g.de + i, a: g.de + i + 1, de2: g.de2, a2: g.de2, eleve: t, corrige: "" } : { de: g.de, a: g.de, de2: g.de2 + i, a2: g.de2 + i + 1, eleve: "", corrige: t });   // deux mots manquants, ou en trop : deux fautes
   if (EA.filter(t => !rcSeparable(t)).length !== EB.filter(t => !rcSeparable(t)).length) return [g];
   const out = []; let i = 0, j = 0;
-  const pousser = (i0, i1, j0, j1) => { if (i1 - i0 === 1 && j1 - j0 === 1 && EA[i0] === EB[j0]) return; out.push({ de: g.de + i0, a: g.de + i1, de2: g.de2 + j0, a2: g.de2 + j1, eleve: EA.slice(i0, i1).join(" "), corrige: EB.slice(j0, j1).join(" ") }); };
+  const pousser = (i0, i1, j0, j1) => { if (i1 - i0 === 1 && j1 - j0 === 1 && rcMemeMot(EA[i0], EB[j0])) return; out.push({ de: g.de + i0, a: g.de + i1, de2: g.de2 + j0, a2: g.de2 + j1, eleve: EA.slice(i0, i1).join(" "), corrige: EB.slice(j0, j1).join(" ") }); };
   while (i < EA.length || j < EB.length) {
     const pa = i < EA.length && rcSeparable(EA[i]), pb = j < EB.length && rcSeparable(EB[j]);
     if (i < EA.length && j < EB.length && pa === pb) { pousser(i, i + 1, j, j + 1); i++; j++; }

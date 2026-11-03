@@ -223,7 +223,7 @@ function scQ(pt, c) { return pt.questions.find(q => q.cle === c); }
 function scCleDe(pt, i) { const q = pt.questions.find(q => q.id === +i); return q ? q.cle : null; }
 function scSautee(pt, q, rep) { if (!q || !q.saute) return false; const [t, i] = q.saute.split(":"); const c = scCleDe(pt, i); return t === "n" ? rep[c] === "n" : rep[c] === "o"; }
 function scQuestions(pt, rep) { return pt.questions.filter(q => !scSautee(pt, q, rep || {})); }
-function scFautes(k) { return Object.values(scCopie(k).marques).filter(m => m.forme === "faute"); }
+function scFautes(k) { return Object.values(scCopie(k).marques).filter(m => m.forme === "faute" && !(typeof rcFauteDeLigature === "function" && rcFauteDeLigature(m))); }   // [C14 1.4.33] « oe » pour « œ » n'est pas une faute
 // les lignes écrites : comptées d'office sur les copies de l'appli (lignes connues) ; sur une photo, l'appli propose, tu gardes ou tu corriges (mesuré le 30/10 sur tes copies : la réglure et les feuilles voisines faussent le compte)
 function scLignesProposees(k) { const P = scPagesDe(k); if (P.some(p => !p.lignes || p.lignes.fiable === false)) return 0; return P.reduce((n, p) => n + (p.lignes.n || 0), 0); }
 function scLignesCopie(k) { const s = scCopie(k); if (s.lignes != null) return s.lignes; const P = scPagesDe(k); return P.length && P.every(p => p.lignes && p.lignes.reperes) ? scLignesProposees(k) : 0; }

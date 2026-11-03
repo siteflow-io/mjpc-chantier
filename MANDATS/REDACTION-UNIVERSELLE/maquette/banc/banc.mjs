@@ -13,6 +13,7 @@ import { eprouverPoints } from "./points.mjs";
 import { eprouverTypes } from "./types.mjs";
 import { eprouverDetail } from "./detail.mjs";
 import { eprouverRetrouver } from "./retrouver.mjs";
+import { eprouverLigature } from "./ligature.mjs";
 // Le banc de la maquette « corriger sur les scans » : tout par le geste (souris, clavier, fichier choisi), à 1536 × 864.
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
@@ -141,6 +142,7 @@ await eprouverBandeSuite({ pg, verif, cap, att });   // [C14 1.4.28] (Paul 20:37
 await eprouverPoints({ pg, verif, cap, att });   // [C14 1.4.29] (Paul 22:33, 22:41 ; C14 80-81) les points de la grille, la note dans les fichiers des élèves
 await eprouverTypes({ pg, verif, cap, att });   // [C14 1.4.30] (Paul 03/11 00:39, 00:53 ; C14 94) le type de chaque faute dit vrai de ses mots
 await eprouverDetail({ pg, verif, cap, att });   // [C14 1.4.31] (Paul 03/11 07:57 ; C14 109) la correction détaillée dans les fichiers des élèves
+await eprouverLigature({ pg, verif, cap, att });   // [C14 1.4.33] (Paul 03/11 19:45, 19:52 ; C14 127) « oe » pour « œ » n'est jamais une faute
 await eprouverRetrouver({ pg, verif, cap, att, DIR: OUT });   // [C14 1.4.32] (Paul 03/11 09:58 ; C14 117) une feuille relue sur un autre ordinateur retrouve sa photo
 verif('aucune erreur, aucune boîte, aucun appel au vrai hub', err.length === 0);
 } catch (e) { console.log(ok.join('\n')); console.log('ARRÊT : ' + String(e.message).split('\n')[0]); console.log(err.join('\n')); await cap('zz-arret'); process.exit(1); }

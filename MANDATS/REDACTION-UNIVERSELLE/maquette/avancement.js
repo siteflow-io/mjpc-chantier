@@ -93,7 +93,7 @@ function avOuvrirCopie(k) {   // la copie s'ouvre là où tu travaillais quand t
 }
 /* l'onglet « Bilan » : pour la remédiation, la note, les critères et les fautes par type d'erreur de chaque élève, puis la classe */
 const AV_ORDRE = ["G", "L", "C", "P", "E", "M", "X", "I", "A"];
-function avFautes(k) { const ids = new Set(scPagesDe(k).map(p => p.id)), o = {}; Object.values(((state.copies[k] || {}).scan || {}).marques || {}).filter(m => m && m.forme === "faute" && (!ids.size || ids.has(m.page))).forEach(m => { const cm = typeof rcCodeMarque === "function" ? rcCodeMarque(m) : m.bande && m.bande.code, c = RC_TYPES[cm] ? cm : "_"; o[c] = (o[c] || 0) + 1; }); return o; }   // [C14 1.4.30] le type contrôlé
+function avFautes(k) { const ids = new Set(scPagesDe(k).map(p => p.id)), o = {}; Object.values(((state.copies[k] || {}).scan || {}).marques || {}).filter(m => m && m.forme === "faute" && !(typeof rcFauteDeLigature === "function" && rcFauteDeLigature(m)) && (!ids.size || ids.has(m.page))).forEach(m => { const cm = typeof rcCodeMarque === "function" ? rcCodeMarque(m) : m.bande && m.bande.code, c = RC_TYPES[cm] ? cm : "_"; o[c] = (o[c] || 0) + 1; }); return o; }   // [C14 1.4.30] le type contrôlé
 function avCritere(k, c) { let n = 0, tot = 0, ok = true; c.points.forEach(pt => { tot += pt.poids; const r = scCase(pt, k); if (!r || !r.complet) ok = false; else n += pt.bareme[String(r.c.niveau)]; }); return { n, tot, ok }; }
 function avBilanClasse() {
   const v = document.getElementById("ruVue_bilan"); if (!v) return; avPagesCharger();

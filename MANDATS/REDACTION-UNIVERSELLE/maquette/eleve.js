@@ -33,7 +33,7 @@ function scEleveDonnees(k, test) {
   const ordre = ps.map(p => p.id);
   const place = m => ({ page: ordre.indexOf(m.page), y: m.y0 });
   const M = Object.values(s.marques).filter(m => ordre.indexOf(m.page) >= 0);
-  const fautes = M.filter(m => m.forme === "faute").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
+  const fautes = M.filter(m => m.forme === "faute" && !(typeof rcFauteDeLigature === "function" && rcFauteDeLigature(m))).sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0) || (a.x0 - b.x0))
     .map(m => { const p = SC.pages[m.page]; const l = m.l0 != null && m.l0 >= 0 ? m.l0 + 1 : null; return { id: m.id, page: ordre.indexOf(m.page), x0: m.x0, y0: m.y0, x1: m.x1, y1: m.y1, num: m.num, rang: m.rang || 0, ligne: l, bonne: m.bonne || null, t: (typeof rcCodeMarque === "function" ? rcCodeMarque(m) : m.bande && m.bande.code) || null }; });
   const pts = []; SC.grille.criteres.forEach(c => c.points.forEach(pt => { const r = scCase(pt, k); if (!r || !r.complet) return;   // seuls les points que tu as passés partent chez l'élève
     const ms = M.filter(m => m.point === pt.id && m.forme !== "faute" && m.forme !== "etoile").sort((a, b) => (ordre.indexOf(a.page) - ordre.indexOf(b.page)) || (a.y0 - b.y0));
@@ -195,7 +195,11 @@ button{font:inherit;border:0;border-radius:8px;background:#6b1a2a;color:#fff;pad
         if (m.forme === "surligne") m.seg.forEach(r => Q.insertAdjacentHTML("beforeend", `<div class="mk${on("p", i) ? " on" : ""}" data-v="p:${i}" style="left:${pc(r[0])};top:${pc(r[1])};width:${pc(r[2] - r[0])};height:${pc(r[3] - r[1])};background:${k}${on("p", i) ? "66" : "40"};mix-blend-mode:multiply"></div>`));
         else Q.insertAdjacentHTML("beforeend", `<div class="mk ${m.forme === "marge" ? "g" : "e"}${on("p", i) ? " on" : ""}" data-v="p:${i}" style="left:${pc(m.x0)};top:${pc(m.y0)};width:${pc(m.x1 - m.x0)};height:${pc(m.y1 - m.y0)};${m.forme === "marge" ? "background:" + k : "border-color:" + k}"></div>`); });
       P.insertAdjacentHTML("beforeend", `<div class="pin${on("p", i) ? " on" : ""}" data-v="p:${i}" style="top:${pc(Math.max(0.015, p.place.y))};margin-left:${dx * 30}px;background:${D.bord[p.niveau]}"></div>`); });
-    col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", () => { const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
+    /* [C14 1.4.33] (Paul 03/11 19:45 : « quand ils cliquent sur les erreurs de langue et qu'il y a un cadre, le cadre affiche son commentaire à droite » ; C14 126) :
+       un clic sur un cadre de sticker, là où passe le trait d'une faute, ouvre la faute ; ailleurs dans le cadre, le sticker ; une étoile, toujours son sticker */
+    col.querySelectorAll("[data-v]").forEach(e => e.addEventListener("click", ev => {
+      if (e.matches(".mk.st, .mk.stp") && document.elementsFromPoint && ev.clientX != null) { const f = document.elementsFromPoint(ev.clientX, ev.clientY).find(x => x !== e && x.matches && x.matches("#col .mk.f[data-v]")); if (f) { f.click(); return; } }
+      const [t, i] = e.dataset.v.split(":"); vue = { t, i: i == null ? null : +i }; copie(); panneau(); }));
     col.querySelectorAll(".stx[data-s]").forEach(e => e.addEventListener("click", ev => { ev.stopPropagation(); vue = { t: "s", i: +e.dataset.s }; copie(); panneau(); }));   // [C14 1.4.31] chaque étoile ouvre son sticker
     decoller();
   }

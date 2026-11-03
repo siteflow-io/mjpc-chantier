@@ -5,6 +5,7 @@ import { eprouverPoints } from "./points.mjs";
 import { eprouverTypes } from "./types.mjs";
 import { eprouverDetail } from "./detail.mjs";
 import { eprouverRetrouver } from "./retrouver.mjs";
+import { eprouverLigature } from "./ligature.mjs";
 import { createRequire } from 'node:module'; import path from 'node:path'; import fs from 'node:fs';
 const req = createRequire(import.meta.url); let pw; for (const c of ['/opt/node22/lib/node_modules/playwright', 'playwright']) { try { pw = req(c); break; } catch (e) {} }
 const DIR = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..'); const MAQ = path.join(DIR, process.argv[2]); const OUT = process.argv[3]; fs.mkdirSync(OUT, { recursive: true });
@@ -22,6 +23,6 @@ try {
   await att(800); await pg.locator('button[onclick="scFermer()"]').click(); await att(800);
   await eprouverStickersReglages({ pg, verif, cap, att, dir: DIR });
   if (process.env.ECHO) { await pg.evaluate(() => { try { localStorage.setItem("mjpc_faux_hub_echo", "300"); } catch (e) {} }); await pg.reload(); await att(6000); }
-  await eprouverReprendre({ pg, verif, cap, att }); await eprouverBandeSuite({ pg, verif, cap, att }); await eprouverPoints({ pg, verif, cap, att }); await eprouverTypes({ pg, verif, cap, att }); await eprouverDetail({ pg, verif, cap, att }); await eprouverRetrouver({ pg, verif, cap, att, DIR: OUT });
+  await eprouverReprendre({ pg, verif, cap, att }); await eprouverBandeSuite({ pg, verif, cap, att }); await eprouverPoints({ pg, verif, cap, att }); await eprouverTypes({ pg, verif, cap, att }); await eprouverDetail({ pg, verif, cap, att }); await eprouverLigature({ pg, verif, cap, att }); await eprouverRetrouver({ pg, verif, cap, att, DIR: OUT });
 } catch (e) { console.log('ARRÊT : ' + String(e.message).split('\n')[0]); await cap('zz-arret'); }
 console.log(err.length ? 'ERREURS\n' + err.join('\n') : 'aucune erreur'); await b.close();

@@ -2033,3 +2033,5 @@ MEMO
   > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
   >
   > MEMO
+- **14:54 — 367, la conscience** : branche `banc/vraie-horloge` (`beea4c090`, base `9c13d037c`) : `MJPC_HORLOGE=date` (la date seule décalée ; minuteries, images et `performance` du navigateur) dans les sondes qui jugent un temps : sonde ⑩ (`EX/bancs/sonde-10.mjs`, le minuteur et les retards au tableau distant), le fil, l'appel, la fin d'heure, la session, la fin (D) ; la sonde de la frappe au tableau de l'exécutant de 10:05 (montre du navigateur, flux, tableau distant compté) reprise telle quelle pour l'étape 13. Sans la variable, chaque sonde fait ce qu'elle faisait. Aucune ligne du site. Le banc : `…/scratchpad/banc-horloge.sh` (les sondes de cette branche posées sur le commit candidat, `AUDITS/` de main).
+- **14:56 — 367, première mesure** : la sonde ⑩ et la sonde du fil, à la vraie horloge, sur la production 8.81.1 (en cours, la machine seule).

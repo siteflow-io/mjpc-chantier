@@ -62,6 +62,7 @@ function scOuvrir() {
     Object.values(SC.imgs).forEach(u => { try { URL.revokeObjectURL(u.url); } catch (e) {} }); SC.imgs = {};
     (loc || []).forEach(o => { if (o && o.blob) SC.imgs[o.id] = scImg(o.blob, o.w, o.h); if (o && o.orig) SC.origs[o.id] = { blob: o.orig, w: o.ow, h: o.oh }; });
     scCopiesOrdre(); SC.ouvert = true; SC.actif = Date.now();
+    scReunirPages().then(n => { if (n && SC.ouvert) { SC.attrib = scPagesSans().length > 0; scRendre(); } });   // [C14 1.4.32] les feuilles relues sur un autre ordinateur, retrouvées
     const c = state.scanCurseur; if (c) { const ip = SC.passes.findIndex(p => p.id === c.passe); if (ip >= 0) SC.passe = ip; const j = SC.copies.indexOf(c.copie); if (j >= 0) SC.ic = j; const P = SC.passes[SC.passe]; const k = P.pts.findIndex(p => p.id === c.point); if (k >= 0) SC.ip = k; SC.iq = c.q != null ? c.q : null; }
     state.modeOuvert = "scan"; SC.aideAvant = AIDE.courant; aidePoser("scan");
     document.getElementById("scanEcran").classList.remove("hidden"); document.body.classList.add("sc-ouvert");
@@ -120,13 +121,47 @@ function scLirePdf(f, traiter) {
 function scTourner(cv, deg) {   // deg : un quart de tour dans le sens inverse des aiguilles d'une montre, par 90
   const q = ((deg % 360) + 360) % 360; if (!q) return cv; const c = document.createElement("canvas"); c.width = q % 180 ? cv.height : cv.width; c.height = q % 180 ? cv.width : cv.height;
   const x = c.getContext("2d"); x.translate(c.width / 2, c.height / 2); x.rotate(-q * Math.PI / 180); x.drawImage(cv, -cv.width / 2, -cv.height / 2); return c; }
-/* une empreinte d'image presque identique (8 points sur 256 au plus) : la même feuille, calculée un peu autrement sur un autre ordinateur ; seulement si une seule
-   feuille de la rédaction est aussi proche, et si sa photo n'est pas déjà dans ce navigateur */
+/* une empreinte d'image presque identique : la même feuille, calculée un peu autrement sur un autre ordinateur ; seulement si une seule feuille de la rédaction
+   est aussi proche, et si sa photo n'est pas déjà dans ce navigateur. [C14 1.4.32] (Paul 03/11 09:58, au collège : « 2 pages n'ont pas été reconnues ») : mesuré au site,
+   la même photo relue sur l'ordinateur du collège ressort à 9 et 15 points (la règle était 8) ; deux feuilles différentes de ses classes ne sont jamais à moins de 37 points.
+   La règle : 20 points au plus, la suivante au moins 16 points plus loin */
+const SC_PROCHE = 20, SC_ECART = 16;
+function scDistHex(a, b) { const bits = c => [8, 4, 2, 1].map(x => (parseInt(c, 16) & x) ? 1 : 0); let d = 0; for (let i = 0; i < 64; i++) { const x = bits(a[i]), y = bits(b[i]); for (let j = 0; j < 4; j++) if (x[j] !== y[j]) d++; } return d; }
 function scPageProche(hex, avecPhoto) {
-  const bits = c => [8, 4, 2, 1].map(b => (parseInt(c, 16) & b) ? 1 : 0), dist = (a, b) => { let d = 0; for (let i = 0; i < 64; i++) { const x = bits(a[i]), y = bits(b[i]); for (let j = 0; j < 4; j++) if (x[j] !== y[j]) d++; } return d; };
-  /* seulement une feuille sans origine (pas encore rechargée depuis la 1.4.13), pas blanche, sans photo ici ; la plus proche à 8 points au plus, et la suivante loin derrière (24 points) */
-  const C = Object.values(SC.pages).filter(p => p && /^page_[0-9a-f]{64}_/.test(p.id) && !p.source && !p.blanche && (avecPhoto || !SC.imgs[p.id])).map(p => ({ p, d: dist(p.id.slice(5, 69), hex) })).sort((x, y) => x.d - y.d);
-  return C[0] && C[0].d <= 8 && (!C[1] || C[1].d >= 24) ? C[0].p : null;
+  /* seulement une feuille sans origine (pas encore rechargée depuis la 1.4.13), pas blanche, sans photo ici ; la plus proche à 20 points au plus, et la suivante loin derrière */
+  const C = Object.values(SC.pages).filter(p => p && /^page_[0-9a-f]{64}_/.test(p.id) && !p.source && !p.blanche && (avecPhoto || !SC.imgs[p.id])).map(p => ({ p, d: scDistHex(p.id.slice(5, 69), hex) })).sort((x, y) => x.d - y.d);
+  return C[0] && C[0].d <= SC_PROCHE && (!C[1] || C[1].d >= C[0].d + SC_ECART) ? C[0].p : null;
+}
+/* [C14 1.4.32] ce qui est déjà arrivé (au collège, le 03/11) : une page nouvelle, sans recopie ni marque, donnée au même élève qu'une feuille sans origine dont elle a
+   l'image (20 points au plus, la suivante loin derrière) : la feuille reprend la photo, retravaillée comme elle (tournée, inclinée, recadrée comme avant) et son origine ;
+   la page nouvelle disparaît. Ta recopie et tes marques, qui sont sur la feuille, retrouvent leur photo. Rejoué à chaque ouverture des scans, sur chaque ordinateur. */
+function scDbOter(id) { return scDbFaire("readwrite", st => st.delete(id)); }
+function scReunirPages() {
+  const P = Object.values(SC.pages).filter(p => p && /^page_[0-9a-f]{64}_/.test(p.id) && !p.blanche), faits = [];
+  P.filter(p => p.source && p.eleve).forEach(nv => {
+    const k = nv.eleve, s = (state.copies[k] || {}).scan || {}, rp = ((s.recopie || {}).pages || {})[nv.id];
+    if (rp && rp.lignes && Object.values(rp.lignes).some(l => l && (l.texte || "").trim())) return;   // une page où tu as recopié n'est jamais touchée
+    if (Object.values(s.marques || {}).some(m => m && m.page === nv.id)) return;                       // ni une page où tu as posé une marque
+    /* comme au chargement (scPageProche) : parmi les feuilles sans origine, et celles du même élève */
+    const C = P.filter(q => q !== nv && SC.pages[q.id] && (!q.source || q.eleve === k)).map(q => ({ q, d: scDistHex(q.id.slice(5, 69), nv.id.slice(5, 69)) })).sort((x, y) => x.d - y.d), c = C[0];
+    if (!c || c.q.source || c.q.eleve !== k || c.d > SC_PROCHE || (C[1] && C[1].d < c.d + SC_ECART)) return;
+    faits.push({ nv, anc: c.q, k, d: c.d }); });
+  if (!faits.length) return Promise.resolve(0);
+  const le = new Date().toISOString();
+  return faits.reduce((ch, f) => ch.then(() => {
+    const { nv, anc } = f, g = SC.origs[nv.id], im = SC.imgs[nv.id];
+    const photo = SC.imgs[anc.id] || !(g || im) ? Promise.resolve() : (g ? createImageBitmap(g.blob).then(bm => { const cv = document.createElement("canvas"); cv.width = bm.width; cv.height = bm.height; cv.getContext("2d").drawImage(bm, 0, 0);
+        const rot = anc.rot != null ? anc.rot : (cv.width > cv.height * 1.08 ? 90 : 0); let c0 = scTourner(cv, rot); if (anc.angle) c0 = scIncliner(c0, anc.angle); if (anc.recadre) c0 = scCouper(c0, anc.recadre); const H = scReperes(c0), c1 = H ? scRedresser(c0, H) : c0;
+        return new Promise(r => c1.toBlob(r, "image/jpeg", 0.85)).then(b => { SC.imgs[anc.id] = scImg(b, c1.width, c1.height); SC.origs[anc.id] = g; return scDbMettre({ id: anc.id, red: RU.id, classe: RU.classe, blob: b, w: c1.width, h: c1.height, orig: g.blob, ow: g.w, oh: g.h, le }); }); })
+      : Promise.resolve().then(() => { SC.imgs[anc.id] = scImg(im.blob, im.w, im.h); return scDbMettre({ id: anc.id, red: RU.id, classe: RU.classe, blob: im.blob, w: im.w, h: im.h, le }); }));
+    return photo.then(() => {
+      anc.source = nv.source; anc.modifieLe = le; ruEcrire(scChemin(["pages", anc.id]), anc, "l'origine d'une feuille retrouvée");
+      if (SC.imgs[nv.id] && SC.imgs[nv.id] !== SC.imgs[anc.id]) { try { URL.revokeObjectURL(SC.imgs[nv.id].url); } catch (e) {} } delete SC.imgs[nv.id]; delete SC.origs[nv.id]; if (SC.encres) { delete SC.encres[nv.id]; delete SC.encres[anc.id]; }
+      delete SC.pages[nv.id]; ruEcrire(scChemin(["pages", nv.id]), null, "une page en double retirée"); scDbOter(nv.id).catch(() => {});
+      const s = scCopie(f.k), rp = s.recopie && s.recopie.pages; if (rp && rp[nv.id]) { delete rp[nv.id]; saveState(); }
+    }).catch(e => { console.error(e); f.rate = true; }); }), Promise.resolve()).then(() => { const n = faits.filter(f => !f.rate).length;
+    if (n) { scCopiesOrdre(); toast(n + " feuille" + (n > 1 ? "s" : "") + " retrouvée" + (n > 1 ? "s" : "") + " : " + faits.filter(f => !f.rate).map(f => (nomEleveDe(f.k) || f.k)).join(", ") + ". La photo revient sur la page où sont ta recopie et tes marques ; la page en double est retirée."); }
+    return n; });
 }
 function scEmpreinteImage(cvLu) {   // l'empreinte de l'image (16 × 16 points) : l'identité donnée à une feuille à son premier chargement
   const p = document.createElement("canvas"); p.width = 16; p.height = 16; const pc = p.getContext("2d"); pc.drawImage(cvLu, 0, 0, 16, 16);
@@ -253,7 +288,7 @@ function scRendre() {
   /* [C14 404] hors des initiales, le milieu de l'écran est le paquet : ses pages en vignettes, rangées par élève ; un clic ouvre sa recopie à cette page.
      [C14 401] l'ancien flux (les passes, les questions, le pinceau, le récapitulatif) est retiré : restent le paquet et « 🔤 Les initiales » */
   E.classList.toggle("sc-vue-paquet", !SC.attrib);
-  const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ne ${man.length > 1 ? "sont" : "est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « 📄 Charger des copies ». Ta recopie et tes marques reviendront d'elles-mêmes.` : "";
+  const man = scManquantes(); document.getElementById("scManque").innerHTML = man.length ? `⚠ ${man.length} page${man.length > 1 ? "s" : ""} de ce paquet ${man.length > 1 ? "ne sont" : "n’est"} pas dans ce navigateur : remets ton paquet (clé USB) avec « 📄 Charger des copies ». Ta recopie et tes marques reviendront d'elles-mêmes.` : "";
   if (SC.attrib) { scDessinerPages(); scPanneau(); scPaquet(); scZoomAffiche(); scTitreCopie(); } else scVuePaquet();
   if (typeof rcActualiser === "function") rcActualiser();
 }
@@ -582,7 +617,7 @@ function scDossierFichiers(fichiers, nom) {
         <button class="sc-btn" id="scDossierOui" onclick="scModaleFermer();scChargerFichiers(SC.dossierInconnus||[])" title="Les charger comme un nouveau paquet : leurs pages passent par « Les initiales ».">Les charger</button> <button class="sc-btn" onclick="scModaleFermer()" title="Ne rien charger : ils restent sur ta clé.">Non</button>`); }); });
   });
 }
-/* une feuille sans origine que ce fichier refait : la même image (son empreinte exacte), ou presque (8 points sur 256 au plus, et la suivante loin derrière, à 24 points) ;
+/* une feuille sans origine que ce fichier refait : la même image (son empreinte exacte), ou presque (20 points sur 256 au plus depuis la 1.4.32, et la suivante au moins 16 points plus loin) ;
    mesuré au site le 02/11 : les deux feuilles les plus proches sont à 47 points chez les Dylan, à 37 chez les Franklin */
 function scFeuilleParImage(cv) {
   const hex = scEmpreinteImage(cv), id0 = "page_" + hex + "_" + cv.width.toString(36) + cv.height.toString(36), ex = SC.pages[id0];

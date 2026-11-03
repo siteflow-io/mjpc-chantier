@@ -1567,7 +1567,7 @@ MEMO
   > 1. Le panneau du prof dit 8.81.0-⑭.
   > 2. L'emploi du temps, sans rien lancer : la case d'hier matin des 3 FRANKLIN ARETHA dit « Close · … diapos jouées · 9 reportées » et « séance pas finie ».
   > 3. Leur case suivante dit « Poésie et peinture : le Romantisme en question », « heure 2 · suite », et, ouverte, « elle commence par les 9 diapos reportées ». Leurs séances suivantes sont décalées d'une case.
-  > 4. Ouverte, cette case commence par l'appel : la liste de la classe, un clic marque un absent, un second clic le défait. Ne lance pas : ferme.
+  > 4. Ouverte, cette case commence par l'appel : la liste de la classe. N'y clique pas (ce serait écrit au hub de ta classe), ne lance pas : ferme.
   > 5. En mode test, une case à venir : l'appel d'abord, deux absents, « ▶ Ouvrir le pilotage et lancer — appel fait : 2 absents » ; à la première diapo, « … sur … présents ».
   > 6. En mode test, la télécommande (📱 puis le QR) : le bouton « Appel » ouvre la liste ; un appui marque, l'ordinateur le montre ; la diapo avec ses grisés ; « A− · 32 pt · A+ » change le texte au tableau.
   > 7. En mode test, « ⏩ aller à 5 minutes de la fin » : l'étape « ce qui n'a pas été fait » liste les diapos non faites ; le bouton « Reporter les n diapos non faites… » est en haut, sans défiler ; un clic les décide toutes.

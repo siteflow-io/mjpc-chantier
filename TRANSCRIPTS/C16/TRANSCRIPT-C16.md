@@ -2152,3 +2152,4 @@ MEMO
   > MEMO
 - **17:19 — à l'auditeur de l'horloge** : deux ajouts : P2H seul ×2 sans touche (le second ordinateur qui « Reprendre » en vraie heure désactive-t-il le téléphone ?) ; dans P2T, un geste fait juste avant au téléphone ou à l'ordinateur se perd-il quand le second ordinateur est pris pour une version d'avant ?
 - **17:20 — Paul, mot pour mot** : « 397. oui le téléphone doit se désactiver dans tous les cas. »
+- **17:21 — à l'auditeur de l'horloge** : la règle de Paul (17:04, 17:20) : tout geste sur un ordinateur, « Reprendre » compris, désactive le téléphone, dans tous les cas ; le téléphone reprend par « Reprendre avec la télécommande ». À mesurer dans ce sens : P2T (le résultat est voulu ; le chemin, et s'il fait perdre un geste), P2H (le téléphone reste-t-il actif en vraie heure ? si oui, une dette), X et XT (le téléphone reprend la main, puis son appui et le clic droit de l'ordinateur à 40 ms : l'appui du téléphone est-il gardé ?), T.

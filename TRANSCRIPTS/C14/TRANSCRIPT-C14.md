@@ -4926,3 +4926,85 @@ Promeus
 03/11/2026 06:52
 
 MEMO
+
+---
+
+## Tour 173 — 03/11/2026 07:53
+
+**Paul (07:53) :**
+
+*(une capture d'un fichier d'élève des Franklin : quatre cadres emboîtés et quatre étoiles sur « dans nos chaussures. »)* une ia ne peut jamais faire ça.
+
+**Paul (07:57, la mesure en cours) :**
+
+*(une capture de la fenêtre « Les fichiers École Directe » et de ses deux cases)* par ailleurs il me faut une case dans mon pilotage qui permet d'afficher dans le html une fiche de correction élève avec l'ensemble du corrigé. Donc le html partirait avec trois réglages optionnels: la note, ouvrir la correction à l'élève, et la correction détaillée. il faut que je rende les html à 11h dernier délai.
+
+**Claude (08:03) :**
+
+À jouer : 109 (dis-moi seulement si la fiche ne doit pas ressembler à ça) · en cours : la 1.4.31 (109), candidate au sas avant 10:00 · ouvert : la garde du retour de l'IA, à cadrer (95, 97, 98, et maintenant 107) ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers, la taxonomie et la concordance ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+107. Ta capture de 07:53 : c'est l'IA qui a fait ça. Pour cette copie des Franklin, elle a proposé 4 stickers (S10, S14, S15, S16) en citant exactement les mêmes mots, « dans nos chaussures. », et tu les as gardés à l'Entrée. J'ai mesuré sur ton site, sans rien y écrire :
+- chez les Franklin, 25 copies sur 29 ont des mots qui portent plusieurs stickers (43 fois, 115 stickers) ;
+- chez les Dylan, c'est le cas de 19 copies sur 24 (27 fois, 57 stickers).
+
+Ce sont surtout les trois stickers des lectures (S14, S15, S16) posés sur un seul passage. Si un seul sticker par passage avait été gardé, 44 notes auraient baissé, d'environ 1 point sur 40.
+
+Un point à te soumettre : les mêmes mots prouvent parfois deux lignes différentes. Par exemple, « Ma chère et tendre épouse, » porte S3 (le thème tenu) et S36 (les codes de la lettre). Avec « jamais », l'un des deux tombe.
+
+108. Pour ce matin, je ne touche à rien sur les stickers : tes fichiers de 11:00 les gardent tels que tu les as validés. Je l'ai consigné avec la garde du retour de l'IA, à cadrer. Ma proposition pour ce cadrage : la consigne interdit à l'IA de citer les mêmes mots pour deux stickers. Si elle le fait quand même, ces stickers repartent seuls chez elle pour qu'elle cite un autre passage ou les dise non réussis, et tu ne revois que ceux-là.
+
+109. La correction détaillée. Je la code maintenant, ainsi :
+- une troisième case dans « 📨 Fichiers École Directe » : « Afficher la correction détaillée dans les fichiers des élèves » ;
+- elle est décochée au départ, avec une case par classe, comme celle de la note ;
+- cochée, le fichier de l'élève a un bouton « 📝 Ma copie corrigée ». Il ouvre sa lettre ligne par ligne : chaque faute que tu as gardée a ses mots barrés, suivis de la bonne forme dans la couleur de son type ;
+- une faute que tu as refusée ne bouge pas ;
+- une faute que tu as ajoutée toi-même (F) est soulignée, sans correction ;
+- ça marche aussi sur téléphone.
+
+Je te demande le promeus avant 10:00, captures jointes. Ensuite tu coches la case et tu fais « 📦 Tout rendre ».
+
+À tester : rien de neuf en ligne pour l'instant.
+
+03/11/2026 08:03
+
+MEMO
+
+**Paul (08:11, pendant le codage) :**
+
+non mais ma question c'était surtout qu'il ne devait pas y avoir d'empilement. Sinon c'est incliquable pour l'élève. Donc c'est juste géographique comme travail.
+
+**Claude (08:14) :**
+
+À jouer : rien, je code · en cours : la 1.4.31 (109 et 110), candidate avant 10:00 · ouvert : la garde du retour de l'IA, à cadrer ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers, la taxonomie et la concordance ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+110. Compris, c'est un travail géographique, et je l'ajoute à la 1.4.31. Quand des mots portent plusieurs stickers, ton fichier dessinera un seul cadre, avec les étoiles côte à côte au-dessus. Chaque étoile se clique et ouvre son sticker. Partout ailleurs aussi, chaque étoile devient cliquable : un cadre pris dans un autre reste toujours atteignable. Aucun sticker n'est retiré.
+
+À tester : rien de neuf en ligne pour l'instant.
+
+03/11/2026 08:14
+
+MEMO
+
+**Ce qui a été fait (C14) :** la copie de la capture retrouvée en lecture seule (Franklin, copie 1, ligne 17 : S10, S14, S15, S16, l'IA citant « dans nos chaussures. » pour les quatre) ; mesuré dans les deux classes (`prive/enquete/memes-mots.mjs`). Dettes : la correction détaillée ; les stickers sur les mêmes mots joints à la garde à cadrer. 1.4.31 codée (`eleve.js` : `scDetailVisible`, `scCorrigeDetaille`, `copieCorrigee`, `scDetailChanger`, la troisième case ; un seul cadre pour les mêmes mots, `.stx` cliquable) ; bancs ajoutés (`banc/detail.mjs`, trois stickers sur les mêmes mots dans `banc/types.mjs`) ; banc complet 202 vérifications, 0 défaut. Vrai site, en lecture seule : 886/886 et 1 374/1 374 fautes montrées ; les 53 fichiers ouverts sur ordinateur et téléphone : 718 étoiles, aucune n'en touche une autre, 155 étoiles de cadres partagés cliquées, 155 ouvrent leur sticker ; notes identiques ; 53 copies corrigées à 100 %. Maquette `9049cb95`. Au sas : `LIVRAISONS/REDACTION/redaction-1.4.31-RU-candidat.html` (964 277 o, md5 `5453881b42bd58381e5adfef761d8c72`), `NOTE-1.4.31-RU.md`, `captures-1.4.31/` (3). Dettes : en candidate.
+
+**Claude (08:37) :**
+
+À jouer : 113 · en cours : rien · ouvert : la garde du retour de l'IA, à cadrer (95, 97, 98, 107) ; le cadrage de la correction par l'élève ; 738 ; la banque de stickers, la taxonomie et la concordance ; 722 ; 401 seconde moitié ; le test iPhone École Directe ; 442 ; le dossier des copies ; « corriger des textes tapés »
+
+111. La 1.4.31 est prête au sas, pas en ligne. Elle contient 109 (la correction détaillée) et 110 (plus d'empilement). Banc complet : 202 vérifications, 0 défaut. Les captures sont jointes : les trois cases, « 📝 Ma copie corrigée », et un cadre à trois étoiles.
+
+112. Essayée sur ton site, sans rien y écrire :
+- avec la case cochée, chaque faute que tu as gardée apparaît dans « Ma copie corrigée » : 886 sur 886 chez les Dylan, 1 374 sur 1 374 chez les Franklin ;
+- j'ai ouvert les 53 fichiers, sur ordinateur puis sur téléphone : aucune étoile n'en touche une autre, et les 155 étoiles des cadres partagés ouvrent chacune son sticker ;
+- aucune note ne bouge, et rien ne se rouvre.
+
+113. Promeus ? Ensuite tu recharges ta page. Dans chaque classe : « 📨 Fichiers École Directe », tu coches « Afficher la correction détaillée… » si tu la veux, puis « 📦 Tout rendre ».
+
+À tester, après ton promeus et un rechargement :
+- Franklin : « 📨 Fichiers École Directe » → coche la troisième case → « 🧪 Tester comme l'élève » sur la copie de ta capture de 07:53. Sur « dans nos chaussures. », il n'y a plus qu'un cadre et quatre étoiles côte à côte : clique chacune, elle ouvre son sticker.
+- Dans le même fichier, « 📝 Ma copie corrigée » : sa lettre, avec chaque faute barrée et la bonne forme.
+- Puis « 📦 Tout rendre », chez les Franklin et chez les Dylan.
+
+03/11/2026 08:37
+
+MEMO

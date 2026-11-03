@@ -1,0 +1,19 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties J · 2026-11-03 12:28 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie J · 12:28 UTC
+  [J] production 8.81.1 · « ↗ Le site dans un nouvel onglet » (…) : {"test":false,"rep":false,"repT":"","pill":false}
+  [J]   aucune reprise proposée ; en 10 s : 0 chemins au « vrai » hub
+  [J]   le paquet : aucun
+  ok     J9 · production 8.81.1 : aucune erreur JS, aucune boîte système
+  [J] 8.78.2 · « ↗ Le site dans un nouvel onglet » (…) : {"test":false,"rep":false,"repT":"","pill":false}
+  [J]   aucune reprise proposée ; en 10 s : 0 chemins au « vrai » hub
+  [J]   le paquet : aucun
+  ok     J9 · 8.78.2 : aucune erreur JS, aucune boîte système
+  [J] 8.79.0 · « ↗ Le site dans un nouvel onglet » (…) : {"test":false,"rep":false,"repT":"","pill":false}
+  [J]   aucune reprise proposée ; en 10 s : 0 chemins au « vrai » hub
+  [J]   le paquet : aucun
+  ok     J9 · 8.79.0 : aucune erreur JS, aucune boîte système
+
+--- fin : 3 vérifications, 0 échec(s)

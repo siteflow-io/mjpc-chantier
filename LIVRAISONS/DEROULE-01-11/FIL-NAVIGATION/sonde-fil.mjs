@@ -78,12 +78,20 @@ const fauxHub = s => { window.__HUB = JSON.parse(JSON.stringify(s)); window.__EC
   /* la sonde lit les coups de molette reçus (leur heure), sans rien y faire */
   window.__WH = []; document.addEventListener('wheel', e => { window.__WH.push(Math.round(e.timeStamp)); }, { capture: true, passive: true }); };
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
+/* C16 367 (le banc à la vraie horloge) : MJPC_HORLOGE=date — seule la date des appareils est décalée (la même pour tous, elle avance depuis le lancement de la
+   sonde) ; les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`)
+   remplace aussi setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche
+   (playwright-core, clockSource : `_runTo`) : mesuré, elle fausse les temps (C16 334, 336). Sans la variable : inchangé. */
+const T0DATE = Date.now();
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
 const ouvrir = async ({ W = 1536, H = 864, st = null, fichier = FICHIER, test = true }) => {
   const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => { const u = r.request().url(); const m = /mjpc-medias\/.*\/([^/?]+\.(png|jpe?g|webp))$/i.exec(u); if (m) { const f = MEDIAS && fs.existsSync(path.join(MEDIAS, m[1])) ? path.join(MEDIAS, m[1]) : (IMG_OUV[m[1]] || IMG_DEFAUT); return r.fulfill({ path: f, contentType: /webp$/i.test(f) ? 'image/webp' : 'image/png' }); } return r.abort(); });
   await ctx.addInitScript(fauxHub, st || store()); await ctx.addInitScript(() => { const st = document.createElement('style'); st.textContent = '#fi-overlay{display:none!important}'; document.addEventListener('DOMContentLoaded', () => document.head.appendChild(st)); });
   ctx.on('page', pg => { pg.on('pageerror', e => errs.push(String(e.message).slice(0, 200))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
-  const pg = await ctx.newPage(); await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00'));
+  if (process.env.MJPC_HORLOGE === 'date') await ctx.addInitScript(fauxDate, new Date('2026-09-14T09:00:00+02:00').getTime() - T0DATE);
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE !== 'date') await pg.clock.setFixedTime(new Date('2026-09-14T09:00:00+02:00'));
   await pg.goto('file://' + fichier + '?n=3e', { waitUntil: 'load' }); await p(1800);
   await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; const o = document.getElementById('fi-overlay'); if (o) o.remove(); }); await p(300);
   await pg.click('#tprof-btn'); await p(600); if (test) await pg.evaluate(() => { window.M8_TEST = true; });   /* le mode test, comme le panneau prof le pose */

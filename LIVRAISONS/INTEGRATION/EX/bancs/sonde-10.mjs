@@ -68,11 +68,18 @@ const fauxFetch = () => { window.fetch = function (u, o) { const s2 = String(u);
   window.__fluxNotifier = ch => { (window.__flux || []).forEach(es => { const e = es.chemin; if (ch === e || ch.indexOf(e + '/') === 0 || e.indexOf(ch + '/') === 0 || ch === '/') es._envoyer(); }); }; };
 
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files', '--autoplay-policy=no-user-gesture-required'] });
+/* C16 367 (le banc à la vraie horloge) : MJPC_HORLOGE=date — seule la date des appareils est décalée (la même pour tous, elle avance depuis le lancement de la
+   sonde) ; les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`)
+   remplace aussi setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche
+   (playwright-core, clockSource : `_runTo`) : mesuré, elle fausse les temps (C16 334, 336). Sans la variable : inchangé. */
+const T0DATE = Date.now();
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
 const ouvrir = async (qui, W, H, q) => { const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort());
   await ctx.exposeFunction('__hubN', (m, c, corps) => hubRepondre(qui, m, c, corps)); await ctx.addInitScript(fauxFetch);
   const pg = await ctx.newPage(); pg.on('pageerror', e => errs.push(String(e.message).slice(0, 160))); pg.on('dialog', d => { boites.push(d.type() + ' : ' + d.message().slice(0, 80)); d.dismiss().catch(() => {}); });
-  await pg.clock.install({ time: HORLOGE });   /* la montre avance (le minuteur compte) */
+  if (process.env.MJPC_HORLOGE === 'date') await pg.addInitScript(fauxDate, HORLOGE.getTime() - T0DATE); else await pg.clock.install({ time: HORLOGE });   /* la montre avance (le minuteur compte) */
   await pg.goto(URL0 + q, { waitUntil: 'load' }); return { ctx, pg, errs, boites }; };
 const sansVoiles = pg => pg.evaluate(() => { ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }).catch(() => {});
 const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array.from(document.querySelectorAll(s)).filter(x => x.offsetParent !== null && ((x.innerText || '') + (x.getAttribute('onclick') || '')).indexOf(t) >= 0)[0]; if (!el) return false; el.click(); return true; }, { s: sel, t: txt });

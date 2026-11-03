@@ -81,6 +81,13 @@ const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM
 /* LE FLUX DU FAUX HUB : le flux REST de Firebase (`EventSource`, événements « put ») — chaque abonné reçoit la valeur de son chemin dès
    qu'une écriture touche ce chemin (au-dessus, dessous ou dessus), comme le vrai hub la pousse. */
 const ABOS = []; const T0REEL = Date.now();
+/* C16 367 (le banc à la vraie horloge) : MJPC_HORLOGE=date — seule la date des appareils est décalée (le 14/09, 09:00 au lancement de la sonde, elle avance, la même
+   pour tous) ; les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`)
+   remplace aussi setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche
+   (playwright-core, clockSource : `_runTo`) : mesuré, elle fausse les temps (FRAPPE-TABLEAU/NOTE.md de `deroule/frappe-tableau`, non poussée ; C16 334, 336).
+   Sans la variable : inchangé. */
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
 /* l'image du QR (api.qrserver.com est coupé, comme tout le réseau) : dessinée par `qrcode` (Python) — MJPC_PYQR = le dossier de la bibliothèque ; sans elle, une image d'attente */
 const QR_PY = 'import sys\nsys.path.insert(0, sys.argv[1])\nimport qrcode, qrcode.image.svg\nsys.stdout.write(qrcode.make(sys.argv[2], image_factory=qrcode.image.svg.SvgPathFillImage, box_size=10, border=2).to_string(encoding="unicode"))\n';
 const qrSvg = d => { try { if (process.env.MJPC_PYQR && fs.existsSync(process.env.MJPC_PYQR)) { const { execFileSync } = req('child_process'); return execFileSync('python3', ['-I', '-c', QR_PY, process.env.MJPC_PYQR, d]).toString(); } } catch (e) {}
@@ -104,7 +111,8 @@ const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q 
   /* l'horloge : le 14/09, 09:00 au lancement de la sonde, puis elle AVANCE, la même pour tous les appareils (une horloge figée faisait de l'heure des scènes un compteur
      que deux pilotes faisaient monter chacun de leur côté — un artefact que la classe ne vit jamais) ; MJPC_HORLOGE=figee : l'ancienne */
   const t09 = new Date(jour + 'T' + h + ':00+02:00').getTime();
-  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL) + decal) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
+  if (process.env.MJPC_HORLOGE === 'date') await ctx.addInitScript(fauxDate, t09 - T0REEL + decal);
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE === 'figee') await pg.clock.setFixedTime(new Date(t09)); else if (process.env.MJPC_HORLOGE !== 'date') await pg.clock.install({ time: new Date(t09 + (Date.now() - T0REEL) + decal) });   /* les montres de tous les appareils avancent ensemble, à l'heure, comme des appareils réglés sur l'heure du réseau */
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) await profPrep(pg, test);
   return { ctx, pg, errs, boites, qui }; };

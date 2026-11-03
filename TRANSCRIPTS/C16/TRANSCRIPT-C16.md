@@ -1660,3 +1660,17 @@ MEMO
   > MEMO
 - **08:37 — l'exécutant, le zoom et le QR poussés** (`deroule/frappe-zoom` `c6bcbfe14`, l'assemblé `022705e3` ; le code : `dr-session.js` 42 lignes, `dr-atelier.js` 4) : sa mission 0 : les correctifs 7 et 9 de la frappe et du retard (le `morph` des vignettes, `dr_frappeReponse`, `dr_voletApres` retiré) ne sont jamais entrés en production (seulement sur `deroule/correctifs`, `dff4474b6`, `3d3b6e3cd`) : la mesure de cette nuit (41 lettres) est celle du code sans eux. Le zoom, mesuré : le tableau suivait A+ / A− (80 à 475 ms) ; le curseur du pilote ne bougeait jamais ; le téléphone recopiait sa propre étiquette ; les bornes en infobulle seulement ; sur la diapo de présentation, un cran n'agit pas, sur une diapo pleine le texte grossit à peine (au curseur comme au téléphone) ; un pilote resté en 8.80.0-⑬ n'est pas la cause ; le cas exact de Paul : je ne sais pas. Corrigé, prouvé : 5 passages, 108 / 110 (2 échecs : la fenêtre à 510 et 601 ms au premier A+ d'un cran neuf, en mode test, ⑯). Le QR, les causes mesurées : la validité jugée par deux montres (un ordinateur en retard de 15 ou 20 min : 0 / 5) ; une lecture ratée prise pour « plus valable » (0 / 5) ; la fenêtre fermée qui effaçait le nonce pendant que la page arrive en 4G (0 / 5). Corrigé : 200 scans sur 200 (cinq cas, vraie heure et mode test) ; une coupure dite « le réseau ne répond pas… réessaie » (10 / 10). Q et QT 20 / 0 ; la session 105 / 2 (R ⑯, la base pareil).
 - **08:38 — la conscience** : sa vérification du correctif lancée (le parcours en vraie heure et en mode test, l'appel Q, QT, P2H, P2T, la session T, H, QH, QT, A).
+- **08:48 — la vérification de la conscience** (`c6bcbfe14`, l'assemblé `022705e3` refait à l'identique) : le parcours P0-P12 vert (K15 : 28 écritures permises ; K15-test : 0 hors de `/site/tableau_test`) ; l'appel Q, QT, P2H, P2T 42 / 0 ; la session T, H, QH, QT, A 89 / 0. Le candidat 8.81.1-⑭-micro préparé (md5 `3f060dec`, 3 013 172 o). Envoyées à Paul : 3 planches (le zoom avant / après A+, le QR).
+- **08:49 — message à Paul, mot pour mot :**
+
+  > 319. Le zoom et le QR, vérifiés par moi sur le fichier à mettre en ligne : le parcours complet en vraie heure et en mode test, vert ; la télécommande et l'appel au téléphone, 42 sur 42 ; la session partout (sans la répétition), 89 sur 89. Chez l'exécutant : le zoom 108 sur 110 (deux fois la fenêtre du tableau à 0,51 et 0,60 s au premier A+, en mode test : c'est ⑯, en cours) ; le QR 200 scans sur 200.
+  >
+  > 320. Je te propose de mettre en ligne la 8.81.1-⑭-micro (le zoom et le QR seuls, sans le banc complet d'une heure ; ㉟ et ⑯ viendront après, avec le banc). Si tu écris « promeus », je la mets en ligne aussitôt.
+  >
+  > À tester (après la mise en ligne, en rechargeant l'ordinateur et le téléphone, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.81.1) : 📱 puis scanne le QR : la télécommande s'ouvre, plusieurs fois de suite ; sur une diapo avec du texte, A+ au téléphone : le curseur « texte au tableau » du pilote avance d'un cran et le tableau grossit ; A− : il revient ; bouge le curseur au pilote : le téléphone montre le même cran.
+  >
+  > 03/11/2026 08:49
+  >
+  > À jouer : les 3 planches, puis ton « promeus » ou non · en cours : ㉟ ⑯ chez l'exécutant (avant 11:30) · ouvert : 316, 317, 320
+  >
+  > MEMO

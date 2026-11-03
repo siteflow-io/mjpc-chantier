@@ -1994,3 +1994,42 @@ MEMO
   - vers 14:14, avec « 03/11/2026 15:15 » :
     > Paul, voici le troisième lot du premier auditeur : Un appareil qui disparaît (onglet fermé, ordinateur en veille) : le tableau garde son image. Une vraie heure abandonnée sans « Clore » bloque le tableau pendant 4 heures, même contre une répétition. Ensuite, il garde son image pour toujours. Ça ne va pas. Le minuteur : quand les horloges des appareils sont à la même heure, le pilote, la télécommande et le tableau affichent le même temps, à 1 seconde près ; le décalage que tu as vu ne se reproduit donc pas ainsi. Mais chaque appareil compte avec sa propre horloge : l'auditeur mesure maintenant avec des horloges décalées ; son panneau couvre bien le bas de ta diapo, dans les trois sortes de sessions ; au tableau, il s'affiche en chiffres vert, jaune puis rouge sur fond noir, sans bord, alors que le site est en lettres or sur brun avec un bord or. Le réseau lent : après « lancer », tu vois pendant 6 secondes « aucune session », puis un écran noir, puis un pilote vide avec « Dévoiler » actif. Le vrai pilote n'arrive qu'entre 12 et 30 secondes, et rien n'indique que ça charge. Le plan complet suit dès qu'il a fini. — (À tester : rien ; statut ; MEMO)
 - **14:43 — Paul, mot pour mot** : « 361 ok . Pour le reste ok. Ça fait un paquet de dettes, comment c'est possible alors que ça fait déjà plusieurs jours que je suis sur le déroulé ? »
+- **14:48 — le mandat du lot 1** (`MANDATS/DEROULE-01-11/MANDAT-LOT1.md`, `bc4ffdf05`) : 359, 360, 361, sur l'accord de Paul de 14:43 ; base `9c13d037c`, branche `deroule/lot1`.
+- **14:49 — un exécutant neuf lancé sur le lot 1.**
+- **14:50 — message à Paul, mot pour mot :**
+
+  > 369. Ta question : pourquoi tant de dettes. J'ai regardé d'où vient chacune des 8 du plan (359 à 366), dans les versions et au registre.
+  >
+  > 370. Trois sont des demandes nouvelles d'aujourd'hui : rattraper une heure (362, ton message de 12:26), une session à la fois sur le tableau (363, 12:26), numéroter par séance (366, 08:10).
+  >
+  > 371. Trois sont des défauts déjà en ligne que mes tests n'avaient jamais vus, trouvés ce midi par toi ou par l'audit. La fenêtre « Une heure joue déjà » a ses boutons « undefined » depuis la 8.80.0 (360). Une heure sans nom de classe compte pour toutes les classes, et c'est déjà le cas dans la 8.78.2 (359) ; le paquet des 3 DYLAN a été écrit lundi par la 8.79.0, quand un essai rechargé a été repris. Des initiales inconnues tombent sur un élève de la liste (361) ; depuis quelle version : je ne sais pas.
+  >
+  > 372. Deux sont des dettes connues que je n'ai pas lancées : le minuteur (㉔ à ㉗, au registre depuis lundi, 364) et le lancement sur un réseau très lent (vu lundi soir, 365). C'est mon oubli.
+  >
+  > 373. Pourquoi mes tests ne les ont pas vus, première raison : ils mesuraient le temps avec une horloge simulée, qui fausse les durées. Les 4 secondes au tableau distant et les « deux régimes » de la fenêtre étaient faux tous les deux. Un exécutant a cherché ce matin un retard de la frappe (㉟) qui venait de mon test, pas du site.
+  >
+  > 374. Deuxième raison : chaque mandat testait sa partie seule. Aucun test ne lançait deux sessions en même temps (une répétition et un essai, un essai et une vraie heure). L'audit de ce midi est le premier à les croiser : 34 cas.
+  >
+  > 375. Troisième raison : mon faux hub ne contenait que des données propres. Il n'avait jamais la forme réelle d'un paquet laissé par un essai repris, sans nom de classe. Le cas des 3 DYLAN ne pouvait pas paraître dans mes tests.
+  >
+  > 376. Quatrième raison : la vitesse. Pour tenir tes horaires, j'ai annoncé des choses avant de les mesurer (323, 332, 352, 353, retirées ensuite), et j'ai promis la numérotation pour 9:15 sans la lancer.
+  >
+  > 377. Une faute de plus, que je te déclare. De 12:44 à 14:23, les heures en bas de mes messages étaient tapées à la main, et fausses (jusqu'à 1 h 25 d'avance). Et 11 messages courts n'étaient pas recopiés au journal. C'est corrigé au journal ; l'heure vient maintenant de l'horloge, à chaque message.
+  >
+  > 378. Ce qui change, d'abord : le banc mesure à la vraie horloge du navigateur (367), avant toute mise en ligne.
+  >
+  > 379. Ensuite : les 34 cas de sessions croisées de l'audit entrent au banc. Combien de temps ça ajoute au banc : je ne sais pas encore, je te le dirai mesuré.
+  >
+  > 380. Ensuite : le faux hub reçoit la forme des paquets lus au vrai hub, dont le paquet sans nom de classe.
+  >
+  > 381. Enfin : chaque dette du registre a son lot dans le plan, et chaque message te dit lequel tourne.
+  >
+  > 382. Lancé : le lot 1 (359, 360, 361), un exécutant neuf. Son mandat : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/DEROULE-01-11/MANDAT-LOT1.md. De mon côté, 367 en même temps.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 03/11/2026 14:50
+  >
+  > À jouer : rien · en cours : lot 1 (359, 360, 361), 367 · ouvert : 362 à 366, ⑯, ㉚
+  >
+  > MEMO

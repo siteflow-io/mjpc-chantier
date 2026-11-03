@@ -2,7 +2,7 @@
 
 *Exécutant neuf, 02-03/11/2026. Mandat : `MANDATS/DEROULE-01-11/MANDAT-FIN-HEURE.md` (sas, main). Base : `4163180c9` (`deroule/appel`, posée par la conscience à 00:52). Branche : `deroule/fin-heure`. Mise à jour : 03/11 01:38.*
 
-**ÉTAT — POUSSÉE 2 (02:20).** Assemblé final md5 `8757f0c8…` (la base `4163180c9` + ce mandat). Prouvé par le geste, compté, sur ce fichier : **preuves 1 à 8, 64 vérifications, 0 échec** (F S G T 34/0 ; P avec la 8.78.2-⑪-micro 8/0 ; P avec la 8.80.0-⑬ 8/0 ; D 7/0 ; R 7/0). **Reste à prouver (poussée 3, en cours sur la machine)** : la sonde de l'appel rejouée sur ce fichier, et le parcours P0-P12 (K15, K15-test). Depuis la poussée 1 (`d74a7ab8c`, 33/0 sur `772acfe3…`) : la case de la semaine dit « séance pas finie » sur sa propre ligne (en une ligne, la case la coupait : « Close · 9 diapo… ») ; la passe F S G T rejouée sur le fichier final.
+**ÉTAT — POUSSÉE 3, TOUT EST PROUVÉ (02:33).** Assemblé final md5 `8757f0c8…` (la base `4163180c9` + ce mandat). Prouvé par le geste, compté, sur ce fichier : **les preuves 1 à 8 du §4 — ma sonde 64 vérifications, 0 échec** (F S G T 34/0 ; P avec la 8.78.2-⑪-micro 8/0 ; P avec la 8.80.0-⑬ 8/0 ; D 7/0 ; R 7/0) ; **la sonde de l'appel rejouée : 114 vérifications, 0 échec**, et à part ses 13 mesures dont 1 rouge (ZT, « la main jugée aux montres », ㉞) — exactement ce qu'elle donne sur la base seule (`APPEL/sorties/sonde-appel-apres-28ade58c.txt`) ; **le parcours P0-P12 : PARCOURS VERT, K15 (28 écritures, toutes permises), K15-test (15 écritures, 0 hors de /site/tableau_test)**. Rien ne manque. Depuis la poussée 1 (`d74a7ab8c`) : la case de la semaine dit « séance pas finie » sur sa propre ligne (en une ligne, la case la coupait : « Close · 9 diapo… »).
 
 ## 0 · MISSION 0 — LE MANDAT RELU CONTRE LE CODE ET LE CONTRAT (avant de coder)
 
@@ -54,9 +54,8 @@ La sonde : `sonde-fin-heure.mjs` (ce dossier ; le harnais de `APPEL/sonde-appel.
 | 6 · rien ne change ailleurs | la projection de l'emploi du temps (`edtProjeter`, nature, titre, heure n/N, séance), **4 semaines, 9 classes, 76 cases, 16 titres**, l'assemblé de la base contre l'assemblé final : **0 différence**, sur le faux hub neuf et après une heure close **sans report** (la trame jouée entière, 19 diapos) | ✔ |
 | §3.9 · ✎ Préparer | « ✎ Préparer » sur la case du mardi avant la clôture : **0 écriture au hub** ; après le report, cette case devient la suite et la séance 2 passe à la case d'après. Rien n'est rangé par case : ce que Paul aurait changé dans la séance 2 à l'Atelier reste dans la séance 2, qui vient une case plus tard. Rien ne se perd. | mesuré |
 
-## 3 · CE QUI MANQUE (poussée 3, en cours)
-1. La sonde de l'appel (`APPEL/sonde-appel.mjs`, ses parties par défaut) rejouée sur l'assemblé final.
-2. Le parcours P0-P12 (`AUDITS/INTEGRATION-DEROULE/parcours.mjs`) : K15 et K15-test.
+## 3 · CE QUI MANQUE
+Rien de ce que le mandat demande. Rejoué sur l'assemblé final : la sonde de l'appel (`sorties/sonde-appel-rejouee-8757f0c8.txt`, 114 / 0) et le parcours (`sorties/parcours-P0-P12-K15-8757f0c8.txt`, `…-K15-test-8757f0c8.txt`, verts). Le banc complet (`banc.sh`) est à la conscience.
 
 ## 4 · LES ÉCARTS AU MANDAT
 - « À reprendre » groupe les diapos reportées par activité (§0, point 4).

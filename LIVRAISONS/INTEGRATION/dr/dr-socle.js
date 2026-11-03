@@ -1171,7 +1171,9 @@ function ordreHeure(h){ if (S.ordres && S.ordres[h]) return S.ordres[h].slice();
 
 function ordreHeureCalc(h){ const o0 = ordreHeureCalc0(h); const E = seance().ecrans; const fins = o0.filter(i => E[i].role === 'fin'); return o0.filter(i => E[i].role !== 'fin').concat(fins); }
  /* (a) le rôle fin est toujours en dernier */
-function ordreHeureCalc0(h){ const E = seance().ecrans; const idx = E.map((e, i) => i); const glisse = (e, i) => { if (e.role === 'fin') return false; const d = decisionDe(e); return d && e.heure < h && ['suivante', 'terminer', 'preparer'].includes(d.choix) && !finie(e, i); };
+/* ㊲ (C16, mandat de la fin d'heure) : « reporter » glisse aussi — au début de la prochaine heure de la classe, la suite de la séance (`DR_GLISSE`) */
+const DR_GLISSE = ['suivante', 'terminer', 'preparer', 'reporter'];
+function ordreHeureCalc0(h){ const E = seance().ecrans; const idx = E.map((e, i) => i); const glisse = (e, i) => { if (e.role === 'fin' || e.role === 'reactivation') return false; const d = decisionDe(e); return d && e.heure < h && DR_GLISSE.includes(d.choix) && !finie(e, i); };
   const rit = e => e.role === 'reactivation';   /* E1 (§12.25 (6)) : la lecture par le titre tombe (dr_estRituel) — seule role === 'reactivation' compte */ const bil = e => e.role === 'bilan' || (!e.role && /bilan/i.test(String(e.act || ''))); /* E1 (réveil n°12, E4 ligne 160 ; §12.16, C1 6.1) : la trame réelle ne porte pas de rôle — le rituel d'ouverture (« Où en sommes-nous ? », dr_estRituel d'E2) en tête de l'heure suivante, le bilan en dernier, hors classe comme en classe */
   const react = idx.filter(i => E[i].heure === h && rit(E[i])); const glissees = idx.filter(i => glisse(E[i], i)); const propres = idx.filter(i => E[i].heure === h && !rit(E[i]) && !bil(E[i])); const bilan = idx.filter(i => E[i].heure === h && !rit(E[i]) && bil(E[i]));
   const vue = i => !dr_masqueeCachee(E[i]);   /* EX (§12.62 (4)) : une diapo masquée reste dans la trame, mais la classe ne la voit ni ne la joue */
@@ -1179,7 +1181,7 @@ function ordreHeureCalc0(h){ const E = seance().ecrans; const idx = E.map((e, i)
 /* EX (§12.62 (4)) : « Masquer » — la diapo reste dans la trame (l'Atelier la montre, grisée), jamais montrée en classe ni jouée (le pilotage, la répétition, le tableau) */
 function dr_masqueeCachee(e){ return !!(e && e.masquee && e.role !== 'fin' && !(typeof S !== 'undefined' && S.atelier && !S.repetition)); }
 
-const glisseeDe = (e, h) => { h = h || S.heure; const d = decisionDe(e); return d && e.heure < h && ['suivante', 'terminer', 'preparer'].includes(d.choix) ? d : null; };
+const glisseeDe = (e, h) => { h = h || S.heure; const d = decisionDe(e); return d && e.heure < h && DR_GLISSE.includes(d.choix) ? d : null; };
 
 const actDe = e => (dr_activites()/* E1 : lisait DATA.activites */[String(S.si)] || []).find(a => a.id === e.actId) || null;
 
@@ -1191,7 +1193,9 @@ const rangDe = (di, h) => { const o = ordreHeure(h || S.heure); const k = o.inde
  /* Paul, 17/09 : un numéro de diapo affiché est son rang dans l'heure en cours ; l'index de la trame reste interne */
 const libDiapo = (di, h) => { const r = rangDe(di, h); return r ? 'diapo ' + r : 'diapo hors de l\'heure (« ' + (seance().ecrans[di] || {}).act + ' »)'; };
 
-const decisionDe = e => S.decisions[cleDec(e)];
+/* ㊳ (C16) : la décision d'une diapo — la sienne (rangée sous son `eid`, quand Paul a décidé cette diapo seule à la fin de l'heure), sinon celle de son activité ;
+   celle de l'activité ne l'emporte que si c'est un retrait en classe d'une heure plus récente (le menu de la diapo, « Retirer de l'heure ») */
+const decisionDe = e => { if (!e) return undefined; const D = S.decisions || {}; const a = e.eid != null ? D[e.eid] : undefined; if (!e.actId) return a; const b = D[e.actId]; if (!a) return b; if (!b) return a; return (b.moment === 'classe' && (+b.heure || 0) > (+a.heure || 0)) ? b : a; };
 
 const diaposDe = a => a.diapos.map(i => seance().ecrans[i]);
 
@@ -1823,7 +1827,7 @@ function brancherMenus(){
     menuDiapo(S.di, ev.clientX, ev.clientY); };
 }
 
-function libDecision(d){ return ({ suivante: 'à l\'heure suivante', reserve: 'en réserve', terminer: 'à terminer à la maison', preparer: 'à préparer à la maison', pastemps: 'à la maison, pas le temps', maison: 'à la maison', nonfait: 'non fait', reporter: 'reportée à la séance suivante', passee: 'passée (vidéo)' })[d.choix] || d.choix; }
+function libDecision(d){ return ({ suivante: 'à l\'heure suivante', reserve: 'en réserve', terminer: 'à terminer à la maison', preparer: 'à préparer à la maison', pastemps: 'à la maison, pas le temps', maison: 'à la maison', nonfait: 'non fait', reporter: 'reportée à la prochaine heure de la classe', passee: 'passée (vidéo)' })[d.choix] || d.choix; }
 
 function menuDiapo(i, x, y){ const e = seance().ecrans[i]; const a = actDe(e); const role = !!e.role; const dec = decisionDe(e); const commencee = a ? a.diapos.some(di => vuMax[K(di)] || (S.mur && S.mur.di === di)) : (!!vuMax[K(i)] || (S.mur && S.mur.di === i));
   const libA = a ? `l'activité ${a.num} (${a.diapos.length > 1 ? a.diapos.length + ' diapos' : '1 diapo'})` : 'cette diapo';

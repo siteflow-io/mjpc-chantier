@@ -18699,15 +18699,35 @@ function edtTraceDe(seance,nomClasse,iso,creneau){
   });
   return res;
 }
+/* ㊲ (C16, mandat de la fin d'heure §3.4) : CE QU'UNE HEURE CLOSE A REPORTÉ — les `eid` de son paquet décidés (`decisionsParEcran`) dans `choix`
+   À CETTE HEURE (une décision d'une heure d'avant, restée dans l'état de la classe, ne compte pas). La seule lecture de « ce qui a été reporté » :
+   la case, la séance (`edtSeanceEtat`), la réactivation (« À reprendre »), la clôture (la réactivation de la suite). Les heures d'avant ㊳ se lisent
+   telles quelles : leur `decisionsParEcran` portait déjà une ligne par diapo non finie de l'activité reportée. */
+function edtReportees(H,choix){
+  if(!H||!H.clos)return [];
+  choix=choix||['reporter'];
+  var h=+H.heure||0, dpe=H.decisionsParEcran||{}, out=[];
+  Object.keys(dpe).forEach(function(k){ var x=dpe[k]; if(!x||choix.indexOf(x.choix)<0)return; if(h&&x.heure!=null&&+x.heure!==h)return;
+    var eid=String(k).replace(/%(2e|23|24|5b|5d|2f)/g,function(m,c){return String.fromCharCode(parseInt(c,16));}); if(out.indexOf(eid)<0)out.push(eid); });
+  return out;
+}
+/* ㊲ (C16) : UNE SÉANCE FINIE, ET CE QUI EN RESTE — une seule fonction, lue par l'emploi du temps (la case, la file `edtFileDAttente`, `edtChapitreEnCours`),
+   la diapo « Le parcours du chapitre » (`dr_ouvTerminee`, par `edtSeanceJouee`) et, par `edtReportees`, la réactivation. Une séance est finie quand ses
+   heures prévues sont jouées (`edtHeuresPour`) et que sa dernière heure n'a rien reporté ; seule une décision « reporter » la rouvre (§3.6) : sa suite
+   (« heure n+1 · suite ») prend la prochaine case de la classe. Rend {jouees, sur, finie, suite, reportees (eid), derniere (la clé de l'heure)}. */
+function edtSeanceEtat(seance,nomClasse){
+  var d=(seance&&seance.deroule_joue)||{}, hs=[];
+  Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return; Object.keys(b.heures||{}).forEach(function(k){ hs.push({cle:k,H:b.heures[k]||{}}); }); });
+  hs.sort(function(a,b){ return String(a.cle).localeCompare(String(b.cle)); });
+  var sur=edtHeuresPour(seance,null), n=hs.length, der=hs[n-1]||null, rep=der?edtReportees(der.H,['reporter']):[];
+  return {jouees:n, sur:sur, reportees:rep, derniere:der?der.cle:null, finie:n>=sur&&!rep.length, suite:n>=sur&&rep.length>0};
+}
 function edtSeanceJouee(seance,nomClasse){
   /* [E2] une séance est JOUÉE quand toutes ses heures prévues le sont (`faites >= sur`, `sur` = edtHeuresPour, le quotient de la case) ;
-     avant (dette 13 · 26) : dès sa première heure — l'heure 2/3 n'arrivait jamais. Rend le nombre d'heures jouées, ou 0 si elle continue. */
-  var d=(seance&&seance.deroule_joue)||{},n=0;
-  Object.keys(d).forEach(function(sl){
-    var b=d[sl]; if(!b||(b.classe&&b.classe!==nomClasse))return;
-    n+=Object.keys(b.heures||{}).length;
-  });
-  return n>=edtHeuresPour(seance,null)?n:0;
+     avant (dette 13 · 26) : dès sa première heure — l'heure 2/3 n'arrivait jamais. Rend le nombre d'heures jouées, ou 0 si elle continue.
+     ㊲ (C16) : et si sa dernière heure n'a rien reporté (`edtSeanceEtat`) — sinon elle continue, sa suite prend la prochaine case de la classe. */
+  var x=edtSeanceEtat(seance,nomClasse);
+  return x.finie?x.jouees:0;
 }
 function edtHeuresJouees(seance,nomClasse){   /* [E2] les heures déjà jouées d'une séance par cette classe (closes ou en cours) */
   var d=(seance&&seance.deroule_joue)||{},n=0;
@@ -18882,9 +18902,11 @@ function edtProjeter(isoDebut,nbJours){
          même quand le chapitre est fini, dépublié ou supprimé de la file. */
       var trouvee=edtChercherTrace(nom,iso,c.creneau);
       if(trouvee){
-        cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;
-        cel.reportees=(trouvee.activites||[]).filter(function(a){return a&&a.reel===0;}).length;
-        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null; }   /* E1 (§12.39-1) : la case jouée porte aussi la clé de sa séance */ /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
+        cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;   /* ㊳ (C16) : les DIAPOS jouées (une ligne par diapo montrée) — la case dit « n diapos jouées » */
+        cel.reportees=edtReportees(trouvee,['reporter','suivante']).length;   /* ㊳ : les diapos non faites que l'heure a reportées (avant : `reel === 0`, jamais vrai) */
+        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null;
+          try{ var edtCh=(EDT_CHAP[edtNiveauDe(nom)]||[]).filter(function(x){return x&&String(x.__cle)===cel.chCle;})[0], edtSe=edtCh?edtListe(edtCh.seances).filter(function(x){return x&&String(x.__i)===cel.snum;})[0]:null;
+            if(edtSe&&cel.clos){ var edtEt=edtSeanceEtat(edtSe,nom); cel.pasFinie=!!(edtEt.suite&&edtEt.derniere&&edtClesHeureTrace(iso,c.creneau,nom).indexOf(edtEt.derniere)>=0); } }catch(e){}   /* ㊲ : la case de l'heure qui a laissé la séance ouverte dit « séance pas finie » */ }   /* E1 (§12.39-1) : la case jouée porte aussi la clé de sa séance */ /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
       }
       /* [2ter 14a] LA BORNE SE POSE ICI, ET PAS PLUS HAUT.
          Elle remplace LE PREVU, jamais le reel ni une decision de Paul :
@@ -18909,11 +18931,12 @@ function edtProjeter(isoDebut,nbJours){
       cel.titre=s.title||('Séance '+(f.i+1));
       cel.snum=s.__i!=null?String(s.__i):null; cel.chCle=f.chapitre&&f.chapitre.__cle!=null?String(f.chapitre.__cle):null;   /* E1 (§12.35-7, 13 · 80) : la case retient QUELLE séance elle nomme — le lancement ouvre celle-là */
       cel.heure=f.faites+1; cel.sur=total;
+      if(cel.heure>total){ cel.suite=true; try{ cel.reste=edtSeanceEtat(s,nom).reportees.length; }catch(e){ cel.reste=0; } }   /* ㊲ (C16) : au-delà des heures prévues, la suite de la séance */
       cel.chapitre=f.chapitre&&f.chapitre.title||'';
       cel.epingle=!!(dec&&dec.epingle);
       cellules[cle]=cel;
       f.faites++;
-      if(f.faites>=total){ f.i++; f.faites=0; }
+      if(f.faites>=total){ f.i++; f.faites=f.seances[f.i]?edtHeuresJouees(f.seances[f.i],nom):0; }   /* ㊲ (C16) : une séance d'après déjà commencée (avant la suite d'une autre) reprend à son heure — avant : 0, toujours vrai sans suite */
     }
   }
   if(edtAv)Object.keys(cellules).forEach(function(k){ if(cellules[k].iso<isoDebut)delete cellules[k]; });   /* [E2] réveil n°16 : les jours d'avant la vue ont servi à la file, ils ne sont pas rendus */
@@ -19029,6 +19052,11 @@ function edtCelluleHtml(c){
   if(c&&c.essai)edtH=edtH.replace('class="edt-b','class="edt-b edt-b-essai');
   return edtH;
 }
+/* ㊳ (C16) : ce que dit une case jouée — la case de la semaine et sa fenêtre, les mêmes mots */
+function edtJoueeTexte(c){
+  var n=+c.activites||0, r=+c.reportees||0;
+  return (c.clos?'Close · ':'')+n+' diapo'+(n>1?'s':'')+' jouée'+(n>1?'s':'')+(r?' · '+r+' reportée'+(r>1?'s':''):'')+(c.pasFinie?' — séance pas finie':'');
+}
 function edtCelluleCorps(c){
   if(c.nature==='horsMjpc')return '<div class="edt-b edt-b-hors" title="hors français, jamais compté">'
     +escapeHtml(c.classe)+'<i>hors MJPC</i></div>';
@@ -19050,14 +19078,14 @@ function edtCelluleCorps(c){
   }
   if(c.nature==='sansSeance')return '<div class="edt-b edt-b-sans"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'
     +escapeHtml('heure banalisée — '+(c.categorie||''))+(c.precision?(' \u2014 '+escapeHtml(c.precision)):'')+'</i></div>';
-  if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'+(c.titre?escapeHtml(c.titre)+' \u00b7 ':'')/* [E2] A4-4 */
-    +c.activites+' activité'+(c.activites>1?'s':'')+(c.reportees?(' \u00b7 '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'</i></div>';
+  if(c.nature==='jouee')return '<div class="edt-b edt-b-joue"><b>'+escapeHtml(c.classeMjpc)+'</b><i>'+(c.titre?escapeHtml(c.titre)+' · ':'')/* [E2] A4-4 */
+    +edtJoueeTexte(c)+'</i></div>';   /* ㊳ (C16) : « Close · n diapos jouées · n reportées — séance pas finie » */
   if(c.nature==='passee')return '<div class="edt-b edt-b-vide" title="Case passée sans heure jouée : la séance n\u2019y a pas eu lieu, elle continue à la case suivante de la classe."><b>'+escapeHtml(c.classeMjpc)+'</b><i>passée \u00b7 pas jouée</i></div>';   /* [E2] réveil n°16 (§12.18) */
   if(c.nature==='rienDePret')return '<div class="edt-b edt-b-vide"><b>'+escapeHtml(c.classeMjpc)+'</b><i>aucune séance prête'+(c.fil?' \u00b7 fil \u00ab\u00a0'+escapeHtml(c.fil)+'\u00a0\u00bb':'')+'</i></div>';   /* [E2] réveil n°13 (E4 ligne 175) : la case dit pourquoi — son fil n'a pas de séance publiée (la file de la classe est par fil) */
   return '<div class="edt-b edt-b-prevu'+(c.fil?' edt-b-fil':'')+(c.ajoutee?' edt-b-ajout':'')+'">'
     +(c.epingle||c.ajoutee?'\ud83d\udccc ':'')+'<b>'+escapeHtml(c.classeMjpc)+'</b>'
     +'<u>'+escapeHtml(c.titre||'')+'</u>'
-    +'<i>'+(c.ajoutee?'heure ajoutée \u00b7 ':'')+(c.fil?('fil '+escapeHtml(c.fil)+' \u00b7 '):'')+'heure '+c.heure+'/'+c.sur
+    +'<i>'+(c.ajoutee?'heure ajoutée · ':'')+(c.fil?('fil '+escapeHtml(c.fil)+' · '):'')+(c.suite?'heure '+c.heure+' · suite':'heure '+c.heure+'/'+c.sur)
     +(c.dispute?' \u00b7 périodes non saisies':'')+'</i></div>';
 }
 function edtDateLisible(iso){
@@ -19649,9 +19677,7 @@ function edtPeindreModale(){
     if(c.nature==='jouee'){
       /* [⑨b] le refus est DIT, jamais sec : la case ne se déplace pas, et Paul sait pourquoi */
       h+='<p class="edt-p edt-mini-t">Elle a laissé sa trace : elle ne se déplace plus.</p>';
-      h+='<p class="edt-p">Heure jouée \u2014 '+c.activites+' activité'+(c.activites>1?'s':'')
-        +(c.reportees?(', '+c.reportees+' reportée'+(c.reportees>1?'s':'')):'')+'.'
-        +(c.clos?' Close.':' Pas encore close.')+'</p>'
+      h+='<p class="edt-p">'+(c.clos?edtJoueeTexte(c)+'.':'Heure jouée \u2014 '+edtJoueeTexte(c)+'. Pas encore close.')+'</p>'
         +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours, pas close (l\u2019onglet s\u2019est fermé ?) : rouvre l\u2019heure de cette classe là où elle en était \u2014 la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l\u2019appel" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre l\u2019heure</button>')   /* [E2] mandat 6 ; §12.29 (4) S4 : « Reprendre » = reprendre une heure — avant : « ▶ Reprendre le cours » */
         +(c.titre?'<p class="edt-p">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class="edt-btn edt-large" data-relire="1" title="Ouvre la Relecture de cette heure : son récit, ce qui s\u2019est passé, le papier \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */
         +edtAbsencesHtml(cle,c);
@@ -19676,7 +19702,7 @@ function edtPeindreModale(){
       h+='<p class="edt-p">Aucune séance prête pour cette classe.</p>'
         +'<button class="edt-btn" onclick="edtRienDePret(edtCellule('+JSON.stringify(cle).replace(/"/g,'&quot;')+'))">Ouvrir Mes chapitres\u2026</button>';
     } else {
-      h+='<p class="edt-p"><u>'+escapeHtml(c.titre||'')+'</u><br>heure '+c.heure+' sur '+c.sur
+      h+='<p class="edt-p"><u>'+escapeHtml(c.titre||'')+'</u><br>'+(c.suite?'heure '+c.heure+' \u00b7 suite de la séance'+(c.reste?' : elle commence par '+(c.reste>1?'les '+c.reste+' diapos reportées':'la diapo reportée'):''):'heure '+c.heure+' sur '+c.sur)
         +(c.fil?(' \u00b7 fil '+escapeHtml(c.fil)):'')+(c.epingle?' \u00b7 \ud83d\udccc épinglée':'')+'</p>';
     }
     if(c.nature==='prevu'||c.nature==='rienDePret'){

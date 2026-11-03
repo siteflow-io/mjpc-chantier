@@ -1,0 +1,113 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P2H · 2026-11-03 17:32 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— P2H · pendant l’heure, sur chaque appareil (vraie heure) —
+      [trace P2H télécommande ouverte] ordinateur {"id":"s5w9d87u3","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18109","now":"18248","tc":null,"test":false}
+                 télécommande {"id":"s6d0527qo","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18234","now":"18250","tc":{"mainPrise":true,"etat":"ouvre"},"test":false}
+      [trace P2H second ouvert] ordinateur {"id":"s5w9d87u3","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18817","now":"21525","tc":null,"test":false}
+                 télécommande {"id":"s6d0527qo","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18234","now":"21529","tc":{"mainPrise":true,"etat":"ouvre"},"test":false}
+      [trace P2H second repris] ordinateur {"id":"s5w9d87u3","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18817","now":"25539","tc":null,"test":false}
+                 second {"id":"sm4klzr8f","main":null,"mainTs":"-1789369200000","mainTc":false,"ici":"heure","att":"22954","rej":0,"geste":"20914","applyTs":0,"now":"25541","tc":null,"test":false}
+                 télécommande {"id":"s6d0527qo","main":"s6d0527qo","mainTs":"17970","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"18234","now":"25544","tc":{"mainPrise":true,"etat":"ouvre"},"test":false}
+  ok     P2H · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance ; la case de l’heure ouverte sur un troisième — {"lance":true,"tl":true,"rep":true}
+      [trace P2H avant a] ordinateur {"id":"s5w9d87u3","main":"sm4klzr8f","mainTs":"26266","mainTc":false,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"26640","now":"32079","tc":null,"test":false}
+                 second {"id":"sm4klzr8f","main":"sm4klzr8f","mainTs":"26266","mainTc":false,"ici":"heure","att":0,"rej":0,"geste":"20914","applyTs":"26578","now":"32081","tc":null,"test":false}
+                 télécommande {"id":"s6d0527qo","main":"sm4klzr8f","mainTs":"26266","mainTc":false,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"26365","now":"32082","tc":{"mainPrise":true,"etat":"ouvre"},"test":false}
+      [vif P2H avant a] 10 état(s) vivant(s) au hub :
+        ordinateur @9832 par=s5w9d87u3 ts=9814 main=s5w9d87u3 mainTs=9814 tc=false
+        ordinateur @10581 par=s5w9d87u3 ts=10576 main=s5w9d87u3 mainTs=9814 tc=false
+        ordinateur @12651 par=s5w9d87u3 ts=12646 main=s5w9d87u3 mainTs=9814 tc=false
+        ordinateur @13019 par=s5w9d87u3 ts=13017 main=s5w9d87u3 mainTs=9814 tc=false
+        ordinateur @13943 par=s5w9d87u3 ts=13941 main=s5w9d87u3 mainTs=9814 tc=false
+        telephone @17974 par=s6d0527qo ts=17970 main=s6d0527qo mainTs=17970 tc=true
+        ordinateur @18118 par=s5w9d87u3 ts=18112 main=s6d0527qo mainTs=17970 tc=true CÈDE
+        telephone @18734 par=s6d0527qo ts=18675 main=s6d0527qo mainTs=17970 tc=true
+        ordinateur2 @26267 par=sm4klzr8f ts=26266 main=sm4klzr8f mainTs=26266 tc=false
+        telephone @26367 par=s6d0527qo ts=26365 main=sm4klzr8f mainTs=26266 tc=false CÈDE
+      [piège P2H avant a · ordinateur] 3 :
+        26282 main s6d0527qo → sm4klzr8f ← dr_sesRecu < · < donner < recu < · < <anonymous>:3:192
+        27256 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        28158 dr_ecrire …/etat : maj=28158 vifTs=26365 (DR_SES.ici posé) ← ·
+      [piège P2H avant a · second] 8 :
+        22674 dr_lire …/etat : maj=19243 vifTs=18675
+        22881 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        22951 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < ·
+        22954 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        23168 premierVerifier v.par=s6d0527qo v.ts=18675
+        23196 dr_lire …/etat : maj=19243 vifTs=18675
+        23857 dr_ecrire …/etat : maj=23857 vifTs=18675 (DR_SES.ici posé) ← ·
+        26265 main null → sm4klzr8f ← dr_sesEnvoyerMaintenant
+      [piège P2H avant a · télécommande] 3 :
+        26274 main s6d0527qo → sm4klzr8f ← dr_sesRecu < · < donner < recu < · < <anonymous>:3:192
+        26465 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        27374 dr_ecrire …/etat : maj=27374 vifTs=26365 (DR_SES.ici posé) ← ·
+  ÉCHEC  P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « Reprendre avec la télécommande » pour piloter d’ici."},"nbNoms":0}
+      a · à la télécommande, un élève marqué absent : l’ordinateur ∞, le second ordinateur ∞, la télécommande ∞, la case du troisième ∞ ; son bouton PAS marqué (2 s) ; l’ordinateur « 0 SUR 29 PRÉSENTS »
+  ÉCHEC  P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"case":null,"ordinateur":null,"télécommande":null,"second":null}
+      b · au second ordinateur, clic droit → « Absent » (PAS FAIT) : l’ordinateur ∞, la télécommande ∞, la case ∞ ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : false ; un appui grisé sans effet
+  ÉCHEC  P2H · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"case":null,"télécommande":null,"second":null,"ordinateur":null}
+  ÉCHEC  P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":false,"cSans":true}
+      c · dans la case du troisième ordinateur, le premier absent retiré : l’ordinateur 17 ms, le second 17 ms, la télécommande 17 ms, la case ∞ ; « 0 SUR 29 PRÉSENTS »
+  ÉCHEC  P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"ordinateur":17,"second":17,"télécommande":17,"case":null}
+      d · au hub, la liste de l’heure : 1 élève(s) (PAS la bonne) ; 9 écritures du paquet
+  ÉCHEC  P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet) — 1
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+elementHandle.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="at-modale" class="at-modale">…</div> intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="at-modale" class="at-modale">…</div> intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    55 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <div id="at-modale" class="at-modale">…</div> intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at allerA (/home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs:137:61)
+    at async p2 (/home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs:386:13)
+    at async file:///home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs:663:46 {
+  log: [
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <div id="at-modale" class="at-modale">…</div> intercepts pointer events',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is visible, enabled and stable',
+    '      - scrolling into view if needed',
+    '      - done scrolling',
+    '      - <div id="at-modale" class="at-modale">…</div> intercepts pointer events',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    55 × waiting for element to be visible, enabled and stable',
+    '       - element is visible, enabled and stable',
+    '       - scrolling into view if needed',
+    '       - done scrolling',
+    '       - <div id="at-modale" class="at-modale">…</div> intercepts pointer events',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4
+18:32:20 → 18:33:45 · propre · code 1 · env MJPC_PYQR=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/pyqr MJPC_MEDIAS=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/medias MJPC_HORLOGE=date MJPC_TRACE=1 MJPC_SANS_ECHAP=1 MJPC_PARTIES=P2H MJPC_NOM=m17-2 timeout 900 node /home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/assemble/index.html /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/m17-2

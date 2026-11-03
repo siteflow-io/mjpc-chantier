@@ -1,0 +1,91 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties XT X · 2026-11-03 17:37 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 94 ms l’un de l’autre : le premier ordinateur true, le second true ; au hub 2 élève(s)
+  ok     X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":94,"r1":{"o":true,"o2":true},"hub":2}
+      avant l’heure, le même élève dans deux cases, à 42 ms (le dernier : le second ordinateur) : le dernier geste voulait « absent » ; les deux cases {"o":true,"o2":true}, le hub true
+  ok     X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":42,"voulu":true,"r2":{"o":true,"o2":true},"hubC":true}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+      [trace X avant les paires] ordinateur {"id":"s7kz69hf2","main":"seos614yq","mainTs":"30647","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"30738","now":"46190","tc":null,"test":false}
+                 second {"id":"sczrd6p8u","main":"seos614yq","mainTs":"30647","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":"37703","applyTs":"35666","now":"46193","tc":null,"test":false}
+                 télécommande {"id":"seos614yq","main":"seos614yq","mainTs":"30647","mainTc":true,"ici":"heure","att":0,"rej":0,"geste":0,"applyTs":"30828","now":"46194","tc":{"mainPrise":true,"etat":"ouvre"},"test":false}
+      [vif X avant les paires] 4 état(s) vivant(s) au hub :
+        ordinateur @24701 par=s7kz69hf2 ts=24685 main=s7kz69hf2 mainTs=24685 tc=false
+        ordinateur @27370 par=s7kz69hf2 ts=27362 main=s7kz69hf2 mainTs=24685 tc=false
+        telephone @30658 par=seos614yq ts=30647 main=seos614yq mainTs=30647 tc=true
+        ordinateur @30749 par=s7kz69hf2 ts=30740 main=seos614yq mainTs=30647 tc=true CÈDE
+      [piège X avant les paires · ordinateur] 0 :
+        
+      [piège X avant les paires · second] 11 :
+        35264 dr_lire …/etat : maj=31942 vifTs=30740
+        35434 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        35478 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < · < ClockController._callFirstTimer < ClockController._runTo
+        35495 reçu s7kz69hf2|30740 sig = ici attendrePremier=35478 main=seos614yq|30647
+        35495 premierVerifier v.par=s7kz69hf2 v.ts=30740
+        35511 dr_lire …/etat : maj=31942 vifTs=30740
+        35511 reçu s7kz69hf2|30740 (vérifié) sig = ici attendrePremier=35478 main=seos614yq|30647
+        35511 main null → seos614yq ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        36220 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < · < ClockController._callFirstTimer < ClockController._runTo
+        36377 reçu s7kz69hf2|30740 sig = ici attendrePremier=0 main=seos614yq|30647
+        37175 dr_ecrire …/etat : maj=37174 vifTs=30740 (DR_SES.ici posé) ← · < ClockController._callFirstTimer < ClockController._runTo
+      [piège X avant les paires · télécommande] 0 :
+        
+      [trace X] les noms de l’appel à la télécommande : {"n":29,"grises":0}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true} [trace : le premier geste fait : true, le second : true]
+      [trace] l’élève de la télécommande gardé : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true} ; l’élève de le clic droit de l’ordinateur gardé : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à 47 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true} [trace : le premier geste fait : true, le second : true]
+      [trace] l’élève de la case du troisième gardé : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true} ; l’élève de le clic droit du second ordinateur gardé : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":47,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à 42 ms (le dernier : la case du troisième) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":42,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 40 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 146 écritures) — []
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+— XT · deux gestes d’appel croisés, à moins de 100 ms (mode test) —
+  ok     XT · l’heure lancée ; la télécommande et le second ordinateur sur la séance — {"lance":true,"tl":true,"rep2":true}
+      [trace XT avant les paires] ordinateur {"id":"s8mwqtoay","main":"s2ggvqw80","mainTs":"75897","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"75946","now":"84753","tc":null,"test":true}
+                 second {"id":"so4dedc3w","main":"s2ggvqw80","mainTs":"75897","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":"82900","applyTs":"80728","now":"84756","tc":null,"test":true}
+                 télécommande {"id":"s2ggvqw80","main":"s2ggvqw80","mainTs":"75897","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"76009","now":"84757","tc":{"mainPrise":true,"etat":"ouvre"},"test":true}
+      [vif XT avant les paires] 4 état(s) vivant(s) au hub :
+        ordinateur @70811 par=s8mwqtoay ts=70800 main=s8mwqtoay mainTs=70800 tc=false
+        ordinateur @72759 par=s8mwqtoay ts=72752 main=s8mwqtoay mainTs=70800 tc=false
+        telephone @75908 par=s2ggvqw80 ts=75897 main=s2ggvqw80 mainTs=75897 tc=true
+        ordinateur @75956 par=s8mwqtoay ts=75948 main=s2ggvqw80 mainTs=75897 tc=true CÈDE
+      [piège XT avant les paires · ordinateur] 0 :
+        
+      [piège XT avant les paires · second] 12 :
+        80042 dr_lire …/etat : maj=75948 vifTs=undefined
+        80241 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        80622 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < window.dr_sesVeiller < · < ClockController._callFirstTimer < ClockController._runTo
+        80629 reçu s8mwqtoay|75948 sig = ici attendrePremier=80623 main=s2ggvqw80|75897
+        80629 premierVerifier v.par=s8mwqtoay v.ts=75948
+        80629 dr_lire …/etat : maj=75948 vifTs=undefined
+        80629 reçu s8mwqtoay|75948 (vérifié) sig = ici attendrePremier=80623 main=s2ggvqw80|75897
+        80629 main null → s2ggvqw80 ← dr_sesRecu < window.dr_sesRecu < suite < eval < ·
+        80976 dr_ecrire …/etat : maj=80976 vifTs=75948 (DR_SES.ici posé) ← · < ClockController._callFirstTimer < ClockController._runTo
+        81052 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < · < ClockController._callFirstTimer < ClockController._runTo
+        81166 reçu s8mwqtoay|75948 sig = ici attendrePremier=0 main=s2ggvqw80|75897
+        81968 dr_ecrire …/etat : maj=81968 vifTs=75948 (DR_SES.ici posé) ← · < ClockController._callFirstTimer < ClockController._runTo
+      [piège XT avant les paires · télécommande] 0 :
+        
+      [trace XT] les noms de l’appel à la télécommande : {"n":29,"grises":0}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true} [trace : le premier geste fait : true, le second : true]
+      [trace] l’élève de la télécommande gardé : {"ordinateur":true,"second":true,"télécommande":true} ; l’élève de le clic droit de l’ordinateur gardé : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit du second ordinateur et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true} [trace : le premier geste fait : true, le second : true]
+      [trace] l’élève de le clic droit du second ordinateur gardé : {"ordinateur":true,"second":true,"télécommande":true} ; l’élève de le clic droit de l’ordinateur gardé : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit du second ordinateur et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, la télécommande puis le clic droit de l’ordinateur, le même élève à 40 ms (le dernier : le clic droit de l’ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : la télécommande puis le clic droit de l’ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 40 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+  ok     XT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     XT · aucune écriture refusée par le faux hub (0) — []
+  ok     XT · tous les appareils : aucune erreur JS, aucune boîte système
+
+18 vérifications, 0 échec(s)
+18:37:56 → 18:39:38 · propre · code 0 · env MJPC_PYQR=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/pyqr MJPC_MEDIAS=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/medias MJPC_TRACE=1 MJPC_PARTIES=XT,X MJPC_NOM=m12-1 timeout 900 node /home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/assemble/index.html /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/m12-1

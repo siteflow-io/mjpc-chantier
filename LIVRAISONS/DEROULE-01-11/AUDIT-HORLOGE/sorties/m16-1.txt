@@ -1,0 +1,56 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P2T · 2026-11-03 17:23 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— P2T · pendant l’heure, sur chaque appareil (mode test) —
+      [trace P2T télécommande ouverte] ordinateur {"id":"su1sxrv4a","main":"skuosmvnq","mainTs":"16094","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"16242","now":"16472","tc":null,"test":true}
+                 télécommande {"id":"skuosmvnq","main":"skuosmvnq","mainTs":"16094","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"16304","now":"16476","tc":{"mainPrise":true,"etat":"ouvre"},"test":true}
+      [trace P2T second ouvert] ordinateur {"id":"su1sxrv4a","main":"skuosmvnq","mainTs":"16094","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"16242","now":"19667","tc":null,"test":true}
+                 télécommande {"id":"skuosmvnq","main":"skuosmvnq","mainTs":"16094","mainTc":true,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"16304","now":"19669","tc":{"mainPrise":true,"etat":"ouvre"},"test":true}
+      [trace P2T second repris] ordinateur {"id":"su1sxrv4a","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"21743","now":"23664","tc":null,"test":true}
+                 second {"id":"ss8fobi7v","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":"23256","applyTs":"21850","now":"23667","tc":null,"test":true}
+                 télécommande {"id":"skuosmvnq","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"21632","now":"23668","tc":{"mainPrise":true,"etat":"ouvre"},"test":true}
+  ok     P2T · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance — {"lance":true,"tl":true,"rep":true}
+      [trace P2T avant a] ordinateur {"id":"su1sxrv4a","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"21743","now":"23672","tc":null,"test":true}
+                 second {"id":"ss8fobi7v","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":"23256","applyTs":"21850","now":"23677","tc":null,"test":true}
+                 télécommande {"id":"skuosmvnq","main":"ss8fobi7v","mainTs":"21404","mainTc":false,"ici":"essai","att":0,"rej":0,"geste":0,"applyTs":"21632","now":"23679","tc":{"mainPrise":true,"etat":"ouvre"},"test":true}
+      [vif P2T avant a] 7 état(s) vivant(s) au hub :
+        ordinateur @9747 par=su1sxrv4a ts=9735 main=su1sxrv4a mainTs=9735 tc=false
+        ordinateur @12581 par=su1sxrv4a ts=12571 main=su1sxrv4a mainTs=9735 tc=false
+        ordinateur @12971 par=su1sxrv4a ts=12970 main=su1sxrv4a mainTs=9735 tc=false
+        telephone @16118 par=skuosmvnq ts=16094 main=skuosmvnq mainTs=16094 tc=true
+        ordinateur @16250 par=su1sxrv4a ts=16243 main=skuosmvnq mainTs=16094 tc=true CÈDE
+        ordinateur2 @21411 par=ss8fobi7v ts=21404 main=ss8fobi7v mainTs=21404 tc=false
+        telephone @21688 par=skuosmvnq ts=21633 main=ss8fobi7v mainTs=21404 tc=false CÈDE
+      [piège P2T avant a · ordinateur] 3 :
+        21427 main skuosmvnq → ss8fobi7v ← dr_sesRecu < · < donner < recu < · < <anonymous>:3:192
+        22276 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        23180 dr_ecrire …/etat : maj=23180 vifTs=21633 (DR_SES.ici posé) ← ·
+      [piège P2T avant a · second] 9 :
+        20288 dr_lire …/etat : maj=16243 vifTs=undefined
+        20454 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        20609 dr_ecrire …/etat : maj=20609 vifTs=undefined (DR_SES.ici null) ← ·
+        20612 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        21372 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        21401 premierVerifier v.par=su1sxrv4a v.ts=16243
+        21401 dr_lire …/etat : maj=20609 vifTs=undefined
+        21401 main null → ss8fobi7v ← suite < eval < ·
+        22284 dr_ecrire …/etat : maj=22284 vifTs=21633 (DR_SES.ici posé) ← ·
+      [piège P2T avant a · télécommande] 3 :
+        21516 main skuosmvnq → ss8fobi7v ← dr_sesRecu < · < donner < recu < · < <anonymous>:3:192
+        21651 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        22557 dr_ecrire …/etat : maj=22557 vifTs=21633 (DR_SES.ici posé) ← ·
+  ÉCHEC  P2T · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « Reprendre avec la télécommande » pour piloter d’ici."},"nbNoms":0}
+      a · à la télécommande, un élève marqué absent : l’ordinateur ∞, le second ordinateur ∞, la télécommande ∞ ; son bouton PAS marqué (2 s) ; l’ordinateur « 0 SUR 29 PRÉSENTS »
+  ÉCHEC  P2T · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"télécommande":null,"second":null,"ordinateur":null}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 5 ms, la télécommande 29 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : false ; un appui grisé sans effet
+  ok     P2T · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"second":4,"ordinateur":5,"télécommande":29}
+  ÉCHEC  P2T · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":false,"cSans":true}
+      c · à la télécommande (« Reprendre avec la télécommande »), le premier absent retiré : l’ordinateur ∞, le second ∞, la télécommande ∞ ; « 0 SUR 27 PRÉSENTS »
+  ÉCHEC  P2T · c · retiré à la télécommande : chaque appareil le dit en moins de 2 s, le compteur suit — {"ordinateur":null,"second":null,"télécommande":null}
+      e · au tableau distant : 0 occurrence(s) de l’appel
+  ok     P2T · e · rien de l’appel au tableau (le tableau distant) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":null}
+  ok     P2T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P2T · aucune écriture refusée par le faux hub (0) — []
+  ok     P2T · tous les appareils : aucune erreur JS, aucune boîte système
+
+10 vérifications, 4 échec(s)
+18:23:38 → 18:24:17 · propre · code 1 · env MJPC_PYQR=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/pyqr MJPC_MEDIAS=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/medias MJPC_HORLOGE=date MJPC_TRACE=1 MJPC_PARTIES=P2T MJPC_NOM=m16-1 timeout 900 node /home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/assemble/index.html /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/m16-1

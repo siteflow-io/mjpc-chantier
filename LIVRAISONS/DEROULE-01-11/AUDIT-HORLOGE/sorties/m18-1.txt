@@ -1,0 +1,203 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties PG · 2026-11-03 17:24 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— PG · un geste juste avant la prise de main du second ordinateur (mode test, reprise sans touche) —
+      PG tc-qui 200 ms après « Reprendre » (clic 21459, geste 21715) : le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : OUI [23324 premierVerifier v.ts=21959] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false}
+      [vif PG tc-qui 200] 8 état(s) vivant(s) au hub :
+        ordinateur @9729 par=sxv3ou0v7 ts=9723 main=sxv3ou0v7 mainTs=9723 tc=false
+        ordinateur @12612 par=sxv3ou0v7 ts=12608 main=sxv3ou0v7 mainTs=9723 tc=false
+        ordinateur @12985 par=sxv3ou0v7 ts=12985 main=sxv3ou0v7 mainTs=9723 tc=false
+        telephone @16060 par=sg7jsm3s2 ts=16053 main=sg7jsm3s2 mainTs=16053 tc=true
+        ordinateur @16296 par=sxv3ou0v7 ts=16291 main=sg7jsm3s2 mainTs=16053 tc=true CÈDE
+        telephone @21989 par=sg7jsm3s2 ts=21959 main=sg7jsm3s2 mainTs=16053 tc=true
+        ordinateur2 @23333 par=sgkqdfn56 ts=23327 main=sgkqdfn56 mainTs=23327 tc=false
+        telephone @23569 par=sg7jsm3s2 ts=23555 main=sgkqdfn56 mainTs=23327 tc=false CÈDE
+      [piège PG · second] 11 :
+        22425 dr_lire …/etat : maj=16291 vifTs=undefined
+        22685 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        22803 dr_ecrire …/etat : maj=22803 vifTs=undefined (DR_SES.ici null) ← ·
+        22807 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        22810 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        23324 premierVerifier v.par=sg7jsm3s2 v.ts=21959
+        23325 dr_lire …/etat : maj=22803 vifTs=undefined
+        23325 main null → sgkqdfn56 ← suite < eval < ·
+        23800 dr_ecrire …/etat : maj=23800 vifTs=23555 (DR_SES.ici posé) ← ·
+        23955 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        24857 dr_ecrire …/etat : maj=24857 vifTs=23555 (DR_SES.ici posé) ← ·
+      PG tc-qui 500 ms après « Reprendre » (clic 48526, geste 49093) : le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : OUI [50389 premierVerifier v.ts=49466] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false}
+      [vif PG tc-qui 500] 8 état(s) vivant(s) au hub :
+        ordinateur @36921 par=szz2q4b1a ts=36912 main=szz2q4b1a mainTs=36912 tc=false
+        ordinateur @39789 par=szz2q4b1a ts=39788 main=szz2q4b1a mainTs=36912 tc=false
+        ordinateur @40163 par=szz2q4b1a ts=40162 main=szz2q4b1a mainTs=36912 tc=false
+        telephone @43168 par=sr6pqrq48 ts=43157 main=sr6pqrq48 mainTs=43157 tc=true
+        ordinateur @43334 par=szz2q4b1a ts=43331 main=sr6pqrq48 mainTs=43157 tc=true CÈDE
+        telephone @49467 par=sr6pqrq48 ts=49466 main=sr6pqrq48 mainTs=43157 tc=true
+        ordinateur2 @50413 par=smuf95we4 ts=50393 main=smuf95we4 mainTs=50393 tc=false
+        telephone @50546 par=sr6pqrq48 ts=50545 main=smuf95we4 mainTs=50393 tc=false CÈDE
+      [piège PG · second] 11 :
+        49280 dr_lire …/etat : maj=43331 vifTs=undefined
+        49638 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        49889 dr_ecrire …/etat : maj=49889 vifTs=undefined (DR_SES.ici null) ← ·
+        49892 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        49898 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        50389 premierVerifier v.par=sr6pqrq48 v.ts=49466
+        50389 dr_lire …/etat : maj=49889 vifTs=undefined
+        50391 main null → smuf95we4 ← suite < eval < ·
+        50802 dr_ecrire …/etat : maj=50802 vifTs=50545 (DR_SES.ici posé) ← ·
+        51084 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        51988 dr_ecrire …/etat : maj=51988 vifTs=50545 (DR_SES.ici posé) ← ·
+      PG tc-qui 800 ms après « Reprendre » (clic 75685, geste 76555) : le geste fait oui (la parole notée à la télécommande) ; prise de main par A au second : OUI [77408 premierVerifier v.ts=76730] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false}
+      [vif PG tc-qui 800] 8 état(s) vivant(s) au hub :
+        ordinateur @64482 par=su6nubcro ts=64479 main=su6nubcro mainTs=64479 tc=false
+        ordinateur @67284 par=su6nubcro ts=67279 main=su6nubcro mainTs=64479 tc=false
+        ordinateur @67655 par=su6nubcro ts=67646 main=su6nubcro mainTs=64479 tc=false
+        telephone @70711 par=skapuuivp ts=70705 main=skapuuivp mainTs=70705 tc=true
+        ordinateur @70875 par=su6nubcro ts=70869 main=skapuuivp mainTs=70705 tc=true CÈDE
+        telephone @76808 par=skapuuivp ts=76730 main=skapuuivp mainTs=70705 tc=true
+        ordinateur2 @77422 par=sw91yfsve ts=77415 main=sw91yfsve mainTs=77415 tc=false
+        telephone @77605 par=skapuuivp ts=77604 main=sw91yfsve mainTs=77415 tc=false CÈDE
+      [piège PG · second] 11 :
+        76367 dr_lire …/etat : maj=70869 vifTs=undefined
+        76702 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        76803 dr_ecrire …/etat : maj=76803 vifTs=undefined (DR_SES.ici null) ← ·
+        76805 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        77084 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        77408 premierVerifier v.par=skapuuivp v.ts=76730
+        77409 dr_lire …/etat : maj=76803 vifTs=undefined
+        77409 main null → sw91yfsve ← suite < eval < ·
+        77988 dr_ecrire …/etat : maj=77988 vifTs=77604 (DR_SES.ici posé) ← ·
+        78307 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        79211 dr_ecrire …/etat : maj=79209 vifTs=77604 (DR_SES.ici posé) ← ·
+      PG tc-suiv 200 ms après « Reprendre » (clic 103557, geste 103905) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : OUI [105488 premierVerifier v.ts=104157] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false}
+      [vif PG tc-suiv 200] 8 état(s) vivant(s) au hub :
+        ordinateur @91733 par=sk9m99j32 ts=91728 main=sk9m99j32 mainTs=91728 tc=false
+        ordinateur @94546 par=sk9m99j32 ts=94543 main=sk9m99j32 mainTs=91728 tc=false
+        ordinateur @94939 par=sk9m99j32 ts=94938 main=sk9m99j32 mainTs=91728 tc=false
+        telephone @97980 par=scdmorfe4 ts=97963 main=scdmorfe4 mainTs=97963 tc=true
+        ordinateur @98152 par=sk9m99j32 ts=98150 main=scdmorfe4 mainTs=97963 tc=true CÈDE
+        telephone @104177 par=scdmorfe4 ts=104157 main=scdmorfe4 mainTs=97963 tc=true
+        ordinateur2 @105498 par=ssc6mb14s ts=105490 main=ssc6mb14s mainTs=105490 tc=false
+        telephone @105616 par=scdmorfe4 ts=105614 main=ssc6mb14s mainTs=105490 tc=false CÈDE
+      [piège PG · second] 11 :
+        104571 dr_lire …/etat : maj=98150 vifTs=undefined
+        104808 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        104932 dr_ecrire …/etat : maj=104932 vifTs=undefined (DR_SES.ici null) ← ·
+        104934 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        104936 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        105488 premierVerifier v.par=scdmorfe4 v.ts=104157
+        105488 dr_lire …/etat : maj=104932 vifTs=undefined
+        105488 main null → ssc6mb14s ← suite < eval < ·
+        105844 dr_ecrire …/etat : maj=105844 vifTs=105614 (DR_SES.ici posé) ← ·
+        106074 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        106979 dr_ecrire …/etat : maj=106979 vifTs=105614 (DR_SES.ici posé) ← ·
+      PG tc-suiv 500 ms après « Reprendre » (clic 130635, geste 131523) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : OUI [133020 premierVerifier v.ts=131749] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false}
+      [vif PG tc-suiv 500] 8 état(s) vivant(s) au hub :
+        ordinateur @119148 par=srdskuk74 ts=119145 main=srdskuk74 mainTs=119145 tc=false
+        ordinateur @122032 par=srdskuk74 ts=122030 main=srdskuk74 mainTs=119145 tc=false
+        ordinateur @122416 par=srdskuk74 ts=122411 main=srdskuk74 mainTs=119145 tc=false
+        telephone @125438 par=s1h8ni2cv ts=125426 main=s1h8ni2cv mainTs=125426 tc=true
+        ordinateur @125602 par=srdskuk74 ts=125600 main=s1h8ni2cv mainTs=125426 tc=true CÈDE
+        telephone @131752 par=s1h8ni2cv ts=131749 main=s1h8ni2cv mainTs=125426 tc=true
+        ordinateur2 @133037 par=swnunut6o ts=133025 main=swnunut6o mainTs=133025 tc=false
+        telephone @133112 par=s1h8ni2cv ts=133106 main=swnunut6o mainTs=133025 tc=false CÈDE
+      [piège PG · second] 10 :
+        131885 dr_lire …/etat : maj=125600 vifTs=undefined
+        132210 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        132379 dr_ecrire …/etat : maj=132379 vifTs=undefined (DR_SES.ici null) ← ·
+        132385 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < ·
+        132427 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        133020 premierVerifier v.par=s1h8ni2cv v.ts=131749
+        133020 dr_lire …/etat : maj=132379 vifTs=undefined
+        133020 main null → swnunut6o ← suite < eval < ·
+        133230 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        134136 dr_ecrire …/etat : maj=134136 vifTs=133106 (DR_SES.ici posé) ← ·
+      PG tc-suiv 800 ms après « Reprendre » (clic 158265, geste 159144) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : OUI [160044 premierVerifier v.ts=159342] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false}
+      [vif PG tc-suiv 800] 8 état(s) vivant(s) au hub :
+        ordinateur @146729 par=sehivvbrz ts=146726 main=sehivvbrz mainTs=146726 tc=false
+        ordinateur @149561 par=sehivvbrz ts=149557 main=sehivvbrz mainTs=146726 tc=false
+        ordinateur @149928 par=sehivvbrz ts=149926 main=sehivvbrz mainTs=146726 tc=false
+        telephone @152928 par=shvhsxiz9 ts=152908 main=shvhsxiz9 mainTs=152908 tc=true
+        ordinateur @153116 par=sehivvbrz ts=153111 main=shvhsxiz9 mainTs=152908 tc=true CÈDE
+        telephone @159345 par=shvhsxiz9 ts=159342 main=shvhsxiz9 mainTs=152908 tc=true
+        ordinateur2 @160053 par=s5s61m4l1 ts=160047 main=s5s61m4l1 mainTs=160047 tc=false
+        telephone @160199 par=shvhsxiz9 ts=160197 main=s5s61m4l1 mainTs=160047 tc=false CÈDE
+      [piège PG · second] 11 :
+        158964 dr_lire …/etat : maj=153111 vifTs=undefined
+        159298 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        159630 dr_ecrire …/etat : maj=159630 vifTs=undefined (DR_SES.ici null) ← ·
+        159632 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        159639 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        160044 premierVerifier v.par=shvhsxiz9 v.ts=159342
+        160044 dr_lire …/etat : maj=159630 vifTs=undefined
+        160045 main null → s5s61m4l1 ← suite < eval < ·
+        160544 dr_ecrire …/etat : maj=160544 vifTs=160197 (DR_SES.ici posé) ← ·
+        160720 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        161622 dr_ecrire …/etat : maj=161622 vifTs=160197 (DR_SES.ici posé) ← ·
+      PG ord-suiv 200 ms après « Reprendre » (clic 185857, geste 186104) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : OUI [187736 premierVerifier v.ts=186275] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false}
+      [vif PG ord-suiv 200] 9 état(s) vivant(s) au hub :
+        ordinateur @174307 par=s7cm4f64l ts=174303 main=s7cm4f64l mainTs=174303 tc=false
+        ordinateur @177264 par=s7cm4f64l ts=177261 main=s7cm4f64l mainTs=174303 tc=false
+        ordinateur @177628 par=s7cm4f64l ts=177626 main=s7cm4f64l mainTs=174303 tc=false
+        telephone @180799 par=siq0d2ovv ts=180791 main=siq0d2ovv mainTs=180791 tc=true
+        ordinateur @180961 par=s7cm4f64l ts=180957 main=siq0d2ovv mainTs=180791 tc=true CÈDE
+        ordinateur @186232 par=s7cm4f64l ts=186220 main=s7cm4f64l mainTs=186220 tc=false
+        telephone @186284 par=siq0d2ovv ts=186275 main=s7cm4f64l mainTs=186220 tc=false CÈDE
+        ordinateur2 @187746 par=srz4txvly ts=187738 main=srz4txvly mainTs=187738 tc=false
+        ordinateur @187979 par=s7cm4f64l ts=187975 main=srz4txvly mainTs=187738 tc=false CÈDE
+      [piège PG · second] 11 :
+        186618 dr_lire …/etat : maj=180957 vifTs=undefined
+        186953 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        187136 dr_ecrire …/etat : maj=187136 vifTs=undefined (DR_SES.ici null) ← ·
+        187150 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        187157 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        187736 premierVerifier v.par=siq0d2ovv v.ts=186275
+        187736 dr_lire …/etat : maj=187136 vifTs=undefined
+        187736 main null → srz4txvly ← suite < eval < ·
+        188138 dr_ecrire …/etat : maj=188138 vifTs=187975 (DR_SES.ici posé) ← ·
+        188490 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        189394 dr_ecrire …/etat : maj=189394 vifTs=187975 (DR_SES.ici posé) ← ·
+      PG ord-suiv 500 ms après « Reprendre » (clic 212567, geste 213124) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : OUI [214368 premierVerifier v.ts=213343] ; 5 s après, le geste chez : {"ordinateur":false,"second":false,"télécommande":false,"tableau":false}
+      [vif PG ord-suiv 500] 9 état(s) vivant(s) au hub :
+        ordinateur @201155 par=sgzdgntxm ts=201150 main=sgzdgntxm mainTs=201150 tc=false
+        ordinateur @204046 par=sgzdgntxm ts=204044 main=sgzdgntxm mainTs=201150 tc=false
+        ordinateur @204428 par=sgzdgntxm ts=204425 main=sgzdgntxm mainTs=201150 tc=false
+        telephone @207439 par=sb8h6ophz ts=207435 main=sb8h6ophz mainTs=207435 tc=true
+        ordinateur @207529 par=sgzdgntxm ts=207528 main=sb8h6ophz mainTs=207435 tc=true CÈDE
+        ordinateur @213271 par=sgzdgntxm ts=213269 main=sgzdgntxm mainTs=213269 tc=false
+        telephone @213345 par=sb8h6ophz ts=213343 main=sgzdgntxm mainTs=213269 tc=false CÈDE
+        ordinateur2 @214377 par=spiw5jeh5 ts=214371 main=spiw5jeh5 mainTs=214371 tc=false
+        ordinateur @214649 par=sgzdgntxm ts=214621 main=spiw5jeh5 mainTs=214371 tc=false CÈDE
+      [piège PG · second] 10 :
+        213370 dr_lire …/etat : maj=207528 vifTs=undefined
+        213677 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        213775 dr_ecrire …/etat : maj=213775 vifTs=undefined (DR_SES.ici null) ← ·
+        213778 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        214303 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        214368 premierVerifier v.par=sb8h6ophz v.ts=213343
+        214368 dr_lire …/etat : maj=213775 vifTs=undefined
+        214368 main null → spiw5jeh5 ← suite < eval < ·
+        215185 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        216093 dr_ecrire …/etat : maj=216093 vifTs=214621 (DR_SES.ici posé) ← ·
+      PG ord-suiv 800 ms après « Reprendre » (clic 239399, geste 240278) : le geste fait oui (inv-presentation-chapitre-s0#3#0) ; prise de main par A au second : non [240904 premierVerifier v.ts=240430] ; 5 s après, le geste chez : {"ordinateur":true,"second":false,"télécommande":true,"tableau":false}
+      [vif PG ord-suiv 800] 7 état(s) vivant(s) au hub :
+        ordinateur @228157 par=szu97kyqf ts=228155 main=szu97kyqf mainTs=228155 tc=false
+        ordinateur @230935 par=szu97kyqf ts=230932 main=szu97kyqf mainTs=228155 tc=false
+        ordinateur @231307 par=szu97kyqf ts=231306 main=szu97kyqf mainTs=228155 tc=false
+        telephone @234185 par=sj99kfql9 ts=234181 main=sj99kfql9 mainTs=234181 tc=true
+        ordinateur @234294 par=szu97kyqf ts=234292 main=sj99kfql9 mainTs=234181 tc=true CÈDE
+        ordinateur @240458 par=szu97kyqf ts=240430 main=szu97kyqf mainTs=240430 tc=false
+        telephone @240551 par=sj99kfql9 ts=240546 main=szu97kyqf mainTs=240430 tc=false CÈDE
+      [piège PG · second] 10 :
+        240014 dr_lire …/etat : maj=234292 vifTs=undefined
+        240201 dr_etatAuto(vite) S.lancee=true DR_SES.ici null ← dr_copieAuto < g < g < · < · < ·
+        240333 dr_ecrire …/etat : maj=240333 vifTs=undefined (DR_SES.ici null) ← ·
+        240335 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        240338 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        240904 premierVerifier v.par=szu97kyqf v.ts=240430
+        240904 dr_lire …/etat : maj=240333 vifTs=undefined
+        240904 main null → szu97kyqf ← dr_sesRecu < suite < eval < ·
+        241095 dr_etatAuto(900 ms) S.lancee=true DR_SES.ici posé ← dr_copieAuto < g < g < ·
+        241999 dr_ecrire …/etat : maj=241999 vifTs=240546 (DR_SES.ici posé) ← ·
+      PG · bilan : 9 passage(s) ; prise de main par A : 8 ; parmi eux, le geste perdu : 8 ; sans A, le geste perdu : 1 — tc-qui/200:APERDU tc-qui/500:APERDU tc-qui/800:APERDU tc-suiv/200:APERDU tc-suiv/500:APERDU tc-suiv/800:APERDU ord-suiv/200:APERDU ord-suiv/500:APERDU ord-suiv/800:-PERDU
+
+0 vérifications, 0 échec(s)
+18:24:23 → 18:28:30 · propre · code 0 · env MJPC_PYQR=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/pyqr MJPC_MEDIAS=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/medias MJPC_HORLOGE=date MJPC_TRACE=1 MJPC_SANS_ECHAP=1 MJPC_PARTIES=PG MJPC_NOM=m18-1 timeout 1200 node /home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-appel-trace.mjs /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/assemble/index.html /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/m18-1

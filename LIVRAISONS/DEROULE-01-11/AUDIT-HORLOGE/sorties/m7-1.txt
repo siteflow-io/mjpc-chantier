@@ -1,0 +1,530 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T · 2026-11-03 17:28 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— l’essai en mode test · m7-1 —
+  ok     T · l’ordinateur lance l’heure par la case de l’emploi du temps
+      T · second ordinateur : bandeau en 3 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":3,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · téléphone : bandeau en 7 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le téléphone voit le bandeau en moins de 2 s — {"t":7,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209633|0","ici":"essai|1789369209633|0","recu":1789369222136,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209633|0","ici":"essai|1789369209633|0","recu":1789369222371,"di":0,"mur":true}
+      T · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     T · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      T · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 92, 85, 252, 119, 99 · téléphone 160, 167, 114, 89, 190 · tableau distant 94, 162, 89, 171, 254, 117, 121, 93, 101, 203
+  ok     T · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":254}
+      T · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     T · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      T · un second ordinateur reprend aussi (bandeau en 4 ms) ; l’ordinateur va à « Question-bilan » (fait) : ordinateur emt9v3yqo6pvd5#2#0 · second emt9v3yqo6pvd5#2#0 · téléphone emt9v3yqo6pvd5#2#1
+      T · le texte gardé au second ordinateur quand l’ordinateur a pris la main : « Le Roman »
+      T · la réponse tapée au second ordinateur (« Le Romantisme met en scène la nature contre la règle »), l’ordinateur qui dévoile (▶ ← ▶), la participation de ÉLÈVE (EA) au téléphone : {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là (« Le Roman ») est chez les trois pilotes, rien de perdu — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la participation saisie au téléphone pendant ce temps : chez les trois pilotes — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement) — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+      [trace T après le dévoilement] ordinateur {"id":"svc1ivcsv","main":"svc1ivcsv","mainTs":"50810","att":false,"occ":false,"appui":false,"act":"BUTTON#garde-gel","cle":"emt9v3yqon4gew#1","now":"56325"}
+                 second {"id":"stvz5jet7","main":"svc1ivcsv","mainTs":"50810","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"56330"}
+                 telephone {"id":"sxwpoulj2","main":"svc1ivcsv","mainTs":"50810","att":false,"occ":false,"appui":false,"act":"BODY#","cle":"emt9v3yqon4gew#1","now":"56533"}
+      [vif T depuis le second ordinateur] 91 état(s) vivant(s) au hub :
+        ordinateur2 @39113 par=stvz5jet7 ts=39113 main=stvz5jet7 mainTs=39113 tc=false où=inv-plan-s0#1 base=sxwpoulj2|32453
+        telephone @39232 par=sxwpoulj2 ts=39227 main=stvz5jet7 mainTs=39113 tc=false où=inv-plan-s0#1 base=stvz5jet7|39113 CÈDE
+        ordinateur @42476 par=svc1ivcsv ts=42470 main=svc1ivcsv mainTs=42470 tc=false où=emt9v3yqo6pvd5#0 base=sxwpoulj2|39227
+        ordinateur2 @42719 par=stvz5jet7 ts=42710 main=svc1ivcsv mainTs=42470 tc=false où=emt9v3yqo6pvd5#0 base=svc1ivcsv|42470 CÈDE
+        ordinateur @43499 par=svc1ivcsv ts=43496 main=svc1ivcsv mainTs=42470 tc=false où=emt9v3yqo6pvd5#1 base=stvz5jet7|42710
+        ordinateur @43835 par=svc1ivcsv ts=43829 main=svc1ivcsv mainTs=42470 tc=false où=emt9v3yqo6pvd5#2 base=svc1ivcsv|43496
+        ordinateur2 @46868 par=stvz5jet7 ts=46859 main=stvz5jet7 mainTs=46859 tc=false où=emt9v3yqo6pvd5#2 base=svc1ivcsv|43829
+        ordinateur @46932 par=svc1ivcsv ts=46926 main=stvz5jet7 mainTs=46859 tc=false où=emt9v3yqo6pvd5#2 base=stvz5jet7|46859 CÈDE
+        ordinateur2 @47227 par=stvz5jet7 ts=47226 main=stvz5jet7 mainTs=46859 tc=false où=emt9v3yqo6pvd5#2 base=svc1ivcsv|46926
+        ordinateur2 @47327 par=stvz5jet7 ts=47324 main=stvz5jet7 mainTs=46859 tc=false où=emt9v3yqo6pvd5#2 base=stvz5jet7|47226
+        ordinateur @47571 par=svc1ivcsv ts=47567 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|47324
+        ordinateur2 @47631 par=stvz5jet7 ts=47604 main=stvz5jet7 mainTs=46859 tc=false où=emt9v3yqo6pvd5#2 base=stvz5jet7|47324
+        ordinateur2 @47766 par=stvz5jet7 ts=47764 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|47567 CÈDE
+        ordinateur @47825 par=svc1ivcsv ts=47784 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|47604
+        ordinateur @47980 par=svc1ivcsv ts=47952 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|47764
+        ordinateur2 @48113 par=stvz5jet7 ts=48108 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|47784
+        ordinateur @48341 par=svc1ivcsv ts=48238 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|48108
+        telephone @48354 par=sxwpoulj2 ts=48267 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|47764
+        ordinateur @48532 par=svc1ivcsv ts=48459 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|48267
+        telephone @48532 par=sxwpoulj2 ts=48503 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|47784
+        ordinateur @48656 par=svc1ivcsv ts=48607 main=svc1ivcsv mainTs=47567 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|48503
+        telephone @48747 par=sxwpoulj2 ts=48727 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|47952
+        ordinateur @48936 par=svc1ivcsv ts=48930 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|48727 CÈDE
+        telephone @49018 par=sxwpoulj2 ts=49017 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|48108
+        ordinateur2 @49029 par=stvz5jet7 ts=49067 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|48930
+        telephone @49159 par=sxwpoulj2 ts=49157 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|48607
+        telephone @49411 par=sxwpoulj2 ts=49382 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|49067
+        ordinateur @49549 par=svc1ivcsv ts=49547 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|49382
+        ordinateur2 @49646 par=stvz5jet7 ts=49644 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|49547
+        telephone @49776 par=sxwpoulj2 ts=49774 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|49644
+        ordinateur @49909 par=svc1ivcsv ts=49904 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|49774
+        ordinateur2 @50143 par=stvz5jet7 ts=50141 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|49904
+        telephone @50281 par=sxwpoulj2 ts=50278 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|50141
+        ordinateur @50430 par=svc1ivcsv ts=50428 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=sxwpoulj2|50278
+        ordinateur2 @50545 par=stvz5jet7 ts=50543 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=svc1ivcsv|50428
+        ordinateur @50816 par=svc1ivcsv ts=50810 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|50543
+        telephone @50865 par=sxwpoulj2 ts=50863 main=sxwpoulj2 mainTs=48727 tc=false où=emt9v3yqon4gew#0 base=stvz5jet7|50543
+        telephone @51008 par=sxwpoulj2 ts=51003 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|50810 CÈDE
+        ordinateur @51059 par=svc1ivcsv ts=51013 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|50863
+        ordinateur2 @51356 par=stvz5jet7 ts=51354 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|50863
+        ordinateur @51496 par=svc1ivcsv ts=51495 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|51354
+        ordinateur2 @51561 par=stvz5jet7 ts=51559 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|51003
+        telephone @51620 par=sxwpoulj2 ts=51618 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|51495
+        ordinateur @51671 par=svc1ivcsv ts=51664 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|51559
+        ordinateur2 @51864 par=stvz5jet7 ts=51862 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|51013
+        telephone @51875 par=sxwpoulj2 ts=51870 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|51664
+        telephone @52026 par=sxwpoulj2 ts=52024 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|51862
+        ordinateur2 @52081 par=stvz5jet7 ts=52066 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|51618
+        ordinateur2 @52294 par=stvz5jet7 ts=52234 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|51870
+        ordinateur @52431 par=svc1ivcsv ts=52348 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|52024
+        ordinateur @52466 par=svc1ivcsv ts=52390 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|52066
+        ordinateur @52533 par=svc1ivcsv ts=52448 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|52234
+        telephone @52658 par=sxwpoulj2 ts=52653 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|52390
+        ordinateur2 @52773 par=stvz5jet7 ts=52771 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|52653
+        telephone @52823 par=sxwpoulj2 ts=52818 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|52448
+        ordinateur @52850 par=svc1ivcsv ts=52850 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|52771
+        ordinateur2 @52931 par=stvz5jet7 ts=52927 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|52818
+        ordinateur @53045 par=svc1ivcsv ts=53045 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|52927
+        telephone @53189 par=sxwpoulj2 ts=53186 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|52850
+        ordinateur2 @53334 par=stvz5jet7 ts=53330 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|53186
+        telephone @53379 par=sxwpoulj2 ts=53378 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|53045
+        ordinateur @53458 par=svc1ivcsv ts=53457 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|53330
+        ordinateur2 @53491 par=stvz5jet7 ts=53507 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|53378
+        telephone @53619 par=sxwpoulj2 ts=53617 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|53457
+        ordinateur2 @53718 par=stvz5jet7 ts=53717 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|53617
+        ordinateur @53767 par=svc1ivcsv ts=53755 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|53507
+        telephone @53927 par=sxwpoulj2 ts=53922 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|53755
+        ordinateur @53986 par=svc1ivcsv ts=53985 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|53717
+        ordinateur2 @54002 par=stvz5jet7 ts=53989 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|53922
+        telephone @54135 par=sxwpoulj2 ts=54133 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|53985
+        ordinateur @54306 par=svc1ivcsv ts=54233 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|53989
+        ordinateur2 @54314 par=stvz5jet7 ts=54313 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|54133
+        telephone @54442 par=sxwpoulj2 ts=54439 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|54233
+        ordinateur2 @54532 par=stvz5jet7 ts=54531 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|54439
+        ordinateur @54570 par=svc1ivcsv ts=54566 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|54313
+        ordinateur @54749 par=svc1ivcsv ts=54749 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|54531
+        telephone @54790 par=sxwpoulj2 ts=54799 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|54566
+        telephone @54946 par=sxwpoulj2 ts=54944 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|54749
+        ordinateur2 @55045 par=stvz5jet7 ts=55042 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|54799
+        ordinateur @55172 par=svc1ivcsv ts=55167 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|55042
+        telephone @55271 par=sxwpoulj2 ts=55268 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|55167
+        ordinateur2 @55298 par=stvz5jet7 ts=55295 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|54944
+        ordinateur2 @55467 par=stvz5jet7 ts=55465 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|55268
+        ordinateur @55667 par=svc1ivcsv ts=55666 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|55295
+        ordinateur @55847 par=svc1ivcsv ts=55843 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|55465
+        telephone @55864 par=sxwpoulj2 ts=55893 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|55666
+        telephone @55966 par=sxwpoulj2 ts=55963 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=svc1ivcsv|55843
+        ordinateur2 @56160 par=stvz5jet7 ts=56115 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|55893
+        ordinateur2 @56231 par=stvz5jet7 ts=56219 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=sxwpoulj2|55963
+        ordinateur @56339 par=svc1ivcsv ts=56338 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|56115
+        ordinateur @56439 par=svc1ivcsv ts=56436 main=svc1ivcsv mainTs=50810 tc=false où=emt9v3yqon4gew#1 base=stvz5jet7|56219
+      [piège T depuis le second ordinateur · ordinateur] 122 :
+        39118 reçu stvz5jet7|39113 (inv-plan-s0#1) main=stvz5jet7|39113 occupé=false ici inv-plan-s0#1
+        39118 main sxwpoulj2 → stvz5jet7 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        39178 dr_sesAppliquer stvz5jet7|39113 (inv-plan-s0#1) : ici inv-plan-s0#1 → inv-plan-s0#1
+        39235 reçu sxwpoulj2|39227 (inv-plan-s0#1) main=stvz5jet7|39113 occupé=false ici inv-plan-s0#1
+        39283 dr_sesAppliquer sxwpoulj2|39227 (inv-plan-s0#1) : ici inv-plan-s0#1 → inv-plan-s0#1
+        42468 main stvz5jet7 → svc1ivcsv ← dr_sesEnvoyerMaintenant
+        42748 reçu stvz5jet7|42710 (emt9v3yqo6pvd5#0) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#0
+        42968 dr_sesAppliquer stvz5jet7|42710 (emt9v3yqo6pvd5#0) : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0
+        46876 reçu stvz5jet7|46859 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        46877 main svc1ivcsv → stvz5jet7 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        46926 dr_sesAppliquer stvz5jet7|46859 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47233 reçu stvz5jet7|47226 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        47340 dr_sesAppliquer stvz5jet7|47226 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47357 reçu stvz5jet7|47324 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        47397 dr_sesAppliquer stvz5jet7|47324 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47561 main stvz5jet7 → svc1ivcsv ← dr_sesEnvoyerMaintenant
+        47637 reçu stvz5jet7|47604 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqon4gew#0
+        47725 dr_sesAppliquer stvz5jet7|47604 (emt9v3yqo6pvd5#2) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        47838 reçu stvz5jet7|47764 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        47924 dr_sesAppliquer stvz5jet7|47764 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48126 reçu stvz5jet7|48108 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48214 dr_sesAppliquer stvz5jet7|48108 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48378 reçu sxwpoulj2|48267 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48434 dr_sesAppliquer sxwpoulj2|48267 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48521 reçu sxwpoulj2|48267 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48546 reçu sxwpoulj2|48503 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48585 dr_sesAppliquer sxwpoulj2|48503 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48650 reçu sxwpoulj2|48503 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48753 reçu sxwpoulj2|48727 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        48755 main svc1ivcsv → sxwpoulj2 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48928 dr_sesAppliquer sxwpoulj2|48727 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49026 reçu sxwpoulj2|49017 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49164 dr_sesAppliquer sxwpoulj2|49017 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49182 reçu stvz5jet7|49067 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49300 dr_sesAppliquer stvz5jet7|49067 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49330 reçu sxwpoulj2|49157 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49409 dr_sesAppliquer sxwpoulj2|49157 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49449 reçu sxwpoulj2|49382 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49526 dr_sesAppliquer sxwpoulj2|49382 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49653 reçu stvz5jet7|49644 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49753 dr_sesAppliquer stvz5jet7|49644 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49804 reçu sxwpoulj2|49774 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49882 dr_sesAppliquer sxwpoulj2|49774 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50152 reçu stvz5jet7|50141 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50306 dr_sesAppliquer stvz5jet7|50141 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50330 reçu sxwpoulj2|50278 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50396 dr_sesAppliquer sxwpoulj2|50278 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50556 reçu stvz5jet7|50543 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50737 dr_sesAppliquer stvz5jet7|50543 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50808 main sxwpoulj2 → svc1ivcsv ← dr_sesEnvoyerMaintenant
+        50871 reçu sxwpoulj2|50863 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#1
+        50956 dr_sesAppliquer sxwpoulj2|50863 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51075 reçu sxwpoulj2|51003 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51282 dr_sesAppliquer sxwpoulj2|51003 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51367 reçu stvz5jet7|51354 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51471 dr_sesAppliquer stvz5jet7|51354 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51567 reçu stvz5jet7|51559 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51646 dr_sesAppliquer stvz5jet7|51559 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51662 reçu sxwpoulj2|51618 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51758 dr_sesAppliquer sxwpoulj2|51618 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51879 reçu stvz5jet7|51862 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52017 dr_sesAppliquer stvz5jet7|51862 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52063 reçu sxwpoulj2|51870 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52270 dr_sesAppliquer sxwpoulj2|51870 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52308 reçu sxwpoulj2|52024 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52345 dr_sesAppliquer sxwpoulj2|52024 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52346 reçu stvz5jet7|52066 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52381 dr_sesAppliquer stvz5jet7|52066 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52388 reçu stvz5jet7|52234 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52426 dr_sesAppliquer stvz5jet7|52234 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52666 reçu sxwpoulj2|52653 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52757 dr_sesAppliquer sxwpoulj2|52653 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52777 reçu stvz5jet7|52771 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52829 dr_sesAppliquer stvz5jet7|52771 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52845 reçu sxwpoulj2|52818 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52930 dr_sesAppliquer sxwpoulj2|52818 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52952 reçu stvz5jet7|52927 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53023 dr_sesAppliquer stvz5jet7|52927 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53201 reçu sxwpoulj2|53186 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53300 dr_sesAppliquer sxwpoulj2|53186 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53343 reçu stvz5jet7|53330 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53433 dr_sesAppliquer stvz5jet7|53330 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53453 reçu sxwpoulj2|53378 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53568 dr_sesAppliquer sxwpoulj2|53378 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53600 reçu stvz5jet7|53507 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53733 dr_sesAppliquer stvz5jet7|53507 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53753 reçu sxwpoulj2|53617 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53851 dr_sesAppliquer sxwpoulj2|53617 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53883 reçu stvz5jet7|53717 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53957 dr_sesAppliquer stvz5jet7|53717 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53983 reçu sxwpoulj2|53922 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54061 dr_sesAppliquer sxwpoulj2|53922 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54094 reçu stvz5jet7|53989 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54182 dr_sesAppliquer stvz5jet7|53989 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54264 reçu sxwpoulj2|54133 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54368 dr_sesAppliquer sxwpoulj2|54133 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54397 reçu stvz5jet7|54313 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54515 dr_sesAppliquer stvz5jet7|54313 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54564 reçu sxwpoulj2|54439 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54647 dr_sesAppliquer sxwpoulj2|54439 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54650 reçu stvz5jet7|54531 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54719 dr_sesAppliquer stvz5jet7|54531 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54803 reçu sxwpoulj2|54799 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54937 dr_sesAppliquer sxwpoulj2|54799 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54970 reçu sxwpoulj2|54944 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55023 dr_sesAppliquer sxwpoulj2|54944 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55051 reçu stvz5jet7|55042 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55144 dr_sesAppliquer stvz5jet7|55042 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55290 reçu sxwpoulj2|55268 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55487 dr_sesAppliquer sxwpoulj2|55268 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55539 reçu stvz5jet7|55295 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55643 dr_sesAppliquer stvz5jet7|55295 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55664 reçu stvz5jet7|55465 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55802 dr_sesAppliquer stvz5jet7|55465 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55882 reçu sxwpoulj2|55893 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55981 dr_sesAppliquer sxwpoulj2|55893 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56048 reçu sxwpoulj2|55963 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56145 dr_sesAppliquer sxwpoulj2|55963 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56167 reçu stvz5jet7|56115 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56282 dr_sesAppliquer stvz5jet7|56115 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56326 reçu stvz5jet7|56219 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56411 dr_sesAppliquer stvz5jet7|56219 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+      [piège T depuis le second ordinateur · second] 127 :
+        38500 main undefined → null ← dr_sesSuivreFin < dr_sesVeiller < ·
+        39109 reçu sxwpoulj2|32453 (inv-plan-s0#1) main=sxwpoulj2|32303 occupé=false ici inv-plan-s0#1
+        39111 main null → stvz5jet7 ← suite < ·
+        39238 reçu sxwpoulj2|39227 (inv-plan-s0#1) main=stvz5jet7|39113 occupé=false ici inv-plan-s0#1
+        39371 dr_sesAppliquer sxwpoulj2|39227 (inv-plan-s0#1) : ici inv-plan-s0#1 → inv-plan-s0#1
+        42496 reçu svc1ivcsv|42470 (emt9v3yqo6pvd5#0) main=svc1ivcsv|42470 occupé=false ici inv-plan-s0#1
+        42496 main stvz5jet7 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        42710 dr_sesAppliquer svc1ivcsv|42470 (emt9v3yqo6pvd5#0) : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0
+        43514 reçu svc1ivcsv|43496 (emt9v3yqo6pvd5#1) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#0
+        43639 dr_sesAppliquer svc1ivcsv|43496 (emt9v3yqo6pvd5#1) : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1
+        43840 reçu svc1ivcsv|43829 (emt9v3yqo6pvd5#2) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#1
+        43945 dr_sesAppliquer svc1ivcsv|43829 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2
+        46857 main svc1ivcsv → stvz5jet7 ← dr_sesEnvoyerMaintenant
+        47119 reçu svc1ivcsv|46926 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=true ici emt9v3yqo6pvd5#2
+        47180 dr_sesPoserAutour svc1ivcsv|46926 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 rend true
+        47658 reçu svc1ivcsv|47567 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=true ici emt9v3yqo6pvd5#2
+        47658 main stvz5jet7 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47764 dr_sesAppliquer svc1ivcsv|47567 (emt9v3yqon4gew#0) : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0
+        47971 reçu svc1ivcsv|47784 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48086 dr_sesAppliquer svc1ivcsv|47784 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48108 reçu svc1ivcsv|47952 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48218 dr_sesAppliquer svc1ivcsv|47952 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48450 reçu sxwpoulj2|48267 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48506 dr_sesAppliquer sxwpoulj2|48267 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48524 reçu sxwpoulj2|48267 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48598 reçu sxwpoulj2|48503 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48639 dr_sesAppliquer sxwpoulj2|48503 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48652 reçu sxwpoulj2|48503 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48663 reçu svc1ivcsv|48607 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48700 dr_sesAppliquer svc1ivcsv|48607 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48757 reçu sxwpoulj2|48727 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        48757 main svc1ivcsv → sxwpoulj2 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        48849 dr_sesAppliquer sxwpoulj2|48727 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48947 reçu svc1ivcsv|48930 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49009 dr_sesAppliquer svc1ivcsv|48930 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49026 reçu sxwpoulj2|49017 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49088 dr_sesAppliquer sxwpoulj2|49017 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49162 reçu sxwpoulj2|49157 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49247 dr_sesAppliquer sxwpoulj2|49157 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49423 reçu sxwpoulj2|49382 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49508 dr_sesAppliquer sxwpoulj2|49382 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49556 reçu svc1ivcsv|49547 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49623 dr_sesAppliquer svc1ivcsv|49547 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49823 reçu sxwpoulj2|49774 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49953 dr_sesAppliquer sxwpoulj2|49774 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49971 reçu svc1ivcsv|49904 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50066 dr_sesAppliquer svc1ivcsv|49904 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50287 reçu sxwpoulj2|50278 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50349 dr_sesAppliquer sxwpoulj2|50278 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50451 reçu svc1ivcsv|50428 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50517 dr_sesAppliquer svc1ivcsv|50428 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50834 reçu svc1ivcsv|50810 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#0
+        50837 main sxwpoulj2 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        50984 dr_sesAppliquer svc1ivcsv|50810 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1
+        51040 reçu sxwpoulj2|50863 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#1
+        51344 dr_sesAppliquer sxwpoulj2|50863 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51352 reçu sxwpoulj2|51003 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51541 dr_sesAppliquer sxwpoulj2|51003 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51558 reçu svc1ivcsv|51013 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51750 dr_sesAppliquer svc1ivcsv|51013 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51854 reçu svc1ivcsv|51495 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51975 dr_sesAppliquer svc1ivcsv|51495 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51996 reçu sxwpoulj2|51618 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52057 dr_sesAppliquer sxwpoulj2|51618 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52066 reçu svc1ivcsv|51664 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52123 dr_sesAppliquer svc1ivcsv|51664 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52144 reçu sxwpoulj2|51870 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52224 dr_sesAppliquer sxwpoulj2|51870 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52233 reçu sxwpoulj2|52024 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52273 dr_sesAppliquer sxwpoulj2|52024 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52473 reçu svc1ivcsv|52390 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52515 dr_sesAppliquer svc1ivcsv|52390 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52527 reçu svc1ivcsv|52390 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52542 reçu svc1ivcsv|52448 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52577 dr_sesAppliquer svc1ivcsv|52448 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52669 reçu sxwpoulj2|52653 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52742 dr_sesAppliquer sxwpoulj2|52653 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52826 reçu sxwpoulj2|52818 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52906 dr_sesAppliquer sxwpoulj2|52818 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52925 reçu svc1ivcsv|52850 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53002 dr_sesAppliquer svc1ivcsv|52850 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53057 reçu svc1ivcsv|53045 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53124 dr_sesAppliquer svc1ivcsv|53045 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53209 reçu sxwpoulj2|53186 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53297 dr_sesAppliquer sxwpoulj2|53186 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53383 reçu sxwpoulj2|53378 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53470 dr_sesAppliquer sxwpoulj2|53378 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53486 reçu svc1ivcsv|53457 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53574 dr_sesAppliquer svc1ivcsv|53457 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53626 reçu sxwpoulj2|53617 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53696 dr_sesAppliquer sxwpoulj2|53617 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53774 reçu svc1ivcsv|53755 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53849 dr_sesAppliquer svc1ivcsv|53755 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53933 reçu sxwpoulj2|53922 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53968 dr_sesAppliquer sxwpoulj2|53922 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54008 reçu svc1ivcsv|53985 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54100 dr_sesAppliquer svc1ivcsv|53985 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54258 reçu sxwpoulj2|54133 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54295 dr_sesAppliquer sxwpoulj2|54133 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54312 reçu svc1ivcsv|54233 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54412 dr_sesAppliquer svc1ivcsv|54233 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54445 reçu sxwpoulj2|54439 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54510 dr_sesAppliquer sxwpoulj2|54439 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54573 reçu svc1ivcsv|54566 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54666 dr_sesAppliquer svc1ivcsv|54566 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54756 reçu svc1ivcsv|54749 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54934 dr_sesAppliquer svc1ivcsv|54749 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54959 reçu sxwpoulj2|54799 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55036 dr_sesAppliquer sxwpoulj2|54799 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55037 reçu sxwpoulj2|54944 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55263 dr_sesAppliquer sxwpoulj2|54944 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55295 reçu svc1ivcsv|55167 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55380 dr_sesAppliquer svc1ivcsv|55167 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55382 reçu sxwpoulj2|55268 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55439 dr_sesAppliquer sxwpoulj2|55268 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55679 reçu svc1ivcsv|55666 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55843 dr_sesAppliquer svc1ivcsv|55666 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55859 reçu svc1ivcsv|55843 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55980 dr_sesAppliquer svc1ivcsv|55843 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55986 reçu sxwpoulj2|55893 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56096 dr_sesAppliquer sxwpoulj2|55893 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56114 reçu sxwpoulj2|55963 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56198 dr_sesAppliquer sxwpoulj2|55963 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56346 reçu svc1ivcsv|56338 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56469 dr_sesAppliquer svc1ivcsv|56338 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56479 reçu svc1ivcsv|56436 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56514 dr_sesAppliquer svc1ivcsv|56436 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+      [piège T depuis le second ordinateur · telephone] 133 :
+        39121 reçu stvz5jet7|39113 (inv-plan-s0#1) main=stvz5jet7|39113 occupé=false ici inv-plan-s0#1
+        39124 main sxwpoulj2 → stvz5jet7 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        39226 dr_sesAppliquer stvz5jet7|39113 (inv-plan-s0#1) : ici inv-plan-s0#1 → inv-plan-s0#1
+        42490 reçu svc1ivcsv|42470 (emt9v3yqo6pvd5#0) main=svc1ivcsv|42470 occupé=false ici inv-plan-s0#1
+        42491 main stvz5jet7 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        42766 dr_sesAppliquer svc1ivcsv|42470 (emt9v3yqo6pvd5#0) : ici inv-plan-s0#1 → emt9v3yqo6pvd5#0
+        42834 reçu stvz5jet7|42710 (emt9v3yqo6pvd5#0) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#0
+        42947 dr_sesAppliquer stvz5jet7|42710 (emt9v3yqo6pvd5#0) : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#0
+        43508 reçu svc1ivcsv|43496 (emt9v3yqo6pvd5#1) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#0
+        43687 dr_sesAppliquer svc1ivcsv|43496 (emt9v3yqo6pvd5#1) : ici emt9v3yqo6pvd5#0 → emt9v3yqo6pvd5#1
+        43839 reçu svc1ivcsv|43829 (emt9v3yqo6pvd5#2) main=svc1ivcsv|42470 occupé=false ici emt9v3yqo6pvd5#1
+        43929 dr_sesAppliquer svc1ivcsv|43829 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#1 → emt9v3yqo6pvd5#2
+        46936 reçu stvz5jet7|46859 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        46936 main svc1ivcsv → stvz5jet7 ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47032 dr_sesAppliquer stvz5jet7|46859 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47043 reçu svc1ivcsv|46926 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        47122 dr_sesAppliquer svc1ivcsv|46926 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47232 reçu stvz5jet7|47226 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        47407 dr_sesAppliquer stvz5jet7|47226 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47428 reçu stvz5jet7|47324 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=false ici emt9v3yqo6pvd5#2
+        47517 dr_sesAppliquer stvz5jet7|47324 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        47625 reçu svc1ivcsv|47567 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=true ici emt9v3yqo6pvd5#2
+        47625 main stvz5jet7 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47627 dr_sesPoserAutour svc1ivcsv|47567 (emt9v3yqon4gew#0) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 rend false
+        47627 attente rien → svc1ivcsv|47567 (emt9v3yqon4gew#0) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47641 reçu stvz5jet7|47604 (emt9v3yqo6pvd5#2) main=stvz5jet7|46859 occupé=true ici emt9v3yqo6pvd5#2
+        47641 dr_sesPoserAutour stvz5jet7|47604 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2 rend false
+        47641 attente svc1ivcsv|47567 → stvz5jet7|47604 (emt9v3yqo6pvd5#2) ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        47813 attente stvz5jet7|47604 → rien ← dr_sesEnvoyerMaintenant
+        47998 dr_sesAppliquer stvz5jet7|47604 (emt9v3yqo6pvd5#2) : ici emt9v3yqo6pvd5#2 → emt9v3yqo6pvd5#2
+        48018 reçu stvz5jet7|47764 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqo6pvd5#2
+        48233 dr_sesAppliquer stvz5jet7|47764 (emt9v3yqon4gew#0) : ici emt9v3yqo6pvd5#2 → emt9v3yqon4gew#0
+        48266 reçu svc1ivcsv|47784 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48448 dr_sesAppliquer svc1ivcsv|47784 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48502 reçu svc1ivcsv|47952 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48631 dr_sesAppliquer svc1ivcsv|47952 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        48724 reçu stvz5jet7|48108 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        48725 main svc1ivcsv → sxwpoulj2 ← dr_sesEnvoyerMaintenant < dr_sesRecu < window.dr_sesRecu < · < donner
+        48900 dr_sesAppliquer stvz5jet7|48108 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49003 reçu svc1ivcsv|48607 (emt9v3yqon4gew#0) main=svc1ivcsv|47567 occupé=false ici emt9v3yqon4gew#0
+        49139 dr_sesAppliquer svc1ivcsv|48607 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49155 reçu svc1ivcsv|48930 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49259 dr_sesAppliquer svc1ivcsv|48930 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49282 reçu stvz5jet7|49067 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49343 dr_sesAppliquer stvz5jet7|49067 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49553 reçu svc1ivcsv|49547 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49663 dr_sesAppliquer svc1ivcsv|49547 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49672 reçu stvz5jet7|49644 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49725 dr_sesAppliquer stvz5jet7|49644 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        49915 reçu svc1ivcsv|49904 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        49994 dr_sesAppliquer svc1ivcsv|49904 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50157 reçu stvz5jet7|50141 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50254 dr_sesAppliquer stvz5jet7|50141 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50441 reçu svc1ivcsv|50428 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50673 dr_sesAppliquer svc1ivcsv|50428 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50769 reçu stvz5jet7|50543 (emt9v3yqon4gew#0) main=sxwpoulj2|48727 occupé=false ici emt9v3yqon4gew#0
+        50849 dr_sesAppliquer stvz5jet7|50543 (emt9v3yqon4gew#0) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#0
+        50861 reçu svc1ivcsv|50810 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#0
+        50863 main sxwpoulj2 → svc1ivcsv ← dr_sesRecu < window.dr_sesRecu < · < donner < recu
+        50998 dr_sesAppliquer svc1ivcsv|50810 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#0 → emt9v3yqon4gew#1
+        51081 reçu svc1ivcsv|51013 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51258 dr_sesAppliquer svc1ivcsv|51013 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51364 reçu stvz5jet7|51354 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51459 dr_sesAppliquer stvz5jet7|51354 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51502 reçu svc1ivcsv|51495 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51599 dr_sesAppliquer svc1ivcsv|51495 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51616 reçu stvz5jet7|51559 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51724 dr_sesAppliquer stvz5jet7|51559 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51753 reçu svc1ivcsv|51664 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51850 dr_sesAppliquer svc1ivcsv|51664 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        51868 reçu stvz5jet7|51862 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        51999 dr_sesAppliquer stvz5jet7|51862 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52093 reçu stvz5jet7|52066 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52191 dr_sesAppliquer stvz5jet7|52066 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52306 reçu stvz5jet7|52234 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52565 dr_sesAppliquer stvz5jet7|52234 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52595 reçu svc1ivcsv|52390 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52649 dr_sesAppliquer svc1ivcsv|52390 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52651 reçu svc1ivcsv|52390 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52652 reçu svc1ivcsv|52448 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        52799 dr_sesAppliquer svc1ivcsv|52448 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        52810 reçu stvz5jet7|52771 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53031 dr_sesAppliquer stvz5jet7|52771 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53043 reçu svc1ivcsv|52850 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53173 dr_sesAppliquer svc1ivcsv|52850 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53184 reçu stvz5jet7|52927 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53249 dr_sesAppliquer stvz5jet7|52927 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53255 reçu svc1ivcsv|53045 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53363 dr_sesAppliquer svc1ivcsv|53045 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53377 reçu stvz5jet7|53330 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53503 dr_sesAppliquer stvz5jet7|53330 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53528 reçu svc1ivcsv|53457 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53614 dr_sesAppliquer svc1ivcsv|53457 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53616 reçu stvz5jet7|53507 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53724 dr_sesAppliquer stvz5jet7|53507 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53743 reçu stvz5jet7|53717 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53812 dr_sesAppliquer stvz5jet7|53717 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        53835 reçu svc1ivcsv|53755 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        53902 dr_sesAppliquer svc1ivcsv|53755 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54004 reçu svc1ivcsv|53985 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54117 dr_sesAppliquer svc1ivcsv|53985 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54132 reçu stvz5jet7|53989 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54195 dr_sesAppliquer stvz5jet7|53989 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54310 reçu svc1ivcsv|54233 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54429 dr_sesAppliquer svc1ivcsv|54233 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54439 reçu stvz5jet7|54313 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54525 dr_sesAppliquer stvz5jet7|54313 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54545 reçu stvz5jet7|54531 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54662 dr_sesAppliquer stvz5jet7|54531 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54685 reçu svc1ivcsv|54566 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54741 dr_sesAppliquer svc1ivcsv|54566 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        54762 reçu svc1ivcsv|54749 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        54905 dr_sesAppliquer svc1ivcsv|54749 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55048 reçu stvz5jet7|55042 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55179 dr_sesAppliquer stvz5jet7|55042 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55190 reçu svc1ivcsv|55167 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55246 dr_sesAppliquer svc1ivcsv|55167 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55302 reçu stvz5jet7|55295 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55573 dr_sesAppliquer stvz5jet7|55295 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55586 reçu stvz5jet7|55465 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55651 dr_sesAppliquer stvz5jet7|55465 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55679 reçu svc1ivcsv|55666 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55808 dr_sesAppliquer svc1ivcsv|55666 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        55861 reçu svc1ivcsv|55843 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        55942 dr_sesAppliquer svc1ivcsv|55843 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56216 reçu stvz5jet7|56115 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56304 dr_sesAppliquer stvz5jet7|56115 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56313 reçu stvz5jet7|56219 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56525 dr_sesAppliquer stvz5jet7|56219 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56535 reçu svc1ivcsv|56338 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56601 dr_sesAppliquer svc1ivcsv|56338 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+        56603 reçu svc1ivcsv|56436 (emt9v3yqon4gew#1) main=svc1ivcsv|50810 occupé=false ici emt9v3yqon4gew#1
+        56708 dr_sesAppliquer svc1ivcsv|56436 (emt9v3yqon4gew#1) : ici emt9v3yqon4gew#1 → emt9v3yqon4gew#1
+      T · qui a la main : l’ordinateur tape « Pensez », chaque lettre au tableau en 77, 35, 25, 50, 59, 48 ms ; le téléphone note GA : le champ de l’ordinateur fermé en 2 ms, il dit « Un autre ordinateur a la main » ; le téléphone dévoile (emt9v3yqo6pvd5#2#0 → emt9v3yqo6pvd5#2#1, au tableau en 35 ms), revenu en arrière 0 fois sur 47 ; à la fin emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · {"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}
+  ok     T · qui a la main : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s — [77,35,25,50,59,48]
+  ok     T · qui a la main : le téléphone note une participation, il prend la main ; le champ de l’ordinateur se ferme tel qu’il est et l’ordinateur le dit — {"ferme":2,"dit3":"Un autre ordinateur a la main"}
+  ok     T · qui a la main : le dévoilement du téléphone paraît au tableau (≤ 0,5 s) et n’y recule jamais — {"dDev":35,"recul":0}
+  ok     T · qui a la main : rien de perdu — la réponse tapée, la participation et le dévoilement, chez les deux pilotes et au tableau — {"kf":["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"],"V2":{"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}}
+      T · F5 au téléphone : bandeau en 2 ms, « Reprendre » : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1
+  ok     T · F5 au téléphone : la session reprend, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+      T · F5 à l’ordinateur : la case de l’emploi du temps, « Ouvrir le pilotage et lancer »
+      T · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1 · pointeur le même (ts 1789369209633)
+  ok     T · F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+  ok     T · relancer le même essai ailleurs : aucune deuxième session (le pointeur d’essai inchangé) — [1789369209633,1789369209633]
+      T · après les F5, un geste au téléphone : ordinateur 101 ms, tableau 109 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":101,"tab":109}
+      T · après les F5, un geste au téléphone : ordinateur 107 ms, tableau 115 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":107,"tab":115}
+      T · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 36, 35 ms
+  ok     T · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [36,35]
+      T · avant la clôture, au hub : pointeur d’essai là, scène d’essai là, cours_actif —
+      T · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     T · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     T · au hub : plus de pointeur ni de scène d’essai — {"ptr":null,"sc":null,"vif":null,"ca":null}
+      T · le tableau distant (pas en mode test) a écrit 7 fois : PUT /site/cle_vue (la clé USB, sa seule écriture, préexistante)
+      T · écritures au hub pendant l’essai : 239 — chemins : /site/tableau_test/scene, /site/tableau_test/ecrans, /site/tableau_test/pointeur, /site/tableau_test/vif
+  ok     T · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+24 vérifications, 0 échec(s)
+18:28:36 → 18:30:12 · propre · code 0 · env MJPC_PYQR=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/pyqr MJPC_MEDIAS=/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/medias MJPC_HORLOGE=date MJPC_TRACE=1 MJPC_PARTIES=T MJPC_NOM=m7-1 timeout 900 node /home/claude/audit-horloge/LIVRAISONS/DEROULE-01-11/AUDIT-HORLOGE/sonde-session-trace.mjs /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/assemble/index.html /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/audit-horloge/m7-1

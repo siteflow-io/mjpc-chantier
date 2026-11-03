@@ -1,0 +1,73 @@
+{
+  "produit": "fiche_notion",
+  "titre": "Comment rédiger un argument",
+  "cases": {
+    "seance": false,
+    "date_seance": false,
+    "objectif": false,
+    "date_edition": false,
+    "mention_conserver": true
+  },
+  "valeurs": {
+    "titre": {
+      "texte": "Comment rédiger un argument"
+    },
+    "notions": {
+      "items": [
+        "Argumenter",
+        "Les connecteurs logiques"
+      ]
+    }
+  },
+  "blocs": [
+    {
+      "id": "definition",
+      "valeurs": {
+        "terme": "Un argument",
+        "texte": "C’est une idée qui défend ma position, appuyée sur une preuve, et expliquée avec mes mots."
+      }
+    },
+    {
+      "id": "a_retenir",
+      "valeurs": {
+        "texte": "Un argument se rédige toujours en trois temps : j’annonce, je prouve, j’explique. Chaque temps a sa phrase, et chaque connecteur a son rôle."
+      }
+    },
+    {
+      "id": "methode",
+      "valeurs": {
+        "titre": "Rédiger un argument en trois temps",
+        "items": [
+          "J’annonce mon idée, avec un connecteur qui range mes arguments : d’abord, ensuite, enfin.",
+          "Je prouve, avec un connecteur qui apporte une preuve ou un exemple : car, en effet, par exemple, ainsi. Puis je cite, mot pour mot, entre guillemets, en disant qui parle.",
+          "J’explique, avec mes mots, ce que la citation montre."
+        ]
+      }
+    },
+    {
+      "id": "tableau",
+      "valeurs": {
+        "lignes": [
+          "Je veux… | Ligne de la fiche « Les connecteurs logiques » | Je prends",
+          "ranger mes arguments | 1 | d’abord, ensuite, enfin",
+          "ajouter un argument | 2 | de plus, en outre",
+          "apporter une preuve | 5 | car, effectivement",
+          "illustrer par un exemple | 6 | en effet, par exemple, ainsi, notamment",
+          "conclure | 10 | en conclusion, pour conclure, en définitive"
+        ]
+      }
+    },
+    {
+      "id": "exemple",
+      "valeurs": {
+        "texte": "① D’abord, Paris cache sa misère derrière ses lumières. ② En effet, Maupassant montre Georges Duroy qui marche « la poche vide » devant les grands cafés illuminés. ③ La ville brille, mais pas pour lui.\n① j’annonce · ② je prouve · ③ j’explique"
+      }
+    },
+    {
+      "id": "attention_piege",
+      "valeurs": {
+        "texte": "Le connecteur dit à quoi sert ma phrase : « en effet » amène une preuve, « d’abord » range une idée. Une citation sans explication ne prouve rien. Un témoin ne prouve rien s’il est mal cité."
+      }
+    }
+  ]
+}

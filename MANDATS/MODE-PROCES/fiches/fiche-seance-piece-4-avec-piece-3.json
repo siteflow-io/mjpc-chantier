@@ -1,0 +1,75 @@
+{
+  "produit": "fiche_seance",
+  "titre": "Comment préparer ma pièce n°4 avec ma pièce n°3 ?",
+  "cases": {
+    "seance": false,
+    "date_seance": false,
+    "classe": false,
+    "niveau": false,
+    "chapitre": false,
+    "annee_scolaire": false,
+    "notions": false,
+    "criteres_reussite": false,
+    "consigne": false,
+    "zone_lignee": false,
+    "travail_a_faire": false,
+    "date_edition": false,
+    "mention_conserver": true
+  },
+  "valeurs": {
+    "titre": {
+      "texte": "Comment préparer ma pièce n°4 avec ma pièce n°3 ?"
+    },
+    "sous_titre": {
+      "texte": "Paris à la barre — pièce n°3 (page 28 du dossier) et pièce n°4, notée sur 20 (page 29)"
+    },
+    "objectif": {
+      "texte": "À la fin de l’heure, je sais transformer mes trois arguments en une plaidoirie de 10 à 15 lignes."
+    }
+  },
+  "blocs": [
+    {
+      "id": "a_retenir",
+      "valeurs": {
+        "texte": "Les trois chefs d’accusation :\n1. Paris cache-t-elle sa misère derrière ses lumières ?\n2. Paris abandonne-t-elle ses habitants les plus pauvres ?\n3. Paris détruit-elle ce qu’elle a de plus beau ?\nChacun de mes trois arguments répond à un chef différent.\nDans mon groupe, nous gardons tous Bel-Ami pour l’argument 1, mais chacun choisit des arguments 2 et 3 différents de ceux des deux autres."
+      }
+    },
+    {
+      "id": "methode",
+      "valeurs": {
+        "titre": "De la pièce n°3 à la pièce n°4",
+        "items": [
+          "Dans ma pièce n°3, j’écris pour chaque argument le numéro du chef auquel il répond.",
+          "Je recopie la citation mot pour mot, à côté du code de sa pièce.",
+          "Je choisis deux connecteurs par argument : un pour annoncer, un pour prouver.",
+          "J’écris ma pièce n°4 dans l’ordre du plan de ma plaidoirie, ci-dessous.",
+          "Je relis et je coche les sept cases de la page 29."
+        ]
+      }
+    },
+    {
+      "id": "tableau",
+      "valeurs": {
+        "lignes": [
+          "Partie | Ce que j’écris | Connecteurs",
+          "Ouverture | « Mesdames et messieurs les jurés… », mon camp et ce que je vais démontrer | —",
+          "Argument 1, le plus fort | un chef, une citation de Bel-Ami, mon explication | d’abord, en effet…",
+          "Argument 2 | un autre chef, une citation d’un texte (T1 à T5) ou des pièces P1 ou P3, mon explication | ensuite, par exemple…",
+          "Argument 3, celui qui conclut | le dernier chef, une preuve (P1 à P4), mon explication | enfin, ainsi…",
+          "Conclusion | une phrase forte qui demande le verdict | en conclusion, pour conclure…"
+        ]
+      }
+    },
+    {
+      "id": "cases_a_cocher",
+      "valeurs": {
+        "items": [
+          "Mes trois arguments répondent à trois chefs différents.",
+          "Chaque argument annonce, prouve et explique.",
+          "Chaque citation est recopiée mot pour mot, entre guillemets.",
+          "Ma plaidoirie fait 10 à 15 lignes et se lit en 2 minutes au plus."
+        ]
+      }
+    }
+  ]
+}

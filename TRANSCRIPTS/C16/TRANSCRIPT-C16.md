@@ -1577,3 +1577,21 @@ MEMO
   > À jouer : les 7 gestes ci-dessus · en cours : rien · ouvert : ㉟, ⑯, ㉚, le lancement sur un réseau très lent
   >
   > MEMO
+- **07:13 — Paul, mot pour mot** : « 35 16 30? »
+- **07:14 — message à Paul, mot pour mot :**
+
+  > 306. ㉟, la frappe lente : ce que tu as vu hier matin en écrivant les réponses des élèves (« c'était assez lent l'écriture », 12:21). Mesuré cette nuit au faux hub : au pilote, la plupart des lettres paraissent tout de suite, mais 41 sur 244 mettent plus d'un dixième de seconde (jusqu'à 0,28 s) ; à la fenêtre du tableau, une lettre met en moyenne 0,16 à 0,20 s, jusqu'à 0,47 s. Ça ne va pas.
+  >
+  > 307. ⑯, le retard du tableau : ce que tu fais au pilote arrive au tableau avec un retard qui a grandi au fil des versions (le premier mouvement au tableau : moins d'un dixième de seconde au départ, 0,4 s ensuite). La cause lue dans le code, pas prouvée : chaque geste redessine toute la colonne des vignettes (0,08 à 0,21 s par flèche). Cette nuit, en répétition, la nouvelle version tient la demi-seconde 4 fois sur 4, mais l'appel seul l'avait dépassée 2 fois sur 3. Ça ne va pas.
+  >
+  > 308. ㉚, la fin d'heure : ton mot d'hier, 09:55 : « Le flux du cahier de texte à la fin n'est pas pratique du tout, il faudrait auditer et refondre. » Mesuré par l'audit : 7 étapes, 10 clics pour une heure sans copie vers École Directe, et deux étapes qu'on ne peut pas cocher au moment où on les fait (le récit relu attend la vraie fin de l'heure). Cette nuit, seule l'étape « ce qui n'a pas été fait » a été refaite ; tu as dit « pour la refonte on verra ça après ».
+  >
+  > 309. Ce que je propose : ㉟ et ⑯ ensemble d'abord, parce qu'ils ont probablement la même cause (le dessin à chaque geste), puis ㉚. Je ne lance rien sans ton mot.
+  >
+  > À tester : les 7 gestes de 06:52 (8.81.0-⑭).
+  >
+  > 03/11/2026 07:14
+  >
+  > À jouer : les 7 gestes de 06:52 · en cours : rien · ouvert : 309
+  >
+  > MEMO

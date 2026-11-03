@@ -1,0 +1,71 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P2H P2T X XT · 2026-11-03 16:52 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— P2H · pendant l’heure, sur chaque appareil (vraie heure) —
+  ok     P2H · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance ; la case de l’heure ouverte sur un troisième — {"lance":true,"tl":true,"rep":true}
+  ok     P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe"},"nbNoms":29}
+      a · à la télécommande, un élève marqué absent : l’ordinateur 124 ms, le second ordinateur 158 ms, la télécommande 32 ms, la case du troisième 15 ms ; son bouton marqué absent (3 ms après les appareils) ; l’ordinateur « 0 SUR 28 PRÉSENTS »
+  ok     P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"case":15,"télécommande":32,"ordinateur":124,"second":158}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 659 ms, la télécommande 23 ms, la case 9 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : true ; un appui grisé sans effet
+  ok     P2H · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"case":9,"télécommande":23,"second":296,"ordinateur":659}
+  ok     P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":true,"cSans":true}
+      c · dans la case du troisième ordinateur, le premier absent retiré : l’ordinateur 153 ms, le second 23 ms, la télécommande 183 ms, la case 18 ms ; « 0 SUR 28 PRÉSENTS »
+  ok     P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"case":18,"second":23,"ordinateur":153,"télécommande":183}
+      d · au hub, la liste de l’heure : 1 élève(s) (celui du second ordinateur) ; 14 écritures du paquet
+  ok     P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet) — 1
+      f · le second ordinateur tape une réponse ; pendant la frappe, un élève coché dans la case : le champ garde le focus, sa frappe « Le paysage romantique » ; le champ quitté : l’ordinateur 251 ms, le second 115 ms, la télécommande 195 ms
+  ok     P2H · f · une saisie en cours n’est jamais touchée par un appel fait ailleurs ; le champ quitté, chaque appareil le dit en moins de 2 s — {"garde1":{"ed":true,"t":"Le paysage romantique"},"rf":{"case":33,"second":115,"télécommande":195,"ordinateur":251}}
+      e · au tableau distant : 0 occurrence(s) de l’appel ; à la fenêtre du tableau : 0
+  ok     P2H · e · rien de l’appel au tableau (le tableau distant, la fenêtre du tableau) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":{"n":0,"vus":[]}}
+  ok     P2H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 193 écritures) — []
+  ok     P2H · aucune écriture refusée par le faux hub (0) — []
+  ok     P2H · tous les appareils : aucune erreur JS, aucune boîte système
+
+— P2T · pendant l’heure, sur chaque appareil (mode test) —
+  ok     P2T · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance — {"lance":true,"tl":true,"rep":true}
+  ÉCHEC  P2T · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « Reprendre avec la télécommande » pour piloter d’ici."},"nbNoms":0}
+      a · à la télécommande, un élève marqué absent : l’ordinateur ∞, le second ordinateur ∞, la télécommande ∞ ; son bouton PAS marqué (2 s) ; l’ordinateur « 0 SUR 29 PRÉSENTS »
+  ÉCHEC  P2T · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"ordinateur":null,"second":null,"télécommande":null}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 24 ms, la télécommande 50 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : false ; un appui grisé sans effet
+  ok     P2T · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"second":3,"ordinateur":24,"télécommande":50}
+  ÉCHEC  P2T · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":false,"cSans":true}
+      c · à la télécommande (« Reprendre avec la télécommande »), le premier absent retiré : l’ordinateur ∞, le second ∞, la télécommande ∞ ; « 0 SUR 27 PRÉSENTS »
+  ÉCHEC  P2T · c · retiré à la télécommande : chaque appareil le dit en moins de 2 s, le compteur suit — {"second":null,"ordinateur":null,"télécommande":null}
+      e · au tableau distant : 0 occurrence(s) de l’appel
+  ok     P2T · e · rien de l’appel au tableau (le tableau distant) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":null}
+  ok     P2T · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     P2T · aucune écriture refusée par le faux hub (0) — []
+  ok     P2T · tous les appareils : aucune erreur JS, aucune boîte système
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 40 ms l’un de l’autre : le premier ordinateur true, le second true ; au hub 2 élève(s)
+  ok     X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":40,"r1":{"o":true,"o2":true},"hub":2}
+      avant l’heure, le même élève dans deux cases, à 40 ms (le dernier : le second ordinateur) : le dernier geste voulait « absent » ; les deux cases {"o":true,"o2":true}, le hub true
+  ok     X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":40,"voulu":true,"r2":{"o":true,"o2":true},"hubC":true}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 50 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":50,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à -697 ms (le dernier : la télécommande) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ÉCHEC  X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":-697,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 61 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":61,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 359 écritures) — []
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+— XT · deux gestes d’appel croisés, à moins de 100 ms (mode test) —
+  ok     XT · l’heure lancée ; la télécommande et le second ordinateur sur la séance — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":false,"second":false,"télécommande":false}
+  ÉCHEC  XT · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":40,"r":{"ordinateur":false,"second":false,"télécommande":false}}
+      pendant l’heure, le clic droit du second ordinateur et le clic droit de l’ordinateur, deux élèves à 39 ms : {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit du second ordinateur et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil) — {"ecart":39,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, la télécommande puis le clic droit de l’ordinateur, le même élève à 40 ms (le dernier : le clic droit de l’ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : la télécommande puis le clic droit de l’ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 40 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true}
+  ok     XT · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true}}
+  ok     XT · mode test : aucune écriture au hub hors de /site/tableau_test (0 hors) — []
+  ok     XT · aucune écriture refusée par le faux hub (0) — []
+  ok     XT · tous les appareils : aucune erreur JS, aucune boîte système
+
+40 vérifications, 6 échec(s)

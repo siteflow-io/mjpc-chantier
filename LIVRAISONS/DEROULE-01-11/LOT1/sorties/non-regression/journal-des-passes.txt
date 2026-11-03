@@ -1,0 +1,60 @@
+16:52:39 début parcours b984f8bd
+16:53:14 fin parcours b984f8bd : 30 ok, 0 ÉCHEC · PARCOURS VERT
+16:53:19 début parcours bc7cc9cd
+16:53:54 fin parcours bc7cc9cd : 30 ok, 0 ÉCHEC · PARCOURS VERT
+16:53:59 début parcours-test b984f8bd
+16:54:35 fin parcours-test b984f8bd : 30 ok, 0 ÉCHEC · PARCOURS VERT
+16:54:40 début parcours-test bc7cc9cd
+16:55:16 fin parcours-test bc7cc9cd : 30 ok, 0 ÉCHEC · PARCOURS VERT
+16:55:21 début appel b984f8bd
+17:04:53 fin appel b984f8bd : 114 vérifications, 5 échec(s) ; à part, 13 mesure(s) qui ne comptent pas (ZT, la main : ㉞ : la main jugée aux montres), 0 rouge(s)
+17:04:58 début appel bc7cc9cd
+17:14:41 fin appel bc7cc9cd : 114 vérifications, 11 échec(s) ; à part, 13 mesure(s) qui ne comptent pas (ZT, la main : ㉞ : la main jugée aux montres), 0 rouge(s)
+17:14:46 début fin-FGSDT b984f8bd
+17:19:18 fin fin-FGSDT b984f8bd : --- fin : 41 vérifications, 0 échec(s) · VERT
+17:19:23 début fin-FGSDT bc7cc9cd
+17:23:56 fin fin-FGSDT bc7cc9cd : --- fin : 41 vérifications, 0 échec(s) · VERT
+17:24:01 début fin-P8782 b984f8bd
+17:25:11 fin fin-P8782 b984f8bd : --- fin : 8 vérifications, 0 échec(s) · VERT
+17:25:16 début fin-P8782 bc7cc9cd
+17:26:26 fin fin-P8782 bc7cc9cd : --- fin : 8 vérifications, 0 échec(s) · VERT
+17:26:31 début fin-P8800 b984f8bd
+17:27:38 fin fin-P8800 b984f8bd : --- fin : 8 vérifications, 0 échec(s) · VERT
+17:27:43 début fin-P8800 bc7cc9cd
+17:28:50 fin fin-P8800 bc7cc9cd : --- fin : 8 vérifications, 0 échec(s) · VERT
+17:28:55 début fin-R b984f8bd
+17:30:04 fin fin-R b984f8bd : --- fin : 7 vérifications, 0 échec(s) · VERT
+17:30:09 début fin-R bc7cc9cd
+17:31:19 fin fin-R bc7cc9cd : --- fin : 7 vérifications, 0 échec(s) · VERT
+17:31:24 début session b984f8bd
+17:37:37 fin session b984f8bd : 105 vérifications, 0 échec(s)
+17:37:42 début session bc7cc9cd
+17:43:48 fin session bc7cc9cd : 105 vérifications, 1 échec(s)
+17:43:48 FIN
+17:44:00 début appel P2H,P2T,X,XT bc7cc9cd passe 1
+17:49:22 fin bc7cc9cd passe 1 : 40 vérifications, 13 échec(s) · échecs :       5   ÉCHEC  P2H       4   ÉCHEC  P2T       3   ÉCHEC  X       1   ÉCHEC  XT 
+17:49:27 début appel P2H,P2T,X,XT b984f8bd passe 1
+17:52:36 fin b984f8bd passe 1 : 40 vérifications, 5 échec(s) · échecs :       4   ÉCHEC  P2T       1   ÉCHEC  XT 
+17:52:41 début appel P2H,P2T,X,XT bc7cc9cd passe 2
+17:56:05 fin bc7cc9cd passe 2 : 40 vérifications, 6 échec(s) · échecs :       4   ÉCHEC  P2T       1   ÉCHEC  X       1   ÉCHEC  XT 
+17:56:10 début appel P2H,P2T,X,XT b984f8bd passe 2
+17:59:21 fin b984f8bd passe 2 : 40 vérifications, 5 échec(s) · échecs :       4   ÉCHEC  P2T       1   ÉCHEC  XT 
+17:59:21 FIN
+18:00:52 X b984f8bd passe 1 : 10 vérifications, 1 échec(s) ·   ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à m 
+18:02:03 X bc7cc9cd passe 1 : 10 vérifications, 0 échec(s) · 
+18:03:12 X b984f8bd passe 2 : 10 vérifications, 0 échec(s) · 
+18:04:30 X bc7cc9cd passe 2 : 10 vérifications, 1 échec(s) ·   ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à m 
+18:05:42 X b984f8bd passe 3 : 10 vérifications, 1 échec(s) ·   ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à m 
+18:06:53 X bc7cc9cd passe 3 : 10 vérifications, 1 échec(s) ·   ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à m 
+18:08:01 X b984f8bd passe 4 : 10 vérifications, 0 échec(s) · 
+18:09:12 X bc7cc9cd passe 4 : 10 vérifications, 1 échec(s) ·   ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à m 
+18:09:12 FIN
+18:10:14 P2H b984f8bd passe 1 : 12 vérifications, 0 échec(s) · 
+18:11:08 P2H bc7cc9cd passe 1 : 12 vérifications, 0 échec(s) · 
+18:12:11 P2H b984f8bd passe 2 : 12 vérifications, 5 échec(s) ·   ÉCHEC  P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29   ÉCHEC  P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « �   ÉCHEC  P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourq   ÉCHEC  P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"or   ÉCHEC  P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du  
+18:13:14 P2H bc7cc9cd passe 2 : 12 vérifications, 5 échec(s) ·   ÉCHEC  P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29   ÉCHEC  P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « �   ÉCHEC  P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourq   ÉCHEC  P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"or   ÉCHEC  P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du  
+18:14:16 P2H b984f8bd passe 3 : 12 vérifications, 5 échec(s) ·   ÉCHEC  P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29   ÉCHEC  P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « �   ÉCHEC  P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourq   ÉCHEC  P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"or   ÉCHEC  P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du  
+18:15:10 P2H bc7cc9cd passe 3 : 12 vérifications, 0 échec(s) · 
+18:16:05 P2H b984f8bd passe 4 : 12 vérifications, 0 échec(s) · 
+18:17:08 P2H bc7cc9cd passe 4 : 12 vérifications, 5 échec(s) ·   ÉCHEC  P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29   ÉCHEC  P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « �   ÉCHEC  P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourq   ÉCHEC  P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"or   ÉCHEC  P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du  
+18:17:08 FIN

@@ -1,0 +1,21 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties X · 2026-11-03 17:08 UTC · md5 bc7cc9cdfef2011bc1b1a1848edad3f8 · images de 3e : un dossier local
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 40 ms l’un de l’autre : le premier ordinateur true, le second true ; au hub 2 élève(s)
+  ok     X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":40,"r1":{"o":true,"o2":true},"hub":2}
+      avant l’heure, le même élève dans deux cases, à 42 ms (le dernier : le second ordinateur) : le dernier geste voulait « absent » ; les deux cases {"o":true,"o2":true}, le hub true
+  ok     X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":42,"voulu":true,"r2":{"o":true,"o2":true},"hubC":true}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}
+  ÉCHEC  X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":40,"r":{"ordinateur":false,"second":false,"télécommande":false,"case":false,"hub":false}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à 41 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":41,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à 40 ms (le dernier : la case du troisième) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 40 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 169 écritures) — []
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+10 vérifications, 1 échec(s)

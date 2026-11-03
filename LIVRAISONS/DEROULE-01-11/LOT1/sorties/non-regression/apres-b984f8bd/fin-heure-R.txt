@@ -1,0 +1,18 @@
+C16 · sonde de la fin d’heure (㊲ ㊳) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties R · 2026-11-03 16:28 UTC · md5 b984f8bd71d012006afd9cf6d8d79c3d · images de 3e : un dossier local
+
+══ LA FIN D’HEURE · final · md5 b984f8bd71d012006afd9cf6d8d79c3d · ancien bc7cc9cdfef2011bc1b1a1848edad3f8 ══
+
+— partie R
+  ok     R6 · le faux hub neuf (ancien) : aucune erreur JS, aucune boîte système
+  ok     R6 · le faux hub neuf (nouveau) : aucune erreur JS, aucune boîte système
+  [R] le faux hub neuf : 76 cases (ancien), 76 (nouveau), 9 classes, 16 titres · différences : 0
+  ok     R6 · le faux hub neuf : la même projection, case par case (nature, titre, heure n/N, séance), 4 semaines, toutes les classes — []
+  [R] une heure jouée en entier (19 diapos), étape 2 : 0 lignes, close : true
+  ok     R6 · l’heure sans report : aucune erreur JS, aucune boîte système
+  ok     R6 · une heure close sans report (ancien) : aucune erreur JS, aucune boîte système
+  ok     R6 · une heure close sans report (nouveau) : aucune erreur JS, aucune boîte système
+  [R] une heure close sans report : 76 cases (ancien), 76 (nouveau), 9 classes, 16 titres · différences : 0
+  ok     R6 · une heure close sans report : la même projection, case par case (nature, titre, heure n/N, séance), 4 semaines, toutes les classes — []
+  [R] (les mots d’une case jouée changent, voulu §3.8 : « n diapos jouées » au lieu de « n activités » — ce n’est pas la projection)
+
+--- fin : 7 vérifications, 0 échec(s) · VERT

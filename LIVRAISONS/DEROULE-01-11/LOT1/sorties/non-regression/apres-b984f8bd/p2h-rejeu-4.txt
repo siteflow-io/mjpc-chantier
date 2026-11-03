@@ -1,0 +1,23 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P2H · 2026-11-03 17:15 UTC · md5 b984f8bd71d012006afd9cf6d8d79c3d · images de 3e : un dossier local
+
+— P2H · pendant l’heure, sur chaque appareil (vraie heure) —
+  ok     P2H · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance ; la case de l’heure ouverte sur un troisième — {"lance":true,"tl":true,"rep":true}
+  ok     P2H · la télécommande : le bouton « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe"},"nbNoms":29}
+      a · à la télécommande, un élève marqué absent : l’ordinateur 180 ms, le second ordinateur 154 ms, la télécommande 30 ms, la case du troisième 15 ms ; son bouton marqué absent (22 ms après les appareils) ; l’ordinateur « 0 SUR 28 PRÉSENTS »
+  ok     P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"case":15,"télécommande":30,"second":154,"ordinateur":180}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 285 ms, la télécommande 55 ms, la case 16 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : true ; un appui grisé sans effet
+  ok     P2H · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"case":16,"télécommande":55,"second":119,"ordinateur":285}
+  ok     P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":true,"cSans":true}
+      c · dans la case du troisième ordinateur, le premier absent retiré : l’ordinateur 220 ms, le second 89 ms, la télécommande 267 ms, la case 17 ms ; « 0 SUR 28 PRÉSENTS »
+  ok     P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"case":17,"second":89,"ordinateur":220,"télécommande":267}
+      d · au hub, la liste de l’heure : 1 élève(s) (celui du second ordinateur) ; 14 écritures du paquet
+  ok     P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet) — 1
+      f · le second ordinateur tape une réponse ; pendant la frappe, un élève coché dans la case : le champ garde le focus, sa frappe « Le paysage romantique » ; le champ quitté : l’ordinateur 454 ms, le second 372 ms, la télécommande 468 ms
+  ok     P2H · f · une saisie en cours n’est jamais touchée par un appel fait ailleurs ; le champ quitté, chaque appareil le dit en moins de 2 s — {"garde1":{"ed":true,"t":"Le paysage romantique"},"rf":{"case":5,"second":372,"ordinateur":454,"télécommande":468}}
+      e · au tableau distant : 0 occurrence(s) de l’appel ; à la fenêtre du tableau : 0
+  ok     P2H · e · rien de l’appel au tableau (le tableau distant, la fenêtre du tableau) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":{"n":0,"vus":[]}}
+  ok     P2H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 177 écritures) — []
+  ok     P2H · aucune écriture refusée par le faux hub (0) — []
+  ok     P2H · tous les appareils : aucune erreur JS, aucune boîte système
+
+12 vérifications, 0 échec(s)

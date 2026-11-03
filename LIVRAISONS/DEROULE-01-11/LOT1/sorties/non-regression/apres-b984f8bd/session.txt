@@ -1,0 +1,191 @@
+C16 · sonde de la session partout (㉞) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties T H QH QT R RT A · 2026-11-03 16:31 UTC · md5 b984f8bd71d012006afd9cf6d8d79c3d · images de 3e : un dossier local
+
+— l’essai en mode test · v —
+  ok     T · l’ordinateur lance l’heure par la case de l’emploi du temps
+      T · second ordinateur : bandeau en 5 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":5,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · téléphone : bandeau en 1 ms : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »
+  ok     T · le téléphone voit le bandeau en moins de 2 s — {"t":1,"b":"Essai en cours (mode test) — 3E Charles de Gaulle Reprendre"}
+      T · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209470|0","ici":"essai|1789369209470|0","recu":1789369222332,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":true,"tt":"1789369209470|0","ici":"essai|1789369209470|0","recu":1789369222685,"di":0,"mur":true}
+      T · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     T · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      T · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 89, 148, 159, 156, 174 · téléphone 177, 206, 95, 140, 132 · tableau distant 91, 179, 150, 208, 161, 101, 159, 143, 182, 135
+  ok     T · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":208}
+      T · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     T · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      T · un second ordinateur reprend aussi (bandeau en 3 ms) ; l’ordinateur va à « Question-bilan » (fait) : ordinateur emt9v3yqo6pvd5#2#0 · second emt9v3yqo6pvd5#2#0 · téléphone emt9v3yqo6pvd5#2#1
+      T · le texte gardé au second ordinateur quand l’ordinateur a pris la main : « Le Romanti »
+      T · la réponse tapée au second ordinateur (« Le Romantisme met en scène la nature contre la règle »), l’ordinateur qui dévoile (▶ ← ▶), la participation de un élève (EA) au téléphone : {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là (« Le Romanti ») est chez les trois pilotes, rien de perdu — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · la participation saisie au téléphone pendant ce temps : chez les trois pilotes — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     T · le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement) — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+      T · qui a la main : l’ordinateur tape « Pensez », chaque lettre au tableau en 55, 32, 63, 49, 27, 30 ms ; le téléphone note GA : le champ de l’ordinateur fermé en 2 ms, il dit « Un autre ordinateur a la main » ; le téléphone dévoile (emt9v3yqo6pvd5#2#0 → emt9v3yqo6pvd5#2#1, au tableau en 40 ms), revenu en arrière 0 fois sur 48 ; à la fin emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · {"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}
+  ok     T · qui a la main : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s — [55,32,63,49,27,30]
+  ok     T · qui a la main : le téléphone note une participation, il prend la main ; le champ de l’ordinateur se ferme tel qu’il est et l’ordinateur le dit — {"ferme":2,"dit3":"Un autre ordinateur a la main"}
+  ok     T · qui a la main : le dévoilement du téléphone paraît au tableau (≤ 0,5 s) et n’y recule jamais — {"dDev":40,"recul":0}
+  ok     T · qui a la main : rien de perdu — la réponse tapée, la participation et le dévoilement, chez les deux pilotes et au tableau — {"kf":["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"],"V2":{"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}}
+      T · F5 au téléphone : bandeau en 13 ms, « Reprendre » : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1
+  ok     T · F5 au téléphone : la session reprend, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+      T · F5 à l’ordinateur : la case de l’emploi du temps, « Ouvrir le pilotage et lancer »
+      T · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1 · pointeur le même (ts 1789369209470)
+  ok     T · F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+  ok     T · relancer le même essai ailleurs : aucune deuxième session (le pointeur d’essai inchangé) — [1789369209470,1789369209470]
+      T · après les F5, un geste au téléphone : ordinateur 220 ms, tableau 224 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":220,"tab":224}
+      T · après les F5, un geste au téléphone : ordinateur 97 ms, tableau 100 ms
+  ok     T · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":97,"tab":100}
+      T · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 40, 37 ms
+  ok     T · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [40,37]
+      T · avant la clôture, au hub : pointeur d’essai là, scène d’essai là, cours_actif —
+      T · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     T · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     T · au hub : plus de pointeur ni de scène d’essai — {"ptr":null,"sc":null,"vif":null,"ca":null}
+      T · le tableau distant (pas en mode test) a écrit 7 fois : PUT /site/cle_vue (la clé USB, sa seule écriture, préexistante)
+      T · écritures au hub pendant l’essai : 251 — chemins : /site/tableau_test/scene, /site/tableau_test/ecrans, /site/tableau_test/pointeur, /site/tableau_test/vif
+  ok     T · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     T · aucune écriture refusée par le faux hub (0) — []
+  ok     T · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— la vraie heure · v —
+  ok     H · l’ordinateur lance l’heure par la case de l’emploi du temps
+      H · second ordinateur : bandeau en 2 ms : « Heure en cours avec les 3E Charles de Gaulle Reprendre »
+  ok     H · le second ordinateur (pas en mode test) voit le bandeau en moins de 2 s — {"t":2,"b":"Heure en cours avec les 3E Charles de Gaulle Reprendre"}
+      H · téléphone : bandeau en 2 ms : « Heure en cours avec les 3E Charles de Gaulle Reprendre »
+  ok     H · le téléphone voit le bandeau en moins de 2 s — {"t":2,"b":"Heure en cours avec les 3E Charles de Gaulle Reprendre"}
+      H · l’état des pilotes : ordinateur {"lancee":true,"close":false,"regime":"classe","test":false,"tt":null,"ici":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","recu":1789369319051,"di":0,"mur":true} · téléphone {"lancee":true,"close":false,"regime":"classe","test":false,"tt":null,"ici":"heure|/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle","recu":1789369319144,"di":0,"mur":true}
+      H · téléphone, Reprendre : ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0 · tableau inv-presentation-chapitre-s0#2#0
+  ok     H · le téléphone reprend à l’endroit exact (la diapo, le dévoilement, la page) — {"k0":"inv-presentation-chapitre-s0#2#0","k1":"inv-presentation-chapitre-s0#2#0"}
+      H · dix gestes en alternance (téléphone, ordinateur…) — l’autre pilote suit en (ms) : ordinateur 116, 127, 193, 189, 218 · téléphone 183, 246, 166, 254, 177 · tableau distant 118, 191, 128, 248, 197, 169, 194, 267, 229, 179
+  ok     H · chaque geste paraît sur l’autre pilote et au tableau distant en ≤ 0,5 s (20 / 20) — {"max":267}
+      H · deux gestes presque en même temps : ordinateur inv-plan-s0#1#0 · téléphone inv-plan-s0#1#0 · tableau inv-plan-s0#1#0
+  ok     H · deux gestes presque en même temps : les deux pilotes et le tableau distant d’accord — ["inv-plan-s0#1#0","inv-plan-s0#1#0","inv-plan-s0#1#0"]
+      H · un second ordinateur reprend aussi (bandeau en 8 ms) ; l’ordinateur va à « Question-bilan » (fait) : ordinateur emt9v3yqo6pvd5#2#0 · second emt9v3yqo6pvd5#2#0 · téléphone emt9v3yqo6pvd5#2#1
+      H · le texte gardé au second ordinateur quand l’ordinateur a pris la main : « Le Romantism »
+      H · la réponse tapée au second ordinateur (« Le Romantisme met en scène la nature contre la règle »), l’ordinateur qui dévoile (▶ ← ▶), la participation de un élève (EA) au téléphone : {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     H · la réponse tapée au second ordinateur pendant que l’ordinateur dévoile : l’ordinateur prend la main, le texte tapé jusque-là (« Le Romantism ») est chez les trois pilotes, rien de perdu — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     H · la participation saisie au téléphone pendant ce temps : chez les trois pilotes — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+  ok     H · le dévoilement de l’ordinateur : chez les trois pilotes (la diapo, le dévoilement) — {"ordinateur":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"second":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"},"telephone":{"rep":true,"part":true,"cle":"emt9v3yqon4gew#1#0"}}
+      H · qui a la main : l’ordinateur tape « Pensez », chaque lettre au tableau en 54, 71, 6, 47, 50, 52 ms ; le téléphone note GA : le champ de l’ordinateur fermé en 1 ms, il dit « Un autre ordinateur a la main » ; le téléphone dévoile (emt9v3yqo6pvd5#2#0 → emt9v3yqo6pvd5#2#1, au tableau en 61 ms), revenu en arrière 0 fois sur 48 ; à la fin emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · emt9v3yqo6pvd5#2#1 · {"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}
+  ok     H · qui a la main : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s — [54,71,6,47,50,52]
+  ok     H · qui a la main : le téléphone note une participation, il prend la main ; le champ de l’ordinateur se ferme tel qu’il est et l’ordinateur le dit — {"ferme":1,"dit3":"Un autre ordinateur a la main"}
+  ok     H · qui a la main : le dévoilement du téléphone paraît au tableau (≤ 0,5 s) et n’y recule jamais — {"dDev":61,"recul":0}
+  ok     H · qui a la main : rien de perdu — la réponse tapée, la participation et le dévoilement, chez les deux pilotes et au tableau — {"kf":["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"],"V2":{"ordinateur":{"rep":true,"part":true},"telephone":{"rep":true,"part":true}}}
+      H · F5 au téléphone : bandeau en 2 ms, « Reprendre » : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1
+  ok     H · F5 au téléphone : la session reprend, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+      H · F5 à l’ordinateur : la case de l’emploi du temps, « bandeau « Reprendre » (la case ne proposait rien) »
+      H · F5 à l’ordinateur, puis la même séance relancée par la case : ordinateur emt9v3yqo6pvd5#2#1 · téléphone emt9v3yqo6pvd5#2#1 · pointeur réécrit [1789369335709,1789369381594]
+  ok     H · F5 à l’ordinateur et la même séance relancée : il rejoint la session, là où elle en est — ["emt9v3yqo6pvd5#2#1","emt9v3yqo6pvd5#2#1"]
+  ok     H · relancer la même heure ailleurs : la même heure (le pointeur désigne la même classe et la même séance) — [{"chapitre":"0","classeNom":"3E Charles de Gaulle","classeSlug":"3E Charles de Gaulle","debut":"09:01","fin":"09:52","niveau":"3e","seance":"0","ts":1789369335709},{"chapitre":"0","classeNom":"3E Charles de Gaulle","classeSlug":"3E Charles de Gaulle","debut":"09:01","fin":"09:52","niveau":"3e","seance":"0","ts":1789369381594}]
+      H · après les F5, un geste au téléphone : ordinateur 138 ms, tableau 141 ms
+  ok     H · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":138,"tab":141}
+      H · après les F5, un geste au téléphone : ordinateur 112 ms, tableau 115 ms
+  ok     H · après les F5, l’ordinateur et le tableau suivent le téléphone (≤ 0,5 s) — {"ord":112,"tab":115}
+      H · l’onglet de l’ordinateur fermé, deux gestes au téléphone : le tableau distant suit en 31, 39 ms
+  ok     H · l’onglet de l’ordinateur fermé, le tableau distant suit le téléphone (≤ 0,5 s) — [31,39]
+      H · avant la clôture, au hub : pointeur d’essai —, scène d’essai —, cours_actif là
+      H · clos au téléphone : tableau distant à l’horloge · au hub : pointeur d’essai —, scène d’essai —, état vivant d’essai —, cours_actif —
+  ok     H · clos au téléphone : /site/cours_actif retiré
+  ok     H · clos au téléphone : le tableau distant revient à l’horloge — {"attente":true,"cle":null,"vide":true}
+  ok     H · aucune écriture refusée par le faux hub (0) — []
+  ok     H · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— la télécommande par le QR, la vraie heure · v —
+  ok     QH · l’ordinateur lance l’heure
+  ok     QH · « 📱 » dans la barre des actions rapides, son infobulle pour un élève — Télécommande : montre un QR code ; scanne-le avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette s
+  ok     QH · le QR montre l’adresse de la télécommande — file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/lot1/final/index.html?n=3e&telecommande=1&qr=tcmu0wch2mqxtn6k
+      QH · la fenêtre du QR, à l’ordinateur : fermée seule 2156 ms après l’ouverture de l’adresse au téléphone
+  ok     QH · la fenêtre du QR se ferme d’elle-même quand le téléphone l’a scanné — 2156
+      QH · le téléphone, sur la séance sans rien choisir : en 2183 ms · « 3E Charles de Gaulle ● en direct Diapo 1 sur 13 · heure 1 · Présentation du chapitre » · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     QH · le téléphone s’ouvre directement sur la séance en cours, en télécommande, là où elle en est — {"prete":2183,"haut":"3E Charles de Gaulle ● en direct Diapo 1 sur 13 · heure 1 · Présentation du chapitre","kk":["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]}
+      QH · le texte de la télécommande et celui du pilote, à chaque geste : Diapo 1 sur 13 · heure 1 | Diapo 1 sur 13 · heure 1 ; Diapo 2 sur 13 · heure 1 | Diapo 2 sur 13 · heure 1 ; Diapo 2 sur 13 · heure 1 | Diapo 2 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1
+  ok     QH · la télécommande dit exactement ce que dit le pilote (« Diapo n sur N · heure h »), à chaque geste (d’accord en ≤ 0,5 s) — [["Diapo 1 sur 13 · heure 1","Diapo 1 sur 13 · heure 1",0],["Diapo 2 sur 13 · heure 1","Diapo 2 sur 13 · heure 1",0],["Diapo 2 sur 13 · heure 1","Diapo 2 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0]]
+      QH · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en 136, 116, 86, 136, 47, 89 ms · le tableau distant en 139, 120, 90, 141, 49, 97 ms
+  ok     QH · ▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; 12 / 12) — {"ord":[136,116,86,136,47,89],"tab":[139,120,90,141,49,97]}
+      QH · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en 70 ms, dégelé en 86 ms
+  ok     QH · ❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s) — [70,86]
+      QH · « qui a parlé » : un élève (EA) noté à l’ordinateur en 66 ms (le bouton allumé), retiré en 77 ms
+  ok     QH · « qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s) — [66,77]
+      QH · le minuteur (+ puis Départ) à la télécommande : il court à l’ordinateur en 75 ms, au tableau distant (« 06:00 ») en ~0 ms
+  ok     QH · le minuteur à la télécommande : il court à l’ordinateur et paraît au tableau distant — [75,0]
+      QH · à « Question-bilan », la télécommande dit « Hors de l'heure 1 », le pilote « Hors de l'heure 1 »
+  ok     QH · sur une diapo hors de l’heure, la télécommande dit ce que dit le pilote — ["Hors de l'heure 1","Hors de l'heure 1"]
+      QH · le cas de un élève : deux gestes au téléphone (ordinateur/tableau, ms : 67/68 · 81/83) ; l’ordinateur va à la question : la télécommande « Télécommande désactivée : l’ordinateur a repris la main » (commandes grisées : true) ; il tape « Le paysage romantique » : chaque lettre au tableau en 50, 49, 1, 67, 66, 63, 27, 47, 28, 30, 1, 28, 70, 51, 52, 44, 52, 48, 51, 25, 38 ms ; « Reprendre avec la télécommande » sans quitter le champ : en 132 ms, l’ordinateur dit « La télécommande a la main », la réponse entière au téléphone ; trois gestes au téléphone (89/98 · 70/79 · 140/143) ; le tableau est passé par 4 états, revenu en arrière 0 fois
+  ok     QH · qui a la main : l’ordinateur agit, la télécommande dit « Télécommande désactivée : l’ordinateur a repris la main », ses commandes grisées disent pourquoi — {"desact":"Télécommande désactivée : l’ordinateur a repris la main","grises":true}
+  ok     QH · le cas de un élève : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s (21 / 21) — [50,49,1,67,66,63,27,47,28,30,1,28,70,51,52,44,52,48,51,25,38]
+  ok     QH · « Reprendre avec la télécommande » : le champ de l’ordinateur se ferme tel qu’il est, « La télécommande a la main », la réponse entière au téléphone — rien de perdu — {"reprise":132,"aMain":"La télécommande a la main","rp":true}
+  ok     QH · le cas de un élève : les gestes au téléphone avant et après, l’ordinateur et le tableau suivent (≤ 0,5 s) ; rien ne recule au tableau — {"D1":["67/68","81/83"],"D2":["89/98","70/79","140/143"],"recul":0}
+      QH · « Clore l’heure » à l’ordinateur : la télécommande le dit en 0 ms (« La séance est close. La télécommande s’arrête ici. »)
+  ok     QH · l’heure close à l’ordinateur : la télécommande le dit — 0
+  ok     QH · aucune écriture refusée par le faux hub (0) — []
+  ok     QH · ordinateur, télécommande, tableau distant : aucune erreur JS, aucune boîte système
+
+— la télécommande par le QR, l’essai en mode test · v —
+  ok     QT · l’ordinateur lance l’heure
+  ok     QT · « 📱 » dans la barre des actions rapides, son infobulle pour un élève — Télécommande : montre un QR code ; scanne-le avec l’appareil photo de ton téléphone : il s’ouvre directement sur cette s
+  ok     QT · le QR montre l’adresse de la télécommande — file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/lot1/final/index.html?n=3e&telecommande=1&qr=tcmu0wd9se7jsz86&test=1
+      QT · la fenêtre du QR, à l’ordinateur : fermée seule 2165 ms après l’ouverture de l’adresse au téléphone
+  ok     QT · la fenêtre du QR se ferme d’elle-même quand le téléphone l’a scanné — 2165
+      QT · le téléphone, sur la séance sans rien choisir : en 2168 ms · « 3E Charles de Gaulle ● en direct · essai Diapo 1 sur 13 · heure 1 · Présentation du chapitre » · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     QT · le téléphone s’ouvre directement sur la séance en cours, en télécommande, là où elle en est — {"prete":2168,"haut":"3E Charles de Gaulle ● en direct · essai Diapo 1 sur 13 · heure 1 · Présentation du chapitre","kk":["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]}
+      QT · le texte de la télécommande et celui du pilote, à chaque geste : Diapo 1 sur 13 · heure 1 | Diapo 1 sur 13 · heure 1 ; Diapo 2 sur 13 · heure 1 | Diapo 2 sur 13 · heure 1 ; Diapo 2 sur 13 · heure 1 | Diapo 2 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1 ; Diapo 3 sur 13 · heure 1 | Diapo 3 sur 13 · heure 1
+  ok     QT · la télécommande dit exactement ce que dit le pilote (« Diapo n sur N · heure h »), à chaque geste (d’accord en ≤ 0,5 s) — [["Diapo 1 sur 13 · heure 1","Diapo 1 sur 13 · heure 1",0],["Diapo 2 sur 13 · heure 1","Diapo 2 sur 13 · heure 1",0],["Diapo 2 sur 13 · heure 1","Diapo 2 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0],["Diapo 3 sur 13 · heure 1","Diapo 3 sur 13 · heure 1",0]]
+      QT · ▶ ×5 puis ◀ à la télécommande — l’ordinateur suit en 94, 55, 84, 143, 95, 60 ms · le tableau distant en 95, 57, 87, 145, 96, 62 ms
+  ok     QT · ▶ ◀ à la télécommande : l’ordinateur et le tableau distant suivent (≤ 0,5 s ; 12 / 12) — {"ord":[94,55,84,143,95,60],"tab":[95,57,87,145,96,62]}
+      QT · ❄ Geler puis Dégeler à la télécommande : l’ordinateur gelé en 63 ms, dégelé en 65 ms
+  ok     QT · ❄ Geler / Dégeler à la télécommande : l’ordinateur suit (≤ 0,5 s) — [63,65]
+      QT · « qui a parlé » : un élève (EA) noté à l’ordinateur en 61 ms (le bouton allumé), retiré en 83 ms
+  ok     QT · « qui a parlé » à la télécommande : noté puis retiré à l’ordinateur (≤ 0,5 s) — [61,83]
+      QT · le minuteur (+ puis Départ) à la télécommande : il court à l’ordinateur en 98 ms, au tableau distant (« 06:00 ») en ~0 ms
+  ok     QT · le minuteur à la télécommande : il court à l’ordinateur et paraît au tableau distant — [98,0]
+      QT · à « Question-bilan », la télécommande dit « Hors de l'heure 1 », le pilote « Hors de l'heure 1 »
+  ok     QT · sur une diapo hors de l’heure, la télécommande dit ce que dit le pilote — ["Hors de l'heure 1","Hors de l'heure 1"]
+      QT · le cas de un élève : deux gestes au téléphone (ordinateur/tableau, ms : 64/70 · 89/95) ; l’ordinateur va à la question : la télécommande « Télécommande désactivée : l’ordinateur a repris la main » (commandes grisées : true) ; il tape « Le paysage romantique » : chaque lettre au tableau en 46, 48, 1, 51, 49, 46, 55, 56, 48, 46, 6, 52, 54, 28, 58, 51, 74, 52, 63, 47, 28 ms ; « Reprendre avec la télécommande » sans quitter le champ : en 110 ms, l’ordinateur dit « La télécommande a la main », la réponse entière au téléphone ; trois gestes au téléphone (109/110 · 67/70 · 60/61) ; le tableau est passé par 4 états, revenu en arrière 0 fois
+  ok     QT · qui a la main : l’ordinateur agit, la télécommande dit « Télécommande désactivée : l’ordinateur a repris la main », ses commandes grisées disent pourquoi — {"desact":"Télécommande désactivée : l’ordinateur a repris la main","grises":true}
+  ok     QT · le cas de un élève : chaque lettre tapée à l’ordinateur paraît au tableau en ≤ 0,5 s (21 / 21) — [46,48,1,51,49,46,55,56,48,46,6,52,54,28,58,51,74,52,63,47,28]
+  ok     QT · « Reprendre avec la télécommande » : le champ de l’ordinateur se ferme tel qu’il est, « La télécommande a la main », la réponse entière au téléphone — rien de perdu — {"reprise":110,"aMain":"La télécommande a la main","rp":true}
+  ok     QT · le cas de un élève : les gestes au téléphone avant et après, l’ordinateur et le tableau suivent (≤ 0,5 s) ; rien ne recule au tableau — {"D1":["64/70","89/95"],"D2":["109/110","67/70","60/61"],"recul":0}
+      QT · « Clore l’heure » à l’ordinateur : la télécommande le dit en 0 ms (« La séance est close. La télécommande s’arrête ici. »)
+  ok     QT · l’heure close à l’ordinateur : la télécommande le dit — 0
+  ok     QT · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     QT · aucune écriture refusée par le faux hub (0) — []
+  ok     QT · ordinateur, télécommande, tableau distant : aucune erreur JS, aucune boîte système
+
+— la répétition, hors mode test · v —
+  ok     R · l’ordinateur joue la répétition (l’Atelier, onglet Pilotage)
+      R · téléphone : bandeau en 3 ms : « Répétition en cours Reprendre »
+  ok     R · le téléphone voit « Répétition en cours » en moins de 2 s — {"t":3,"b":"Répétition en cours Reprendre"}
+      R · téléphone, « Reprendre » : en répétition true · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     R · le téléphone reprend la répétition là où elle en est — ["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]
+      R · six gestes en alternance — ordinateur 159, 176, 187 · téléphone 219, 284, 119 · tableau distant 162, 224, 178, 375, 194, 187 ms
+  ok     R · en répétition, chaque geste paraît sur l’autre appareil et au tableau distant (≤ 0,5 s ; 12 / 12) — {"tel":[219,284,119],"ord":[159,176,187],"tab":[162,224,178,375,194,187]}
+      R · « ■ Arrêter » à l’ordinateur : téléphone en répétition false · tableau distant à l’horloge · pointeur —
+  ok     R · « ■ Arrêter » sur un appareil : la répétition s’arrête partout, le tableau distant revient à l’horloge, plus de pointeur — {"r2":false,"tb":{"attente":true,"cle":null,"vide":true},"ptr":false}
+      R · écritures au hub pendant la répétition : 36 — chemins : /corbeille/2026-09-14/edt-mise-a-niveau-grille_090438, /site/edt/grille/2026-2027, /site/repetition/scene, /site/repetition/ecrans, /site/repetition/pointeur, /site/repetition/vif
+  ok     R · en répétition, rien d’écrit pour la classe : aucune écriture dans la copie de la classe, ni cours_actif, ni la présence (0) — []
+  ok     R · aucune écriture refusée par le faux hub (0) — []
+  ok     R · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— la répétition, en mode test · v —
+  ok     RT · l’ordinateur joue la répétition (l’Atelier, onglet Pilotage)
+      RT · téléphone : bandeau en 2 ms : « Répétition en cours (mode test) Reprendre »
+  ok     RT · le téléphone voit « Répétition en cours » en moins de 2 s — {"t":2,"b":"Répétition en cours (mode test) Reprendre"}
+      RT · téléphone, « Reprendre » : en répétition true · ordinateur inv-presentation-chapitre-s0#2#0 · téléphone inv-presentation-chapitre-s0#2#0
+  ok     RT · le téléphone reprend la répétition là où elle en est — ["inv-presentation-chapitre-s0#2#0","inv-presentation-chapitre-s0#2#0"]
+      RT · six gestes en alternance — ordinateur 130, 158, 142 · téléphone 152, 157, 135 · tableau distant 132, 154, 160, 162, 62, 137 ms
+  ok     RT · en répétition, chaque geste paraît sur l’autre appareil et au tableau distant (≤ 0,5 s ; 12 / 12) — {"tel":[152,157,135],"ord":[130,158,142],"tab":[132,154,160,162,62,137]}
+      RT · « ■ Arrêter » à l’ordinateur : téléphone en répétition false · tableau distant à l’horloge · pointeur —
+  ok     RT · « ■ Arrêter » sur un appareil : la répétition s’arrête partout, le tableau distant revient à l’horloge, plus de pointeur — {"r2":false,"tb":{"attente":true,"cle":null,"vide":true},"ptr":false}
+  ok     RT · en mode test, aucune écriture hors des chemins d’essai (0 hors) — []
+  ok     RT · aucune écriture refusée par le faux hub (0) — []
+  ok     RT · ordinateur, téléphone, tableau distant : aucune erreur JS, aucune boîte système
+
+— le défaut 256, les absents de la case · v —
+  ok     A · l’ordinateur lance l’heure
+      A · deux absents cochés dans la case (un élève, un élève) : le compteur du pilote « 0 SUR 29 PRÉSENTS » → « 0 SUR 27 PRÉSENTS » en 3 ms
+  ok     A · deux absents cochés dans la case pendant l’heure : au pilote, « n sur 27 présents » en moins de 16 s — {"noms":["un élève","un élève"],"avant":"0 SUR 29 PRÉSENTS","apres":"0 SUR 27 PRÉSENTS","delai":3}
+      A · clos ; « Relire l’heure » ouvert ; l’onglet « Ce qui s'est passé · heure 1 » : « …08:57:03 — élément 2 dévoilé 08:57:09 — un élève — absent (case de l’emploi du temps) 08:57:10 — un élève — absent (case de l …  (case de l’emploi du temps) 08:57:10 — un élève — absent (case de l’emploi du temps) DIAPO PAR DIAPO DIAPO HEURE AU TABLEA »
+  ok     A · « Ce qui s’est passé » s’affiche et nomme les deux absents — {"rel":true,"ong":"Ce qui s'est passé · heure 1","cite":true,"noms":["un élève","un élève"]}
+  ok     A · aucune écriture refusée par le faux hub (0) — []
+  ok     A · le pilote et le second ordinateur (la Relecture comprise) : aucune erreur JS, aucune boîte système
+
+105 vérifications, 0 échec(s)

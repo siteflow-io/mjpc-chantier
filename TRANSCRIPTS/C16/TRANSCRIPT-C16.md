@@ -1897,3 +1897,18 @@ MEMO
   > À jouer : 352, 353, 354, à commenter ou non · en cours : ⑯ (avant 13:00) · ouvert : 352, 353, 354
   >
   > MEMO
+- **12:42 — Paul, mot pour mot** : « 352. attention au "jamais bloqué". tu proposes sans mesurer le télescopage!! 353. Attention, une séance peut ne pas être terminée, donc il faut reprendre là où je me serai arrêté! autre dette: si tu regarde les captures, des noms d'élèves sont affichés en vert en bas à droite, alors que les initiales tapées au tableau ne correspondent pas. J'espère que c'est uniquemnet le cas de la répétition... Lance les mesures pour tout et revient me faire le plan complet. IL FAUT MESURER. Pas de proposition en l'air de ta part! »
+- **12:50-12:53 — la conscience** : le mandat de l'audit global (`MANDATS/DEROULE-01-11/MANDAT-AUDIT-GLOBAL.md`) ; deux auditeurs neufs lancés (I : les sessions en direct ; II : les séances dans l'emploi du temps) ; le fichier MACHINE-MESURE posé tant que l'exécutant de ⑯ mesure ; le registre (㊸).
+- **12:44 — message à Paul, mot pour mot :**
+
+  > 356. Tu as raison : 352 et 353 étaient proposés sans mesure. Je les retire. Lancé à 12:52 : deux auditeurs, par le geste, sans toucher au site. Le premier : toutes les combinaisons de sessions (répétition, mode test, vraie heure) avec le tableau distant et la télécommande, ce que chacun montre, qui pilote, et ce qui se passe quand un appareil disparaît ; le minuteur (㉔ à ㉗, ㊵) ; la participation (㊸, ta remarque de 12:42 : la liste d'élèves en bas à droite, en répétition, en mode test et en vraie heure) ; le réseau lent. Le second : rattraper une heure (ce que l'existant fait, ce que devient une séance pas finie : reprendre là où tu t'es arrêté) ; une autre séance que celle proposée (ce qui marquerait la 1 « non faite ») ; les 3 DYLAN à la séance 2 (les situations qui le reproduisent) ; la numérotation par séance.
+  >
+  > 357. Ils commencent par lire le code, puis mesurent dès que l'exécutant de ⑯ a fini. Je reviens avec le plan complet, écrit sur leurs mesures, vers 15:45.
+  >
+  > À tester : rien.
+  >
+  > 03/11/2026 12:44
+  >
+  > À jouer : rien · en cours : ⑯ ; l'audit global (jusqu'à 15:30) · ouvert : le plan
+  >
+  > MEMO

@@ -403,7 +403,6 @@ body.vue-atelier #dr-zone .haut .dr-enr{display:none} /* E1 (relecture continue 
   #dr-impression .a4-coller{position:static;order:-1;text-align:right;margin:0 0 4mm}
 }
 #fdocs-l .btn:disabled{opacity:.45;cursor:not-allowed}
-#dr-rel-classe{background:#191411;color:var(--texte,#eee);border:1px solid var(--bord,#3a3129);border-radius:6px;padding:4px 8px;font:inherit;font-size:.9rem}#dr-rel-classe:disabled{opacity:.55;cursor:not-allowed}
 
 /* E2 — la classe et l'heure : le minuteur d'activité (R3), « Où on en est » par activité (R7), le témoin « déroulé intègre » (R9) */
 #dr-zone .dr-minut { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; }

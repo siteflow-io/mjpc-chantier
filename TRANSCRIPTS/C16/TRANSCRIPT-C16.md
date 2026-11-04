@@ -3491,3 +3491,25 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : 571 et 580 (fin vers 15:30) · ouvert : 572, 573, 582, 583 (cadrés, l'un après l'autre), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **15:17 — Paul, mot pour mot** (le nom d'un élève retiré, non recopié au sas) :
+
+  > pour 534, va vérifier. Est ce que les mêmes choses du récit dylan vont changer aussi, vu qu'il y a aussi des élèves non identifiés? Enfin, en dylan, j'avais oublié d'jaouter un élève dans la classe, [prénom nom], avant de lancer la séance. Il apparaît donc en "1 élève". Enfin, le travail à faire pour les dylan donne quelque chose de bizarre aussi.
+
+- **15:22 — la conscience, au vrai hub par le Chrome de Paul (GET, onglet ouvert puis fermé)** : `/classes/3_dylan_bob` : 26 élèves, l'élève ajouté présent (HC), trois paires d'initiales, 4 noms en trois mots ; l'heure des Dylan : 12 réponses au journal, 2 sans élève (YC, CH), 2 gels ; le travail (`travailTexte`, échéance `2026-11-06`) ; la taille du nœud des Dylan : 145 Ko (trop lourd pour une copie locale par la conversation). Registre (production `741e81f`).
+- **15:22 — message à Paul, mot pour mot :**
+
+  > 593. 534. Le test 1 est vérifié : le site en ligne est bien la 8.84.0, bit à bit, depuis 12:04. Les tests 2, 3 et 4 ont été vérifiés avant la mise en ligne, sur une copie de ton heure des Dylan au faux hub, par l'exécutant et par mon banc. Sur ta vraie heure, je ne peux pas les voir : il faudrait ouvrir le site dans ton Chrome, c'est-à-dire agir comme toi sur le vrai hub, et je ne sais pas si la Relecture n'y écrit rien en s'ouvrant. Je ne le fais donc pas : le test 2 reste à toi.
+  >
+  > 594. Le récit des Dylan : 571 n'y change rien, car aucune réponse n'y est perdue (12 tapées, 12 au journal, lu au hub). Ses deux « un élève » (YC et CH) sont des réponses du journal sans élève : le bouton « à corriger » est déjà là pour elles. L'élève que tu avais oublié est maintenant dans ta liste (lu au hub). Je ne sais pas si le bouton te le propose : je ne l'ai pas essayé. Tu peux essayer dès maintenant ; sinon, 573 le réglera.
+  >
+  > 595. Le travail à faire des Dylan, tel qu'il est rangé au hub : « Pour la prochaine séance (vendredi 6 novembre) — Apprends par cœur les numéros 1 et 2 de ta fiche « Les connecteurs logiques ». Revois la prise de notes des analyses de tableau. » Qu'est-ce qui est bizarre : la date, le texte, ou l'endroit où il s'affiche ?
+  >
+  > 596. 594 et 595 sont au registre.
+  >
+  > À tester : 534, le test 2 (« Relire l'heure » des Dylan, « composé par le site »).
+  >
+  > 04/11/2026 15:22
+  >
+  > À jouer : 534 (le test 2) · en cours : 571 et 580 (fin vers 15:30) · ouvert : 595, 572, 573, 582, 583 (cadrés, l'un après l'autre), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

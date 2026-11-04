@@ -2547,3 +2547,21 @@ MEMO
   > À jouer : 435 à trancher, puis « promeus » · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **02:46 — Paul, mot pour mot :**
+
+  > D'accord proposes une solution simple, logique, qui ne me fait rien perdre, et qui est faisable sans que le banc doivent tourner plus de 10 minutes. Je n'ai vraiment plus beaucoup d'utilisation.
+- **02:47 — la conscience, lu dans le code du candidat** : « Lancer celle-ci quand même » (vraie heure) passe par `dr_cloreHeureRestee` (index.html l. 20512) : il écrit `clos`, `finReel`, `closPar` de l'heure de l'autre appareil et efface `/site/cours_actif`, mais rien à son état vivant (`<C>/vif`) ; l'autre ordinateur n'écoute que cet état vivant (`dr_sesRecu`, dr-session.js l. 146 : `v.close` → `dr_sesClosAilleurs`, qui clôt l'écran et dit « … a été close sur un autre appareil : elle est close ici aussi »). Sa signature : `heure|` + `dr_cheminH()` = `<C>/heures/<clé>`, la même que le chemin écrit par `dr_cloreHeureRestee`. Faisable : écrire aussi `{ close: true, sig, sorte: 'heure', cours, par, ts }` à `<C>/vif`. Preuve : sonde-lot1 W (8 min, mesure déjà l'écran de l'autre appareil) et le parcours.
+- **02:47 — message à Paul, mot pour mot :**
+
+  > 439. Ma proposition pour 391. Quand « Lancer celle-ci quand même » clôt l'autre heure, le site prévient aussitôt l'autre ordinateur, par le chemin qui existe déjà quand tu clos une heure sur un appareil. Son écran dit « L'heure des … a été close sur un autre appareil : elle est close ici aussi », et il revient à l'emploi du temps. Tu ne perds rien : l'heure est déjà enregistrée et close ; l'autre écran cesse seulement de faire croire qu'elle joue, et rien de ce qu'on y ferait ensuite ne peut plus toucher l'heure close.
+  >
+  > 440. Le changement tient en quelques lignes, à l'endroit même où le site clôt l'autre heure. Je le code moi-même, pour user le moins. La preuve, environ 10 minutes : la partie de la sonde du lot 1 qui joue cette fenêtre (8 minutes) et le parcours (1 minute), pas le banc entier. Ensuite, je te demande « promeus » pour le tout.
+  >
+  > À tester : rien avant ton mot.
+  >
+  > 04/11/2026 02:47
+  >
+  > À jouer : 439-440 à valider · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
+  >
+  > MEMO

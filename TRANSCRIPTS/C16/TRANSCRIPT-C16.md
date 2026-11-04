@@ -2841,3 +2841,26 @@ MEMO
   > À jouer : les 8 gestes ; 474 acquis sans mot · en cours : le deuxième morceau (les échéances) · ouvert : 474, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:57 — message à Paul** : 472-474, mot pour mot comme ci-dessus.
+- **04:07 — Paul, mot pour mot :**
+
+  > Ok
+- **04:07 — l'exécutant du deuxième morceau (message)** : poussé `2a82a095c` (`deroule/lot2b`) : la sonde `LOT2B/sonde-lot2b.mjs` et sa sortie seulement ; aucun code ; l'assemblé reste `bcee37ae`. Prouvé (partie E, CLASSE TEST, 8 vérifications, 0 échec) : la case du lundi 14/09 rattrapée le jeudi 17/09 14:00, deux cases passées entre elles : 7 échéances proposées ou écrites, 7 à venir. La supposition fausse : la seule source est `edtProchainesDe`, qui compte déjà depuis maintenant. Trouvé, non codé : `dr_papierRelire` (dr-recit.js:490) compare minuit du jour à la base de l'heure : il saute une case plus tard le même jour. 44 outils, 152 849 jetons, 10 min 20.
+- **entre 04:07 et 04:10 — audit de la conscience sur `2a82a095c`** : 2 fichiers (la sonde, sa sortie) ; aucun code ; aucun nom d'élève. Ça va. Le troisième morceau lancé (`MANDAT-LOT2C.md`, `4c1d265bc`, base `2a82a095c`, branche `deroule/lot2c`).
+- **Incident de la machine** : le disque plein (0 Mo) pendant l'écriture du transcript ; libéré (12 Go) : les dossiers d'audit `aud-cpl`, `aud2a`, les dossiers de travail poussés `ex-lot1`, `ex-lot2a`, `ex-lot2b`, `wt-s2` retirés ; rien perdu (tout était poussé).
+- **04:10 — message à Paul, mot pour mot :**
+
+  > 475. Le deuxième morceau n'avait rien à coder : une heure rattrapée ne propose déjà que des échéances à venir. Mesuré : 7 échéances sur 7 à venir, 0 passée ; une heure ordinaire, inchangée. Ma supposition était fausse : le site compte déjà depuis maintenant. 10 minutes, 153 000 jetons.
+  >
+  > 476. Il a trouvé un défaut, non codé : le Papier peut sauter une case plus tard le même jour. Exemple : l'échéance est jeudi 15:07, et « À relire » dit vendredi. Ça arrive aussi à une heure ordinaire quand la classe a deux cases le même jour. Ça ne va pas. Je propose de le régler moi-même (une comparaison de dates, preuve en quelques minutes). Si tu ne dis rien, c'est acquis.
+  >
+  > 477. Le troisième morceau (l'horloge d'une heure rattrapée, une seule clé le lendemain) est lancé, 30 minutes au plus.
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 04:10
+  >
+  > À jouer : les 8 gestes ; 476 acquis sans mot · en cours : le troisième morceau (l'horloge, une seule clé) · ouvert : 476, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

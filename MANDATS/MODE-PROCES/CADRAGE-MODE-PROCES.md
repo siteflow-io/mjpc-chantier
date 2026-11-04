@@ -358,3 +358,12 @@ un niveau de maîtrise général sur le critère langue et pareil pour la qualit
 par critère. » Fiche finale /10 : Pièces 1 à 6 ; Tenue du dossier 7 carte du parcours, 8 enveloppe ;
 Niveau général 9 Langue, 10 Qualité des réponses, chacun ☐ 0 ☐ 0,5 ☐ 1. Retirées : la page 1 remplie
 (146), le stylo et le crayon. Grille d'oral : sous le titre, seulement « Mardi 10 novembre ».
+
+**Le point des Hugo, groupes 6 à 10 (4/11, 16:20-16:30).** Paul : « j'ai perdu le json des hugo. ou
+peut-être est-il autre part... ». Mesuré sur la clé : le seul fichier des Hugo est celui du 14/10
+(groupes 1 à 5, écrit à 08:58) ; la copie de secours « groupe 1 et 3 et 4 avant nouveau
+passage.json » (écrite le 15/10 à 11:38) contient les groupes 1 à 5 des Hugo (14/10) et le groupe 10
+des Turing, rien d'autre. Les copies que la page garde dans Chrome ne sont pas lisibles depuis la
+conversation (l'extension n'ouvre pas les fichiers de la clé). Proposé à Paul (154, 155) : un critère
+individuel « Autonomie au point en classe » sur 1, repris des niveaux du point (3 ou 4 = 1 ; 2 = 0,5 ;
+1 ou 0 = 0), à la place de la case de la carte du parcours.

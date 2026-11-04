@@ -537,6 +537,8 @@ html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-r
 #dr-minut-p .dr-mr-dig { display: flex; flex-direction: column; align-items: center; line-height: 1; }
 #dr-minut-p .dr-mr-dig b, #dr-minut-p .dr-mr-dp { font: 700 38px/1 "EB Garamond", Georgia, serif; color: #e4b45c; width: 26px; text-align: center; font-variant-numeric: tabular-nums; }
 #dr-minut-p .dr-mr-dp { width: 14px; }
+#dr-minut-p .dr-mr-dig b { cursor: text; border-radius: 4px; }   /* C16 681 : la frappe — le chiffre désigné, encadré d'or */
+#dr-minut-p .dr-mr-dig b.dr-mr-sel { background: rgba(228,180,92,.22); box-shadow: 0 0 0 2px #e4b45c; }
 #dr-minut-p .dr-mr-pm { background: none; border: 0; color: #cdbf9f; font: 600 18px/1 Georgia, serif; cursor: pointer; padding: 1px 6px; }
 #dr-minut-p .dr-mr-pm:hover:not([disabled]) { color: #e4b45c; }
 #dr-minut-p .dr-mr-go, #dr-minut-p .dr-mr-stop { width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; flex: 0 0 auto; }

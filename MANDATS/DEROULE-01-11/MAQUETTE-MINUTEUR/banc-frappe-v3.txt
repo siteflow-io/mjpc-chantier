@@ -1,0 +1,21 @@
+OK  1536x864 · 1 · l'heure lancée par la case
+OK  1536x864 · 1 · la diapo 12 « Chaque groupe présente… »
+OK  1536x864 · le tableau ouvert dans un second onglet
+OK  1536x864 · 2 · « Ce que voit la classe » : la page du tableau elle-même, en petit dans la colonne de droite · {"w":287,"h":161,"dedans":true,"rects":[1211,183,1498,344,1210,182,1499,345],"bord":"1px 0px border-box","titre":"Le tableau, en ce moment"}
+OK  1536x864 · F · le réglage ouvert, la durée de départ 05:00 · 0500
+OK  1536x864 · F · chaque chiffre a sa bulle (clic, puis clavier) · 4/4
+OK  1536x864 · F · un clic sur le premier chiffre le désigne (encadré) · dm
+OK  1536x864 · F · taper 0, 0, 1, 5 : chaque chiffre remplacé, on passe au suivant, puis c'est fini · 0500/m 0000/ds 0010/s 0015/
+OK  1536x864 · F · les chiffres tapés ne changent pas la diapo
+OK  1536x864 · F · Échap termine
+OK  1536x864 · F · un clic ailleurs termine
+OK  1536x864 · F · les dizaines de secondes refusent 7 (de 0 à 5) · 0015/ds
+OK  1536x864 · F · les + et − marchent encore : 00:25 puis 00:15 · 0025 → 0015
+OK  1536x864 · F · 00:00 tapé : ▶ grisé, sa raison dans sa bulle · 0000 · Grisé : la durée est 00:00 — tape ou règle une durée d’abord
+OK  1536x864 · F · retapé : 00:15, ▶ de nouveau actif · 0015
+OK  1536x864 · F · ▶ lance 15 s : au tableau et dans « Ce que voit la classe » · 15000 ms · 00:15 / 00:15
+OK  1536x864 · F · il court au tableau · 00:12
+OK  1536x864 · F · fini après 15 s : il quitte le tableau et la vignette
+OK  1536x864 · aucune requête hors de la page · 0 · 
+OK  1536x864 · aucune erreur de page, aucune boîte système
+BILAN : 20 vérifications, 20 OK, 0 échec(s)

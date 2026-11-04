@@ -1092,7 +1092,7 @@ function dr_minuteurPoser(){
     + '<span id="dr-minut-p" class="dr-minut-p" style="display:none">'
     + '<input id="dr-minut-in" type="hidden" value="05:00">'
     + '<svg class="dr-mr-anneau" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/><circle class="dr-pp-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg>'
-    + '<span class="dr-mr-chifs" title="La durée du chrono : chaque chiffre a son + et son − ; quand il court, ce qui reste">' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="600" data-l="une dizaine de minutes" title="Ajoute une dizaine de minutes à la durée">+</button><b data-k="dm"></b><button class="dr-mr-pm" data-d="-600" data-l="une dizaine de minutes" title="Retire une dizaine de minutes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="60" data-l="une minute" title="Ajoute une minute à la durée">+</button><b data-k="m"></b><button class="dr-mr-pm" data-d="-60" data-l="une minute" title="Retire une minute à la durée">−</button></span>' + '<b class="dr-mr-dp">:</b>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="10" data-l="une dizaine de secondes" title="Ajoute une dizaine de secondes à la durée">+</button><b data-k="ds"></b><button class="dr-mr-pm" data-d="-10" data-l="une dizaine de secondes" title="Retire une dizaine de secondes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="1" data-l="une seconde" title="Ajoute une seconde à la durée">+</button><b data-k="s"></b><button class="dr-mr-pm" data-d="-1" data-l="une seconde" title="Retire une seconde à la durée">−</button></span>' + '</span>'
+    + '<span class="dr-mr-chifs" title="La durée du chrono : chaque chiffre a son + et son −, ou un clic sur le chiffre puis le clavier ; quand il court, ce qui reste">' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="600" data-l="une dizaine de minutes" title="Ajoute une dizaine de minutes à la durée">+</button><b data-k="dm"></b><button class="dr-mr-pm" data-d="-600" data-l="une dizaine de minutes" title="Retire une dizaine de minutes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="60" data-l="une minute" title="Ajoute une minute à la durée">+</button><b data-k="m"></b><button class="dr-mr-pm" data-d="-60" data-l="une minute" title="Retire une minute à la durée">−</button></span>' + '<b class="dr-mr-dp">:</b>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="10" data-l="une dizaine de secondes" title="Ajoute une dizaine de secondes à la durée">+</button><b data-k="ds"></b><button class="dr-mr-pm" data-d="-10" data-l="une dizaine de secondes" title="Retire une dizaine de secondes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="1" data-l="une seconde" title="Ajoute une seconde à la durée">+</button><b data-k="s"></b><button class="dr-mr-pm" data-d="-1" data-l="une seconde" title="Retire une seconde à la durée">−</button></span>' + '</span>'
     + '<button class="dr-mr-go" id="dr-minut-go" title="Lance le chrono ; si « au tableau » est allumé, il court aussi au tableau">▶</button>'
     + '<button class="dr-mr-stop" id="dr-minut-stop" title="Arrête le chrono et le retire du tableau (la durée réglée reste pour la prochaine fois)">■</button>'
     + '<label class="dr-mr-tog" title="Allumé : la classe voit le chrono au tableau, dès maintenant, même avant ▶ ; éteint : il disparaît du tableau et continue ici"><input type="checkbox" id="dr-minut-tab"><span>au tableau</span></label></span>';
@@ -1102,6 +1102,7 @@ function dr_minuteurPoser(){
   /* les clics passent par un seul écouteur, posé une fois (§12.56 (1)(e)) */
   [b, pn].forEach(x => x && x.addEventListener('click', ev => { const t = ev.target && ev.target.closest && ev.target.closest('button'); if (!t) return; ev.stopPropagation();
     const m0 = DR_CL.minut; if (t.id === 'dr-minut-go') { if (m0 && (m0.etat === 'court' || m0.etat === 'pause')) dr_minuteurPause(); else dr_minuteurDepart(); } else if (t.id === 'dr-minut-stop') dr_minuteurArret(); else if (t.dataset.d) dr_minutRegler(+t.dataset.d); }));
+  if (pn) pn.addEventListener('click', ev => { const c = ev.target && ev.target.closest && ev.target.closest('.dr-mr-dig b'); if (c) dr_minutChoisir(c.dataset.k); });   /* C16 681 : la frappe */
   const $m = id => document.getElementById(id);
   $m('dr-minut-tab').addEventListener('change', () => { const on = $m('dr-minut-tab').checked; let m = DR_CL.minut;
     if (!m) { if (!on) return; const d = dr_minutDuree(); if (!d) return; m = DR_CL.minut = { etat: 'pret', duree: d, reste: d, tableau: true, eid: (ecran() || {}).eid, bips: {} }; }   /* §12.70 (2) : coché avant « Départ », la durée paraît aussitôt au tableau, immobile */
@@ -1117,7 +1118,7 @@ function dr_minuteurPanneau(ouvrir){ dr_minuteurPoser(); const p = document.getE
   p.style.display = 'flex';   /* §12.70 bis : en rangée sous la barre, à sa place dans la page (plus de position calculée) */
 }
 function dr_minuteurBasculer(){ dr_minuteurPanneau(); }
-function dr_minuteurDepart(){ const d = (DR_CL.minut && DR_CL.minut.etat === 'pret') ? (dr_minutDuree() || DR_CL.minut.duree) : dr_minutDuree(); if (!d) return;
+function dr_minuteurDepart(){ DR_CL.minutSel = null; if (document.getElementById('dr-minut-in') && !dr_minutDuree()) { dr_minuteurAfficher(); return; } const d = (DR_CL.minut && DR_CL.minut.etat === 'pret') ? (dr_minutDuree() || DR_CL.minut.duree) : dr_minutDuree(); if (!d) return;
   const tab = !!(document.getElementById('dr-minut-tab') || {}).checked;
   DR_CL.minut = { etat: 'court', duree: d, fin: Date.now() + d, tableau: tab, eid: (ecran() || {}).eid, bips: {} };
   dr_sonPreparer(); try { journal('minuteur', { action: 'depart', duree: Math.round(d / 1000), tableau: tab }); } catch (e) {}
@@ -1141,7 +1142,7 @@ function dr_minuteurAfficher(){ const m = DR_CL.minut; const a = document.getEle
   set(a, 'textContent', txt); set(a, 'className', 'dr-minut-aff' + (m ? ' dr-minut-' + (m.etat === 'fini' ? 'rouge' : dr_minutPhase(reste, m.duree, m.etat)) + (m.etat === 'pause' ? ' dr-minut-enpause' : '') : ''));
   if (a) { const ti = !m ? 'Le minuteur : ce qui reste' : 'Le minuteur : ' + txt + (m.etat === 'pret' ? ' réglées, pas encore parti' : m.etat === 'pause' ? ' restantes, en pause' : m.etat === 'fini' ? ', fini' : ' restantes') + ' sur ' + dr_mmss(m.duree) + (m.tableau ? ' — montré au tableau' : ''); set(a, 'title', ti); }
   dr_minutReglAfficher(m, reste);
-  const bg = document.getElementById('dr-minut-go'); if (bg) { const c = !!(m && m.etat === 'court'); set(bg, 'textContent', c ? '⏸' : '▶'); set(bg, 'title', c ? 'Met le chrono en pause, ici et au tableau ; un second clic le fait repartir là où il était' : m && m.etat === 'pause' ? 'Fait repartir le chrono là où il était, ici et au tableau' : 'Lance le chrono ; si « au tableau » est allumé, il court aussi au tableau'); }
+  const bg = document.getElementById('dr-minut-go'); if (bg) { const c = !!(m && m.etat === 'court'); set(bg, 'textContent', c ? '⏸' : '▶'); const z = !c && !(m && m.etat === 'pause') && !dr_minutDuree(); set(bg, 'disabled', z); set(bg, 'title', z ? 'Grisé : la durée est 00:00 — tape ou règle une durée d’abord' : c ? 'Met le chrono en pause, ici et au tableau ; un second clic le fait repartir là où il était' : m && m.etat === 'pause' ? 'Fait repartir le chrono là où il était, ici et au tableau' : 'Lance le chrono ; si « au tableau » est allumé, il court aussi au tableau'); }
   const tb = document.getElementById('dr-minut-tab'); if (tb && document.activeElement !== tb) { const v = !!(m && m.tableau); if (tb.checked !== v && m) tb.checked = v; }
   const bc = document.getElementById('bchrono'); if (bc) bc.classList.toggle('actif', !!m); dr_minutPP(); }
 /* la boucle du pilote : seulement quand le minuteur court ; elle ne pose que le chiffre et joue le son */
@@ -1170,8 +1171,10 @@ function dr_minutTaille(){ return DR_CL.minutS || 420 / 1920; }
 const DR_MINUT_CRANS = { pret: '#4f9d5d', vert: '#4f9d5d', jaune: '#e0b83a', orange: '#e07b2e', rouge: '#e8484c' };
 /* le réglage sous la diapo (P6) : les quatre chiffres (la durée, ou ce qui reste quand il court), leurs + et − (grisés avec leur raison), l'anneau */
 function dr_minutReglAfficher(m, reste){ const p = document.getElementById('dr-minut-p'); if (!p) return; const court = !!(m && (m.etat === 'court' || m.etat === 'pause'));
-  const ms = court ? reste : m && m.etat === 'fini' ? 0 : dr_minutDuree(); const t = dr_mmss(ms).replace(':', ''); const K = { dm: t[0], m: t[1], ds: t[2], s: t[3] };
-  p.querySelectorAll('.dr-mr-dig b').forEach(b => { const v = K[b.dataset.k]; if (b.textContent !== v) b.textContent = v; });
+  const ms = court ? reste : m && m.etat === 'fini' && !DR_CL.minutSel ? 0 : dr_minutDuree(); const t = dr_mmss(ms).replace(':', ''); const K = { dm: t[0], m: t[1], ds: t[2], s: t[3] };
+  if (court && DR_CL.minutSel) DR_CL.minutSel = null;
+  p.querySelectorAll('.dr-mr-dig b').forEach(b => { const v = K[b.dataset.k]; if (b.textContent !== v) b.textContent = v; const on = DR_CL.minutSel === b.dataset.k; if (b.classList.contains('dr-mr-sel') !== on) b.classList.toggle('dr-mr-sel', on);
+    const ti = court ? 'Le chrono est parti : ■ d’abord pour changer la durée' : on ? 'Tape un chiffre au clavier : il remplace celui-ci et on passe au suivant ; Échap ou un clic ailleurs termine' : 'Clique sur ce chiffre, puis tape au clavier : il est remplacé et on passe au suivant ; Échap ou un clic ailleurs termine'; if (b.title !== ti) b.title = ti; });
   const s0 = Math.round(dr_minutDuree() / 1000); p.querySelectorAll('.dr-mr-pm').forEach(b => { const d = +b.dataset.d, n = s0 + d; const off = court || n < 1 || n > 5999; if (b.disabled !== off) b.disabled = off;
     const ti = court ? 'Grisé : le chrono est parti — ■ d’abord pour changer la durée' : n < 1 ? 'Grisé : la durée ne peut pas descendre sous une seconde' : n > 5999 ? 'Grisé : la durée ne peut pas dépasser 99:59' : (d > 0 ? 'Ajoute ' : 'Retire ') + b.dataset.l + ' à la durée';
     if (b.title !== ti) b.title = ti; });
@@ -1179,6 +1182,19 @@ function dr_minutReglAfficher(m, reste){ const p = document.getElementById('dr-m
 function dr_minutRegler(d){ const m = DR_CL.minut; if (m && (m.etat === 'court' || m.etat === 'pause')) return; const i = document.getElementById('dr-minut-in'); if (!i) return;
   const n = Math.round(dr_minutDuree() / 1000) + d; if (n < 1 || n > 5999) return; i.value = dr_mmss(n * 1000);
   if (m && m.etat === 'pret') { m.duree = m.reste = n * 1000; dr_minuteurEnvoyer(); } dr_minuteurAfficher(); }
+/* C16 681 (Paul, 19:47) : la frappe reprise de l'ancien réglage — un clic sur un des quatre chiffres le désigne ; un chiffre tapé le remplace et passe au
+   suivant (après le dernier, c'est fini) ; Échap, Entrée ou un clic ailleurs termine ; les + et − restent. Le chiffre des dizaines de secondes va de 0 à 5. */
+DR_CL.minutSel = null; const DR_MINUT_K = ['dm', 'm', 'ds', 's'];
+function dr_minutChoisir(k){ const m = DR_CL.minut; if (m && (m.etat === 'court' || m.etat === 'pause')) k = null; DR_CL.minutSel = DR_MINUT_K.indexOf(k) >= 0 ? k : null; dr_minuteurAfficher(); }
+function dr_minutTaper(ch){ const k = DR_CL.minutSel, i = document.getElementById('dr-minut-in'); const j = DR_MINUT_K.indexOf(k); if (j < 0 || !i) return;
+  if (k === 'ds' && ch > '5') return; const t = dr_mmss(dr_minutDuree()).replace(':', '').split(''); t[j] = ch; const n = (+(t[0] + t[1])) * 60 + (+(t[2] + t[3]));
+  i.value = t[0] + t[1] + ':' + t[2] + t[3]; const m = DR_CL.minut; if (m && m.etat === 'pret' && n >= 1) { m.duree = m.reste = n * 1000; dr_minuteurEnvoyer(); }
+  DR_CL.minutSel = DR_MINUT_K[j + 1] || null; dr_minuteurAfficher(); }
+window.addEventListener('keydown', ev => { try { if (!DR_CL.minutSel) return; if (ev.ctrlKey || ev.metaKey || ev.altKey) return; const k = ev.key; let pris = true;
+  if (/^[0-9]$/.test(k)) dr_minutTaper(k); else if (k === 'Escape' || k === 'Enter') dr_minutChoisir(null);
+  else if (k === 'ArrowRight' || k === 'ArrowLeft' || k === 'Backspace') { const j = DR_MINUT_K.indexOf(DR_CL.minutSel) + (k === 'ArrowRight' ? 1 : -1); dr_minutChoisir(DR_MINUT_K[Math.max(0, Math.min(3, j))]); }
+  else pris = false; if (pris) { ev.preventDefault(); ev.stopImmediatePropagation(); } } catch (e) {} }, true);
+document.addEventListener('click', ev => { try { if (DR_CL.minutSel && !(ev.target && ev.target.closest && ev.target.closest('#dr-minut-p .dr-mr-dig b'))) dr_minutChoisir(null); } catch (e) {} }, true);
 /* l'anneau : la part qui reste de la durée donnée, la couleur du cran */
 function dr_minutAnneau(an, reste, duree, etat){ const ph = etat === 'fini' ? 'rouge' : dr_minutPhase(reste, duree, etat); const c = DR_MINUT_CRANS[ph] || DR_MINUT_CRANS.vert;
   if (an.getAttribute('stroke') !== c) an.setAttribute('stroke', c);

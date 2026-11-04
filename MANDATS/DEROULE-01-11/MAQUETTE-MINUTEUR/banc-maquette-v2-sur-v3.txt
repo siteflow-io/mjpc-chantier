@@ -1,0 +1,65 @@
+OK  1536x864 · 1 · l'heure lancée par la case
+OK  1536x864 · 1 · la diapo 12 « Chaque groupe présente… »
+OK  1536x864 · le tableau ouvert dans un second onglet
+OK  1536x864 · 2 · « Ce que voit la classe » : la page du tableau elle-même, en petit dans la colonne de droite · {"w":287,"h":161,"dedans":true,"rects":[1211,183,1498,344,1210,182,1499,345],"bord":"1px 0px border-box","titre":"Le tableau, en ce moment"}
+OK  1536x864 · 2 · au départ, la vignette montre ce que montre le tableau · LES HYPOTHÈSES DE LA CLASSE 🗣️ Chaque groupe présente son t | LES HYPOTHÈSES DE LA CLASSE 🗣️ Chaque groupe présente son t
+OK  1536x864 · 2 · un dévoilement paraît au tableau et dans « Ce que voit la classe », pareil · 281 / 281 signes
+OK  1536x864 · 2 · tout dévoilé : pareil des deux côtés
+OK  1536x864 · 2 · un mot surligné au pilote paraît au tableau et dans « Ce que voit la classe », pareil ·  marques : abréviations ‖ à recopier : 1 |  marques : abréviations ‖ à recopier : 1
+OK  1536x864 · 3 · le réglage ouvert, jamais sur la diapo, sous elle, au-dessus des notes · {"s":false,"d":true,"n":true}
+OK  1536x864 · 3 · le réglage entier dans l'écran, sans défiler
+OK  1536x864 · 3 · le réglage : l'anneau, 4 chiffres, 8 + et −, ▶, ■, « au tableau » ; aucun zoom ; chaque bouton a sa bulle · {"anneau":1,"chiffres":4,"plusMoins":8,"go":true,"stop":true,"inter":true,"zoom":0} 0500 sans bulle 0
+OK  1536x864 · 3 · « au tableau » allumé : 05:00 au tableau et dans la vignette, avant ▶ · 05:00 / 05:00
+OK  1536x864 · 3 · ▶ : le réglage se cache derrière le ⏱
+OK  1536x864 · 4 · au départ : le rectangle au tableau, dans la vignette et sur la diapo du pilote, même place, même taille · [["0.7688","0.8479","0.2188","0.1298"],["0.7687","0.8479","0.2188","0.1296"],["0.7688","0.8480","0.2188","0.1296"]]
+OK  1536x864 · 4 · un rectangle allongé (trois fois plus large que haut), or sur brun, le décompte dedans, aucun texte couvert · 3.00 rgb(228, 180, 92) rgb(58, 44, 20) true 0
+OK  1536x864 · 5 · glissé : il a bougé, et au tableau et dans la vignette il est au même endroit, même taille · [["0.3907","0.5351"],["0.3906","0.5351"],["0.3906","0.5351"]]
+OK  1536x864 · 5 · la diapo n'a pas changé (le glisser ne clique pas la diapo)
+OK  1536x864 · 6 · coin bas droit : plus grand (+150 px), le coin haut gauche n'a pas bougé · 209 359 0 0
+OK  1536x864 · 6 · agrandi : même place et même taille au tableau et dans la vignette, toujours trois fois plus large que haut · [["0.3760","0.2231"],["0.3760","0.2228"],["0.3760","0.2228"]]
+OK  1536x864 · 6 · coin haut gauche : plus petit (−60 px), le coin bas droit n'a pas bougé ; tableau et vignette suivent · 359 → 299
+OK  1536x864 · 6 · la diapo n'a pas changé
+OK  1536x864 · 7 · ⏸ : le tableau et la vignette s'arrêtent · 04:53 / 04:53 / 04:53
+OK  1536x864 · 7 · ▶ : il repart · 04:53 → 04:52
+OK  1536x864 · 8 · ■ : le chrono quitte le tableau et la vignette, le réglage se cache
+OK  1536x864 · 8 · la durée réglée par les + et − : 00:10 · 0010
+OK  1536x864 · 8 · « − minute » grisé, sa raison dans sa bulle · Grisé : la durée ne peut pas descendre sous une seconde
+OK  1536x864 · 8 · les crans au tableau : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1536x864 · 8 · les crans dans « Ce que voit la classe » : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1536x864 · 8 · les crans sur la diapo du pilote : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1536x864 · 8 · fini : le chrono quitte le tableau, la vignette et la diapo
+OK  1536x864 · aucune requête hors de la page · 0 ·  · appels retenus : 18/0/0
+OK  1536x864 · aucune erreur de page, aucune boîte système
+OK  1920x1080 · 1 · l'heure lancée par la case
+OK  1920x1080 · 1 · la diapo 12 « Chaque groupe présente… »
+OK  1920x1080 · le tableau ouvert dans un second onglet
+OK  1920x1080 · 2 · « Ce que voit la classe » : la page du tableau elle-même, en petit dans la colonne de droite · {"w":287,"h":161,"dedans":true,"rects":[1595,166,1882,327,1594,165,1883,328],"bord":"1px 0px border-box","titre":"Le tableau, en ce moment"}
+OK  1920x1080 · 2 · au départ, la vignette montre ce que montre le tableau · LES HYPOTHÈSES DE LA CLASSE 🗣️ Chaque groupe présente son t | LES HYPOTHÈSES DE LA CLASSE 🗣️ Chaque groupe présente son t
+OK  1920x1080 · 2 · un dévoilement paraît au tableau et dans « Ce que voit la classe », pareil · 281 / 281 signes
+OK  1920x1080 · 2 · tout dévoilé : pareil des deux côtés
+OK  1920x1080 · 2 · un mot surligné au pilote paraît au tableau et dans « Ce que voit la classe », pareil ·  marques : abréviations ‖ à recopier : 1 |  marques : abréviations ‖ à recopier : 1
+OK  1920x1080 · 3 · le réglage ouvert, jamais sur la diapo, sous elle, au-dessus des notes · {"s":false,"d":true,"n":true}
+OK  1920x1080 · 3 · le réglage entier dans l'écran, sans défiler
+OK  1920x1080 · 3 · le réglage : l'anneau, 4 chiffres, 8 + et −, ▶, ■, « au tableau » ; aucun zoom ; chaque bouton a sa bulle · {"anneau":1,"chiffres":4,"plusMoins":8,"go":true,"stop":true,"inter":true,"zoom":0} 0500 sans bulle 0
+OK  1920x1080 · 3 · « au tableau » allumé : 05:00 au tableau et dans la vignette, avant ▶ · 05:00 / 05:00
+OK  1920x1080 · 3 · ▶ : le réglage se cache derrière le ⏱
+OK  1920x1080 · 4 · au départ : le rectangle au tableau, dans la vignette et sur la diapo du pilote, même place, même taille · [["0.7688","0.8480","0.2188","0.1298"],["0.7688","0.8480","0.2188","0.1296"],["0.7688","0.8480","0.2188","0.1296"]]
+OK  1920x1080 · 4 · un rectangle allongé (trois fois plus large que haut), or sur brun, le décompte dedans, aucun texte couvert · 3.00 rgb(228, 180, 92) rgb(58, 44, 20) true 0
+OK  1920x1080 · 5 · glissé : il a bougé, et au tableau et dans la vignette il est au même endroit, même taille · [["0.3906","0.5351"],["0.3906","0.5352"],["0.3906","0.5352"]]
+OK  1920x1080 · 5 · la diapo n'a pas changé (le glisser ne clique pas la diapo)
+OK  1920x1080 · 6 · coin bas droit : plus grand (+150 px), le coin haut gauche n'a pas bougé · 293 443 0 0
+OK  1920x1080 · 6 · agrandi : même place et même taille au tableau et dans la vignette, toujours trois fois plus large que haut · [["0.3309","0.1963"],["0.3308","0.1960"],["0.3308","0.1960"]]
+OK  1920x1080 · 6 · coin haut gauche : plus petit (−60 px), le coin bas droit n'a pas bougé ; tableau et vignette suivent · 443 → 383
+OK  1920x1080 · 6 · la diapo n'a pas changé
+OK  1920x1080 · 7 · ⏸ : le tableau et la vignette s'arrêtent · 04:52 / 04:52 / 04:52
+OK  1920x1080 · 7 · ▶ : il repart · 04:52 → 04:51
+OK  1920x1080 · 8 · ■ : le chrono quitte le tableau et la vignette, le réglage se cache
+OK  1920x1080 · 8 · la durée réglée par les + et − : 00:10 · 0010
+OK  1920x1080 · 8 · « − minute » grisé, sa raison dans sa bulle · Grisé : la durée ne peut pas descendre sous une seconde
+OK  1920x1080 · 8 · les crans au tableau : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1920x1080 · 8 · les crans dans « Ce que voit la classe » : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1920x1080 · 8 · les crans sur la diapo du pilote : vert à 10 et 6, jaune à 5, orange à 2, rouge à 1 · 1=#e8484c 2=#e07b2e 5=#e0b83a 6=#4f9d5d 10=#4f9d5d
+OK  1920x1080 · 8 · fini : le chrono quitte le tableau, la vignette et la diapo
+OK  1920x1080 · aucune requête hors de la page · 0 ·  · appels retenus : 18/0/0
+OK  1920x1080 · aucune erreur de page, aucune boîte système
+BILAN : 64 vérifications, 64 OK, 0 échec(s)

@@ -1,5 +1,5 @@
 # MANDAT F — LE RÉSEAU LENT : « L'HEURE SE LANCE… », AUCUN ▶ PERDU (C16 365, 642)
-*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/f`, depuis le dernier commit de la nuit (la conscience te le donne). 30 minutes au plus.*
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/f`, depuis `dbe59dc88` (le dernier commit de `nuit/e` : toute la nuit). 30 minutes au plus.*
 
 ## 0 · CE QUI EST DIT
 - C16 365 (accepté par Paul), rappelé en C16 642 et lancé par Paul, 22:22 (« maintenant tout le reste ») et C16 710 (sans réponse : acquis) : « Le réseau lent. Mesuré : 30 à 36 s sans aucun signe que l'heure part ; un ▶ pendant l'attente est perdu ; « Fermer l'atelier » laisse partir l'heure sans pilote. À faire : « L'heure se lance… » à l'écran, et aucun geste perdu. »

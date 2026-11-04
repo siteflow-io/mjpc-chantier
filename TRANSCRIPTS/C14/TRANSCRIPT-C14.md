@@ -5230,3 +5230,25 @@ C'est très long là
 04/11/2026 15:19
 
 MEMO
+
+## Tour 182 — 04/11/2026 15:21
+
+**Paul (15:21) :**
+
+Daccord, cette vérification doit être planifiée pour samedi soir à 23h. en attendant, pas de token à y consacrer. Planifie la tâche.
+
+**Ce qui a été fait (C14) :** les trois relevés de 15:05 étaient déjà arrêtés (interrompus à 15:17), sans sortie ; aucun processus resté. La consigne écrite au sas, `MANDATS/QCM-VERIFICATION-SAMEDI-07-11.md` (`5fbfeb9b6`). Tâche planifiée : un message dans cette conversation, samedi 07/11/2026 à 23:00 (heure de Paris), qui renvoie à cette consigne.
+
+**Claude (15:23) :**
+
+À jouer : rien · en cours : rien · ouvert : la vérification du QCM, samedi 07/11 à 23:00 ; la 8.0.5 (135, 136)
+
+138. C'est planifié : samedi 07/11 à 23:00, cette conversation reprend la vérification toute seule. Ce qu'elle doit faire est écrit au sas : https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/QCM-VERIFICATION-SAMEDI-07-11.md. Elle commence par regarder ce qui a changé depuis aujourd'hui. Le résultat t'arrive ici en message court, et en entier au sas (MANDATS/QCM-MESURE-07-11.md).
+
+139. D'ici là, plus rien ne tourne : les trois relevés de cet après-midi étaient déjà arrêtés quand tu as interrompu, sans rien laisser. Aucun jeton n'y passe avant samedi.
+
+À tester : rien.
+
+04/11/2026 15:23
+
+MEMO

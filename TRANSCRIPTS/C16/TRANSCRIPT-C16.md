@@ -3513,3 +3513,26 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : 571 et 580 (fin vers 15:30) · ouvert : 595, 572, 573, 582, 583 (cadrés, l'un après l'autre), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **15:26 — Paul, mot pour mot** (avec deux captures de la Relecture : « Qui a répondu » sur une réponse des 3 DYLAN, le menu sur une élève des 3 FRANKLIN ; la séance des 3 DYLAN — elles nomment des élèves, non recopiées au sas) :
+
+  > gros bug, les classes ne sont pas étanches sur ce menu déroulant. le menu déroulant me propose les élèves d'aretha franklin alors que je suis dans la relecture des dylan... pour ce qui est bizarre, c'est ma deuxième capture.
+
+- **15:27 — l'exécutant de 571 (message)** : base `8d17922b` → après `a8f8eb9cc3b9e39d4e0a8fdf72936087` ; poussé `f02a04423`, `9b0f78884` sur `deroule/recit-gel`. Prouvé au faux hub : 3 réponses dont 2 pendant un gel : journal, récit, « Ce qui s'est passé », Papier 1 → 3 ; participation 1 → 3 ; 0 doublon ; l'élève changé ZA → LC suit ; heure jouée avec la base puis relue avec l'après : 1 → 3, 0 écriture au hub ; sans gel : inchangé ; parcours vert ; sonde-heure-M 32/0 ; sonde-recit 6, 1 échec (R1c, déjà à la base). Touché : dr-socle (`dr_repJ`, `dr_repJournaliser`, `pousser`), dr-classe (`dr_repEleveSuit`, `dit.onkeydown`, `ini.oninput`, `ini.onkeydown`), dr-recit (`dr_repsDiapos`, `dr_JH`, `repsJ`, `passeHtml`, `recitSeanceHtml`, `parE`, `dr_passePlace`). La supposition juste, sauf : `pousser` est dans dr-socle. Mesuré, pas codé : `S.parts` ne reçoit que les prises de parole du VIF et de la palette ; les parts de l'heure refaites à la clôture depuis les diapos (`dr_partsHeure`). Ouvert : le « corriger » d'une réponse retrouvée dans les diapos (pas au journal). 201 680 jetons.
+- **15:30 — la conscience** : audit : seuls dr-socle, dr-classe, dr-recit et `LIVRAISONS/DEROULE-01-11/RECIT-GEL/` ; pas `dr_classe`, ni `AUDITS/`, ni la version. Ça va. Lu dans le code : `dr_corrigerReponse` remplit le menu avec `ELEVES` (la classe du pilotage). Au vrai hub (GET, onglet ouvert puis fermé) : aucune entrée au journal des deux classes depuis 15:00 ; `recit` des Dylan mis à jour à 15:12 (heure de Paris). Registre (production `8090d07`).
+- **15:28 — message à Paul, mot pour mot :**
+
+  > 597. Ne clique pas sur « Attribuer » pour l'instant. Lu dans le code : la fenêtre « Qui a répondu » propose toujours les élèves de la classe ouverte au pilotage (ici les Franklin), jamais ceux de l'heure que tu relis. Rien n'a été attribué de travers : aucune entrée au journal des Dylan ni des Franklin depuis 15:00 (lu au hub). Au passage, le hub confirme qu'ouvrir la Relecture y écrit (le récit des Dylan mis à jour à 15:12).
+  >
+  > 598. La deuxième capture (la séance des Dylan) : je vois deux choses fausses. Une « Heure 0 » qui n'existe pas, dite « en cours » alors qu'aucune heure ne tourne, « donnée le mercredi 4 novembre », avec « rien ». Et « 8 activités sur 2 n'ont pas tenu », qui ne veut rien dire. Je ne sais pas encore d'où elles viennent ; je pense à l'heure rattrapée (jouée le 4 pour une case du 3). Je ne sais pas non plus si « non travaillée » est juste pour les notions : les Dylan ont pourtant décrit des images. Vois-tu autre chose de bizarre ?
+  >
+  > 599. 571 est fini, et ça va (vérifié au faux hub, rien d'écrit au vrai). Une réponse validée entre au journal même pendant un gel ; quand tu changes l'élève, le journal et le récit suivent. Une heure jouée avec la version d'aujourd'hui puis relue avec la nouvelle retrouve ses réponses et sa participation (1 → 3 sur l'essai), sans rien écrire au hub. Pas encore vérifié sur ta vraie heure des Franklin, et pas encore en ligne.
+  >
+  > 600. Je propose de changer l'ordre, à cause du gros bug. D'abord un morceau pour corriger après l'heure : la fenêtre ne propose que les élèves de la classe relue ; elle vaut aussi pour une réponse donnée au mauvais élève et pour les réponses retrouvées dans les diapos (573). Puis 598. Puis mon banc et ton « promeus » pour 571, 573 et 598 ensemble : tu pourras corriger les Dylan et les Franklin. Ensuite 572 (la case des initiales), 582 et 583. Je lance le morceau de 573 ?
+  >
+  > À tester : rien (ne clique pas sur « Attribuer » d'ici là).
+  >
+  > 04/11/2026 15:28
+  >
+  > À jouer : rien · en cours : rien · ouvert : 573 et 597, 598, 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

@@ -4043,3 +4043,20 @@ MEMO
   > À jouer : 692 ; 685 ; 666 ; 534 (le test 2) · en cours : les deux sondes (fin vers 22:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **21:46 — l'exécutant des sondes (message)** : sonde de la ⑩ au chrono v3 : VERTE, 55/0, à la vraie horloge, sur `c781672e` (A4 sur 20 s : la durée par le geste ; au tableau en 70 à 98 ms, immobile 1,3 s ; ▶ au tableau en 112 à 146 ms ; 21 chiffres vus à leur cran, 24 relevés, 0 faux : vert→jaune à 00:10, jaune→orange à 00:05, orange→rouge à 00:02 ; ⏸ et ▶ sur `#dr-minut-go` ; écart pilote-tableau ≤ 15 ms ; or sur brun, dans un coin, sur aucun texte ; le son gardé, cinq bips et un ding ; la fin ; la partie B au même geste). K11 en patch (`SONDES-CHRONO-V3/K11-cadre.patch`) : vert sur le candidat, échoue sur deux mutants. Commit `bc38d53fb` sur `banc/chrono-v3`. Manque : le rouge ne clignote plus au v3 ; attention, la sonde-10 du candidat est l'ancienne (sans la vraie horloge). 198 515 jetons.
+- **21:46 — la conscience** : audit : `sonde-10.mjs` et `SONDES-CHRONO-V3/` seulement ; ça va. Le patch de K11 appliqué à `AUDITS/CONTROLES-DEROULE/controles.mjs` (sas main `aa20c7242`, `git apply --check` passé). Les trois parties rouges relancées (`scratchpad/banc-trois.sh`) à 21:46:10 sur `30a9b4652`, assemblé `c781672e` (inchangé), sonde-10 de `banc/chrono-v3` (empreinte vérifiée), K11 de main.
+- **21:46 — message à Paul, mot pour mot :**
+
+  > 693. Les deux sondes sont prêtes (21:46). La sonde de la ⑩ est verte sur le nouveau chrono, 55 vérifications sur 55 : la durée tapée au clavier, au tableau en moins d'un dixième de seconde, les quatre couleurs à leur cran, la pause et la reprise, le son de la fin (cinq bips et un ding), rien de couvert. Le contrôle de « Ce que voit la classe » lit maintenant dans le cadre, et il sait échouer si le cadre ne montre pas la même page.
+  >
+  > 694. Sans attendre ta réponse à 692 (ce n'est qu'une mesure), je repasse les trois parties rouges sur le même fichier, depuis 21:46 : environ 20 minutes. S'il est vert, je te demande « promeus ».
+  >
+  > 695. Une question trouvée par l'exécutant : l'ancien chrono clignotait en rouge à la fin ; le nouveau ne clignote plus. Veux-tu garder le clignotement ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 21:46
+  >
+  > À jouer : 695, 685 ; 666 ; 534 (le test 2) · en cours : les trois parties du banc (fin vers 22:06) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

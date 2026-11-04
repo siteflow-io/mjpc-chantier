@@ -610,8 +610,10 @@ function dr_classe(){
   /* C16 (lot 1, 361 ; Paul, 03/11 14:43) : en répétition, les élèves de la classe de la séance répétée (celle de l'en-tête « RÉPÉTITION · … »), PUIS ceux de
      la classe d'essai (3E Charles de Gaulle, `dr_classeTest`) qui n'y sont pas déjà — avant : la classe d'essai seule, quelle que soit la classe répétée
      (§12.51, Paul 28/10 10:17 : « je dois bien évidemment voir mes élèves de la classe test ») ; hors répétition : la classe de l'heure, inchangé */
-  let eleves = elevesDe(cl); if (rep) { const t = elevesDe(dr_classeTest()); eleves = eleves.concat(t.filter(n => !eleves.includes(n))); }
-  const cleEl = (rep ? 'repetition+essai|' : '') + slug;
+  /* C16 (461 ; Paul, 04/11 03:30-03:33 : son « classe test » du 28/10 voulait qu'une répétition n'écrive jamais de participation au hub d'une vraie classe — tenu sans elle,
+     mesuré : sonde-lot1 P6 « répétition · rien d’écrit dans la copie d’une classe » ; « 461 ok ») : en répétition, seulement la classe répétée, comme en heure */
+  const eleves = elevesDe(cl);
+  const cleEl = (rep ? 'repetition|' : '') + slug;
   if (slug !== DR_MEM.classeSlug || cleEl !== DR_MEM.elevesDe || ELEVES.length !== eleves.length) { DR_MEM.classeSlug = slug; DR_MEM.elevesDe = cleEl; ELEVES.length = 0; eleves.forEach(n => ELEVES.push(n)); dr_initiales(); }
   const ed = cl.ed || {};
   return { slug: slug || '', nom: cl.nom || slug || '', eleves: ELEVES, ed, espaceED: ed.espace != null ? ed.espace : null, lienED: ed.lien || '', prochaines: (typeof edtProchainesDe === 'function' && slug) ? (edtProchainesDe(slug, 3) || []) : [] };

@@ -312,9 +312,9 @@ const partieP = async () => {
     const CHA0 = Lcl('3E Charles de Gaulle'), CT0 = Lcl('CLASSE TEST'); const egal = (x, y) => x.length === y.length && x.every((v, j) => v === y[j]);
     if (k === 'R') {
       const lire = () => a.pg.evaluate(() => ({ eleves: ELEVES.slice(), presents: ((document.getElementById('presents') || {}).textContent || '').trim(), classe: ((document.getElementById('hclasse') || {}).textContent || '').trim() }));
-      const juger = (l, quand) => { const ct = /CLASSE TEST/.test(l.classe); const att = ct ? CT0.concat(CHA0.filter(x => !CT0.includes(x))) : CHA0;
+      const juger = (l, quand) => { const ct = /CLASSE TEST/.test(l.classe); const att = ct ? CT0 : CHA0;   /* C16 461 (Paul, 04/11 03:33) : en répétition, seulement la classe répétée */
         dire('  [P] répétition, ' + quand + ' : l’en-tête « ' + l.classe + ' », ' + l.eleves.length + ' pastilles, « ' + l.presents + ' »');
-        verif('P1', egal(l.eleves, att), 'répétition (' + quand + ') de la séance de ' + (ct ? 'CLASSE TEST' : '3E Charles de Gaulle') + ' : les pastilles sont ' + (ct ? 'ses ' + CT0.length + ' élèves, puis les ' + CHA0.length + ' de la classe d’essai (' + att.length + ')' : 'ses ' + CHA0.length + ' élèves — elle est la classe d’essai, une seule fois'), { classe: l.classe, n: l.eleves.length });
+        verif('P1', egal(l.eleves, att), 'répétition (' + quand + ') de la séance de ' + (ct ? 'CLASSE TEST' : '3E Charles de Gaulle') + ' : les pastilles sont ' + (ct ? 'ses ' + CT0.length + ' élèves, et eux seuls' : 'ses ' + CHA0.length + ' élèves — elle est la classe d’essai, une seule fois'), { classe: l.classe, n: l.eleves.length });
         verif('P1', new RegExp('sur ' + att.length + ' présents').test(l.presents), 'répétition (' + quand + ') : le compteur dit « … sur ' + att.length + ' présents »', l.presents); };
       juger(lst0, 'la classe proposée');
       const autre = /CLASSE TEST/.test(lst0.classe) ? '3E Charles de Gaulle' : 'CLASSE TEST';

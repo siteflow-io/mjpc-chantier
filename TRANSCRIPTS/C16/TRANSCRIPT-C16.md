@@ -2806,3 +2806,19 @@ MEMO
   > À jouer : les 8 gestes ; 469 à trancher · en cours : le rattrapage (premier morceau) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:56 — Paul, mot pour mot :**
+
+  > Ok 470
+- **03:56 — la conscience** : le mandat `MANDATS/DEROULE-01-11/MANDAT-LOT2B.md` (les mots de Paul 03:47, 03:51, 03:56 ; la supposition : `edtProchainesDe`, `dr_recitProchaines`, `dr_papierRelire`, `dr_recitEcheanceDe`, `dr_echeanceHorsClasse`, `edtEcheanceDue` ; 30 minutes ; base : le dernier commit de `deroule/lot2a`, au lancement).
+- **03:56 — message à Paul, mot pour mot :**
+
+  > 471. Noté. Le mandat du deuxième morceau est prêt au sas (les échéances à venir seulement). Il part dès que le premier a fini.
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:56
+  >
+  > À jouer : les 8 gestes · en cours : le rattrapage (premier morceau) ; le deuxième prêt · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

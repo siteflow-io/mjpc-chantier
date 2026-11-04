@@ -4102,3 +4102,28 @@ MEMO
   >
   > MEMO
 - **22:10 — incident** : trois heures tapées à la main et fausses (« 22:21 », « 22:22 », et « remis (22:21) » dans le message 699, alors qu'il était 22:09) ; corrigées avant l'envoi du message.
+- **22:11 — Paul, mot pour mot :**
+
+  > Promeus.
+
+- **22:11 → 22:14 — la promotion 8.85.0-⑱** : le candidat `promo-8850/index.html` (md5 `8c678bd180e5068315975765314b48aa`, 3 066 818 o) copié en production ; commit `32965c7` ; blob `e8eedf658e6e` ; l'adresse publique : l'ancien jusqu'à 22:12:32, le nouveau bit à bit à 22:12:47. Après : production `434ed42` : registre ✔ (㉔ à ㉗ ; « Ce que voit la classe » ; ㊵ ouvert), journal, point de retour (blob `7f546851fe8e`, 8.84.0-⑰, md5 `c6b75c7a`), index des fonctions, où trouver quoi.
+- **22:14 — message à Paul, mot pour mot :**
+
+  > 701. La 8.85.0-⑱ est en ligne : l'adresse publique rend le fichier bit à bit depuis 22:12:47. Point de retour : la 8.84.0-⑰. Journal, registre (㉔ à ㉗ réglés ; ㊵, le décalage entre les chronos de plusieurs appareils, reste ouvert), index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 702. Ensuite, sur ton mot : l'ordre de 638, en commençant par relire une autre classe et « Le chapitre » (618 à 621), puis 573, avec le récit et le gel (571) déjà prêts.
+  >
+  > À tester (hors de la classe), sur https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.85.0 :
+  > 1. La version dit 8.85.0-⑱.
+  > 2. Dans ta classe d'essai, lance une heure et va sur une diapo avec du texte : « Ouvrir le tableau », puis « Ce que voit la classe ».
+  > 3. ⏱ sous la diapo : le réglage s'ouvre sous la diapo, au-dessus des notes ; tape une durée (clic sur un chiffre, puis le clavier) ou utilise les + et −.
+  > 4. Allume « au tableau », puis ▶ : le réglage se cache ; le rectangle paraît dans un coin libre, au tableau, dans « Ce que voit la classe » et sur ta diapo.
+  > 5. Glisse-le, puis tire un coin : les trois vues suivent.
+  > 6. Un chrono de 10 s : vert, jaune, orange, puis rouge qui clignote, puis la fin.
+  > 7. Écris, dévoile, surligne : « Ce que voit la classe » le montre comme le tableau.
+  >
+  > 04/11/2026 22:14
+  >
+  > À jouer : les sept tests ci-dessus ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638, sur ton mot), ㊵, puis 639 à 645
+  >
+  > MEMO

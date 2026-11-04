@@ -2608,3 +2608,23 @@ MEMO
   > À jouer : rien · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **02:57 — Paul, mot pour mot :**
+
+  > Et il faut faire retourner le banc entier à chaque fois? C'est interminable et coûteux
+- **02:58 — la conscience** : durées relues (`banc-cpl/heures.txt`) : début 21:11:15 → R ×3 finis avant le témoin, le témoin lancé 22:14 ; banc sans témoin ≈ 1 h 02 ; le témoin : 22:14 → 23:59:32, dont la reprise après l'arrêt de la tâche et le redémarrage (≈ 1 h 20 de passages utiles).
+- **02:58 — message à Paul, mot pour mot :**
+
+  > 446. Le banc lui-même ne coûte presque rien en utilisation : il tourne seul, sans moi. Il coûte du temps. Ce qui coûte de l'utilisation, ce sont les exécutants (la réparation de cette nuit : 607 000 jetons) et mes tours de surveillance.
+  >
+  > 447. Mesuré cette nuit : le banc, 1 h 02 ; le témoin des sessions croisées, environ 1 h 20. C'est le témoin qui est le plus long.
+  >
+  > 448. Je propose : le banc entier avant chaque mise en ligne, mais sans le témoin (1 h, seul) ; le témoin seulement quand un lot touche aux sessions (qui pilote, la télécommande, deux ordinateurs) ; pour une petite correction comme 391, sa preuve seule (10 minutes). Et l'exécutant ne prouve que son lot : la non-régression, c'est mon banc, une seule fois. Si tu ne dis rien, c'est acquis.
+  >
+  > À tester : rien avant ton mot.
+  >
+  > 04/11/2026 02:58
+  >
+  > À jouer : 448 (acquis sans mot) · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

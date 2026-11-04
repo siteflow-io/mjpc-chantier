@@ -1,3 +1,4 @@
+// C16 nuit C2 (717) : la partie L prend Q1-Q10 (une réponse ne se valide qu'avec son élève).
 // C16 nuit C · LA CASE DES INITIALES (MANDAT C, NUIT-04-11) — la sonde de MESURE-INITIALES (c5825f9cd) reprise telle quelle, plus la partie L (§1.1-1.7). usage : MJPC_PARTIES=L node sonde-case-initiales.mjs <index.html> <sortie>
 // C16 554 · MESURE DES INITIALES (MANDAT-MESURE-INITIALES.md) — le harnais de MESURE-FRANKLIN/sonde-franklin.mjs (f42fc52e9), lignes 1-252 reprises telles quelles ; la partie I est celle de la mesure. Rien n’est changé au site.
 // C16 536 · MESURE DES FRANKLIN (MANDAT-MESURE-FRANKLIN.md) — le harnais de LOT2A/sonde-lot2a.mjs (lignes 1-229, reprises telles quelles) ; la partie F est celle de la mesure. Rien n'est changé au site.
@@ -471,6 +472,30 @@ const partieL = async () => {
   await tape('q'); e = await tape('w'); verif('L6a', e.foc === 'ini' && /Aucun élève/.test(e.msg) && !/(^|[\s«(])un élève/i.test(e.msg), 'QW : le site dit à la frappe qu’aucun élève n’a ces initiales', '« ' + e.msg.slice(0, 90) + ' »');
   e = await presse('Enter'); suivre(e, 'E Entrée sur QW'); Lg = await lig(); la = Lg.filter(r => !r.v).slice(-1)[0] || {}; verif('L6b', e.foc === 'ini' && !la.eleve, 'QW, Entrée : on reste dans la case, la ligne à personne', 'curseur ' + e.foc + ', élève ' + rang(la.eleve));
   await presse('Backspace'); await presse('Backspace'); await presse('Escape');
+  /* Q · C2 (C16 717, nuit du 04/11) : une réponse ne se valide qu'avec son élève — case vide + Entrée ; initiales de personne + clic dans la réponse + Entrée ; puis l'élève désigné (lettres, liste et chiffre), Entrée */
+  const sansEl = L2 => L2.filter(r => r.v && !r.eleve).length; const auJ = (t, n) => pg.evaluate(([t, n]) => ({ rep: J.filter(x => x.type === 'reponse' && x.txt === t).length, par: n ? J.filter(x => x.type === 'parole' && x.m === 'reponse' && x.nom === n).length : 0, nul: J.filter(x => x.type === 'reponse' && !x.eleve).length }), [t, n]);
+  const [nF, nG] = await pg.evaluate(L2 => { const ok = L2.filter((n, k) => k >= 5 && k < 25 && INI[n] && dr_caseSeul(INI[n]) === n); return [ok[0], ok.find(n => INI[n][0] !== INI[ok[0]][0])]; }, LISTE);
+  dire('  — Q1 · case vide, Entrée, « ' + 'Le vent se lève.' + ' », Entrée ; puis l’élève par ses lettres, Entrée'); await ligneLibre(pg); e = await presse('Enter');
+  const RF = 'Le vent se lève.'; for (const ch of RF) await tape(ch); await presse('Enter'); await p(400); e = await lire(); Lg = await lig(); la = Lg.find(r => r.r === RF) || {};
+  verif('Q1', !la.v && sansEl(Lg) === 0, 'case vide, Entrée dans la réponse : rien de validé sans élève', 'validée ' + !!la.v + ' · réponses validées sans élève ' + sansEl(Lg));
+  verif('Q2', la.r === RF, 'la réponse reste telle que tapée (rien d’effacé)', '« ' + (la.r || '') + ' »');
+  verif('Q3', e.foc === 'ini' && /Qui a répondu \?/.test(e.msg), 'le curseur retourne dans la case, qui demande « Qui a répondu ? »', 'curseur ' + e.foc + ' · « ' + e.msg.slice(0, 70) + ' »');
+  const iniF = await pg.evaluate(n => INI[n], nF); for (const ch of String(iniF).toLowerCase()) e = await tape(ch); const fSaut = e.foc; await presse('Enter'); await p(400); e = await lire();
+  Lg = await lig(); la = Lg.find(r => r.r === RF) || {}; let jx = await auJ(RF, nF);
+  verif('Q4', fSaut === 'dit' && la.v && la.eleve === nF && la.r === RF, 'l’élève désigné par ses lettres, Entrée : la réponse validée, à lui, telle quelle', 'après les lettres ' + fSaut + ' · validée ' + !!la.v + ', ' + rang(la.eleve));
+  verif('Q5', jx.rep === 1 && jx.par === 1, 'au journal une fois : la réponse, la prise de parole', 'réponse ' + jx.rep + ' fois, prise de parole ' + jx.par + ' fois');
+  dire('  — Q6 · « q », « w », clic dans la réponse, « La nuit tombe vite. », Entrée ; puis l’élève par la liste et son numéro, Entrée'); if (e.foc !== 'ini') await ligneLibre(pg); await tape('q'); await tape('w');
+  const pos = await pg.evaluate(() => { const r = document.activeElement && document.activeElement.closest('.rep'); return r ? { bi: r.dataset.bi, ri: r.dataset.r } : null; });
+  if (pos) await pg.click('#mur .rep[data-bi="' + pos.bi + '"][data-r="' + pos.ri + '"] .dit'); await p(250);
+  const RG = 'La nuit tombe vite.'; for (const ch of RG) await tape(ch); await presse('Enter'); await p(400); e = await lire(); Lg = await lig(); la = Lg.find(r => r.r === RG) || {};
+  verif('Q6', !!pos && !la.v && sansEl(Lg) === 0 && la.r === RG, 'initiales de personne, clic dans la réponse, Entrée : rien de validé sans élève, la réponse gardée', 'validée ' + !!la.v + ' · réponses validées sans élève ' + sansEl(Lg) + ' · « ' + (la.r || '') + ' »');
+  verif('Q7', e.foc === 'ini' && /Qui a répondu \?/.test(e.msg) && /Aucun élève/.test(e.msg), 'le curseur retourne dans la case, qui demande « Qui a répondu ? » et dit que personne n’a ces initiales', 'curseur ' + e.foc + ' · « ' + e.msg.slice(0, 110) + ' »');
+  await presse('Backspace'); await presse('Backspace'); const ptG = await pg.evaluate(n => dr_prenomTableau(n), nG); const iniG = await pg.evaluate(n => INI[n], nG); e = await tape(String(iniG)[0].toLowerCase());
+  const kG = e.liste.findIndex(x => x.indexOf(ptG) >= 0), nL = e.liste.length; e = await tape(String(kG + 1)); const gSaut = e.foc; await presse('Enter'); await p(400);
+  Lg = await lig(); la = Lg.find(r => r.r === RG) || {}; jx = await auJ(RG, nG);
+  verif('Q8', kG >= 0 && gSaut === 'dit' && la.v && la.eleve === nG && la.r === RG && jx.rep === 1 && jx.par === 1, 'l’élève choisi dans la liste par son numéro, Entrée : validée, à lui, telle quelle, au journal une fois', 'n° ' + (kG + 1) + ' sur ' + nL + ' · après le chiffre ' + gSaut + ' · validée ' + !!la.v + ', ' + rang(la.eleve) + ' · réponse ' + jx.rep + ' fois, prise de parole ' + jx.par + ' fois');
+  const V2 = await vert(); jx = await auJ('', null); verif('Q9', [nF, nG].every(n => V2.includes(n)), 'la participation : les deux élèves désignés au vert', [nF, nG].map(n => rang(n) + ' ' + V2.includes(n)).join(', '));
+  verif('Q10', sansEl(Lg) === 0 && jx.nul === 0, 'en tout : aucune réponse validée sans élève, aucune au journal sans élève', 'validées sans élève ' + sansEl(Lg) + ' · au journal sans élève ' + jx.nul); await presse('Escape');
   /* 5 · le décompte du titre */
   verif('L5c', auTitre === 0 && titreTouche === 0, 'Entrée et Tab, en ' + gestes + ' gestes lus : le curseur jamais au titre, le titre jamais changé', 'au titre ' + auTitre + ' fois, titre changé ' + titreTouche + ' fois');
   /* 3 · la participation des trois élèves de la liste */

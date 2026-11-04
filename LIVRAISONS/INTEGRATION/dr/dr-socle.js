@@ -1130,7 +1130,7 @@ const MOTIFS = { 1: 'a participé', 2: 'a proposé une piste', 3: 'on y reviendr
    le nom : « LE GALLOIS Bastien » donnait le prénom « GALLOIS Bastien » et les initiales « GL ». Sans mot en capitales (ou tout en capitales) : le premier mot, comme avant. */
 const dr_nomPrenom = e => { const m = String(e || '').trim().split(/\s+/).filter(Boolean); const cap = w => /\p{L}/u.test(w) && w === w.toUpperCase() && w !== w.toLowerCase(); const nom = m.filter(cap), pre = m.filter(w => !cap(w)); return (nom.length && pre.length) ? { nom: nom.join(' '), pre: pre.join(' '), mots: nom } : { nom: m[0] || '', pre: m.slice(1).join(' '), mots: m.slice(0, 1) }; };
 const dr_prenom = e => dr_nomPrenom(e).pre;
-const DR_CASE_TITRE = "Les initiales de l'élève : la première lettre du prénom, puis celle de chaque mot du nom (MGC pour un nom en deux mots). Dès la première lettre, les élèves possibles s'affichent, numérotés : tape le numéro pour choisir. Toutes les initiales d'un seul élève tapées, on passe à sa réponse";
+const DR_CASE_TITRE = "Les initiales de l'élève : la première lettre du prénom, puis celle de chaque mot du nom (MGC pour un nom en deux mots). Dès la première lettre, les élèves possibles s'affichent, numérotés : tape le numéro pour choisir. Toutes les initiales d'un seul élève tapées, on passe à sa réponse. Une réponse ne se valide qu'avec son élève : sans lui, Entrée ne valide pas et la case demande « Qui a répondu ? »";
 /* au tableau de la classe : le prénom et la première lettre du nom (« Bastien L. ») */
 const dr_prenomTableau = e => { const x = dr_nomPrenom(e); return (x.pre || x.nom) + (x.pre && x.nom ? ' ' + x.nom[0] + '.' : ''); };
 

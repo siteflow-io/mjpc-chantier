@@ -5252,3 +5252,30 @@ Daccord, cette vérification doit être planifiée pour samedi soir à 23h. en a
 04/11/2026 15:23
 
 MEMO
+
+## Tour 183 — 04/11/2026 16:24
+
+**Paul (16:24) :**
+
+[vidéo de 5,8 s, 20261104-1523-44 : le panneau prof, « Mettre les fiches à jour »]
+vérifie ça.
+
+**Ce qui a été fait (C14) :** la vidéo lue image par image (174 images) ; le code lu : `index.html` (`fichesMajUne`, `fichesExtraireObjet`), `evaluation-qcm.html` 8.0.4 (`publierManifeste`, `classeTestId`, les nœuds utilisés au site), les sources de `code-qcm`, la 7.7.2 au sas. Registre : deux entrées (la fiche du QCM ; le compte rendu du portail, pour C16). La consigne de samedi complétée (2 bis). Rien d'écrit dans le code.
+
+**Claude (16:38) :**
+
+À jouer : 142, ton mot · en cours : rien · ouvert : la vérification du QCM samedi 07/11 à 23:00 ; la 8.0.5 (135, 136) ; 143, pour C16
+
+140. Ta vidéo : à « Mettre les fiches à jour », 8 fiches repartent, celle du QCM échoue (« déclaration illisible »). La cause, lue dans le code : depuis la 8.0.0 du 13/10, le QCM n'a plus sa carte d'identité (son nom, ce qu'il fait, ses places au site, ce qu'on garde ou efface en fin d'année). La 7.7.2 l'avait ; le nouveau code ne l'a pas reprise. Le portail ne trouve donc rien à lire.
+
+141. Pour la classe, rien ne casse. Le QCM essaie de republier sa fiche à chaque ouverture, échoue sans bruit, et sa fiche au site reste celle du 13/10. Elle dit encore vrai : les places que la 8.0.4 utilise au site y sont toutes, et la remise à zéro de fin d'année les connaît. Mais chaque « Mettre les fiches à jour » échouera, et la fiche deviendra fausse dès que le QCM changera ses places.
+
+142. Je propose de remettre dans le QCM la carte de la 7.7.2, telle quelle, avec la 8.0.5. Je l'ai ajoutée à ce que la vérification de samedi doit compter. Ton mot ?
+
+143. Ta vidéo montre aussi deux défauts du panneau prof (le fichier de C16, je n'y touche pas). Le compte rendu reste à l'écran moins d'un dixième de seconde (2 images sur 174), puis s'efface : tu ne peux le lire qu'en filmant. Et « Toutes les fiches sont à jour. » reste affiché alors qu'une fiche vient d'échouer. Les deux sont au registre, pour C16.
+
+À tester : rien de neuf en ligne.
+
+04/11/2026 16:38
+
+MEMO

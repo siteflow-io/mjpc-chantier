@@ -2786,3 +2786,23 @@ MEMO
   > À jouer : les 8 gestes · en cours : le rattrapage (premier morceau) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:51 — Paul, mot pour mot :**
+
+  > 467. C'est aussi pour ça qu'on ne garde pas les horaires. Le récit ne doit pas mentir. D'ailleurs le cahier de textes pour ce genre de séance rattrapée. Conséquence ?
+- **03:52 — la conscience** : relu RAPPORT-II §1.3 : le texte copié pour École Directe (`dr_recitContenuED`) reprend le récit sans le travail ni la suite (11 phrases sur 11 avec un horaire) ; la fin d'heure, étape 1, propose des échéances datées et horaires ; le Papier « À relire — <jour> » (`dr_papierRelire`).
+- **03:52 — message à Paul, mot pour mot :**
+
+  > 468. Le cahier de textes suit la même règle que le récit. Le texte copié pour École Directe dit la date de la case, qui est vraie, puis le début, le milieu ou la fin, sans aucun horaire. Tu le colles à la date de la case.
+  >
+  > 469. Une conséquence de plus : le travail à faire. À la fin de l'heure, le site propose des échéances (« jeudi 17 septembre, 15 h 07 · … ») et le Papier un « À relire — vendredi … », calculés à partir de l'heure jouée. Pour une heure rattrapée après coup, ces cases peuvent être déjà passées. Je propose : les échéances proposées ne partent que des cases encore à venir de la classe. Ce n'est pas mesuré, puisque le rattrapage n'existe pas encore ; l'exécutant le mesurera.
+  >
+  > 470. Si tu dis oui, ce sera le morceau suivant, après celui en cours.
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:52
+  >
+  > À jouer : les 8 gestes ; 469 à trancher · en cours : le rattrapage (premier morceau) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

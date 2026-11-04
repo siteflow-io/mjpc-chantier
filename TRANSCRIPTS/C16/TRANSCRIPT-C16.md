@@ -3688,3 +3688,35 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 ci-dessus, dans l'ordre de 638 (sur ton mot)
   >
   > MEMO
+- **16:03 — Paul, mot pour mot :**
+
+  > liste aussi les plus anciens.
+
+- **16:04 — la conscience** : relu au transcript (C16 342, 363 à 366, ㉚, ⑯ « le retard du tableau ») et au registre (production).
+- **16:04 — message à Paul, mot pour mot :**
+
+  > Les plus anciens, toujours ouverts (relus au registre et au transcript)
+  >
+  > 639. 342 — Lancer depuis une case la séance que tu veux, quand l'emploi du temps en propose une autre : un lien « une autre séance… » sous « ▶ Ouvrir le pilotage et lancer » ; la séance choisie se lance comme une vraie heure de la classe, et les séances d'après se recalent. Tu l'as accepté ; à auditer d'abord (ce qu'il télescope).
+  >
+  > 640. 363 — Le tableau distant, une session à la fois. Mesuré : rien ne le réserve ; une session peut le prendre à celle qui joue sans rien dire ; l'essai et la répétition en mode test partagent la même adresse ; certaines jouent sans tableau sans le savoir ; un appareil disparu garde le tableau 4 h. Ta règle : il appartient à la session qui l'a pris ; toute autre est refusée et dit laquelle le tient.
+  >
+  > 641. 364 — Le minuteur. Mesuré : absent de « Ce que voit la classe » ; il couvre du texte sur 7 diapos sur 26 ; ses couleurs ne sont pas celles du site ; son panneau couvre la diapo du pilote ; les appareils ne comptent pas sur la même horloge (3 s d'écart). À faire par une maquette que tu valides avant le code.
+  >
+  > 642. 365 — Le réseau lent. Mesuré : 30 à 36 s sans aucun signe que l'heure part ; un ▶ pendant l'attente est perdu ; « Fermer l'atelier » laisse partir l'heure sans pilote. À faire : « L'heure se lance… » à l'écran, et aucun geste perdu.
+  >
+  > 643. 366 — La numérotation par séance : ce qui est déjà joué garde ses numéros d'alors, Relecture comprise ; ce qui reste à jouer prend les nouveaux, « Où en sommes-nous ? » compris.
+  >
+  > 644. ㉚ — Le cahier de textes en fin d'heure : « pas pratique du tout, il faudrait auditer et refondre » (toi, 02/11) ; c'est le reste de la refonte des 7 étapes de la fin d'heure.
+  >
+  > 645. ⑯ — Le retard du tableau : il suit le pilote avec un peu plus d'une demi-seconde de retard après certains gestes. Rouvert, sur ton mot.
+  >
+  > 646. Ils viennent après l'ordre de 638, sur ton mot. Je lance le premier morceau de 638 ?
+  >
+  > À tester : 534, le test 2 (« Relire l'heure » des Dylan, « composé par le site »).
+  >
+  > 04/11/2026 16:04
+  >
+  > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

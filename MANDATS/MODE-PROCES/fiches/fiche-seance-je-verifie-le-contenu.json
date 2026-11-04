@@ -1,0 +1,67 @@
+{
+  "produit": "fiche_seance",
+  "titre": "Je vérifie le contenu d’une plaidoirie",
+  "cases": {
+    "seance": false,
+    "date_seance": false,
+    "classe": false,
+    "niveau": false,
+    "chapitre": false,
+    "annee_scolaire": false,
+    "notions": false,
+    "criteres_reussite": false,
+    "consigne": false,
+    "zone_lignee": false,
+    "travail_a_faire": false,
+    "a_retenir": false,
+    "date_edition": false,
+    "mention_conserver": true
+  },
+  "valeurs": {
+    "titre": {
+      "texte": "Je vérifie le contenu d’une plaidoirie"
+    },
+    "sous_titre": {
+      "texte": "Paris à la barre — la grille de notation de la page 31 du dossier"
+    },
+    "objectif": {
+      "texte": "Vérifier qu’une plaidoirie contient tout ce qui est noté, avant de s’entraîner à la dire."
+    }
+  },
+  "blocs": [
+    {
+      "id": "texte_libre",
+      "valeurs": {
+        "texte": "Je lis la plaidoirie d’un camarade, crayon en main. Je mets 1 point dans chaque case où la réponse est oui.\nPlaidoirie de : ……………………………   Lue par : ……………………………"
+      }
+    },
+    {
+      "id": "tableau_completer",
+      "valeurs": {
+        "lignes": [
+          "Critère | Ce que je vérifie | Oui = 1",
+          "Position /2 | La première phrase dit le camp : accusation ou défense. | ",
+          " | La première phrase dit ce que la plaidoirie va démontrer. | ",
+          "Trois arguments /5 | Trois arguments, chacun sur un chef d’accusation différent. | ",
+          " | Chaque argument annonce une idée, la prouve, puis l’explique. | ",
+          " | Chaque argument commence par un connecteur. | ",
+          " | Les trois connecteurs sont différents. | ",
+          " | Les arguments suivent l’ordre de la pièce n°3 (page 28) : le plus fort d’abord, celui qui conclut à la fin. | ",
+          "Preuves /4 | Une citation de Bel-Ami, entre guillemets. | ",
+          " | La citation est recopiée mot pour mot (je vérifie dans la pièce n°2, le texte de Bel-Ami). | ",
+          " | Une autre pièce du dossier est nommée : un texte (T1 à T5), les photographies (P1), le voyage (P2), les dépositions (P3) ou les chiffres (P4). | ",
+          " | La plaidoirie dit ce que cette autre pièce prouve. | ",
+          "Conclusion /2 | La dernière phrase résume la position. | ",
+          " | La dernière phrase demande le verdict. | ",
+          "Total /13 | | ……… "
+        ]
+      }
+    },
+    {
+      "id": "texte_libre",
+      "valeurs": {
+        "texte": "Ce qui manque le plus : ……………………………………………………………………………………………\nJe rends la feuille au plaideur. Il corrige sa plaidoirie avant de s’entraîner à la dire."
+      }
+    }
+  ]
+}

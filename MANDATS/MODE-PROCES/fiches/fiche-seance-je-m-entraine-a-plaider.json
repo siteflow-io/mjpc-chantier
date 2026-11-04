@@ -1,0 +1,85 @@
+{
+  "produit": "fiche_seance",
+  "titre": "Je m’entraîne à plaider",
+  "cases": {
+    "seance": false,
+    "date_seance": false,
+    "classe": false,
+    "niveau": false,
+    "chapitre": false,
+    "annee_scolaire": false,
+    "notions": false,
+    "criteres_reussite": false,
+    "consigne": false,
+    "zone_lignee": false,
+    "travail_a_faire": false,
+    "a_retenir": false,
+    "date_edition": false,
+    "mention_conserver": true
+  },
+  "valeurs": {
+    "titre": {
+      "texte": "Je m’entraîne à plaider"
+    },
+    "sous_titre": {
+      "texte": "Paris à la barre — ma pièce n°4, c’est ma plaidoirie (page 29 du dossier)"
+    },
+    "objectif": {
+      "texte": "Plaider face aux jurés, en 2 minutes au plus, sans hésiter."
+    }
+  },
+  "blocs": [
+    {
+      "id": "texte_libre",
+      "valeurs": {
+        "texte": "Avant de commencer : ma plaidoirie fait au moins 10 lignes. Sinon, je la termine d’abord. Aujourd’hui, chacun s’entraîne sur toute sa plaidoirie."
+      }
+    },
+    {
+      "id": "methode",
+      "valeurs": {
+        "titre": "L’entraînement, dans mon groupe",
+        "items": [
+          "Je souligne au crayon mes connecteurs et ma citation : c’est là que ma voix appuie.",
+          "Chacun passe à son tour : un élève plaide, un élève chronomètre, un élève observe avec la grille ci-dessous. Puis on tourne. À deux, l’observateur tient aussi le chrono.",
+          "Après chaque passage, l’observateur donne un seul conseil, écrit en haut de la plaidoirie.",
+          "Deuxième tour, dans le même ordre, en appliquant le conseil reçu."
+        ]
+      }
+    },
+    {
+      "id": "texte_libre",
+      "valeurs": {
+        "texte": "Ma grille d’observateur — j’écris oui ou non dans chaque case. J’observe : ……………………………"
+      }
+    },
+    {
+      "id": "tableau_completer",
+      "valeurs": {
+        "lignes": [
+          "Ce que j’observe | 1er tour | 2e tour",
+          "Face aux jurés, pas face au juge. |  | ",
+          "Les yeux levés vers les jurés à chaque fin de phrase. |  | ",
+          "On l’entend du fond de la salle. |  | ",
+          "Un arrêt à chaque point. |  | ",
+          "Aucune hésitation, aucune phrase reprise. |  | ",
+          "La voix appuie sur les connecteurs et la citation. |  | ",
+          "Fini en 2 minutes au plus. |  | ",
+          "Mon conseil (un seul) : |  | "
+        ]
+      }
+    },
+    {
+      "id": "a_retenir",
+      "valeurs": {
+        "texte": "Au procès, nous nous partagerons la plaidoirie : chacun lit sa partie, dans sa propre plaidoirie, en 1 minute environ. À trois : le 1er, l’ouverture et l’argument 1 ; le 2e, son argument 2 ; le 3e, son argument 3 et la conclusion. À deux : le 1er, l’ouverture et les arguments 1 et 2 ; le 2e, l’argument 3 et la conclusion.\nUne partie, c’est court pour montrer ma posture, ma fluidité et ma conviction : si je veux, je dis toute ma plaidoirie (2 minutes au plus), seul ; les autres se partagent la leur.\nMon choix, fixé avant le procès :  ☐ ma partie   ☐ toute ma plaidoirie"
+      }
+    },
+    {
+      "id": "texte_libre",
+      "valeurs": {
+        "texte": "Chez moi : je plaide deux fois, devant quelqu’un ou devant un miroir, en me chronométrant."
+      }
+    }
+  ]
+}

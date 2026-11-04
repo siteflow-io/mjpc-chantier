@@ -276,3 +276,37 @@ Langue, Soin) ; moyenne des deux. Notes finales avec un commentaire par critère
 **Ce qui change cette année :** plaidoirie **individuelle** (30 passages chez Turing, 29 chez Hugo, au
 lieu de 14) ; camps à égalité (5 groupes Ombre, 5 Lumière dans chaque classe, fiche des groupes du
 3/11) ; les trois chefs d'accusation au lieu de deux.
+
+## 13. Le 4/11 : la séance d'entraînement à l'oral et le passage au procès (points 104 à 120)
+
+Paul, 07:09 : « pour ce matin c'est la séance d'entraînement à l'oral notamment. Il faudrait faire une
+fiche notion parler à l'oral, ainsi qu'un entrainement sur leur propre plaidoirie. » Puis, 07:27 :
+« Il faut aussi une fiche qui évalue le contenu de la plaidoirie ». Fiches livrées dans la
+conversation (Paul, 07:37 : « donne les moi ici les fiches plutot »), pas sur MJPC, sans date
+d'édition, une page chacune ; leur format de l'Atelier est dans `fiches/`.
+
+- « Parler à l'oral » (fiche notion) : posture, fluidité, conviction (grille orale de l'an dernier) ;
+  ni partition ni « pieds au sol » (Paul, 07:16 : « l'élève ne va pas comprendre », « ils sont déjà
+  debout ») ; exemple tiré de l'extrait de *Bel-Ami* du dossier (« la poche vide et le sang
+  bouillant »). La première version, écrite sur la clé à 07:27, citait « trois francs quarante »,
+  absent du dossier : point 113, la clé n'est pas encore corrigée.
+- « Je m'entraîne à plaider » : chacun s'entraîne sur toute sa plaidoirie ; grille d'observateur
+  oui/non sur deux tours ; encadré du passage au procès.
+- « Je vérifie le contenu d'une plaidoirie » : la grille de la page 31 du dossier en 13 cases d'un
+  fait chacune (Position 2, Arguments 5, Preuves 4, Conclusion 2), langue et soin laissés à Paul ;
+  évaluation entre élèves sur la copie, avant l'oral.
+
+**Le passage au procès (décidé le 4/11, 07:41).** La plaidoirie reste **écrite** individuellement
+(notée /20 sur la copie, page 31) ; au procès, le groupe se la **partage** : chacun lit sa partie
+dans sa propre plaidoirie, 1 minute environ (3 minutes par groupe de trois, 2 par groupe de deux).
+À trois : le 1er l'ouverture et l'argument 1, le 2e son argument 2, le 3e son argument 3 et la
+conclusion ; à deux : le 1er l'ouverture et les arguments 1 et 2, le 2e l'argument 3 et la
+conclusion. **Au choix** (Paul : « une partie de plaidoirie c'est court pour évaluer les critères
+d'oral, donc s'ils veulent, ils peuvent dire la plaidoirie entière ») : un élève peut dire toute sa
+plaidoirie (2 minutes au plus), seul ; les autres se partagent la leur. Le choix est fixé avant le
+procès. Au pire (tous en entier), on retombe sur 30 passages, environ une heure chez Turing, sans
+marge (§4).
+
+Conséquence pour l'outil d'évaluation (points 101 à 103, en attente) : les passages se font par
+groupe, avec pour chaque élève « sa partie » ou « toute sa plaidoirie » ; la note orale reste
+individuelle.

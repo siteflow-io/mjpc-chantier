@@ -1,0 +1,73 @@
+{
+  "produit": "fiche_notion",
+  "titre": "Parler à l’oral",
+  "cases": {
+    "seance": false,
+    "date_seance": false,
+    "objectif": false,
+    "date_edition": false,
+    "mention_conserver": true
+  },
+  "valeurs": {
+    "titre": {
+      "texte": "Parler à l’oral"
+    },
+    "notions": {
+      "items": [
+        "S’exprimer devant un auditoire",
+        "Lire à voix haute"
+      ]
+    }
+  },
+  "blocs": [
+    {
+      "id": "definition",
+      "valeurs": {
+        "terme": "Prendre la parole",
+        "texte": "C’est parler devant un auditoire pour être entendu, compris et cru. L’auditoire n’a que ma voix pour me suivre."
+      }
+    },
+    {
+      "id": "a_retenir",
+      "valeurs": {
+        "texte": "À l’oral, trois choses comptent : ma posture (mon corps), ma fluidité (ma voix et mon rythme), ma conviction (mon ton)."
+      }
+    },
+    {
+      "id": "tableau",
+      "valeurs": {
+        "lignes": [
+          "Ce qui compte | Ce que je fais | Ce que j’évite",
+          "Ma posture | Je me tiens droit, face aux jurés. Je lève les yeux vers eux à chaque fin de phrase. | Me balancer, cacher mon visage derrière ma feuille, ne regarder que le juge.",
+          "Ma voix | Je parle pour le fond de la salle. J’articule chaque mot. | Marmonner, parler pour ma feuille.",
+          "Ma fluidité | Je m’arrête à chaque point. Je ralentis sur la citation. | Lire trop vite, hésiter, recommencer ma phrase.",
+          "Ma conviction | J’appuie sur les connecteurs, sur la citation et sur le verdict que je demande. | Tout dire sur le même ton, comme une récitation."
+        ]
+      }
+    },
+    {
+      "id": "methode",
+      "valeurs": {
+        "titre": "Avant de parler",
+        "items": [
+          "J’attends le silence complet.",
+          "Je regarde les jurés.",
+          "Je respire une fois, lentement.",
+          "Je commence : « Mesdames et messieurs les jurés… »"
+        ]
+      }
+    },
+    {
+      "id": "exemple",
+      "valeurs": {
+        "texte": "« D’abord, Maupassant montre Georges Duroy qui marche dans Paris “la poche vide et le sang bouillant”. »\nJe m’arrête après « D’abord ». Je ralentis sur la citation. Je lève les yeux vers les jurés à la fin de la phrase."
+      }
+    },
+    {
+      "id": "attention_piege",
+      "valeurs": {
+        "texte": "Lire, ce n’est pas réciter les yeux baissés : je connais assez mon texte pour lever les yeux à chaque phrase. Je finis en 2 minutes au plus."
+      }
+    }
+  ]
+}

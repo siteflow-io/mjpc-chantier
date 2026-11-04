@@ -1,5 +1,5 @@
 # MANDAT C2 — UNE RÉPONSE NE SE VALIDE QU'AVEC SON ÉLÈVE (C16 717)
-*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/c2`, depuis le dernier commit de `nuit/d` (la conscience te le donne). **20 minutes au plus.***
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/c2`, depuis `ebe80e0bc` (le dernier commit de `nuit/d`). **20 minutes au plus.***
 
 ## 0 · CE QUE PAUL A DIT (ses mots)
 - 04/11 07:36 : « le site ne devrait jamais mettre "un élève", parce que la participation doit être enregistrée absolument, sinon ce n'est pas juste pour l'élève. Si je tape des initiales qui n'existent pas dans la classe, le site devrait me le dire. »

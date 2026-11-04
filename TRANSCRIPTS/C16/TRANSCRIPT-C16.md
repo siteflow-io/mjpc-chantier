@@ -3931,3 +3931,27 @@ MEMO
   > À jouer : 666 ; 534 (le test 2) · en cours : la maquette v2 (fin vers 19:31) · ouvert : 612 à 637 (ordre de 638, après le minuteur), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **19:28 — l'exécutant de la maquette v2 (message)** : de 19:02 à 19:28 ; la supposition juste (la pastille remplacée ; « Ce que voit la classe » était un dessin à part, `vueDroite` dans dr-socle.js, devenu la page `?vue=tableau&local=1` dans un cadre, nourrie comme la fenêtre du tableau). Commit `b7bee8798` sur `maquette/minuteur-v2` (dr-classe.js, dr-socle.js, dr-tableau.js, dr.css ; générateur ; `banc-maquette-v2.mjs` et sa sortie ; captures) ; maquette `C16-maquette-minuteur-v2.html` (6,78 Mo), md5 `b48acc9845fca40b59d8c53731c4fad9`. Banc 64/64 (32 + 32) : même place et taille dans les trois vues (départ, glisser, deux redimensionnements) ; trois fois plus large que haut ; rien de couvert au départ ; les crans de 10 s dans les trois vues ; dévoilement, tout dévoilé, surlignage pareils au tableau et dans la vignette ; le réglage jamais sur la diapo ; 0 requête, 0 erreur. Simulé ou manquant : l'emploi du temps par un appel de fonction dans le banc ; le gel et « à écrire » pas prouvés à part ; ni le tableau distant ni la répétition ; plus de frappe de la durée au clavier ; ■ cache le réglage ; le réglage resserré sous 900 px ; le coût de la seconde page pas mesuré. 221 636 jetons.
+- **19:29 → 19:27 — la conscience** : audit : dr-classe.js, dr-socle.js, dr-tableau.js, dr.css et `MAQUETTE-MINUTEUR/` ; pas `dr_classe` ; md5 vérifié ; une capture regardée (1536 × 864, après le glisser : la vignette montre le chrono et le surlignage) ; ça va. La maquette envoyée à Paul. Registre (production).
+- **19:27 — message à Paul, mot pour mot :**
+
+  > 679. La maquette v2 est prête (C16-maquette-minuteur-v2.html), à ouvrir dans Chrome : le site en ligne, avec le chrono P6 et « Ce que voit la classe » qui est désormais la page du tableau elle-même, en petit. Le banc : 64 vérifications sur 64, à deux tailles d'écran. J'ai regardé une capture : le chrono et un mot surligné paraissent pareil au tableau et dans « Ce que voit la classe ».
+  >
+  > 680. Ce qui n'est pas encore prouvé : le gel et « à écrire » à part (ils passent par le même chemin que le dévoilement, qui, lui, est prouvé) ; le tableau ouvert sur l'ordinateur de la classe et la répétition ; ce que coûte à ton ordinateur cette seconde page du tableau dans le pilote. Ce sera mesuré au banc avant le « promeus ».
+  >
+  > 681. Deux choses à trancher. D'abord, la durée ne se tape plus au clavier, seulement avec les + et − : je propose de garder aussi la frappe (un clic sur un chiffre, puis le clavier), qui existe aujourd'hui. Ensuite, ■ arrête le chrono et cache le réglage : pour une nouvelle durée, tu recliques ⏱. D'accord ?
+  >
+  > À tester, dans la maquette, dans l'ordre :
+  > 1. Emploi du temps, la case du lundi 14/09 (3E Charles de Gaulle), « Ouvrir le pilotage et lancer », puis la diapo 12.
+  > 2. « Ouvrir le tableau » (second onglet), puis « Ce que voit la classe ».
+  > 3. ⏱ sous la diapo : le réglage (l'anneau, les chiffres avec + et −, ▶, ■, « au tableau »).
+  > 4. Allume « au tableau », puis ▶ : le réglage se cache ; le rectangle paraît sur ta diapo, au tableau et dans « Ce que voit la classe ».
+  > 5. Glisse le rectangle, puis tire un de ses coins : les deux autres vues suivent.
+  > 6. Un chrono de 10 s : vert, jaune, orange, rouge.
+  > 7. Dévoile, surligne un mot (Ctrl+H), gèle, écris : regarde « Ce que voit la classe ».
+  >
+  > 04/11/2026 19:27
+  >
+  > À jouer : la maquette v2 (679), 681 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : après ta validation, le banc et le « promeus » du minuteur ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

@@ -2822,3 +2822,22 @@ MEMO
   > À jouer : les 8 gestes · en cours : le rattrapage (premier morceau) ; le deuxième prêt · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:56 — message à Paul** : « 471. Noté : le mandat du deuxième morceau est prêt au sas (les échéances à venir seulement) ; il part dès que le premier a fini. » (le bloc de fin, 03:56).
+- **03:56 — l'exécutant du premier morceau (message)** : poussé `bdae9b175` (`deroule/lot2a`, assemblé `bcee37ae`), sonde `LOT2A/sonde-lot2a.mjs` ; prouvé : CLASSE TEST, case du lundi 14/09 15:07 rattrapée le jeudi 17/09 14:00 ; une seule clé `2026-09-14_15h07-16h02_CLASSE_TEST`, close ; la case jouée, la suivante « heure 2 · suite » ; 0 horaire (récit 47 phrases, École Directe 42, mot aux absents et Papier 43) ; la date de la case ; début/milieu/fin 2/3/2 sur 7 ; la reprise le lendemain : la bonne diapo, une clé ; l'heure ordinaire identique (8/8/2/8) ; parcours vert ; 7/0 et 11 vérifications (un échec de la sonde, corrigé et repassé). La supposition vérifiée (la date par `AT_DR_COURS.iso`, dr-socle.js pas touché). Trouvé : le cadre « a commencé à… » retiré sans remplacement ; une heure ordinaire reprise le lendemain : seconde clé ; l'horloge d'une heure rattrapée hors créneau (alerte, T-5), pas mesuré. 83 outils, 227 138 jetons, 21 min 45.
+- **03:57 — audit de la conscience sur `bdae9b175`** : 8 fichiers (dr-classe.js, dr-recit.js, index.html, l'assemblé, la sonde et ses sorties) ; ni `AUDITS/`, ni dr-socle.js, ni les fichiers interdits ; réassemblé à l'identique (`bcee37ae`) ; dans les sorties, seulement des titres et des peintres, « Un élève » : aucun nom d'élève. Ça va. Le deuxième morceau lancé (`MANDAT-LOT2B.md`, `24d57eefd`, base `bdae9b175`, branche `deroule/lot2b`).
+- **03:57 — message à Paul, mot pour mot :**
+
+  > 472. Le premier morceau est fait, en 22 minutes (227 000 jetons, le tiers de la réparation d'hier). Mesuré sur ton cas : une case passée du lundi, rattrapée le jeudi. « ▶ Rattraper cette heure » lance l'heure ; elle est rangée à la date et au créneau de la case, une seule fois ; la case suivante dit « heure 2 · suite », donc les séances d'après se recalent. Aucun horaire dans le récit, le texte pour École Directe, le mot aux absents et le Papier ; le récit dit « au début », « au milieu », « à la fin » ; la date de la case reste. Laissée pas close et reprise le lendemain, elle repart sur la bonne diapo. Une heure ordinaire ne change pas.
+  >
+  > 473. Le deuxième morceau (les échéances à venir seulement) est lancé, 30 minutes au plus.
+  >
+  > 474. L'exécutant a trouvé deux choses, non codées. D'abord, une heure ordinaire reprise le lendemain s'écrit encore sous une seconde clé au hub : la même correction la réglerait. Ensuite, une heure rattrapée jouée après son créneau : l'alerte « l'heure dépasse » et le rappel des 5 minutes risquent de partir tout de suite ; ce n'est pas mesuré. Je propose de mesurer le second, puis de régler les deux, dans un troisième morceau. Si tu ne dis rien, c'est acquis.
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:57
+  >
+  > À jouer : les 8 gestes ; 474 acquis sans mot · en cours : le deuxième morceau (les échéances) · ouvert : 474, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

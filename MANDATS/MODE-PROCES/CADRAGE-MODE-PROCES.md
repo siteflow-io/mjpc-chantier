@@ -340,3 +340,13 @@ passe à mardi prochain maintenant, car ils n'ont pas du tout fini la rédaction
 semaine A : Hugo 13:00-13:55, Turing 13:57-14:52, une heure chacun (créneaux de la passation, 3.1 et
 3.2). Ces deux heures étaient la première heure du *Horla* ; le mercredi 11/11 est férié. Grille
 d'oral : les 9 cases du point 131, sans critère de temps ; la 10e case proposée (137) attend Paul.
+
+**Ce qui reste du procès (Paul, 15:44).** « Il n'y aura pas de vote et verdict. ce chapitre traine en
+longueur. [...] la seule chose qui se passe c'est la plaidoirie, l'évaluation de l'oral individuelle,
+l'évaluation du dossier en groupe. Pour le 10e critère, trouves en un. » 10e case de l'oral :
+« Attend le silence avant de commencer » (sa consigne de l'an dernier, « attendez le silence
+complet », et la fiche « Parler à l'oral »). Livré dans la conversation, copié dans `fiches/` :
+`grille-oral-plaidoirie-4e.pdf` (une page par classe, élèves par groupe, une croix = 1 point, /10) et
+`fiches-dossier-4e.pdf` (une fiche par groupe, deux par A4, /10, avec la case 127). Groupes : points
+du 13/10 (Turing, 10 groupes) et du 14/10 (Hugo, groupes 1 à 5) ; groupes 6 à 10 de Hugo inconnus,
+lignes laissées à remplir.

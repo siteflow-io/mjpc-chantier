@@ -2571,3 +2571,23 @@ MEMO
 
   > Ok
 - **02:53 — la conscience** : codé dans `ex-complement` (pas encore poussé) : `dr_cloreHeureRestee` (dr-classe.js) écrit aussi l'état vivant de l'heure close (`<C>/vif` : `close`, `sig` = `heure|<chemin de l'heure>`, `sorte`, `cours`, `par`, `ts`) ; `node --check` ; assemblé md5 `df003634`. La preuve lancée, machine seule : sonde-lot1 W puis le parcours.
+
+- **02:53 — message de fin à Paul** : « C'est codé : quand « Lancer celle-ci quand même » clôt l'autre heure, l'autre ordinateur en est prévenu tout de suite. La preuve tourne (la fenêtre « Une heure joue déjà », puis le parcours, environ 10 minutes) ; ensuite, je te demande « promeus ». / À tester : rien avant ton mot. / 04/11/2026 02:53 / À jouer : rien · en cours : la preuve de 391 · ouvert : 362 à 366, ⑯, ㉚ / MEMO »
+- **02:54 — Paul, mot pour mot :**
+
+  > Pourquoi 362 à 366 16 30 sont encore ouverts?
+- **02:54 — message à Paul, mot pour mot :**
+
+  > 441. Ce sont les lots suivants du plan que tu as accepté hier à 14:43 (368). On les fait un exécutant à la fois, et chaque lot est mis en ligne avant que le suivant commence. Le lot 1 n'est pas encore en ligne : il attend ton « promeus ».
+  >
+  > 442. Dans l'ordre : lot 2, rattraper une heure, avec le choix d'une autre séance (362) ; lot 3, le tableau distant, une session à la fois (363) ; lot 4, le minuteur, d'abord une maquette que tu valides (364) ; lot 5, le réseau lent (365) et la numérotation par séance (366) ; puis ㉚, la refonte de la fin d'heure.
+  >
+  > 443. ⑯, le retard du tableau, n'est dans aucun lot : tu l'as arrêté, il ne repart que sur ton mot.
+  >
+  > À tester : rien avant ton mot.
+  >
+  > 04/11/2026 02:54
+  >
+  > À jouer : rien · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

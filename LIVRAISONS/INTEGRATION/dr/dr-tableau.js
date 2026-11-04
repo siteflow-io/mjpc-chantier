@@ -143,7 +143,7 @@ function dr_scene(et){
   try { const t = dr_etiquetteDe(et); if (t != null) sc.etiquette = t; } catch (e) {}   /* §12.74 (2) : l'étiquette entière, numéro compris */
   if (Array.isArray(sc.qui)) sc.quiOn = true; if (sc.cahier && typeof sc.cahier === 'object' && Array.isArray(sc.cahier.qui)) sc.cahier.quiOn = true;   /* §12.71 : le hub ne garde pas une liste vide — le drapeau dit « la participation est au tableau », même à 0 */
   delete sc.bandeau; try { const m = (typeof dr_minuteurEtat === 'function') ? dr_minuteurEtat() : null; if (m) sc.minut = m; else delete sc.minut; } catch (e) {}   /* §12.70 (4) : le minuteur (fin, durée, pause), une fois par geste ; plus de bandeau */
-  try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc ? hc.dec + hc.saut : 0; } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
+  try { const hc = (typeof dr_horlogeCase === 'function') ? dr_horlogeCase() : null; sc.hdec = hc && hc.test ? hc.dec + hc.saut : 0;   /* C16 (515) : l'heure du tableau, à l'heure réelle pour une heure rattrapée ou reprise un autre jour — la classe d'essai garde l'horloge de sa case */ } catch (e) { sc.hdec = 0; }   /* §12.66 (2) : l'écart de l'horloge de la case (les De Gaulle) — l'horloge du tableau distant le suit */
   return sc;
 }
 function dr_sceneAuto(vite){

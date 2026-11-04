@@ -1,0 +1,28 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M · 2026-11-04 07:30 UTC · md5 dd7bd9bdba73dc8a08b5e6fbf9426625 · images : celle du canon
+
+══ LOT 2c · base2 · md5 dd7bd9bdba73dc8a08b5e6fbf9426625 ══
+
+— partie M
+  [M1] rattrapée, lancée jeudi 17:30 (case lundi 15:07-16:02) · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 17:30 · chrono 00:08 · témoins classe test [] · montre 17:30 · « Enregistré à 17:30 » · journal 3 gestes, 0 hors de la montre
+  [M1] +40 min : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 10 min · heure affichée 18:10 · chrono 00:11 · témoins classe test [] · montre 18:10 · « Enregistré à 17:30 » · journal 3 gestes, 0 hors de la montre
+  [M1] +46 min : lancée true (rattrapée) · paliers partis ["t5"] · fin ouverte true · reste jusqu’au cahier 4 min · heure affichée 18:16 · chrono −3:48 (cr-t5) · témoins classe test [] · montre 18:16 · « Enregistré à 18:16 » · journal 4 gestes, 0 hors de la montre
+  ok     M1a · la case passée : « ▶ Rattraper cette heure » lance l’heure, rattrapée — ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  ok     M1b · au lancement : aucun palier parti, la fin d’heure fermée, 50 min jusqu’au cahier (l’horloge de sa case) — [[],false,50]
+  ok     M1c · à +40 min rien ; à +46 min le T-5 part (comme une heure de 55 min commencée au début de son créneau) — [[],["t5"]]
+  ok     M1e · 515 : l’heure affichée, « Enregistré à », le journal (T-5 compris) à l’heure réelle — [["17:30","17:30","Enregistré à 17:30",3,0],["18:10","18:10","Enregistré à 17:30",3,0],["18:16","18:16","Enregistré à 18:16",4,0]]
+  ÉCHEC  M1f · 515 : l’horloge du tableau distant à l’heure réelle (aucun décalage de case) — [-8587577,-8587577,-8587577]
+  ÉCHEC  M1g · 515 : au T-5, l’infobulle du compte à rebours dit l’heure réelle du cahier (montre + reste) — ["Compte à rebours vers l'heure du cahier de textes (15:57)","18:16",4]
+  ok     M1d · aucun témoin de la classe d’essai (« horloge de la case », « aller à 5 minutes de la fin ») — []
+  ok     M9 · M1 : aucune erreur JS, aucune boîte système
+  [M2] rattrapée, lancée jeudi 10:00 · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 10:00 · chrono 00:08 · témoins classe test [] · montre 10:00 · « Enregistré à 10:00 » · journal 3 gestes, 0 hors de la montre
+  ok     M2e · 515 : lancée avant sa case, l’heure affichée et le journal à l’heure réelle — ["10:00","10:00","Enregistré à 10:00",3,0]
+  ok     M2a · lancée avant l’horaire de sa case : 50 min jusqu’au cahier, rien de parti — [[],50]
+  ok     M9 · M2 : aucune erreur JS, aucune boîte système
+  [M3] ordinaire, lancée jeudi 15:08 dans son créneau : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 48 min · heure affichée 15:08 · chrono 00:07 · témoins classe test [] · montre 15:08 · « Enregistré à 15:08 » · journal 3 gestes, 0 hors de la montre
+  [M3] +40 min (15:48) : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 8 min · heure affichée 15:48 · chrono 00:10 · témoins classe test [] · montre 15:48 · « Enregistré à 15:08 » · journal 3 gestes, 0 hors de la montre
+  [M3] +46 min (15:54) : lancée true · paliers partis ["t5","t3"] · fin ouverte true · reste jusqu’au cahier 2 min · heure affichée 15:54 · chrono −2:07 (cr-t3) · témoins classe test [] · montre 15:54 · « Enregistré à 15:54 » · journal 5 gestes, 0 hors de la montre
+  ok     M3a · l’heure ordinaire : l’horloge vraie (reste 48 min), rien à +40, le T-5 à 15:52 (+46) — [48,[],["t5","t3"],"15:08"]
+  ok     M3f · 515 : l’heure ordinaire inchangée — tableau sans décalage, infobulle « (15:57) » — [0,0,"Compte à rebours vers l'heure du cahier de textes (15:57)"]
+  ok     M9 · M3 : aucune erreur JS, aucune boîte système
+
+--- fin : 14 vérifications, 2 échec(s)

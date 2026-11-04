@@ -14,4 +14,4 @@
   ÉCHEC  A104 · 07h30 (montre 07:30, case 08:57-09:52) · mode test : aucune écriture au hub (du lancement à la fin du créneau) — PUT /site/tableau_test/scene · PUT /site/tableau_test/ecrans · PUT /site/tableau_test/pointeur · PUT /site/tableau_test/ecrans · PUT /site/tableau_test/scene
   ok     A104 · 07h30 (montre 07:30, case 08:57-09:52) · une autre classe (le même cours sous le nom « AUTRE CLASSE ») garde l’heure vraie (07:43), sans horloge de case ni bouton — {"ecart":0,"hcase":false,"t5":false,"heure":"07:43"}
   ok     A104 · 07h30 (montre 07:30, case 08:57-09:52) · zéro erreur JS — []
-— fin : 16 vérifications · 2 échec(s) — ROUGE · index.html md5 dd7bd9bdba73dc8a08b5e6fbf9426625
+— fin : 16 vérifications · 2 échec(s) — ROUGE · index.html md5 8d17922b6722051f0ab30518e68ce1df

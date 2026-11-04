@@ -4127,3 +4127,26 @@ MEMO
   > À jouer : les sept tests ci-dessus ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638, sur ton mot), ㊵, puis 639 à 645
   >
   > MEMO
+- **22:15 → 22:21 — la base de la nuit** : sas `nuit/integration` `137898f04` = `chrono/clignote` `eb244c8f2` (le code de la 8.85.0-⑱) réuni avec `deroule/recit-gel` `9b0f78884` (571, 580), sans conflit ; assemblé (11 modules, 3 011 697 o, md5 `e56172e3…`) ; `node --check` vert sur dr/*.js.
+- **22:22 — Paul, mot pour mot :**
+
+  > Ok bon maintenant tout le reste. Tu as la nuit . Je ne veux pas de consommation excessive d'utilisation ( 80 pourcent d'utilisation cette semaine ). Demain à 7h tout est ok et je promeus.
+
+- **22:24 → 22:27 — les mandats de la nuit** : sas `MANDATS/DEROULE-01-11/NUIT-04-11/` : `REGLES-COMMUNES.md`, A (relire une autre classe, « Le chapitre »), C (la case des initiales), B (corriger après l'heure), D (la Relecture : la diapo en grand, la copie pour l'IA) ; commit `c36c0a410`, puis une correction (des barres obliques en trop devant les accents graves ; le chemin de la sonde de la frappe au tableau).
+- **22:27 — message à Paul, mot pour mot :**
+
+  > 703. La nuit, dans l'ordre de 638 : un exécutant à la fois, 30 minutes au plus chacun, court et économe ; chacun part du travail du précédent. La base : la 8.85.0-⑱ en ligne, avec le récit et le gel (571, 580) déjà prêts ; les deux sont réunis, sans conflit.
+  >
+  > 704. Les quatre morceaux, dans cet ordre : A, relire une autre classe (ses élèves, ce qu'elle a vu, ses oraux), plus de menu des classes dans la Relecture, « Le chapitre » qui ne compte que les heures jouées, « N sur M » juste (618 à 621) ; C, la case des initiales (572) ; B, « à corriger » après l'heure (573) ; D, la diapo en grand dans la Relecture (582) et le bouton « copier la relecture pour analyse IA » (583). C passe avant B, parce que B désigne l'élève avec la même case qu'en classe.
+  >
+  > 705. Puis le banc complet, sans témoin, sur le candidat 8.86.0-⑲. Le candidat n'a que ce qui est prouvé : un morceau pas prouvé à temps reste dehors, et je te le dis à 7 h.
+  >
+  > 706. Ce qui n'est pas fait cette nuit : 633 et 634 (les mots de l'éditeur dans la diapo des Franklin ; la fenêtre du tableau et le double clic) et 636 (deux défauts du banc), seulement s'il reste du temps avant le banc ; ㊵ et 639 à 645, sur ton mot. 609 attend ta réponse : une notion est « travaillée » quand toutes les diapos de son activité sont faites, ou par un oral ; est-ce ta règle ? En attendant, la règle ne change pas.
+  >
+  > À tester : rien de nouveau ce soir ; les sept tests de 701 restent valables.
+  >
+  > 04/11/2026 22:27
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : la nuit (A, puis C, B, D, puis le banc) · ouvert : 609, 633, 634, 636, ㊵, 639 à 645
+  >
+  > MEMO

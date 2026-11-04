@@ -1,5 +1,5 @@
 # MANDAT C — LA CASE DES INITIALES (C16 551, 557, 558, 562, 623 à 630)
-*Les règles communes : \`REGLES-COMMUNES.md\` (ce dossier). Branche : \`nuit/c\`, depuis le dernier commit de \`nuit/a\`.*
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/c`, depuis le dernier commit de `nuit/a`.*
 
 ## 0 · CE QUE PAUL A DIT (ses mots)
 - 07:36 : « le site ne devrait jamais mettre "un élève", parce que la participation doit être enregistrée absolument, sinon ce n'est pas juste pour l'élève. Si je tape des initiales qui n'existent pas dans la classe, le site devrait me le dire. Et surtout, au tableau des élèves, quand moi je tape "YC", il faudrait que eux voient le prénom de l'élève. »
@@ -17,8 +17,8 @@
 6. Des initiales qui ne sont celles d'aucun élève : le site le dit à la frappe ; jamais « un élève ».
 7. Au tableau : le prénom et la première lettre du nom, puis la réponse.
 
-## 2 · LA SUPPOSITION (mesurée par \`mesure/initiales\` \`c5825f9cd\`, sa NOTE ; À VÉRIFIER)
-\`dr_initiales\` (dr-socle) prend le premier mot pour le nom ; la ligne de réponse (dr-classe, \`ini.oninput\`, \`ini.onkeydown\`, \`dit.onkeydown\`) ; \`dr_iniExact\`, \`dr_iniSeul\`, \`dr_candidats\`, \`dr_iniVu\` ; Entrée et Tab sur la première ligne remontent à l'écouteur de \`brancherAtelier\` (actif en classe), qui appelle \`focaliser\` ; le vert n'arrive qu'à la première lettre de la réponse (la participation exige \`r.r\`) ; le tableau montre les initiales. La base contient déjà 571 (\`dr_repEleveSuit\` dans \`ini.oninput\` / \`ini.onkeydown\`) : garde-le.
+## 2 · LA SUPPOSITION (mesurée par `mesure/initiales` `c5825f9cd`, sa NOTE ; À VÉRIFIER)
+`dr_initiales` (dr-socle) prend le premier mot pour le nom ; la ligne de réponse (dr-classe, `ini.oninput`, `ini.onkeydown`, `dit.onkeydown`) ; `dr_iniExact`, `dr_iniSeul`, `dr_candidats`, `dr_iniVu` ; Entrée et Tab sur la première ligne remontent à l'écouteur de `brancherAtelier` (actif en classe), qui appelle `focaliser` ; le vert n'arrive qu'à la première lettre de la réponse (la participation exige `r.r`) ; le tableau montre les initiales. La base contient déjà 571 (`dr_repEleveSuit` dans `ini.oninput` / `ini.onkeydown`) : garde-le.
 
 ## 3 · LA PREUVE
-La sonde \`LIVRAISONS/DEROULE-01-11/MESURE-INITIALES/sonde-initiales.mjs\` (\`c5825f9cd\`), reprise, à vitesse humaine (120 à 200 ms entre deux touches) : base → après, compté, pour 1 à 7 (deux MB ; un nom en deux mots ; des initiales inconnues ; Entrée et Tab sur la première ligne ; le tableau) ; la sonde du gel (\`RECIT-GEL/sonde-recit-gel.mjs\`) toujours verte ; le parcours vert ; la frappe au tableau (\`FRAPPE-TABLEAU/sonde-frappe-tableau.mjs\`) si elle lit la case : mise à jour dans ta branche.
+La sonde `LIVRAISONS/DEROULE-01-11/MESURE-INITIALES/sonde-initiales.mjs` (`c5825f9cd`), reprise, à vitesse humaine (120 à 200 ms entre deux touches) : base → après, compté, pour 1 à 7 (deux MB ; un nom en deux mots ; des initiales inconnues ; Entrée et Tab sur la première ligne ; le tableau) ; la sonde du gel (`RECIT-GEL/sonde-recit-gel.mjs`) toujours verte ; le parcours vert ; la frappe au tableau (`FRAPPE-TABLEAU/sonde-frappe-tableau.mjs`, sur `banc/chrono-v3` `bc38d53fb`) si elle lit la case : mise à jour dans ta branche.

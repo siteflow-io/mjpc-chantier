@@ -1,5 +1,5 @@
 # MANDAT D — LA RELECTURE : LA DIAPO EN GRAND ; « COPIER LA RELECTURE POUR ANALYSE IA » (C16 582, 583, 588, 591)
-*Les règles communes : \`REGLES-COMMUNES.md\` (ce dossier). Branche : \`nuit/d\`, depuis le dernier commit de \`nuit/b\`.*
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/d`, depuis le dernier commit de `nuit/b`.*
 
 ## 0 · CE QUE PAUL A DIT (ses mots)
 - 14:40 : « cette relecture: dans la colonne de gauche je vois bien la copie de classe, mais elle ne peut pas s'afficher comme le pilote. je suis obligé d'utiliser la poignée pour zoomer sur les diapos et distinguer ce qui y est écrit. enfin, il me faudrait un bouton en bas pour copier l'ensemble de la relecture. ça me permettrait de pouvoir l'exporter (comme quand on discute par exemple). l'infobulle de ce bouton doit dire explictement ça: "copier la relecture pour analyse IA". »
@@ -12,7 +12,7 @@
 2. En bas de la Relecture, un bouton dont l'infobulle dit, mot pour mot : « copier la relecture pour analyse IA » ; il copie dans le presse-papiers, en texte, tout ce que dit C16 588 et 591, pour la classe et l'heure relues (tous les onglets).
 
 ## 2 · LA SUPPOSITION (À VÉRIFIER)
-La Relecture : \`relecture()\`, \`recitHtml0\`, \`passeHtml\`, \`recitSeanceHtml\`, \`chapitreHtml\` (dr-recit) ; la colonne de gauche : la copie de classe en vignettes ; le presse-papiers : \`navigator.clipboard.writeText\` (avec un repli si refusé, dit à l'écran).
+La Relecture : `relecture()`, `recitHtml0`, `passeHtml`, `recitSeanceHtml`, `chapitreHtml` (dr-recit) ; la colonne de gauche : la copie de classe en vignettes ; le presse-papiers : `navigator.clipboard.writeText` (avec un repli si refusé, dit à l'écran).
 
 ## 3 · LA PREUVE
 Par le geste : un clic sur une vignette l'ouvre en grand (taille mesurée), Échap la ferme ; le bouton : son infobulle exacte ; le texte copié lu dans la page (compté : chaque partie de 588 et 591 présente ; aucun nom de famille entier) ; le parcours vert.

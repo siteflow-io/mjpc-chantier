@@ -3073,3 +3073,34 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert : 504, 505, 506, 509 ; 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **07:25 — message à Paul** : 503-510, mot pour mot comme ci-dessus.
+- **07:36 — Paul, mot pour mot :**
+
+  > ok quelles modifications faire pour que le récit dise réellement ce qui se passe en classe ? pour les initiales j'ai retrouvé les élèves. Un nouvel élève que je n'avais pas enregistré dans mjpc, et une élève dont j'avais fourché l'initiale du nom de famille. En soi c'est le genre de chose que je ne peux plus faire normalement, et le site ne devrait jamais mettre "un élève", parce que la participation doit être enregistrée absolument, sinon ce n'est pas juste pour l'élève. Si je tape des initiales qui n'existent pas dans la classe, le site devrait me le dire. Et surtout, au tableau des élèves, quand moi je tape "YC", il faudrait que eux voient le prénom de l'élève. à mettre au registre. répond d'abord sur le récit.
+- **07:36 — registre** (production `6c394d6`) : « LA PARTICIPATION : DES INITIALES QUI NE SONT CELLES D'AUCUN ÉLÈVE », les mots de Paul et les trois règles.
+- **07:36 — message à Paul, mot pour mot :**
+
+  > 511. Le récit, ce que je propose, point par point.
+  >
+  > 512. Début / milieu / fin (504). Le vrai temps passé en classe n'est pas connu, puisque l'heure est rejouée en accéléré. Ce qui s'en approche le plus, ce sont les durées que tu as prévues dans ton plan, diapo par diapo. Je propose : chaque paragraphe se place selon le temps prévu de ce qui a été joué avant lui, rapporté aux 50 minutes de l'heure. Pour les Dylan, cela donne : l'ouverture au début, l'Analyse d'images au milieu, la mise en commun à la fin. L'ordre des paragraphes reste celui de l'heure.
+  >
+  > 513. Ce qui n'a pas été fait (505), dans toutes les heures : « 7 diapos » et non « 7 activités », et dans l'ordre de ton plan.
+  >
+  > 514. L'ouverture du bilan (506), dans toutes les heures : « En fin d'heure » retiré des quatre formules ; il reste « Au total », « Pour résumer », « En tout ».
+  >
+  > 515. Les heures affichées (509). Pour une heure rattrapée, l'horloge de sa case ne sert plus qu'aux alertes et au chrono. Tout ce qui s'affiche ou s'enregistre comme une heure (« Enregistré à », « close · », la Relecture, « Ce qui s'est passé ») reprend l'heure réelle. Je mesure d'abord ce que montrent aujourd'hui la Relecture et « Ce qui s'est passé ».
+  >
+  > 516. 507 et 508, je ne touche à rien.
+  >
+  > 517. Les initiales sont au registre, avec tes trois règles : jamais « un élève » ; des initiales inconnues, le site te le dit à la frappe ; au tableau, les élèves voient le prénom.
+  >
+  > 518. 512 à 515 : un petit morceau, 30 minutes au plus. Je le lance ?
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 07:36
+  >
+  > À jouer : 518 · en cours : rien · ouvert : 512 à 515, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

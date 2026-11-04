@@ -2652,3 +2652,33 @@ MEMO
   > À jouer : « promeus » · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:01 — message de fin à Paul** : 449-450 et les 8 gestes, mot pour mot comme ci-dessus (03:01).
+- **03:02 — Paul, mot pour mot :**
+
+  > Promeus. Bon alors tout ce qui est ouvert là, 362 à 16, doit être réglé pour 5h45. 2h45 pour tout faire c'est bon?
+- **03:03 — la promotion 8.82.0-⑮** : le candidat `promo-8820b/index.html` (md5 `1cc2bd6fc7906d4587f48490586731dd`, 3 030 905 o) poussé en production (commit `4c59b64`, blob `69a091117e9c`) ; l'adresse publique le rend bit à bit à 03:04:41 (avant : `c21ddbb6`). Les documents de suite (production `a2bb4c9`) : le point de retour (blob `3b69aab74938`, la 8.81.1-⑭-micro), le journal, le registre ✔ (359 ; 360 et ㊸ 361 ; la réparation et 391 ; ㊶ ㊷ restent ouverts), l'index des fonctions (2 373), « où trouver quoi » avec l'adresse `index.html?n=3e&v=8.82.0`.
+- **03:07 — message à Paul, mot pour mot :**
+
+  > 451. En ligne : la 8.82.0-⑮, avec le lot 1, sa réparation et 391. Le site la sert à l'identique depuis 03:04. Le point de retour (la 8.81.1), le journal, le registre, l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 452. Pour 5h45, ça ne tient pas, même de loin. Le lot 1 a pris 3 h 30 à son exécutant pour trois points, puis 2 h 18 pour la réparation. Ce qui reste est plus gros : rattraper une heure et choisir une autre séance (362), le tableau distant une session à la fois (363), le minuteur, qui demande d'abord une maquette que tu valides (364), le réseau lent et la numérotation (365, 366), la refonte de la fin d'heure (㉚), et ⑯, dont la cause n'est pas prouvée. Et chaque exécutant use beaucoup : la réparation a pris 607 000 jetons.
+  >
+  > 453. En 2 h 45, au mieux le lot 2 seul (362, rattraper une heure), sans certitude qu'il soit fini et prouvé avant ta classe. Premier choix, le mien : rien d'autre avant ta classe, pour garder ton utilisation ; le lot 2 part quand elle le permet. Second choix : je lance le lot 2 maintenant ; il pousse ce qu'il prouve, et rien n'est mis en ligne sans ton mot.
+  >
+  > À tester, geste par geste, en mode test, avant ta classe, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.82.0 :
+  >
+  > 1. Le panneau du prof dit 8.82.0-⑮.
+  > 2. L'emploi du temps, sans rien lancer : la prochaine case des 3 DYLAN propose la séance 1.
+  > 3. Un essai lancé en mode test : la pastille du mode test refuse d'en sortir tant que l'essai n'est pas clos.
+  > 4. L'essai ouvert sur l'ordinateur, la télécommande par le QR ; sur un second ordinateur, « Reprendre » : le téléphone dit « Télécommande désactivée : l'ordinateur a repris la main », ses boutons grisés ; au second ordinateur, « ● session » paraît à ton premier geste.
+  > 5. « Reprendre avec la télécommande » : le téléphone reprend la main ; son ▶ fait avancer les deux ordinateurs et le tableau.
+  > 6. Un ▶ au téléphone, puis tout de suite « Reprendre » au second ordinateur : le ▶ reste partout, tableau compris.
+  > 7. Au second ordinateur, l'essai d'une autre classe : la fenêtre « … joue déjà sur un autre appareil » a ses trois boutons, chacun avec son infobulle ; « Annuler » ne change rien.
+  > 8. En répétition d'une séance des 3 FRANKLIN ARETHA : à droite, leur liste puis ta classe d'essai ; des initiales pas exactes, puis Entrée : personne ne passe au vert.
+  >
+  > 04/11/2026 03:07
+  >
+  > À jouer : les 8 gestes ; 453 à trancher · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

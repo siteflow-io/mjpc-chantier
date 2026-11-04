@@ -1,0 +1,80 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties F · 2026-11-04 23:30 UTC · md5 68ee03b0050fc73c15d0bc9f15ae7924 · images de 3e : un dossier local
+
+══ MESURE FRANKLIN · e-apres · md5 68ee03b0050fc73c15d0bc9f15ae7924 ══
+
+— partie F
+  [A7] la veille, chez les Dylan, un oral joué : {"m":true,"ouv":true,"act":"act2","oraux":1,"remplace":{"id":"act2","num":2,"faite":true}}
+  [F0] la veille, CLASSE TEST (3 DYLAN) lancée true, une réponse true, close true · séance 1 · paquet « CLASSE TEST » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « CLASSE TEST » · heures : 2026-09-14_15h07-16h02_CLASSE_TEST (close, 10 diapos, 1 décisions)
+  ok     F9 · F0 : aucune erreur JS, aucune boîte système
+  [F] mardi 15/09 15:08, la case des Franklin : 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 · semaine : 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-16 10:07-11:02 · rienDePret ‖ 2026-09-18 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [F] la modale : « mardi 15 septembre · 15:07-16:02 ✕ 3E FRANKLIN Aretha Poésie et peinture : le Romantisme en question heure 1 sur 1 L’appel — absents (0 sur 25) D’abord l’appel : un clic marque un absent, un clic défa » · lancée true
+  [F2] la page : classe « 3E FRANKLIN Aretha », 25 élèves sur 25 · manquent : []
+  [F1] initiales : élève 2 → MB, élève 3 → MB2 · à l’écran (dr_iniVu) : « MB<small class="dr-ini-p">Mat</small> » / « MB<small class="dr-ini-p">Maë</small> » · dr_iniExact(MB) = MB, dr_iniExact(MB2) = MB2, dr_iniSeul(MB) = null, dr_candidats(MB) = ["MB","MB2"]
+  [F2] la participation (#part) : 25 élèves montrés sur 25 · manquent : [] · forme des entrées : le nom
+  [F1] « Groupe 1 : l’hypothèse » (9 diapos parcourues) · deux réponses tapées « MB » (true, pas de ligne) · la page les range : [{"i":"MB","eleve":"personne","r":"Le peintre montre que la natur"}]
+  [F1] le VIF, « MB » tapé : la suggestion « un élève MBMatun élèvele MBMaë » · fiche ouverte false · candidats ["MB","MB2"]
+  [F1] « Groupe 2 : l’hypothèse » · « MB » et « ZA » (true, pas de ligne) · rangées : [{"i":"MB","eleve":"personne","r":"Le tableau parle du rêve et de"}]
+  [F1] le tableau (la fenêtre projetée) : « MB » 1 fois, « MB2 » 0 fois · « ACTIVITÉ 2 — GROUPE 2 : L’HYPOTHÈSE Quelle hypothèse le groupe 2 tire-t-il de son tableau ? MB Le tableau parle du rêve et de la soLe lac est calme, le peintre aime la nature sauvage.litude. »
+  [F2] élève 6 noté absent (true) : la participation montre 25 élèves · manquent [] · ELEVES 25
+  [F] close true · au hub : séance 1 · paquet « 3E FRANKLIN Aretha » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E FRANKLIN Aretha » · heures : 2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha (close, 11 diapos, 7 décisions) | séance 1 · paquet « CLASSE TEST » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « CLASSE TEST » · heures : 2026-09-14_15h07-16h02_CLASSE_TEST (close, 10 diapos, 1 décisions)
+  [F0/F3] la réponse des Dylan au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/CLASSE TEST/vif/parDiapo/0|aud-g1-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/CLASSE TEST/vif/J/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/CLASSE TEST/journal/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/CLASSE TEST/etat/parDiapo/0|aud-g1-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 1 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g1-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g1-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 2 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g1-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/34/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g1-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 3 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g2-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/38/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/38/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g2-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 4 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g2-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/38/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/38/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g2-hyp/reps/0/0/r"]
+  [F1] l’heure des Franklin au hub (séance 1, « 2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha ») : élève 2 cité 0 fois, élève 3 cité 0 fois ; « MB2 » 0 fois
+  [R1] Franklin, sa propre heure · entête « Relecture — 3E FRANKLIN Aretha · heure 1 (mardi 15 septembre 2026) · Poésie et peinture : le Romantisme en question » · classe relue (DR_RECIT_CLASSE) « 3E FRANKLIN Aretha » · classe du pilotage (AT_DR_COURS) « 3E FRANKLIN Aretha », ELEVES de « 3E FRANKLIN Aretha » : 25 noms dont 25 Franklin · la classe relue a 25 élèves
+  [R1] Franklin, sa propre heure · le menu des classes : null · « Ce qui s’est passé » : réponses sans élève au journal 2, liens « à corriger » 2
+  [R1] Franklin, sa propre heure · « Qui a répondu » (Qui a répondu « Le peintre montre que la nature estOn voit la mer en colère, les hommes on) : 25 élèves proposés, dont 25 des Franklin, 0 autres
+  [R2] Franklin, sa propre heure · « Le chapitre » : sous-titre « 1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame » · S.closes = {"1":1789477778500} (clés ["1"]) · S.heure 1, lancée true, close true · heuresCours ["1"] · travailHeure ["1"] · echeanceHeure {"1":"2026-09-16"}
+  [R2] Franklin, sa propre heure · ligne : « Heure 1 — donné le mardi 15 septembre 2026, pour mercredi 16 septembre, 10 h 07 »
+  [R2] Franklin, sa propre heure · ligne : « Heure 2 — mardi 15 septembre 2026 · à venir : la trame prévoit Où en sommes-nous ?… »
+  [R2] Franklin, sa propre heure · ligne : « Heure 1 — parti à la maison ou reporté : 1 activité sur 2 n'a pas tenu · 30 min de trop »
+  [R2] Franklin, sa propre heure · décisions (S.decisions) : 2 · heure 1 sans « defaut » : 2 · ["act2:1:reporter","aud-bilan:1:reporter"]
+  [R2] Franklin, sa propre heure · activités (dr_recitActivites) : 2 · dans l’heure 1 (dr_dansHeureJouee) : 2 · [{"id":"act1","n":2,"h1":2},{"id":"act2","n":10,"h1":10}]
+  [R3] Franklin, sa propre heure · notions : « non travaillée » 1 fois · état « travaillée » 1 · notionsTravaillees() : 1 ["n-act1"] · S.notionsOral 0 · S.faiteOral 0 · vuMax : 8 clés · journal 45 (diapo 11, devoile 24, reponse 2)
+  [R3] Franklin, sa propre heure · par activité (F = finie ; lignes de la diapo / vuMax ; j = montrée au journal) : [{"a":"A1","comp":2,"d":"F4/4j F3/3j"},{"a":"A2","comp":10,"d":"F0/0j F1/1j F0/0j F1/1j -0/0 -1/0 -0/0 -1/0 -0/0 -1/0"}]
+  ok     A2 · Franklin, sa propre heure · pas de menu des classes — null
+  ok     A3 · Franklin, sa propre heure · « Le chapitre » : 1 heure close, pas d’« Heure 0 » — 1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame · 0 ligne(s) « Heure 0 »
+  ok     A4 · Franklin, sa propre heure · « 1 activité sur 2 n’a pas tenu » — ["Heure 1 — parti à la maison ou reporté : 1 activité sur 2 n'a pas tenu · 30 min de trop"]
+  ok     A5 · Franklin, sa propre heure · le pilotage reste sur les Franklin (AT_DR_COURS, ELEVES) — 3E FRANKLIN Aretha · ELEVES 25 dont 25 Franklin
+  [A7] Franklin, sa propre heure · oraux (S.oraux) : 0 · notionsOral 0 · faiteOral 0 · la phrase de l’oral des Dylan dans le récit : false
+  ok     A7 · Franklin, sa propre heure · la Relecture des Franklin ne montre pas l’oral des Dylan — 0 oral(aux), phrase false
+  [A8] le pilotage des Franklin (onglet « null ») : {"cours":"3E FRANKLIN Aretha","mem":"3E FRANKLIN Aretha","enClasse":false,"recit":"3E FRANKLIN Aretha","vue":"relecture","eleves":25,"vuMax":"8 clés 191#p88ugq","J":"45 lignes 6811#1z13y87","etat":"1117#idir3","closes":"{\"1\":1789477778500}","oraux":0,"parDiapo":"11 clés 1393#616pnw","heure":1,"lancee":true,"close":true,"repetition":false,"ongPilotage":false,"ongRelecture":true}
+  [R1] le calendrier, la case des Dylan (lundi 14/09) : ouverte true · boutons ["✕","Relire cette heure"]
+  [R1] « Relire cette heure » cliqué : true
+  [R1] Dylan par le calendrier, pilotage Franklin · entête « Relecture — CLASSE TEST · heure 1 (lundi 14 septembre 2026) · Poésie et peinture : le Romantisme en question » · classe relue (DR_RECIT_CLASSE) « CLASSE TEST » · classe du pilotage (AT_DR_COURS) « 3E FRANKLIN Aretha », ELEVES de « 3E FRANKLIN Aretha » : 25 noms dont 25 Franklin · la classe relue a 4 élèves
+  [R1] Dylan par le calendrier, pilotage Franklin · le menu des classes : null · « Ce qui s’est passé » : réponses sans élève au journal 1, liens « à corriger » 1
+  [R1] Dylan par le calendrier, pilotage Franklin · « Qui a répondu » (Qui a répondu « Pour les Dylan : la nature est immense. » ?) : 4 élèves proposés, dont 0 des Franklin, 4 autres
+  [R2] Dylan par le calendrier, pilotage Franklin · « Le chapitre » : sous-titre « 1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame » · S.closes = {"1":1789391319997} (clés ["1"]) · S.heure 1, lancée true, close true · heuresCours ["1"] · travailHeure ["1"] · echeanceHeure {"1":"2026-09-15"}
+  [R2] Dylan par le calendrier, pilotage Franklin · ligne : « Heure 1 — donné le lundi 14 septembre 2026, sans échéance »
+  [R2] Dylan par le calendrier, pilotage Franklin · ligne : « Heure 2 — mardi 15 septembre 2026 · à venir : la trame prévoit Où en sommes-nous ?… »
+  [R2] Dylan par le calendrier, pilotage Franklin · ligne : « Heure 1 — parti à la maison ou reporté : tout a tenu »
+  [R2] Dylan par le calendrier, pilotage Franklin · décisions (S.decisions) : 1 · heure 1 sans « defaut » : 1 · ["aud-bilan:1:reporter"]
+  [R2] Dylan par le calendrier, pilotage Franklin · activités (dr_recitActivites) : 2 · dans l’heure 1 (dr_dansHeureJouee) : 2 · [{"id":"act1","n":2,"h1":2},{"id":"act2","n":10,"h1":10}]
+  [R3] Dylan par le calendrier, pilotage Franklin · notions : « non travaillée » 1 fois · état « travaillée » 2 · notionsTravaillees() : 2 ["n-act1","n-act2"] · S.notionsOral 1 · S.faiteOral 1 · vuMax : 7 clés · journal 43 (diapo 10, devoile 23, reponse 1)
+  [R3] Dylan par le calendrier, pilotage Franklin · par activité (F = finie ; lignes de la diapo / vuMax ; j = montrée au journal) : [{"a":"A1","comp":2,"d":"F4/4j F3/3j"},{"a":"A2","comp":10,"d":"F0/0j F1/1j F0/0 F1/0 F0/0 F1/0 F0/0 F1/0 F0/0 F1/0"}]
+  ok     A1 · Dylan par le calendrier, pilotage Franklin · « Qui a répondu » : les élèves de la classe relue seulement — 4 proposés, 0 Franklin, la classe relue en a 4
+  ok     A2 · Dylan par le calendrier, pilotage Franklin · pas de menu des classes — null
+  ok     A3 · Dylan par le calendrier, pilotage Franklin · « Le chapitre » : 1 heure close, pas d’« Heure 0 » — 1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame · 0 ligne(s) « Heure 0 »
+  ok     A4o · Dylan par le calendrier, pilotage Franklin · un oral remplace l’activité qui n’a pas tenu : « tout a tenu » (elle est faite à l’oral) — {"id":"act2","num":2,"faite":true} · ["Heure 1 — parti à la maison ou reporté : tout a tenu"]
+  ok     A5 · Dylan par le calendrier, pilotage Franklin · le pilotage reste sur les Franklin (AT_DR_COURS, ELEVES) — 3E FRANKLIN Aretha · ELEVES 25 dont 25 Franklin
+  [A7] Dylan par le calendrier, pilotage Franklin · oraux (S.oraux) : 1 · notionsOral 1 · faiteOral 1 · la phrase de l’oral des Dylan dans le récit : true
+  ok     A7 · Dylan par le calendrier, pilotage Franklin · la Relecture des Dylan montre leur oral — 1 oral(aux), phrase true
+  ok     A6o · Dylan par le calendrier, pilotage Franklin · un oral remplace une activité : ses diapos comptent finies (faite à l’oral) ; hors d’elle, aucune diapo comptée finie sans avoir été montrée — A2 F0/0j F1/1j F0/0 F1/0 F0/0 F1/0 F0/0 F1/0 F0/0 F1/0 · faiteOral ["act2"] · hors d’elle 0 diapo(s)
+  [R1] le menu des classes changé vers « null »
+  [A8] dans la Relecture des Dylan : {"cours":"3E FRANKLIN Aretha","mem":"3E FRANKLIN Aretha","enClasse":false,"recit":"CLASSE TEST","vue":"relecture","eleves":25,"vuMax":"7 clés 174#2tom7z","J":"43 lignes 6353#16k7zdv","etat":"1286#fgc9n4","closes":"{\"1\":1789391319997}","oraux":1,"parDiapo":"10 clés 1080#aas84m","heure":1,"lancee":true,"close":true,"repetition":false,"ongPilotage":false,"ongRelecture":true} · écrit à deroule_joue depuis le calendrier : 0 []
+  [A8] la barre visible : ["Structure","Atelier","Relecture","✕ Fermer l’atelier"]
+  [A8] pas d’onglet « Pilotage » montré : le calendrier, la case des Franklin (2026-09-15) : ouverte true · boutons ["✕","Relire cette heure"]
+  [A8] le retour au pilotage (onglet « case des Franklin, « Relire cette heure » ») : {"cours":"3E FRANKLIN Aretha","mem":"3E FRANKLIN Aretha","enClasse":false,"recit":"3E FRANKLIN Aretha","vue":"relecture","eleves":25,"vuMax":"8 clés 191#p88ugq","J":"45 lignes 6811#1z13y87","etat":"1117#idir3","closes":"{\"1\":1789477778500}","oraux":0,"parDiapo":"11 clés 1393#616pnw","heure":1,"lancee":true,"close":true,"repetition":false,"ongPilotage":false,"ongRelecture":true} · écrit à deroule_joue au retour : 0 []
+  ok     A8 · le retour aux Franklin par un geste du site, sans recharger — geste case des Franklin, « Relire cette heure » · vue relecture · classe relue 3E FRANKLIN Aretha
+  ok     A9 · le pilotage revient exactement à ce qu’il avait (classe, élèves, vuMax, journal, état, parDiapo) : 14 parts comparées, 0 différente(s) —  · forme brute des champs vides : "parts:[] notesFil:[] oraux:absent faiteOral:absent copie:absent videoPos:{} coupures:absent notionsImprevues:{} durees:absent travailEdite:absent rienProchaine:absent recitVersion:{} recitMoi:{} recitMoiT:{} recitVersions:{} recitRelu:{} recitAChange:{} copieED:{} notionsOral:absent" → "parts:[] notesFil:[] oraux:{} faiteOral:{} copie:absent videoPos:{} coupures:absent notionsImprevues:{} durees:absent travailEdite:absent rienProchaine:absent recitVersion:{} recitMoi:{} recitMoiT:{} recitVersions:{} recitRelu:{} recitAChange:{} copieED:{} notionsOral:{}"
+  ok     A10 · rien n’est écrit chez les Dylan ni chez les Franklin depuis la Relecture (deroule_joue) : 0 écriture(s) — []
+  [F3] la réponse 1 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 2 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 3 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 4 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] le récit : 52 phrases · « Dylan » false · élève 2 (prénom) 0 fois, élève 3 0 fois · prénoms de la liste cités : 1
+  ok     F9 · F : aucune erreur JS, aucune boîte système
+
+--- fin : 17 vérifications, 0 échec(s)

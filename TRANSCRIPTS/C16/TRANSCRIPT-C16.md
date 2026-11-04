@@ -3776,3 +3776,25 @@ MEMO
   > À jouer : choisir le minuteur (655) ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **16:54 — Paul, mot pour mot :**
+
+  > au tableau, ça doit donner P4. au pilotage, ça doit RESTER en dessous de la diapo centrale, mais au dessus de la zone commentaire. Par ailleurs, au clic sur le bouton chrono, ça ouvre le paramétrage chrono. Une fois lancé, les paramètres se cachent derrière le bouton. Si je reclique sur le bouton, je retrouve mon paramétrage et ainsi de suite. Tu vois l'idée? Enfin, vu que le chrono je le vois sur ma diapo de pilotage et sur la vue tableau, je dois pouvoir le glisser au pilotage (il serait alors en modale) et qu'il glisse aussi au tableau. Ainsi, c'est moi qui adapte sa place, surtout si quelque chose est écrit dessous. Enfin, dans ses réglages, il doit avoir un zoom. Tu as compris? J'attends tes 2 captures, pilotage et tableau P4.
+
+- **16:58 → 16:58 — la conscience** : les deux captures faites par elle-même (pas d'exécutant) : la sonde `captures-minuteur.mjs` de `captures/minuteur`, une proposition P4B ajoutée (construite dans la page de la capture seulement), sur la 8.84.0-⑰ assemblée (md5 `c6b75c7a`) au faux hub ; un premier passage sans la pastille au pilote (cachée sous la diapo), corrigé ; mesuré : le réglage sous la barre (bas 982 px), pas sur la diapo, les notes dessous ; la pastille au pilote 112 px, en bas à droite ; au tableau rien de couvert. Poussé sur `captures/minuteur-p4b` `392434e64` ; dossier de travail supprimé. Registre (production).
+- **16:58 — message à Paul, mot pour mot :**
+
+  > 656. Compris. Au tableau, P4. Au pilotage, le bouton chrono reste sous la diapo ; un clic ouvre le réglage, sous la diapo et au-dessus des notes ; lancé, le réglage se cache derrière le bouton ; un nouveau clic le rouvre, et ainsi de suite. La pastille est aussi sur ta diapo du pilote, au même endroit qu'au tableau : tu la glisses au pilote, elle glisse au tableau. Le réglage a un zoom.
+  >
+  > 657. Les deux captures (P4B-pilote.png, P4B-tableau.png). Au pilote, le réglage est ouvert, comme après un clic pendant que le chrono tourne, avec le zoom à droite ; les notes descendent de la hauteur du réglage. La pastille est en bas à droite, le coin libre, sur ta diapo comme au tableau, et ne couvre rien.
+  >
+  > 658. Je propose deux règles : la pastille se pose d'elle-même dans un coin libre, et tu la déplaces si besoin ; le zoom change sa taille au tableau et au pilote ensemble, pour que ta diapo montre exactement ce que voit la classe.
+  >
+  > 659. Si ça te va, ce minuteur prend sa place dans l'ordre de 638, après 582 et 583.
+  >
+  > À tester : regarder les deux captures.
+  >
+  > 04/11/2026 16:58
+  >
+  > À jouer : 656 à 659 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

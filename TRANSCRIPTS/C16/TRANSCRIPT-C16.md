@@ -2526,3 +2526,24 @@ MEMO
 
 - **Incident de la conscience** : la réponse de fin du tour de 00:02 n'a pas porté le message 432-435 (elle est restée vide) : il est écrit ci-dessus au transcript, mais Paul ne l'a pas reçu à 00:02.
 - **01:30 — le contrôle programmé** (`trig_01U5XtMxCpXLSSUqm1JNGhXB`, reçu 01:30:47) : relu à 01:31 — le banc fini (FINI, témoin 23:59:32, 178 lignes, toutes lues à 00:02) ; aucun navigateur ; le candidat `promo-8820/index.html` md5 `658d7987` ; la production inchangée (`c21ddbb6`) ; le sas à jour. Rien à relancer. La demande 432-435 envoyée à Paul maintenant, mot pour mot comme ci-dessus, avec l'heure 04/11/2026 01:31.
+
+- **01:31 — message de fin à Paul** : « Le contrôle de 01:30 est fait : le banc et le témoin sont finis, ma demande de « promeus » est ci-dessus. Rien relancé. / 04/11/2026 01:31 / À jouer : 435 à trancher, puis « promeus » · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚ / MEMO ».
+- **02:40 — Paul, mot pour mot :**
+
+  > 391. Mais hier, j'avais dit que si j'ouvrais mjpc je voyais ce bandeau afin de pouvoir me "connecter" à la session en cours . Ainsi, je peux passer d'un ordi à l'autre sans perturber la classe et un geste sur un ordi se répercute sur l'autre. Donc je ne comprends oas pourquoi tu me dis que ça devrait clôturer l'heure de l'autre ordi?
+- **02:41 — la conscience** : lu dans le code du candidat (dr-session.js, l'emballage de `dr_lancer`) : la fenêtre « Une heure joue déjà… » ne paraît que si l'heure lancée n'est pas la même (`!meme(c)` : autre niveau, chapitre, séance ou classe) ; la même séance de la même classe se rejoint sans fenêtre ; le texte « La lancer ici la clôt. » est déjà dans la production 8.81.1 (1 occurrence).
+- **02:41 — message à Paul, mot pour mot :**
+
+  > 436. Tu as raison, et c'est bien ce que fait le site. Quand tu ouvres MJPC sur un second ordinateur pendant l'heure, le bandeau « Reprendre » te connecte à la même heure : rien n'est clos, et un geste sur l'un se voit sur l'autre (prouvé cette nuit, 5 fois sur 5). Relancer la même heure depuis l'emploi du temps fait pareil.
+  >
+  > 437. 391 est un autre cas : tu lances, depuis l'emploi du temps, une AUTRE heure (une autre classe ou une autre séance) pendant qu'une heure joue encore ailleurs. Par exemple, l'heure de 08:57 n'est pas close sur l'ordi portable, et tu lances la classe de 10:07 sur l'ordi de la classe. Le site te demande alors : « Rejoindre la séance en cours », « Lancer celle-ci quand même » ou « Annuler ». Une seule vraie heure joue à la fois : « Lancer celle-ci quand même » clôt l'autre. C'est écrit dans la fenêtre depuis avant le lot 1, mais le bouton ne marchait pas.
+  >
+  > 438. Le défaut 391 ne touche que ce cas-là : l'écran de l'ordinateur dont l'heure vient d'être close la montre encore lancée.
+  >
+  > À tester : rien avant ton mot.
+  >
+  > 04/11/2026 02:41
+  >
+  > À jouer : 435 à trancher, puis « promeus » · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
+  >
+  > MEMO

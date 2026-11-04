@@ -345,7 +345,7 @@ const partieI = async () => {
   Hh.forEach(v => { const s = JSON.stringify(v); dire('  [I4] l’heure au hub : « reponse » au journal ' + (s.match(/"type":"reponse"/g) || []).length + ' · ' + TX.map(([t]) => '« ' + t.slice(0, 12) + '… » ' + (s.split(t.slice(0, 14)).length - 1) + ' fois').join(', ')); });
   const F = await lireFaces(pg); const ph = t => (F.recit.split(/(?<=[.!?])\s+/).find(x => x.indexOf(t.slice(0, 14)) >= 0) || '');
   TX.forEach(([t, n, n2]) => { const x = ph(t); dire('  [I4/I5] le récit, « ' + t.slice(0, 20) + '… » : présent ' + (F.recit.indexOf(t.slice(0, 14)) >= 0) + ' · élèves nommés dans sa phrase : ' + JSON.stringify(LISTE.filter(m => x.indexOf(m.split(' ').slice(-1)[0]) >= 0).map(rang)) + ' (attendu ' + rang(n2 || n) + ')' + ' · Papier ' + (F.papier.indexOf(t.slice(0, 14)) >= 0)); });
-  fs.writeFileSync(path.join(OUT, 'recit-initiales.txt'), F.recit + '\n\n=== Papier ===\n' + F.papier + '\n');
+  fs.writeFileSync(path.join(OUT, 'recit-initiales-d.txt'), F.recit + '\n\n=== Papier ===\n' + F.papier + '\n');
   /* 5 · l'heure close : la même case, le même jour ; puis le lendemain */
   const m1 = await caseDe(pg, fc.iso, fc.cr, FRA); dire('  [I5] la case, close, même jour : « ' + m1.t.replace(/\s+/g, ' ').slice(0, 260) + ' » · boutons ' + JSON.stringify(m1.btns));
   const lz = await clicTexte(pg, '#edt-modale button', 'Ouvrir le pilotage et lancer'); await p(2500); const msg = await pg.evaluate(() => { const t = (document.body.innerText || '').replace(/\s+/g, ' '); const i = t.indexOf('ne se rouvre pas'); return i >= 0 ? t.slice(Math.max(0, i - 120), i + 40) : null; }); dire('  [I5] « Ouvrir le pilotage et lancer » cliqué ' + lz + ' · « ne se rouvre pas » à l’écran : ' + JSON.stringify(msg) + ' · S.close ' + await pg.evaluate(() => !!S.close));
@@ -398,7 +398,7 @@ const partieJ = async () => {
   const F = await lireFaces(pg); const ph = t => (F.recit.split(/(?<=[.!?»])\s+/).find(x => x.indexOf(t.slice(0, 14)) >= 0) || '');
   dire('  [RG-J] les faces de la Relecture (pilote) : récit ' + dansFace(F.recit, TX.map(([t]) => t)) + '/' + TX.length + ' · Papier ' + dansFace(F.papier, TX.map(([t]) => t)) + '/' + TX.length);
   TX.forEach(([t, n]) => { const x = ph(t); dire('  [J4/J5] le récit, « ' + t.slice(0, 20) + '… » : présent ' + (F.recit.indexOf(t.slice(0, 14)) >= 0) + ' · élèves nommés dans sa phrase : ' + JSON.stringify(LISTE.filter(m => x.indexOf(m.split(' ').slice(-1)[0]) >= 0).map(rang)) + ' (élève de la ligne : ' + rang(n) + ') · Papier ' + (F.papier.indexOf(t.slice(0, 14)) >= 0)); });
-  fs.writeFileSync(path.join(OUT, 'recit-initiales.txt'), anon(F.recit) + '\n\n=== Papier ===\n' + anon(F.papier) + '\n');
+  fs.writeFileSync(path.join(OUT, 'recit-initiales-d.txt'), anon(F.recit) + '\n\n=== Papier ===\n' + anon(F.papier) + '\n');
   finir('J9', o, 'J'); await o.ctx.close(); await T.ctx.close();
   const RELIRE = process.env.MJPC_RELIRE ? path.resolve(process.env.MJPC_RELIRE) : FICHIER; dire('  [RG-J5] relue avec ' + (RELIRE === FICHIER ? 'le même fichier' : 'un autre fichier, md5 ' + md5(RELIRE)));
   const o2 = await ouvrir({ h: '09:10', jour: '2026-09-16', fichier: RELIRE }); await projeter(o2.pg, '2026-09-14', 7); const m2 = await caseDe(o2.pg, fc.iso, fc.cr, FRA); await p(1500); const ecr0 = ECR.length; dire('  [J5] le lendemain, la case du 15/09 : boutons ' + JSON.stringify(m2.btns));
@@ -557,5 +557,5 @@ const partieD = async () => {
 dire(''); dire('══ MESURE INITIALES · ' + NOMF + ' · md5 ' + md5(FICHIER) + ' ══');
 for (const [k, f] of [['I', partieI], ['J', partieJ], ['K', partieK], ['B', partieB], ['D', partieD]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
-fs.writeFileSync(path.join(OUT, 'sonde-corriger-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
+fs.writeFileSync(path.join(OUT, 'sonde-relecture-d-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

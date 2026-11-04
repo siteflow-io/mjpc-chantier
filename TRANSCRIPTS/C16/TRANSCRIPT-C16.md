@@ -3271,3 +3271,41 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (542, puis le hub sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **12:45 — Paul, mot pour mot :**
+
+  > Non jetais dans la séance 1 continuée. Toujours pas terminée d'ailleurs. Peut-être que ça peut venir de là. Le récit de la séance de début de semaine était correct lui. 
+  > Mon ordi est allumé je suis connecté dans un onglet sur mjpc. Pour tab d'ailleurs, quand je cliquais dessus le curseur allait dans le champ du titre d'activité. Tu le verras sur une diapo, le titre du tableau a un M en trop, que j'avais tapé en pensant être dans la case du champ de l'initiale élève. Enfin, le vidéoprojecteur de la salle est mal calibré et donc la vue tableau debordait de limage projetée au tableau. Vu que c'est une fenêtre, je me suis dit que j'allais pouvoir la redimensionner sur l'ordi qui avait la page du tableau distant. Peine perdue, je pense que c'est dû à l'histoire du plein écran en double clic. 
+  > Autre chose aussi, à mettre au registre des dettes mais pour plus tard : quand j'ajoute des numéros sur une image, ils s'affichent en très gros sur l'image de la vue tableau distant, alors que pourtant sur ma vue du pilotage ils sont à taille suffisante. Consigne le, ce n'est pas bloquant mais ça sera à traiter quand j'aurai plus d'utilisation.
+
+- **12:46 → 12:58 — la conscience, au vrai hub par le Chrome de Paul, GET seulement** (l'onglet ouvert puis fermé ; d'abord un essai sur l'ancien projet `dictee-5e-ch4`, qui n'a pas de déroulé : le hub du site est `mjpc-hub`). Lu : `/classes/3_franklin_aretha` (30 élèves, une seule façon ; deux paires d'initiales, 5 noms de famille en deux mots) ; `/site/3e/chapitres/1/seances/0/deroule_joue/3_franklin_aretha` : deux heures (lundi, la 1re ; aujourd'hui, la 2e) ; le journal (209 entrées) ; `etat/parDiapo` ; l'heure 2. Trouvé : 24 réponses à l'heure 2, 2 au journal, les 22 autres tapées pendant un gel (dégel : le journal d'une réponse se fait dans `pousser` seulement si le tableau était sur la même diapo ; le récit lit `repsJ`, le journal) ; « MB » ×4 au premier ; KR, NL, ELF, MBMAR, M : rattachés à personne ; le « M » du titre ; les mots de l'éditeur dans la consigne « Groupe 1 » (copie de la classe). Aucun nom d'élève recopié ici. Registre (production `871b9c4`).
+- **12:51 — message à Paul, mot pour mot :**
+
+  > 543. J'ai lu ton heure des Franklin au hub, en lecture seulement. Les causes sont trouvées.
+  >
+  > 544. Le récit : ce n'est pas la séance continuée, c'est le gel. Cinq fois, tu as gelé le tableau, tu es passé à la diapo suivante sur ton écran et tu y as tapé les réponses avant de dégeler. Ces réponses-là ne sont jamais écrites dans le journal de l'heure, et le récit ne lit que le journal. Sur 24 réponses, 22 ont été tapées pendant un gel : aucune n'est au journal. Les 2 tapées après un dégel y sont. Lundi, sans gel, le récit était juste. Rien n'est perdu : les 24 réponses sont au hub, dans les diapos.
+  >
+  > 545. Les deux MB : sur la diapo « Groupe 4 », tu as tapé « MB » 4 fois, et les 4 réponses sont allées au premier des deux. « MBMAR » n'a été rattaché à personne. Ta classe a aussi deux EL.
+  >
+  > 546. Les élèves manquants : 5 élèves de ta liste ont un nom de famille en deux mots. Le site prend le premier mot pour le nom et le reste pour le prénom : il leur donne de fausses initiales et un faux prénom. Trois fois, tu as tapé leurs vraies initiales (KR, NL, ELF) et le site n'a trouvé personne. Je pense que ce sont eux que tu ne voyais pas. Est-ce bien eux ?
+  >
+  > 547. Tab : le « M » en trop dans « Groupe 2 : l'hypothèseM » est au hub, et juste après, une réponse aux initiales « M », rattachée à personne. C'est ce que tu décris : Tab t'a envoyé dans le titre.
+  >
+  > 548. Trouvé en passant : dans la copie de ta classe, la consigne de la diapo « Groupe 1 » contenait des mots de l'éditeur (« BLOC 1 · QUESTION · 1 ÉLÉMENT… »). Tu les as effacés en début d'heure. Je ne sais pas encore d'où ils viennent.
+  >
+  > 549. Je propose : le récit lit les réponses là où elles sont rangées, dans les diapos avec leur heure, et non plus dans le journal. Ton récit des Franklin se referait alors tout seul, avec ses 24 réponses.
+  >
+  > 550. Je propose : quand deux élèves ont les mêmes initiales, le site te montre leurs deux prénoms et tu choisis. Jamais le premier sans demander.
+  >
+  > 551. Je propose : le nom de famille, ce sont tous les mots en capitales ; le prénom, le reste. Les initiales sont la première lettre du prénom et celle du nom.
+  >
+  > 552. Je propose : après les initiales, Tab va toujours à la réponse, jamais au titre.
+  >
+  > 553. Au registre aussi : la fenêtre du tableau distant qui ne se redimensionne pas, et les numéros trop gros sur une image (pour plus tard). Je lance 549 à 552 l'un après l'autre, 549 d'abord ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 12:51
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (546, puis 549 à 552 sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

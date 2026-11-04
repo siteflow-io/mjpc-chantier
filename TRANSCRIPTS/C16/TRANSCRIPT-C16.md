@@ -3569,3 +3569,24 @@ MEMO
   > À jouer : rien · en cours : la mesure de la Relecture (fin vers 16:07) · ouvert : 573 et 597, 599, 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **15:52 — l'exécutant (message)** : mesure sur la 8.84.0-⑰ (md5 `c6b75c7a`), faux hub (trois ajouts écrits dans la NOTE : une taxonomie, une notion par activité, l'état rendu en tableaux comme Firebase) ; commit `11e1c5963` sur `mesure/relecture` ; aucune ligne du site changée. (1) Pilotage sur les Franklin, Dylan par la case puis « Relire cette heure » : entête et Relecture des Dylan ; « Qui a répondu » : 25 Franklin, 0 Dylan (`dr_corrigerReponse` l. 22258 lit `ELEVES`, rempli par `dr_classe` l. 17327 depuis `AT_DR_COURS` ; `dr_relireTrace` l. 20939 et `dr_recitChargerClasse` l. 22601 ne les changent pas) ; le menu des classes actif (`dr_recitSelecteurHtml` l. 22598). (2) `chapitreHtml` l. 22208, 22224 : les clés de `S.closes` (`[null, t]`) : « 2 heure(s) close(s) », « Heure 0 … en cours » ; « N sur M » l. 22210-22212 : décisions (par activité ou par diapo, `cleDec` l. 17931) contre activités. (3) `notionsTravaillees` l. 18457, `finie` l. 17943 : toutes les diapos d'une activité finies, ou un oral ; le `vuMax` de la classe du pilotage en relisant une autre classe (l. 22604). Pas mesuré : le vrai hub, l'heure rattrapée, deux heures, après rechargement, l'oral. 195 739 jetons.
+- **15:53 — la conscience** : audit : seuls les fichiers de `MESURE-RELECTURE/` (et les mesures reprises) ; ça va. Registre (production).
+- **15:53 — message à Paul, mot pour mot :**
+
+  > 606. La mesure est finie (15:52), rien n'a été corrigé.
+  >
+  > 607. Relire une autre classe par la case du calendrier : l'entête et la Relecture sont bien celles des Dylan, mais le site garde la classe du pilotage pour ses élèves (« Qui a répondu » : 25 Franklin, 0 Dylan) et pour ce qu'elle a vu (une diapo comptée faite chez les Dylan alors qu'ils ne l'ont pas vue). Le menu des classes reste actif.
+  >
+  > 608. « Le chapitre » : le hub range une case vide avant la première heure ; le site la compte comme une heure (« 2 heures closes ») et la dit « en cours » puisqu'elle n'a pas de fin (l'« Heure 0 »). « 8 sur 2 » met le nombre de diapos ou d'activités reportées face au nombre d'activités de l'heure : il mélange les deux.
+  >
+  > 609. Les notions : une notion n'est « travaillée » que quand toutes les diapos de son activité ont été faites, ou par un oral. Chez les Dylan, l'activité n'est pas finie (elle continue à la prochaine heure) : sa notion n'est donc pas encore « travaillée ». C'est la règle du site aujourd'hui. Est-ce la tienne ?
+  >
+  > 610. Je propose deux morceaux, l'un après l'autre, 30 minutes au plus chacun. Le premier : relire une autre classe lit tout de cette classe (ses élèves, ce qu'elle a vu, ses oraux) ; le menu des classes retiré ; « Le chapitre » ne compte que les heures jouées, plus d'« Heure 0 » ; « N sur M » compte des activités reportées sur les activités de l'heure. Le second (573) : « à corriger » vaut aussi pour une réponse donnée au mauvais élève et pour les réponses retrouvées dans les diapos, avec les élèves de la classe relue. Puis mon banc, puis ton « promeus » pour 571 et ces deux morceaux. Ensuite 572, 582, 583. Je lance le premier ?
+  >
+  > À tester : rien (ne clique pas sur « Attribuer » dans la Relecture d'une autre classe que celle du pilotage).
+  >
+  > 04/11/2026 15:53
+  >
+  > À jouer : rien · en cours : rien · ouvert : 609, 610 (sur ton mot), 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

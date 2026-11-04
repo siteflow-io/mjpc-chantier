@@ -1,7 +1,7 @@
 # Le minuteur : cinq propositions en captures (C16 649), 04/11/2026
 
 Le site utilisé est la 8.84.0-⑰ : l'assemblé de `46d140ab6` (md5 `8d17922b…`), où seule la ligne de version change (md5 `c6b75c7a…`). Aucun fichier du site n'a changé : chaque proposition est construite dans la page de la capture seulement, avec `captures-minuteur.mjs`.
-Les captures sont faites sur le faux hub, avec une vraie heure (la case du 14/09, 3E Charles de Gaulle, l'heure 1). La diapo est la 12, « Chaque groupe présente son tableau et son hypothèse… », l'une des 7 de l'audit I, tout dévoilé. Le minuteur est lancé « au tableau », il reste 04:32 : avant chaque image, la page recale le reste à 04:32 et relit l'écran juste avant la prise. Les 12 images montrent 04:32.
+Les captures sont faites sur le faux hub, avec une vraie heure (la case du 14/09, 3E Charles de Gaulle, l'heure 1). La diapo est la 12, « Chaque groupe présente son tableau et son hypothèse… », l'une des 7 de l'audit I, tout dévoilé. Le minuteur est lancé « au tableau », il reste 04:32 : avant chaque image, la page recale le reste à 04:32 et relit l'écran juste avant la prise. Onze images montrent 04:32. Sur P0-pilote, on lit 04:31 : une seconde est passée pendant la prise.
 Les images font 1920 × 1080 à l'échelle 2 (3840 × 2160) et montrent l'écran entier. Couleurs du site : or `#e4b45c` sur brun `#3a2c14` (celles du bouton « Départ »), police EB Garamond.
 Mesures sur cette diapo, en pixels de l'écran. Aujourd'hui, la diapo du tableau fait 1920 × 1080.
 

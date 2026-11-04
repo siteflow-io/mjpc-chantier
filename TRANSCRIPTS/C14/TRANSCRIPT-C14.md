@@ -5279,3 +5279,25 @@ vérifie ça.
 04/11/2026 16:38
 
 MEMO
+
+## Tour 184 — 04/11/2026 16:55
+
+**Paul (16:55) :**
+
+parfait, ça repartira pour samedi?
+
+**Ce qui a été fait (C14) :** vérifié : la tâche planifiée est en place (samedi 07/11/2026, 23:00 heure de Paris, dans cette conversation). « parfait » pris comme le mot de Paul sur 142 : noté dans la consigne de samedi (2 bis) et au registre.
+
+**Claude (16:58) :**
+
+À jouer : rien · en cours : rien · ouvert : la vérification du QCM samedi 07/11 à 23:00 ; la 8.0.5 (135, 136), avec la carte du QCM (142) ; 143, pour C16
+
+144. Oui. La tâche planifiée est toujours en place : samedi 07/11 à 23:00, ici. Elle lit la consigne au sas, qui contient maintenant la fiche du QCM.
+
+145. Samedi, c'est une mesure seulement : rien n'est codé. La carte du QCM repartira avec la 8.0.5, quand tu relanceras le QCM après avoir lu ce que samedi aura trouvé. Je prends ton « parfait » comme un oui à 142 : c'est noté au registre et dans la consigne.
+
+À tester : rien.
+
+04/11/2026 16:58
+
+MEMO

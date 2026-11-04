@@ -19,7 +19,7 @@ Mesurées sur l'ancienne 7.7.1, jamais revérifiées depuis que la 8.0.0 (13/10)
 Les contrôles fixes de la conscience (`AUDITS/CONTROLES-QCM-APP/`, 32) sur la 8.0.4 et sur la 8.0.5, s'ils tournent sur un faux hub (lire son README) : les comptes.
 
 ## 2 bis. La fiche du QCM (ajouté le 04/11 à 16:35, vidéo de Paul de 16:24, C14 140 à 142)
-Le QCM n'a plus sa déclaration (`MJPC_APP`, `MJPC_MANIFESTE`, `MJPC_PURGE`) depuis la 8.0.0 : « Mettre les fiches à jour » échoue (« déclaration illisible ») ; registre, entrée « QCM — LA FICHE DU QCM NE SE MET PLUS À JOUR ». À compter dans ce qui reste : la tête de `code-qcm` l'a-t-elle ? Les nœuds que la 8.0.5 utilise au site sont-ils tous dans la déclaration de la 7.7.2 ? Et le mot de Paul sur 142, s'il est venu.
+Le QCM n'a plus sa déclaration (`MJPC_APP`, `MJPC_MANIFESTE`, `MJPC_PURGE`) depuis la 8.0.0 : « Mettre les fiches à jour » échoue (« déclaration illisible ») ; registre, entrée « QCM — LA FICHE DU QCM NE SE MET PLUS À JOUR ». À compter dans ce qui reste : la tête de `code-qcm` l'a-t-elle ? Les nœuds que la 8.0.5 utilise au site sont-ils tous dans la déclaration de la 7.7.2 ? Le mot de Paul sur 142 est venu : « parfait » (04/11 16:55) : la carte de la 7.7.2 repart avec la 8.0.5.
 
 ## 3. Ce que le cadrage a laissé pour plus tard
 Dans `MANDATS/CADRAGE-QCM.md`, `CADRAGE-QCM-SECOUSSE.md`, `MANDAT-CODE-QCM.md`, `MANDAT-MAQUETTE-QCM-COMPLETE.md`, `MAQUETTE-QCM-COMPLETE/VALIDEE.md`, `COMPLEMENT-MAQUETTE-QCM-COMPLETE-*.md`, `DETTES-QCM-179-184-A-REPORTER.md`, `PROMPT-QCM-CREATION/`, `QCM-CONNAISSANCE.md` :

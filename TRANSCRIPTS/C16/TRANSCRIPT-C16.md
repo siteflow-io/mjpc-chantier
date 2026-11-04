@@ -2724,3 +2724,23 @@ MEMO
   > À jouer : les 8 gestes ; 460 à trancher ; 459 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:30 — Paul, mot pour mot :**
+
+  > 457. J'avais dit ça pour qu'une répétition necrive jamais de participation au hub sur une vraie classe. Et tu avais dit oui. 459. Si tu dis quels endroits sont à changer, ça revient à travailler sans surveillance de ton propre repérage. Il faut plutôt que tu donnes une supposition forte aux exécutants que c'est bien cette partie ou ces parties de code à modifier mais ils ne doivent jamais agir en te croyant uniquement. Ils doivent mesurer et vérifier tes dires. Mais ça doit rester économe en tokens.
+- **03:31 — la conscience** : relu la sortie de la non-régression du complément (sonde-lot1, sur `48c2205e`) : « ok P6 · répétition · rien d’écrit dans la copie d’une classe — [] » (la liste en répétition : la classe répétée puis la classe d'essai).
+- **03:31 — message à Paul, mot pour mot :**
+
+  > 461. 457 : compris. Ton but du 28/10 est tenu sans la classe d'essai. Mesuré sur la 8.82.0 : en répétition, avec les élèves de la classe répétée, rien n'est écrit dans la copie de la classe. Je propose donc : en répétition, seulement la classe répétée, comme ton 361. Une ligne, prouvée en quelques minutes, qui part avec la prochaine mise en ligne. Si tu ne dis rien, c'est acquis.
+  >
+  > 462. 459 : compris. Dans le mandat, je donne ma supposition forte : les endroits du code que j'ai lus, et pourquoi. L'exécutant les vérifie d'abord, par le code et par une mesure courte, avant de rien changer. S'il trouve autre chose, il me le dit. Et il reste économe.
+  >
+  > 463. 460 attend ton mot : je lance le premier morceau du rattrapage ?
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:31
+  >
+  > À jouer : les 8 gestes ; 463 ; 461 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

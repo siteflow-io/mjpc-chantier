@@ -3865,3 +3865,29 @@ MEMO
   > À jouer : la maquette (664), 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **18:45 — Paul, mot pour mot** (avec une vidéo de 20 s d'un minuteur : un rectangle blanc, un anneau qui se vide, de grands chiffres avec + et − sur chacun, ▶, ■, quatre poignées) :
+
+  > Ce que tu as fait est bien. il faudrait qu'il soit plutot en forme allongée, et que le passage des couleurs parte de la valeur donnée. Si je mets 10 secondes de chrono, c'est vert à 10, puis après ça change de couleur par crans en descendant. regarde cette vidéo. ça doit ressembler à ça en bas sous la diapo, avec la coche "au tableau", mais il faut la faire plus grande cette case, ou un togle, et au tableau s'affiche juste le rectangle avec le cercle qui descend avec son dégradé de couleurs indexé sur la valeur définie du chrono, et le décompte numérique à coté. tu as compris? Montre moi sur capture construite ce que ça donnerait.
+
+- **18:46 — Paul, mot pour mot** (pendant que la conscience préparait les captures) :
+
+  > et redimensionnable, le rectangle, comme dans ma vidéo
+
+- **18:46 → 18:51 — la conscience** : la vidéo regardée (une planche de 8 images) ; les captures faites par elle-même (la sonde `captures-minuteur.mjs`, une proposition P6, construite dans la page de la capture seulement, sur la 8.84.0-⑰ assemblée, md5 `c6b75c7a`) ; deux passages corrigés (une fonction de couleur mal passée à la page ; le rectangle et le réglage mal dessinés, le réglage caché) ; mesuré : le réglage sous la barre (988 → 1078 px), pas sur la diapo, les notes dessous ; au tableau, rien de couvert ; une image des crans pour 10 s. Poussé sur `captures/minuteur-p6` `86319ab64` ; dossier supprimé. Registre (production).
+- **18:51 — message à Paul, mot pour mot :**
+
+  > 669. Compris, et vu ta vidéo. Au tableau, seulement le rectangle allongé : l'anneau qui se vide et le décompte à côté. Ses couleurs partent de la durée que tu donnes et descendent par crans. On le redimensionne par ses poignées, comme dans ta vidéo. Sous la diapo, le réglage ressemble à ta vidéo, avec « au tableau » en interrupteur.
+  >
+  > 670. Les trois captures (P6-pilote.png, P6-tableau.png, P6-crans.png), sur le site en ligne, rien de codé. Au pilote : le rectangle sur ta diapo avec ses quatre poignées, au même endroit qu'au tableau ; sous la barre de la diapo, le réglage : l'anneau, chaque chiffre avec son + et son −, ⏸, ■, l'interrupteur « au tableau », le zoom à droite. Au tableau : le rectangle dans le coin libre, il ne couvre rien. P6-crans.png : ton exemple de 10 s.
+  >
+  > 671. Les crans que je propose, comptés sur la durée donnée : vert tant qu'il reste plus de la moitié, jaune jusqu'au quart, orange jusqu'au dixième, rouge pour le dernier dixième. Pour 10 s : vert de 10 à 6, jaune de 5 à 3, orange à 2, rouge à 1 et 0.
+  >
+  > 672. Une tension : les poignées font déjà le zoom. Je propose de retirer le zoom du réglage, pour qu'il n'y ait qu'un seul geste pour la taille. D'accord ?
+  >
+  > À tester : regarder les trois captures.
+  >
+  > 04/11/2026 18:51
+  >
+  > À jouer : 671, 672 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

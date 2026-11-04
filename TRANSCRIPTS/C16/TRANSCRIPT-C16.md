@@ -3590,3 +3590,18 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert : 609, 610 (sur ton mot), 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **15:58 — Paul, mot pour mot :**
+
+  > mais de quoi tu parles pour le menu des classes? je ne sais pas ce que c'est ce menu
+
+- **15:59 — message à Paul, mot pour mot :**
+
+  > 611. Pardon, c'est mon mot. Je parle de la liste déroulante que tu as entourée en rouge sur ta capture de 15:28 : dans la Relecture, à droite des onglets (« Le récit · heure 1 … Le chapitre »), celle qui affiche « 3 DYLAN BOB » et propose de changer de classe. C'est elle que tu as dit ne jamais vouloir (« une séance se relit en y entrant par le calendrier, c'est tout »), et c'est elle que 610 retire.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 15:59
+  >
+  > À jouer : rien · en cours : rien · ouvert : 609, 610 (sur ton mot), 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

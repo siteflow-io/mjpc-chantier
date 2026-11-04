@@ -2864,3 +2864,22 @@ MEMO
   > À jouer : les 8 gestes ; 476 acquis sans mot · en cours : le troisième morceau (l'horloge, une seule clé) · ouvert : 476, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **04:10 — message à Paul** : 475-477, mot pour mot comme ci-dessus.
+- **04:21 — l'exécutant du troisième morceau (message)** : poussé `4c671e4fe` (`deroule/lot2c`, base `2a82a095c`, assemblé `b25d10c8`) ; `dr_horlogeCase` et son affichage (dr-socle.js, pas `dr_classe`), `dr_edtReprendre`, `dr_reprendreCours`, `dr_coursActif` (dr-classe.js), la sonde `LOT2C/sonde-lot2c.mjs`. Prouvé (M 12/12 ; base : 4 échecs) : avant, l'heure rattrapée lancée jeudi 17:30 pour lundi 15:07-16:02 : les 4 paliers d'entrée, la fin d'heure ouverte, +93:14 ; après : 50 min jusqu'au cahier, rien à +40, T-5 à +46 ; l'heure ordinaire inchangée (48 min, T-5 15:52) ; l'heure ordinaire reprise le lendemain : 1 clé au lieu de 2, la bonne diapo ; parcours vert (30/0). Trouvé : la reprise du lendemain sous sa clé relit l'horloge de la veille : tout part à la reprise (-1085 min) — déjà le cas pour une heure rattrapée (M5), maintenant aussi pour l'heure ordinaire ; l'heure affichée d'une heure rattrapée reprise : 07:37 ; « aller à 5 minutes de la fin » pourrait servir à l'accéléré (pas codé). 44 outils, 161 386 jetons, 13 min 20.
+- **04:22 — audit de la conscience sur `4c671e4fe`** : 7 fichiers ; `dr_classe` pas touché ; ni `AUDITS/` ni fichiers interdits ; réassemblé à l'identique (`b25d10c8`) ; aucun nom d'élève. Ça va, sauf le point 9 : une régression créée pour l'heure ordinaire reprise le lendemain. Renvoyé au même exécutant (message) : une heure reprise un autre jour reprend son horloge là où elle s'était arrêtée, rien ne part à la reprise ; la reprise du même jour inchangée ; 15 minutes ; pas le bouton « aller à 5 minutes de la fin » (à Paul).
+- **04:22 — message à Paul, mot pour mot :**
+
+  > 478. Le troisième morceau est fait, en 13 minutes. Mesuré : avant, une heure rattrapée lancée jeudi pour une case de lundi faisait partir d'entrée toutes les alertes (5, 3, 1 minute, le cahier), ouvrait la fin d'heure, et le chrono affichait +93 minutes. Après, elle compte ses 50 minutes depuis son lancement : rien ne part d'entrée, le rappel des 5 minutes vient à +46. Une heure ordinaire reprise le lendemain s'écrit sous une seule entrée au hub, et non plus deux. Une heure ordinaire dans son créneau ne change pas.
+  >
+  > 479. Mais ce morceau a créé un défaut, trouvé par l'exécutant : une heure ordinaire reprise le lendemain relit l'horloge de la veille, et toutes les alertes et la fin d'heure partent à la reprise. Ça ne va pas. Il le règle maintenant (15 minutes au plus) : une heure reprise un autre jour reprend son horloge là où elle s'était arrêtée, et rien ne part à la reprise.
+  >
+  > 480. Une question, pour ton « en accéléré » : le bouton « ⏩ aller à 5 minutes de la fin » existe aujourd'hui pour ta classe d'essai. Veux-tu l'avoir aussi dans une heure rattrapée, pour arriver tout de suite à la fin d'heure et à ses décisions ?
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 04:22
+  >
+  > À jouer : les 8 gestes ; 480 à trancher ; 476 acquis sans mot · en cours : la reprise du lendemain (15 min) · ouvert : 476, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

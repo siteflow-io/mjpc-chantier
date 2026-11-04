@@ -4176,3 +4176,20 @@ MEMO
 - **22:41 — mandat A2** (`NUIT-04-11/A2-RETOUR-AU-PILOTAGE.md`) : ce que A n'a pas prouvé, 20 minutes au plus, sur `nuit/a`.
 - **22:57 — l'exécutant A2 rend son travail** : sas `nuit/a` `12bc59b76` (la sonde complétée, ses sorties) ; aucune ligne du site changée, la mesure n'a rien trouvé à corriger ; assemblé inchangé (md5 `3e505041…`). Compté : 17 vérifications, 0 échec ; un oral joué chez les Dylan paraît dans leur Relecture (1) et pas dans celle des Franklin (0) ; revenir aux Franklin sans recharger rend exactement ce qu'il y avait (14 parts comparées, 0 différente ; 2 champs vides passent d'« absent » à « vide ») ; 0 écriture au hub sur tout le trajet ; A1 à A6 restent verts. Non mesuré : le même trajet pendant une heure en cours (le code le refuse, lu dans le fichier) ; un oral qui remplace une activité la compte « faite à l'oral » (la règle de 609), ce qui fait échouer deux contrôles de la sonde de A, écrits sans oral.
 - **22:57 — lancé : l'exécutant du mandat C** (la case des initiales ; `nuit/c` depuis `12bc59b76`), 30 minutes au plus.
+- **23:12 — l'exécutant C rend son travail** : sas `nuit/c` `122d2d565` ; assemblé md5 `c2d61e306998bb17f9c57fbe32183b3f`. Compté, base → après : la sonde de la case, une touche à la fois, 1 sur 24 → 24 sur 24 (des lettres en majuscules seulement ; la liste numérotée dès la première lettre ; le saut à la réponse jamais avant, un nom en trois initiales, deux MB au chiffre ; un nom de famille en deux mots donne ses trois initiales et le prénom seul ; Entrée et Tab au titre : 8 gestes sur 16 → 0 ; des initiales inconnues dites à la frappe ; au tableau « Prénom N. ») ; la sonde du gel 4 sur 4 ; le parcours vert (30 ok). Reste, d'après lui : une réponse tapée la case vide, ou après un clic direct dans la réponse avec des initiales inconnues, reste « à personne », et le récit écrit encore « un élève » ; ajouté hors du mandat, à valider : Tab dans une réponse encore vide n'en sort plus.
+- **23:12 — lancé : l'exécutant du mandat B** (corriger après l'heure ; `nuit/b` depuis `122d2d565`), 30 minutes au plus.
+- **23:12 — message à Paul, mot pour mot :**
+
+  > 716. C est fait et prouvé au faux hub : 24 vérifications sur 24, contre 1 avant. La case ne prend que des lettres, mises en majuscules toutes seules. Dès la première lettre, la liste numérotée des prénoms ; le chiffre choisit. Le saut à la réponse ne vient jamais avant toutes les initiales ; pour deux MB, le chiffre. Un nom de famille en deux mots donne ses trois initiales et le prénom seul. Entrée et Tab ne vont plus jamais au titre (8 fois sur 16 gestes avant, 0 maintenant). Des initiales inconnues : le site le dit dès la frappe. Au tableau, « Prénom N. ». Le gel et le parcours restent verts.
+  >
+  > 717. Il reste un trou : une réponse tapée la case vide, ou en cliquant directement dans la réponse avec des initiales inconnues, n'est à personne, et le récit écrit encore « un élève ». Ce que je propose, pour ta règle du matin (la participation enregistrée absolument) : une réponse ne se valide qu'avec son élève ; Entrée dans une réponse sans élève ne valide pas, la case des initiales demande « Qui a répondu ? » et le curseur y retourne ; la réponse reste telle que tu l'as tapée. Les heures déjà jouées se corrigent dans la Relecture (B, en cours). Sans réponse de ta part, je le fais après D.
+  >
+  > 718. L'exécutant a ajouté une chose hors du mandat : Tab dans une réponse encore vide n'en sort plus. Sans ça, ton Tab d'habitude, tapé juste après le saut automatique à la réponse, envoyait le curseur sur un bouton. Je le garde, sauf si tu dis non.
+  >
+  > À tester : rien de nouveau ce soir ; les sept tests de 701 restent valables.
+  >
+  > 04/11/2026 23:12
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : B (corriger après l'heure) · ouvert : D (avec 609), 717, 636, 633, 634, puis 640, 642, 643, ㊵ (710) ; à cadrer : 639, 644, 645
+  >
+  > MEMO

@@ -310,3 +310,19 @@ marge (§4).
 Conséquence pour l'outil d'évaluation (points 101 à 103, en attente) : les passages se font par
 groupe, avec pour chaque élève « sa partie » ou « toute sa plaidoirie » ; la note orale reste
 individuelle.
+
+## 14. Le 4/11 après-midi : la note du dossier (points 123 à 131)
+
+Paul, 14:51 : « il faut que je fasse une petite fiche d'évaluation du dossier : tenue du dossier,
+pièces faites complètes, etc. quelque chose de très rapide à corriger, qui donnera une note pour le
+groupe. ça fera combien de notes? »
+
+- Notes du procès, par élève : plaidoirie écrite /20 (individuelle, page 31), oral /20
+  (individuel), dossier (groupe). Plus le QCM du 15/10 pour le chapitre.
+- Proposé (124) : dossier /10, une case = un fait = un point, vérifié en feuilletant. Paul, 15:09 :
+  « non, pas de critère pour une pièce de plus. C'est du plus, pas du minimum. »
+- Paul, 15:09 : les élèves savent déjà que l'oral et le dossier sont évalués (point 126 retiré).
+- La grille orale imprimable de l'an dernier, `DOCUMENTS PROCES\S6_grilles_oral_v4.html`, est
+  **/20 direct** : V, F, C /3 (lecture /9), R, P, L /3 (débat /9), S /2 (sérieux dans les rôles,
+  destitution = 0). Le /22 du §12 est celui de la page interactive (S compté deux fois). Pour cette
+  année, aucune grille orale n'existe encore dans le dossier du chapitre (mesuré le 4/11, 15:10).

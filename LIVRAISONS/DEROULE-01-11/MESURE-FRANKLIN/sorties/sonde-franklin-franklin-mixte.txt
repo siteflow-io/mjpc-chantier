@@ -1,0 +1,30 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties F · 2026-11-04 11:35 UTC · md5 a196385663d15975df8176ed5c8c0fba · images : celle du canon
+
+══ MESURE FRANKLIN · franklin · md5 a196385663d15975df8176ed5c8c0fba · liste MIXTE ══
+
+— partie F
+  [F] mardi 15/09 15:08, la case des Franklin : 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 · semaine : 2026-09-15 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-16 10:07-11:02 · rienDePret ‖ 2026-09-18 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [F] la modale : « mardi 15 septembre · 15:07-16:02 ✕ 3E FRANKLIN Aretha Poésie et peinture : le Romantisme en question heure 1 sur 1 L’appel — absents (0 sur 20) D’abord l’appel : un clic marque un absent, un clic défa » · lancée true
+  [F2] la page : classe « 3E FRANKLIN Aretha », 20 élèves sur 25 · manquent : ["élève 21","élève 22","élève 23","élève 24","élève 25"]
+  [F1] initiales : élève 2 → MB, élève 3 → MB2 · à l’écran (dr_iniVu) : « MB<small class="dr-ini-p">Mat</small> » / « MB<small class="dr-ini-p">Maë</small> » · dr_iniExact(MB) = MB, dr_iniExact(MB2) = MB2, dr_iniSeul(MB) = null, dr_candidats(MB) = ["MB","MB2"]
+  [F2] la participation (#part) : 20 élèves montrés sur 25 · manquent : ["élève 21","élève 22","élève 23","élève 24","élève 25"] · forme des entrées : le nom
+  [F1] « Groupe 1 : l’hypothèse » (9 diapos parcourues) · deux réponses tapées « MB » (true, true) · la page les range : [{"i":"MB","eleve":"élève 2 (MB n°1)","r":"Le peintre montre que la natur"},{"i":"MB","eleve":"élève 2 (MB n°1)","r":"On voit la mer en colère, les "}]
+  [F1] le VIF, « MB » tapé : la suggestion « un élève MBMatun élèvele MBMaë » · fiche ouverte false · candidats ["MB","MB2"]
+  [F1] « Groupe 2 : l’hypothèse » · « MB » et « ZA » (true, true) · rangées : [{"i":"MB","eleve":"élève 2 (MB n°1)","r":"Le tableau parle du rêve et de"},{"i":"ZA","eleve":"élève 1","r":"Le lac est calme, le peintre a"}]
+  [F1] le tableau (la fenêtre projetée) : « MB » 1 fois, « MB2 » 0 fois · « ACTIVITÉ 2 — GROUPE 2 : L’HYPOTHÈSE Quelle hypothèse le groupe 2 tire-t-il de son tableau ? MB Le tableau parle du rêve et de la solitude. ZA Le lac est calme, le peintre aime la nature sauvage. »
+  [F2] élève 6 noté absent (true) : la participation montre 20 élèves · manquent ["élève 21","élève 22","élève 23","élève 24","élève 25"] · ELEVES 20
+  [F] close true · au hub : séance 1 · paquet « 3E FRANKLIN Aretha » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E FRANKLIN Aretha » · heures : 2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha (close, 11 diapos, 7 décisions)
+  [F0/F3] la réponse des Dylan au hub : []
+  [F1/F3] la réponse 1 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g1-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/43/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/43/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g1-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 2 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g1-hyp/reps/0/1/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/44/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/44/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g1-hyp/reps/0/1/r"]
+  [F1/F3] la réponse 3 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g2-hyp/reps/0/0/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/48/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/48/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g2-hyp/reps/0/0/r"]
+  [F1/F3] la réponse 4 au hub : ["/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/parDiapo/0|aud-g2-hyp/reps/0/1/r","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif/J/49/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal/49/txt","/site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat/parDiapo/0|aud-g2-hyp/reps/0/1/r"]
+  [F1] l’heure des Franklin au hub (séance 1, « 2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha ») : élève 2 cité 3 fois, élève 3 cité 0 fois ; « MB2 » 0 fois
+  [F3] la réponse 1 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 2 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 3 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] la réponse 4 : dans le récit true, le texte pour École Directe true, le Papier true
+  [F3] le récit : 52 phrases · « Dylan » false · élève 2 (prénom) 0 fois, élève 3 0 fois · prénoms de la liste cités : 1
+  ok     F9 · F : aucune erreur JS, aucune boîte système
+
+--- fin : 1 vérifications, 0 échec(s)

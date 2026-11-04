@@ -1,0 +1,24 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties K · 2026-11-04 13:03 UTC · md5 c6b75c7a8a4fd99de7b2d156f6af4944 · images : celle du canon
+
+══ MESURE INITIALES · ini8840 · md5 c6b75c7a8a4fd99de7b2d156f6af4944 ══
+
+— partie K
+  [K] clic (+343 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] « z » (+487 ms) · curseur .ini[0.i.0] <span> · case des initiales « z » · la ligne : élève personne, i « Z », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] « a » (+629 ms) · curseur .ini[0.i.0] <span> · case des initiales « za » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] Enter (+790 ms) · curseur [-1.act] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] clic dans la case de la réponse (+1002 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] lettre 1 « L » (+1181 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « L » · vert true · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] +500 ms sans frapper (+4586 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » · vert true · tableau : 22/22 lettres, prénom false, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] Entrée (valider) (+4753 ms) · curseur [-1.act] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom false, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] +900 ms (+5659 ms) · curseur [-1.act] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom false, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K3] au tableau distant, la réponse A finie : 22/22 lettres · « ZA » 1 fois · prénom false, nom false
+  [K5] la réponse A validée, ses initiales changées « ZA » → « lc », Entrée : la ligne → élève élève 4, i « LC » ; le journal « reponse » de A → élève élève 1, ini « ZA » · « reponse-eleve » ou autre trace au journal : ["devoile","diapo","diapo","devoile","reponse","parole"] · le vert : élève 1 false, élève 4 true
+  [K5] close true · le récit, la réponse A : présente true · élèves nommés dans sa phrase : ["élève 1"]
+  ok     K9 · K : aucune erreur JS, aucune boîte système
+  [K5] Relecture (true), onglet « recit » : champs modifiables 1 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  [K5] Relecture (true), onglet « passe » : champs modifiables 1 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  [K5] Relecture (true), onglet « papier » : champs modifiables 1 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  ok     K9 · K lendemain : aucune erreur JS, aucune boîte système
+
+--- fin : 2 vérifications, 0 échec(s)

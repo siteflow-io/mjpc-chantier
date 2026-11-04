@@ -2565,3 +2565,9 @@ MEMO
   > À jouer : 439-440 à valider · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **02:47 — message à Paul** : 439-440 mot pour mot comme ci-dessus.
+- **02:51 — Paul, mot pour mot :**
+
+  > Ok
+- **02:53 — la conscience** : codé dans `ex-complement` (pas encore poussé) : `dr_cloreHeureRestee` (dr-classe.js) écrit aussi l'état vivant de l'heure close (`<C>/vif` : `close`, `sig` = `heure|<chemin de l'heure>`, `sorte`, `cours`, `par`, `ts`) ; `node --check` ; assemblé md5 `df003634`. La preuve lancée, machine seule : sonde-lot1 W puis le parcours.

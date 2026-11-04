@@ -3913,3 +3913,21 @@ MEMO
   > À jouer : 675 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **19:01 — Paul, mot pour mot :**
+
+  > attention à ne pas partir sur du développement de maquette cependant. les seules choses qui seront donc intégrées dans le push une fois la maquette validée, ce sera le chrono et "ce que voit la classe" qui devra évidemment ensuite ne pas uniquement que montrer le chrono qui se déplace, se redimensionne etc, mais également quand j'écris au tableau etc. bref: le tableau quoi. ensuite, et seulement après, on lance le mandat dans l'ordre.
+
+- **19:01 — la conscience** : mandat `MANDATS/DEROULE-01-11/MANDAT-MAQUETTE-MINUTEUR-V2.md` (`25b2f7153`, les mots de Paul) ; un exécutant neuf lancé à 19:01, 30 minutes au plus, base `b371f5718` (la v1), branche `maquette/minuteur-v2`.
+- **19:02 — message à Paul, mot pour mot :**
+
+  > 677. Compris. La maquette v2 est lancée (19:01), 30 minutes au plus, limitée à deux choses, écrites dans le code du site : le chrono P6, et « Ce que voit la classe » qui est le tableau lui-même (le chrono déplacé, redimensionné, ses couleurs, ce que tu écris, dévoiles, gèles, surlignes). Rien d'autre.
+  >
+  > 678. Une fois la maquette validée par toi, on intègre ces deux choses seulement : mon banc, puis ton « promeus ». Ensuite, et seulement après, le mandat dans l'ordre de 638.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 04/11/2026 19:02
+  >
+  > À jouer : 666 ; 534 (le test 2) · en cours : la maquette v2 (fin vers 19:31) · ouvert : 612 à 637 (ordre de 638, après le minuteur), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

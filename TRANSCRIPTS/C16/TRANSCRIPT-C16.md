@@ -4078,3 +4078,4 @@ MEMO
   > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les trois parties du banc (fin vers 22:06), le clignotement (fin vers 22:25) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **22:00 — les trois parties rouges, rejouées** (`scratchpad/banc-trois.sh`, sur `30a9b4652`, assemblé `c781672e` inchangé, de 21:46:10 à 22:00:49) : K1-K13 106/0 (K11 dans le cadre) ; la sonde de la ⑩ au v3 55/0 VERT ; les sessions 105/0. Avec le banc de 20:02 (le même fichier), tout est vert.

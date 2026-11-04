@@ -4060,3 +4060,21 @@ MEMO
   > À jouer : 695, 685 ; 666 ; 534 (le test 2) · en cours : les trois parties du banc (fin vers 22:06) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **21:47 — Paul, mot pour mot :**
+
+  > il faut garder le clignotement
+
+- **21:48 — la conscience** : l'ancien clignotement lu dans la production (`#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite`, `@keyframes drMinutClig{50%{opacity:.25}}`). Mandat `MANDATS/DEROULE-01-11/MANDAT-CHRONO-CLIGNOTE.md` (`79dc26a02`) ; un exécutant neuf lancé à 21:48, 15 minutes au plus, base `30a9b4652`, branche `chrono/clignote` ; preuve ciblée (C16 448).
+- **21:48 — message à Paul, mot pour mot :**
+
+  > 696. Noté : le clignotement du rouge est gardé, comme avant, dans les trois vues. Un exécutant le remet, 15 minutes au plus (lancé à 21:48) ; il commencera ses essais à la fin de mes trois parties du banc (vers 22:06).
+  >
+  > 697. C'est un petit changement : je ne repasse pas tout le banc, mais une preuve ciblée sur le chrono (la sonde de la ⑩, la frappe et la maquette). Puis je te demande « promeus », vers 22:30.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 21:48
+  >
+  > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les trois parties du banc (fin vers 22:06), le clignotement (fin vers 22:25) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

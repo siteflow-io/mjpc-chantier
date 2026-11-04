@@ -2978,3 +2978,21 @@ MEMO
   > À jouer : les 6 gestes ; 490 · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **06:45 — Paul, mot pour mot :**
+
+  > redonne moi la capture
+- **06:46 — la conscience** : aucune capture sur la machine (le dossier des pièces jointes est vide ; aucune image de 03/11 vers 12:04 ; l'historique de la session n'a pas d'image).
+- **06:46 — message à Paul, mot pour mot :**
+
+  > 492. Je ne peux pas : je n'ai plus la capture. Elle n'a jamais été gardée sur ma machine, et ma mémoire de la conversation a été résumée sans les images. Elle est dans notre conversation, dans ton message d'hier à 12:04 : remonte jusqu'à lui.
+  >
+  > 493. Autre piste : la répétition d'hier a peut-être gardé ces réponses à ton hub, si aucune répétition ne les a remplacées depuis. Je peux les relire par ton Chrome, en lecture seule. Tu veux ?
+  >
+  > À tester : les 6 gestes de 06:23.
+  >
+  > 04/11/2026 06:46
+  >
+  > À jouer : les 6 gestes ; 493 · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

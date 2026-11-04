@@ -3121,3 +3121,22 @@ MEMO
   > À jouer : rien · en cours : le récit (512-515, 30 min au plus) · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **07:41 — message à Paul** : 519, mot pour mot comme ci-dessus.
+- **08:02 — l'exécutant du récit (message)** : poussé `c65974076` (`deroule/recit-rattrape`, dr-recit.js seul, assemblé `712ba2eb`). Prouvé : 512 (7 paragraphes sur 7 au temps prévu : l'activité longue « à la fin » → « au début », la mise en commun « à la fin » → « au milieu ») ; 513 (« Ce qu'on n'a pas fait cette heure-ci : … », 2 sur 2 dans l'ordre du plan) ; 514 (plus de « En fin d'heure », récit et École Directe) ; l'heure ordinaire : 2 phrases sur 20 changent ; parcours vert. Pas codé : 515 (le journal daté à l'horloge de la case, 22 endroits : « un mandat à lui seul »). Ne sait pas : l'ordre du plan quand les décisions reviennent du hub ; la classe d'essai pas repassée. 44 outils, 167 523 jetons, 21 min 27.
+- **08:03 — la conscience** : audit de `c65974076` : dr-recit.js et l'assemblé, la sonde et ses sorties ; ni dr-socle.js, ni `AUDITS/`, ni fichiers interdits ; aucun nom d'élève. Ça va. Le mandat `MANDATS/DEROULE-01-11/MANDAT-HEURE-REELLE.md` (`9dc9ef1c6`, base `c65974076`, branche `deroule/heure-reelle`) ; un exécutant neuf lancé à 08:03.
+- **08:03 — message à Paul, mot pour mot :**
+
+  > 520. Le récit est fait pour 512 à 514, en 21 minutes. Vérifié sur une heure rattrapée comme celle des Dylan : les 7 paragraphes sont à leur place selon le temps prévu de ton plan (l'Analyse d'images au début, la mise en commun au milieu) ; « Ce qu'on n'a pas fait cette heure-ci : … », dans l'ordre du plan ; plus de « En fin d'heure ». Une heure ordinaire : 2 phrases sur 20 changent (513 et 514), le reste est identique.
+  >
+  > 521. Pas encore vérifié : l'ordre du plan quand les décisions reviennent du hub, comme pour ton heure des Dylan. L'exécutant n'a pas pu rouvrir l'heure. Je le mesurerai à mon banc.
+  >
+  > 522. 515 (les heures affichées) n'est pas fait. La cause est plus large que je ne le pensais : le site date chaque geste de l'heure à l'horloge de la case, à 22 endroits. Un exécutant neuf le règle maintenant, 30 minutes au plus : l'heure réelle partout, l'horloge de la case pour les seules alertes et le chrono. Ensuite, mon banc, puis je te demande « promeus » pour le tout.
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 08:03
+  >
+  > À jouer : rien · en cours : l'heure réelle (515, 30 min au plus) · ouvert : 521, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

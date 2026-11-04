@@ -326,3 +326,11 @@ groupe. ça fera combien de notes? »
   **/20 direct** : V, F, C /3 (lecture /9), R, P, L /3 (débat /9), S /2 (sérieux dans les rôles,
   destitution = 0). Le /22 du §12 est celui de la page interactive (S compté deux fois). Pour cette
   année, aucune grille orale n'existe encore dans le dossier du chapitre (mesuré le 4/11, 15:10).
+
+**La grille d'oral (4/11, 15:19 à 15:29).** Paul, 15:19 : « il faut une grille d'oral facile à
+remplir en live lors du procès. quelque chose à cocher. » Proposé : une grille papier, une case = un
+fait = un point (130 à 132). Paul, 15:29 : « l'appel, on ne va pas le faire. déjà qu'ils sont
+tellement en retard que j'ai dû reporter la plaidoirie à la semaine prochaine... » — **pas de procès
+en appel** cette année. Proposé ensuite (133) : la plaidoirie seule, les 9 cases des fiches du matin
+plus « fini dans le temps », oral sur 10. Le sens exact de « reporter la plaidoirie à la semaine
+prochaine » est demandé à Paul (136).

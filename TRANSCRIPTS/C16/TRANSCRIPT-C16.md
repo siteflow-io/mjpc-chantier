@@ -2886,3 +2886,24 @@ MEMO
 
 - **04:35 — l'exécutant du troisième morceau (message)** : poussé `bbc1d1c1a` (`deroule/lot2c`, assemblé `2f28361d`) : `dr_reprendre` (dr-classe.js) pose l'écart d'horloge quand le jour de la case n'est pas aujourd'hui ; `dr_horlogeCase` (dr-socle.js) le suit. Prouvé (M5-M7, 9/9 ; base `4c671e4fe` : 4 échecs) : reprise du lendemain, ordinaire et rattrapée : rien ne part ; le reste et l'heure affichée d'avant la fermeture (48 min, 15:08 ; 50 min, 15:07) ; le T-5 au temps joué ; une seule clé ; la reprise du même jour inchangée ; parcours vert. Pas réglé : le chrono après une reprise le lendemain compte depuis le lancement de la veille (1132:34) ; essai retiré, pas prouvé. 191 887 jetons au total.
 - **04:35 — audit de la conscience sur `bbc1d1c1a`** : dr-classe.js (+5), dr-socle.js (3 lignes, pas `dr_classe`), la sonde et ses sorties ; assemblé `2f28361d`. Ça va. Le chrono renvoyé au même exécutant (10 minutes) : après une reprise un autre jour, le chrono repart du temps déjà joué.
+
+- **04:35 — message de fin à Paul** : « Les alertes à la reprise du lendemain sont réglées et prouvées ; il reste le chrono, qui compte encore depuis la veille : l'exécutant le règle (10 minutes au plus). » (le bloc de fin, 04:35).
+- **04:39 — l'exécutant (message)** : poussé `9ef95de45` (`deroule/lot2c`, assemblé `83600149`) : `dr_ecouleS` (dr-socle.js), utilisée par `dr_reprendre` (dr-classe.js) et `dr_sesAppliquer` (dr-session.js) pour une heure reprise un autre jour ; sa piste fausse (`dr_traceReprendre` ne sert qu'au lancement). Prouvé (M5-M7, 12/12 ; base : 1132:34 et 990:34) : ordinaire 00:21 → 00:26 → 00:30 ; rattrapée 00:21 → 00:27 → 00:31 ; le même jour 12:35 → 12:39 (base 12:34) ; parcours vert. 204 659 jetons au total pour ce morceau et ses deux reprises.
+- **04:45 — la conscience** : audit de `9ef95de45` (dr-classe.js 2 lignes, dr-session.js 1, dr-socle.js 7 ; ni `AUDITS/` ni fichiers interdits) : ça va. 476 codé par la conscience dans `ex-promo2` (branche `deroule/lot2-promo` = `deroule/lot2c` + la fusion de `deroule/r461`) : `dr_papierRelire` compare le début de la case ; une heure rattrapée prend la première case à venir ; sonde-lot2b E sur l'assemblé fusionné : 8/0, « À relire — jeudi 17 septembre » (avant : vendredi 18), l'ordinaire inchangée. Poussé `82255e7a2` (assemblé `857838e1`). Le banc à la vraie horloge sans le témoin lancé (`banc-sans-temoin.sh`), début 04:44:52.
+- **04:45 — message à Paul, mot pour mot :**
+
+  > 481. Le chrono est réglé : après une reprise un autre jour, il repart du temps déjà joué. Mesuré : 00:21 avant la fermeture, 00:26 à la reprise ; avant, il affichait 1132 minutes. 476 aussi, par moi : « À relire » donne la bonne case (jeudi, au lieu de vendredi) ; une heure ordinaire ne change pas.
+  >
+  > 482. Tout est réuni en une version : le rattrapage, 461 et 476. Mon banc tourne depuis 04:45, sans le témoin ; il finit vers 05:47 (mesuré cette nuit : 1 h 02). Ensuite, je te demande « promeus ».
+  >
+  > 483. Le témoin prendrait 1 h 20 de plus. Ce lot ne touche aux sessions que pour une heure reprise un autre jour, et le témoin ne joue pas ce cas. Je propose de ne pas le passer. Si tu ne dis rien, c'est acquis.
+  >
+  > 484. 480 attend toujours ta réponse : le bouton « ⏩ aller à 5 minutes de la fin » dans une heure rattrapée ?
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 04:45
+  >
+  > À jouer : les 8 gestes ; 480 ; 483 acquis sans mot · en cours : mon banc (sans le témoin, fin vers 05:47) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

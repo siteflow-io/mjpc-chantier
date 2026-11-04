@@ -334,3 +334,9 @@ tellement en retard que j'ai dû reporter la plaidoirie à la semaine prochaine.
 en appel** cette année. Proposé ensuite (133) : la plaidoirie seule, les 9 cases des fiches du matin
 plus « fini dans le temps », oral sur 10. Le sens exact de « reporter la plaidoirie à la semaine
 prochaine » est demandé à Paul (136).
+
+**Le procès passe au mardi 10/11 (Paul, 15:39).** « non pas de critère de temps. la plaidoirie
+passe à mardi prochain maintenant, car ils n'ont pas du tout fini la rédaction. » Mardi 10/11 est en
+semaine A : Hugo 13:00-13:55, Turing 13:57-14:52, une heure chacun (créneaux de la passation, 3.1 et
+3.2). Ces deux heures étaient la première heure du *Horla* ; le mercredi 11/11 est férié. Grille
+d'oral : les 9 cases du point 131, sans critère de temps ; la 10e case proposée (137) attend Paul.

@@ -51,8 +51,8 @@ OK  1920x1080 · 6 · coin bas droit : plus grand (+150 px), le coin haut gauche
 OK  1920x1080 · 6 · agrandi : même place et même taille au tableau et dans la vignette, toujours trois fois plus large que haut · [["0.3309","0.1963"],["0.3308","0.1960"],["0.3308","0.1960"]]
 OK  1920x1080 · 6 · coin haut gauche : plus petit (−60 px), le coin bas droit n'a pas bougé ; tableau et vignette suivent · 443 → 383
 OK  1920x1080 · 6 · la diapo n'a pas changé
-OK  1920x1080 · 7 · ⏸ : le tableau et la vignette s'arrêtent · 04:52 / 04:52 / 04:52
-OK  1920x1080 · 7 · ▶ : il repart · 04:52 → 04:51
+OK  1920x1080 · 7 · ⏸ : le tableau et la vignette s'arrêtent · 04:53 / 04:53 / 04:53
+OK  1920x1080 · 7 · ▶ : il repart · 04:53 → 04:52
 OK  1920x1080 · 8 · ■ : le chrono quitte le tableau et la vignette, le réglage se cache
 OK  1920x1080 · 8 · la durée réglée par les + et − : 00:10 · 0010
 OK  1920x1080 · 8 · « − minute » grisé, sa raison dans sa bulle · Grisé : la durée ne peut pas descendre sous une seconde

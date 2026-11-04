@@ -558,6 +558,8 @@ html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-r
 .dr-pp { box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: .1em; padding: 0 .13em; background: #3a2c14; border: 1px solid rgba(228,180,92,.55); border-radius: .13em; }
 .dr-pp svg { position: static; width: .76em; height: .76em; flex: 0 0 auto; }
 .dr-pp .dr-pp-chif { position: static; font: 700 .52em/1 "EB Garamond", Georgia, serif; color: #e4b45c; letter-spacing: .03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* C16 696 : rouge et en marche, le rectangle clignote (au pilote ; au tableau, la même règle dans dr-tableau.js), comme l'ancien chrono */
+.dr-pp.dr-pp-clig { animation: drMinutClig 1s steps(1,end) infinite; } @keyframes drMinutClig { 50% { opacity: .25; } }
 .dr-minut-pp { position: fixed; z-index: 2147483000; cursor: move; touch-action: none; user-select: none; outline: 2px solid #8ab4ff; outline-offset: 3px; }
 .dr-minut-pp.glisse { cursor: grabbing; }
 .dr-minut-pp .dr-pp-poi { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid #6b7cff; box-sizing: border-box; z-index: 2; }

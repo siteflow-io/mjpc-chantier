@@ -14,7 +14,7 @@ OK  1536x864 · F · les + et − marchent encore : 00:25 puis 00:15 · 0025 →
 OK  1536x864 · F · 00:00 tapé : ▶ grisé, sa raison dans sa bulle · 0000 · Grisé : la durée est 00:00 — tape ou règle une durée d’abord
 OK  1536x864 · F · retapé : 00:15, ▶ de nouveau actif · 0015
 OK  1536x864 · F · ▶ lance 15 s : au tableau et dans « Ce que voit la classe » · 15000 ms · 00:15 / 00:15
-OK  1536x864 · F · il court au tableau · 00:12
+OK  1536x864 · F · il court au tableau · 00:13
 OK  1536x864 · F · fini après 15 s : il quitte le tableau et la vignette
 OK  1536x864 · aucune requête hors de la page · 0 · 
 OK  1536x864 · aucune erreur de page, aucune boîte système

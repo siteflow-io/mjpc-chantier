@@ -1204,7 +1204,8 @@ function dr_minutPastilleHTML(){ return '<svg viewBox="0 0 160 160" aria-hidden=
   + '<circle class="dr-pp-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg><span class="dr-pp-chif"></span>'; }   /* C16 677 : le rectangle P6 — l'anneau à gauche, le décompte à côté */
 /* le chiffre, l'anneau, la couleur — seulement ce qui change ; servi aussi au tableau (dr-tableau.js) */
 function dr_minutPastilleMaj(el, txt, reste, duree, etat){ const ch = el.querySelector('.dr-pp-chif'), an = el.querySelector('.dr-pp-anneau'); if (!ch || !an) return;
-  if (ch.textContent !== txt) ch.textContent = txt; dr_minutAnneau(an, reste, duree, etat); }   /* le décompte reste or ; l'anneau prend la couleur du cran */
+  if (ch.textContent !== txt) ch.textContent = txt; dr_minutAnneau(an, reste, duree, etat);   /* le décompte reste or ; l'anneau prend la couleur du cran */
+  const clig = etat === 'court' && dr_minutPhase(reste, duree, etat) === 'rouge'; if (el.classList.contains('dr-pp-clig') !== clig) el.classList.toggle('dr-pp-clig', clig); }   /* C16 696 (Paul, 04/11 : « il faut garder le clignotement ») : rouge et en marche, le rectangle clignote, comme l'ancien chrono */
 /* le coin libre : le premier des quatre coins de la diapo où la pastille ne touche aucun texte (en bas à droite d'abord) */
 function dr_minutCoin(){ const mur = document.getElementById('mur'); if (!mur) return null; const r = mur.getBoundingClientRect(); if (!r.width) return null; const L = [];
   const w = document.createTreeWalker(mur, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { if (!n.textContent.trim() || !n.parentElement || n.parentElement.offsetParent === null) continue; const rg = document.createRange(); rg.selectNodeContents(n); Array.from(rg.getClientRects()).forEach(q => L.push(q)); }

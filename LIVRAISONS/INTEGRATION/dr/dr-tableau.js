@@ -354,7 +354,8 @@ function dr_tabPoser(){
       + '#ses-tab .dr-tab-minut{position:absolute;z-index:20;top:calc((100vh - min(100vw, 100vh * 16 / 9) * 9 / 16) / 2 + min(100vw, 100vh * 16 / 9) * .018);right:calc((100vw - min(100vw, 100vh * 16 / 9)) / 2 + min(100vw, 100vh * 16 / 9) * .018);background:#000;color:#d4a017;font:700 calc(min(100vw, 100vh * 16 / 9) * .05)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;padding:.12em .3em;border-radius:.14em;letter-spacing:.02em;box-shadow:0 .05em .3em rgba(0,0,0,.45);pointer-events:none}'
       + '#ses-tab .dr-tab-minut.m-vert{color:#3ddc84}#ses-tab .dr-tab-minut.m-jaune{color:#ffd60a}#ses-tab .dr-tab-minut.m-orange{color:#ff8c1a}#ses-tab .dr-tab-minut.m-rouge{color:#ff3b30}'
       + '#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite}@keyframes drMinutClig{50%{opacity:.25}}'
-      + '#ses-tab .dr-tab-minut.dr-tab-pp{position:fixed;right:auto;bottom:auto;background:#3a2c14;padding:0 .13em;box-shadow:none;border:1px solid rgba(228,180,92,.55);border-radius:.13em;letter-spacing:0;animation:none}';
+      + '#ses-tab .dr-tab-minut.dr-tab-pp{position:fixed;right:auto;bottom:auto;background:#3a2c14;padding:0 .13em;box-shadow:none;border:1px solid rgba(228,180,92,.55);border-radius:.13em;letter-spacing:0;animation:none}'
+      + '#ses-tab .dr-tab-minut.dr-tab-pp.dr-pp-clig{animation:drMinutClig 1s steps(1,end) infinite}';   /* C16 696 : le rectangle rouge en marche clignote, comme l'ancien */
     document.head.appendChild(st);
   }
   const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -559,7 +560,7 @@ function dr_tabMinutRecevoir(m, tsPilote, local){
 function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.e === 'court' && isFinite(m.f)) return Math.max(0, m.f - (Date.now() + (DR_TAB.decal || 0))); return Math.max(0, +m.r || 0); }
 /* §12.70 bis : la pastille, à la place et à la taille que Paul lui donne sur sa diapo (parts de la diapo, mesurées sur #mur2) */
 function dr_tabMinutPastille(el, m, reste, txt){ const mur = document.getElementById('mur2'); const r = mur ? mur.getBoundingClientRect() : null; if (!r || !r.width) return;
-  if (!el.querySelector('.dr-pp-chif')) el.innerHTML = dr_minutPastilleHTML(); const cl = 'dr-tab-minut dr-pp dr-tab-pp'; if (el.className !== cl) el.className = cl;
+  if (!el.querySelector('.dr-pp-chif')) el.innerHTML = dr_minutPastilleHTML(); const cl = 'dr-tab-minut dr-pp dr-tab-pp' + (el.classList.contains('dr-pp-clig') ? ' dr-pp-clig' : ''); if (el.className !== cl) el.className = cl;
   const s = m.s * r.width, hh = s / 3; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };   /* C16 677 : le rectangle P6, trois fois plus large que haut */
   set('left', (r.left + m.x * r.width).toFixed(1) + 'px'); set('top', (r.top + m.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', hh.toFixed(1) + 'px'); set('fontSize', hh.toFixed(1) + 'px'); set('display', 'flex');
   dr_minutPastilleMaj(el, txt, reste, m.d, m.e); }

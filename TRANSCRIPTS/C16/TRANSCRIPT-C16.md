@@ -4195,3 +4195,19 @@ MEMO
   > MEMO
 - **23:29 — l'exécutant B rend son travail** : sas `nuit/b` `60bb80650` ; assemblé md5 `b1095ead1b399b1374b19638b2b7af71`. Compté, base → après, sur une heure des Franklin close (une réponse donnée au premier MB, une sans élève, une validée pendant le gel, une restée dans la diapo) : corrigées par la case des initiales 0 sur 4 → 4 sur 4 ; la fenêtre ne propose que la classe relue (27 sur 27) ; le récit et « Ce qui s'est passé » nomment le bon élève, le Papier garde les 4 ; la participation : 3 élèves dont le premier MB → les 4 bons ; ouvrir la Relecture n'écrit rien, chaque correction écrit une fois, la diapo n'est pas réécrite ; rechargée, les corrections restent ; sa sonde 17 sur 17 (la base rate 9 sur 16) ; la sonde de la Relecture (mise à jour dans sa branche) 17 sur 17 ; la case 24 sur 24 ; le parcours vert. Proposé, non fait : « (corrigé) » à côté d'une réponse corrigée. Non mesuré : le résumé de l'heure écrit à la clôture garde-t-il l'élève saisi en classe.
 - **23:29 — le mandat D complété** du point 3 (609, 707 : la règle des notions dite dans « Le chapitre »), puis lancé : l'exécutant du mandat D (`nuit/d` depuis `60bb80650`), 30 minutes au plus.
+- **23:29 → 23:32 — mandats prêts** : C2 (717), E (636), F (365, 642), G (366, 643), H (㊵) ; `826dc53c7`, `aa6cc3062`. Relu en les écrivant : 640 (㊶) n'est pas cadré jusqu'au bout (qui libère le tableau tenu par un appareil disparu ; Paul, 03/11 12:42 : « attention au "jamais bloqué" ») ; « Fermer l'atelier » pendant le lancement (642) non tranché.
+- **23:32 — message à Paul, mot pour mot :**
+
+  > 719. B est fait et prouvé au faux hub : dans la Relecture, le bouton « à corriger » est sur chaque réponse (sans élève, donnée au mauvais élève, retrouvée dans une diapo) ; on y désigne l'élève avec la même case qu'en classe, et la fenêtre ne propose que les élèves de la classe relue. Sur une heure des Franklin inventée : 0 réponse sur 4 corrigeable avant, 4 sur 4 après ; le récit, « Ce qui s'est passé », le Papier et la participation suivent ; ouvrir la Relecture n'écrit rien ; les corrections restent après rechargement. D tourne (la diapo en grand, la copie pour l'IA, la règle des notions dite).
+  >
+  > 720. Je corrige 709 : 640 n'est pas cadré jusqu'au bout. Ta règle dit que le tableau appartient à la session qui l'a pris ; mais un appareil disparu le garde 4 h, et qui le libère alors, ce n'est pas tranché. Tu m'avais dit le 03/11 : « attention au "jamais bloqué". tu proposes sans mesurer le télescopage!! » 640 ne passe donc pas cette nuit : il demande d'abord une mesure de ce qu'il télescope, puis ta décision.
+  >
+  > 721. Une part de 642 non plus : « Fermer l'atelier » pendant que l'heure se lance laisse partir l'heure sans pilote. Ce que je propose : fermer l'atelier pendant le lancement annule le lancement ; aucune heure ne part sans pilote. Sans réponse de ta part, cette part reste comme aujourd'hui cette nuit ; le reste de 642 (« L'heure se lance… » à l'écran, aucun ▶ perdu) passe.
+  >
+  > À tester : rien de nouveau ce soir ; les sept tests de 701 restent valables.
+  >
+  > 04/11/2026 23:32
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : D (la Relecture) · ouvert : C2 (717), E (636), 633, 634, puis 642, 643, ㊵ ; à cadrer : 640 (720), 721, 639, 644, 645
+  >
+  > MEMO

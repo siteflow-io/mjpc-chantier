@@ -2744,3 +2744,25 @@ MEMO
   > À jouer : les 8 gestes ; 463 ; 461 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:31 — message à Paul** : 461-463, mot pour mot comme ci-dessus.
+- **03:33 — Paul, mot pour mot :**
+
+  > Ok c'est bon. 461 ok. 460 oui lance.
+- **03:34 — la conscience** : le mandat `MANDATS/DEROULE-01-11/MANDAT-LOT2A.md` (`5beb94c8d`) : les mots de Paul seuls (12:26, 12:42, 03:22, 03:30), ce morceau seulement (pas 342), la supposition de la conscience à vérifier par l'exécutant (RAPPORT-II §1), la preuve courte, 30 minutes au plus, économe ; un exécutant neuf lancé, base `1d6a0166d`, branche `deroule/lot2a`.
+- **03:36 — la conscience, 461** : dossier `ex-r461`, branche `deroule/r461` sur `1d6a0166d` ; `dr_classe` (dr-socle.js) : en répétition, seulement les élèves de la classe répétée (la classe d'essai n'est plus ajoutée) ; `node --check` ; assemblé md5 `7a4508ee` ; la preuve lancée (sonde-lot1 P), machine seule.
+- **03:36 — message à Paul, mot pour mot :**
+
+  > 464. Lancé à 03:34 : le premier morceau du rattrapage, par un exécutant neuf, avec 30 minutes au plus. Il vérifie d'abord ma supposition, par le code et une mesure courte.
+  >
+  > 465. Deux lectures de tes mots, à corriger si elles sont fausses. « Pas d'horaire dans le récit » : les heures et minutes partent, mais la date de la case reste. La Relecture et « Ce qui s'est passé », qui sont pour toi seul, gardent leurs heures.
+  >
+  > 466. 461 est en cours chez moi : une ligne. Sa preuve tourne (la participation, 4 minutes).
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:36
+  >
+  > À jouer : les 8 gestes ; 465 à corriger s'il le faut · en cours : le rattrapage (premier morceau, 30 min au plus) ; 461 · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

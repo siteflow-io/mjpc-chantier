@@ -3140,3 +3140,24 @@ MEMO
   > À jouer : rien · en cours : l'heure réelle (515, 30 min au plus) · ouvert : 521, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **08:03 — message à Paul** : 520-522, mot pour mot comme ci-dessus.
+- **08:29 — l'exécutant de l'heure réelle (message)** : poussé `ce9dfa4b8` (code `06ab63e2b`, assemblé `dd7bd9bd`) : `now()` ne garde le décalage que pour la classe d'essai ; `dr_nowCase()` pour T-5/3/1, le cahier, le dépassement, la fin d'heure, le chrono ; 6 lecteurs. Prouvé : sonde-heure-M 27/27 ; R5a-d 4/4 (« Enregistré à », « close · », « Ce qui s'est passé » à 14:00 ; base : 15:07) ; heure ordinaire inchangée ; classe d'essai : banc 1255 identique à la base ; parcours vert. Trouvé : l'horloge du tableau distant (dr-tableau.js:146) ; l'infobulle du chrono. Déjà à la base : R1c (la sonde ne lit pas la liste), une écriture vers `/site/tableau_test` dans le banc 1255.
+- **08:30 — message de fin à Paul** : « Le réglage de l'heure réelle est fait et vérifié ; l'exécutant finit les deux derniers affichages (l'horloge du tableau distant, l'infobulle du chrono). Ensuite, mon banc. » (le bloc de fin, 08:30).
+- **08:36 — l'exécutant (message)** : poussé `46d140ab6` (assemblé `8d17922b`) : dr-tableau.js (`sc.hdec` pour la seule classe d'essai), dr-classe.js (l'infobulle). Prouvé : le tableau rattrapé : décalage -8 587 577 ms → 0 (3/3), reprise : 0 (4/4) ; l'infobulle au T-5 : « 15:57 » à 18:16 → « 18:20 » ; l'ordinaire inchangée ; sonde-heure-M 32/32 ; classe d'essai identique ; parcours vert. 186 042 jetons au total.
+- **08:38 — la conscience** : audit de `ce9dfa4b8` et `46d140ab6` : dr-socle.js, dr-classe.js, dr-tableau.js, l'assemblé, les sondes et sorties ; ni `AUDITS/`, ni `dr_classe`, ni fichiers interdits ; aucun nom d'élève (« De Gaulle » : la classe d'essai). Ça va. 521 lu dans le code (dr-recit.js) : `nonFaites.sort(rgP)` — le rang de la diapo dans le plan. Le banc sans le témoin lancé sur `46d140ab6`.
+- **08:38 — message à Paul, mot pour mot :**
+
+  > 523. 515 est réglé et vérifié. Pour une heure rattrapée ou reprise un autre jour, tout est à l'heure réelle : « Enregistré à », « close · », « Ce qui s'est passé », la Relecture, l'horloge du tableau distant et l'infobulle du chrono. L'horloge de la case ne sert plus qu'aux alertes et au chrono : rien ne part d'entrée, le rappel des 5 minutes vient au temps joué. Une heure ordinaire et ta classe d'essai ne changent pas.
+  >
+  > 524. 521, lu dans le code : la liste de ce qu'on n'a pas fait est triée par la place de chaque diapo dans ton plan, quel que soit l'ordre où le hub la rend. Ce n'est pas mesuré sur une heure rouverte.
+  >
+  > 525. Mon banc tourne depuis 08:38, sans le témoin : environ 1 h. Ensuite, je te demande « promeus » pour le tout (512 à 515).
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 08:38
+  >
+  > À jouer : rien · en cours : mon banc (environ 1 h) · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

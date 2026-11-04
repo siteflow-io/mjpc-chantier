@@ -2768,3 +2768,21 @@ MEMO
   > MEMO
 
 - **03:40 — 461 prouvé et poussé** : sas `deroule/r461` `49741993b` (dr-socle.js `dr_classe` ; l'assemblé md5 `7a4508ee` ; l'attente de P1 de sonde-lot1 mise à la règle). sonde-lot1 P sur l'assemblé : 104 vérifications ; les 2 seuls « ÉCHEC » sont l'ancienne attente (CLASSE TEST répétée : 4 pastilles, « 0 sur 4 présents » ; l'attente d'avant : 33) ; P6 « répétition · rien d’écrit dans la copie d’une classe » ok ; la répétition de 3E Charles de Gaulle : 29, inchangée. Rien écrit à Paul (il sera dit avec la prochaine mise en ligne).
+
+- **03:40 — message de fin à Paul** : « 461 est prouvé : en répétition, seulement la classe répétée ; rien n'est écrit dans la copie de la classe. Il part avec la prochaine mise en ligne. Le rattrapage est en cours (30 minutes au plus). / À tester : les 8 gestes de 03:07. / 04/11/2026 03:40 / À jouer : les 8 gestes ; 465 à corriger s'il le faut · en cours : le rattrapage (premier morceau) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot / MEMO »
+- **03:47 — Paul, mot pour mot :**
+
+  > 465. Oui c'est ça, la seule chose qui reste c'est début milieu fin. Oui pour la relecture et ce qui s'est passé.
+  > En fait mon but est que l'heure puisse être faite en accéléré après coup, que je complète si besoin la participation et les réponses élèves, et qu'ensuite les séances suivantes se recalent.
+- **03:47 — à l'exécutant du rattrapage (message)** : la précision de Paul mot pour mot ; pour une heure rattrapée, le récit ne dit que début / milieu / fin ; la date de la case reste ; la Relecture et « Ce qui s'est passé » inchangées ; supposition à vérifier, la plus simple : le rang du paragraphe dans l'heure, en trois parts ; les cases suivantes se recalent (preuve 3.1) ; la limite de 30 minutes reste.
+- **03:47 — message à Paul, mot pour mot :**
+
+  > 467. Noté et transmis à l'exécutant : pour une heure rattrapée, le récit ne dit que le début, le milieu ou la fin de l'heure, à la place des heures ; la date de la case reste ; la Relecture et « Ce qui s'est passé » gardent leurs heures. Et ton but : faire l'heure en accéléré après coup, compléter la participation et les réponses, puis les séances suivantes se recalent.
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:47
+  >
+  > À jouer : les 8 gestes · en cours : le rattrapage (premier morceau) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

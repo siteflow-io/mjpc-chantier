@@ -1,0 +1,25 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M · 2026-11-04 07:21 UTC · md5 712ba2ebf1ebe7bde717553acf684cfc · images : celle du canon
+
+══ LOT 2c · base · md5 712ba2ebf1ebe7bde717553acf684cfc ══
+
+— partie M
+  [M1] rattrapée, lancée jeudi 17:30 (case lundi 15:07-16:02) · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 15:07 · chrono 00:08 · témoins classe test [] · montre 17:30 · « Enregistré à 15:07 » · journal 3 gestes, 3 hors de la montre
+  [M1] +40 min : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 10 min · heure affichée 15:47 · chrono 00:11 · témoins classe test [] · montre 18:10 · « Enregistré à 15:07 » · journal 3 gestes, 3 hors de la montre
+  [M1] +46 min : lancée true (rattrapée) · paliers partis ["t5"] · fin ouverte true · reste jusqu’au cahier 4 min · heure affichée 15:53 · chrono −3:48 (cr-t5) · témoins classe test [] · montre 18:16 · « Enregistré à 15:53 » · journal 4 gestes, 4 hors de la montre
+  ok     M1a · la case passée : « ▶ Rattraper cette heure » lance l’heure, rattrapée — ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  ok     M1b · au lancement : aucun palier parti, la fin d’heure fermée, 50 min jusqu’au cahier (l’horloge de sa case) — [[],false,50]
+  ok     M1c · à +40 min rien ; à +46 min le T-5 part (comme une heure de 55 min commencée au début de son créneau) — [[],["t5"]]
+  ÉCHEC  M1e · 515 : l’heure affichée, « Enregistré à », le journal (T-5 compris) à l’heure réelle — [["15:07","17:30","Enregistré à 15:07",3,3],["15:47","18:10","Enregistré à 15:07",3,3],["15:53","18:16","Enregistré à 15:53",4,4]]
+  ok     M1d · aucun témoin de la classe d’essai (« horloge de la case », « aller à 5 minutes de la fin ») — []
+  ok     M9 · M1 : aucune erreur JS, aucune boîte système
+  [M2] rattrapée, lancée jeudi 10:00 · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 15:07 · chrono 00:08 · témoins classe test [] · montre 10:00 · « Enregistré à 15:07 » · journal 3 gestes, 3 hors de la montre
+  ÉCHEC  M2e · 515 : lancée avant sa case, l’heure affichée et le journal à l’heure réelle — ["15:07","10:00","Enregistré à 15:07",3,3]
+  ok     M2a · lancée avant l’horaire de sa case : 50 min jusqu’au cahier, rien de parti — [[],50]
+  ok     M9 · M2 : aucune erreur JS, aucune boîte système
+  ÉCHEC  M! · la partie M a levé — page.evaluate: Target page, context or browser has been closed
+    at profPrep (/home/claude/ex-heure/LIVRAISONS/DEROULE-01-11/HEURE-REELLE/sonde-heure-M.mjs:100:49)
+    at ouvrir (/home/claude/ex-heure/LIVRAISONS/DEROULE-01-11/HEURE-REELLE/sonde-heure-M.mjs:98:19)
+    at async partieM (/home/claude/ex-heure/LIVRAISONS/DEROULE-01-11/HEURE-REELLE/sonde-heure-M.mjs:263:18)
+    at async file:///home/
+
+--- fin : 10 vérifications, 3 échec(s)

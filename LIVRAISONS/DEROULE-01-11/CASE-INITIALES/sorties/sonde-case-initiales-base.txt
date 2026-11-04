@@ -1,0 +1,45 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties L · 2026-11-04 22:05 UTC · md5 3e50504183f59aba59e01ea4e9e6b907 · images : celle du canon
+
+══ MESURE INITIALES · base · md5 3e50504183f59aba59e01ea4e9e6b907 ══
+
+— partie L
+  [L] lancée true
+  ÉCHEC  L4a · noms en deux mots : la 1re lettre du prénom puis celle de chaque mot du nom — GL, VD
+  ÉCHEC  L4b · noms en deux mots : le prénom seul partout (prénom, prénom unique, table des prénoms) — GALLOIS Bastien / GALLOIS Bastien / GALLOIS Bastien · VILLEMOR Anaïs / VILLEMOR Anaïs / VILLEMOR Anaïs
+  — A · 1re ligne : « za », Entrée, la réponse, Entrée
+  ÉCHEC  L1a · une minuscule devient majuscule toute seule — « z »
+  ÉCHEC  L2a · dès la 1re lettre, la liste numérotée des prénoms (1 prénom en Z) — []
+  ÉCHEC  L3a · toutes les initiales d’un seul élève (ZA) : le curseur passe à la réponse — curseur ini, case « za »
+  [L5] le curseur au titre après A Entrée après les initiales
+  ÉCHEC  L5a · Entrée après les initiales, 1re ligne : pas au titre de l’activité — curseur TITRE
+  [L5] le curseur au titre après A Entrée (valider)
+  ÉCHEC  L3b · la réponse A est à l’élève 1, validée — élève personne, r «  »
+  ÉCHEC  L7a · au tableau : « Zoé A. » puis la réponse, pas les initiales — Zoé A. false, ZA false, réponse false
+  — B · « nd », Tab, la réponse, Entrée
+  [L5] le curseur au titre après B Tab
+  ÉCHEC  L5b · Tab après les initiales : la réponse, pas le titre — après « d » ini, après Tab TITRE
+  [L5] le curseur au titre après B Entrée (valider)
+  ÉCHEC  L3c · la réponse B est à l’élève 5 — personne
+  — C · deux MB : « m », « b », Entrée, « 2 »
+  ÉCHEC  L2b · à « M », les 2 prénoms en M, numérotés — []
+  ÉCHEC  L3d · deux MB : pas de saut, la liste des deux, numérotée, le dit — curseur ini · 
+  [L5] le curseur au titre après C Entrée sur deux MB
+  ÉCHEC  L3e · deux MB, Entrée : on reste dans la case (aucun des deux pris au hasard) — curseur TITRE
+  ÉCHEC  L3f · le chiffre 2 choisit le 2e de la liste et passe à la réponse — curseur ini, élève personne · 2e de la liste «  »
+  [L5] le curseur au titre après C Entrée (valider)
+  — D · BLG : « b », « l », « g »
+  ÉCHEC  L3g · BLG : pas de saut à « B » ni à « BL », le saut à « BLG » — ini → ini → ini
+  ÉCHEC  L2c · à « B », la liste : le prénom et la 1re lettre du nom — []
+  [L5] le curseur au titre après D Entrée (valider)
+  ÉCHEC  L4c · la réponse D est à l’élève au nom en deux mots — personne
+  ÉCHEC  L7b · au tableau : « Bastien L. », jamais « Nom Prénom » ni les initiales — Bastien L. false, Nom Prénom false
+  — E · « 0 », « ! », espace, puis « q », « w », Entrée
+  ÉCHEC  L1b · ni chiffre 0, ni signe, ni espace : la case reste vide — 0 sur 4
+  ÉCHEC  L6a · QW : le site dit à la frappe qu’aucun élève n’a ces initiales — «  »
+  [L5] le curseur au titre après E Entrée sur QW
+  ÉCHEC  L6b · QW, Entrée : on reste dans la case, la ligne à personne — curseur TITRE, élève personne
+  ÉCHEC  L5c · Entrée et Tab, en 16 gestes lus : le curseur jamais au titre, le titre jamais changé — au titre 8 fois, titre changé 15 fois
+  ÉCHEC  L3h · la participation : les élèves 1, 5 et 26 au vert — élève 1 false, élève 5 false, élève 26 false
+  ok     L9 · L : aucune erreur JS, aucune boîte système
+
+--- fin : 24 vérifications, 23 échec(s)

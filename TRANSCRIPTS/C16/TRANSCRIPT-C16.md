@@ -3737,3 +3737,21 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **16:13 — Paul, mot pour mot :**
+
+  > fais moi cinq propositions de captures construites, c'est tout. pas besoin de maquette
+
+- **16:15 — la conscience** : mandat `MANDATS/DEROULE-01-11/MANDAT-CAPTURES-MINUTEUR.md` (`2d57707df`) ; un exécutant neuf lancé à 16:15, 30 minutes au plus, base `46d140ab6`, branche `captures/minuteur` ; les propositions construites dans la page de la capture seulement.
+- **16:15 — message à Paul, mot pour mot :**
+
+  > 649. Lancé à 16:15, 30 minutes au plus : cinq propositions en captures de l'écran entier, construites sur le site en ligne (rien n'est codé). Pour chacune, le tableau des élèves et ton pilote, minuteur lancé, sur une diapo où il couvre aujourd'hui du texte ; plus la paire d'aujourd'hui pour comparer.
+  >
+  > 650. Les cinq. P1 : une bande fine en haut du tableau, au-dessus de la diapo. P2 : une colonne étroite à droite de la diapo. P3 : une barre or qui se vide en bas, sur toute la largeur, les chiffres à son bout. P4 : une pastille ronde qui se vide, posée dans un coin libre de texte. P5 : les chiffres sur la ligne du titre de l'activité. Dans les cinq : Garamond, or sur brun comme le site, le rouge du site pour la dernière minute ; au pilote, le panneau devient un bouton « ⏱ » parmi les boutons d'actions rapides (dans P2, dans ta colonne de droite). P1, P2 et P3 prennent un peu de place à la diapo ; P4 et P5, aucune.
+  >
+  > À tester : 534, le test 2 (« Relire l'heure » des Dylan, « composé par le site »).
+  >
+  > 04/11/2026 16:15
+  >
+  > À jouer : 534 (le test 2) · en cours : les captures du minuteur (fin vers 16:45) · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

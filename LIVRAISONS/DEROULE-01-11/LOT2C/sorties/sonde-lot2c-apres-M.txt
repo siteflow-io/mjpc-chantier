@@ -1,0 +1,29 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M · 2026-11-04 03:13 UTC · md5 b25d10c8a62013aad068a17c371a86f8 · images : celle du canon
+
+══ LOT 2c · apres · md5 b25d10c8a62013aad068a17c371a86f8 ══
+
+— partie M
+  [M1] rattrapée, lancée jeudi 17:30 (case lundi 15:07-16:02) · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 15:07 · chrono 00:08 · témoins classe test []
+  [M1] +40 min : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 10 min · heure affichée 15:47 · chrono 00:11 · témoins classe test []
+  [M1] +46 min : lancée true (rattrapée) · paliers partis ["t5"] · fin ouverte true · reste jusqu’au cahier 4 min · heure affichée 15:53 · chrono −3:48 (cr-t5) · témoins classe test []
+  ok     M1a · la case passée : « ▶ Rattraper cette heure » lance l’heure, rattrapée — ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  ok     M1b · au lancement : aucun palier parti, la fin d’heure fermée, 50 min jusqu’au cahier (l’horloge de sa case) — [[],false,50]
+  ok     M1c · à +40 min rien ; à +46 min le T-5 part (comme une heure de 55 min commencée au début de son créneau) — [[],["t5"]]
+  ok     M1d · aucun témoin de la classe d’essai (« horloge de la case », « aller à 5 minutes de la fin ») — []
+  ok     M9 · M1 : aucune erreur JS, aucune boîte système
+  [M2] rattrapée, lancée jeudi 10:00 · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 50 min · heure affichée 15:07 · chrono 00:08 · témoins classe test []
+  ok     M2a · lancée avant l’horaire de sa case : 50 min jusqu’au cahier, rien de parti — [[],50]
+  ok     M9 · M2 : aucune erreur JS, aucune boîte système
+  [M3] ordinaire, lancée jeudi 15:08 dans son créneau : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 48 min · heure affichée 15:08 · chrono 00:06 · témoins classe test []
+  [M3] +40 min (15:48) : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 8 min · heure affichée 15:48 · chrono 00:09 · témoins classe test []
+  [M3] +46 min (15:54) : lancée true · paliers partis ["t5","t3"] · fin ouverte true · reste jusqu’au cahier 2 min · heure affichée 15:54 · chrono −2:07 (cr-t3) · témoins classe test []
+  ok     M3a · l’heure ordinaire : l’horloge vraie (reste 48 min), rien à +40, le T-5 à 15:52 (+46) — [48,[],["t5","t3"],"15:08"]
+  [M4] jeudi 15:08, ordinaire, jouée jusqu’à « Groupe 1 : Le Radeau de la Méduse », l’onglet fermé sans clore · les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  [M4] vendredi 10:00, la case du jeudi : boutons ["✕","▶ Reprendre l’heure"] · « Reprendre » (true) reprend sur « Groupe 1 : Le Radeau de la Méduse » · lancée true · paliers partis ["t5","t3","t1","cahier-heure"] · fin ouverte true · reste jusqu’au cahier -1085 min · heure affichée 10:01 · chrono +1084:32 (cr-zero) · témoins classe test [] · clé 2026-09-17_15h07-16h02_CLASSE_TEST · une diapo de plus · les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  ok     M4a · « ▶ Reprendre l’heure » le lendemain : la diapo où l’on s’était arrêté — [{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""},{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""}]
+  ok     M4b · une seule clé au hub, celle de la case (la date et le créneau de l’heure reprise) — ["2026-09-17_15h07-16h02_CLASSE_TEST (pas close)"]
+  ok     M9 · M4 : aucune erreur JS, aucune boîte système
+  [M5] (observation) rattrapée jeudi 17:30, reprise vendredi 10:00 : lancée true (rattrapée) · paliers partis ["t5","t3","t1","cahier-heure"] · fin ouverte true · reste jusqu’au cahier -941 min · heure affichée 07:37 · chrono +940:33 (cr-zero) · témoins classe test [] · clé 2026-09-14_15h07-16h02_CLASSE_TEST · les clés : 2026-09-14_15h07-16h02_CLASSE_TEST (pas close)
+  ok     M9 · M5 : aucune erreur JS, aucune boîte système
+
+--- fin : 12 vérifications, 0 échec(s)

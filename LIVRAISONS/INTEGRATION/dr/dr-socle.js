@@ -649,17 +649,17 @@ function dr_heureDe(h){ { const av = h != null ? dr_heureAVenir(h) : null; if (a
 const DR_HC = { cle: null, dec: 0, saut: 0 };
 function dr_horlogeCase(){ try {
   if (typeof S === 'undefined' || !S || !S.lancee || S.repetition || S.atelier && !S.lancee) return null;
-  const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; if (!c || !/charles\s+de\s+gaulle/i.test(String(c.classeNom || c.classeSlug || ''))) return null;
+  const c = (typeof AT_DR_COURS !== 'undefined' && AT_DR_COURS) || null; const test = !!c && /charles\s+de\s+gaulle/i.test(String(c.classeNom || c.classeSlug || '')); if (!c || !(test || c.rattrapee)) return null;   /* C16 (lot 2c) : une heure rattrapée se joue aussi à l'horloge de sa case — jouée après son créneau, rien ne part d'entrée (mesuré à la base : le T-5, les paliers et la fin d'heure partaient au lancement) */
   const hj = (S.heuresCours || {})[S.heure] || null; const deb = String((hj && hj.debut) || String(c.creneau || '').split('-')[0] || c.debut || ''); const m = /^(\d{1,2}):(\d{2})/.exec(deb); if (!m) return null;
   const t0r = +S.debutReel || 0; if (!t0r) return null; const cle = [c.classeSlug, S.heure, deb, t0r].join('|');
   if (DR_HC.cle !== cle) { const d = new Date(t0r); DR_HC.cle = cle; DR_HC.dec = new Date(d.getFullYear(), d.getMonth(), d.getDate(), +m[1], +m[2]).getTime() - t0r; DR_HC.saut = 0; DR_HC.debut = deb; }
-  return DR_HC; } catch (e) { return null; } }
+  DR_HC.test = test; return DR_HC; } catch (e) { return null; } }
 function now(){ const h = dr_horlogeCase(); return Date.now() + (h ? h.dec + h.saut : 0); }
 function dr_heureCase(t){ if (!t) return t; const h = dr_horlogeCase(); return t + (h ? h.dec + h.saut : 0); }   /* §12.66 (2) : une heure de la montre (finReel), lue à l'horloge de la case */   /* E1 : l'horloge réelle (la maquette : HEURES_SIM[S.heure].base + DECALAGE) ; E4 (§12.55) : + le décalage de la case des De Gaulle */
 function dr_allerT5(){ const h = dr_horlogeCase(); if (!h || S.close || typeof heureCahier !== 'function') return; const cible = heureCahier() - 5 * 60000 + 1500; const ici = now(); if (cible > ici) h.saut += cible - ici; }
 /* l'en-tête des De Gaulle : « horloge de la case : 08:57 (il est 10:53) » et le bouton — posés une fois, puis seul leur texte change (la règle du redessin, §12.56 (1)) */
 function dr_horlogeCaseAfficher(){ try {
-  const ch = document.querySelector('#dr-zone .haut .chrono'); if (!ch) return; const h = dr_horlogeCase();
+  const ch = document.querySelector('#dr-zone .haut .chrono'); if (!ch) return; const h0 = dr_horlogeCase(); const h = h0 && h0.test ? h0 : null;   /* C16 (lot 2c) : les témoins de la classe test restent à la classe test — une heure rattrapée suit l'horloge de sa case sans eux */
   let t = document.getElementById('dr-hcase'), b = document.getElementById('dr-t5'), f = document.getElementById('bfin');
   if (!h) { if (t && t.style.display !== 'none') t.style.display = 'none'; if (b && b.style.display !== 'none') b.style.display = 'none'; if (f && f.classList.contains('dr-creneau-fini')) f.classList.remove('dr-creneau-fini'); return; }
   if (!t) { t = document.createElement('span'); t.id = 'dr-hcase'; t.className = 'dr-hcase'; t.title = 'Classe test : l’heure suit l’horloge de sa case, pas celle de ta montre — tu essaies le flux de la classe à n’importe quel moment. Toutes les autres classes : l’heure vraie.'; ch.insertAdjacentElement('afterend', t); }

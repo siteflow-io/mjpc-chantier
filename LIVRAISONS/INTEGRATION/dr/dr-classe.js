@@ -831,7 +831,7 @@ function dr_paquetHeure(clos){
 }
 
 /* ─── le pointeur du cours (`sesCoursEcrire`/`sesCoursFermer`, même forme qu'aujourd'hui) et la clôture certaine ─── */
-function dr_coursActif(){ const ec = AT.edChap || {}; return { niveau: ec.level, chapitre: ec.chnum, seance: ATVUES.snum, classeSlug: AT_DR_COURS.classeSlug, classeNom: AT_DR_COURS.classeNom, debut: AT_DR_COURS.debut, fin: AT_DR_COURS.fin, ...(AT_DR_COURS.rattrapee ? { iso: AT_DR_COURS.iso, rattrapee: true } : {}) }; }
+function dr_coursActif(){ const ec = AT.edChap || {}; return { niveau: ec.level, chapitre: ec.chnum, seance: ATVUES.snum, classeSlug: AT_DR_COURS.classeSlug, classeNom: AT_DR_COURS.classeNom, debut: AT_DR_COURS.debut, fin: AT_DR_COURS.fin, ...(AT_DR_COURS.iso ? { iso: AT_DR_COURS.iso } : {}), ...(AT_DR_COURS.rattrapee ? { rattrapee: true } : {}) }; }   /* C16 (lot 2c) : une heure reprise garde la date de sa case, rattrapée ou non */
 function dr_coursEcrire(){
   if (!AT_DR_COURS || !ATVUES.snum) return;
   try { SES.ctx = dr_coursActif(); SES.actif = true; } catch (e) {}
@@ -1240,7 +1240,7 @@ function dr_reprendreQuandPret(cb, essai){ essai = essai || 0;
   dr_reprendre(ok => { if (cb) cb(ok); if (!ok) return; const sig = _drSignatureCours(Object.assign(dr_coursActif(), {}));
     setTimeout(() => { try { if (!S.lancee && !S.close && AT_DR_REGIME === 'classe' && _drSignatureCours(dr_coursActif()) === sig) { journal('reprise-refaite'); dr_reprendre(() => {}); } } catch (e) {} }, 1500); }); }
 function dr_reprendreCours(c){
-  const cours = Object.assign({ debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom }, c.rattrapee && c.iso ? { iso: c.iso, rattrapee: true } : {});   /* C16 (lot 2a) : une heure rattrapée reprend sous la clé de sa case */
+  const cours = Object.assign({ debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom }, c.iso ? { iso: c.iso } : {}, c.rattrapee && c.iso ? { rattrapee: true } : {});   /* C16 (lot 2a) : une heure rattrapée reprend sous la clé de sa case ; (lot 2c) une heure ordinaire reprise le lendemain aussi — jamais une seconde clé */
   atChargerChapitres(c.niveau, () => {
     AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
     dr_ouvrirLaClasse(c.niveau, c.chapitre, c.seance, () => { AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
@@ -1268,7 +1268,7 @@ function dr_edtReprendre(cle){
   if (t.trace.clos) { atInfo('Cette heure a été close : elle ne se reprend pas.'); return; }
   const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return;
   edtFermer(); edtModaleFermer();
-  dr_reprendreCours({ niveau: m[1], chapitre: m[2], seance: m[3], classeSlug: m[4], classeNom: t.trace.classe || cel.classeMjpc, debut: t.trace.lanceA || String(cel.creneau).split('-')[0], fin: t.trace.fin || String(cel.creneau).split('-')[1], ...(t.trace.rattrapee ? { iso: cel.iso, rattrapee: true } : {}) });
+  dr_reprendreCours({ niveau: m[1], chapitre: m[2], seance: m[3], classeSlug: m[4], classeNom: t.trace.classe || cel.classeMjpc, debut: t.trace.lanceA || String(cel.creneau).split('-')[0], fin: t.trace.fin || String(cel.creneau).split('-')[1], iso: cel.iso, ...(t.trace.rattrapee ? { rattrapee: true } : {}) });   /* C16 (lot 2c) : la date de la case, rattrapée ou non */
 }
 
 /* ─── `dr_proposer()` (contrat §12.6, relance du 21/10) : ce que « ▶ Lancer » va lancer quand on n'est pas passé par l'EDT — la case de

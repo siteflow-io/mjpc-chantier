@@ -2960,3 +2960,21 @@ MEMO
 
   > ok redonne moi le texte des dylan que j'ai demandé de mettre au hub hier du coup
 - **06:33 — message à Paul** : « 489. Le voici, tel qu'il est au sas (recopié hier de tes trois captures, mot pour mot, initiales seulement) : https://github.com/siteflow-io/mjpc-chantier/blob/main/RATTRAPAGES/3-DYLAN-2026-11-03.md », suivi du contenu du fichier (diapo 9, 7 réponses ; diapo 11, 5 réponses ; la page 2 de la diapo 11 sans capture) — non recopié ici une seconde fois ; le bloc de fin (04/11/2026 06:33).
+
+- **06:43 — Paul, mot pour mot :**
+
+  > tu es sûr que c'est CH?
+- **06:44 — la conscience** : les trois captures de 03/11 12:04 ne sont plus lisibles ici (aucune image dans l'historique de la session ; seul le fichier recopié à 12:28 reste). Vérification impossible.
+- **06:44 — message à Paul, mot pour mot :**
+
+  > 490. Non, je ne peux pas en être sûr. Je l'ai lu « CH » hier sur ta capture, mais les captures ne sont plus lisibles de mon côté : il ne me reste que ce que j'ai recopié. Regarde la capture de la diapo 11, ou dis-moi les bonnes initiales : je corrige le fichier.
+  >
+  > 491. Au rattrapage, si les initiales ne sont pas exactement celles d'un élève de la classe, le site les garde telles quelles et ne désigne personne : tu le verras tout de suite.
+  >
+  > À tester : les 6 gestes de 06:23.
+  >
+  > 04/11/2026 06:44
+  >
+  > À jouer : les 6 gestes ; 490 · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

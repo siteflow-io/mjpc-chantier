@@ -20517,6 +20517,10 @@ function dr_cloreHeureRestee(slugNeuf, nomNeuf, c){
     dr_ecrire(ch + '/finReel', Date.now(), 'Fin réelle de l’heure précédente', () => {});
     dr_ecrire(ch + '/closPar', 'lancement de ' + (nomNeuf || slugNeuf), 'Motif de clôture', () => {});
     dr_coursActifEffacerSi(_drSignatureCours(c));
+    /* C16 (391 ; Paul, 04/11 02:51 : « Ok ») : l'autre appareil l'apprend tout de suite — l'état vivant de cette heure dit « close », comme quand on clôt une
+       heure sur un appareil (`dr_sesClosAilleurs`) : son écran se ferme et le dit, rien ne s'y écrit plus pour l'heure close. Avant : son écran la montrait
+       encore lancée, sans être prévenu (mesuré : sonde-lot1 W, le témoin H+H·autre) */
+    try { const C = ch.slice(0, ch.lastIndexOf('/heures/')); dr_ecrire(C + '/vif', { close: true, sig: 'heure|' + ch, sorte: 'heure', cours: c, par: (typeof DR_SES === 'object' && DR_SES && DR_SES.id) || 'lancement', ts: Date.now() }, 'L’heure close, dite aux autres appareils', () => {}); } catch (e) {}
     try { atInfo('L’heure de ' + escapeHtml(String(c.classeNom || c.classeSlug || '')) + ' (' + escapeHtml(dr_creneauDuCours(c)) + ') n’était pas close : elle vient de l’être. Rien de cette heure n’entre dans la suivante.'); } catch (e) {}
   };
   if (c !== undefined) suite(c); else dr_lire('/site/cours_actif', suite);

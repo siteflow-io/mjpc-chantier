@@ -3232,3 +3232,21 @@ MEMO
   > À jouer : les quatre tests ci-dessus · en cours : rien · ouvert : l'heure des Franklin (529 à 532, sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **12:17 — Paul, mot pour mot :**
+
+  > Pour anticipe r sur le bug des Franklin, fais une mesure avant de pouvoir confirmer une fois que mon ordi sera connecté. Reproduis ma situation et vois. Attention, le bug est arrivé sur la version précédente de celle qui est en ligne vu que je viens de promouvoir
+
+- **12:19 — la conscience** : lu dans le code de la 8.83.0 : `dr_suivreSeance` (la séance de l'heure suit la séance choisie), `dr_cheminB` (l'heure rangée sous sa séance). Mémoire : les 3 Franklin Aretha, une 3e, même séance que les 3 Dylan. Mandat `MANDATS/DEROULE-01-11/MANDAT-MESURE-FRANKLIN.md` (`03b7a173c`) : mesurer seulement, base `82255e7a2` (la 8.83.0), branche `mesure/franklin`. Un exécutant neuf lancé à 12:20, 30 minutes au plus.
+- **12:19 — message à Paul, mot pour mot :**
+
+  > 536. Lancé à 12:20 : un exécutant reproduit ton heure sur la 8.83.0-⑯ (celle d'avant), sans rien corriger. 30 minutes au plus. Il prend la classe 3 Franklin Aretha, avec une liste inventée de 25 élèves dont deux en MB, et une heure jouée en direct en séance 1. Il tape des réponses avec les initiales dans les diapos 9 et 11, puis il mesure trois choses : à qui va « MB », quels élèves manquent et où, et si le récit contient ce qui a été écrit en séance 1 (y compris quand l'heure passe en séance 2).
+  >
+  > 537. Il ne connaît pas ta vraie liste ni ce que tu as fait exactement : sa mesure donne des causes possibles. La confirmation viendra du hub, quand ton Chrome sera ouvert (« vas-y »).
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 12:19
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : la mesure des Franklin (fin vers 12:50) · ouvert : l'heure des Franklin (sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

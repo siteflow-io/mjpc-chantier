@@ -271,6 +271,10 @@ const partieM = async () => { let o, pg, x; if (!process.env.MJPC_M5SEUL) {   /*
   const reprise = async (k, quoi, lancer, jourR, hR, iso, cr, attendu) => { hubAvec(); o = await ouvrir(lancer.o); pg = o.pg; await lancer.f(pg); await jouerJusqua(pg, 'aud-g1-img'); await p(2500); const av = await horloge(pg); await o.ctx.close();
     o = await ouvrir({ h: hR, jour: jourR }); pg = o.pg; await caseDe(pg, iso, cr, DYL); const rp = await clicTexte(pg, '#edt-modale button', 'Reprendre l’heure'); await p(6000); await pg.keyboard.press('Escape').catch(() => {}); await p(600);
     const h0 = await horloge(pg); dire('  [' + k + '] ' + quoi + ' · avant fermeture : reste ' + av.resteMin + ' min, heure ' + av.heure + ' · à la reprise (' + rp + ') : ' + mot(h0) + ' · clés ' + clesDyl().join(', '));
+    await p(4000); const hA = await horloge(pg); const sec = c => { const m = /^(\d+):(\d{2})$/.exec(String(c || '')); return m ? +m[1] * 60 + +m[2] : -1; };
+    dire('  [' + k + '] le chrono : avant fermeture ' + av.chr + ' · à la reprise ' + h0.chr + ' · 4 s plus tard ' + hA.chr);
+    if (k === 'M7') verif(k + 'c', sec(h0.chr) >= 600 && sec(h0.chr) <= 900 && sec(hA.chr) > sec(h0.chr), 'le chrono, reprise le même jour : depuis le lancement (comme à la base, 12:34), et il avance', [h0.chr, hA.chr]);
+    else verif(k + 'c', sec(h0.chr) >= 0 && Math.abs(sec(h0.chr) - sec(av.chr)) <= 90 && sec(hA.chr) > sec(h0.chr), 'le chrono repart du temps joué avant la fermeture (à 90 s près), puis il avance', [av.chr, h0.chr, hA.chr]);
     let h1 = null, h2 = null; if (h0.resteMin > 7) { await avancer(pg, h0.resteMin - 6); h1 = await horloge(pg); await avancer(pg, 3); h2 = await horloge(pg); dire('  [' + k + '] +' + (h0.resteMin - 6) + ' min : ' + mot(h1) + ' · +' + (h0.resteMin - 3) + ' min : ' + mot(h2)); }
     attendu(av, h0, h1, h2); finir('M9', o, k); await o.ctx.close(); };
   const hm = t => { const m = /^(\d{2}):(\d{2})/.exec(t || ''); return m ? +m[1] * 60 + +m[2] : -1; };

@@ -986,7 +986,7 @@ function dr_reprendre(cb){
        reprend son horloge là où elle s'était arrêtée — le temps déjà joué compte, rien ne part à la reprise, l'heure affichée suit ; le même jour : inchangé */
     { const p2 = n => (n < 10 ? '0' : '') + n, jr = d => d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); const hj = dr_heureJouee(S.heure) || {};
       const caseJ = /^\d{4}-\d{2}-\d{2}$/.test(String(AT_DR_COURS.iso || '')) ? String(AT_DR_COURS.iso) : jr(new Date(hj.base || Date.now()));
-      if (caseJ !== jr(new Date())) { const h0 = dr_horlogeCase(); S.hcReprise = { h: S.heure, t0: S.debutReel, dec: vivant + (h0 ? h0.dec + h0.saut : 0) - Date.now() }; } }
+      if (caseJ !== jr(new Date())) { const h0 = dr_horlogeCase(); S.hcReprise = { h: S.heure, t0: S.debutReel, dec: vivant + (h0 ? h0.dec + h0.saut : 0) - Date.now(), z: (h0 && h0.z) || (S.debutReel + (h0 ? h0.dec : 0)) }; S.ecoule = dr_ecouleS(S.debutReel); } }   /* z : l'origine de l'horloge de l'heure — le chrono repart du temps déjà joué */
     if (trou >= 60000) { S.coupures = S.coupures || []; const e = ecran(); S.coupures.push({ debut: vivant, fin: Date.now(), di: S.di, eid: e && e.eid, duree: Math.round(trou / 60000), compte: false, rechargement: true }); journal('coupure', { duree: Math.round(trou / 60000), rechargement: true }); }
     journal('reprise', { depuis: etat.maj || null });
     DR_CL.reprise = true;

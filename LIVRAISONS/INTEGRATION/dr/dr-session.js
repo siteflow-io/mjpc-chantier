@@ -279,7 +279,7 @@ function dr_sesAppliquer(v){
     dr_restaurer({ S: S1, parDiapo: dr_parDiapoRempli(dr_duHub(p.parDiapo || {})), vuMax: dr_duHub(p.vuMax || {}), J: J1 });
     Object.keys(garde).forEach(k => { S[k] = garde[k]; });
     const eid = p.S && p.S.eidCourant; if (eid != null) { const i = indexDe(eid); if (i >= 0) S.di = i; }
-    S.ecoule = Math.max(+garde.ecoule || 0, S.debutReel ? Math.round((Date.now() - S.debutReel) / 1000) : 0);
+    S.ecoule = typeof dr_ecouleS === 'function' && (dr_horlogeCase() || {}).z ? dr_ecouleS(S.debutReel) : Math.max(+garde.ecoule || 0, S.debutReel ? Math.round((Date.now() - S.debutReel) / 1000) : 0);   /* C16 (lot 2c) : une heure reprise un autre jour que sa case — le chrono suit le temps joué */
     if (+S.taille !== +taille0) { S.page = null; const tr = document.getElementById('taille'); if (tr) tr.value = S.taille; }   /* comme le curseur bougé ici : la page repart de la première, le curseur se pose sur le cran, puis le dessin (tout, ci-dessous) */
     try { DR_CL.minut = p.minut ? Object.assign({ bips: {} }, p.minut) : null; dr_minuteurAfficher(); dr_minuteurBoucle(); } catch (e) {}
     try { document.body.classList.toggle('gel', !!S.gel); const bg = document.getElementById('bgel'); if (bg) bg.classList.toggle('gelon', !!S.gel); } catch (e) {}

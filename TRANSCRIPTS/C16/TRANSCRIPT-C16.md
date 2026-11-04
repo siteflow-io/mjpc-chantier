@@ -2523,3 +2523,6 @@ MEMO
   > À jouer : 435 à trancher, puis « promeus » · en cours : rien · ouvert : 391, 362 à 366, ⑯, ㉚
   >
   > MEMO
+
+- **Incident de la conscience** : la réponse de fin du tour de 00:02 n'a pas porté le message 432-435 (elle est restée vide) : il est écrit ci-dessus au transcript, mais Paul ne l'a pas reçu à 00:02.
+- **01:30 — le contrôle programmé** (`trig_01U5XtMxCpXLSSUqm1JNGhXB`, reçu 01:30:47) : relu à 01:31 — le banc fini (FINI, témoin 23:59:32, 178 lignes, toutes lues à 00:02) ; aucun navigateur ; le candidat `promo-8820/index.html` md5 `658d7987` ; la production inchangée (`c21ddbb6`) ; le sas à jour. Rien à relancer. La demande 432-435 envoyée à Paul maintenant, mot pour mot comme ci-dessus, avec l'heure 04/11/2026 01:31.

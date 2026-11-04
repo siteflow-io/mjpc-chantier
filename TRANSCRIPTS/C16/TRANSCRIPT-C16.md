@@ -3161,3 +3161,28 @@ MEMO
   > À jouer : rien · en cours : mon banc (environ 1 h) · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **09:42 — le banc sans le témoin, fini** (sur `46d140ab6`, sondes `0ff3d8ffd`, assemblé `8d17922b`, de 08:38:15 à 09:42:38) : session 105/0 ; appel 147/0 (13 mesures à part, 0 rouge) ; fin d'heure 56/0 ; frappe 14/0 ; banc.sh 1-12 VERT (parcours ×2, K1-K13 106/0, Atelier 53/53, §12.66 27/0, ⑩ 51/0, bloc question 33, ouverture 126/0, fil 100/0, retour sûr 61/0) ; R ×6 8/0. Tout vert.
+- **09:44 — le candidat** : l'assemblé `8d17922b` avec la seule ligne de version changée (`8.84.0-⑰`) : md5 `c6b75c7a8a4fd99de7b2d156f6af4944` (scratchpad `promo-8840/`). La production : `a1963856` (8.83.0-⑯), inchangée.
+- **09:45 — message à Paul, mot pour mot :**
+
+  > 526. Mon banc est fini à 09:42, sans le témoin : tout est vert, aucun échec. Session 105, appel 147, fin d'heure 56, frappe 14, le parcours deux fois, K1 à K13 106, l'Atelier 53 sur 53, §12.66 27, ⑩ 51, le bloc question 33, l'ouverture 126, le fil 100, le retour sûr 61, R six fois 8.
+  >
+  > 527. Je te demande « promeus » pour 512 à 515, en 8.84.0-⑰ :
+  > - 512 : une heure rattrapée dit « au début / au milieu / à la fin de l'heure » selon le temps prévu dans ton plan ;
+  > - 513 : « Ce qu'on n'a pas fait cette heure-ci : … », dans l'ordre de ton plan ;
+  > - 514 : plus de « En fin d'heure, » dans le bilan ;
+  > - 515 : une heure rattrapée ou reprise un autre jour s'affiche à l'heure réelle ; l'horloge de la case ne sert plus qu'aux alertes et au chrono.
+  >
+  > 528. L'heure des Dylan est déjà enregistrée : ses gestes ont été datés avant ce réglage. Je pense que leurs heures restent comme avant (« Ce qui s'est passé », « close · ») ; je ne l'ai pas mesuré. « Ma version » ne change pas.
+  >
+  > À tester (après « promeus », hors de la classe) :
+  > 1. Ouvre https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.84.0 : la version dit 8.84.0-⑰.
+  > 2. 3 Dylan, l'heure du 3 novembre, « Relire l'heure », « composé par le site » : « au début / au milieu / à la fin de l'heure » à sa place selon ton plan ; « Ce qu'on n'a pas fait cette heure-ci : … » dans l'ordre du plan ; jamais « En fin d'heure ».
+  > 3. Ta classe d'essai : ses heures de case restent ; seules les deux phrases (513, 514) changent.
+  > 4. La prochaine heure que tu rattrapes : « Enregistré à » à l'heure de ta montre ; rien ne sonne au lancement ; le rappel des 5 minutes vient au temps joué.
+  >
+  > 04/11/2026 09:45
+  >
+  > À jouer : rien · en cours : rien, j'attends ton « promeus » · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

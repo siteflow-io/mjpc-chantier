@@ -716,3 +716,12 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 :is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl-t{flex:1 1 320px;min-width:0;overflow-wrap:anywhere}:is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl-e{color:var(--sourd);font-size:.85rem}
 :is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl .dec{display:flex;flex-wrap:wrap;gap:4px}:is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl .dec .btn{padding:2px 7px;font-size:.8rem}:is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl .dec .btn.on{border-color:var(--or);color:var(--or)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .dr-fl .cout{flex:1 1 100%;color:var(--texte2);font-size:.8rem}
+/* C16 nuit D (MANDAT D §1.1) : dans la Relecture, la diapo de la colonne de gauche en grand */
+#dr-rel-grand{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.72);align-items:center;justify-content:center;cursor:zoom-out}
+#dr-rel-grand.on{display:flex}
+#dr-rel-grand .dr-rel-diapo{position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+:is(#dr-zone,#ses-tab,.at-som-volet) #dr-rel-grand .dr-rel-diapo>.mur{position:absolute;left:0;top:0;width:1096px;height:616px;transform-origin:top left;border-radius:0;box-shadow:none}
+#dr-rel-ia-bas{margin-top:22px;padding-top:12px;border-top:1px solid var(--bord);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#dr-rel-ia-repli{width:100%;height:160px;font-size:12px}
+:is(#dr-zone,#ses-tab,.at-som-volet) .chap-regle{margin:0 0 8px;font-style:italic;color:var(--texte2)}
+:is(#dr-zone,#ses-tab,.at-som-volet) .chap-manque{color:var(--texte2)}

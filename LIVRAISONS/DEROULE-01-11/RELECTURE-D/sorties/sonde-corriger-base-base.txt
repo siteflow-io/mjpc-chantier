@@ -1,0 +1,42 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties D · 2026-11-04 22:33 UTC · md5 b1095ead1b399b1374b19638b2b7af71 · images : celle du canon
+
+══ MESURE INITIALES · base-base · md5 b1095ead1b399b1374b19638b2b7af71 ══
+
+— partie D
+  [D] lancée true
+  [D-1] clic (+333 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] « m » (+486 ms) · curseur .ini[0.i.0] <span> · case des initiales « M » · la ligne : élève personne, i « M », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] « b » (+638 ms) · curseur .ini[0.i.0] <span> · case des initiales « MB » · la ligne : élève personne, i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] 2 (+781 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] clic dans la case de la réponse (+970 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] lettre 1 « L » (+1148 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « L » · vert true · tableau : 1/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] +500 ms sans frapper (+4544 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] Entrée (valider) (+4704 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-1] +900 ms (+5609 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] clic (+298 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales «  » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] « z » (+441 ms) · curseur .ini[0.i.1] <span> · case des initiales « Z » · la ligne : élève personne, i « Z », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] « q » (+587 ms) · curseur .ini[0.i.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] clic dans la case de la réponse (+915 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] lettre 1 « L » (+1058 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « L » · vert — · tableau : 1/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] +500 ms sans frapper (+4190 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] Entrée (valider) (+4352 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » validée · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D-2] +900 ms (+5258 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » validée · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [D] oral : {"erreur":"pas de geste oral"}
+  [D] close true
+  ok     D9 · D : aucune erreur JS, aucune boîte système
+  ok     D0-hub · ouvrir la Relecture n’écrit rien au hub — 0 écriture(s)
+  [D-explore] {"BUTTON#.at-onglet 88x44":1,"DIV#at-arbre.at-vues-arbre 250x796":1,"DIV#.ed2-som 250x796":1,"H3#.at-som-titre 224x36":1,"DIV#.ed2-sce 224x32":7,"DIV#.at-som-volet 218x2350":1,"DIV#volet.volet 218x2350":1,"DIV#.vig cour    218x131":1,"DIV#.mini 188x105":19,"DIV#.mur 186x105":19,"DIV#.ouv ouv-pres ouv-sombre ouv-avec-img 186x105":1,"DIV#.vig     218x131":6,"DIV#.ouv ouv-prob ouv-sombre 186x105":1,"DIV#.ouv ouv-comp ouv-clair 186x105":1,"DIV#.ouv ouv-parc ouv-clair 186x105":1,"DIV#.ouv ouv-debut ouv-sombre ouv-avec-img 186x105":1,"DIV#.vig     218x117":12,"DIV#.corpsd ecran 186x105":9,"DIV#.corpsd ecran plein-img 186x105":5}
+  [D1] vignette {"vig":0} → en grand null · après Échap ouverte false
+  ÉCHEC  D1 · un clic sur une diapo de la colonne de gauche l’affiche en grand, Échap la referme — {"v":{"vig":0},"g":null,"ferme":true}
+  [D2] bouton {"b":0} · copié 0 caractères, 1 lignes · parties 0/12 ["les diapos jouées","un titre de diapo","les réponses avec le prénom","la réponse sans élève","la version du site","la classe","l’heure et ses heures réelles","le journal geste par geste","les initiales tapées et l’élève trouvé","les réponses rangées dans les diapos avec leur heure","les participations rangées avec l’heure","les initiales de chaque élève"] · noms de famille entiers : 0
+  ÉCHEC  D2-titre · l’infobulle du bouton, mot pour mot
+  ÉCHEC  D2-bas · le bouton est en bas de la Relecture — undefined
+  ÉCHEC  D2-texte · le texte copié dit tout ce que disent C16 588 et 591 — 0/12
+  ÉCHEC  D2-noms · aucun nom de famille entier dans le texte copié — 0 nom(s)
+  [D3] phrase false · notions [{"id":"c4-lire-02","etat":"non travaillée","manque":null,"attendu":[]},{"id":"n-act1","etat":"travaillée","manque":null,"attendu":["2 diapos sur 2 de son activité faites"]},{"id":"n-act2","etat":"non travaillée","manque":null,"attendu":["2 diapos sur 10 de son activité faites"]}] · oral []
+  ÉCHEC  D3-phrase · sous « 3 · Les notions du chapitre », la phrase de la règle — false
+  ÉCHEC  D3-manque · à côté de chaque notion non travaillée, ce qui lui manque, juste contre l’état — 0/2
+  ÉCHEC  D3-oral · une notion faite à l’oral est dite travaillée — []
+  ok     D9 · D Relecture : aucune erreur JS, aucune boîte système
+
+--- fin : 11 vérifications, 8 échec(s)

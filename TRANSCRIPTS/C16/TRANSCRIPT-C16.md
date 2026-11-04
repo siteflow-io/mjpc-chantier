@@ -3186,3 +3186,27 @@ MEMO
   > À jouer : rien · en cours : rien, j'attends ton « promeus » · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **11:08 — Paul, mot pour mot** (deux prénoms d'élèves retirés, non recopiés au sas) :
+
+  > Regarde la séance d'Aretha franklin que je viens de terminer. Il y a un souci sur le récit et sur l'affichage des élèves de la classe ( certains manquants) et de leur identification par initiales ( les MB [deux prénoms] par exemple). Le récit ne contient pas ce qu'on a pourtant écrit dans les diapos de la séance 1
+
+- **11:09 — la conscience** : le Chrome de Paul ne répond pas (deux essais) : le hub n'est pas lu. Lu dans le code de la production 8.83.0 : `dr_initiales` (deux élèves aux mêmes initiales : « MB » et « MB2 ») ; `dr_iniVu` (l'écran ne montre jamais « MB2 ») ; `dr_iniExact` (« MB » tapé = le premier) ; `dr_candidats` (jamais un absent) ; `extractEleves` ; `dr_recitCitations` (ce qui a été écrit se lit dans les diapos de `seance()`). Registre (production `fb6ca98`) : « L'HEURE DES FRANKLIN ».
+- **11:10 — message à Paul, mot pour mot :**
+
+  > 529. Je ne peux pas regarder ton heure pour l'instant : ton Chrome ne répond pas d'ici (l'ordinateur est peut-être en veille, ou Chrome fermé). Ouvre Chrome sur ton ordinateur et écris-moi « vas-y » : je lis l'heure des Franklin au hub, en lecture seulement.
+  >
+  > 530. Les initiales en double, lu dans le code : pour deux élèves en MB, le site garde « MB » pour le premier de la liste et « MB2 » pour le second, mais n'affiche jamais « MB2 » (il montre « MB » et le début du prénom). Quand tu tapes « MB », le site prend le premier, sans te demander lequel. Je pense que c'est ce qui t'est arrivé ; je le vérifie au hub.
+  >
+  > 531. Les élèves manquants : je ne sais pas. Deux pistes dans le code : un élève marqué absent disparaît des listes, ou la liste de la classe est mal rangée au hub. Je le vois au hub.
+  >
+  > 532. Le récit sans ce qui a été écrit en séance 1 : je ne sais pas. Ma supposition, à vérifier : si l'heure est passée de la séance 1 à la séance 2, le récit ne cherche ce qui a été écrit que dans les diapos de la séance où l'heure finit. Je le vois au hub.
+  >
+  > 533. Les trois sont au registre. Je ne propose rien avant d'avoir lu le hub. Ta demande « promeus » pour 8.84.0 (512 à 515) reste ouverte.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 11:10
+  >
+  > À jouer : rien · en cours : rien, j'attends ton « vas-y » (Chrome ouvert) · ouvert : l'heure des Franklin (529 à 532), ton « promeus » pour 8.84.0, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

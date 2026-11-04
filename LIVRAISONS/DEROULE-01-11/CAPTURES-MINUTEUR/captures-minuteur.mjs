@@ -382,6 +382,54 @@ if (P.includes('P4B')) {
   dire('P4B · pilote : ' + JSON.stringify(mp));
   dire('P4B · pastille au pilote, juste avant la prise : ' + JSON.stringify(await a.pg.evaluate(() => { const e = document.querySelector('.cap-pp'); if (!e) return null; const r = e.getBoundingClientRect(); const h = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return { r: [r.left, r.top, r.width, r.height].map(Math.round), dessus: h ? (h.id || h.className || h.tagName) : null }; })));
   await prise('P4B'); await tabMesure('P4B'); }
+/* ═══ C16 669 (Paul, 04/11 18:45-18:46, sa vidéo) — P6 : un rectangle allongé (l'anneau qui se vide, le décompte à côté), redimensionnable par ses poignées ;
+   les couleurs par crans depuis la valeur donnée (vert plus de la moitié, jaune jusqu'au quart, orange jusqu'au dixième, rouge le dernier dixième) ;
+   au pilote, sous la diapo, au-dessus des notes : le réglage comme la vidéo (chaque chiffre avec + et −, ▶, ■), « au tableau » en interrupteur, le zoom ═══ */
+if (P.includes('P6')) {
+  const CW = 420, CH = 140;
+  const coin = await T.pg.evaluate(([CW, CH]) => { const r = document.getElementById('mur2').getBoundingClientRect(); const L = []; const w = document.createTreeWalker(document.getElementById('mur2'), NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { if (!n.textContent.trim() || !n.parentElement || n.parentElement.offsetParent === null) continue; const rg = document.createRange(); rg.selectNodeContents(n); Array.from(rg.getClientRects()).forEach(q => L.push(q)); }
+    const M = 24; const C = { 'en bas à droite': [r.right - M - CW, r.bottom - M - CH], 'en haut à droite': [r.right - M - CW, r.top + M], 'en bas à gauche': [r.left + M, r.bottom - M - CH], 'en haut à gauche': [r.left + M, r.top + M] };
+    for (const k of Object.keys(C)) { const [x, y] = C[k]; if (!L.some(q => Math.min(q.right, x + CW) - Math.max(q.left, x) > 0 && Math.min(q.bottom, y + CH) - Math.max(q.top, y) > 0)) return { k, x, y, fx: (x - r.left) / r.width, fy: (y - r.top) / r.height, fw: CW / r.width, fh: CH / r.height }; } return null; }, [CW, CH]);
+  dire('P6 · le coin libre : ' + JSON.stringify(coin));
+  const CARTE = (cls) => '<div class="' + cls + ' cap-min"><svg class="cap-svg" viewBox="0 0 160 160"><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/><circle class="cap-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg><span class="cap-chif"></span></div>';
+  const CSSC = (sel, fs) => sel + '{position:absolute;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 18px;box-sizing:border-box;background:' + BRUN + ';border:1px solid rgba(228,180,92,.55);border-radius:18px;z-index:20}'
+    + sel + ' .cap-svg{width:var(--r,108px);height:var(--r,108px);flex:0 0 auto;position:static}' + sel + ' .cap-chif{position:static;font:700 ' + fs + 'px "EB Garamond",Georgia,serif;color:' + OR + ';letter-spacing:.03em;line-height:1;white-space:nowrap}';
+  const coul = 'f => f > 0.5 ? "#4f9d5d" : f > 0.25 ? "#e0b83a" : f > 0.1 ? "#e07b2e" : "#e8484c"';
+  if (coin) await tabPoser(CSSC('#ses-tab .cap-carte', 76) + '#ses-tab .cap-carte{left:' + coin.x + 'px;top:' + coin.y + 'px;width:' + CW + 'px;height:' + CH + 'px}', CARTE('cap-carte'));
+  await T.pg.evaluate((coulSrc) => { const coul = eval(coulSrc); const maj = () => { const t = ((document.getElementById('dr-tab-minut') || {}).textContent || '').trim(); const m = /(\d+):(\d\d)/.exec(t); const s = m ? +m[1] * 60 + +m[2] : 0; const f = Math.max(0, Math.min(1, s / 300)); document.querySelectorAll('.cap-carte .cap-anneau').forEach(e => { const L = 2 * Math.PI * 64; e.setAttribute('stroke-dasharray', (f * L) + ' ' + L); e.setAttribute('stroke', coul(f)); }); }; maj(); setInterval(maj, 200); }, coul);
+  const mp = await a.pg.evaluate(([OR, BRUN, coin, html, cssc, coulSrc]) => { const coul = eval(coulSrc); document.querySelectorAll('.cap-el,#cap-style-p').forEach(e => e.remove()); clearInterval(window.__capP);
+    const mur = document.getElementById('mur').getBoundingClientRect(); const bc = document.getElementById('bchrono'); const barre = bc ? bc.parentElement.getBoundingClientRect() : null;
+    const notes = document.querySelector('#pilotage .notes') || document.querySelector('.notes'); const pn0 = document.getElementById('dr-minut-p'); if (pn0) pn0.style.display = 'none';
+    const H2 = 90; const top = Math.round((barre ? barre.bottom : mur.bottom) + 6);
+    const r = document.createElement('div'); r.className = 'cap-el cap-regl'; r.id = 'cap-regl';
+    const chiffre = (c, k) => '<span class="cap-dig"><button class="cap-pm" title="Ajouter une ' + k + '">+</button><b>' + c + '</b><button class="cap-pm" title="Retirer une ' + k + '">−</button></span>';
+    r.innerHTML = '<svg class="cap-svg" viewBox="0 0 160 160"><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/><circle class="cap-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg>'
+      + '<span class="cap-digs">' + chiffre('0', 'dizaine de minutes') + chiffre('5', 'minute') + '<b class="cap-dp">:</b>' + chiffre('0', 'dizaine de secondes') + chiffre('0', 'seconde') + '</span>'
+      + '<button class="cap-go" title="Lancer le chrono (au tableau si « au tableau » est allumé) ; un second clic le met en pause">⏸</button><button class="cap-stop" title="Arrêter le chrono : il disparaît du tableau">■</button>'
+      + '<label class="cap-tog" title="Le chrono paraît au tableau (allumé) ou seulement chez toi (éteint)"><span class="cap-sw"><i></i></span>au tableau</label>'
+      + '<label class="cap-zoom" title="La taille du chrono, au tableau et sur ta diapo ensemble">zoom <input type="range" min="60" max="200" value="100"></label>';
+    document.body.appendChild(r);
+    const st = document.createElement('style'); st.id = 'cap-style-p';
+    st.textContent = '#cap-regl{position:fixed;left:' + Math.round(mur.left) + 'px;top:' + top + 'px;width:' + Math.round(mur.width) + 'px;height:' + H2 + 'px;box-sizing:border-box;display:flex;align-items:center;gap:22px;padding:0 22px;background:#211a12;border:1px solid rgba(228,180,92,.45);border-radius:14px;z-index:2147482000;font-family:"EB Garamond",Georgia,serif}'
+      + '#cap-regl .cap-svg{height:66px;width:66px}#cap-regl .cap-digs{display:flex;align-items:center;gap:4px}#cap-regl .cap-dig{display:flex;flex-direction:column;align-items:center;line-height:1}'
+      + '#cap-regl .cap-dig b,#cap-regl .cap-dp{font:700 40px "EB Garamond",Georgia,serif;color:' + OR + ';width:26px;text-align:center}#cap-regl .cap-dp{width:14px}'
+      + '#cap-regl .cap-pm{background:none;border:0;color:#cdbf9f;font:600 17px Georgia,serif;cursor:pointer;padding:0 5px;line-height:1}'
+      + '#cap-regl .cap-go,#cap-regl .cap-stop{width:46px;height:46px;border-radius:50%;font-size:22px;cursor:pointer}#cap-regl .cap-go{background:' + OR + ';color:' + BRUN + ';border:0}#cap-regl .cap-stop{background:none;color:' + OR + ';border:2px solid ' + OR + '}'
+      + '#cap-regl .cap-tog{display:flex;align-items:center;gap:12px;color:' + OR + ';font-size:22px;cursor:pointer}#cap-regl .cap-sw{position:relative;width:66px;height:36px;border-radius:18px;background:' + OR + ';display:inline-block}#cap-regl .cap-sw i{position:absolute;right:4px;top:4px;width:28px;height:28px;border-radius:50%;background:' + BRUN + '}'
+      + '#cap-regl .cap-zoom{display:flex;align-items:center;gap:8px;margin-left:auto;color:' + OR + ';font-size:18px}#cap-regl .cap-zoom input{width:140px;accent-color:' + OR + '}'
+      + (notes ? '#pilotage .notes{margin-top:' + (H2 + 12) + 'px!important}' : '')
+      + cssc + '.cap-pp{position:fixed!important;z-index:2147483000!important;cursor:move;outline:2px solid #8ab4ff;outline-offset:3px}'
+      + '.cap-pp .cap-poi{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid #6b7cff;z-index:2}';
+    document.head.appendChild(st);
+    let pp = null; if (coin) { const d = document.createElement('div'); d.innerHTML = html; pp = d.firstElementChild; pp.classList.add('cap-el', 'cap-pp'); const w = coin.fw * mur.width, h = coin.fh * mur.height; Object.assign(pp.style, { left: (mur.left + coin.fx * mur.width) + 'px', top: (mur.top + coin.fy * mur.height) + 'px', width: w + 'px', height: h + 'px' }); pp.querySelector('.cap-chif').style.fontSize = Math.round(h * 0.52) + 'px'; pp.style.setProperty('--r', Math.round(h * 0.76) + 'px'); pp.style.gap = Math.round(h * 0.1) + 'px'; pp.style.padding = '0 ' + Math.round(h * 0.13) + 'px';
+      [['-9px', '-9px', 'nwse-resize'], ['calc(100% - 5px)', '-9px', 'nesw-resize'], ['-9px', 'calc(100% - 5px)', 'nesw-resize'], ['calc(100% - 5px)', 'calc(100% - 5px)', 'nwse-resize']].forEach(([l, tp, cu]) => { const k = document.createElement('i'); k.className = 'cap-poi'; k.title = 'Tire pour agrandir ou réduire le chrono, au tableau aussi'; Object.assign(k.style, { left: l, top: tp, cursor: cu }); pp.appendChild(k); });
+      pp.title = 'Glisse le chrono : il se déplace au tableau aussi'; document.body.appendChild(pp); }
+    const maj = () => { const t = ((document.getElementById('dr-minut-aff') || {}).textContent || '').trim(); const m = /(\d+):(\d\d)/.exec(t); const sec = m ? +m[1] * 60 + +m[2] : 0; const f = Math.max(0, Math.min(1, sec / 300));
+      document.querySelectorAll('.cap-pp .cap-chif').forEach(e => { if (e.textContent !== t) e.textContent = t; }); document.querySelectorAll('.cap-pp .cap-anneau,#cap-regl .cap-anneau').forEach(e => { const L = 2 * Math.PI * 64; e.setAttribute('stroke-dasharray', (f * L) + ' ' + L); e.setAttribute('stroke', coul(f)); }); };
+    maj(); window.__capP = setInterval(maj, 200);
+    const rr = r.getBoundingClientRect(), nb = notes ? notes.getBoundingClientRect() : null; return { reglage: [rr.left, rr.top, rr.width, rr.height].map(Math.round), surLaDiapo: rr.top < mur.bottom - 1, notesDessous: nb ? nb.top >= rr.bottom : null, cartePilote: pp ? [pp.style.left, pp.style.top, pp.style.width, pp.style.height] : null }; }, [OR, BRUN, coin, CARTE('cap-carte'), CSSC('.cap-pp', 40), coul]);
+  dire('P6 · pilote : ' + JSON.stringify(mp));
+  await prise('P6'); await tabMesure('P6'); }
 /* ═══ la fin ═══ */
 dire('requêtes refusées par le faux hub : ' + REFUSES.length);
 await nav.close(); fs.writeFileSync(path.join(OUT, 'captures-minuteur.txt'), R.join('\n') + '\n'); process.exit(0);

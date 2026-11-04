@@ -530,15 +530,40 @@ html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-r
 #dr-zone .dr-minut-p { position: fixed; z-index: 9000; box-shadow: 0 6px 18px rgba(0,0,0,.28); flex-wrap: nowrap; white-space: nowrap; }
 /* §12.70 bis (Paul, 04/11 16:54) : le réglage en rangée sous la barre de la diapo, au-dessus des notes ; la pastille or sur brun, au pilote et au tableau */
 #dr-minut-p.dr-minut-p { position: static; z-index: auto; box-shadow: none; flex-wrap: nowrap; white-space: nowrap; align-items: center; gap: 12px; padding: 6px 14px; margin: 6px 0; border-radius: 8px; background: var(--carte, #221b10); border: 1px solid var(--bord, #4a3b22); }
-#dr-minut-p #dr-minut-in { width: 4.2em; text-align: center; }
-#dr-minut-p button[disabled] { opacity: .45; cursor: not-allowed; }
-#dr-minut-p .dr-minut-zoom { display: flex; align-items: center; gap: 8px; margin-left: auto; color: var(--or, #e4b45c); }
-#dr-minut-p .dr-minut-zoom input { width: 140px; accent-color: #e4b45c; }
-.dr-pp { box-sizing: border-box; }
-.dr-pp svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.dr-pp .dr-pp-chif { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 1em/1 "EB Garamond", Georgia, serif; font-variant-numeric: tabular-nums; }
-.dr-minut-pp { position: fixed; z-index: 2147483000; cursor: grab; touch-action: none; user-select: none; }
+/* C16 677 (Paul, 04/11 18:45-18:57, les captures P6) : le réglage comme la vidéo — l'anneau, chaque chiffre avec son + et son −, ▶/⏸, ■, « au tableau » en interrupteur ; plus de zoom */
+#dr-minut-p.dr-minut-p { gap: 22px; padding: 8px 22px; border-radius: 14px; background: #211a12; border: 1px solid rgba(228,180,92,.45); font-family: "EB Garamond", Georgia, serif; }
+#dr-minut-p .dr-mr-anneau { width: 62px; height: 62px; flex: 0 0 auto; }
+#dr-minut-p .dr-mr-chifs { display: flex; align-items: center; gap: 4px; }
+#dr-minut-p .dr-mr-dig { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+#dr-minut-p .dr-mr-dig b, #dr-minut-p .dr-mr-dp { font: 700 38px/1 "EB Garamond", Georgia, serif; color: #e4b45c; width: 26px; text-align: center; font-variant-numeric: tabular-nums; }
+#dr-minut-p .dr-mr-dp { width: 14px; }
+#dr-minut-p .dr-mr-pm { background: none; border: 0; color: #cdbf9f; font: 600 18px/1 Georgia, serif; cursor: pointer; padding: 1px 6px; }
+#dr-minut-p .dr-mr-pm:hover:not([disabled]) { color: #e4b45c; }
+#dr-minut-p .dr-mr-go, #dr-minut-p .dr-mr-stop { width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; flex: 0 0 auto; }
+#dr-minut-p .dr-mr-go { background: #e4b45c; color: #3a2c14; border: 0; }
+#dr-minut-p .dr-mr-stop { background: none; color: #e4b45c; border: 2px solid #e4b45c; }
+#dr-minut-p .dr-mr-tog { display: flex; align-items: center; gap: 12px; color: #e4b45c; font-size: 22px; cursor: pointer; user-select: none; }
+#dr-minut-p #dr-minut-tab { appearance: none; -webkit-appearance: none; position: relative; width: 66px; height: 36px; border-radius: 18px; margin: 0; background: #5a4a30; cursor: pointer; transition: background .15s; flex: 0 0 auto; }
+#dr-minut-p #dr-minut-tab::before { content: ""; position: absolute; left: 4px; top: 4px; width: 28px; height: 28px; border-radius: 50%; background: #3a2c14; transition: left .15s; }
+#dr-minut-p #dr-minut-tab:checked { background: #e4b45c; }
+#dr-minut-p #dr-minut-tab:checked::before { left: 34px; }
+/* sur un écran bas (1536 × 864, l'écran de Paul à 125 %), le même réglage, resserré : il tient en entier sous la diapo, sans défiler */
+@media (max-height: 900px) { #dr-minut-p.dr-minut-p { gap: 14px; padding: 1px 16px; margin: 3px 0; } #dr-minut-p .dr-mr-anneau { width: 42px; height: 42px; }
+  #dr-minut-p .dr-mr-dig b, #dr-minut-p .dr-mr-dp { font-size: 26px; width: 20px; } #dr-minut-p .dr-mr-dp { width: 10px; } #dr-minut-p .dr-mr-pm { font-size: 13px; padding: 0 5px; }
+  #dr-minut-p .dr-mr-go, #dr-minut-p .dr-mr-stop { width: 34px; height: 34px; font-size: 16px; } #dr-minut-p .dr-mr-tog { font-size: 18px; gap: 8px; }
+  #dr-minut-p #dr-minut-tab { width: 50px; height: 28px; border-radius: 14px; } #dr-minut-p #dr-minut-tab::before { width: 20px; height: 20px; } #dr-minut-p #dr-minut-tab:checked::before { left: 26px; } }
+/* le rectangle, au pilote et au tableau : or sur brun, l'anneau à gauche, le décompte à côté ; la taille du texte suit la hauteur (font-size = hauteur) */
+.dr-pp { box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: .1em; padding: 0 .13em; background: #3a2c14; border: 1px solid rgba(228,180,92,.55); border-radius: .13em; }
+.dr-pp svg { position: static; width: .76em; height: .76em; flex: 0 0 auto; }
+.dr-pp .dr-pp-chif { position: static; font: 700 .52em/1 "EB Garamond", Georgia, serif; color: #e4b45c; letter-spacing: .03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dr-minut-pp { position: fixed; z-index: 2147483000; cursor: move; touch-action: none; user-select: none; outline: 2px solid #8ab4ff; outline-offset: 3px; }
 .dr-minut-pp.glisse { cursor: grabbing; }
+.dr-minut-pp .dr-pp-poi { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 2px solid #6b7cff; box-sizing: border-box; z-index: 2; }
+.dr-minut-pp .dr-pp-nw { left: -9px; top: -9px; cursor: nwse-resize; } .dr-minut-pp .dr-pp-ne { right: -9px; top: -9px; cursor: nesw-resize; }
+.dr-minut-pp .dr-pp-sw { left: -9px; bottom: -9px; cursor: nesw-resize; } .dr-minut-pp .dr-pp-se { right: -9px; bottom: -9px; cursor: nwse-resize; }
+/* C16 677 : « Ce que voit la classe » est la page du tableau elle-même, en petit (un regard, aucun clic) */
+#vue-mini.dr-vig-on { position: relative; overflow: hidden; }
+#vue-mini iframe.dr-vig { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; border: 0; transform-origin: 0 0; pointer-events: none; background: #000; }
 #dr-zone .dr-minut-p button[disabled] { opacity: .45; cursor: not-allowed; }
 #dr-zone .dr-minut-aff.dr-minut-pret { color: var(--or); }
 #dr-zone .dr-minut-aff.dr-minut-vert { color: #1f9d55; }

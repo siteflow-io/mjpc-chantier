@@ -1,10 +1,10 @@
-// Le générateur de la maquette du minuteur (C16 660) : le site 8.84.0-⑰ lui-même (assemblé de LIVRAISONS/INTEGRATION, la nouveauté écrite
+// Le générateur de la maquette du minuteur (C16 660 ; v2 C16 677 : le chrono P6, « Ce que voit la classe » qui est le tableau) : le site 8.84.0-⑰ lui-même (assemblé de LIVRAISONS/INTEGRATION, la nouveauté écrite
 // dans dr/), servi sur le faux hub des sondes (hub-ouverture.mjs), anonymisé, EMBARQUÉ dans la page : aucune requête au réseau.
 // usage : node gen-maquette.mjs <sortie.html>
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 import { storeOuverture } from '../../../LIVRAISONS/DEROULE-01-11/DIAPOS-OUVERTURE/hub-ouverture.mjs';
 const ici = path.dirname(new URL(import.meta.url).pathname); const RACINE = path.resolve(ici, '..', '..', '..');
-const SORTIE = path.resolve(process.argv[2] || path.join(ici, 'C16-maquette-minuteur-v1.html'));
+const SORTIE = path.resolve(process.argv[2] || path.join(ici, 'C16-maquette-minuteur-v2.html'));
 const TMP = SORTIE + '.assemble.html';
 execFileSync('node', [path.join(RACINE, 'AUDITS/INTEGRATION-DEROULE/assembler.mjs'), path.join(RACINE, 'LIVRAISONS/INTEGRATION/index.html'), TMP], { stdio: 'ignore' });
 let html = fs.readFileSync(TMP, 'utf8'); fs.unlinkSync(TMP);
@@ -40,7 +40,7 @@ var RD = Date, off = new RD('2026-09-14T09:00:00+02:00').getTime() - RD.now(), c
 function FD(){ var a = Array.prototype.slice.call(arguments); if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new (Function.prototype.bind.apply(RD, [null].concat(a)))() : new RD(RD.now() + off); }
 FD.prototype = RD.prototype; FD.now = function(){ return RD.now() + off; }; FD.parse = RD.parse; FD.UTC = RD.UTC; window.Date = FD;
 /* la fenêtre du tableau se cale sur l'horloge du pilote (même ordinateur) au premier message qui la porte */
-window.addEventListener('message', function(e){ var d = e.data; if (!cal && d && typeof d === 'object' && isFinite(d.t) && window.opener && e.source === window.opener) { off = d.t - RD.now(); cal = true; } }, true);
+window.addEventListener('message', function(e){ var d = e.data; if (!cal && d && typeof d === 'object' && isFinite(d.t) && ((window.opener && e.source === window.opener) || (!window.opener && window.parent !== window && e.source === window.parent))) { off = d.t - RD.now(); cal = true; } }, true);
 var H = ${json.replace(/<\/script/gi, '<\\/script')};
 function segs(c){ return String(c).split('/').filter(Boolean); }
 function fb(v){ if (v == null || typeof v !== 'object') return v; var k = Object.keys(v); var o; if (!Array.isArray(v) && k.length && k.every(function(x){ return /^(0|[1-9]\\d*)$/.test(x); })) { var mx = Math.max.apply(null, k.map(Number)); if (k.length * 2 > mx + 1) { o = []; for (var i = 0; i <= mx; i++) o.push(v[i] === undefined ? null : fb(v[i])); return o; } }

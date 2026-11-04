@@ -1073,11 +1073,11 @@ if (typeof ouOnEnEst === 'function' && !ouOnEnEst.__dr) { const dr_ouOnEnEst0 = 
    puis seuls le chiffre, les classes et l'état des boutons changent. Journal : `minuteur` (depart, pause, reprise, arret, fin). ═══ */
 DR_CL.minut = null;   /* { etat: 'pret'|'court'|'pause'|'fini', duree, fin (court), reste (pret, pause), tableau, eid, bips } */
 const dr_mmss = ms => { const s = Math.max(0, Math.ceil(ms / 1000 - 1e-9)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
-const DR_MINUT_BULLE = 'Le minuteur : règle la durée, coche « au tableau » pour que la classe la voie aussitôt (immobile), puis « Départ ». '
-  + '« ⏸ Pause » arrête les chiffres ici et au tableau ; « ■ » le retire. Il ne change pas l’heure. Il sonne sur ton ordinateur : cinq bips discrets à la fin, un ding à 0.';
+const DR_MINUT_BULLE = 'Le chrono : ouvre son réglage sous la diapo — la durée par les + et −, « au tableau » allumé pour que la classe le voie aussitôt (immobile), puis ▶. '
+  + '⏸ le met en pause ici et au tableau ; ■ le retire. Il ne change pas l’heure. Il sonne sur ton ordinateur : cinq bips discrets à la fin, un ding à 0.';
 /* la phase de couleur, selon la part écoulée du temps donné (§12.70 (7)) */
-function dr_minutPhase(reste, duree, etat){ if (etat === 'pret') return 'pret'; if (!(duree > 0)) return 'vert'; const e = 1 - Math.max(0, reste) / duree;
-  return e >= 0.9 ? 'rouge' : e >= 2 / 3 ? 'orange' : e >= 1 / 3 ? 'jaune' : 'vert'; }
+function dr_minutPhase(reste, duree, etat){ if (etat === 'pret') return 'pret'; if (!(duree > 0)) return 'vert'; const f = Math.ceil(Math.max(0, reste) / 1000 - 1e-9) * 1000 / duree;
+  return f > 0.5 ? 'vert' : f > 0.25 ? 'jaune' : f > 0.1 ? 'orange' : 'rouge'; }   /* C16 671 (acceptée) : les crans comptés sur la durée donnée, au chiffre affiché — vert plus de la moitié, jaune jusqu'au quart, orange jusqu'au dixième, rouge le dernier dixième */
 function dr_minutReste(m){ m = m || DR_CL.minut; if (!m) return 0; return m.etat === 'court' ? Math.max(0, m.fin - Date.now()) : Math.max(0, m.reste || 0); }
 function dr_minutDuree(){ const i = document.getElementById('dr-minut-in'); const v = String(i ? i.value : '05:00').trim().split(':'); const ms = v.length > 1 ? ((+v[0] || 0) * 60 + (+v[1] || 0)) * 1000 : (+v[0] || 0) * 60000; return ms > 0 ? ms : 0; }
 /* ce qui part au tableau (rien si « au tableau » n'est pas coché) : d durée, e état, f fin (horloge du pilote), r reste */
@@ -1090,28 +1090,24 @@ function dr_minuteurPoser(){
   const b = document.createElement('span'); b.id = 'dr-minut'; b.className = 'dr-minut';
   b.innerHTML = '<b id="dr-minut-aff" class="dr-minut-aff" title="Le minuteur : ce qui reste"></b>'
     + '<span id="dr-minut-p" class="dr-minut-p" style="display:none">'
-    + '<input id="dr-minut-in" value="05:00" size="5" title="La durée, en minutes:secondes (5 = 5 minutes). Si « au tableau » est coché, la classe la voit changer.">'
-    + '<button class="btn or" id="dr-minut-go" title="Lance le compte à rebours ; si « au tableau » est coché, les chiffres courent aussi au tableau">Départ</button>'
-    + '<button class="btn" id="dr-minut-pause" title="Arrête les chiffres, ici et au tableau ; un second clic les fait repartir là où ils étaient">⏸ Pause</button>'
-    + '<label title="La classe voit le minuteur en haut à droite du tableau, dès que tu coches, même avant « Départ » ; décoché, il disparaît du tableau et continue ici"><input type="checkbox" id="dr-minut-tab"> au tableau</label>'
-    + '<button class="btn" id="dr-minut-stop" title="Arrête le minuteur et le retire du tableau (la durée réglée reste pour la prochaine fois)">■</button>'
-    + '<label class="dr-minut-zoom" title="La taille de la pastille : elle grandit ou rapetisse au tableau et sur ta diapo en même temps. Ne change ni la durée ni la place.">zoom <input type="range" id="dr-minut-zoom" min="60" max="200" step="10" value="100"></label></span>';
+    + '<input id="dr-minut-in" type="hidden" value="05:00">'
+    + '<svg class="dr-mr-anneau" viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/><circle class="dr-pp-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg>'
+    + '<span class="dr-mr-chifs" title="La durée du chrono : chaque chiffre a son + et son − ; quand il court, ce qui reste">' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="600" data-l="une dizaine de minutes" title="Ajoute une dizaine de minutes à la durée">+</button><b data-k="dm"></b><button class="dr-mr-pm" data-d="-600" data-l="une dizaine de minutes" title="Retire une dizaine de minutes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="60" data-l="une minute" title="Ajoute une minute à la durée">+</button><b data-k="m"></b><button class="dr-mr-pm" data-d="-60" data-l="une minute" title="Retire une minute à la durée">−</button></span>' + '<b class="dr-mr-dp">:</b>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="10" data-l="une dizaine de secondes" title="Ajoute une dizaine de secondes à la durée">+</button><b data-k="ds"></b><button class="dr-mr-pm" data-d="-10" data-l="une dizaine de secondes" title="Retire une dizaine de secondes à la durée">−</button></span>' + '<span class="dr-mr-dig"><button class="dr-mr-pm" data-d="1" data-l="une seconde" title="Ajoute une seconde à la durée">+</button><b data-k="s"></b><button class="dr-mr-pm" data-d="-1" data-l="une seconde" title="Retire une seconde à la durée">−</button></span>' + '</span>'
+    + '<button class="dr-mr-go" id="dr-minut-go" title="Lance le chrono ; si « au tableau » est allumé, il court aussi au tableau">▶</button>'
+    + '<button class="dr-mr-stop" id="dr-minut-stop" title="Arrête le chrono et le retire du tableau (la durée réglée reste pour la prochaine fois)">■</button>'
+    + '<label class="dr-mr-tog" title="Allumé : la classe voit le chrono au tableau, dès maintenant, même avant ▶ ; éteint : il disparaît du tableau et continue ici"><input type="checkbox" id="dr-minut-tab"><span>au tableau</span></label></span>';
   bc.insertAdjacentElement('afterend', b);
   /* §12.70 bis (Paul, 04/11 16:54) : le réglage vit en rangée sous la barre de la diapo, au-dessus des notes — jamais sur la diapo */
   const pn = b.querySelector('#dr-minut-p'); if (pn && bc.parentElement) bc.parentElement.insertAdjacentElement('afterend', pn);
   /* les clics passent par un seul écouteur, posé une fois (§12.56 (1)(e)) */
   [b, pn].forEach(x => x && x.addEventListener('click', ev => { const t = ev.target && ev.target.closest && ev.target.closest('button'); if (!t) return; ev.stopPropagation();
-    if (t.id === 'dr-minut-go') dr_minuteurDepart(); else if (t.id === 'dr-minut-pause') dr_minuteurPause(); else if (t.id === 'dr-minut-stop') dr_minuteurArret(); }));
+    const m0 = DR_CL.minut; if (t.id === 'dr-minut-go') { if (m0 && (m0.etat === 'court' || m0.etat === 'pause')) dr_minuteurPause(); else dr_minuteurDepart(); } else if (t.id === 'dr-minut-stop') dr_minuteurArret(); else if (t.dataset.d) dr_minutRegler(+t.dataset.d); }));
   const $m = id => document.getElementById(id);
-  $m('dr-minut-in').addEventListener('keydown', ev => { ev.stopPropagation(); if (ev.key === 'Enter') dr_minuteurDepart(); if (ev.key === 'Escape') dr_minuteurPanneau(false); });
-  $m('dr-minut-in').addEventListener('input', () => { const m = DR_CL.minut; if (m && m.etat === 'pret') { const d = dr_minutDuree(); if (d > 0 && d !== m.duree) { m.duree = d; m.reste = d; dr_minuteurEnvoyer(); } } dr_minuteurAfficher(); });
   $m('dr-minut-tab').addEventListener('change', () => { const on = $m('dr-minut-tab').checked; let m = DR_CL.minut;
     if (!m) { if (!on) return; const d = dr_minutDuree(); if (!d) return; m = DR_CL.minut = { etat: 'pret', duree: d, reste: d, tableau: true, eid: (ecran() || {}).eid, bips: {} }; }   /* §12.70 (2) : coché avant « Départ », la durée paraît aussitôt au tableau, immobile */
     else m.tableau = on;
     if (!on && m.etat === 'pret') DR_CL.minut = null;
     dr_minuteurEnvoyer(); dr_minuteurAfficher(); });
-  const z = $m('dr-minut-zoom'); z.addEventListener('keydown', ev => ev.stopPropagation());
-  z.addEventListener('input', () => { DR_CL.minutZ = Math.max(.6, Math.min(2, (+z.value || 100) / 100)); dr_minutBorner(); dr_minuteurEnvoyer(); dr_minuteurAfficher(); });
   dr_minuteurAfficher();
 }
 /* le panneau s'ouvre sous la main, au-dessus du ⏱ (position fixe, calculée à l'ouverture seulement) */
@@ -1119,7 +1115,7 @@ function dr_minuteurPanneau(ouvrir){ dr_minuteurPoser(); const p = document.getE
   if (ouvrir === undefined) ouvrir = p.style.display === 'none';
   if (!ouvrir) { p.style.display = 'none'; return; }
   p.style.display = 'flex';   /* §12.70 bis : en rangée sous la barre, à sa place dans la page (plus de position calculée) */
-  const i = document.getElementById('dr-minut-in'); if (i && !(DR_CL.minut && DR_CL.minut.etat !== 'pret')) i.select(); }
+}
 function dr_minuteurBasculer(){ dr_minuteurPanneau(); }
 function dr_minuteurDepart(){ const d = (DR_CL.minut && DR_CL.minut.etat === 'pret') ? (dr_minutDuree() || DR_CL.minut.duree) : dr_minutDuree(); if (!d) return;
   const tab = !!(document.getElementById('dr-minut-tab') || {}).checked;
@@ -1135,7 +1131,7 @@ function dr_minuteurArret(){ const m = DR_CL.minut; if (m && m.etat !== 'pret') 
 function dr_minuteurFin(){ clearTimeout(DR_CL.minutFinT); DR_CL.minut = null; const t = document.getElementById('dr-minut-tab'); if (t) t.checked = false; dr_minuteurEnvoyer(); dr_minuteurAfficher(); dr_minuteurBoucle(); }
 /* l'envoi aux tableaux, aux gestes seulement : la fenêtre locale tout de suite, le tableau distant par la scène (sans attendre le débounce) ;
    en répétition et en mode test, la scène part par leur propre veille (250 ms), qui lit `dr_minuteurEtat` dans `dr_scene` */
-function dr_minuteurEnvoyer(){ dr_minutPosPoser(); try { const f = (typeof DR_TAB !== 'undefined' && DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : null; if (f) f.postMessage({ minut: dr_minuteurEtat(), t: Date.now() }, '*'); } catch (e) {}
+function dr_minuteurEnvoyer(){ dr_minutPosPoser(); try { if (typeof dr_tabPoste === 'function') dr_tabPoste({ minut: dr_minuteurEtat(), t: Date.now() }); } catch (e) {}   /* la fenêtre du tableau et « Ce que voit la classe » */
   try { if (typeof dr_sceneAuto === 'function') dr_sceneAuto(true); } catch (e) {}
   try { if (typeof dr_ttEmettre === 'function' && typeof DR_TT !== 'undefined' && DR_TT.sig) dr_ttEmettre(); } catch (e) {}
   try { if (typeof dr_repEmettre === 'function' && typeof DR_REP !== 'undefined' && DR_REP.sig) dr_repEmettre(); } catch (e) {} }
@@ -1144,9 +1140,8 @@ function dr_minuteurAfficher(){ const m = DR_CL.minut; const a = document.getEle
   const reste = dr_minutReste(m); const txt = !m ? '' : m.etat === 'fini' ? '00:00' : dr_mmss(m.etat === 'pret' ? m.duree : reste);
   set(a, 'textContent', txt); set(a, 'className', 'dr-minut-aff' + (m ? ' dr-minut-' + (m.etat === 'fini' ? 'rouge' : dr_minutPhase(reste, m.duree, m.etat)) + (m.etat === 'pause' ? ' dr-minut-enpause' : '') : ''));
   if (a) { const ti = !m ? 'Le minuteur : ce qui reste' : 'Le minuteur : ' + txt + (m.etat === 'pret' ? ' réglées, pas encore parti' : m.etat === 'pause' ? ' restantes, en pause' : m.etat === 'fini' ? ', fini' : ' restantes') + ' sur ' + dr_mmss(m.duree) + (m.tableau ? ' — montré au tableau' : ''); set(a, 'title', ti); }
-  const bp = document.getElementById('dr-minut-pause'); if (bp) { const on = !!(m && (m.etat === 'court' || m.etat === 'pause')); set(bp, 'disabled', !on); set(bp, 'textContent', m && m.etat === 'pause' ? '▶ Reprendre' : '⏸ Pause');
-    set(bp, 'title', on ? (m.etat === 'pause' ? 'Fait repartir les chiffres là où ils étaient, ici et au tableau' : 'Arrête les chiffres, ici et au tableau ; un second clic les fait repartir là où ils étaient') : 'Grisé : le minuteur n’est pas parti — « Départ » d’abord'); }
-  const bg = document.getElementById('dr-minut-go'); if (bg) set(bg, 'textContent', m && (m.etat === 'court' || m.etat === 'pause') ? 'Repartir' : 'Départ');
+  dr_minutReglAfficher(m, reste);
+  const bg = document.getElementById('dr-minut-go'); if (bg) { const c = !!(m && m.etat === 'court'); set(bg, 'textContent', c ? '⏸' : '▶'); set(bg, 'title', c ? 'Met le chrono en pause, ici et au tableau ; un second clic le fait repartir là où il était' : m && m.etat === 'pause' ? 'Fait repartir le chrono là où il était, ici et au tableau' : 'Lance le chrono ; si « au tableau » est allumé, il court aussi au tableau'); }
   const tb = document.getElementById('dr-minut-tab'); if (tb && document.activeElement !== tb) { const v = !!(m && m.tableau); if (tb.checked !== v && m) tb.checked = v; }
   const bc = document.getElementById('bchrono'); if (bc) bc.classList.toggle('actif', !!m); dr_minutPP(); }
 /* la boucle du pilote : seulement quand le minuteur court ; elle ne pose que le chiffre et joue le son */
@@ -1169,40 +1164,59 @@ setInterval(() => { try { if (S.lancee && AT_DR_REGIME === 'classe') dr_temoinPo
    du pilote, la même, au même endroit. Paul la glisse sur la diapo du pilote : elle glisse au tableau. Le zoom du réglage change sa taille ici et
    au tableau ensemble. La dernière minute : le rouge du site. La place et la taille partent au tableau en parts de la diapo (x, y : le coin haut
    gauche ; s : la largeur), jamais en pixels. ═══ */
-const DR_MINUT_OR = '#e4b45c', DR_MINUT_BRUN = '#3a2c14', DR_MINUT_ROUGE = '#e8484c';
-DR_CL.minutZ = 1; DR_CL.minutPos = null;   /* { eid, x, y } */
-function dr_minutTaille(){ return 160 / 1920 * (DR_CL.minutZ || 1); }
-function dr_minutPos(){ const p = DR_CL.minutPos; return p && isFinite(p.x) && isFinite(p.y) ? p : null; }
-function dr_minutCouleur(reste, etat){ return etat === 'fini' || ((etat === 'court' || etat === 'pause') && reste <= 60000) ? DR_MINUT_ROUGE : DR_MINUT_OR; }
-function dr_minutPastilleHTML(){ return '<svg viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="76" fill="' + DR_MINUT_BRUN + '"/><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(228,180,92,.2)" stroke-width="10"/>'
-  + '<circle class="dr-pp-anneau" cx="80" cy="80" r="64" fill="none" stroke="' + DR_MINUT_OR + '" stroke-width="10" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg><span class="dr-pp-chif"></span>'; }
-/* le chiffre, l'anneau, la couleur — seulement ce qui change ; servi aussi au tableau (dr-tableau.js) */
-function dr_minutPastilleMaj(el, txt, reste, duree, etat){ const ch = el.querySelector('.dr-pp-chif'), an = el.querySelector('.dr-pp-anneau'); if (!ch || !an) return; const c = dr_minutCouleur(reste, etat);
-  if (ch.textContent !== txt) ch.textContent = txt; if (el.dataset.c !== c) { el.dataset.c = c; ch.style.color = c; an.setAttribute('stroke', c); }
+DR_CL.minutPos = null;   /* { eid, x, y } */
+DR_CL.minutS = 420 / 1920;   /* C16 677 : la largeur du rectangle en part de la diapo (420 px sur 1920, P6) ; sa hauteur est le tiers de sa largeur */
+function dr_minutTaille(){ return DR_CL.minutS || 420 / 1920; }
+const DR_MINUT_CRANS = { pret: '#4f9d5d', vert: '#4f9d5d', jaune: '#e0b83a', orange: '#e07b2e', rouge: '#e8484c' };
+/* le réglage sous la diapo (P6) : les quatre chiffres (la durée, ou ce qui reste quand il court), leurs + et − (grisés avec leur raison), l'anneau */
+function dr_minutReglAfficher(m, reste){ const p = document.getElementById('dr-minut-p'); if (!p) return; const court = !!(m && (m.etat === 'court' || m.etat === 'pause'));
+  const ms = court ? reste : m && m.etat === 'fini' ? 0 : dr_minutDuree(); const t = dr_mmss(ms).replace(':', ''); const K = { dm: t[0], m: t[1], ds: t[2], s: t[3] };
+  p.querySelectorAll('.dr-mr-dig b').forEach(b => { const v = K[b.dataset.k]; if (b.textContent !== v) b.textContent = v; });
+  const s0 = Math.round(dr_minutDuree() / 1000); p.querySelectorAll('.dr-mr-pm').forEach(b => { const d = +b.dataset.d, n = s0 + d; const off = court || n < 1 || n > 5999; if (b.disabled !== off) b.disabled = off;
+    const ti = court ? 'Grisé : le chrono est parti — ■ d’abord pour changer la durée' : n < 1 ? 'Grisé : la durée ne peut pas descendre sous une seconde' : n > 5999 ? 'Grisé : la durée ne peut pas dépasser 99:59' : (d > 0 ? 'Ajoute ' : 'Retire ') + b.dataset.l + ' à la durée';
+    if (b.title !== ti) b.title = ti; });
+  const an = p.querySelector('.dr-pp-anneau'); if (an) dr_minutAnneau(an, m ? (m.etat === 'fini' ? 0 : reste) : dr_minutDuree(), m ? m.duree : dr_minutDuree(), m ? m.etat : 'pret'); }
+function dr_minutRegler(d){ const m = DR_CL.minut; if (m && (m.etat === 'court' || m.etat === 'pause')) return; const i = document.getElementById('dr-minut-in'); if (!i) return;
+  const n = Math.round(dr_minutDuree() / 1000) + d; if (n < 1 || n > 5999) return; i.value = dr_mmss(n * 1000);
+  if (m && m.etat === 'pret') { m.duree = m.reste = n * 1000; dr_minuteurEnvoyer(); } dr_minuteurAfficher(); }
+/* l'anneau : la part qui reste de la durée donnée, la couleur du cran */
+function dr_minutAnneau(an, reste, duree, etat){ const ph = etat === 'fini' ? 'rouge' : dr_minutPhase(reste, duree, etat); const c = DR_MINUT_CRANS[ph] || DR_MINUT_CRANS.vert;
+  if (an.getAttribute('stroke') !== c) an.setAttribute('stroke', c);
   const f = etat === 'pret' ? 1 : duree > 0 ? Math.max(0, Math.min(1, reste / duree)) : 0; const L = 2 * Math.PI * 64; const da = (f * L).toFixed(1) + ' ' + L.toFixed(1); if (an.getAttribute('stroke-dasharray') !== da) an.setAttribute('stroke-dasharray', da); }
+function dr_minutPos(){ const p = DR_CL.minutPos; return p && isFinite(p.x) && isFinite(p.y) ? p : null; }
+function dr_minutPastilleHTML(){ return '<svg viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="64" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14"/>'
+  + '<circle class="dr-pp-anneau" cx="80" cy="80" r="64" fill="none" stroke="#4f9d5d" stroke-width="14" stroke-linecap="round" transform="rotate(-90 80 80)"/></svg><span class="dr-pp-chif"></span>'; }   /* C16 677 : le rectangle P6 — l'anneau à gauche, le décompte à côté */
+/* le chiffre, l'anneau, la couleur — seulement ce qui change ; servi aussi au tableau (dr-tableau.js) */
+function dr_minutPastilleMaj(el, txt, reste, duree, etat){ const ch = el.querySelector('.dr-pp-chif'), an = el.querySelector('.dr-pp-anneau'); if (!ch || !an) return;
+  if (ch.textContent !== txt) ch.textContent = txt; dr_minutAnneau(an, reste, duree, etat); }   /* le décompte reste or ; l'anneau prend la couleur du cran */
 /* le coin libre : le premier des quatre coins de la diapo où la pastille ne touche aucun texte (en bas à droite d'abord) */
 function dr_minutCoin(){ const mur = document.getElementById('mur'); if (!mur) return null; const r = mur.getBoundingClientRect(); if (!r.width) return null; const L = [];
   const w = document.createTreeWalker(mur, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { if (!n.textContent.trim() || !n.parentElement || n.parentElement.offsetParent === null) continue; const rg = document.createRange(); rg.selectNodeContents(n); Array.from(rg.getClientRects()).forEach(q => L.push(q)); }
-  const S2 = dr_minutTaille() * r.width, M = 0.0125 * r.width; const C = [[r.right - M - S2, r.bottom - M - S2], [r.right - M - S2, r.top + M], [r.left + M, r.bottom - M - S2], [r.left + M, r.top + M]];
-  const k = C.find(([x, y]) => !L.some(q => Math.min(q.right, x + S2) - Math.max(q.left, x) > 0 && Math.min(q.bottom, y + S2) - Math.max(q.top, y) > 0)) || C[0];
+  const S2 = dr_minutTaille() * r.width, H2 = S2 / 3, M = 0.0125 * r.width; const C = [[r.right - M - S2, r.bottom - M - H2], [r.right - M - S2, r.top + M], [r.left + M, r.bottom - M - H2], [r.left + M, r.top + M]];
+  const k = C.find(([x, y]) => !L.some(q => Math.min(q.right, x + S2) - Math.max(q.left, x) > 0 && Math.min(q.bottom, y + H2) - Math.max(q.top, y) > 0)) || C[0];
   return { x: (k[0] - r.left) / r.width, y: (k[1] - r.top) / r.height }; }
 function dr_minutPosPoser(){ const m = DR_CL.minut; if (!m || !m.tableau) return; const eid = (ecran() || {}).eid; const p = dr_minutPos(); if (p && p.eid === eid) return; const c = dr_minutCoin(); if (c) DR_CL.minutPos = { eid, x: c.x, y: c.y }; dr_minutBorner(); }
 function dr_minutBorner(){ const p = dr_minutPos(); if (!p) return; const mur = document.getElementById('mur'); const r = mur ? mur.getBoundingClientRect() : null; const k = r && r.height ? r.width / r.height : 16 / 9; const s = dr_minutTaille();
-  p.x = Math.max(0, Math.min(1 - s, p.x)); p.y = Math.max(0, Math.min(1 - s * k, p.y)); }
+  p.x = Math.max(0, Math.min(1 - s, p.x)); p.y = Math.max(0, Math.min(1 - s * k / 3, p.y)); }
 /* la pastille du pilote : sur la diapo, à la place qu'elle a au tableau ; montrée seulement quand la classe la voit (« au tableau ») */
 function dr_minutPP(){ const m = DR_CL.minut, p = dr_minutPos(); let el = document.getElementById('dr-minut-pp'); const mur = document.getElementById('mur'); const r = mur ? mur.getBoundingClientRect() : null;
   if (!m || !m.tableau || !p || !r || !r.width) { if (el && el.style.display !== 'none') el.style.display = 'none'; return; }
   if (!el) { el = document.createElement('div'); el.id = 'dr-minut-pp'; el.className = 'dr-pp dr-minut-pp'; el.innerHTML = dr_minutPastilleHTML();
-    el.title = 'Le minuteur, tel que la classe le voit au tableau : glisse-le où rien n’est écrit, il bouge au tableau en même temps. Sa taille : le zoom du réglage (⏱).'; document.body.appendChild(el); dr_minutGlisser(el); }
-  const s = dr_minutTaille() * r.width; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };
-  set('display', 'block'); set('left', (r.left + p.x * r.width).toFixed(1) + 'px'); set('top', (r.top + p.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', s.toFixed(1) + 'px'); set('fontSize', (s / 4).toFixed(1) + 'px');
+    el.title = 'Le chrono, tel que la classe le voit au tableau : glisse-le, il se déplace au tableau en même temps ; tire un coin pour l’agrandir ou le réduire, au tableau aussi';
+    ['nw', 'ne', 'sw', 'se'].forEach(c => { const k = document.createElement('i'); k.className = 'dr-pp-poi dr-pp-' + c; k.dataset.c = c; k.title = 'Tire ce coin pour agrandir ou réduire le chrono : au tableau aussi, à la même taille'; el.appendChild(k); });
+    document.body.appendChild(el); dr_minutGlisser(el); }
+  const s = dr_minutTaille() * r.width, hh = s / 3; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };
+  set('display', 'flex'); set('left', (r.left + p.x * r.width).toFixed(1) + 'px'); set('top', (r.top + p.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', hh.toFixed(1) + 'px'); set('fontSize', hh.toFixed(1) + 'px');
   const reste = dr_minutReste(m); dr_minutPastilleMaj(el, m.etat === 'fini' ? '00:00' : dr_mmss(m.etat === 'pret' ? m.duree : reste), reste, m.duree, m.etat); }
 /* glisser à la souris : la place suit la main ici, part à la fenêtre du tableau toutes les 120 ms, et au tableau distant au lâcher */
 function dr_minutGlisser(el){ let g = null, dernier = 0;
   el.addEventListener('pointerdown', ev => { const p = dr_minutPos(); const mur = document.getElementById('mur'); if (!p || !mur) return; ev.preventDefault(); ev.stopPropagation(); const r = mur.getBoundingClientRect();
-    g = { x0: ev.clientX, y0: ev.clientY, px: p.x, py: p.y, w: r.width, h: r.height }; try { el.setPointerCapture(ev.pointerId); } catch (e) {} el.classList.add('glisse'); });
-  el.addEventListener('pointermove', ev => { if (!g) return; const p = dr_minutPos(); if (!p) return; p.x = g.px + (ev.clientX - g.x0) / g.w; p.y = g.py + (ev.clientY - g.y0) / g.h; p.eid = (ecran() || {}).eid; dr_minutBorner(); dr_minutPP();
-    const t = Date.now(); if (t - dernier > 120) { dernier = t; try { const f = (typeof DR_TAB !== 'undefined' && DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : null; if (f) f.postMessage({ minut: dr_minuteurEtat(), t: Date.now() }, '*'); } catch (e) {} } });
+    const c = ev.target && ev.target.dataset ? ev.target.dataset.c : null; g = { c, x0: ev.clientX, y0: ev.clientY, px: p.x, py: p.y, ps: dr_minutTaille(), w: r.width, h: r.height }; try { el.setPointerCapture(ev.pointerId); } catch (e) {} el.classList.add('glisse'); });
+  el.addEventListener('pointermove', ev => { if (!g) return; const p = dr_minutPos(); if (!p) return; const dx = ev.clientX - g.x0, dy = ev.clientY - g.y0;
+    if (g.c) { const sx = /e$/.test(g.c) ? 1 : -1, sy = /^s/.test(g.c) ? 1 : -1; const dw = Math.abs(dx) >= Math.abs(dy) * 3 ? sx * dx : sy * dy * 3;   /* le coin opposé ne bouge pas ; la largeur garde trois fois la hauteur */
+      const s = Math.max(0.09, Math.min(0.6, g.ps + dw / g.w)); DR_CL.minutS = s; p.x = sx > 0 ? g.px : g.px + g.ps - s; p.y = sy > 0 ? g.py : g.py + (g.ps - s) * g.w / g.h / 3; }
+    else { p.x = g.px + dx / g.w; p.y = g.py + dy / g.h; } p.eid = (ecran() || {}).eid; dr_minutBorner(); dr_minutPP();
+    const t = Date.now(); if (t - dernier > 120) { dernier = t; try { if (typeof dr_tabPoste === 'function') dr_tabPoste({ minut: dr_minuteurEtat(), t: Date.now() }); } catch (e) {} } });
   const fin = () => { if (!g) return; g = null; el.classList.remove('glisse'); dr_minuteurEnvoyer(); };
   el.addEventListener('pointerup', fin); el.addEventListener('pointercancel', fin); el.addEventListener('click', ev => ev.stopPropagation()); }
 setInterval(() => { try { if (DR_CL.minut) dr_minutPP(); } catch (e) {} }, 250);   /* la pastille suit la diapo du pilote quand la page bouge */

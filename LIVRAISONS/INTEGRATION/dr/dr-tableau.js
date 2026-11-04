@@ -63,7 +63,7 @@ function dr_versMur(et, x){
   if (et && typeof S === 'object' && S && S.qui && !S.gel && typeof quiAParticipe === 'function') {   /* M4 : « qui a participé » suit la parole */
     try { S.qui = quiAParticipe(); et.qui = S.qui; } catch (e) {}
   }
-  const f = (DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : ((typeof fenetreMur !== 'undefined' && fenetreMur && !fenetreMur.closed) ? fenetreMur : null);
+  const f = dr_tabCibles().length ? { postMessage: (msg, o) => dr_tabPoste(msg) } : null;   /* C16 677 : la fenêtre du tableau et « Ce que voit la classe » reçoivent le même message */
   if (f) {
     try {
       if (!et) {
@@ -91,9 +91,26 @@ function dr_tabFeuillesDe(et){ try { const r = et && et.doc && et.doc.feuille; c
    que le dernier ▶ a dévoilée), `arrivee` (la diapo qui vient d'arriver) et `ficheEntre` (la fiche qui s'ouvre) : renvoyées telles quelles,
    la fenêtre qui s'ouvre rejouait l'entrée (`.neuf-vu`, opacité 0 → 1 en 0,62 s) — la dernière ligne dévoilée y était invisible à
    l'instant de la réception (pilote « page 2 / 2 » 4 l. · tableau 3 l.). Le pointeur `flash` reste : c'est un état, pas une entrée. */
+/* C16 677 (Paul, 04/11 18:57) : « Ce que voit la classe » EST le tableau — la page `?vue=tableau&local=1` elle-même, dans la colonne de droite,
+   en petit, nourrie par les mêmes messages que la fenêtre du tableau (dr_tabPoste) ; elle ne lit pas le hub. */
+function dr_tabCibles(){ const L = []; const f = (DR_TAB.fen && !DR_TAB.fen.closed) ? DR_TAB.fen : ((typeof fenetreMur !== 'undefined' && fenetreMur && !fenetreMur.closed) ? fenetreMur : null);
+  if (f) L.push(f); if (DR_TAB.vig && L.indexOf(DR_TAB.vig) < 0) L.push(DR_TAB.vig); return L; }
+function dr_tabPoste(msg){ dr_tabCibles().forEach(w => { try { w.postMessage(msg, '*'); } catch (e) {} }); }
+/* la vignette dit `pret` : on lui envoie ce que voit la classe (ou rien), et le chrono */
+function dr_tabVignetteNourrir(){ const v = DR_TAB.vig; if (!v) return; try { const mi = typeof dr_minuteurEtat === 'function' ? dr_minuteurEtat() : null;
+  const et = (typeof S === 'object' && S && S.lancee) ? dr_tabSansEntree(S.gel || S.mur) : null; if (!et) { v.postMessage({ et: null, minut: mi, t: Date.now() }, '*'); return; }
+  let ecran = null; try { ecran = dr_ecranVu(dr_seances()[et.si].ecrans[et.di]); } catch (e) {} let docs = []; try { docs = (dr_documents() || {})[String(et.si)] || []; } catch (e) {}
+  v.postMessage({ et: dr_tabAvecEtiquette(et), ecran, documents: docs, feuilles: dr_tabFeuillesDe(et), minut: mi, t: Date.now() }, '*'); } catch (e) {} }
+/* posée par `vueDroite` (dr-socle.js) : la vignette, créée une fois, gardée vivante ; on = la montrer à la place du dessin de la diapo suivante */
+function dr_tabVignette(boite, inner, on){ if (!boite || dr_estTableau()) return false; let f = boite.querySelector(':scope > iframe.dr-vig');
+  if (!on) { if (f && f.style.display !== 'none') f.style.display = 'none'; if (inner && inner.style.display === 'none') inner.style.display = ''; boite.classList.remove('dr-vig-on'); return false; }
+  if (!f) { f = document.createElement('iframe'); f.className = 'dr-vig'; f.title = 'Ce que voit la classe : le tableau lui-même, en petit'; f.tabIndex = -1; f.src = location.pathname + '?vue=tableau&local=1&vignette=1'; boite.appendChild(f); }
+  const w = boite.clientWidth || 300, sc = w / 1920, t = 'scale(' + sc.toFixed(5) + ')'; if (f.style.transform !== t) f.style.transform = t; if (f.style.display === 'none') f.style.display = '';
+  if (inner && inner.style.display !== 'none') inner.style.display = 'none'; boite.classList.add('dr-vig-on'); const hh = (Math.round(1080 * sc) + boite.offsetHeight - boite.clientHeight) + 'px';   /* la hauteur du tableau, plus les bords de la boîte : rien n'est rogné */ if (boite.style.height !== hh) boite.style.height = hh; return true; }
 function dr_tabSansEntree(et){ return et ? Object.assign({}, et, { neuf: null, arrivee: false, ficheEntre: false }) : et; }
 window.addEventListener('message', ev => {
   if (dr_estTableau() || !ev.data || !(ev.data.pret || ev.data.ici)) return;
+  if (ev.data.vignette) { if (ev.data.pret) { DR_TAB.vig = ev.source; dr_tabVignetteNourrir(); } return; }   /* C16 677 : « Ce que voit la classe » n'est jamais prise pour la fenêtre du tableau */
   const connue = DR_TAB.fen && !DR_TAB.fen.closed;
   if (ev.data.ici && connue) return;
   if (!connue && ev.source) DR_TAB.fen = ev.source;
@@ -337,7 +354,7 @@ function dr_tabPoser(){
       + '#ses-tab .dr-tab-minut{position:absolute;z-index:20;top:calc((100vh - min(100vw, 100vh * 16 / 9) * 9 / 16) / 2 + min(100vw, 100vh * 16 / 9) * .018);right:calc((100vw - min(100vw, 100vh * 16 / 9)) / 2 + min(100vw, 100vh * 16 / 9) * .018);background:#000;color:#d4a017;font:700 calc(min(100vw, 100vh * 16 / 9) * .05)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;padding:.12em .3em;border-radius:.14em;letter-spacing:.02em;box-shadow:0 .05em .3em rgba(0,0,0,.45);pointer-events:none}'
       + '#ses-tab .dr-tab-minut.m-vert{color:#3ddc84}#ses-tab .dr-tab-minut.m-jaune{color:#ffd60a}#ses-tab .dr-tab-minut.m-orange{color:#ff8c1a}#ses-tab .dr-tab-minut.m-rouge{color:#ff3b30}'
       + '#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite}@keyframes drMinutClig{50%{opacity:.25}}'
-      + '#ses-tab .dr-tab-minut.dr-tab-pp{position:fixed;right:auto;bottom:auto;background:none;padding:0;box-shadow:none;border-radius:50%;letter-spacing:0;animation:none}';
+      + '#ses-tab .dr-tab-minut.dr-tab-pp{position:fixed;right:auto;bottom:auto;background:#3a2c14;padding:0 .13em;box-shadow:none;border:1px solid rgba(228,180,92,.55);border-radius:.13em;letter-spacing:0;animation:none}';
     document.head.appendChild(st);
   }
   const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -421,7 +438,8 @@ function dr_tabDemarrer(){
   dr_tabPoser();
   if (dr_tabLocal()) {
     window.addEventListener('message', dr_tabRecevoir);
-    try { if (window.opener) window.opener.postMessage({ pret: true }, '*'); } catch (e) {}
+    const vig = !window.opener && window.parent !== window;   /* C16 677 : la vignette « Ce que voit la classe », dans la page du pilote */
+    try { if (window.opener) window.opener.postMessage({ pret: true }, '*'); else if (vig) window.parent.postMessage({ pret: true, vignette: true }, '*'); } catch (e) {}
     setInterval(() => { try { if (window.opener && !window.opener.closed) window.opener.postMessage({ ici: true }, '*'); } catch (e) {} }, 3000);   /* le signe pour un pilote rechargé */
     return;
   }
@@ -542,8 +560,8 @@ function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.
 /* §12.70 bis : la pastille, à la place et à la taille que Paul lui donne sur sa diapo (parts de la diapo, mesurées sur #mur2) */
 function dr_tabMinutPastille(el, m, reste, txt){ const mur = document.getElementById('mur2'); const r = mur ? mur.getBoundingClientRect() : null; if (!r || !r.width) return;
   if (!el.querySelector('.dr-pp-chif')) el.innerHTML = dr_minutPastilleHTML(); const cl = 'dr-tab-minut dr-pp dr-tab-pp'; if (el.className !== cl) el.className = cl;
-  const s = m.s * r.width; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };
-  set('left', (r.left + m.x * r.width).toFixed(1) + 'px'); set('top', (r.top + m.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', s.toFixed(1) + 'px'); set('fontSize', (s / 4).toFixed(1) + 'px'); set('display', 'block');
+  const s = m.s * r.width, hh = s / 3; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };   /* C16 677 : le rectangle P6, trois fois plus large que haut */
+  set('left', (r.left + m.x * r.width).toFixed(1) + 'px'); set('top', (r.top + m.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', hh.toFixed(1) + 'px'); set('fontSize', hh.toFixed(1) + 'px'); set('display', 'flex');
   dr_minutPastilleMaj(el, txt, reste, m.d, m.e); }
 window.addEventListener('resize', () => { try { if (typeof DR_TAB !== 'undefined' && DR_TAB.minut) dr_tabMinutTic(); } catch (e) {} });
 function dr_tabMinutTic(){ const el = document.getElementById('dr-tab-minut'); if (!el) return; const m = DR_TAB.minut;

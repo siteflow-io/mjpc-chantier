@@ -28,3 +28,26 @@ Tests à faire : aucun, rien n'est construit.
 
 03/11/2026 18:20
 MEMO
+
+---
+
+## Tour 2 (nouvelle conversation, même fil)
+
+**Paul (04/11/2026 02:48) :**
+
+https://github.com/siteflow-io/mjpc-chantier/blob/main/MANDATS/MODE-PROCES/TRANSCRIPT-EVALUATION-EN-DIRECT.md
+
+**Claude (04/11/2026 02:52) :**
+
+Relu : ce transcript, la passation et le cadrage (§1 à §11). Je reprends où le tour 1 s'est arrêté.
+
+94. Ta clé est branchée : je vois les noms des dossiers, pas encore les fichiers. Le dossier du procès de l'an dernier est trouvé : `E:\AACours 2025 2026\4ème\Chapitre 3, La ville\Séance 6, Bel Ami, Guy de Maupassant + PROCES`, avec deux sous-dossiers, « DOCUMENTS PROCES » et « DOCUMENTS PROCES MIS A JOUR LUNDI (SEANCE 6.3) ». Le sous-dossier `Archives\Chapitre 3 - annee 2025-2026` de cette année n'a que des fichiers, que je ne vois pas encore.
+
+95. Je ne peux toujours pas les ouvrir moi-même : leur nom (virgules, accents, « + ») bloque la demande d'accès depuis ici. Le geste est chez toi, deux fois : dans l'app Claude de cet ordinateur, clique sur « + » à côté de la zone de message, puis « Add folder », et choisis `E:\AAA COURS 2026 2027\4 ème\Chapitre sur la ville de paris, le procès`, puis `E:\AACours 2025 2026\4ème\Chapitre 3, La ville\Séance 6, Bel Ami, Guy de Maupassant + PROCES`. Ensuite, envoie « continuer » : je lis les fiches du procès de l'an dernier et la page `Point-groupes-S6.html`, puis je te repose 74 à 80 tels quels.
+
+À jouer : rien · en cours chez l'exécutant : rien · ouvert : les deux dossiers à relier (95), ce qui a cassé l'an dernier, 74 à 80.
+
+Tests à faire : aucun, rien n'est construit.
+
+04/11/2026 02:52
+MEMO

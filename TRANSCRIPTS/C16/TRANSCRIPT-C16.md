@@ -3996,3 +3996,18 @@ MEMO
   > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : mon banc (fin vers 21:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **21:04 — le banc sans le témoin, fini** (sur `30a9b4652`, sondes `0ff3d8ffd`, assemblé `c781672e`, base de R : la production 8.84.0 ; de 20:02 à 21:04:47) : appel 147/0 ; fin d'heure 56/0 ; frappe 14/0 ; parcours ×2 VERT ; Atelier 53/53 ; §12.66 27/0 ; bloc question 33 ; ouverture 126/0 ; fil 100/0 ; retour sûr 61/0 ; R ×6 8/0. ROUGE : K1-K13 106, 2 échecs (K11 : « la vue dit « page 1 / 2 », comme le mur — vue « » ») ; la sonde de la ⑩ (étape 8) arrêtée par une erreur de Node ; la sonde des sessions (étape 14) : « ÉCHEC H · le dévoilement de l'ordinateur : chez les trois pilotes », puis « Element is not attached to the DOM » (l. 270).
+- **21:05 — la conscience** : mandat `MANDATS/DEROULE-01-11/MANDAT-MINUTEUR-BANC.md` (`1626b813d`) ; un exécutant neuf lancé à 21:05, 30 minutes au plus, base `30a9b4652`, branche `chrono/integration`.
+- **21:06 — message à Paul, mot pour mot :**
+
+  > 687. Mon banc est fini (21:04) et il est rouge : pas de « promeus » pour l'instant. Vert : l'appel, la fin d'heure, la frappe, le parcours deux fois, l'Atelier, le tableau en mode test, le bloc question, l'ouverture, le fil, le retour sûr, le tableau de R. Rouge, trois choses : un contrôle de « Ce que voit la classe » ne lit plus le compteur de page (je pense que c'est le contrôle qui lit l'ancienne vue, mais je ne l'ai pas prouvé) ; la sonde de la ⑩ s'arrête sur une erreur ; la sonde des sessions trouve un dévoilement pas pareil chez trois pilotes, puis s'arrête. Ce matin, sur la version en ligne, les trois étaient verts.
+  >
+  > 688. Un exécutant est lancé (21:05), 30 minutes au plus : trouver la cause de chacune, en comparant avec la version en ligne, et régler ce qui vient du chrono ou de « Ce que voit la classe ». Puis je repasse le banc.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 21:06
+  >
+  > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les trois rouges du banc (fin vers 21:35), puis mon banc · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

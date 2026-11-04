@@ -3368,3 +3368,38 @@ MEMO
   >
   > MEMO
 - **13:52 — incident** : trois heures tapées à la main et fausses (« lancé à 13:56 », « 13:52 », « fin vers 14:26 ») dans le mandat, le transcript et le message 563, alors qu'il était 13:51 ; corrigées (13:51, fin vers 14:21) ; le message envoyé à Paul porte les heures justes.
+- **14:07 — l'exécutant (message)** : mesure sur la 8.84.0-⑰ (md5 `c6b75c7a`), faux hub, frappes de 140 à 190 ms ; commit `c5825f9cd` sur `mesure/initiales` (`LIVRAISONS/DEROULE-01-11/MESURE-INITIALES/` : NOTE, sonde, sorties ; MESURE-FRANKLIN repris) ; aucune ligne du site changée. (1) la case accepte tout (63 signes ; « ab3 ») ; en minuscules jusqu'à Entrée (l. 19695-19696) ; noms en deux mots : 6 sur 6 faux (`dr_initiales`, l. 17857). (2) la supposition incomplète : sur la 1re ligne, Entrée ou Tab → le titre de l'activité (8 sur 8 ; l'écouteur de `brancherAtelier`, l. 19522, `focaliser`, l. 19509) ; la 1re lettre dans le titre, le reste dans les initiales (21 sur 22) ; 2e ligne : bien ; le vert à la 1re lettre de la réponse (4 sur 4, l. 19753). (3) la 1re lettre dévoile la question ; le tableau lettre par lettre ; les initiales, jamais le prénom. (4) le gel : 0 sur 2 au journal, au récit, au Papier (`pousser`, l. 18281). (5) l'heure close : « ✕ » et « Relire cette heure » seulement ; changer l'élève pendant l'heure : le journal et le récit gardent l'ancien (l. 18283) ; la Relecture : aucun moyen. Pas mesuré : le vrai hub, la 2e ligne (une seule), d'autres écrans que 1536×864. 212 526 jetons.
+- **14:08 — la conscience** : audit du commit : seuls les fichiers de `MESURE-INITIALES/` et `MESURE-FRANKLIN/` ; ça va. Registre (production `06c5a89`) : la mesure ajoutée à « L'HEURE DES FRANKLIN ».
+- **14:08 — message à Paul, mot pour mot :**
+
+  > 564. La mesure est finie (14:07), rien n'a été corrigé. Ce que tu décrivais est juste, et il y a plus grave.
+  >
+  > 565. La case des initiales accepte tout : une phrase entière y entre. Tapées en minuscules, les initiales restent en minuscules jusqu'à Entrée.
+  >
+  > 566. Sur la première réponse d'une diapo, Entrée ou Tab après les initiales envoie le curseur dans le titre de l'activité (8 fois sur 8). La première lettre de ta réponse s'écrit dans le titre, qui change aussi au tableau ; puis le curseur revient dans la case des initiales, et tout le reste de la réponse s'y écrit. La réponse est vide, l'élève perdu. C'est ton « M ». À partir de la deuxième réponse, Entrée va bien dans la réponse.
+  >
+  > 567. L'élève n'est reconnu (le vert) qu'à la première lettre de la réponse, comme tu le disais.
+  >
+  > 568. Le dévoilement : la première lettre tapée dévoile la question ; ensuite le tableau montre ta réponse lettre par lettre, en direct. Il montre les initiales, jamais le prénom.
+  >
+  > 569. Le gel : confirmé. Les réponses tapées pendant un gel arrivent au tableau au dégel, mais ni au journal, ni au récit, ni au Papier.
+  >
+  > 570. Changer l'élève d'une réponse : pendant l'heure, l'écran suit, mais le journal et le récit gardent l'ancien élève. Après l'heure, la Relecture ne permet rien, et une heure close ne se rouvre pas.
+  >
+  > 571. Je propose un premier morceau, le récit et le gel : une réponse s'écrit au journal quand tu la valides, gel ou pas ; quand tu changes l'élève d'une réponse, le journal et le récit suivent ; le récit va chercher dans les diapos les réponses qui manquent au journal. Ton heure des Franklin retrouve ainsi ses 24 réponses.
+  >
+  > 572. Un deuxième morceau, la case des initiales comme tu l'as décrite (557, 562) : des lettres seulement, mises en majuscules toutes seules, et les chiffres 1 à 9 ; la liste numérotée dès la première lettre ; le saut à la réponse quand toutes les initiales d'un seul élève sont tapées, ou au chiffre ; MGC pour un nom en deux mots ; jamais le titre, ni par Entrée ni par Tab ; au tableau, le prénom et la première lettre du nom.
+  >
+  > 573. Un troisième morceau, pour corriger ton heure d'aujourd'hui et toute heure close : dans la Relecture, sur chaque réponse, tu changes l'élève avec la même case des initiales (lettres, liste numérotée, chiffre), et le récit suit. Je préfère cela à rouvrir une heure close, qui toucherait sa clôture, le cahier et les échéances.
+  >
+  > 574. Le « M » en trop dans le titre « Groupe 2 » reste dans la copie de ta classe : tu peux l'effacer toi-même, comme les mots de l'éditeur.
+  >
+  > 575. Trois exécutants l'un après l'autre (ce sont les mêmes fichiers), 30 minutes au plus chacun ; puis mon banc (environ 1 h) ; puis je te demande « promeus ». J'écris le mandat de 571 et je le lance ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 14:08
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

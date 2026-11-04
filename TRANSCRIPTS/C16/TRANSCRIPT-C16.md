@@ -3605,3 +3605,86 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert : 609, 610 (sur ton mot), 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **16:01 — Paul, mot pour mot :**
+
+  > ok d'accord. récapitule la totalité des choses à corriger et que toutes les mesures ont débusquées
+
+- **16:01 — message à Paul, mot pour mot :**
+
+  > Le récit et la participation (571 : codé et vérifié au faux hub, pas encore en ligne)
+  >
+  > 612. Le gel : les réponses tapées pendant un gel n'entraient ni au journal, ni au récit, ni dans « Ce qui s'est passé », ni au Papier. Réglé par 571 : elles y entrent à leur validation, et une heure déjà jouée les retrouve dans les diapos.
+  >
+  > 613. Changer l'élève d'une réponse pendant l'heure : le journal et le récit gardaient l'ancien élève. Réglé par 571.
+  >
+  > 614. La participation de la Relecture ne lisait que les réponses du journal (Tiago seul chez les Franklin). Réglé par 571 : elle lit les diapos.
+  >
+  > Corriger après l'heure (573, à coder)
+  >
+  > 615. « Qui a répondu » propose les élèves de la classe du pilotage, pas ceux de la classe relue.
+  >
+  > 616. « à corriger » n'existe que pour une réponse sans élève : rien pour une réponse donnée au mauvais élève (tes MB), rien pour les réponses retrouvées dans les diapos.
+  >
+  > 617. Ensuite, à toi de corriger : chez les Franklin, les 4 « MB » et les réponses sans élève (M, ELF, MBMAR, KR deux fois ; NL, tu l'as fait) ; chez les Dylan, YC et CH.
+  >
+  > Relire une autre classe (le premier morceau de 610, à coder)
+  >
+  > 618. Entrée par le calendrier, la Relecture d'une autre classe garde les élèves et ce qu'a vu la classe du pilotage (une diapo comptée faite chez les Dylan sans qu'ils l'aient vue) ; ses oraux ne sont pas relus.
+  >
+  > 619. La liste déroulante de la Relecture (entourée en rouge) propose de changer de classe : à retirer.
+  >
+  > 620. « Le chapitre » : l'« Heure 0 » « en cours » et « 2 heures closes » pour une seule heure jouée.
+  >
+  > 621. « Le chapitre » : « 8 activités sur 2 » mélange les diapos et les activités.
+  >
+  > 622. Les notions « non travaillée » : la règle est à confirmer par toi (609).
+  >
+  > La case des initiales (572, à coder)
+  >
+  > 623. Elle accepte tout, une phrase entière, et garde les minuscules : que des lettres, mises en majuscules toutes seules, et les chiffres 1 à 9.
+  >
+  > 624. Entrée ou Tab sur la première réponse d'une diapo envoie dans le titre de l'activité : la réponse se vide, l'élève perd sa participation, le titre change au tableau.
+  >
+  > 625. L'élève n'est reconnu qu'à la première lettre de la réponse : le saut à la réponse quand toutes les initiales d'un seul élève sont tapées, ou au chiffre.
+  >
+  > 626. Deux élèves aux mêmes initiales : le premier pris sans demander ; il faut la liste numérotée et le chiffre (MB et EL chez les Franklin, LD, EG et LM chez les Dylan).
+  >
+  > 627. Dès la première lettre, la liste numérotée des prénoms qui commencent par elle.
+  >
+  > 628. Les noms de famille en deux mots (5 chez les Franklin, 4 chez les Dylan) : de fausses initiales et un faux prénom (« Nom Prénom » dans la Relecture). Le nom, ce sont tous les mots en capitales ; les initiales, MGC.
+  >
+  > 629. Au tableau : le prénom et la première lettre du nom, pas les initiales.
+  >
+  > 630. Des initiales qui ne sont celles d'aucun élève : le site le dit à la frappe, et jamais « un élève » (ta règle de ce matin, au registre).
+  >
+  > La Relecture (582 et 583, à coder)
+  >
+  > 631. Les diapos de la colonne de gauche, illisibles : un clic l'affiche en grand, comme au pilotage.
+  >
+  > 632. Le bouton « copier la relecture pour analyse IA » : la Relecture, le texte des diapos, et de quoi chercher une panne (591).
+  >
+  > Trouvé aujourd'hui, pas encore mesuré
+  >
+  > 633. Les mots de l'éditeur (« BLOC 1 · QUESTION · 1 ÉLÉMENT… ») dans la consigne d'une diapo de la copie de classe des Franklin : d'où ils viennent (548).
+  >
+  > 634. La fenêtre du tableau distant ne se redimensionne pas (ton vidéoprojecteur mal calibré).
+  >
+  > 635. Les numéros sur une image, trop gros au tableau distant : pour plus tard, sur ton mot.
+  >
+  > 636. Mon banc : deux défauts déjà là avant aujourd'hui, une sonde du récit qui ne lit pas la liste (R1c) et une écriture vers une adresse de test du tableau ; à régler avant une promotion.
+  >
+  > Plus anciens, toujours ouverts au registre
+  >
+  > 637. 342 (une autre séance), les lots 3 à 5 (363 à 366), ㉚, et ⑯ (le retard du tableau, sur ton mot).
+  >
+  > L'ordre que je propose
+  >
+  > 638. D'abord le premier morceau de 610 (618 à 621), puis 573 (615, 616) ; puis 636 et mon banc ; puis ton « promeus » pour 571 et ces deux morceaux, pour que tu puisses faire 617. Ensuite 572 (623 à 630), puis 582 et 583 (631, 632), puis les mesures de 633 et 634. Je lance le premier ?
+  >
+  > À tester : 534, le test 2 (« Relire l'heure » des Dylan, « composé par le site »).
+  >
+  > 04/11/2026 16:01
+  >
+  > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 ci-dessus, dans l'ordre de 638 (sur ton mot)
+  >
+  > MEMO

@@ -4150,3 +4150,4 @@ MEMO
   > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : la nuit (A, puis C, B, D, puis le banc) · ouvert : 609, 633, 634, 636, ㊵, 639 à 645
   >
   > MEMO
+- **22:28 — lancé : l'exécutant du mandat A** (relire une autre classe ; « Le chapitre » ; branche `nuit/a` depuis `137898f04`), 30 minutes au plus.

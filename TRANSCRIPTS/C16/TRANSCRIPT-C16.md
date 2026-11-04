@@ -4211,3 +4211,4 @@ MEMO
   > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : D (la Relecture) · ouvert : C2 (717), E (636), 633, 634, puis 642, 643, ㊵ ; à cadrer : 640 (720), 721, 639, 644, 645
   >
   > MEMO
+- **23:36 — incident** : le conteneur a redémarré pendant le mandat D (rien poussé sur `nuit/d` ; son dossier gardé) ; l'exécutant D repris depuis son transcript, avec la consigne de compter le temps déjà passé.

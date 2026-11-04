@@ -2628,3 +2628,27 @@ MEMO
   > À jouer : 448 (acquis sans mot) · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:01 — la preuve de 391** (`c391/`, machine seule) : sonde-lot1 W 02:52:39 → 03:00:21, 73 vérifications, 0 échec ; la ligne « Lancer celle-ci quand même » (vraie heure) : A `{"sorte":null,"lancee":false}` (avant : `lancee: true`, la NOTE du lot 1 §4, le témoin H+H·autre) ; essai et répétition : l'autre continue (inchangé) ; le parcours P0-P12 vert (→ 03:00:56). Poussé : sas `deroule/lot1-complement` `1d6a0166d` (dr-classe.js, l'assemblé md5 `df003634`). Le candidat : `promo-8820b/index.html`, la seule ligne `APP_VERSION="8.82.0-⑮"`, md5 `1cc2bd6f`, 3 030 905 o.
+- **03:01 — message à Paul, mot pour mot :**
+
+  > 449. 391 est réglé et prouvé. Après « Lancer celle-ci quand même » sur une vraie heure, l'autre ordinateur se ferme et le dit : avant, il restait lancé ; maintenant, non. La fenêtre « Une heure joue déjà », dans toutes les sessions : 73 vérifications, 0 échec. Le parcours : vert. En 10 minutes.
+  >
+  > 450. Tout est prêt en 8.82.0-⑮ : le lot 1 (les 3 DYLAN, la fenêtre « Une heure joue déjà », la participation), sa réparation (« Reprendre » sur un second ordinateur, rien de perdu) et 391. Dis « promeus ».
+  >
+  > À tester, après la mise en ligne, en mode test, avant ta classe, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.82.0 :
+  >
+  > 1. Le panneau du prof dit 8.82.0-⑮.
+  > 2. L'emploi du temps, sans rien lancer : la prochaine case des 3 DYLAN propose la séance 1.
+  > 3. Un essai lancé en mode test : la pastille du mode test refuse d'en sortir tant que l'essai n'est pas clos.
+  > 4. L'essai ouvert sur l'ordinateur, la télécommande par le QR ; sur un second ordinateur, « Reprendre » : le téléphone dit « Télécommande désactivée : l'ordinateur a repris la main », ses boutons grisés ; au second ordinateur, « ● session » paraît à ton premier geste.
+  > 5. « Reprendre avec la télécommande » : le téléphone reprend la main ; son ▶ fait avancer les deux ordinateurs et le tableau.
+  > 6. Un ▶ au téléphone, puis tout de suite « Reprendre » au second ordinateur : le ▶ reste partout, tableau compris.
+  > 7. Au second ordinateur, l'essai d'une autre classe : la fenêtre « … joue déjà sur un autre appareil » a ses trois boutons, chacun avec son infobulle ; « Annuler » ne change rien.
+  > 8. En répétition d'une séance des 3 FRANKLIN ARETHA : à droite, leur liste puis ta classe d'essai ; des initiales pas exactes, puis Entrée : personne ne passe au vert.
+  >
+  > 04/11/2026 03:01
+  >
+  > À jouer : « promeus » · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

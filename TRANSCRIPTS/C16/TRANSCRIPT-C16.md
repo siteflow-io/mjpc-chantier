@@ -4151,3 +4151,24 @@ MEMO
   >
   > MEMO
 - **22:28 — lancé : l'exécutant du mandat A** (relire une autre classe ; « Le chapitre » ; branche `nuit/a` depuis `137898f04`), 30 minutes au plus.
+- **22:34 — Paul, mot pour mot :**
+
+  > 609 ok, il faut que ça soit dit alors. Pour 706 c'est quoi encore qui reste à cadrer je croyais qu'on avait tout?
+
+- **22:35 — message à Paul, mot pour mot :**
+
+  > 707. 609 : compris, c'est ta règle. Ma lecture de « il faut que ça soit dit » : dans « Le chapitre », sous « 3 · Les notions du chapitre », une phrase dit la règle (une notion est travaillée quand toutes les diapos de son activité sont faites, ou par un oral) ; à côté de chaque notion non travaillée, ce qui manque (par exemple « 1 diapo sur 3 de son activité faite »). Je l'ajoute au morceau D, la Relecture, puisque c'est le même endroit.
+  >
+  > 708. 706 : il ne reste rien à cadrer pour les quatre morceaux de la nuit. 633 et 634 sont deux mesures, sans décision de ta part. Je me suis trompé sur 636 : ce sont deux défauts de mon banc, à régler avant toute promotion ; 636 passe donc cette nuit, après D et avant le banc, et pas « s'il reste du temps ».
+  >
+  > 709. Les anciens points : 640 (le tableau, une session à la fois), 642 (le réseau lent) et 643 (la numérotation par séance) sont cadrés, ta règle est écrite ; ㊵ (le décalage entre les chronos de plusieurs appareils) ne demande rien de toi ; 641 (le minuteur) est fait avec la 8.85.0. Restent à cadrer avec toi : 639 (une autre séance : un audit d'abord, ce qu'elle télescope), 644 (le cahier de textes en fin d'heure : un audit et une refonte à te montrer) et 645 (le retard du tableau, rouvert sur ton mot).
+  >
+  > 710. Ce que je propose : après D et 636, les mesures 633 et 634, puis 640, 642, 643 et ㊵, un à la fois, puis un seul banc sur le tout. Je ne lance plus rien après 4 h 30 : le banc passe, et ce qui n'est pas prouvé reste dehors, dit à 7 h. Cela coûte plus d'usage que les quatre morceaux seuls ; combien, je ne sais pas. Sans réponse de ta part, je fais ainsi.
+  >
+  > À tester : rien de nouveau ce soir ; les sept tests de 701 restent valables.
+  >
+  > 04/11/2026 22:35
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : A (relire une autre classe, « Le chapitre ») · ouvert : C, B, D (avec 609), 636, 633, 634, puis 640, 642, 643, ㊵ (710) ; à cadrer : 639, 644, 645
+  >
+  > MEMO

@@ -3210,3 +3210,25 @@ MEMO
   > À jouer : rien · en cours : rien, j'attends ton « vas-y » (Chrome ouvert) · ouvert : l'heure des Franklin (529 à 532), ton « promeus » pour 8.84.0, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **12:02 — Paul, mot pour mot :**
+
+  > Promeus puis on voit les problèmes de Franklin une fois que je suis à nouveau sur l'ordi
+
+- **12:03 — la promotion 8.84.0-⑰** : le candidat `promo-8840/index.html` (md5 `c6b75c7a8a4fd99de7b2d156f6af4944`, 3 041 537 o) copié en production ; commit `64e0855` (le premier envoi refusé par GitHub, « Internal Server Error » ; le second passé) ; blob `7f546851fe8e` ; l'adresse publique : l'ancien fichier jusqu'à 12:04:23, le nouveau bit à bit à 12:04:39. Après : production `e1eb2b5` : registre ✔ (le récit des 3 DYLAN : (1), (2), (3), (6)), journal, point de retour (blob `423b423ac41d`, 8.83.0-⑯, md5 `a1963856`), index des fonctions (2 376), où trouver quoi.
+- **12:06 — message à Paul, mot pour mot :**
+
+  > 534. 8.84.0-⑰ est en ligne : l'adresse publique rend le fichier bit à bit depuis 12:04:39. Point de retour : la 8.83.0-⑯ (blob 423b423ac41d). Journal, registre, index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 535. Pour Franklin : quand tu es sur l'ordinateur, ouvre Chrome et écris-moi « vas-y ». Je lis l'heure au hub, en lecture seulement, puis je te dis ce que j'ai trouvé.
+  >
+  > À tester (hors de la classe) :
+  > 1. Ouvre https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.84.0 : la version dit 8.84.0-⑰.
+  > 2. 3 Dylan, l'heure du 3 novembre, « Relire l'heure », « composé par le site » : « au début / au milieu / à la fin de l'heure » à sa place selon ton plan ; « Ce qu'on n'a pas fait cette heure-ci : … » dans l'ordre du plan ; jamais « En fin d'heure ».
+  > 3. Ta classe d'essai : ses heures de case restent ; seules les deux phrases (513, 514) changent.
+  > 4. La prochaine heure que tu rattrapes : « Enregistré à » à l'heure de ta montre ; rien ne sonne au lancement ; le rappel des 5 minutes vient au temps joué.
+  >
+  > 04/11/2026 12:06
+  >
+  > À jouer : les quatre tests ci-dessus · en cours : rien · ouvert : l'heure des Franklin (529 à 532, sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

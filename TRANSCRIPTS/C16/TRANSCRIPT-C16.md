@@ -3956,3 +3956,26 @@ MEMO
   >
   > MEMO
 - **19:28 — incident** : l'entrée précédente portait « 19:28 » pour le message de l'exécutant et « 19:29 → 19:27 » pour l'audit, des heures tapées à la main et fausses (il était 19:27) ; corrigées.
+- **19:47 — Paul, mot pour mot :**
+
+  > ok ça m'a l'air correct, en revanche je ne sais pas si c'est la maquette, mais elle lagguait à fond.  un clic suivi de son effet quasi 10 secondes plus tard. c'est à cause de l'absence de firebase?
+
+- **19:48 → 19:50 — la conscience** : une sonde de lenteur (`scratchpad/sonde-lag/lag.mjs`, jamais poussée) sur `C16-maquette-minuteur-v2.html`, à 1536 × 864 : le pilote seul : la page occupée 1 % en 10 s, clic ⏱ → réglage 82, 51, 47 ms ; avec la fenêtre du tableau : 0 %, 44, 86, 44 ms ; avec « Ce que voit la classe » : 1 %, 55, 76, 55 ms. Un second passage (machine ralentie six fois) interrompu par Paul.
+- **19:51 — Paul, mot pour mot :**
+
+  > ne prends pas trop de temps pour mesurer ça. ce n'est pas l'objet du travail.
+
+- **19:52 — la conscience** : la sonde arrêtée, aucun navigateur ne tourne. Mandat `MANDATS/DEROULE-01-11/MANDAT-MINUTEUR-FRAPPE.md` (`ad050f950`, C16 681 acquis) ; un exécutant neuf lancé à 19:52, 20 minutes au plus, base `b7bee8798`, branche `maquette/minuteur-v3`.
+- **19:52 — message à Paul, mot pour mot :**
+
+  > 682. D'accord, je m'arrête là pour la lenteur. Ce que j'ai déjà mesuré chez moi, sur la même maquette : un clic sur ⏱ ouvre le réglage en moins d'un dixième de seconde, avec la fenêtre du tableau et « Ce que voit la classe » ouvertes. Ce n'est donc pas l'absence de Firebase ; je pense à la façon dont elle s'est ouverte chez toi, mais je ne l'ai pas vérifié. Le site en ligne n'est pas concerné.
+  >
+  > 683. Tu valides la maquette : je passe à l'intégration du chrono et de « Ce que voit la classe », seulement. D'abord, 681 étant acquis, la frappe de la durée au clavier, en plus des + et − : lancée à 19:52, 20 minutes au plus. Puis mon banc (environ 1 h), qui mesurera aussi ce que coûte « Ce que voit la classe » ; puis je te demande « promeus ». Ensuite seulement, l'ordre de 638.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 04/11/2026 19:52
+  >
+  > À jouer : 666 ; 534 (le test 2) · en cours : la frappe au clavier (fin vers 20:12), puis mon banc · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

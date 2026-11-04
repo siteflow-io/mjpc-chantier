@@ -2907,3 +2907,25 @@ MEMO
   > À jouer : les 8 gestes ; 480 ; 483 acquis sans mot · en cours : mon banc (sans le témoin, fin vers 05:47) · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **05:48 — le banc sans le témoin fini** (`banc-lot2/heures.txt`, 04:44:52 → 05:48:09, candidat `82255e7a2`, assemblé `857838e1`, sondes `0ff3d8ffd`) : 14 session 105/0 ; 15 appel 147/0, 0 rouge ; 16 fin d'heure 56/0 ; banc.sh 1-12 VERT (parcours ×2, K1-K13 106/0, Atelier 53/53, §12.66 27/0, ⑩ 51/0, bloc question 33 ok, ouverture 126/0, fil 100/0, retour sûr 61/0) ; 13 frappe 14/0 ; R ×3 base et candidat 8/0. Le candidat : `promo-8830/index.html`, la seule ligne `APP_VERSION="8.83.0-⑯"`, md5 `a1963856`, 3 039 096 o.
+- **05:48 — message à Paul, mot pour mot :**
+
+  > 485. Le banc est fini à 05:48, à la vraie horloge, sur la version réunie (le rattrapage, 461, 476 ; 8.83.0-⑯). Tout est vert : la session 105, l'appel 147, la fin d'heure 56, la frappe au tableau 14, le parcours en vrai et en mode test, les contrôles 106, l'Atelier 53, le tableau distant en mode test 27, la ⑩ 51, le bloc question 33, les diapos d'ouverture 126, le fil 100, le retour sûr 61, la relance d'une heure 3 fois sur 3 ; 0 échec.
+  >
+  > 486. Dis « promeus ».
+  >
+  > À tester, après la mise en ligne, à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.83.0 :
+  >
+  > 1. Le panneau du prof dit 8.83.0-⑯.
+  > 2. L'emploi du temps : la case de mardi des 3 DYLAN (passée, pas jouée) propose « ▶ Rattraper cette heure », avec son infobulle.
+  > 3. Le rattrapage de cette heure, pour de vrai : « ▶ Rattraper cette heure », la séance 1, en accéléré ; tu complètes la participation et les réponses ; « Reporter… » à la fin si elle n'est pas finie ; clore.
+  > 4. Ensuite : la case de mardi dit l'heure jouée ; la case suivante des 3 DYLAN dit la suite ; le récit dit « au début », « au milieu », « à la fin », la date de mardi, aucun horaire ; « Copier » pour École Directe, pareil.
+  > 5. En répétition d'une séance des 3 FRANKLIN ARETHA : à droite, seulement leur liste.
+  > 6. Le Papier de l'heure rattrapée : « À relire — » donne la prochaine case à venir des 3 DYLAN.
+  >
+  > 04/11/2026 05:48
+  >
+  > À jouer : « promeus » ; 480 · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

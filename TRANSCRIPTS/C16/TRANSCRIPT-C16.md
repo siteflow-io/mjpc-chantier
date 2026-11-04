@@ -3543,3 +3543,29 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert : 573 et 597, 598, 599, 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **15:36 — Paul, mot pour mot :**
+
+  > oui pour 599, ce sont "les choses bizarres". pour les notions du chapitre, pourquoi sont-elles notées non travaillées? 598. Je ne relisais pas par le menu des classes, je suis toujours passé par le calendrier et la case de la séance. lance la mesure. le mandat grossit.
+
+- **15:37 — la conscience** : au vrai hub (GET, onglet ouvert puis fermé) : `etat/S` des 3 DYLAN et des 3 FRANKLIN (`heure`, `closes`, `heuresCours` avec une clé `0` vide, `travailHeure` avec la clé `0`, `echeanceHeure`). Mandat `MANDATS/DEROULE-01-11/MANDAT-MESURE-RELECTURE.md` (`c31322a92`) ; un exécutant neuf lancé à 15:37, 30 minutes au plus, base `46d140ab6`, branche `mesure/relecture`. Erreur reconnue (598 : « tu relisais les Dylan par le menu des classes ») : Paul est entré par le calendrier.
+- **15:37 — Paul, mot pour mot** (le nom d'un élève retiré) :
+
+  > j'ai oublié de te dire aussi: j'ai nommé NL dans la relecture des franklin. contrairement aux autres élèves, il apparaît non pas en prénom simple, mais en Nom Prénom ([le second mot du nom, puis le prénom], en plus il s'appelle [prénom, nom en deux mots]).
+
+- **15:38 — message à Paul, mot pour mot :**
+
+  > 602. Tu as raison pour 598, je me suis trompé : tu étais entré par le calendrier et la case. La mesure dira pourquoi, en entrant ainsi, le pilotage reste sur les Franklin.
+  >
+  > 603. Les notions « non travaillée » : je ne sais pas encore pourquoi ; c'est dans la mesure.
+  >
+  > 604. La mesure est lancée (15:37), 30 minutes au plus, sans rien corriger : relire une autre classe en entrant par le calendrier ; « Le chapitre » (l'« Heure 0 », les heures closes, « 8 sur 2 ») ; les notions « non travaillée ». Une piste lue au hub : tes deux classes ont une « heure 0 » vide rangée dans leur état ; l'« Heure 0 » viendrait de là.
+  >
+  > 605. NL : c'est la même cause que ses initiales (546). Le site prend le premier mot de son nom de famille pour le nom, et le reste (le second mot, puis le prénom) pour le prénom. 572 le règle : le nom, ce sont tous les mots en capitales ; le prénom, le reste ; et partout, son prénom seul. C'est au registre.
+  >
+  > À tester : rien (ne clique pas sur « Attribuer » dans la Relecture d'une autre classe que celle du pilotage).
+  >
+  > 04/11/2026 15:38
+  >
+  > À jouer : rien · en cours : la mesure de la Relecture (fin vers 16:07) · ouvert : 573 et 597, 599, 572, 582, 583, 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

@@ -2682,3 +2682,23 @@ MEMO
   > À jouer : les 8 gestes ; 453 à trancher · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:16 — Paul, mot pour mot :**
+
+  > Il faut que les exécutants soient beaucoup moins longs. Pour 8. Pourquoi "puis ta classe d'essai"?
+- **03:16 — la conscience** : relu `MANDATS/DEROULE-01-11/MANDAT-LOT1.md` §1.4 : « en répétition, les pastilles sont celles de la classe de la séance répétée …, plus celles de la classe d'essai » — ajouté par la conscience ; le 361 proposé à Paul (14:23) disait « en répétition, la liste de la classe de la séance répétée ».
+- **03:16 — message à Paul, mot pour mot :**
+
+  > 454. Exécutants plus courts, je propose trois règles. Un mandat petit, où j'écris moi-même les endroits du code à changer, que je lis avant. L'exécutant ne prouve que son point, par une sonde ciblée de quelques minutes ; la non-régression, c'est mon banc, une seule fois (448). Et une limite d'une heure : au-delà, il pousse ce qui est prouvé, s'arrête et me le dit. Si tu ne dis rien, c'est acquis.
+  >
+  > 455. Pour 8, « puis ta classe d'essai » vient de moi. Je l'ai ajouté au mandat du lot 1 sans te le demander : avant, la répétition ne montrait que ta classe d'essai, et je l'ai gardée à la suite pour ne rien retirer. Ton 361 disait seulement la classe de la séance répétée.
+  >
+  > 456. Je propose de l'enlever : en répétition, seulement la classe répétée, comme en heure normale. Une ligne, prouvée en quelques minutes ; elle part avec la prochaine mise en ligne. Si tu ne dis rien, c'est acquis.
+  >
+  > À tester : les 8 gestes de 03:07 (en 8 : la classe d'essai suit encore la classe répétée).
+  >
+  > 04/11/2026 03:16
+  >
+  > À jouer : les 8 gestes ; 453 à trancher ; 454 et 456 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

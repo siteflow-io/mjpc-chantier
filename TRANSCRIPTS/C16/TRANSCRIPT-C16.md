@@ -3891,3 +3891,25 @@ MEMO
   > À jouer : 671, 672 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **18:57 — Paul, mot pour mot :**
+
+  > voilà c'est ça. en revanche sur ta maquette, il y a le même défaut que sur le site: la diapo affichée à droite avec "ce que voit la classe "n'affiche toujours pas le chrono en direct, donc ce n'est pas ce que voit la classe. Cette diapo est réellement la vue tableau, telle que je l'ai conçue. ainsi, il faut qu'elle le soit, c'est tout.
+
+- **18:57 — la conscience** : registre (production) : P6 choisi, les crans de 671, le zoom retiré (672 acquis), « Ce que voit la classe » = la vue tableau.
+- **18:57 — message à Paul, mot pour mot :**
+
+  > 673. Noté : P6, avec les crans de 671 ; et le zoom retiré (672), les poignées seules pour la taille.
+  >
+  > 674. « Ce que voit la classe » : noté, avec tes mots. Cette diapo est la vue tableau telle que tu l'as conçue : elle doit l'être, en direct, chrono compris. C'est au registre.
+  >
+  > 675. Je propose la maquette v2 : P6 (le rectangle, ses crans, ses poignées, le réglage comme ta vidéo, l'interrupteur « au tableau ») et « Ce que voit la classe » qui est la vue tableau elle-même. 30 minutes au plus. Je la lance ?
+  >
+  > 676. Toujours en attente de ton mot : le premier morceau de 638 (relire une autre classe), puis la suite.
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 18:57
+  >
+  > À jouer : 675 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

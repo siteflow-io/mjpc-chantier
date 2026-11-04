@@ -1,0 +1,32 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties R · 2026-11-04 14:15 UTC · md5 a8f8eb9cc3b9e39d4e0a8fdf72936087 · images : celle du canon
+
+══ RÉCIT RATTRAPÉ · apres · md5 a8f8eb9cc3b9e39d4e0a8fdf72936087 ══
+
+— partie R
+  [R] rattrapée 2026-09-14 15:07-16:02 lancée (true) · au lancement : {"enr":"Enregistré à 14:00","chrono":"00:0514:00","montre":"14:00","caseH":"14:00"}
+  [R] 11 diapos parcourues · 3 réponses · en cours : {"enr":"Enregistré à 14:00","chrono":"00:3814:00","montre":"14:00","caseH":"14:00"}
+  [R] close ({"garde":"Il manque, avant de clore ○ le travail à faire — rien dans École Directe ni dans l'historique pour la prochaine fois ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ le mot aux absents (2) (facultatif) — les absents n'auront pas de mot ○ copié pour École Directe — le cahier de textes de l'école restera vide, à remplir à la main plus tard Y retourner Clore quand même","close":true}) · l’entête : {"enr":"Enregistré à 14:00","chrono":"close · 14:0014:00","montre":"14:01","caseH":"14:01"}
+  [R] les décisions : [["act2","reporter",1],["zact3","reporter",1],["aud-bilan","reporter",1]]
+  [R] les paragraphes (titre · prévu avant, min · temps utile · attendu · dit) :
+        {"titre":"Présentation du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Notre problématique","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Les compétences du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Le parcours du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Séance 1 · Poésie et peinture : le Roman","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Activité 1 — Analyse d’images","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"}
+        {"titre":"Activité 2 — Mise en commun","avant":23,"tu":50,"attendu":"Au milieu","dit":"Au milieu"}
+  [R] début/milieu/fin dans le récit : ["au début","au début","au début","au début","au début","au début","au milieu"]
+  [R] le bilan : « En tout, on a observé 2 documents et répondu à 2 questions. Ce qu'on n'a pas fait cette heure-ci : « Activité 3 — Le Romantisme en une phrase », qu'on fera à la prochaine séance ; « Le bilan », qu'on fera à la prochaine séance. (bilan de la séance non attesté) Cette heure, on a fait Présentation du chapitre, puis Notre problématique, Les compétences du chapitre, Le parcours du chapitre, Séance 1 · »
+  [R] ce qu’on n’a pas fait, rang dans le plan : null
+  [R] « Ce qui s’est passé » : 4057 caractères · horaires lus : ["14:00"] · « LE FIL DE L'HEURE — CE QUE LA CLASSE A VU, ET CE QUE TU AS SAISI 14:00:11La classe est sur la diapo 1 — Présentation du chapitre11 s 14:00:15 — un élève — absent 14:00:15 — un élève — absent 14:00:18 — élément 1 dévoilé 14:00:20 — un élève — arrivé 14:00:20 — élément 2 dévoilé 14:00:21 — élément 3 d »
+  [R] la Relecture (récit) : horaires lus : [] · le Papier : []
+  ok     R1a · l’heure rattrapée : chaque paragraphe dit début / milieu / fin selon le temps prévu dans le plan (dur des diapos jouées avant lui, sur le temps utile) — [{"titre":"Présentation du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Notre problématique","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Les compétences du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Le parcours du chapitre","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Séance 1 · Poésie et peinture : le Roman","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Activité 1 — Analyse d’images","avant":0,"tu":50,"attendu":"Au début","dit":"Au début"},{"titre":"Activité 2 — Mise en commun","avant":23,"tu":50,"attendu":"Au milieu","dit":"Au milieu"}]
+  ok     R1b · « Ce qu’on n’a pas fait cette heure-ci : « … » » ; ni « activités n’ont pas été faites », ni « diapos » — ["Ce qu'on n'a pas fait cette heure-ci : « Activité 3 — Le Romantisme en une phrase », qu'on fera à la prochaine séance ; « Le bilan », qu'on fera à la prochaine séance."]
+  ÉCHEC  R1c · ce qu’on n’a pas fait : dans l’ordre du plan
+  ok     R1d · pas « En fin d’heure » (récit, texte pour École Directe) — []
+  ok     R9 · R1 : aucune erreur JS, aucune boîte système
+  [R] R2 l’heure ordinaire · l’entête : {"enr":"Enregistré à 15:10","chrono":"close · 15:1015:10","montre":"15:10","caseH":"15:10"} · horaires du récit : ["15 h 09","15 h 10"]
+  [R] R2 le bilan : « En tout, on a observé un document et répondu à une question. Ce qu'on n'a pas fait cette heure-ci : « Le bilan », qu'on fera à la prochaine séance. (bilan de la séance non attesté) Copier pour École Directe — contenu de séance Copier — travail à faire composé par le site ma version (modifier)  »
+  ok     R9 · R2 : aucune erreur JS, aucune boîte système
+
+--- fin : 6 vérifications, 1 échec(s)

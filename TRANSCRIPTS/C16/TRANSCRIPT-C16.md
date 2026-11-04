@@ -3816,3 +3816,33 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : la maquette du minuteur (fin vers 17:31) · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **17:21 — l'exécutant de la maquette (message)** : maquette v1 de 17:02 à 17:21 ; la supposition juste, avec une précision : le tableau (fenêtre ouverte sur le même ordinateur) reçoit le minuteur du pilote d'onglet à onglet (postMessage). Commit `b371f5718` sur `maquette/minuteur` (dr-classe.js, dr-tableau.js, dr.css ; `gen-maquette.mjs` ; `banc-maquette.mjs` et sa sortie ; captures) ; maquette `C16-maquette-minuteur-v1.html` (6,77 Mo), md5 `c5589864b90ab6d31b7504c1b24b1860`. Banc : 50/50 (25 à 1536 × 864, 25 à 1920 × 1080) : le réglage jamais sur la diapo ; la pastille ne couvre aucun texte ; même place et taille aux deux écrans (départ, zoom ×1,5, glisser, < 0,1 %) ; Pause, Reprendre ; le rouge ; ■ ; 0 requête, 0 erreur, 0 boîte système ; 12 captures regardées. Simulé : l'entrée professeur ouverte d'office ; l'horloge au 14/09 09:00 ; l'emploi du temps ouvert par un appel de fonction dans le banc ; les 127 vrais noms du faux hub des sondes remplacés par des noms inventés ; 18 appels vers l'extérieur retenus ; l'adresse du tableau distant pas jouée ; « au tableau » à cocher ; une question (la pastille garde sa place au changement de diapo). 213 263 jetons.
+- **17:22 → 17:27 — la conscience** : audit : seuls dr-classe.js, dr-tableau.js, dr.css et `MANDATS/DEROULE-01-11/MAQUETTE-MINUTEUR/` ; pas `dr_classe` ; md5 de la maquette vérifié ; ça va. Le faux hub des sondes (`AUDITS/INTEGRATION-DEROULE/hub/classes.json`, ajouté le 01/11, `61738930c`) : la liste de la classe d'essai comparée au vrai hub par empreintes (Chrome de Paul, GET) : 29 sur 29 identiques ; le sas est public (API GitHub). Registre (production `8a40a22`). La maquette envoyée à Paul.
+- **17:56 — message à Paul, mot pour mot :**
+
+  > 662. D'abord un problème grave, trouvé par l'exécutant et vérifié par moi : le faux hub du sas contient de vrais noms d'élèves. La liste de ta classe d'essai y est la même que celle du vrai hub, 29 noms sur 29 (comparés sans recopier un seul nom) ; il y a aussi d'autres classes (4E BANKSY, 4E PYTHAGORE, 5e HERGÉ). C'est là depuis le 1er novembre, et le sas est public.
+  >
+  > 663. Je propose, dans l'ordre : que tu passes le sas en privé tout de suite (c'est un réglage de ton compte GitHub, je n'y touche pas) ; puis je remplace ces noms par des noms inventés ; je cherche dans tout le sas s'il y en a ailleurs ; enfin, les anciennes versions du dépôt les gardent, et les effacer demande de réécrire l'historique du dépôt, ce que je ne fais que sur ton mot. C'est au registre.
+  >
+  > 664. La maquette du minuteur est prête (C16-maquette-minuteur-v1.html), à ouvrir dans Chrome. C'est le site en ligne, la nouveauté écrite dans son code ; les élèves y ont des noms inventés. Le banc de l'exécutant : 50 vérifications sur 50, à deux tailles d'écran.
+  >
+  > 665. Ce qu'elle simule : l'entrée professeur est ouverte d'office ; l'horloge démarre le lundi 14/09 à 09:00 ; le tableau s'ouvre dans un second onglet du même ordinateur (pas l'adresse du tableau distant) ; « au tableau » reste à cocher, comme aujourd'hui.
+  >
+  > 666. Une question de l'exécutant : quand tu changes de diapo pendant que le chrono tourne, la pastille garde la place que tu lui as donnée. Je propose de garder cela : c'est toi qui la places. D'accord ?
+  >
+  > À tester, dans la maquette, dans l'ordre :
+  > 1. Emploi du temps, la case du lundi 14/09 (3E Charles de Gaulle), « Ouvrir le pilotage et lancer ».
+  > 2. La vignette 12 « Chaque groupe présente… », puis Dévoiler jusqu'à 3/3.
+  > 3. « Ouvrir le tableau » : il s'ouvre dans un second onglet ; mets les deux côte à côte.
+  > 4. ⏱ sous la diapo : le réglage s'ouvre sous la diapo, au-dessus des notes, le zoom à droite.
+  > 5. Une durée, « au tableau », Départ : le réglage se cache ; la pastille paraît dans un coin libre, sur ta diapo et au tableau.
+  > 6. ⏱ de nouveau : le réglage revient ; Pause, Reprendre.
+  > 7. Le zoom : la pastille grandit aux deux écrans.
+  > 8. Glisse la pastille sur ta diapo : elle glisse au tableau.
+  > 9. Sous une minute : le rouge ; puis ■ : la pastille disparaît des deux.
+  >
+  > 04/11/2026 17:56
+  >
+  > À jouer : 663 (le sas en privé), la maquette (664), 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

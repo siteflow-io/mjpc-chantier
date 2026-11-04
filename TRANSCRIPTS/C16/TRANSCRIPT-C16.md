@@ -3346,3 +3346,24 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (555 à 560, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **13:50 — Paul, mot pour mot :**
+
+  > 556. De ce fait je la reouvrirai, vu qu'elle est passée, et je ferai la même chose que ce matin sur la séance des Dylan. D'ailleurs, est ce que je devrai retaper toutes les réponses enregistrées ou pas? C'est un cas qui ne s'est pas présenté avec les Dylan vu qu'avec eux la séance n'avait même pas été jouée. 
+  > Pour le reste, lance la mesure oui. Pour la tension mgc oui pour ta proposition. Le principe est que la case attend la totalité des initiales élève, quel que soit le mode de validation ( numérotation ou automatique une fois toutes les initiales tapées ).
+
+- **13:52 — la conscience** : lu dans le code de la 8.84.0 : une heure close « ne se rouvre pas » (`atInfo`, « … est déjà close aujourd’hui : elle ne se rouvre pas ») ; « ▶ Rattraper cette heure » (`data-rattraper`) seulement pour une « Case passée sans heure jouée » (`c.nature==='passee'`). Le mandat `MANDATS/DEROULE-01-11/MANDAT-MESURE-INITIALES.md` complété (point 5 : l'heure close) et poussé (`a56a6a791`) ; un exécutant neuf lancé à 13:56, 30 minutes au plus, branche `mesure/initiales`.
+- **13:51 — message à Paul, mot pour mot :**
+
+  > 561. Tu n'auras rien à retaper : les 24 réponses sont au hub, et avec 555 le récit les retrouve tout seul. Mais, lu dans le code : une heure jouée et close « ne se rouvre pas », et « ▶ Rattraper cette heure » n'apparaît que sur une case passée sans heure jouée. Tu ne pourras donc pas refaire comme ce matin avec les Dylan. Ce qui restera à corriger, ce sont les élèves des 10 réponses (556) : je fais mesurer si la Relecture le permet. Si elle ne le permet pas, je te proposerai une façon.
+  >
+  > 562. Noté pour MGC : la case attend la totalité des initiales de l'élève, quel que soit le mode de validation (le chiffre de la liste, ou tout seul une fois toutes les initiales tapées).
+  >
+  > 563. La mesure est lancée (13:56), 30 minutes au plus, sur la 8.84.0 en ligne, sans rien corriger : la case des initiales, l'ordre de reconnaissance, le moment du dévoilement, le gel, et une heure close comme celle des Franklin (la rouvrir, les réponses, changer l'élève d'une réponse).
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 13:51
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : la mesure (fin vers 14:26) · ouvert : l'heure des Franklin (555, 557, 562 après la mesure), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

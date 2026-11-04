@@ -3420,3 +3420,33 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **14:40 — Paul, mot pour mot** (avec 7 captures de la Relecture des 3 FRANKLIN ARETHA, heure 2 : elles nomment des élèves, non recopiées au sas) :
+
+  > ok sauf que pourquoi tu dis qu'on ne peut pas changer après? pourquoi j'ai ça alors , dans la relecture? par ailleurs cette relecture: dans la colonne de gauche je vois bien la copie de classe, mais elle ne peut pas s'afficher comme le pilote. je suis obligé d'utiliser la poignée pour zoomer sur les diapos et distinguer ce qui y est écrit.  enfin, il me faudrait un bouton en bas pour copier l'ensemble de la relecture. ça me permettrait de pouvoir l'exporter (comme quand on discute par exemple). l'infobulle de ce bouton doit dire explictement ça: "copier la relecture pour analyse IA".
+
+- **14:43 — la conscience** : erreur reconnue (570 : « la Relecture ne permet rien ») — l'exécutant avait mesuré le changement d'un élève déjà désigné ; le bouton « ⚠ élève non identifié — à corriger » (`dr-a-corriger`, `data-j`) existe pour une réponse du journal sans élève. Lu dans le code : la participation de la Relecture = `S.parts` de l'heure + les réponses du journal. Au vrai hub (Chrome de Paul, GET, onglet ouvert puis fermé) : `etat/S` sans `parts` ; `heures/2026-11-04…/parts` : 21. Registre (production `c87253a`).
+- **14:43 — message à Paul, mot pour mot :**
+
+  > 578. Tu as raison, je me suis trompé en 570. Le bouton « ⚠ élève non identifié — à corriger » existe : un clic pour dire qui a répondu. Mais il n'apparaît que pour une réponse du journal sans élève. Deux cas restent sans moyen : une réponse donnée au mauvais élève (tes MB), et les 22 réponses tapées pendant un gel, qui ne sont pas au journal et n'apparaissent donc pas (dans tes captures : « Anna — a répondu », sans sa réponse).
+  >
+  > 579. Vu dans tes captures, puis au hub : la participation de l'heure 2 ne montre que Tiago, alors que le hub garde 21 participations rangées avec cette heure. La Relecture ne les lit pas : elle lit la liste du moment, qui n'est pas gardée après l'heure, et les réponses du journal. Est-ce cela, les élèves manquants dont tu parlais ce matin ?
+  >
+  > 580. Je complète donc 571 : la Relecture et le récit lisent aussi les participations rangées avec l'heure.
+  >
+  > 581. Et 573 devient : le bouton « à corriger » vaut aussi pour une réponse donnée au mauvais élève, et pour les réponses retrouvées dans les diapos. Tu y désignes l'élève avec la même case des initiales qu'en classe (lettres, liste numérotée, chiffre).
+  >
+  > 582. La colonne de gauche de la Relecture : je propose qu'un clic sur une diapo l'affiche en grand, comme au pilotage, lisible sans la poignée.
+  >
+  > 583. Le bouton en bas de la Relecture, avec l'infobulle « copier la relecture pour analyse IA » : il copie tout le texte de la Relecture de la classe, tous les onglets (le récit, ce qui s'est passé et le Papier de chaque heure, la séance, le chapitre), pour que tu le colles ailleurs.
+  >
+  > 584. 579, 582 et 583 sont au registre.
+  >
+  > 585. L'ordre : 571 (le récit, le gel, la participation), 572 (la case des initiales), 573 (corriger après l'heure), puis 582 et 583 ensemble. Un exécutant à la fois, 30 minutes au plus chacun ; puis mon banc ; puis ton « promeus ». J'écris le mandat de 571 et je le lance ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 14:43
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, 579 à 583, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

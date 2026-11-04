@@ -3250,3 +3250,24 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : la mesure des Franklin (fin vers 12:50) · ouvert : l'heure des Franklin (sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+- **12:37 — l'exécutant (message)** : mesure sur la 8.83.0-⑯ (md5 `a1963856`), faux hub, 25 élèves inventés, de 12:19 à 12:36 ; commit `f42fc52e9` sur `mesure/franklin` (`LIVRAISONS/DEROULE-01-11/MESURE-FRANKLIN/` : sonde, NOTE, sorties) ; aucune ligne du site changée. (1) « MB » à l'élève 2, « MB2 » à l'élève 3 (`dr_initiales`) ; à l'écran « MB » et le début du prénom (`dr_iniVu`) ; « MB » tapé 3 fois dans la ligne de réponse : 3 à l'élève 2, 0 à l'élève 3 (`dr_iniExact`) ; seul le VIF propose les deux. (2) Liste d'une seule façon : 25/25 (un absent reste affiché) ; liste de deux façons (20 dans `eleves`, 5 en clés `{nom, prenom}`) : 20/25 (`extractEleves`, appelé par `dr_classe`). (3) Heure jouée et close en séance 1 : 4 réponses sur 4 dans le récit, le texte pour École Directe et le Papier ; pas reproduit. Pas mesuré : la séance 1 → 2 en pleine heure ; à qui le récit donne « MB » ; la vraie liste. Vu en passant : initiales, Tab, réponse tapée très vite : la première lettre perdue, le texte dans la case des initiales. 167 526 jetons.
+- **12:38 — la conscience** : audit du commit : seuls les fichiers de `MESURE-FRANKLIN/` ; noms inventés ; l'adresse du vrai hub n'apparaît que dans l'intercepteur du faux hub. Ça va. Registre (production `c1e97c9`) : la mesure ajoutée à « L'HEURE DES FRANKLIN ».
+- **12:37 — message à Paul, mot pour mot :**
+
+  > 538. La mesure est finie (12:36), sur la 8.83.0-⑯, au faux hub, avec 25 élèves inventés. Rien n'a été corrigé.
+  >
+  > 539. Les deux MB : c'est reproduit. « MB » tapé devant une réponse va toujours au premier des deux (3 fois sur 3), jamais au second, et le site ne demande pas lequel. L'écran montre « MB » et le début du prénom, jamais « MB2 ».
+  >
+  > 540. Les élèves manquants : reproduit dans un cas. Quand tous les élèves sont rangés de la même façon dans la liste de la classe, les 25 s'affichent. Quand une partie est rangée autrement au hub, seuls les autres s'affichent (20 sur 25). Je pense que ta liste des Franklin est rangée de deux façons ; je le verrai au hub.
+  >
+  > 541. Le récit : pas reproduit. Une heure jouée et close en séance 1 a ses 4 réponses sur 4 dans le récit. Deux causes possibles, pas mesurées : l'heure est passée en séance 2 avant d'être close ; ou, en tapant très vite les initiales, puis Tab, puis la réponse, la première lettre se perd et la réponse part dans la case des initiales (vu par la machine, pas à vitesse humaine).
+  >
+  > 542. Une question pour trancher 541 : pendant l'heure des Franklin, es-tu passé à la séance 2 avant de clore l'heure ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 12:37
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (542, puis le hub sur ton « vas-y »), la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

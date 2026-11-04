@@ -15862,6 +15862,7 @@ function _drCleHeureDe(c,ts){
   if(!c)return null;
   var d=new Date(ts||Date.now()), p=function(n){return (n<10?'0':'')+n;};
   var jour=d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+  if(/^\d{4}-\d{2}-\d{2}$/.test(String(c.iso||'')))jour=String(c.iso);   /* C16 (lot 2a, ㊷) : une heure rattrapée porte la date de SA case (c.iso) — jamais le jour où on la joue */
   var cls=String(c.classeSlug||c.classeNom||'').replace(/[.#$\[\]\/\s]/g,'_');
   return jour+'_'+String(_drCreneauDe(c)||'').replace(/:/g,'h').replace(/[.#$\[\]\/\s]/g,'')+'_'+cls;
 }
@@ -18946,7 +18947,9 @@ function edtProjeter(isoDebut,nbJours){
       if(edtHors){ cel.nature='horsAnnee'; cel.libelle=edtHors.libelle; cel.borne=edtHors.borne;
                    cellules[cle]=cel; continue; }
       var edtFinC=String(c.creneau).split('-')[1]||'', edtAuj=edtAujourdhui();
-      if(iso<edtAuj||(iso===edtAuj&&edtFinC&&edtFinC<=edtHeureCourante())){ cel.nature='passee'; cellules[cle]=cel; continue; }   /* [E2] réveil n°16 (§12.18) : passée sans être jouée — elle ne prend aucune heure de la file */
+      if(iso<edtAuj||(iso===edtAuj&&edtFinC&&edtFinC<=edtHeureCourante())){ cel.nature='passee';
+        try{ var edtSr=f&&f.seances[f.i]; if(edtSr&&edtSr.__i!=null&&f.chapitre&&f.chapitre.__cle!=null){ var edtTr=edtHeuresPour(edtSr,c.creneau); cel.rat={ titre:edtSr.title||('Séance '+(f.i+1)), snum:String(edtSr.__i), chCle:String(f.chapitre.__cle), heure:f.faites+1, sur:edtTr }; } }catch(e){}   /* C16 (lot 2a, ㊷) : la séance que la file donnerait à cette case — lue, la file n'est pas consommée */
+        cellules[cle]=cel; continue; }   /* [E2] réveil n°16 (§12.18) : passée sans être jouée — elle ne prend aucune heure de la file */
       if(!f||!f.seances.length){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
       var s=f.seances[f.i];
       if(!s){ cel.nature='rienDePret'; cellules[cle]=cel; continue; }
@@ -19533,7 +19536,7 @@ function edtAnnulerDecision(cle){
    pilote, puis il appuie dessus. Le moteur n'est pas touché.
    Si un seul des éléments attendus manque, on le DIT — jamais de crash. */
 var EDT_PILOTAGE_ELEMENTS=['dr-zone','mur','volet','ong-pilotage'];   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) et l'onglet Pilotage de la barre (sans lui, `voir` lève : relecteur neuf n°1) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */   /* [E2] les ids du bloc du déroulé (contrat §7) — avant : at-dr-classe, at-dr-creneau, at-dr-debut, at-dr-tete, at-zone */
-function edtLancer(cle,preparer){
+function edtLancer(cle,preparer,rattraper){
   /* [E2] « ▶ Ouvrir le pilotage et lancer » et « Préparer » : le premier temps est celui d'aujourd'hui (la séance visée,
      les classes et les chapitres chargés, le chapitre ouvert sur la séance) ; le second appelle `dr_lancer` avec la classe,
      le créneau et le NUMÉRO D'HEURE DE LA CASE (`edtCellule(cle).heure`, « heure 1 sur 3 » — audit E2, F1). « Préparer »
@@ -19544,10 +19547,11 @@ function edtLancer(cle,preparer){
   /* E1 (§12.35-7, registre 13 · 80 ; E3, retour 82) : le lancement ouvre la séance que la case nomme — une seule source, l'emploi du temps (§12.19).
      Avant : la première séance non jouée dans l'ordre des CLÉS, ni l'`ordre` ni les classes de la séance (« Remédiation » à la case, « Étude de texte » au lancement).
      La case porte `chCle`/`snum` (edtProjeter) ; sans eux (une case peinte avant), la file de la classe (edtFileDAttente : l'`ordre`, les classes). */
-  var vise=null;
-  if(c.chCle!=null&&c.snum!=null){
-    var chx=l.filter(function(x){return x&&String(x.__cle)===String(c.chCle);})[0];
-    if(chx&&edtListe(chx.seances).some(function(x){return x&&String(x.__i)===String(c.snum);}))vise={ch:chx,snum:String(c.snum)};
+  var vise=null; if(rattraper&&!(c.nature==='passee'&&c.rat))return;   /* C16 (lot 2a) : on ne rattrape qu'une case passée qui a sa séance */
+  var cS=rattraper?c.rat:c;
+  if(cS.chCle!=null&&cS.snum!=null){
+    var chx=l.filter(function(x){return x&&String(x.__cle)===String(cS.chCle);})[0];
+    if(chx&&edtListe(chx.seances).some(function(x){return x&&String(x.__i)===String(cS.snum);}))vise={ch:chx,snum:String(cS.snum)};
   }
   if(!vise){ var fa=edtFileDAttente(c.classeMjpc,c.fil||null); if(fa&&fa.seances.length&&fa.seances[0].__i!=null)vise={ch:fa.chapitre,snum:String(fa.seances[0].__i)}; }
   if(!vise){ edtRienDePret(c); return; }
@@ -19558,7 +19562,7 @@ function edtLancer(cle,preparer){
   try{
     loadClasses(function(){
       atChargerChapitres(niv,function(){
-        var lancer=function(){ try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), c.heure||1, c.sur||1); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); } };
+        var lancer=function(){ try{ dr_lancer(dr_slugDe(c.classeMjpc), c.creneau, dr_debutPropose(c.creneau), cS.heure||1, cS.sur||1, rattraper?c.iso:null); }catch(e2){ if(typeof atInfo==='function')atInfo('Le lancement a échoué : '+e2.message); } };
         if(!preparer){ dr_ouvrirLaClasse(niv,vise.ch.__cle,vise.snum,lancer); return; }   /* [E2] §12.28-3 (a) : l'heure se joue dans « la classe en cours » (E1) ; « Préparer » garde l'Atelier */
         try{
           try{ atelierOuvrir(); }catch(eo){}   /* dette 12 · 05 : le cours tournait, l'écran restait sur le panneau prof — l'atelier s'ouvre, le Pilotage se voit */
@@ -19721,6 +19725,8 @@ function edtPeindreModale(){
           +(edtVd.justifiee===false?'La déclarer justifiée':'La déclarer non justifiée')+'</button>'))+'</div>';
     } else if(c.nature==='passee'){
       h+='<p class="edt-p">Case passée sans heure jouée : la séance n\u2019y a pas eu lieu. Elle continue à la case suivante de la classe \u2014 aucune heure n\u2019est perdue dans la file.</p>';   /* [E2] réveil n°16 (§12.18) */
+      if(c.rat)h+='<p class="edt-p"><u>'+escapeHtml(c.rat.titre||'')+'</u><br>heure '+c.rat.heure+' sur '+c.rat.sur+'</p>'
+        +'<button class="edt-btn edt-btn-prim edt-large" data-rattraper="1" title="Joue maintenant l\u2019heure de cette case, comme une vraie heure de cette classe : elle est rangée à la date et au créneau de cette case, jamais à aujourd\u2019hui ; le récit, le texte pour École Directe, le mot aux absents et le papier ne disent aucun horaire. Si tu t\u2019arrêtes avant la fin, elle reprend là où tu t\u2019es arrêté." onclick="edtLancer('+JSON.stringify(cle).replace(/"/g,'&quot;')+',false,true)">\u25b6 Rattraper cette heure</button>';   /* C16 (lot 2a, ㊷ ; Paul 03/11 12:26) */
     } else if(c.nature==='rienDePret'){
       h+='<p class="edt-p">Aucune séance prête pour cette classe.</p>'
         +'<button class="edt-btn" onclick="edtRienDePret(edtCellule('+JSON.stringify(cle).replace(/"/g,'&quot;')+'))">Ouvrir Mes chapitres\u2026</button>';

@@ -1,0 +1,51 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties L · 2026-11-04 02:48 UTC · md5 bcee37aef66f6847a4415103c8292def · images : celle du canon
+
+══ LOT 2a · assemble-apres · md5 bcee37aef66f6847a4415103c8292def ══
+
+— partie L
+  [L] jeudi 17/09 14:00, la semaine de CLASSE TEST : 2026-09-14 15:07-16:02 · passee ‖ 2026-09-15 10:07-11:02 · passee ‖ 2026-09-16 11:04-11:59 · passee ‖ 2026-09-17 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-18 11:04-11:59 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [L] la case passée 2026-09-14 15:07-16:02 : « lundi 14 septembre · 15:07-16:02 ✕ CLASSE TEST Case passée sans heure jouée : la séance n’y a pas eu lieu. Elle continue à la case suivante de la classe — aucune heure n’est perdue dans la file. Poésie et peinture : le R » · boutons ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  ok     L1a · la case passée propose « ▶ Rattraper cette heure », et le clic lance l’heure — ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  [L] lancée : {"lancee":true,"cle":"2026-09-14_15h07-16h02_CLASSE_TEST","jour":"lundi 14 septembre 2026","r":true}
+  [L] l’appel (absent, absent puis arrivé) : [true,true,true] · 9 diapos parcourues · 3 réponses tapées
+  [L] « Reporter » puis close ({"garde":"Il manque, avant de clore ○ le travail à faire — rien dans École Directe ni dans l'historique pour la prochaine fois ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ le mot aux absents (2) (facultatif) — les absents n'auront pas de mot ○ copié pour École Directe — le cahier de textes de l'école restera vide, à remplir à la main plus tard Y retourner Clore quand même","close":true}) · les clés de CLASSE TEST au hub : 2026-09-14_15h07-16h02_CLASSE_TEST (close)
+  ok     L1b · au hub, une seule heure, à la date ET au créneau de la case (2026-09-14, 15:07-16:02), close — ["2026-09-14_15h07-16h02_CLASSE_TEST (close)"]
+  [L] l’heure rattrapée · le récit : 43 phrases, 0 avec un horaire, la date de la case présente
+  [L] l’heure rattrapée · le texte pour École Directe : 42 phrases, 0 avec un horaire, la date de la case présente
+  [L] l’heure rattrapée · le mot aux absents : 5 phrases, 0 avec un horaire, la date de la case ABSENTE
+  [L] l’heure rattrapée · le Papier : 43 phrases, 0 avec un horaire, la date de la case présente
+  ok     L2a · l’heure rattrapée : 0 phrase avec un horaire (récit, texte pour École Directe, mot aux absents, Papier) — {"le récit":0,"le texte pour École Directe":0,"le mot aux absents":0,"le Papier":0}
+  ok     L2b · la date de la case est dans le récit, le texte pour École Directe, le Papier, et le mot aux absents dit « lundi » — ["LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi. Voici ce qu'on a fait : (le récit ci-dessus, en entier) un élève, tu n'étais pas là lundi. Voici ce qu'on a fait : (le récit ci-dessus, en "]
+  [L] début / milieu / fin dans le récit : ["au début","au début","au milieu","au milieu","au milieu","à la fin","à la fin"] · dans le mot aux absents : [] · «  »
+  ÉCHEC  L2c · le récit dit « au début / au milieu / à la fin de l’heure » à la place des heures (dans l’ordre), le mot de l’arrivé aussi — [7,[]]
+  [L] après : 2026-09-14 15:07-16:02 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 9 diapos, close, 9 reportées, séance pas finie ‖ 2026-09-15 10:07-11:02 · passee ‖ 2026-09-16 11:04-11:59 · passee ‖ 2026-09-17 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h2 suite ‖ 2026-09-18 11:04-11:59 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-22 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h2/3
+  ok     L1c · la case du lundi dit l’heure jouée (close) ; la case suivante « heure 2 · suite » — ["2026-09-14 15:07-16:02 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 9 diapos, close, 9 reportées, séance pas finie","2026-09-17 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h2 suite"]
+  ok     L9 · L1-L2 : aucune erreur JS, aucune boîte système
+  [L] L3 jeudi 14:00, rattrapée, jouée jusqu’à « Groupe 1 : Le Radeau de la Méduse », l’onglet fermé sans clore · 2026-09-14_15h07-16h02_CLASSE_TEST (pas close)
+  [L] L3 vendredi 18/09 10:00, la case du lundi : boutons ["✕","▶ Reprendre l’heure"] · « Reprendre » (true) reprend sur « Groupe 1 : Le Radeau de la Méduse » · une diapo de plus · les clés : 2026-09-14_15h07-16h02_CLASSE_TEST (pas close)
+  ok     L3a · « ▶ Reprendre l’heure » le lendemain : la diapo où l’on s’était arrêté — [{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""},{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""}]
+  ok     L3b · une seule clé au hub, celle de la case (avant : une seconde, celle du jour) — ["2026-09-14_15h07-16h02_CLASSE_TEST (pas close)"]
+  ok     L9 · L3 : aucune erreur JS, aucune boîte système
+  [L] L4 l’heure ordinaire, les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (close)
+  [L] l’heure ordinaire · le récit : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 15 h 10 et s'est terminée à 15 h 10.   ⟵ 15 h 10
+        Présentation du chapitre À 15 h 10, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 10
+        Notre problématique À 15 h 10, on a lu notre problématique :   ⟵ 15 h 10
+        Les compétences du chapitre À 15 h 10, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 10
+  [L] l’heure ordinaire · le texte pour École Directe : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 15 h 10 et s'est terminée à 15 h 10.   ⟵ 15 h 10
+        Présentation du chapitre À 15 h 10, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 10
+        Notre problématique À 15 h 10, on a lu notre problématique :   ⟵ 15 h 10
+        Les compétences du chapitre À 15 h 10, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 10
+  [L] l’heure ordinaire · le mot aux absents : 5 phrases, 2 avec un horaire, la date de la case ABSENTE
+        LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là jeudi à 15 h 10.   ⟵ 15 h 10
+        (le récit ci-dessus, en entier) un élève, tu n'étais pas là jeudi à 15 h 10.   ⟵ 15 h 10
+  [L] l’heure ordinaire · le Papier : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question DATEjeudi 17 septembre 2026 Ce qu'on a fait aujourd'hui À relire — vendredi 18 septembre Cette heure a commencé à 15 h 10 et s'est ter   ⟵ 15 h 10
+        PRÉSENTATION DU CHAPITRE À 15 h 10, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 10
+        NOTRE PROBLÉMATIQUE À 15 h 10, on a lu notre problématique :   ⟵ 15 h 10
+        LES COMPÉTENCES DU CHAPITRE À 15 h 10, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 10
+  [L] L4 ORDINAIRE {"le récit":8,"le texte pour École Directe":8,"le mot aux absents":2,"le Papier":8} · récit (chiffres masqués) md5 3af52bf5 · ED md5 d6d793f4
+  ok     L9 · L4 : aucune erreur JS, aucune boîte système
+
+--- fin : 11 vérifications, 1 échec(s)

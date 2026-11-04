@@ -1,0 +1,28 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties L · 2026-11-04 02:51 UTC · md5 df003634996a55057ead60a8229f5bbf · images : celle du canon
+
+══ LOT 2a · base-base · md5 df003634996a55057ead60a8229f5bbf ══
+
+— partie L
+  [L] L4 l’heure ordinaire, les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (close)
+  [L] l’heure ordinaire · le récit : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 15 h 08 et s'est terminée à 15 h 08.   ⟵ 15 h 08
+        Présentation du chapitre À 15 h 08, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 08
+        Notre problématique À 15 h 08, on a lu notre problématique :   ⟵ 15 h 08
+        Les compétences du chapitre À 15 h 08, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 08
+  [L] l’heure ordinaire · le texte pour École Directe : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 15 h 08 et s'est terminée à 15 h 08.   ⟵ 15 h 08
+        Présentation du chapitre À 15 h 08, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 08
+        Notre problématique À 15 h 08, on a lu notre problématique :   ⟵ 15 h 08
+        Les compétences du chapitre À 15 h 08, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 08
+  [L] l’heure ordinaire · le mot aux absents : 5 phrases, 2 avec un horaire, la date de la case ABSENTE
+        LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là jeudi à 15 h 08.   ⟵ 15 h 08
+        (le récit ci-dessus, en entier) un élève, tu n'étais pas là jeudi à 15 h 08.   ⟵ 15 h 08
+  [L] l’heure ordinaire · le Papier : 44 phrases, 8 avec un horaire, la date de la case présente
+        le Romantisme en question DATEjeudi 17 septembre 2026 Ce qu'on a fait aujourd'hui À relire — vendredi 18 septembre Cette heure a commencé à 15 h 08 et s'est ter   ⟵ 15 h 08
+        PRÉSENTATION DU CHAPITRE À 15 h 08, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 15 h 08
+        NOTRE PROBLÉMATIQUE À 15 h 08, on a lu notre problématique :   ⟵ 15 h 08
+        LES COMPÉTENCES DU CHAPITRE À 15 h 08, on a regardé les compétences que le chapitre va travailler.   ⟵ 15 h 08
+  [L] L4 ORDINAIRE {"le récit":8,"le texte pour École Directe":8,"le mot aux absents":2,"le Papier":8} · récit (chiffres masqués) md5 3af52bf5 · ED md5 d6d793f4
+  ok     L9 · L4 : aucune erreur JS, aucune boîte système
+
+--- fin : 1 vérifications, 0 échec(s)

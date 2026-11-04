@@ -637,7 +637,9 @@ const DR_JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi',
 function dr_heurePoser(h, cours, ts){
   const d = new Date(ts || Date.now()); const deb = String(dr_creneauDuCours(cours) || '').split('-')[0] || cours.debut;
   const db = cours.debut || deb; const base = new Date(d.getFullYear(), d.getMonth(), d.getDate(), Math.floor(dr_mn(db) / 60), dr_mn(db) % 60).getTime();   /* relecteur neuf n°3 (2) : la base des horaires de « Où on en est » est le lancement (C1 6.2 : le retard recale les horaires) — avant : le début du créneau */
-  const x = { jour: DR_JOURS[d.getDay()] + ' ' + d.getDate() + ' ' + DR_MOIS[d.getMonth()] + ' ' + d.getFullYear(), debut: deb, fin: cours.fin, base, lanceA: cours.debut, classe: cours.classeNom, cle: _drCleHeureDe(cours, ts), sur: dr_nbHeures(dr_creneauDuCours(cours)) };
+  const dj = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(cours.iso || '')); const dJ = dj ? new Date(+dj[1], +dj[2] - 1, +dj[3]) : d;   /* C16 (lot 2a, ㊷) : une heure rattrapée dit la date de SA case */
+  const x = { jour: DR_JOURS[dJ.getDay()] + ' ' + dJ.getDate() + ' ' + DR_MOIS[dJ.getMonth()] + ' ' + dJ.getFullYear(), debut: deb, fin: cours.fin, base, lanceA: cours.debut, classe: cours.classeNom, cle: _drCleHeureDe(cours, ts), sur: dr_nbHeures(dr_creneauDuCours(cours)) };
+  if (cours.rattrapee) x.rattrapee = true;   /* le récit, le texte pour École Directe, le mot aux absents, le papier : aucun horaire (Paul, 03/11 12:26) */
   S.heuresCours = S.heuresCours || {}; S.heuresCours[h] = x;
   if (typeof HEURES_SIM === 'object' && HEURES_SIM) HEURES_SIM[h] = x;   /* E2 : la simulation devient la vraie heure — avant : HEURES_SIM[h] en dur (1 : lundi 14 sept. 15:07, 2 : mardi 15 sept. 10:07) */
   return x;
@@ -814,7 +816,7 @@ function dr_paquetHeure(clos){
   E.forEach((e, i) => { if (!e || e.eid == null || e.role === 'fin' || e.role === 'reactivation' || (+e.heure || 1) > h) return; const d = decisionDe(e); if (!d || (typeof finie === 'function' && finie(e, i))) return; decisionsParEcran[e.eid] = d; });   /* ㊳ (C16) : une décision par diapo non faite de cette heure ou d'avant (pas une diapo prévue pour une heure plus loin, que la décision de son activité couvre) — la sienne, sinon celle de son activité (`decisionDe`) */
   const debutReel = S.debutReel || ((J.find(x => x.type === 'lancement' && x.h === h) || {}).t) || Date.now();
   const p = {
-    classe: AT_DR_COURS.classeNom, creneau: dr_creneauDuCours(AT_DR_COURS), lanceA: AT_DR_COURS.debut, fin: AT_DR_COURS.fin,
+    classe: AT_DR_COURS.classeNom, creneau: dr_creneauDuCours(AT_DR_COURS), lanceA: AT_DR_COURS.debut, fin: AT_DR_COURS.fin, ...(AT_DR_COURS.rattrapee ? { rattrapee: true } : {}),
     debutReel, finReel: clos ? t1 : null, tempsUtilePrevu: dr_tempsUtile(dr_creneauDuCours(AT_DR_COURS), AT_DR_COURS.debut),
     minutesJouees: Math.round((t1 - debutReel) / 60000), heure: h, sur: (dr_heureJouee(h) || {}).sur || null,
     activites, parActivite, decisionsParEcran, decisionsParActivite,
@@ -829,7 +831,7 @@ function dr_paquetHeure(clos){
 }
 
 /* ─── le pointeur du cours (`sesCoursEcrire`/`sesCoursFermer`, même forme qu'aujourd'hui) et la clôture certaine ─── */
-function dr_coursActif(){ const ec = AT.edChap || {}; return { niveau: ec.level, chapitre: ec.chnum, seance: ATVUES.snum, classeSlug: AT_DR_COURS.classeSlug, classeNom: AT_DR_COURS.classeNom, debut: AT_DR_COURS.debut, fin: AT_DR_COURS.fin }; }
+function dr_coursActif(){ const ec = AT.edChap || {}; return { niveau: ec.level, chapitre: ec.chnum, seance: ATVUES.snum, classeSlug: AT_DR_COURS.classeSlug, classeNom: AT_DR_COURS.classeNom, debut: AT_DR_COURS.debut, fin: AT_DR_COURS.fin, ...(AT_DR_COURS.rattrapee ? { iso: AT_DR_COURS.iso, rattrapee: true } : {}) }; }
 function dr_coursEcrire(){
   if (!AT_DR_COURS || !ATVUES.snum) return;
   try { SES.ctx = dr_coursActif(); SES.actif = true; } catch (e) {}
@@ -861,7 +863,8 @@ function dr_cloreHeureRestee(slugNeuf, nomNeuf, c){
 }
 
 /* ─── lancer : `atDrJouerClic`, ses gestes dans l'ordre, puis le lancement de la maquette ─── */
-function dr_lancer(classeSlug, creneau, debut, heure, sur){
+function dr_lancer(classeSlug, creneau, debut, heure, sur, isoCase){
+  DR_CL.rat = isoCase ? { iso: String(isoCase), rattrapee: true } : null;   /* C16 (lot 2a, ㊷) : « ▶ Rattraper cette heure » — l'heure est rangée à la date de sa case */
   DR_CL.react = { choix: {}, prete: {}, raison: {}, decide: {}, enCours: false }; DR_CL.reactVue = null; DR_CL.reactC = null;   /* §12.22 : un nouveau lancement, un nouveau choix */
   if (!classeSlug && !creneau) { const pr = dr_proposer(); classeSlug = pr.classeSlug; creneau = pr.creneau; debut = pr.debut; heure = heure || pr.heure; sur = sur || pr.sur; }
   DR_CL.sur = +sur || ((S.lancee && S.close && S.heure) ? DR_CL.sur : 0) || 1;
@@ -875,14 +878,14 @@ function dr_lancer(classeSlug, creneau, debut, heure, sur){
     const meme = c && c.ts && (Date.now() - c.ts) < 4 * 3600 * 1000 && c.classeSlug === classeSlug && String(c.seance) === String(ici.seance) && String(c.chapitre) === String(ici.chapitre) && c.fin === fin
       && new Date(c.ts).toDateString() === new Date().toDateString();
     if (meme) { /* cette heure tourne déjà : on la REPREND, on ne la recopie pas (audit C6) */
-      AT_DR_COURS = { debut: c.debut, fin: c.fin, classeSlug, classeNom: nom }; AT_DR_REGIME = 'classe';
+      AT_DR_COURS = Object.assign({ debut: c.debut, fin: c.fin, classeSlug, classeNom: nom }, DR_CL.rat || {}); AT_DR_REGIME = 'classe';
       dr_reprendre(ok => { if (!ok) dr_lancerNeuf(classeSlug, nom, creneau, c.debut, heure, c); }); return; }
     dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c);
   });
 }
 function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   /* une heure close ne se reprend plus, par aucun chemin (C1 12 ; `_drHeureCloseAu`) : la même clé (jour + créneau + classe) n'est jamais réécrite */
-  if (!DR_CL.cleVerifiee) { const fin0 = String(creneau).split('-')[1]; const ch0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug + '/heures/' + _drCleHeureDe({ classeSlug, debut, fin: fin0 });
+  if (!DR_CL.cleVerifiee) { const fin0 = String(creneau).split('-')[1]; const ch0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug + '/heures/' + _drCleHeureDe(Object.assign({ classeSlug, debut, fin: fin0 }, DR_CL.rat || {}));
     dr_lire(ch0, t0 => { const clos = !!(t0 && t0.clos); /* le paquet entier, pas `…/clos` : en mode test le magasin est rangé par chemin, une lecture de `…/clos` mise en cache cacherait la clôture écrite ensuite sur `H` */ if (clos === true) { try { atInfo('L’heure de ' + escapeHtml(nom) + ' sur le créneau ' + escapeHtml(creneau) + ' est déjà close aujourd’hui : elle ne se rouvre pas. Lance l’heure suivante depuis sa case de l’emploi du temps (son créneau à elle).'); } catch (e) {} return; }
       /* §12.68 : ce que la copie de la classe était AVANT ce lancement (lu, jamais écrit) — « Annuler cette heure » la remettra telle quelle */
       const C0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug;
@@ -904,7 +907,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
     dr_lireJoue(j => {
       if (j && j.S && j.S.lancee && dr_adopterIdentites(j.ecrans) > 0) { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); return; }   /* les identités adoptées : on relit, pour que les rangs se refassent dessus */
       if (j && j.S && j.S.lancee) { if (Array.isArray(j.ecrans)) { const E = seance().ecrans; const f = dr_fusionCopie(E.slice(), j.ecrans, j.J); E.splice(0, E.length, ...f); }   /* la copie de la classe fusionnée avec la trame du jour */
-        dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees, j.reactivations); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, { debut, fin, classeSlug, classeNom: nom });
+        dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees, j.reactivations); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, Object.assign({ debut, fin, classeSlug, classeNom: nom }, DR_CL.rat || {}));
         try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} DR_CL.reactC = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug; dr_reactOuvertureAssurer(heure, DR_CL.reactC, () => ouvrirOuverture()); return; }   /* §12.26 (7) : la construite de la copie, ou construite maintenant (clôture manquée) et écrite ; le chemin C pour l'écriture de Paul avant le lancement */
       dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
     }, (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
@@ -914,7 +917,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   const garder = suite && DR_CL.suite && DR_CL.suite.garder; DR_CL.suite = null;
   try { DR_CL.avantMem = dr_annulInstantane(); } catch (e) { DR_CL.avantMem = null; }   /* §12.68 : la page telle qu'avant le lancement */
   const copie = garder ? null : ((typeof atDrJouer === 'function') ? atDrJouer(classeSlug, nom) : null);
-  AT_DR_COURS = { debut, fin, classeSlug, classeNom: nom }; AT_DR_REGIME = 'classe';
+  AT_DR_COURS = Object.assign({ debut, fin, classeSlug, classeNom: nom }, DR_CL.rat || {}); AT_DR_REGIME = 'classe';
   try { chChargerTaxo(() => {}); } catch (e) {}   /* [8.67.1] le T-5 nomme les notions, jamais leurs codes */
   try { if (copie && typeof dr_jouerCopie === 'function') dr_jouerCopie(copie.ecrans); } catch (e) {}   /* le socle joue la copie de la classe (E1) */
   dr_heurePoser(heure, AT_DR_COURS);
@@ -1237,7 +1240,7 @@ function dr_reprendreQuandPret(cb, essai){ essai = essai || 0;
   dr_reprendre(ok => { if (cb) cb(ok); if (!ok) return; const sig = _drSignatureCours(Object.assign(dr_coursActif(), {}));
     setTimeout(() => { try { if (!S.lancee && !S.close && AT_DR_REGIME === 'classe' && _drSignatureCours(dr_coursActif()) === sig) { journal('reprise-refaite'); dr_reprendre(() => {}); } } catch (e) {} }, 1500); }); }
 function dr_reprendreCours(c){
-  const cours = { debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom };
+  const cours = Object.assign({ debut: c.debut, fin: c.fin, classeSlug: c.classeSlug, classeNom: c.classeNom }, c.rattrapee && c.iso ? { iso: c.iso, rattrapee: true } : {});   /* C16 (lot 2a) : une heure rattrapée reprend sous la clé de sa case */
   atChargerChapitres(c.niveau, () => {
     AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
     dr_ouvrirLaClasse(c.niveau, c.chapitre, c.seance, () => { AT_DR_COURS = cours; AT_DR_REGIME = 'classe';
@@ -1265,7 +1268,7 @@ function dr_edtReprendre(cle){
   if (t.trace.clos) { atInfo('Cette heure a été close : elle ne se reprend pas.'); return; }
   const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return;
   edtFermer(); edtModaleFermer();
-  dr_reprendreCours({ niveau: m[1], chapitre: m[2], seance: m[3], classeSlug: m[4], classeNom: t.trace.classe || cel.classeMjpc, debut: t.trace.lanceA || String(cel.creneau).split('-')[0], fin: t.trace.fin || String(cel.creneau).split('-')[1] });
+  dr_reprendreCours({ niveau: m[1], chapitre: m[2], seance: m[3], classeSlug: m[4], classeNom: t.trace.classe || cel.classeMjpc, debut: t.trace.lanceA || String(cel.creneau).split('-')[0], fin: t.trace.fin || String(cel.creneau).split('-')[1], ...(t.trace.rattrapee ? { iso: cel.iso, rattrapee: true } : {}) });
 }
 
 /* ─── `dr_proposer()` (contrat §12.6, relance du 21/10) : ce que « ▶ Lancer » va lancer quand on n'est pas passé par l'EDT — la case de
@@ -1517,7 +1520,7 @@ function dr_apFondreRelecture(heures, noms){ S.appel = S.appel || {}; let n = 0;
   return n; }
 /* le paquet de l'heure, en PATCH de ses propres clés (une clé disparue vaut null) : par `mjpcEcrireRest` et son issue, comme le reste — un refus ou une panne
    se voit (le bandeau « Réessayer ») et se retente ; en mode test, au magasin (le PATCH y fusionne). `H/absents` n'y est jamais. */
-const DR_PAQUET_CLES = ['classe', 'creneau', 'lanceA', 'fin', 'debutReel', 'finReel', 'tempsUtilePrevu', 'minutesJouees', 'heure', 'sur', 'activites', 'parActivite', 'decisionsParEcran', 'decisionsParActivite', 'appel', 'coupures', 'echeance', 'travail', 'travailTexte', 'reserve', 'versements', 'parts', 'motAbsents', 'clos', 'maj', 'closPar', 'appelUnique'];
+const DR_PAQUET_CLES = ['classe', 'creneau', 'lanceA', 'fin', 'debutReel', 'finReel', 'tempsUtilePrevu', 'minutesJouees', 'heure', 'sur', 'activites', 'parActivite', 'decisionsParEcran', 'decisionsParActivite', 'appel', 'coupures', 'echeance', 'travail', 'travailTexte', 'reserve', 'versements', 'parts', 'motAbsents', 'clos', 'maj', 'closPar', 'appelUnique', 'rattrapee'];
 function dr_paquetPatch(ch, p, libelle){
   if (!ch || !p || (typeof S !== 'undefined' && S.repetition) || typeof mjpcEcrireRest !== 'function') return;
   /* en mode test, le magasin de CETTE page (aucun autre appareil n'y écrit : la course du hub n'existe pas ici) : le paquet s'écrit entier, comme avant,

@@ -2955,3 +2955,8 @@ MEMO
   > À jouer : les 6 gestes · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **06:33 — Paul, mot pour mot :**
+
+  > ok redonne moi le texte des dylan que j'ai demandé de mettre au hub hier du coup
+- **06:33 — message à Paul** : « 489. Le voici, tel qu'il est au sas (recopié hier de tes trois captures, mot pour mot, initiales seulement) : https://github.com/siteflow-io/mjpc-chantier/blob/main/RATTRAPAGES/3-DYLAN-2026-11-03.md », suivi du contenu du fichier (diapo 9, 7 réponses ; diapo 11, 5 réponses ; la page 2 de la diapo 11 sans capture) — non recopié ici une seconde fois ; le bloc de fin (04/11/2026 06:33).

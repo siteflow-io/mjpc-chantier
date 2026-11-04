@@ -5190,3 +5190,43 @@ A mettre au cadrage sur github. Pas à coder sauf si tu as commencé dans ce cas
 03/11/2026 20:19
 
 MEMO
+
+## Tour 180 — 04/11/2026 15:01
+
+**Paul (15:01) :**
+
+alors je reviens ici afin de pouvoir mesurer l'app qcm, ce qui a été fait, ce qui reste à faire.
+
+**Ce qui a été fait (C14) :** lu en lecture seule : la version en ligne de `evaluation-qcm.html` (md5), le journal, le registre des dettes (n°12 · 179 à 223), la branche `code-qcm` du sas (`ETAT.md`, `VERDICT.md`, `DEFAUTS-OUVERTS.md`), la fin du transcript de la conscience n°12. Trois relevés lancés en parallèle (dettes 179 à 197 contre le code ; dettes 199 à 223, la 8.0.5 et les contrôles fixes ; le cadrage non codé), en cours.
+
+**Claude (15:02, en travaillant) :**
+
+Je mesure l'app QCM : son code en ligne, son journal, ses dettes au registre et son cadrage au sas, puis je te dis ce qui est fait et ce qui reste.
+
+**Claude (15:05, en travaillant) :**
+
+Les trois relevés tournent en parallèle (dettes 179 à 197, dettes 199 à 223 avec la version 8.0.5 en attente, et le cadrage non codé). J'attends leurs résultats avant de te répondre.
+
+## Tour 181 — 04/11/2026 15:17
+
+**Paul (15:17) :**
+
+C'est très long là
+
+**Claude (15:19) :**
+
+À jouer : rien · en cours : la vérification des 29 anciennes dettes du QCM contre le code, et de ce que le cadrage a laissé pour plus tard · ouvert : la 8.0.5 (135, 136)
+
+134. En ligne : la 8.0.4, depuis le 16/10. Vérifié : le fichier en ligne est bien celui-là.
+
+135. Une 8.0.5 est presque prête chez les exécutants, jamais mise en ligne. Déjà contrôlé dedans : le mode test qui joue une vraie évaluation de ta liste ; le temps tapé qui ne part qu'à Entrée ; une séance arrêtée avant la fin, notée sur les seules questions posées (« Q4 à Q11 pas posées ») ; la feuille lue par le voisin sans « Révéler », proposée le soir. Passé au banc des exécutants, mais jamais contrôlé : ta lecture du soir qui compte pendant une séance rouverte ; la séance rouverte après une question écartée.
+
+136. Ce qui la bloque : le 21/10 à 15:25, le banc a trouvé un défaut, pas encore confirmé. Dans une séance rouverte, pendant la correction en classe, le voisin peut effacer la lecture que tu avais faite le soir. Les exécutants attendent une décision, rien n'est codé. La conscience du QCM s'est arrêtée le 21/10 à 14:49 : personne n'a contrôlé, personne ne t'a posé la question. Rien n'a bougé depuis le 22/10.
+
+137. Le registre compte 45 dettes du QCM. 10 sont réglées ou closes ; 4 sont la 8.0.5 ci-dessus ; 2 sont des rappels. 29 datent de l'ancienne version, avant que la 8.0.0 remplace tout le code le 13/10 : personne ne les a revérifiées une à une. Je ne sais pas encore combien restent vraies : c'est la vérification en cours, avec ce que le cadrage a laissé pour plus tard. Je te l'envoie dès qu'elle est finie.
+
+À tester : rien.
+
+04/11/2026 15:19
+
+MEMO

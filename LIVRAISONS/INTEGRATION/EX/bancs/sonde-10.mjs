@@ -7,9 +7,10 @@
 //   A1 la répétition (« ▶ Jouer en avance ») : l'étiquette d'activité se corrige en direct au pilote, et le tableau distant la montre corrigée ;
 //   A2 l'heure lancée par la case : une feuille du site (« Documents de la séance » → « Projeter au tableau ») paraît au tableau distant ;
 //   A3 l'étiquette porte « Activité n — » au tableau distant, fond plein, gras, au-dessus de l'image ;
-//   A4 le minuteur : « au tableau » coché → la durée paraît, immobile, avant « Départ » ; il court ; jaune au premier tiers ; ⏸ Pause → les
-//      chiffres s'arrêtent ; ▶ Reprendre ; rouge clignotant sur le dernier dixième ; cinq bips et un ding au pilote ; le retard pilote → tableau
-//      distant mesuré à chaque geste (sous 0,5 s) et l'écart des deux comptes ;
+//   A4 le minuteur, au chrono v3 (C16 689 ; Paul, 18:45 à 19:47) : la durée réglée au geste (un clic sur le premier chiffre, les chiffres au
+//      clavier) ; « au tableau » allumé → la durée paraît, immobile, avant ▶ ; ▶ : il court ; les crans (vert plus de la moitié, jaune jusqu'au
+//      quart, orange jusqu'au dixième, rouge le dernier dixième), chaque chiffre vu à son cran ; ⏸ et la reprise sur #dr-minut-go ; le rectangle
+//      or sur brun dans un coin sans texte ; cinq bips et un ding au pilote ; la fin ; le retard pilote → tableau distant à chaque geste, l'écart des deux comptes ;
 //   A5 « 👥 » à 0 élève : « 0 élève sur N » au tableau distant ;
 //   A6 « Annuler cette heure » : rien au hub hors de /site/tableau_test, l'image du mode test retirée, le tableau distant à l'horloge.
 // B · HEURE RÉELLE (le faux hub reçoit tout) : la feuille, l'étiquette, le minuteur (retards), la participation à 0, puis « Annuler cette heure » :
@@ -150,13 +151,22 @@ const etiquetteAuTableau = async (K) => {
 };
 /* le minuteur : retard de chaque geste, l'écart des deux comptes */
 const ecart = async () => { let m = 0; for (let i = 0; i < 5; i++) { const [a, b] = await Promise.all([pg.evaluate(() => dr_minutReste()), tb.evaluate(() => dr_tabMinutReste())]); m = Math.max(m, Math.abs(a - b)); await dort(120); } return m; };
+/* C16 689 : le chrono v3 au tableau distant — le rectangle (#dr-tab-minut, .dr-pp) : le décompte (.dr-pp-chif) et l'anneau (.dr-pp-anneau), dont la couleur est le cran */
+const MCOURT = () => { const m = typeof DR_TAB !== 'undefined' && DR_TAB.minut, an = document.querySelector('#dr-tab-minut .dr-pp-anneau'); if (!m || m.e !== 'court' || !an) return false; const d = (an.getAttribute('stroke-dasharray') || '').split(' ').map(Number); return d.length === 2 && d[0] < d[1] - 0.05; };
+const MPAUSE = () => { const m = typeof DR_TAB !== 'undefined' && DR_TAB.minut; return !!(m && m.e === 'pause'); };
+const tabMin = () => tb.evaluate(() => { const el = document.getElementById('dr-tab-minut'); if (!el || el.style.display === 'none') return null; const ch = el.querySelector('.dr-pp-chif'), an = el.querySelector('.dr-pp-anneau'); const m = typeof DR_TAB !== 'undefined' && DR_TAB.minut;
+  return { t: ch ? ch.textContent : el.textContent, coul: an ? an.getAttribute('stroke') : null, da: an ? an.getAttribute('stroke-dasharray') : null, e: m ? m.e : null, anim: getComputedStyle(el).animationName }; });
 const minuteurBase = async (K, duree) => {
   await pg.click('#bchrono'); await p(pg, 300);
-  const pan = await pg.evaluate(() => { const p2 = document.getElementById('dr-minut-p'); const ids = ['dr-minut-in', 'dr-minut-go', 'dr-minut-pause', 'dr-minut-tab', 'dr-minut-stop']; return { ouvert: !!(p2 && p2.style.display !== 'none'), titres: ids.every(i => { const e = document.getElementById(i); const l = e && (e.title || (e.closest('label') || {}).title); return !!l; }), haut: !!document.getElementById('dr-minut-b'), bchrono: (document.getElementById('bchrono') || {}).title || '' }; });
-  verif(K, pan.ouvert && pan.titres && !pan.haut && /minuteur/i.test(pan.bchrono), 'le ⏱ sous la diapo ouvre LE minuteur (durée, Départ, Pause, au tableau, ■), chaque geste avec son infobulle ; plus de ⏱ dans l’en-tête', JSON.stringify(pan));
-  await pg.fill('#dr-minut-in', duree);
+  const pan = await pg.evaluate(() => { const p2 = document.getElementById('dr-minut-p'); const ids = ['dr-minut-go', 'dr-minut-tab', 'dr-minut-stop']; const dg = p2 ? Array.from(p2.querySelectorAll('.dr-mr-dig b[data-k]')) : [], pm = p2 ? Array.from(p2.querySelectorAll('.dr-mr-pm')) : [];
+    return { ouvert: !!(p2 && p2.style.display !== 'none'), titres: ids.every(i => { const e = document.getElementById(i); const l = e && (e.title || (e.closest('label') || {}).title); return !!l; }) && dg.length === 4 && dg.every(b => !!b.title) && pm.length > 0 && pm.every(b => !!b.title), chiffres: dg.length, plusMoins: pm.length, haut: !!document.getElementById('dr-minut-b'), bchrono: (document.getElementById('bchrono') || {}).title || '' }; });
+  verif(K, pan.ouvert && pan.titres && !pan.haut && /chrono|minuteur/i.test(pan.bchrono), 'le ⏱ sous la diapo ouvre LE minuteur (les quatre chiffres de la durée et leurs + −, ▶/⏸, au tableau, ■), chaque geste avec son infobulle ; plus de ⏱ dans l’en-tête', JSON.stringify(pan));
+  /* le geste du v3 (Paul, 19:47) : un clic sur le premier chiffre, puis les quatre chiffres au clavier */
+  await pg.click('#dr-minut-p .dr-mr-dig b[data-k="dm"]'); await pg.keyboard.type(duree.replace(':', ''), { delay: 40 }); await p(pg, 200);
+  const regle = await pg.evaluate(() => ({ val: (document.getElementById('dr-minut-in') || {}).value, chiffres: Array.from(document.querySelectorAll('#dr-minut-p .dr-mr-dig b[data-k]')).map(b => b.textContent).join(''), sel: DR_CL.minutSel || null }));
+  verif(K, regle.val === duree && regle.chiffres === duree.replace(':', '') && !regle.sel, 'la durée réglée par le geste du chrono v3 : un clic sur le premier chiffre, « ' + duree.replace(':', '') + ' » au clavier ; après le quatrième chiffre, plus rien n’est désigné', JSON.stringify(regle));
   const t0 = await tabEtat(); const avantRien = !t0.minut;
-  const ms1 = await mesurer('au tableau', () => pg.click('#dr-minut-tab'), () => { const m = document.getElementById('dr-tab-minut'); return !!(m && m.style.display !== 'none' && m.textContent === '00:' + document.documentElement.dataset.x); }, 3000).catch(() => null);
+  const ms1 = await mesurer('au tableau', () => pg.click('#dr-minut-tab'), () => { const m = document.getElementById('dr-tab-minut'), c = m && m.querySelector('.dr-pp-chif'); return !!(m && c && m.style.display !== 'none' && c.textContent === '00:' + document.documentElement.dataset.x); }, 3000).catch(() => null);
   return { avantRien, ms1 };
 };
 
@@ -199,32 +209,55 @@ await feuilleAuTableau('A2');
 dire(''); dire('A3 — l’étiquette d’activité au tableau distant');
 await etiquetteAuTableau('A3'); await capt(tb, 'A3-etiquette');
 
-dire(''); dire('A4 — le minuteur (9 s) : au tableau avant Départ, jaune au tiers, pause, reprise, rouge au dernier dixième, le son');
-await tb.evaluate(() => { document.documentElement.dataset.x = '09'; });
-const mb = await minuteurBase('A4', '00:09');
-const tP = await tabEtat();
-verif('A4', mb.avantRien && mb.ms1 != null && tP.minut && tP.minut.t === '00:09' && /m-pret/.test(tP.minut.c), '« au tableau » coché avant « Départ » : la durée paraît aussitôt au tableau distant, en haut à droite', mb.ms1 + ' ms · ' + JSON.stringify(tP.minut));
-const geo = await tb.evaluate(() => { const m = document.getElementById('dr-tab-minut').getBoundingClientRect(), r = document.getElementById('mur2').getBoundingClientRect(); const cs = getComputedStyle(document.getElementById('dr-tab-minut')); return { haut: m.top - r.top, droite: r.right - m.right, fond: cs.backgroundColor, txt: document.getElementById('dr-tab-minut').textContent }; });
-verif('A4', geo.haut >= 0 && geo.haut < 60 && geo.droite >= 0 && geo.droite < 60 && /rgb\(0, 0, 0\)/.test(geo.fond) && /^\d\d:\d\d$/.test(geo.txt), 'en haut à droite du tableau, chiffres sur fond noir, aucun mot ; plus de bandeau', JSON.stringify(geo));
-await p(pg, 1300); const imm = await tabEtat(); verif('A4', imm.minut && imm.minut.t === '00:09', 'avant « Départ », immobile', JSON.stringify(imm.minut));
-const msGo = await mesurer('Départ', () => pg.click('#dr-minut-go'), () => /m-court/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 3000);
-const tGo = Date.now();
-verif('A4', msGo != null, '« Départ » : il court au tableau distant', msGo + ' ms');
-const msJ = await surTableau(() => /m-jaune/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 6000); const ecJ = Date.now() - tGo;
-verif('A4', msJ != null && ecJ >= 2400 && ecJ <= 3700, 'il passe au jaune au premier tiers (3 s sur 9)', ecJ + ' ms après Départ');
+dire(''); dire('A4 — le minuteur au chrono v3 (20 s) : réglé au geste ; au tableau avant ▶, immobile ; ▶ il court ; les crans ; ⏸ et la reprise sur le même bouton ; le rectangle or sur brun dans un coin sans texte ; le son ; la fin');
+await tb.evaluate(() => { document.documentElement.dataset.x = '20'; });
+const mb = await minuteurBase('A4', '00:20');
+const plein = s => { const d = String(s || '').split(' ').map(Number); return d.length === 2 && Math.abs(d[0] - d[1]) < 0.05; };
+const secDe = s => +String(s).slice(0, 2) * 60 + +String(s).slice(3, 5);
+const tP = await tabMin();
+verif('A4', mb.avantRien && mb.ms1 != null && tP && tP.t === '00:20' && tP.e === 'pret' && tP.coul === '#4f9d5d' && plein(tP.da), '« au tableau » allumé avant ▶ : la durée paraît aussitôt au tableau distant, l’anneau plein, au vert', mb.ms1 + ' ms · ' + JSON.stringify(tP));
+const geo = await tb.evaluate(() => { const el = document.getElementById('dr-tab-minut'), mur = document.getElementById('mur2'); const m = el.getBoundingClientRect(), r = mur.getBoundingClientRect(); const cs = getComputedStyle(el), ch = el.querySelector('.dr-pp-chif'), cc = ch ? getComputedStyle(ch) : {};
+  const L = []; const w = document.createTreeWalker(mur, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { if (!n.textContent.trim() || !n.parentElement || n.parentElement.offsetParent === null) continue; const rg = document.createRange(); rg.selectNodeContents(n); Array.from(rg.getClientRects()).forEach(q => { if (q.width && q.height) L.push(q); }); }
+  const touche = L.filter(q => Math.min(q.right, m.right) - Math.max(q.left, m.left) > 0 && Math.min(q.bottom, m.bottom) - Math.max(q.top, m.top) > 0).length;
+  const M = 0.03 * r.width, g = m.left - r.left, d = r.right - m.right, h = m.top - r.top, b = r.bottom - m.bottom;
+  return { coin: ((g >= 0 && g < M) || (d >= 0 && d < M)) && ((h >= 0 && h < M) || (b >= 0 && b < M)), marges: [g, d, h, b].map(Math.round), textes: L.length, touche, fond: cs.backgroundColor, chif: cc.color, txt: ch ? ch.textContent : '', mots: (el.innerText || '').replace(/\d\d:\d\d/, '').trim(), rapport: +(m.width / m.height).toFixed(2) }; });
+verif('A4', geo.coin && geo.textes > 0 && geo.touche === 0 && /rgb\(58, 44, 20\)/.test(geo.fond) && /rgb\(228, 180, 92\)/.test(geo.chif) && /^\d\d:\d\d$/.test(geo.txt) && !geo.mots && geo.rapport > 2.8 && geo.rapport < 3.2, 'le rectangle or sur brun (trois fois plus large que haut), dans un coin de la diapo, sur aucun des textes de la diapo ; aucun mot', JSON.stringify(geo));
+await p(pg, 1300); const imm = await tabMin(); verif('A4', imm && imm.t === '00:20' && imm.e === 'pret' && imm.da === tP.da, 'avant ▶, immobile (1,3 s plus tard : les mêmes chiffres, le même anneau)', JSON.stringify(imm));
+/* chaque chiffre vu au tableau distant avec la couleur de son anneau (un relevé toutes les 40 ms, à chaque changement) */
+await tb.evaluate(() => { window.__crans = []; clearInterval(window.__cransT); window.__cransT = setInterval(() => { const el = document.getElementById('dr-tab-minut'); if (!el || el.style.display === 'none') return; const ch = el.querySelector('.dr-pp-chif'), an = el.querySelector('.dr-pp-anneau'); const t = ch && ch.textContent, c = an && an.getAttribute('stroke'), e = DR_TAB.minut && DR_TAB.minut.e; const d = window.__crans[window.__crans.length - 1]; if (!d || d.t !== t || d.c !== c || d.e !== e) window.__crans.push({ t, c, e }); }, 40); });
+const goAvant = await pg.evaluate(() => document.getElementById('dr-minut-go').textContent);
+const msGo = await mesurer('▶', () => pg.click('#dr-minut-go'), MCOURT, 3000);
+const tGo = Date.now(); const goApres = await pg.evaluate(() => document.getElementById('dr-minut-go').textContent); const regCache = await pg.evaluate(() => { const p2 = document.getElementById('dr-minut-p'); return !!(p2 && p2.style.display === 'none'); });
+const c19 = await surTableau(() => { const c = document.querySelector('#dr-tab-minut .dr-pp-chif'); return !!(c && c.textContent === '00:19'); }, 2500); const t19 = c19 == null ? null : Date.now() - tGo;
+verif('A4', goAvant === '▶' && msGo != null && goApres === '⏸' && regCache && c19 != null, '▶ : il court au tableau distant (l’anneau se vide, puis 00:19) ; au pilote, le réglage se cache derrière le ⏱ et le même bouton devient ⏸', msGo + ' ms · 00:19 à ' + t19 + ' ms · bouton « ' + goAvant + ' » → « ' + goApres + ' » · réglage ' + (regCache ? 'caché' : 'OUVERT'));
+const msJ = await surTableau(() => { const a = document.querySelector('#dr-tab-minut .dr-pp-anneau'); return !!(a && a.getAttribute('stroke') === '#e0b83a'); }, 12000); const ecJ = Date.now() - tGo;
+verif('A4', msJ != null && ecJ >= 9400 && ecJ <= 10800, 'il passe au jaune à la moitié (10 s sur 20)', ecJ + ' ms après ▶');
 const ec1 = await ecart(); verif('A4', ec1 < 500, 'le pilote et le tableau distant comptent ensemble (horloge recalée sur le pilote)', 'écart ' + Math.round(ec1) + ' ms');
-const msPause = await mesurer('Pause', () => pg.click('#dr-minut-pause'), () => /m-pause/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 3000);
-const g1 = await tabEtat(); await p(pg, 1500); const g2 = await tabEtat(); const pb = await pg.evaluate(() => ({ t: document.getElementById('dr-minut-pause').textContent, aff: document.getElementById('dr-minut-aff').textContent }));
-verif('A4', msPause != null && g1.minut && g2.minut && g1.minut.t === g2.minut.t && pb.t === '▶ Reprendre', '« ⏸ Pause » : les chiffres s’arrêtent au tableau distant (1,5 s plus tard, les mêmes) ; le bouton dit « ▶ Reprendre »', msPause + ' ms · ' + g1.minut.t + ' → ' + (g2.minut || {}).t + ' · pilote ' + pb.aff);
-const msRep = await mesurer('Reprendre', () => pg.click('#dr-minut-pause'), () => /m-court/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 3000);
-const ec2 = await ecart(); verif('A4', msRep != null && ec2 < 500, '« ▶ Reprendre » : il repart au tableau distant, là où il était', msRep + ' ms · écart ' + Math.round(ec2) + ' ms');
-const msR = await surTableau(() => { const m = document.getElementById('dr-tab-minut'); return /m-rouge/.test(m.className) && /m-court/.test(m.className) && getComputedStyle(m).animationName === 'drMinutClig'; }, 9000);
-verif('A4', msR != null, 'rouge clignotant sur le dernier dixième', msR + ' ms');
+/* le geste du v3 : lancé, le réglage s'est caché derrière le ⏱ ; ⏱ le rouvre, puis ⏸ sur #dr-minut-go */
+await pg.click('#bchrono'); await p(pg, 250); const rouvert = await pg.evaluate(() => { const p2 = document.getElementById('dr-minut-p'), g = document.getElementById('dr-minut-go'); return !!(p2 && p2.style.display !== 'none' && g && g.textContent === '⏸'); });
+const msPause = await mesurer('⏸', () => pg.click('#dr-minut-go'), MPAUSE, 3000);
+const g1 = await tabMin(); await p(pg, 1500); const g2 = await tabMin(); const pb = await pg.evaluate(() => ({ t: document.getElementById('dr-minut-go').textContent, aff: (document.getElementById('dr-minut-aff') || {}).textContent }));
+verif('A4', rouvert && msPause != null && g1 && g2 && g1.t === g2.t && g1.da === g2.da && g2.e === 'pause' && pb.t === '▶', '⏱ rouvre le réglage, ⏸ (#dr-minut-go) : les chiffres et l’anneau s’arrêtent au tableau distant (1,5 s plus tard, les mêmes) ; le même bouton redevient ▶', msPause + ' ms · ' + (g1 || {}).t + ' → ' + (g2 || {}).t + ' · pilote ' + pb.aff);
+await tb.evaluate(d => { window.__daPause = d; }, g2 ? g2.da : null);
+const msRep = await mesurer('▶ reprise', () => pg.click('#dr-minut-go'), () => { const m = DR_TAB.minut, a = document.querySelector('#dr-tab-minut .dr-pp-anneau'); return !!(m && m.e === 'court' && a && a.getAttribute('stroke-dasharray') !== window.__daPause); }, 3000); const r1 = await tabMin();
+const ec2 = await ecart(); const saut = g2 && r1 ? secDe(g2.t) - secDe(r1.t) : null;
+verif('A4', msRep != null && ec2 < 500 && saut !== null && saut >= 0 && saut <= 1, '▶ (le même bouton) : il repart au tableau distant, là où il était', msRep + ' ms · ' + (g2 || {}).t + ' → ' + (r1 || {}).t + ' · écart ' + Math.round(ec2) + ' ms');
+const sOr = await surTableau(() => { const a = document.querySelector('#dr-tab-minut .dr-pp-anneau'); return !!(a && a.getAttribute('stroke') === '#e07b2e'); }, 9000); const tOr = await tabMin();
+const sRo = await surTableau(() => { const a = document.querySelector('#dr-tab-minut .dr-pp-anneau'); return !!(a && a.getAttribute('stroke') === '#e8484c' && DR_TAB.minut && DR_TAB.minut.e === 'court'); }, 6000); const tRo = await tabMin();
+verif('A4', sOr != null && sRo != null && tRo && tRo.e === 'court', 'l’orange au quart, puis le rouge sur le dernier dixième, pendant qu’il court', 'orange vu à ' + (tOr || {}).t + ' · rouge vu à ' + (tRo || {}).t + ' · clignotement : ' + ((tRo || {}).anim || '?'));
 const fin = await attendre(pg, () => pg.evaluate(() => (DR_CL.sons || 0) >= 6 ? { sons: DR_CL.sons, m: DR_CL.minut && DR_CL.minut.etat } : null), 6000, 150);
 verif('A4', !!fin, 'le son sort du pilote : cinq bips sur les cinq dernières secondes, un ding à 0', JSON.stringify(fin || await pg.evaluate(() => ({ sons: DR_CL.sons || 0 }))));
+const tZ = await attendre(tb, async () => { const t = await tabMin(); return t && t.e === 'fini' ? t : null; }, 2000, 50);
+verif('A4', tZ && tZ.t === '00:00' && tZ.coul === '#e8484c', 'à 0, le tableau distant montre 00:00 au rouge', JSON.stringify(tZ));
 await capt(tb, 'A4-minuteur');
 const parti = await surTableau(() => { const m = document.getElementById('dr-tab-minut'); return m && m.style.display === 'none'; }, 7000);
 verif('A4', parti != null, 'fini, il quitte le tableau distant (4 s après 0)', parti + ' ms');
+const crans = await tb.evaluate(() => { clearInterval(window.__cransT); return window.__crans || []; });
+const CR = { vert: '#4f9d5d', jaune: '#e0b83a', orange: '#e07b2e', rouge: '#e8484c' }; const nomC = c => Object.keys(CR).find(k => CR[k] === c) || c;
+const attendu = x => x.e === 'pret' ? CR.vert : x.e === 'fini' ? CR.rouge : (f => f > 0.5 ? CR.vert : f > 0.25 ? CR.jaune : f > 0.1 ? CR.orange : CR.rouge)(secDe(x.t) / 20);
+const faux = crans.filter(x => x.c !== attendu(x)); const vus = new Set(crans.map(x => x.t)); const manque = []; for (let s = 0; s <= 20; s++) if (!vus.has('00:' + String(s).padStart(2, '0'))) manque.push(s);
+const bornes = []; crans.forEach((x, i) => { if (i && x.c !== crans[i - 1].c) bornes.push(nomC(crans[i - 1].c) + '→' + nomC(x.c) + ' à ' + x.t); });
+verif('A4', crans.length > 0 && !faux.length && !manque.length && bornes.join(', ') === 'vert→jaune à 00:10, jaune→orange à 00:05, orange→rouge à 00:02', 'les crans du v3 au tableau distant : les 21 chiffres (00:20 à 00:00) vus, chacun à son cran — vert plus de la moitié, jaune jusqu’au quart, orange jusqu’au dixième, rouge le dernier dixième', crans.length + ' relevés · ' + vus.size + ' chiffres · ' + faux.length + ' faux · ' + bornes.join(', ') + (manque.length ? ' · manquent ' + manque.join(',') : '') + (faux.length ? ' · ' + JSON.stringify(faux.slice(0, 3)) : ''));
 
 dire(''); dire('A5 — « 👥 » : la participation à 0 élève au tableau distant');
 const msQ = await mesurer('participation', () => pg.click('#bqui'), () => /^0 élève sur \d+ ont participé$/.test(((document.querySelector('#mur2 .quiw .quit') || {}).textContent || '').trim()), 4000);
@@ -259,9 +292,10 @@ await etiquetteAuTableau('B');
 await tb.evaluate(() => { document.documentElement.dataset.x = '30'; });
 const mbB = await minuteurBase('B', '00:30');
 verif('B', mbB.avantRien && mbB.ms1 != null, '« au tableau » : la durée paraît au tableau distant avant « Départ »', mbB.ms1 + ' ms');
-const msGoB = await mesurer('Départ (heure réelle)', () => pg.click('#dr-minut-go'), () => /m-court/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 3000);
+const msGoB = await mesurer('▶ (heure réelle)', () => pg.click('#dr-minut-go'), MCOURT, 3000);
 await p(pg, 1200); const ecB = await ecart();
-const msPauseB = await mesurer('Pause (heure réelle)', () => pg.click('#dr-minut-pause'), () => /m-pause/.test((document.getElementById('dr-tab-minut') || {}).className || ''), 3000);
+await pg.click('#bchrono'); await p(pg, 250);   /* ⏱ rouvre le réglage caché au départ */
+const msPauseB = await mesurer('⏸ (heure réelle)', () => pg.click('#dr-minut-go'), MPAUSE, 3000);   /* C16 689 : ⏸ et ▶ sur le même bouton (#dr-minut-go), chrono v3 */
 verif('B', msGoB != null && msPauseB != null && ecB < 500, '« Départ » puis « ⏸ Pause » arrivent au tableau distant ; les deux comptes ensemble', msGoB + ' ms · ' + msPauseB + ' ms · écart ' + Math.round(ecB) + ' ms');
 const stopB = await mesurer('■ (heure réelle)', () => pg.click('#dr-minut-stop'), () => { const m = document.getElementById('dr-tab-minut'); return m && m.style.display === 'none'; }, 3000);
 verif('B', stopB != null, '« ■ » : le minuteur quitte le tableau distant', stopB + ' ms');

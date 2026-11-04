@@ -1,0 +1,10 @@
+contrôles de la conscience n°13 (déroulé) · v2 · entrée site (faux hub) · controles.mjs md5 ce97068d18f2192a08139030d08fc839 · 2026-11-04 20:42 UTC · maquette : /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/sondes-outils/k11/mutant-compteur.html · md5 ecf26f07a5fbd4baa4935ffc183abc07
+
+K11 — « Ce que voit la classe » : le cadre porte le compteur de page et montre la même page (n°13 · 20)
+  ok     K11 · à 0 dévoilé : le cadre « Ce que voit la classe » est à l'écran et dit « page 1 / 2 », comme le mur, avec les mêmes lignes — cadre à l'écran « page 1 / 2 » [] · mur « page 1 / 2 » []
+  ÉCHEC  K11 · ▶ jusqu'à la page 2 : le cadre dit « page 2 / 2 » et montre les mêmes lignes que le mur — cadre « page 1 / 2 » ["1.3"] · mur « page 2 / 2 » ["1.3"]
+  ok     K11 · aucune erreur JS
+  ok     K11 · aucune boîte système
+
+4 vérifications, 1 échec(s)
+--- fin : 1 défaut(s)

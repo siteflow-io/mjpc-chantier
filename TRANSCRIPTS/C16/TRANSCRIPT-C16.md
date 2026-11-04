@@ -3403,3 +3403,20 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **14:13 — Paul, mot pour mot :**
+
+  > Pourquoi tu dis "il y a plus grave"?
+
+- **14:13 — message à Paul, mot pour mot :**
+
+  > 576. Parce que tu décrivais une gêne : le texte part dans la case des initiales, et tu dois le remettre. La mesure montre plus que cela : sur la première réponse d'une diapo (566), la réponse se vide et l'élève n'a pas sa participation, sans que rien ne te le dise. C'est justement ce que tu as dit ne jamais vouloir (« la participation doit être enregistrée absolument, sinon ce n'est pas juste pour l'élève »). En plus, la lettre partie dans le titre change le titre de la diapo au tableau, devant la classe.
+  >
+  > 577. Le gel (569) et le changement d'élève (570) vont dans le même sens : des réponses ou des participations justes à l'écran, mais fausses ou absentes dans le récit, et aujourd'hui impossibles à corriger après l'heure.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 14:13
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

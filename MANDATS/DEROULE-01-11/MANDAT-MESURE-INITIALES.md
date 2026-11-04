@@ -1,5 +1,5 @@
 # MANDAT — MESURER, SANS RIEN CORRIGER : LA CASE DES INITIALES, LE DÉVOILEMENT, LE GEL (C16 554)
-*Conscience n°16, 04/11/2026 (lancé à 13:56). L'ordre : Paul, 04/11 13:50 : « Pour le reste, lance la mesure oui » ; 13:07 : « mesure, ne me crois pas sur parole » ; « Mesure aussi le moment du dévoilement ». Un seul exécutant, neuf, court. Mesure seulement : aucune ligne du site ne change.*
+*Conscience n°16, 04/11/2026 (lancé à 13:51). L'ordre : Paul, 04/11 13:50 : « Pour le reste, lance la mesure oui » ; 13:07 : « mesure, ne me crois pas sur parole » ; « Mesure aussi le moment du dévoilement ». Un seul exécutant, neuf, court. Mesure seulement : aucune ligne du site ne change.*
 
 ## 0 · CE QUE PAUL A DIT (ses mots ; les prénoms d'élèves retirés)
 - **04/11 13:07** : « ce qui est pénible aujourd'hui c'est que le champ des initiales élève peut très bien accueillir du texte. Je me suis fait avoir plusieurs fois, j'ai tapé les initiales puis j'ai commencé à écrire et ça a écrit dans le champ élève. C'est dû à l'ordre de reconnaissance des initiales : actuellement ( mesure, ne me crois pas sur parole) je tape les initiales, puis je dois faire entrer et je passe au champ d'écriture et seulement quand je commence à taper, l'élève est reconnu ( s'affiche en vert en bas à droite ). […] Mesure aussi le moment du dévoilement. »

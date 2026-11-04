@@ -1,0 +1,21 @@
+C16 · sonde de la mesure M (633, 634) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400) · parties M1 M2 · 2026-11-04 23:52 UTC · md5 68ee03b0050fc73c15d0bc9f15ae7924 · images : celle du canon
+══ M2 · (634) « Ouvrir le tableau » et le tableau distant `?vue=tableau` : double clic, Échap, clic, puis la fenêtre réduite ══
+      M2 · heure lancée true · fenêtre « Ouvrir le tableau » : …/index.html?vue=tableau&local=1
+      M2 · distant · ouvert : demandes de plein écran 0 · plein écran false · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+      M2 · distant · double clic : demandes de plein écran 2 · plein écran true · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+      M2 · distant · sorti du plein écran (Échap) : demandes de plein écran 2 · plein écran false · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+      M2 · distant · un seul clic ensuite : demandes de plein écran 3 · plein écran true · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+      M2 · distant · Échap puis une touche : demandes de plein écran 4 · plein écran true · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+      M2 · distant · fenêtre réduite à 900×500 : demandes de plein écran 4 · plein écran false · fenêtre 900×500 · tableau 889×500 (droite 894, bas 500) · déborde false
+      M2 · distant · fenêtre remise à 1280×720 : demandes de plein écran 4 · plein écran false · fenêtre 1280×720 · tableau 1280×720 (droite 1280, bas 720) · déborde false
+  ok     M2 · distant : le double clic met le navigateur en plein écran (une demande dès le premier clic) — {"demandes":2,"plein":true,"fen":"1280×720","mur":"1280×720 (droite 1280, bas 720)","deborde":false}
+  ok     M2 · distant : sorti par Échap, le clic suivant redemande le plein écran — {"avant":2,"apres":3,"plein":true}
+  ok     M2 · distant : hors plein écran, le tableau suit la taille de la fenêtre (900×500) — {"demandes":4,"plein":false,"fen":"900×500","mur":"889×500 (droite 894, bas 500)","deborde":false}
+      M2 · fenêtre · ouverte : demandes de plein écran 0 · plein écran false · fenêtre 1100×640 · tableau 1100×619 (droite 1100, bas 629) · déborde false
+      M2 · fenêtre · double clic : demandes de plein écran 0 · plein écran false · fenêtre 1100×640 · tableau 1100×619 (droite 1100, bas 629) · déborde false
+      M2 · fenêtre · réduite à 800×450 : demandes de plein écran 0 · plein écran false · fenêtre 800×450 · tableau 800×450 (droite 800, bas 450) · déborde false
+  ok     M2 · fenêtre « Ouvrir le tableau » : le double clic ne demande pas le plein écran — {"demandes":0,"plein":false,"fen":"1100×640","mur":"1100×619 (droite 1100, bas 629)","deborde":false}
+  ok     M2 · fenêtre « Ouvrir le tableau » : le tableau suit la taille de la fenêtre (800×450) — {"demandes":0,"plein":false,"fen":"800×450","mur":"800×450 (droite 800, bas 450)","deborde":false}
+  ok     M2 · M2 : aucune erreur JS, aucune boîte système
+
+BILAN · 14 vérifications · 0 échec(s)

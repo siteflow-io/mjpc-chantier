@@ -1,0 +1,28 @@
+C16 · sonde de la mesure M (633, 634) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400) · parties M1 · 2026-11-04 23:54 UTC · md5 1a16c98fb84d3b410b0357014c636543 · images : celle du canon
+
+══ M1 · (633) 1536×864 · « Question-bilan » (un bloc question) : la frappe dans l’Atelier, la frappe dans l’Atelier pendant l’heure, le copier-coller depuis la barre ══
+      M1 · geste 1 (Atelier, hors de l’heure, frappe « Et vous ? ») : au hub, 1 fois les mots de la barre (avant le geste : 0) ; écritures qui les portent : 1 ; écritures en tout : 4, dont « Et vous ? » : 1 — /…séance 1/deroule/ecrans/7
+      M1 · geste 1 : barre posée DANS la question pendant la frappe : true ; la trame lue : « ableaux ? La réponse validée est recopiée dans le cahier, partie cours. Et vous ?BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ »
+  ok     M1 · geste 1 joué
+      M1 · RÉSULTAT geste 1 : 1 fois de plus
+  ok     M1 · geste 1 : aucune erreur JS, aucune boîte système
+      M1 · geste 2 (heure lancée, onglet Atelier pendant l’heure, frappe « Et vous ? ») : au hub, 1 fois les mots de la barre (avant le geste : 0) ; écritures qui les portent : 1 ; écritures en tout : 11, dont « Et vous ? » : 1 — /…séance 1/deroule_joue/3E Charles de Gaulle/etat
+      M1 · geste 2 : heure lancée true · l’Atelier en classe : onglet caché, S.atelier true, régime classe, en classe true · barre DANS la question : true
+  ok     M1 · geste 2 joué
+      M1 · RÉSULTAT geste 2 : 1 fois de plus
+  ok     M1 · geste 2 : aucune erreur JS, aucune boîte système
+      M1 · geste 3 (barre) : la barre trouvée true · la sélection porte les mots de la barre : false («   ») · le presse-papiers : false («   »)
+      M1 · geste 3 (barre : glisser depuis « BLOC 1 » jusqu’à la fin de la question, Ctrl+C, Ctrl+V à la fin de la question) : au hub, 1 fois les mots de la barre (avant le geste : 0) ; écritures qui les portent : 1 ; écritures en tout : 4, dont « Et vous ? » : 0 — /…séance 1/deroule/ecrans/7
+      M1 · geste 3 (barre) : la trame lue : « Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.
+BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ »
+  ok     M1 · geste 3 (barre) joué
+      M1 · RÉSULTAT geste 3 (barre) : 1 fois de plus
+  ok     M1 · geste 3 : aucune erreur JS, aucune boîte système
+      M1 · geste 3 (dessous) : la barre trouvée true · la sélection porte les mots de la barre : false (« Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, parti ») · le presse-papiers : false (« Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, parti »)
+      M1 · geste 3 (dessous : glisser du début de la question jusque sous le bloc, Ctrl+C, Ctrl+V à la fin de la question) : au hub, 1 fois les mots de la barre (avant le geste : 0) ; écritures qui les portent : 1 ; écritures en tout : 4, dont « Et vous ? » : 0 — /…séance 1/deroule/ecrans/7
+      M1 · geste 3 (dessous) : la trame lue : « e cahier, partie cours.Qu'ont en commun ces cinq tableaux ? La réponse validée est recopiée dans le cahier, partie cours.BLOC 1 · QUESTION · 1 ÉLÉMENT▲▼+ étape✕ »
+  ok     M1 · geste 3 (dessous) joué
+      M1 · RÉSULTAT geste 3 (dessous) : 1 fois de plus
+  ok     M1 · geste 3 : aucune erreur JS, aucune boîte système
+
+BILAN · 8 vérifications · 0 échec(s)

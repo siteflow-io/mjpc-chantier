@@ -3979,3 +3979,20 @@ MEMO
   > À jouer : 666 ; 534 (le test 2) · en cours : la frappe au clavier (fin vers 20:12), puis mon banc · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **20:01 — l'exécutant de la frappe (message)** : supposition juste (`dr_minutDuree` l. 1082, `dr_minuteurPoser` l. 1086) ; un clic encadre un chiffre d'or, le chiffre tapé le remplace, l'encadré passe au suivant ; Échap, Entrée, un clic ailleurs terminent ; + et − restent ; à 00:00, ▶ grisé avec sa raison ; banc de la frappe 20/20 (0, 0, 1, 5 → 00:15, ▶ 15 s au tableau et dans « Ce que voit la classe ») ; banc de la v2 sur la v3 : 64/64. Commit `30a9b4652` sur `maquette/minuteur-v3` ; site assemblé md5 `c781672e47e037b94fe3fe99021be968` ; maquette v3 `fdbcb808f4d344d56d532662bfe8f495`. Ajouté sans mandat : les dizaines de secondes refusent 7, 8, 9 ; les flèches et Retour arrière déplacent l'encadré ; fini, un clic sur un chiffre remontre la durée réglée. 127 372 jetons.
+- **20:02 — la conscience** : audit : dr-classe.js, dr.css et `MAQUETTE-MINUTEUR/` seulement ; ça va. Le banc sans le témoin lancé à 20:02 sur `30a9b4652` (sondes `0ff3d8ffd`, la base de R : la production 8.84.0, `c6b75c7a`) ; assemblé `c781672e` ; étape 14 à 20:03:03.
+- **20:03 — message à Paul, mot pour mot :**
+
+  > 684. La frappe au clavier est faite (20 minutes, 20 vérifications sur 20) : un clic sur un chiffre l'encadre d'or ; chaque chiffre tapé le remplace et l'encadré passe au suivant ; Échap, Entrée ou un clic ailleurs terminent ; les + et − restent ; à 00:00, ▶ est grisé et dit pourquoi. Le banc de la maquette repasse à 64 sur 64.
+  >
+  > 685. L'exécutant a ajouté trois choses que je ne lui avais pas demandées ; à toi de les garder ou non : les dizaines de secondes refusent 7, 8 et 9 ; pendant que tu tapes, les flèches et Retour arrière déplacent l'encadré au lieu de changer de diapo ; quand le chrono est fini, un clic sur un chiffre remontre la durée réglée. Si tu en refuses une, je la retire et je repasse le banc.
+  >
+  > 686. Mon banc tourne depuis 20:02 sur cette version (le chrono, « Ce que voit la classe », la frappe), sans le témoin : environ 1 h. Ensuite, je te demande « promeus ».
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 20:03
+  >
+  > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : mon banc (fin vers 21:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

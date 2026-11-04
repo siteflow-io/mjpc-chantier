@@ -3042,3 +3042,34 @@ MEMO
   > À jouer : 502 · en cours : rien · ouvert : 498 à 500, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **07:14 — message à Paul** : 496-502, mot pour mot comme ci-dessus.
+- **07:22 — Paul, mot pour mot** (avec deux textes en pièce jointe — le récit « composé par le site » et « ma version », qui nomment des élèves : non recopiés — et deux captures de « Relire l'heure ») :
+
+  > il faut auditer ce qui a pu produire ce récit là. Je ne veux pas que tu me proposes des modifications après coup, je veux qu'on comprenne pourquoi le récit automatique sort comme ça, quand c'est une heure rattrapée. De plus, dans "relire l'heure", voilà ce que j'ai quand je suis en mode "composé par le site. et voici ce que j'ai quand je clique sur "ma version". Enfin, l'horaire "enregistré à 10h55" est faux, évidemment
+- **07:25 — la conscience, lu dans le code de la 8.83.0** (production `index.html`) : `recitHtml0` (l. 22320-22390 : `DR_RECIT_PARTS`, `rg = round(k*2/(N-1))` ; la phrase « n activités n'ont pas été faites » sur `Object.keys(S.decisions)` ; `connecteur('bilan', 'bilan' + rang)` parmi « Au total, », « En fin d'heure, », « Pour résumer, », « En tout, » (l. 22130) ; « (bilan de la séance non attesté) » quand `!S.bilanCoche`, classe `dr-pour-paul`) ; le sélecteur composé / ma version (l. 18068, 22392 ; « ma version : le bilan est dans la queue ») ; `now()` = `Date.now()` + le décalage de `dr_horlogeCase` (l. 17376-17387), étendu à l'heure rattrapée (lot 2c) ; le témoin `#dr-enr` écrit `new Date(now())` (l. 17407) ; l'entête « close · » lit `dr_heureCase(S.finReel)` (l. 21063). Le hub (07:02-07:10) : `debutReel` 06:33:34, `finReel` 07:10:56, les décisions sous l'identifiant de chaque diapo. Registre : production `2a3202f`.
+- **07:25 — message à Paul, mot pour mot :**
+
+  > 503. Ce qui produit le récit, point par point, lu dans le code de la 8.83.0 et vérifié au hub. Sans proposition.
+  >
+  > 504. « Au début / au milieu / à la fin ». Le site range les paragraphes de l'heure dans l'ordre, puis les coupe en trois parts égales, au rang, sans regarder le temps passé : 7 paragraphes donnent 2 « au début », 3 « au milieu », 2 « à la fin ». Les diapos d'ouverture, courtes, comptent autant que l'Analyse d'images : d'où « Les compétences… au milieu de l'heure » et « l'Analyse d'images… à la fin de l'heure ». C'est moi qui l'ai demandé ainsi à l'exécutant, cette nuit à 03:47 (« le rang du paragraphe, en trois parts ») ; il l'a codé comme demandé. Ça ne va pas.
+  >
+  > 505. « 7 activités n'ont pas été faites », dans le désordre. Le mot « activités » : cette phrase date d'avant la 8.81.0, quand on décidait par activité ; depuis la 8.81.0, on décide par diapo, et la phrase n'a pas suivi. L'ordre : la liste suit l'ordre des décisions ; relues au hub, elles reviennent triées par l'identifiant interne de chaque diapo, pas dans l'ordre du plan. Ces deux défauts touchent toutes les heures, pas seulement les heures rattrapées. Ça ne va pas. « Groupe 2 : l'hypothèse », reportée mais déjà montrée, n'est pas dans la liste : elle est racontée à part (« on a continué… pas terminée »).
+  >
+  > 506. « En fin d'heure, on a observé… ». Le bilan commence par l'une de quatre formules : « Au total », « En fin d'heure », « Pour résumer », « En tout », choisie d'après le nombre de paragraphes. C'est ainsi dans toutes les heures ; dans une heure rattrapée, celle-ci se lit comme un moment de l'heure. Ça ne va pas.
+  >
+  > 507. « (bilan de la séance non attesté) » : écrit quand le bilan de la séance n'est pas coché (ici, il est reporté). Pour toi seul : jamais sur le papier ni dans École Directe.
+  >
+  > 508. « Composé par le site » et « ma version » : le même contenu, rangé autrement. Composé : un seul bloc, avec le titre, le travail, le bilan, puis les paragraphes. Ma version : seuls les paragraphes sont à toi, dans le cadre ; le travail et le bilan restent composés par le site et s'affichent sous le cadre.
+  >
+  > 509. « Enregistré à 10:55 », et « close · 10:44 » en haut. Depuis la 8.83.0, une heure rattrapée se joue à l'horloge de sa case, pour que les alertes ne partent pas d'entrée. Toutes les heures que le pilote affiche suivent alors cette horloge : tu as commencé à 06:33, elle disait 10:07 ; à 07:21, elle disait 10:55. Les vraies heures restent au hub (début 06:33, clôture 07:10). C'est le choix de mon mandat de cette nuit, mesuré seulement pour les alertes, pas pour les heures affichées. Ça ne va pas. Ce que montrent la Relecture et « Ce qui s'est passé » : je ne sais pas encore.
+  >
+  > 510. Les deux « un élève » : les initiales tapées « YC » et « CH » ne sont celles d'aucun élève de la classe (495).
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 07:25
+  >
+  > À jouer : rien · en cours : rien · ouvert : 504, 505, 506, 509 ; 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

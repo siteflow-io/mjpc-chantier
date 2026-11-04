@@ -3310,3 +3310,39 @@ MEMO
   >
   > MEMO
 - **12:52 — incident** : l'entrée précédente portait « 12:46 → 12:58 », une heure tapée à la main et fausse (il était 12:51) ; corrigée en « 12:46 → 12:50 ».
+- **13:07 — Paul, mot pour mot** (deux prénoms d'élèves et un nom d'exemple retirés, non recopiés au sas) :
+
+  > 550 à 552: ce qui est pénible aujourd'hui c'est que le champ des initiales élève peut très bien accueillir du texte. Je me suis fait avoir plusiejrs fois, j'ai tapé les initiales puis j'ai commencé à écrire et ça a écrit dans le champ élève. C'est dû à l'ordre de reconnaissance des initiales : actuellement ( mesure, ne me crois pas sur parole) je tape les initiales, puis je dois faire entrer et je passe au champ d'écriture et seulement suand je commence à taper, l'élève est reconnu ( s'affiche en vert en bas à droite ). Or il faudrait deja que le champ élève n'accepte rien d'autre que ce pourquoi il existe ( donc que des majuscules deja, même si je tape en minuscules, que je n'ai pas besoin de faire maj), et que dès que l'élève est identifié, ca passe au champ de sa réponse. Mesure aussi le moment du dévoilement. 
+  > Pour les noms composés, moi dans ma tête cest simple je tape MGC pour [un prénom et un nom en deux mots], par exemple. Pour les initiales identiques, oui ta proposition mais je dois pouvoir piloter au clavier ( le site doit me les proposer par numéro, et je tape le numéro du bon élève ). Enfin, dès lors que je tape la première lettre dans le champ initiales élève, je dois voir la liste de tous les prénoms commençant ainsi, numérotés, et même système: je tape le numéro au clavier. On ne va pas au delà de 9, de toute façon le cas où 9 élèves auraient les mêmes initiales est improbable donc pour cet usage, impossible. Le jour où ca arrivera je trouverais une autre solution technique. 
+  > Enfin, au tableau, ce doit être le prénom et la première lettre du nom qui s'affiche. Ça donnerait [prénom] B Le romantisme est un mouvement etc. 
+  > De plus après tes correctifs, je veux retrouver ma séance d'aujourd'hui avec son récit normal et que plus jamais ces cas n'arrivent. 544. Le gel: tu n'as pas donné de solution, si?
+
+- **13:08 — la conscience** : a écrit un mandat de mesure (`MANDAT-MESURE-INITIALES.md`) et l'a validé en local ; l'envoi au sas interrompu par Paul.
+- **13:09 — Paul, mot pour mot :**
+
+  > Réponds moi ici avant toute rédaction de mandat
+
+- **13:10 — incident déclaré** : le mandat a été écrit avant de répondre à Paul ; il n'a pas été envoyé au sas (origin/main resté à `d388f4266`), ni lancé ; le commit local défait, le brouillon mis de côté (scratchpad).
+- **13:10 — message à Paul, mot pour mot :**
+
+  > 554. Pardon : j'avais commencé à écrire le mandat de mesure. Il n'est ni envoyé ni lancé, rien ne tourne ; je l'ai retiré.
+  >
+  > 555. Le gel (544) : non, je n'avais pas donné de solution pour le gel lui-même ; 549 ne réglait que le récit. Je propose les deux. Une réponse s'écrit au journal au moment où tu la valides, que le tableau soit gelé ou non. Et pour une heure déjà passée, le récit va chercher dans les diapos les réponses qui manquent au journal. Ta séance d'aujourd'hui retrouve ainsi ses 24 réponses, sans rien réécrire au hub.
+  >
+  > 556. Pour qu'elle soit tout à fait normale, il reste 10 réponses mal rattachées : 4 « MB » données au premier des deux, et 6 rattachées à personne (M, ELF, MBMAR, NL, KR deux fois). Le site ne peut pas deviner qui c'était : il faudra que tu le dises pour chacune. Je ne sais pas encore si la Relecture permet de changer l'élève d'une réponse.
+  >
+  > 557. La case des initiales, telle que je te comprends : elle n'accepte que des lettres, mises en majuscules toutes seules, et les chiffres 1 à 9 pour choisir ; dès la première lettre, la liste numérotée des prénoms qui commencent par cette lettre ; un chiffre tapé choisit l'élève ; dès que l'élève est identifié, le curseur passe à sa réponse ; deux élèves aux mêmes initiales, même chose : la liste numérotée, tu tapes le chiffre ; un nom de famille en deux mots : MGC (le prénom, puis la première lettre de chaque mot du nom) ; Tab ne va jamais au titre ; au tableau : le prénom, la première lettre du nom, puis la réponse.
+  >
+  > 558. Une tension à trancher. Après « MG », ton élève MGC peut déjà être le seul possible : si le site saute à ce moment, ton « C » part dans la réponse. Je propose : le site ne saute que quand tu as tapé toutes les initiales d'un seul élève possible, ou un chiffre de la liste.
+  >
+  > 559. Le moment du dévoilement, je comprends : quand le tableau des élèves montre l'élève et sa réponse (à chaque lettre, à Entrée, au dégel). Est-ce bien ça ?
+  >
+  > 560. Ce qui reste à mesurer avant de coder : l'ordre de reconnaissance que tu décris et où part le texte, le moment du dévoilement, le gel, et si la Relecture permet de changer l'élève d'une réponse. Je propose une mesure de 30 minutes au plus, puis deux morceaux : le récit et le gel (555), puis la case des initiales (557, 558). Je lance la mesure ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 13:10
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (555 à 560, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

@@ -47,10 +47,10 @@ DOSSIER = [
     ("", "Au moins deux preuves (P) sont complètes."),
     ("", "La n°3 a son tableau rempli : trois arguments, leurs preuves, leurs connecteurs."),
     ("", "La n°3 a ses trois cases de vérification cochées."),
-    ("Tenue", "La page 1 est remplie : noms, classe, camp."),
-    ("", "La carte du parcours (page 6) est cochée."),
+    ("Tenue du dossier", "La carte du parcours (page 6) est cochée."),
     ("", "Toutes les pièces faites sont dans l’enveloppe."),
-    ("", "Les réponses sont au stylo, les soulignements au crayon ou au fluo."),
+    ("Niveau général", "Langue"),
+    ("", "Qualité des réponses"),
 ]
 
 def e(s): return html.escape(s)
@@ -99,7 +99,7 @@ def page_oral(classe):
               f'{e(", ".join(NON_PLACES_HUGO))}.</p>')
     return f"""<section class="page">
 <h1>Paris à la barre — l’oral de la plaidoirie — 4e {classe}</h1>
-<p class="sous">Mardi 10 novembre · une croix = 1 point · la note sur 10 est le nombre de croix · la même grille pour une partie ou toute la plaidoirie</p>
+<p class="sous">Mardi 10 novembre</p>
 <table class="oral"><thead><tr>{ent1}</tr><tr>{ent2}</tr></thead><tbody>{''.join(lignes)}</tbody></table>
 <p class="leg">{legende}</p>{np}
 </section>"""
@@ -110,13 +110,16 @@ def fiche_dossier(classe, n):
     noms_txt = e(", ".join(noms)) if noms else "……………………………………………………………………"
     lignes = []
     for i, (bloc, fait) in enumerate(DOSSIER):
-        b = f'<td class="bloc" rowspan="{6 if bloc=="Pièces" else 4}">{bloc}</td>' if bloc else ""
-        lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait">{e(fait)}</td><td class="pt"></td></tr>')
+        b = f'<td class="bloc" rowspan="{6 if bloc=="Pièces" else 2}">{bloc}</td>' if bloc else ""
+        if i >= 8:
+            niv = '<span class="niv">☐ 0</span><span class="niv">☐ 0,5</span><span class="niv">☐ 1</span>'
+            lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait"><b class="lab">{e(fait)}</b>{niv}</td><td class="pt"></td></tr>')
+        else:
+            lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait">{e(fait)}</td><td class="pt"></td></tr>')
     return f"""<div class="fiche">
 <div class="tete"><h1>Paris à la barre — le dossier</h1><div class="note">……… / 10</div></div>
 <p class="id"><b>4e {classe} · groupe {n}</b> · {CAMP_MOT[camps[n]]} · {noms_txt}</p>
-<p class="regle">Une case = 1 point. Une pièce est complète quand chaque question a sa réponse.</p>
-<table class="dos"><thead><tr><th></th><th></th><th class="fait">Ce qui est vérifié</th><th class="pt">1 pt</th></tr></thead>
+<table class="dos"><thead><tr><th></th><th></th><th class="fait">Ce qui est vérifié</th><th class="pt">Points</th></tr></thead>
 <tbody>{''.join(lignes)}</tbody></table>
 </div>"""
 
@@ -156,7 +159,9 @@ def doc_dossier():
 .tete{display:flex;justify-content:space-between;align-items:baseline;border-bottom:0.8pt solid #111;padding-bottom:1.5mm;margin-bottom:2mm}
 .note{font-size:15pt;font-weight:700}
 .id{font-size:11pt;margin-bottom:1mm}
-.regle{font-size:9.5pt;font-style:italic;color:#333;margin-bottom:2mm}
+.lab{display:inline-block;width:42mm}
+.niv{display:inline-block;width:22mm;font-size:11pt}
+.id{margin-bottom:2.5mm !important}
 table.dos{font-size:10.5pt}
 table.dos th{background:#efeae0;font-size:9pt;font-weight:600;padding:1mm 1.5mm;text-align:left}
 table.dos td{padding:1.15mm 1.5mm;vertical-align:middle}

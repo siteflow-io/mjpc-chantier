@@ -350,3 +350,11 @@ complet », et la fiche « Parler à l'oral »). Livré dans la conversation, co
 `fiches-dossier-4e.pdf` (une fiche par groupe, deux par A4, /10, avec la case 127). Groupes : points
 du 13/10 (Turing, 10 groupes) et du 14/10 (Hugo, groupes 1 à 5) ; groupes 6 à 10 de Hugo inconnus,
 lignes laissées à remplir.
+
+**La fiche du dossier, version du 4/11 à 16:05.** Paul, 15:56 : pas de consigne « une case = 1 pt »
+sur les fiches ; « Tenue » devient « Tenue du dossier » ; « il faut quand même évaluer la langue et la
+qualité de la réponse ». Paul, 16:05 : « non pour 145 [lire la seule réponse 2a]. je pensais plutôt à
+un niveau de maîtrise général sur le critère langue et pareil pour la qualité de la réponse. 1 pt max
+par critère. » Fiche finale /10 : Pièces 1 à 6 ; Tenue du dossier 7 carte du parcours, 8 enveloppe ;
+Niveau général 9 Langue, 10 Qualité des réponses, chacun ☐ 0 ☐ 0,5 ☐ 1. Retirées : la page 1 remplie
+(146), le stylo et le crayon. Grille d'oral : sous le titre, seulement « Mardi 10 novembre ».

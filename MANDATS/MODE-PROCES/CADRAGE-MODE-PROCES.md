@@ -237,3 +237,42 @@ pas (aucune trace dans les conversations ni au sas).
   joue chez lui avec la vraie liste avant le procès, jamais en classe.
 
 Lecture de « pour vendredi » : l'outil est prêt vendredi 6 ; le procès reste la semaine du 16/11.
+
+## 12. Le procès de l'an dernier, lu le 4/11 (Paul, 06:44 : « va regarder comment j'avais fait le procès l'année dernière d'abord »)
+
+Dossier : `E:\AACours 2025 2026\4ème\Chapitre 3, La ville\Séance 6, Bel Ami, Guy de Maupassant + PROCES\`
+(4e Banksy et 4e Pythagore, du 31/03 au 8/04/2026).
+
+**L'audience.** Plaidoirie **en binôme** (pièce n°9 lue face aux jurés, 2-3 min), puis un témoin
+(un élève, 2 questions préparées), puis une seule question d'un juré : ~6 min par passage. Banksy :
+14 passages sur deux heures ; Pythagore : 14 passages en une heure (~3,5 min, sans débordement
+toléré). Juge, huissier, greffier tournent à chaque passage, avec R1 et R2 ; chaque élève a une fiche
+nominative (ses rôles au verso) ; 6 affiches A3 des rôles et une FAQ au mur. Paul n'intervient que
+pour destituer, recadrer, ou dire « Le tribunal demande une preuve ».
+
+**L'appel et le verdict.** Débat ~25-30 min, debout, sans lire, en citant Sue, Zola, le dossier, le
+cahier ; la juge peut passer la présidence pour plaider. Puis le discours d'impartialité lu par Paul
+et sa voix ×5 (« deus ex machina », justifié par des camps déséquilibrés : Banksy 8 binômes Ombre
+contre 5 Lumière, Pythagore 10 Lumière contre 3 Ombre). Bulletins secrets sur deux chefs, décompte à
+voix haute par le greffier, verdict lu par la juge (textes n°3, 4, 5).
+
+**La grille orale** (`S6_grilles_oral_v4.html`) : plaidoirie V posture /3 · F fluidité /3 · C
+conviction /3 · S sérieux dans les rôles /2, plus un compteur des questions posées comme juré (QJ) ;
+appel R réactivité /3 · P pertinence /3 · L liens /3 · S /2, plus un compteur des prises de parole
+(PdP) ; oral /22 ramené à /20 ; écrit /20 sur la copie (Position, Arguments, Preuves, Conclusion,
+Langue, Soin) ; moyenne des deux. Notes finales avec un commentaire par critère :
+`Notes_orales_Banksy_Pythagore.docx` (56 élèves, achevé le 18/05).
+
+**Ce qui a cassé, mesuré dans `S6 GRILLE ORAL INTERACTIVE.html` et les trois exports :**
+- le bouton « Tout mettre à 3 » remplace d'un clic toutes les notes de l'onglet par le maximum ; recliqué,
+  il devient « Tout effacer » et vide tout, sans confirmation ;
+- l'enregistrement ne se fait que toutes les 30 secondes, dans le navigateur seulement ; le fichier
+  n'existe que par un export CSV fait à la main ;
+- preuves : le 3/04 à 7:34, les plaidoiries de Banksy sont variées (Elea HERMENIER V 2, Anna MISANDEAU
+  2-2-2, quatre « NE ») ; à 9:03 (fichier « mais plaidoirie pas correcte »), toutes sont à 3-3-3-2 ;
+  le 8/04, les plaidoiries des 28 Pythagore sont vides, alors qu'elles étaient dans l'export du 3/04.
+  Les notes finales ont été recomposées à la main à partir des trois exports.
+
+**Ce qui change cette année :** plaidoirie **individuelle** (30 passages chez Turing, 29 chez Hugo, au
+lieu de 14) ; camps à égalité (5 groupes Ombre, 5 Lumière dans chaque classe, fiche des groupes du
+3/11) ; les trois chefs d'accusation au lieu de deux.

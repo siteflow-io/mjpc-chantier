@@ -3798,3 +3798,21 @@ MEMO
   > À jouer : 656 à 659 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **17:00 — Paul, mot pour mot :**
+
+  > ok fais une maquette juste pour ces deux écrans zoom. Fais attention à reprendre exactemement le site comme maquette de base.
+
+- **17:01 — la conscience** : relu `PROTOCOLE-MAQUETTE.md` (production) ; le modèle le plus proche au sas : `MANDATS/DEROULE-01-11/MAQUETTE-APPEL/` (le fichier en ligne + une injection, sous le faux hub des sondes) ; aucun faux hub embarqué tout prêt pour le déroulé. Mandat `MANDATS/DEROULE-01-11/MANDAT-MAQUETTE-MINUTEUR.md` (`a48e9851b`) ; un exécutant neuf lancé à 17:01, 30 minutes au plus, base `46d140ab6`, branche `maquette/minuteur`.
+- **17:02 — message à Paul, mot pour mot :**
+
+  > 660. Lancé à 17:01, 30 minutes au plus : la maquette des deux écrans du minuteur, le pilote et le tableau, zoom compris. Elle part du site en ligne lui-même : la nouveauté est écrite dans son code, là où elle vivra, sur une classe et des élèves inventés, sans aucun lien avec le vrai hub. Un seul fichier, que tu ouvres chez toi.
+  >
+  > 661. Ce que tu pourras y jouer : sur la diapo 12 de ta classe d'essai, le bouton chrono sous la diapo ouvre le réglage (sous la diapo, au-dessus des notes) ; au départ, le réglage se cache et la pastille paraît au tableau et sur ta diapo, dans un coin libre ; un clic sur le bouton le rouvre ; le zoom change la taille aux deux endroits ; tu glisses la pastille sur ta diapo, elle glisse au tableau ; la dernière minute en rouge. Le tableau s'ouvre dans un second onglet, comme dans le site ; si l'exécutant n'y arrive pas à temps, il sera à côté du pilote, et je te le dirai.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 04/11/2026 17:02
+  >
+  > À jouer : 534 (le test 2) · en cours : la maquette du minuteur (fin vers 17:31) · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

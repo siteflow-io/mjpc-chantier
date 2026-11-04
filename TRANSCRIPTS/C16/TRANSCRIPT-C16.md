@@ -4079,3 +4079,25 @@ MEMO
   >
   > MEMO
 - **22:00 — les trois parties rouges, rejouées** (`scratchpad/banc-trois.sh`, sur `30a9b4652`, assemblé `c781672e` inchangé, de 21:46:10 à 22:00:49) : K1-K13 106/0 (K11 dans le cadre) ; la sonde de la ⑩ au v3 55/0 VERT ; les sessions 105/0. Avec le banc de 20:02 (le même fichier), tout est vert.
+- **22:21 — l'exécutant du clignotement (message)** : la supposition juste (l'ancien clignotement sur l'ancien chiffre seulement ; `animation:none` sur le rectangle) ; le rectangle clignote (drMinutClig, opacité .25 une seconde sur deux) dans les trois vues ; sonde de la ⑩ (`bc38d53fb`, vraie horloge) 55/55 avec le clignotement relevé au tableau ; la frappe 20/20 au second passage (19/20 au premier : la diapo 12 pas atteinte au départ, avant le chrono) ; la maquette 64/64 ; commit `eb244c8f2` sur `chrono/clignote` ; assemblé `27d5e50890232455695418fa87ca6060` ; les poignées clignotent avec le rectangle au pilote. 122 758 jetons.
+- **22:22 — la conscience** : audit : dr-classe.js (3 lignes), dr-tableau.js (5), dr.css (2), la sonde-10 de `bc38d53fb` reprise dans la branche, la maquette ; ça va. Assemblé par la conscience : `27d5e508` (identique) ; le candidat `scratchpad/promo-8850/index.html` (la seule ligne de version : `8.85.0-⑱`), md5 `8c678bd180e5068315975765314b48aa`. Production inchangée (`c6b75c7a`).
+- **22:09 — message à Paul, mot pour mot :**
+
+  > 699. Le clignotement est remis (22:21) : rouge et en marche, le rectangle clignote comme avant, au tableau, dans « Ce que voit la classe » et sur ta diapo. Preuve ciblée : la sonde de la ⑩ 55 sur 55 (le clignotement relevé au tableau), la frappe 20 sur 20, la maquette 64 sur 64. Sur ta diapo, les quatre poignées clignotent avec lui.
+  >
+  > 700. Je te demande « promeus » pour la 8.85.0-⑱, qui ne contient que ce que tu as dit : le nouveau chrono (le rectangle allongé, ses couleurs par crans, ses poignées, le réglage sous la diapo comme ta vidéo, la frappe au clavier, l'interrupteur « au tableau », le clignotement) et « Ce que voit la classe » qui est le tableau lui-même. Les trois ajouts de 685 sont gardés, puisque tu n'en as refusé aucun. Le banc : tout vert sur le même code, plus la preuve ciblée du clignotement. Le récit et le gel (571) n'y sont pas : ils viennent ensuite, dans l'ordre de 638.
+  >
+  > À tester (après « promeus », hors de la classe), sur https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.85.0 :
+  > 1. La version dit 8.85.0-⑱.
+  > 2. Ta classe d'essai, une heure lancée, une diapo avec du texte : « Ouvrir le tableau », puis « Ce que voit la classe ».
+  > 3. ⏱ sous la diapo : le réglage s'ouvre sous la diapo, au-dessus des notes ; tape une durée (clic sur un chiffre, puis le clavier) ou les + et −.
+  > 4. « au tableau » allumé, puis ▶ : le réglage se cache ; le rectangle paraît dans un coin libre, au tableau, dans « Ce que voit la classe » et sur ta diapo.
+  > 5. Glisse-le, tire un coin : les trois vues suivent.
+  > 6. Un chrono de 10 s : vert, jaune, orange, rouge qui clignote, puis la fin.
+  > 7. Écris, dévoile, surligne : « Ce que voit la classe » le montre comme le tableau.
+  >
+  > 04/11/2026 22:09
+  >
+  > À jouer : 700 (« promeus ») ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

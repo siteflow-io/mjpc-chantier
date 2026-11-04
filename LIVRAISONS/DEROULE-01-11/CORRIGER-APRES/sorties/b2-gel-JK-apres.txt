@@ -1,0 +1,83 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties J K · 2026-11-04 23:12 UTC · md5 68ee03b0050fc73c15d0bc9f15ae7924 · images : celle du canon
+
+══ MESURE INITIALES · b2-apres · md5 68ee03b0050fc73c15d0bc9f15ae7924 ══
+
+— partie J
+  [J] lancée true · répétition false
+  [J] « Groupe 1 : l’hypothèse » · compte « 0 / 1 dévoilés »
+  [J2-a] « za », Entrée : le curseur finit sur [0.r.0] · Entrée vue par la fenêtre : [] · les prises de focus, dans l’ordre :
+      0.i.0 ← 
+      0.r.0 ← choisir l.19780 | ini.oninput l.19781
+  [J2-b] clic dans la case de la réponse (+178 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] lettre 1 « L » (+352 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « L » · vert true · tableau : 1/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] lettre 2 « a » (+490 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La » · vert true · tableau : 2/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] lettre 3 «   » (+628 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La  » · vert true · tableau : 3/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] +500 ms (+3798 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] Entrée (valider) (+3962 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J2-b] +900 ms (+4867 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [J3] le geste « dévoiler » ensuite (numéro, flèche →) :  (+0 ms) · curseur .admin-mode.at-corps-fige <body> · case des initiales « undefined » · la ligne : élève personne, i «  », r «  » · vert true · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 1 · rien à dévoiler · titre de l’activité « Groupe 2 : Le lac »
+  — J2-c · « lc », Entrée, clic dans la case de la réponse, la réponse, Entrée
+  [J2-c] pas de ligne libre
+  — J2-d · « bl » puis « gl » (élève 26, nom en deux mots), Entrée, clic, la réponse, Entrée
+  [J1-bl] pas de ligne libre
+  [J5-d] la ligne A introuvable
+  [J4] gel : S.gel true · journal « reponse » 1
+  [J4] « Groupe 2 : l’hypothèse » au pilotage, compte « 0 / 1 dévoilés »
+  [J4-gel] clic (+302 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] « v » (+445 ms) · curseur .ini[0.i.0] <span> · case des initiales « V » · la ligne : élève personne, i « V », r «  » · vert false · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] « z » (+584 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r «  » · vert false · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] clic dans la case de la réponse (+903 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r «  » · vert false · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] lettre 1 « L » (+1060 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « L » · vert true · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] +500 ms sans frapper (+4060 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » · vert true · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 1 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] Entrée (valider) (+4223 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert true · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] +900 ms (+5128 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert true · tableau : 6/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] clic (+307 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert false · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] « j » (+447 ms) · curseur .ini[0.i.1] <span> · case des initiales « VZ » · la ligne : élève personne, i « J », r «  » · vert false · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] « e » (+587 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r «  » · vert false · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] clic dans la case de la réponse (+917 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r «  » · vert false · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] lettre 1 « L » (+1080 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r « L » · vert true · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] +500 ms sans frapper (+5466 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r « Le peintre aime la nature. » · vert true · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] Entrée (valider) (+5631 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r « Le peintre aime la nature. » validée · vert true · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4-gel] +900 ms (+6537 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « VZ » · la ligne : élève élève 6, i « JE », r « Le peintre aime la nature. » validée · vert true · tableau : 3/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [J4] dégel (« La classe est sur la diapo 10, tu es à la diapo 11. Revenir là où est la classe, puis dégeler Dégeler ici Rester gelé » → « Dégeler ici ») · avant : 6/17, 3/26 lettres au tableau · après : 17/17 lettres, prénom true, nom false ; 26/26 lettres, prénom true, nom false · journal « reponse » 3 → 3
+  [J4] +1,5 s : journal « reponse » 3 · [{"di":8,"eleve":"élève 1","ini":"ZA","txt":"La mer est plus "},{"di":10,"eleve":"élève 25","ini":"VZ","txt":"Le lac est calme"},{"di":10,"eleve":"élève 6","ini":"JE","txt":"Le peintre aime "}] · les réponses dans les diapos : 3
+  [J] close true
+  [J4] l’heure au hub : « reponse » au journal 0 · « La mer est p… » 0 fois, « Les hommes o… » 0 fois, « Le radeau dé… » 0 fois, « Le lac est c… » 0 fois, « Le peintre a… » 0 fois
+  [RG-J] après la clôture, sur 5 réponses tapées : {"h":1,"nommesRecit":3,"nommesPasse":3,"journal":3,"doubles":0,"dansLesDiapos":3,"recit":3,"passe":3,"participation":{"eleves":3,"total":3},"paroleRep":3}
+  [RG-J] les faces de la Relecture (pilote) : récit 3/5 · Papier 3/5
+  [J4/J5] le récit, « La mer est plus fort… » : présent true · élèves nommés dans sa phrase : ["élève 1"] (élève de la ligne : élève 4) · Papier true
+  [J4/J5] le récit, « Les hommes ont peur.… » : présent false · élèves nommés dans sa phrase : [] (élève de la ligne : élève 4) · Papier false
+  [J4/J5] le récit, « Le radeau dérive.… » : présent false · élèves nommés dans sa phrase : [] (élève de la ligne : élève 26) · Papier false
+  [J4/J5] le récit, « Le lac est calme.… » : présent true · élèves nommés dans sa phrase : [] (élève de la ligne : élève 25) · Papier true
+  [J4/J5] le récit, « Le peintre aime la n… » : présent true · élèves nommés dans sa phrase : ["élève 6"] (élève de la ligne : élève 6) · Papier true
+  ok     J9 · J : aucune erreur JS, aucune boîte système
+  [RG-J5] relue avec le même fichier
+  [J5] le lendemain, la case du 15/09 : boutons ["✕","Relire cette heure"]
+  [RG-J5] Relecture du lendemain, face « recit » : 3/5 réponses
+  [RG-J5] Relecture du lendemain, face « passe » : 3/5 réponses · participation 3 élèves, 3 en tout
+  [RG-J5] Relecture du lendemain, face « papier » : 3/5 réponses
+  [RG-J5] écritures au hub depuis « Relire cette heure » : 0 []
+  [J5] Relecture (true), onglet « recit » : champs modifiables [] · la réponse B trouvée false · clic droit dessus : menu null · onglets ["recit","passe","papier","chapitre"]
+  [J5] Relecture (true), onglet « passe » : champs modifiables [] · la réponse B trouvée false · clic droit dessus : menu null · onglets ["recit","passe","papier","chapitre"]
+  ok     J9 · J lendemain : aucune erreur JS, aucune boîte système
+
+— partie K
+  [K] clic (+348 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] « z » (+493 ms) · curseur .ini[0.i.0] <span> · case des initiales « Z » · la ligne : élève personne, i « Z », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] « a » (+636 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] clic dans la case de la réponse (+956 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] lettre 1 « L » (+1136 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « L » · vert true · tableau : 1/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] +500 ms sans frapper (+4488 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] Entrée (valider) (+4648 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K] +900 ms (+5556 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [K3] au tableau distant, la réponse A finie : 22/22 lettres · « ZA » 0 fois · prénom true, nom false
+  [K5] la réponse A validée, ses initiales changées « ZA » → « lc », Entrée : la ligne → élève élève 4, i « LC » ; le journal « reponse » de A → élève élève 4, ini « LC » · « reponse-eleve » ou autre trace au journal : ["diapo","diapo","devoile","reponse","parole","parole"] · le vert : élève 1 false, élève 4 true
+  [RG-K] la réponse A au journal : 1 entrée(s), élève ["élève 4"] · paroles « réponse » : ["élève 4","élève 4"] · {"h":1,"nommesRecit":1,"nommesPasse":1,"journal":1,"doubles":0,"dansLesDiapos":1,"recit":1,"passe":1,"participation":{"eleves":1,"total":1},"paroleRep":2}
+  [K5] close true · le récit, la réponse A : présente true · élèves nommés dans sa phrase : ["élève 4"]
+  ok     K9 · K : aucune erreur JS, aucune boîte système
+  [K5] Relecture (true), onglet « recit » : champs modifiables 0 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  [K5] Relecture (true), onglet « passe » : champs modifiables 0 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  [K5] Relecture (true), onglet « papier » : champs modifiables 0 · la réponse A trouvée true, dans un élément cliquable false · clic droit dessus : éléments de menu visibles []
+  ok     K9 · K lendemain : aucune erreur JS, aucune boîte système
+
+--- fin : 4 vérifications, 0 échec(s)

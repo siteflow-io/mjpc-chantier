@@ -3104,3 +3104,20 @@ MEMO
   > À jouer : 518 · en cours : rien · ouvert : 512 à 515, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **07:36 — message à Paul** : 511-518, mot pour mot comme ci-dessus.
+- **07:40 — Paul, mot pour mot :**
+
+  > ok mais le mot diapos c'est un peu moche dans un récit. Pour le reste oui ok.
+- **07:41 — la conscience** : le mandat `MANDATS/DEROULE-01-11/MANDAT-RECIT-RATTRAPE.md` (`74461b851`) : les mots de Paul ; 512-515 ; pour 513, la tournure proposée sans nom (« Ce qu'on n'a pas fait cette heure-ci : … ») ; la supposition (dr-recit.js `recitHtml0`, `DR_RECIT_PARTS`, `rg`, `dur`, `tempsUtilePrevu`, `S.decisions`, les connecteurs ; `now()`, `#dr-enr`, `dr_heureCase`) ; 30 minutes ; base `82255e7a2`, branche `deroule/recit-rattrape`. Un exécutant neuf lancé.
+- **07:41 — message à Paul, mot pour mot :**
+
+  > 519. Lancé, 30 minutes au plus. Pour 513, sans « activités » ni « diapos » : « Ce qu'on n'a pas fait cette heure-ci : « … », qu'on fera à la prochaine séance ; … ». Si tu préfères une autre tournure, dis-la.
+  >
+  > À tester : rien de plus.
+  >
+  > 04/11/2026 07:41
+  >
+  > À jouer : rien · en cours : le récit (512-515, 30 min au plus) · ouvert : la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

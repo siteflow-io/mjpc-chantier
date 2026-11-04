@@ -4224,3 +4224,16 @@ MEMO
 - **00:42 — mandat M** (633, 634 : deux mesures), puis lancé (`mesure/nuit-m` depuis `dbe59dc88`), 20 minutes au plus.
 - **00:58 — l'exécutant M rend son travail** : sas `mesure/nuit-m` `89afd06c1` (NOTE, sonde, 3 sorties). 633 : avant le correctif ㉙, un clic dans la question d'un bloc question puis une frappe faisaient entrer la barre du bloc dans le texte (ancien dr-atelier.js:592) : 1 fois dans la trame, 1 fois dans la copie de la classe quand l'Atelier est ouvert pendant l'heure ; sur le site de la nuit : 0 fois ; le copier-coller ne prend jamais ces mots (0 sur 2). 634 : le tableau distant n'a pas de double clic à lui : chaque clic ou chaque touche redemande le plein écran (dr-tableau.js:346, 324-328) — double clic : 2 demandes ; après Échap, un clic : une 3e ; une touche : une 4e ; hors plein écran, le tableau suit la fenêtre (900 × 500 → 889 × 500, rien ne dépasse). Non mesuré : quand la copie de Paul a été salie ; si les bords de la vraie fenêtre se laissent attraper. Proposé par lui, non codé : une marge ou un zoom du tableau réglés depuis le pilotage.
 - **00:58 — lancé : l'exécutant du mandat F** (365, 642 : le réseau lent ; `nuit/f` depuis `dbe59dc88`), 30 minutes au plus.
+- **00:58 — message à Paul, mot pour mot :**
+
+  > 730. 633 est trouvé, et déjà réglé : les mots de l'éditeur (« BLOC 1 · QUESTION · 1 ÉLÉMENT… ») entraient dans le texte quand on cliquait dans la question d'un bloc question puis qu'on tapait ; l'Atelier ouvert pendant l'heure, ils allaient dans la copie de ta classe. Le correctif du 02/11 (㉙) l'empêche : sur le site de la nuit, les mêmes gestes les font entrer 0 fois. Un texte déjà sali ne se répare pas seul ; « À régler » le signale. Quand ta copie a été salie, je ne le sais pas.
+  >
+  > 731. 634 est trouvé : le tableau distant redemande le plein écran à chaque clic et à chaque touche ; dès que tu touchais la page pour réduire la fenêtre, elle reprenait tout l'écran. Hors plein écran, le tableau suit bien la taille de la fenêtre et rien ne dépasse. Ce que je propose, puisque tout se pilote depuis le pilotage : un réglage au pilotage, « le tableau déborde : réduire », avec + et −, qui rétrécit la vue tableau d'un cran à la fois, gardé pour cet appareil. Il ne passe pas cette nuit sans ton mot.
+  >
+  > À tester : rien de nouveau cette nuit ; les sept tests de 701 restent valables.
+  >
+  > 05/11/2026 00:58
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : F (642, le réseau lent) · ouvert : 643, ㊵, puis le banc complet ; à cadrer : 640 (720), 721, 731, 639, 644, 645
+  >
+  > MEMO

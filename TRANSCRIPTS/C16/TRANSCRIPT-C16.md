@@ -3755,3 +3755,24 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : les captures du minuteur (fin vers 16:45) · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **16:30 — l'exécutant (message)** : 12 captures (P0 à P5, tableau et pilote), 8.84.0-⑰ au faux hub, la classe d'essai (heure du 14/09, heure 1), diapo 12, 1920 × 1080 à l'échelle 2 ; commit `c1ffe8ff1` sur `captures/minuteur` (images, sonde, NOTE) ; aucun fichier du site changé. P0 couvre « hypothèse en », panneau sur la diapo ; P1 (64 px) rien, −11,5 % ; P2 (180 px) rien, −17,9 %, au pilote la colonne de droite poussée de 63 px (deux rangées d'initiales hors de l'écran) ; P3 (44 px) rien, −8 % ; P4 (160 px) rien, rien perdu ; P5 (116 × 45) rien, rien perdu ; P1, P3, P4, P5 : « ■ Clore l'heure » passe à la seconde ligne de l'entête. Pas fait : le rouge (dans la NOTE), P4 sans coin libre, P5 titre long, « Ce que voit la classe ». 209 545 jetons.
+- **16:31 — la conscience** : audit : seuls les fichiers de `CAPTURES-MINUTEUR/` ; trois captures regardées (P0-pilote, P4-tableau, P5-pilote : ce qu'elles disent, initiales seulement) ; ça va. Les 12 images envoyées à Paul.
+- **16:31 — message à Paul, mot pour mot :**
+
+  > 651. Les 12 captures sont là (P0-tableau.png à P5-pilote.png), sur le site en ligne, ta classe d'essai, la diapo 12 « Chaque groupe présente… », minuteur à 04:32. Rien n'a été codé.
+  >
+  > 652. Au tableau. P0, aujourd'hui : le minuteur cache « hypothèse en ». P1, la bande en haut : ne couvre rien, la diapo perd 11,5 %. P2, la colonne à droite : ne couvre rien, la diapo perd 17,9 %. P3, la barre qui se vide en bas : ne couvre rien, la diapo perd 8 %. P4, la pastille dans le coin libre : ne couvre rien, la diapo ne perd rien. P5, les chiffres sur la ligne du titre : ne couvrent rien, la diapo ne perd rien.
+  >
+  > 653. Au pilote. Avec le bouton « ⏱ 04:32 » dans l'entête (P1, P3, P4, P5), « ■ Clore l'heure » passe à la ligne : l'entête n'a plus la place. Dans P2, la carte du minuteur pousse ta colonne de droite et deux rangées d'initiales sortent de l'écran.
+  >
+  > 654. Pas montré : la dernière minute en rouge ; P4 sur une diapo sans coin libre (la pastille irait alors dans la bande de P1) ; P5 avec un titre long ; le minuteur dans « Ce que voit la classe » (il y sera, quelle que soit la proposition).
+  >
+  > 655. Laquelle choisis-tu ?
+  >
+  > À tester : regarder les 12 captures.
+  >
+  > 04/11/2026 16:31
+  >
+  > À jouer : choisir le minuteur (655) ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

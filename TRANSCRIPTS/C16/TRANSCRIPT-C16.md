@@ -3450,3 +3450,24 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, 579 à 583, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **14:54 — Paul, mot pour mot :**
+
+  > pourquoi seul tiago apparait? pour ta proposition oui pour les diapos. Le mieux  pour le bouton copier la relecture pour analyse IA serait presque que les diapos partent aussi à l'ia, ou alors pas besoin? Enfin, tu me reparles d'un mandat mais il n'y en a pas déjà un qui tourne?
+
+- **14:55 — message à Paul, mot pour mot :**
+
+  > 586. Pourquoi seul Tiago : la Relecture prend la participation à deux endroits. D'abord la liste des participations que la page tient pendant l'heure : après l'heure, elle n'est plus gardée au hub (vide) ; je ne sais pas encore pourquoi. Ensuite les réponses du journal qui ont un élève : à cause du gel, il n'y en a que deux, Tiago et NL, et NL n'a pas d'élève. Reste Tiago. Les 21 participations rangées au hub avec l'heure elle-même, la Relecture ne les lit pas.
+  >
+  > 587. Noté pour 582 : un clic sur une diapo l'affiche en grand.
+  >
+  > 588. Les diapos pour l'IA : oui pour leur texte, non pour leurs images. Je propose que la copie contienne, pour chaque diapo jouée, son titre, sa consigne, ses questions et ce qui y a été écrit en classe (les réponses, avec le prénom). Une image ne passe pas dans un texte collé ; son titre (« Le Lac de Whyte ») suffit à l'IA pour savoir de quoi on parle.
+  >
+  > 589. Aucun mandat ne tourne. Les deux exécutants d'aujourd'hui ne faisaient que mesurer (les Franklin à 12:20, les initiales à 13:51), et ils ont fini. Les corrections (571, 572, 573, 582, 583) n'ont pas encore de mandat : tu m'as demandé de te répondre avant d'en écrire. J'écris celui de 571 et je le lance ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 14:55
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, 579 à 583, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

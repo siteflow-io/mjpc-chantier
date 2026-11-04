@@ -2591,3 +2591,20 @@ MEMO
   > À jouer : rien · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **02:55 — Paul, mot pour mot :**
+
+  > Mais ça n'est pas codé dans ta session de cette nuit ça ??
+- **02:56 — message à Paul, mot pour mot :**
+
+  > 444. Non. Cette nuit, il y a eu le lot 1 (359, 360, 361), sa réparation (399, 400), le banc complet, puis 391. Les lots 2 à 5 ne sont pas commencés.
+  >
+  > 445. Deux raisons. Le plan : un lot à la fois, chacun mis en ligne avant le suivant, parce que le lot 2 part de la version où le lot 1 est en ligne. Et ton utilisation : tu m'as demandé de finir à 22h, et à 22:48 (429) je t'ai dit que je ne lancerais rien d'autre cette nuit.
+  >
+  > À tester : rien avant ton mot.
+  >
+  > 04/11/2026 02:56
+  >
+  > À jouer : rien · en cours : la preuve de 391 · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

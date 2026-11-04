@@ -367,3 +367,7 @@ des Turing, rien d'autre. Les copies que la page garde dans Chrome ne sont pas l
 conversation (l'extension n'ouvre pas les fichiers de la clé). Proposé à Paul (154, 155) : un critère
 individuel « Autonomie au point en classe » sur 1, repris des niveaux du point (3 ou 4 = 1 ; 2 = 0,5 ;
 1 ou 0 = 0), à la place de la case de la carte du parcours.
+Paul a joint ensuite (18:52 et 19:26) : les copies de secours de l'autre Chrome (Hugo 1 à 5 le 14/10 ;
+Turing 10, 3, 1, 4 le 15/10), deux exports Turing du 12/10 (l'un vide, l'autre avec le seul groupe 3,
+jamais clos) et les copies de secours du QCM des Turing du 15/10. Aucun ne contient les groupes 6 à 10
+des Hugo ni l'autonomie du groupe 2 des Turing.

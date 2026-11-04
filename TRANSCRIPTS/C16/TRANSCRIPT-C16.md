@@ -3471,3 +3471,23 @@ MEMO
   > À jouer : les quatre tests de 8.84.0 (534) · en cours : rien · ouvert : l'heure des Franklin (571 à 573, 579 à 583, sur ton mot), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
   >
   > MEMO
+- **14:59 — Paul, mot pour mot** (le nom d'un élève retiré, non recopié au sas) :
+
+  > [prénom et nom en deux mots] = NL (encore un nom à trois lettres). 588. le bouton doit en fait contenir suffisamment d'informations pour l'IA pour éviter de trop consommer de tokens par une mesure d'exécutants, et afin de pouvoir débugger plus vite. Sinon pour le mandat, je pense que tout est cadré, non?
+
+- **15:00 — la conscience** : mandat `MANDATS/DEROULE-01-11/MANDAT-RECIT-GEL.md` (`93064d5c5`, C16 571 et 580, les mots de Paul) ; un exécutant neuf lancé à 15:00, 30 minutes au plus, base `46d140ab6`, branche `deroule/recit-gel`. Registre (production `8a2a386`) : le bouton pour l'IA.
+- **15:01 — message à Paul, mot pour mot :**
+
+  > 590. Noté pour NL : un nom de famille en deux mots, comme les autres. Avec la nouvelle case, tu taperas ses trois initiales (le prénom, puis chaque mot du nom), et tu pourras corriger sa réponse avec le bouton « à corriger » déjà là.
+  >
+  > 591. 583, le bouton pour l'IA : je propose qu'il copie deux parties. D'abord la Relecture telle que tu la lis, avec le texte des diapos (588). Ensuite, pour chercher une panne : la version du site, la classe, l'heure et ses heures réelles, le journal de l'heure geste par geste (les initiales tapées et l'élève trouvé), les réponses rangées dans les diapos avec leur heure, les participations rangées avec l'heure, et les initiales de chaque élève de la liste. Les élèves y sont nommés par leur prénom et l'initiale du nom. Avec cela, aujourd'hui, j'aurais trouvé la cause sans lire le hub ni lancer de mesure.
+  >
+  > 592. Oui, tout est cadré pour 571, 572, 573, 582 et 583. Seul 548 (les mots de l'éditeur dans la diapo) ne l'est pas : on ne sait pas d'où ils viennent. Le mandat de 571 est écrit et lancé à 15:00, 30 minutes au plus : le gel ne fait plus disparaître ni les réponses ni la participation, et ton heure des Franklin retrouve ses 24 réponses. Ensuite 572, 573, puis 582 et 583, l'un après l'autre.
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 15:01
+  >
+  > À jouer : les quatre tests de 8.84.0 (534) · en cours : 571 et 580 (fin vers 15:30) · ouvert : 572, 573, 582, 583 (cadrés, l'un après l'autre), 548, le tableau distant qui ne se redimensionne pas, la participation (registre), 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) et les numéros trop gros, sur ton mot
+  >
+  > MEMO

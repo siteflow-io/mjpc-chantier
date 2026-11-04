@@ -1,0 +1,31 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties E · 2026-11-04 03:04 UTC · md5 bcee37aef66f6847a4415103c8292def · images : celle du canon
+
+══ LOT 2b · assemble-base · md5 bcee37aef66f6847a4415103c8292def ══
+
+— partie E
+  [E] l’heure rattrapée (case du lundi 14/09) · la montre : 17/09/2026 14:00:06 · cases de CLASSE TEST passées : 2026-09-14 15:07-16:02, 2026-09-15 10:07-11:02, 2026-09-16 11:04-11:59 · à venir : 2026-09-17 15:07-16:02, 2026-09-18 11:04-11:59, 2026-09-22 10:07-11:02, 2026-09-22 16:04-16:59
+  [E] lancée : {"lancee":true,"cle":"2026-09-14_15h07-16h02_CLASSE_TEST","rattrapee":true}
+  [E] étape 3, « Autre travail » tapé : true
+  [E] fin d’heure, étape 1 : 3 échéances proposées ["jeudi 17 septembre, 15 h 07","vendredi 18 septembre, 11 h 04","mardi 22 septembre, 10 h 07"] → ["à venir","à venir","à venir"] · posée par défaut : 2026-09-17 (à venir)
+  [E] close ({"garde":"Il manque, avant de clore ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ copié pour École Directe — le cahier de textes de l'école restera vide, à remplir à la main plus tard Y retourner Clore quand même","close":true}) · au hub : 2026-09-14_15h07-16h02_CLASSE_TEST → 2026-09-17 → ["à venir"]
+  [E] « Pour la prochaine séance (…) » (récit, texte pour École Directe) : ["jeudi 17 septembre"] → ["à venir"]
+  [E] « À relire — … » (Papier) : ["vendredi 18 septembre"] → ["à venir"]
+  ok     E19 · l’heure rattrapée (case du lundi 14/09) : aucune erreur JS, aucune boîte système
+  ok     E1a · l’heure est lancée par « ▶ Rattraper cette heure », rangée à la case du lundi — {"lancee":true,"cle":"2026-09-14_15h07-16h02_CLASSE_TEST","rattrapee":true}
+  ok     E1b · fin d’heure, étape 1 : les échéances proposées sont toutes à venir, la première case à venir posée par défaut — [3,["à venir","à venir","à venir"],"2026-09-17"]
+  ok     E1c · « Pour la prochaine séance (…) » : une case à venir — [["jeudi 17 septembre"],["à venir"]]
+  ok     E1d · « À relire — … » du Papier : une case à venir — [["vendredi 18 septembre"],["à venir"]]
+  ok     E1e · l’échéance écrite au hub : une case à venir — ["2026-09-14_15h07-16h02_CLASSE_TEST → 2026-09-17"]
+  [E] E1 COMPTE : 7 échéances proposées ou écrites, 7 à venir, 0 passée(s)
+  [E] l’heure ordinaire (case du jeudi 17/09) · la montre : 17/09/2026 15:09:11 · cases de CLASSE TEST passées : 2026-09-14 15:07-16:02, 2026-09-15 10:07-11:02, 2026-09-16 11:04-11:59, 2026-09-17 15:07-16:02 · à venir : 2026-09-18 11:04-11:59, 2026-09-22 10:07-11:02, 2026-09-22 16:04-16:59, 2026-09-25 11:04-11:59
+  [E] lancée : {"lancee":true,"cle":"2026-09-17_15h07-16h02_CLASSE_TEST","rattrapee":false}
+  [E] étape 3, « Autre travail » tapé : true
+  [E] fin d’heure, étape 1 : 3 échéances proposées ["vendredi 18 septembre, 11 h 04","mardi 22 septembre, 10 h 07","mardi 22 septembre, 16 h 04"] → ["à venir","à venir","à venir"] · posée par défaut : 2026-09-18 (à venir)
+  [E] close ({"garde":"Il manque, avant de clore ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ copié pour École Directe — le cahier de textes de l'école restera vide, à remplir à la main plus tard Y retourner Clore quand même","close":true}) · au hub : 2026-09-17_15h07-16h02_CLASSE_TEST → 2026-09-18 → ["à venir"]
+  [E] « Pour la prochaine séance (…) » (récit, texte pour École Directe) : ["vendredi 18 septembre"] → ["à venir"]
+  [E] « À relire — … » (Papier) : ["vendredi 18 septembre"] → ["à venir"]
+  ok     E29 · l’heure ordinaire (case du jeudi 17/09) : aucune erreur JS, aucune boîte système
+  ok     E2a · l’heure ordinaire : ses échéances, comme avant — ["2026-09-18",["vendredi 18 septembre"],["vendredi 18 septembre"]]
+  [E] E2 ORDINAIRE : proposées ["2026-09-18","2026-09-22","2026-09-22"] · par défaut 2026-09-18 · « Pour la prochaine séance » ["vendredi 18 septembre"] · « À relire » ["vendredi 18 septembre"] · au hub 2026-09-17_15h07-16h02_CLASSE_TEST → 2026-09-18
+
+--- fin : 8 vérifications, 0 échec(s)

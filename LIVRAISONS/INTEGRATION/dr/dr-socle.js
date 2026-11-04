@@ -1136,7 +1136,8 @@ const dr_prenomTableau = e => { const x = dr_nomPrenom(e); return (x.pre || x.no
 
 /* repris du pont (_drPrenomsDeLaClasse) : « NOM Prénom » → initiales P+N, les doublons numérotés ; PRENOMS[ini] → prénom ; INI[nom] → initiales */
 const PRENOMS = {}, INI = {};
- function dr_initiales(){ Object.keys(PRENOMS).forEach(k => delete PRENOMS[k]); Object.keys(INI).forEach(k => delete INI[k]); /* E1 : la maquette le calculait une fois sur ELEVES en dur */  const pris = {}; ELEVES.forEach(n => { const np = dr_nomPrenom(n); const pre = np.pre || np.nom; const fam = np.pre ? np.mots : []; let ini = ((pre[0] || '') + (fam.length ? fam.map(w => w[0]).join('') : (pre[1] || ''))).toUpperCase();   /* nuit C : la première lettre du prénom, puis celle de chaque mot du nom (« MGC ») */ const base = ini; let k = 2; while (pris[ini]) ini = base + String(k++); pris[ini] = 1; PRENOMS[ini] = pre; INI[n] = ini; });  }
+ function dr_initiales(){ Object.keys(PRENOMS).forEach(k => delete PRENOMS[k]); Object.keys(INI).forEach(k => delete INI[k]); /* E1 : la maquette le calculait une fois sur ELEVES en dur */  const r = dr_iniListe(ELEVES); Object.assign(PRENOMS, r.pre); Object.assign(INI, r.ini); }
+ function dr_iniListe(liste){ /* C16 nuit B : les initiales d'une liste d'élèves (la classe du pilotage, ou la classe relue dans la Relecture) */ const PRENOMS = {}, INI = {}; const pris = {}; liste.forEach(n => { const np = dr_nomPrenom(n); const pre = np.pre || np.nom; const fam = np.pre ? np.mots : []; let ini = ((pre[0] || '') + (fam.length ? fam.map(w => w[0]).join('') : (pre[1] || ''))).toUpperCase();   /* nuit C : la première lettre du prénom, puis celle de chaque mot du nom (« MGC ») */ const base = ini; let k = 2; while (pris[ini]) ini = base + String(k++); pris[ini] = 1; PRENOMS[ini] = pre; INI[n] = ini; }); return { pre: PRENOMS, ini: INI }; }
 
 const iniDe = n => INI[n] || '';
  const nomDe = ini => ELEVES.find(n => INI[n] === ini) || null;

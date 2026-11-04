@@ -1,0 +1,66 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties B · 2026-11-04 22:21 UTC · md5 c2d61e306998bb17f9c57fbe32183b3f · images : celle du canon
+
+══ MESURE INITIALES · b-base · md5 c2d61e306998bb17f9c57fbe32183b3f ══
+
+— partie B
+  [B] lancée true
+  [B-1] clic (+342 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] « m » (+493 ms) · curseur .ini[0.i.0] <span> · case des initiales « M » · la ligne : élève personne, i « M », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] « b » (+641 ms) · curseur .ini[0.i.0] <span> · case des initiales « MB » · la ligne : élève personne, i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] 2 (+781 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] clic dans la case de la réponse (+972 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r «  » · vert false · tableau : 1/22 lettres, prénom false, nom false · journal « reponse » 0 · 0 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] lettre 1 « L » (+1146 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « L » · vert true · tableau : 1/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] +500 ms sans frapper (+4562 ms) · curseur .dit[0.r.0] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] Entrée (valider) (+4732 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-1] +900 ms (+5637 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « MB » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert true · tableau : 22/22 lettres, prénom true, nom false · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] clic (+298 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales «  » · la ligne : élève élève 2 (MB n°1), i « MB », r « La mer est plus forte. » validée · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] « z » (+456 ms) · curseur .ini[0.i.1] <span> · case des initiales « Z » · la ligne : élève personne, i « Z », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] « q » (+597 ms) · curseur .ini[0.i.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] clic dans la case de la réponse (+928 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r «  » · vert — · tableau : 1/20 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] lettre 1 « L » (+1074 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « L » · vert — · tableau : 1/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] +500 ms sans frapper (+4202 ms) · curseur .dit[0.r.1] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] Entrée (valider) (+4359 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » validée · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-2] +900 ms (+5268 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « ZQ » · la ligne : élève personne, i « ZQ », r « Les hommes ont peur. » validée · vert — · tableau : 20/20 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Groupe 1 : l’hypothèse »
+  [B-3] clic (+325 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert false · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] « v » (+467 ms) · curseur .ini[0.i.0] <span> · case des initiales « V » · la ligne : élève personne, i « V », r «  » · vert false · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] « z » (+609 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r «  » · vert false · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] clic dans la case de la réponse (+926 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r «  » · vert false · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 0 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] lettre 1 « L » (+1104 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « L » · vert true · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] +500 ms sans frapper (+4164 ms) · curseur .dit[0.r.0] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » · vert true · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 2 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] Entrée (valider) (+4322 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert true · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-3] +900 ms (+5228 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert true · tableau : 2/17 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] clic (+299 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « VZ » · la ligne : élève élève 25, i « VZ », r « Le lac est calme. » validée · vert false · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] « l » (+448 ms) · curseur .ini[0.i.1] <span> · case des initiales « VZ » · la ligne : élève personne, i « L », r «  » · vert false · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] « c » (+595 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 4, i « LC », r «  » · vert false · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] clic dans la case de la réponse (+930 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 4, i « LC », r «  » · vert false · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] lettre 1 « L » (+1104 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 4, i « LC », r « L » · vert true · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B-4] +500 ms sans frapper (+5587 ms) · curseur .dit[0.r.1] <span> · case des initiales « VZ » · la ligne : élève élève 4, i « LC », r « Le peintre aime la nature. » · vert true · tableau : 2/26 lettres, prénom false, nom false · journal « reponse » 3 · GEL · 1 / 1 dévoilés · titre de l’activité « Groupe 2 : l’hypothèse »
+  [B] close true
+  ok     B9 · B : aucune erreur JS, aucune boîte système
+  [B0] base, « Ce qui s’est passé » : 4 cas · [{"cas":"donnée au premier MB","eleve":"élève 2 (MB n°1)","diapo":false,"bouton":0},{"cas":"sans élève","eleve":"personne","diapo":false,"bouton":1},{"cas":"pendant le gel, validée","eleve":"élève 25","diapo":false,"bouton":0},{"cas":"pendant le gel, restée dans la diapo","eleve":"élève 4","diapo":true,"bouton":0}]
+  ok     B0 · l’heure close comme celle des Franklin : la réponse au premier MB, une sans élève, une de gel restée dans la diapo — ["élève 2 (MB n°1)","personne","élève 25","élève 4 (diapo)"]
+  [B0] écritures au hub depuis « Relire cette heure » (true) : 0
+  ok     B0-hub · ouvrir la Relecture n’écrit rien au hub — 0 écriture(s)
+  [B1] donnée au premier MB · bouton null · fenêtre null
+  ÉCHEC  B1 · donnée au premier MB : la fenêtre « Qui a répondu » avec la case des initiales — null
+  [B2] sans élève · bouton "⚠ élève non identifié — à corriger" · fenêtre {"case":false,"q":"Saisi en classe : « ZQ » — aucun élève de la liste."}
+  ÉCHEC  B2 · sans élève : la fenêtre « Qui a répondu » avec la case des initiales — {"h4":"Qui a répondu « Les hommes ont peur. » ?","q":"Saisi en classe : « ZQ » — aucun élève de la liste.","caseIni":false,"titre":"","btn":"⚠ élève non identifié — à corriger"}
+  [B3] pendant le gel, validée · bouton null · fenêtre null
+  ÉCHEC  B3 · pendant le gel, validée : la fenêtre « Qui a répondu » avec la case des initiales — null
+  [B4] pendant le gel, restée dans la diapo · bouton null · fenêtre null
+  ÉCHEC  B4 · pendant le gel, restée dans la diapo : la fenêtre « Qui a répondu » avec la case des initiales — null
+  [B5] après : [{"cas":1,"eleve":"élève 2 (MB n°1)","recit":true,"passe":true,"paroleSeparee":0},{"cas":2,"eleve":"personne","recit":false,"passe":false,"paroleSeparee":0},{"cas":3,"eleve":"élève 25","recit":true,"passe":true,"paroleSeparee":0},{"cas":4,"eleve":"élève 4","recit":true,"passe":true,"paroleSeparee":0}]
+  [B5] participation (réponses écrites) base → après : {"élève 2 (MB n°1)":1,"élève 25":1,"élève 4":1} → {"élève 2 (MB n°1)":1,"élève 25":1,"élève 4":1}
+  ÉCHEC  B5-recit · le récit nomme l’élève corrigé dans la phrase de chaque réponse — 3/4
+  ÉCHEC  B5-passe · « Ce qui s’est passé » nomme l’élève corrigé (et plus de ligne « a répondu » au mauvais élève) — 3/4
+  ok     B5-papier · le Papier garde les quatre réponses — 4/4
+  ÉCHEC  B5-part · la participation suit (les bons élèves comptés, plus le premier MB, VZ ni LC) — {"élève 2 (MB n°1)":1,"élève 25":1,"élève 4":1}
+  ÉCHEC  B5-hub · seule une correction écrit au hub — 0 écriture(s) pour 0 corrections
+  ok     B5-diapo · rien n’est réécrit dans les diapos (la réponse de gel garde son élève saisi en classe) — élève 4
+  ok     B9 · B lendemain : aucune erreur JS, aucune boîte système
+  [B6] rechargée : [{"cas":1,"eleve":"élève 2 (MB n°1)","recit":true,"passe":true},{"cas":2,"eleve":"personne","recit":false,"passe":false},{"cas":3,"eleve":"élève 25","recit":true,"passe":true},{"cas":4,"eleve":"élève 4","recit":true,"passe":true}]
+  ÉCHEC  B6 · rechargée, la Relecture garde les quatre corrections — 0/4
+  ok     B9 · B rechargée : aucune erreur JS, aucune boîte système
+  [B] corrigés par la case des initiales : 0/4
+
+--- fin : 16 vérifications, 9 échec(s)

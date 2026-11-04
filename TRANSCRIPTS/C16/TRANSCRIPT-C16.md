@@ -2702,3 +2702,25 @@ MEMO
   > À jouer : les 8 gestes ; 453 à trancher ; 454 et 456 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:22 — Paul, mot pour mot :**
+
+  > Voilà pourquoi ça prend du temps. Tu fais des choses que je ne demande pas et donc ça doit encore repartir en codage à chaque fois. C'est penible. Pour les exécutants, une heure c'est beaucoup trop long. La consommation d'utilisation est excessive. En plus de ça, les vacances sont terminées et tout ça j'en ai besoin en classe. Or, les séances s'enchaînent et mon site n'est toujours pas fonctionnel et donc on accumule du retard ( exemple des Dylan hier).
+- **03:23 — la conscience** : lu dans le code (dr-socle.js, `dr_classeTest`, son commentaire) et au transcript C13 (l. 5921) : Paul, 28/10 10:17 : « en répétition, je dois bien évidemment voir mes élèves de la clas[se test (charles de gaulle)] » ; contrat de l'intégration §51. La classe d'essai en répétition vient de Paul ; 455 était faux ; 456 retiré, rien n'est enlevé.
+- **03:23 — message à Paul, mot pour mot :**
+
+  > 457. Je me suis trompé en 455. « Puis ta classe d'essai » vient de toi, le 28/10 à 10:17 : « en répétition, je dois bien évidemment voir mes élèves de la classe test (charles de gaulle) ». Ton 361 (la classe de la séance répétée) s'est ajouté devant. Je retire donc 456 et n'enlève rien. Si tu ne veux plus la classe d'essai en répétition, dis-le.
+  >
+  > 458. Sur le fond, tu as raison : un mandat ne contiendra plus que tes mots. Ce que je crois utile en plus, je te le propose à part, avant.
+  >
+  > 459. Les exécutants : un seul point chacun ; les endroits du code, écrits par moi dans le mandat ; seulement la preuve de son point ; 30 minutes au plus, puis il pousse et s'arrête. Les petites corrections, je les fais moi-même, comme 391 cette nuit. Si tu ne dis rien, c'est acquis.
+  >
+  > 460. Pour ta classe, le plus utile maintenant est de rattraper une heure (les Dylan d'hier). Je le coupe en morceaux, avec tes seuls mots. D'abord « ▶ Rattraper cette heure » dans une case passée : l'heure rangée à la date de cette case, sans horaire dans le récit, et elle reprend là où tu t'es arrêté. Ensuite seulement, l'autre séance (342). Je lance le premier morceau ?
+  >
+  > À tester : les 8 gestes de 03:07.
+  >
+  > 04/11/2026 03:23
+  >
+  > À jouer : les 8 gestes ; 460 à trancher ; 459 acquis sans mot · en cours : rien · ouvert : lots 2 à 5 (362 à 366), ㉚ ; ⑯ sur ton mot
+  >
+  > MEMO

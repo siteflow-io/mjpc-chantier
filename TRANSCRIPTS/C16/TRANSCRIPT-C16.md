@@ -4026,3 +4026,20 @@ MEMO
   > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les deux sondes (fin vers 22:00), puis mon banc (fin vers 23:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **21:40 — Paul, mot pour mot :**
+
+  > Tu me rajoutes des demi heures à chaque fois
+
+- **21:40 — message à Paul, mot pour mot :**
+
+  > 691. Tu as raison, et c'est ma faute : en changeant le chrono et « Ce que voit la classe », j'aurais dû faire adapter tout de suite les sondes qui lisent ces écrans, dans le même morceau. Je ne l'ai pas fait, d'où ce tour de plus.
+  >
+  > 692. Pour ne pas rajouter une heure : le fichier du site n'a pas changé depuis mon banc (même empreinte), donc tout ce qui était vert le reste. Je propose de ne repasser que les trois parties rouges, avec les sondes mises à jour : les contrôles K1 à K13, la sonde de la ⑩ et celle des sessions, environ 20 minutes au lieu d'une heure. Les sondes seront prêtes vers 22:00 ; je te demanderais « promeus » vers 22:20. D'accord ?
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 21:40
+  >
+  > À jouer : 692 ; 685 ; 666 ; 534 (le test 2) · en cours : les deux sondes (fin vers 22:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

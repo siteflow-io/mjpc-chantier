@@ -2766,3 +2766,5 @@ MEMO
   > À jouer : les 8 gestes ; 465 à corriger s'il le faut · en cours : le rattrapage (premier morceau, 30 min au plus) ; 461 · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **03:40 — 461 prouvé et poussé** : sas `deroule/r461` `49741993b` (dr-socle.js `dr_classe` ; l'assemblé md5 `7a4508ee` ; l'attente de P1 de sonde-lot1 mise à la règle). sonde-lot1 P sur l'assemblé : 104 vérifications ; les 2 seuls « ÉCHEC » sont l'ancienne attente (CLASSE TEST répétée : 4 pastilles, « 0 sur 4 présents » ; l'attente d'avant : 33) ; P6 « répétition · rien d’écrit dans la copie d’une classe » ok ; la répétition de 3E Charles de Gaulle : 29, inchangée. Rien écrit à Paul (il sera dit avec la prochaine mise en ligne).

@@ -2996,3 +2996,21 @@ MEMO
   > À jouer : les 6 gestes ; 493 · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **06:49 — Paul, mot pour mot :**
+
+  > Va regarder
+- **07:02 — la conscience, au vrai hub par le Chrome de Paul** (un onglet, GET seulement, fermé ensuite ; aucun nom recopié) : `/site/repetition` (shallow) ; `/site/repetition/vif` (dernier état 03/11 17:29:25) : 12 réponses, les mêmes initiales et les mêmes débuts que le fichier `RATTRAPAGES/3-DYLAN-2026-11-03.md` ; « CH — A l'arrière plan on peut aussi voir des monta… », tapée le 03/11 à 11:58:50 ; toutes en page 1 de leur diapo. `/classes/3_dylan_bob` : 25 élèves ; les initiales calculées par la conscience (initiale du prénom, puis du nom) : CH 0, YC 0, EG 2, LD 2, les autres 1 (TG, LA, AT, PM, MC, EB, CB). La règle du site pour les initiales : pas vérifiée.
+- **07:02 — message à Paul, mot pour mot :**
+
+  > 494. Au hub, la répétition d'hier a gardé les réponses : c'est bien « CH » que tu as tapé, à 11:58. Les 12 réponses sont celles du fichier, mot pour mot.
+  >
+  > 495. Mais dans la liste des 3 DYLAN (25 élèves), en prenant l'initiale du prénom puis celle du nom, aucun élève n'a « CH », ni « YC ». Et « EG » et « LD » sont chacun deux élèves. Je ne sais pas si le site calcule les initiales exactement ainsi. Au rattrapage, tape les initiales que le site te propose pour ces élèves-là.
+  >
+  > À tester : les 6 gestes de 06:23.
+  >
+  > 04/11/2026 07:02
+  >
+  > À jouer : les 6 gestes · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

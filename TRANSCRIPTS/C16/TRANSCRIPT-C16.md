@@ -3847,3 +3847,21 @@ MEMO
   >
   > MEMO
 - **17:57 — incident** : deux heures tapées à la main et fausses (« vérifié par la conscience à 17:26 » au registre, « 17:22 → 17:27 » ici) : la vérification a duré de 17:22 à 17:55 (l'heure des commits) ; corrigées.
+- **18:15 — Paul, mot pour mot :**
+
+  > Arrête avec le problème grave, je t'ai déjà dit 3 fois dans cette conversation que ce sont des élèves de test. Si tu lisais les transcripts tu le saurais.
+
+- **18:15 — la conscience** : erreur reconnue (662, 663) : le faux hub du sas porte des élèves de test (Paul) ; le registre marqué « ✘ pas une dette » avec les mots de Paul (production).
+- **18:15 — message à Paul, mot pour mot :**
+
+  > 667. Pardon, tu as raison : ce sont des élèves de test, et je ne l'avais pas relu. 662 et 663 sont retirés ; au registre, le point est marqué « pas une dette », avec tes mots.
+  >
+  > 668. Restent la maquette du minuteur (664, 665) et la question 666.
+  >
+  > À tester : la maquette, dans l'ordre de mon message de 17:57.
+  >
+  > 04/11/2026 18:15
+  >
+  > À jouer : la maquette (664), 666 ; 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

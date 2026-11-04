@@ -2883,3 +2883,6 @@ MEMO
   > À jouer : les 8 gestes ; 480 à trancher ; 476 acquis sans mot · en cours : la reprise du lendemain (15 min) · ouvert : 476, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ sur ton mot
   >
   > MEMO
+
+- **04:35 — l'exécutant du troisième morceau (message)** : poussé `bbc1d1c1a` (`deroule/lot2c`, assemblé `2f28361d`) : `dr_reprendre` (dr-classe.js) pose l'écart d'horloge quand le jour de la case n'est pas aujourd'hui ; `dr_horlogeCase` (dr-socle.js) le suit. Prouvé (M5-M7, 9/9 ; base `4c671e4fe` : 4 échecs) : reprise du lendemain, ordinaire et rattrapée : rien ne part ; le reste et l'heure affichée d'avant la fermeture (48 min, 15:08 ; 50 min, 15:07) ; le T-5 au temps joué ; une seule clé ; la reprise du même jour inchangée ; parcours vert. Pas réglé : le chrono après une reprise le lendemain compte depuis le lancement de la veille (1132:34) ; essai retiré, pas prouvé. 191 887 jetons au total.
+- **04:35 — audit de la conscience sur `bbc1d1c1a`** : dr-classe.js (+5), dr-socle.js (3 lignes, pas `dr_classe`), la sonde et ses sorties ; assemblé `2f28361d`. Ça va. Le chrono renvoyé au même exécutant (10 minutes) : après une reprise un autre jour, le chrono repart du temps déjà joué.

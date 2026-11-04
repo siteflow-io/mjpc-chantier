@@ -528,6 +528,17 @@ html.ses-reprise-on .tprof-overlay,html.ses-reprise-on #atelier-ecran,html.ses-r
 :is(#dr-zone,#ses-tab,.at-som-volet) .mur .act [data-p]{outline-color:#fff}
 /* §12.70 (6), 13 · 92 : le minuteur, un seul, sous la diapo — son panneau s'ouvre au-dessus du ⏱ ; le chiffre prend la couleur du tableau */
 #dr-zone .dr-minut-p { position: fixed; z-index: 9000; box-shadow: 0 6px 18px rgba(0,0,0,.28); flex-wrap: nowrap; white-space: nowrap; }
+/* §12.70 bis (Paul, 04/11 16:54) : le réglage en rangée sous la barre de la diapo, au-dessus des notes ; la pastille or sur brun, au pilote et au tableau */
+#dr-minut-p.dr-minut-p { position: static; z-index: auto; box-shadow: none; flex-wrap: nowrap; white-space: nowrap; align-items: center; gap: 12px; padding: 6px 14px; margin: 6px 0; border-radius: 8px; background: var(--carte, #221b10); border: 1px solid var(--bord, #4a3b22); }
+#dr-minut-p #dr-minut-in { width: 4.2em; text-align: center; }
+#dr-minut-p button[disabled] { opacity: .45; cursor: not-allowed; }
+#dr-minut-p .dr-minut-zoom { display: flex; align-items: center; gap: 8px; margin-left: auto; color: var(--or, #e4b45c); }
+#dr-minut-p .dr-minut-zoom input { width: 140px; accent-color: #e4b45c; }
+.dr-pp { box-sizing: border-box; }
+.dr-pp svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dr-pp .dr-pp-chif { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 700 1em/1 "EB Garamond", Georgia, serif; font-variant-numeric: tabular-nums; }
+.dr-minut-pp { position: fixed; z-index: 2147483000; cursor: grab; touch-action: none; user-select: none; }
+.dr-minut-pp.glisse { cursor: grabbing; }
 #dr-zone .dr-minut-p button[disabled] { opacity: .45; cursor: not-allowed; }
 #dr-zone .dr-minut-aff.dr-minut-pret { color: var(--or); }
 #dr-zone .dr-minut-aff.dr-minut-vert { color: #1f9d55; }

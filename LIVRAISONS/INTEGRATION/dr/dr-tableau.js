@@ -336,7 +336,8 @@ function dr_tabPoser(){
       /* §12.70 (1)(7) : chiffres sur fond noir, en haut à droite du tableau (le coin du mur 16:9), aucun mot ; or immobile avant « Départ », puis vert, jaune, orange, rouge clignotant */
       + '#ses-tab .dr-tab-minut{position:absolute;z-index:20;top:calc((100vh - min(100vw, 100vh * 16 / 9) * 9 / 16) / 2 + min(100vw, 100vh * 16 / 9) * .018);right:calc((100vw - min(100vw, 100vh * 16 / 9)) / 2 + min(100vw, 100vh * 16 / 9) * .018);background:#000;color:#d4a017;font:700 calc(min(100vw, 100vh * 16 / 9) * .05)/1 ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;padding:.12em .3em;border-radius:.14em;letter-spacing:.02em;box-shadow:0 .05em .3em rgba(0,0,0,.45);pointer-events:none}'
       + '#ses-tab .dr-tab-minut.m-vert{color:#3ddc84}#ses-tab .dr-tab-minut.m-jaune{color:#ffd60a}#ses-tab .dr-tab-minut.m-orange{color:#ff8c1a}#ses-tab .dr-tab-minut.m-rouge{color:#ff3b30}'
-      + '#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite}@keyframes drMinutClig{50%{opacity:.25}}';
+      + '#ses-tab .dr-tab-minut.m-rouge.m-court{animation:drMinutClig 1s steps(1,end) infinite}@keyframes drMinutClig{50%{opacity:.25}}'
+      + '#ses-tab .dr-tab-minut.dr-tab-pp{position:fixed;right:auto;bottom:auto;background:none;padding:0;box-shadow:none;border-radius:50%;letter-spacing:0;animation:none}';
     document.head.appendChild(st);
   }
   const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -538,9 +539,17 @@ function dr_tabMinutRecevoir(m, tsPilote, local){
   DR_TAB.minut = (m && typeof m === 'object' && isFinite(m.d)) ? m : null; DR_TAB.minutRecu = Date.now();
   dr_tabMinutTic(); clearInterval(DR_TAB.minutT); DR_TAB.minutT = (DR_TAB.minut && DR_TAB.minut.e === 'court') ? setInterval(dr_tabMinutTic, 100) : null; }
 function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.e === 'court' && isFinite(m.f)) return Math.max(0, m.f - (Date.now() + (DR_TAB.decal || 0))); return Math.max(0, +m.r || 0); }
+/* §12.70 bis : la pastille, à la place et à la taille que Paul lui donne sur sa diapo (parts de la diapo, mesurées sur #mur2) */
+function dr_tabMinutPastille(el, m, reste, txt){ const mur = document.getElementById('mur2'); const r = mur ? mur.getBoundingClientRect() : null; if (!r || !r.width) return;
+  if (!el.querySelector('.dr-pp-chif')) el.innerHTML = dr_minutPastilleHTML(); const cl = 'dr-tab-minut dr-pp dr-tab-pp'; if (el.className !== cl) el.className = cl;
+  const s = m.s * r.width; const set = (k, v) => { if (el.style[k] !== v) el.style[k] = v; };
+  set('left', (r.left + m.x * r.width).toFixed(1) + 'px'); set('top', (r.top + m.y * r.height).toFixed(1) + 'px'); set('width', s.toFixed(1) + 'px'); set('height', s.toFixed(1) + 'px'); set('fontSize', (s / 4).toFixed(1) + 'px'); set('display', 'block');
+  dr_minutPastilleMaj(el, txt, reste, m.d, m.e); }
+window.addEventListener('resize', () => { try { if (typeof DR_TAB !== 'undefined' && DR_TAB.minut) dr_tabMinutTic(); } catch (e) {} });
 function dr_tabMinutTic(){ const el = document.getElementById('dr-tab-minut'); if (!el) return; const m = DR_TAB.minut;
   if (!m) { if (el.style.display !== 'none') el.style.display = 'none'; return; }
   const reste = m.e === 'pret' ? m.d : dr_tabMinutReste(); const txt = (typeof dr_mmss === 'function') ? dr_mmss(reste) : String(Math.ceil(reste / 1000));
+  if (isFinite(m.x) && isFinite(m.y) && isFinite(m.s) && typeof dr_minutPastilleMaj === 'function') { dr_tabMinutPastille(el, m, reste, m.e === 'fini' ? '00:00' : txt); if (m.e === 'court' && reste <= 0) { clearInterval(DR_TAB.minutT); DR_TAB.minutT = null; } return; }
   const ph = m.e === 'fini' ? 'rouge' : (typeof dr_minutPhase === 'function' ? dr_minutPhase(reste, m.d, m.e) : 'vert'); const cl = 'dr-tab-minut m-' + ph + (m.e === 'court' ? ' m-court' : '') + (m.e === 'pause' ? ' m-pause' : '');
   if (el.textContent !== txt) el.textContent = txt; if (el.className !== cl) el.className = cl; if (el.style.display === 'none') el.style.display = '';
   if (m.e === 'court' && reste <= 0) { clearInterval(DR_TAB.minutT); DR_TAB.minutT = null; } }

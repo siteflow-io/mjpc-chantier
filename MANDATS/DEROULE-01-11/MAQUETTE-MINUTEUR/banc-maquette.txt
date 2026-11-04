@@ -1,0 +1,51 @@
+OK  1536x864 · 1 · l'heure lancée par la case · [true,{"l":true,"r":false}]
+OK  1536x864 · 1 · la diapo 12 « Chaque groupe présente… », tout dévoilé
+OK  1536x864 · le tableau ouvert dans un second onglet
+OK  1536x864 · 2 · le réglage ouvert, jamais sur la diapo, sous elle, au-dessus des notes · {"ouvert":true,"surDiapo":false,"sousDiapo":true,"auDessusNotes":true}
+OK  1536x864 · 2 · lancé : le réglage caché derrière le ⏱
+OK  1536x864 · 2 · la pastille au pilote et au tableau, même place, même taille · [{"fx":0.9041863207547169,"fy":0.8294951026119403,"fs":0.08333333333333333,"couvre":[],"chif":"04:59","coul":"rgb(228, 180, 92)"},{"fx":0.9041646321614584,"fy":0.8293909143518519,"fs":0.08333333333333333,"couvre":[],"chif":"04:59","coul":"rgb(228, 180, 92)"}]
+OK  1536x864 · 2 · au départ, la pastille ne couvre aucun texte (pilote, tableau) · [[],[]]
+OK  1536x864 · 2 · or sur brun, le chiffre court · rgb(228, 180, 92) 04:59
+OK  1536x864 · 3 · nouveau clic : le réglage revient
+OK  1536x864 · 3 · Pause : le tableau s'arrête · 04:59 / 04:59
+OK  1536x864 · 3 · le ⏱ cache le réglage
+OK  1536x864 · 3 · et le rend
+OK  1536x864 · 3 · Reprendre : le tableau repart · 04:59 → 04:57
+OK  1536x864 · 4 · le zoom agrandit la pastille (×1,5) · 1.501
+OK  1536x864 · 4 · après le zoom, même place et même taille au pilote et au tableau · [{"fx":0.8750491352201258,"fy":0.7774312033582089,"fs":0.12504913522012578,"couvre":[],"chif":"04:56","coul":"rgb(228, 180, 92)"},{"fx":0.875,"fy":0.7775426793981481,"fs":0.125,"couvre":[],"chif":"04:56","coul":"rgb(228, 180, 92)"}]
+OK  1536x864 · 4 · la diapo n'a pas changé (même diapo, même dévoilé)
+OK  1536x864 · 5 · la pastille est au premier plan sur la diapo du pilote (rien ne la couvre)
+OK  1536x864 · 5 · la pastille a bougé au pilote · 0.487
+OK  1536x864 · 5 · elle a glissé au tableau, au même endroit, même taille · [{"fx":0.48742138364779874,"fy":0.6888118003731343,"fs":0.12504913522012578,"couvre":[],"chif":"04:54","coul":"rgb(228, 180, 92)"},{"fx":0.4874267578125,"fy":0.6887659143518519,"fs":0.125,"couvre":[],"chif":"04:54","coul":"rgb(228, 180, 92)"}]
+OK  1536x864 · 5 · la diapo n'a pas changé (le glisser ne clique pas la diapo)
+OK  1536x864 · 6 · avant la dernière minute : or · 01:03 rgb(228, 180, 92)
+OK  1536x864 · 6 · la dernière minute : #e8484c au tableau et au pilote · 00:59 rgb(232, 72, 76) · rgb(232, 72, 76)
+OK  1536x864 · ■ : la pastille retirée du tableau et du pilote
+OK  1536x864 · aucune requête hors de la page · 0 ·  · appels retenus : 18/0
+OK  1536x864 · aucune erreur de page, aucune boîte système
+OK  1920x1080 · 1 · l'heure lancée par la case · [true,{"l":true,"r":false}]
+OK  1920x1080 · 1 · la diapo 12 « Chaque groupe présente… », tout dévoilé
+OK  1920x1080 · le tableau ouvert dans un second onglet
+OK  1920x1080 · 2 · le réglage ouvert, jamais sur la diapo, sous elle, au-dessus des notes · {"ouvert":true,"surDiapo":false,"sousDiapo":true,"auDessusNotes":true}
+OK  1920x1080 · 2 · lancé : le réglage caché derrière le ⏱
+OK  1920x1080 · 2 · la pastille au pilote et au tableau, même place, même taille · [{"fx":0.9041830156950673,"fy":0.8294963430851063,"fs":0.08333333333333333,"couvre":[],"chif":"04:59","coul":"rgb(228, 180, 92)"},{"fx":0.9041666666666667,"fy":0.829441550925926,"fs":0.08333333333333333,"couvre":[],"chif":"04:59","coul":"rgb(228, 180, 92)"}]
+OK  1920x1080 · 2 · au départ, la pastille ne couvre aucun texte (pilote, tableau) · [[],[]]
+OK  1920x1080 · 2 · or sur brun, le chiffre court · rgb(228, 180, 92) 04:59
+OK  1920x1080 · 3 · nouveau clic : le réglage revient
+OK  1920x1080 · 3 · Pause : le tableau s'arrête · 04:59 / 04:59
+OK  1920x1080 · 3 · le ⏱ cache le réglage
+OK  1920x1080 · 3 · et le rend
+OK  1920x1080 · 3 · Reprendre : le tableau repart · 04:59 → 04:57
+OK  1920x1080 · 4 · le zoom agrandit la pastille (×1,5) · 1.500
+OK  1920x1080 · 4 · après le zoom, même place et même taille au pilote et au tableau · [{"fx":0.875035033632287,"fy":0.7776346409574468,"fs":0.125035033632287,"couvre":[],"chif":"04:56","coul":"rgb(228, 180, 92)"},{"fx":0.875,"fy":0.777589699074074,"fs":0.125,"couvre":[],"chif":"04:56","coul":"rgb(228, 180, 92)"}]
+OK  1920x1080 · 4 · la diapo n'a pas changé (même diapo, même dévoilé)
+OK  1920x1080 · 5 · la pastille est au premier plan sur la diapo du pilote (rien ne la couvre)
+OK  1920x1080 · 5 · la pastille a bougé au pilote · 0.487
+OK  1920x1080 · 5 · elle a glissé au tableau, au même endroit, même taille · [{"fx":0.4874346038863976,"fy":0.6886843417553191,"fs":0.125035033632287,"couvre":[],"chif":"04:54","coul":"rgb(228, 180, 92)"},{"fx":0.48744303385416665,"fy":0.6887008101851851,"fs":0.125,"couvre":[],"chif":"04:54","coul":"rgb(228, 180, 92)"}]
+OK  1920x1080 · 5 · la diapo n'a pas changé (le glisser ne clique pas la diapo)
+OK  1920x1080 · 6 · avant la dernière minute : or · 01:03 rgb(228, 180, 92)
+OK  1920x1080 · 6 · la dernière minute : #e8484c au tableau et au pilote · 00:59 rgb(232, 72, 76) · rgb(232, 72, 76)
+OK  1920x1080 · ■ : la pastille retirée du tableau et du pilote
+OK  1920x1080 · aucune requête hors de la page · 0 ·  · appels retenus : 18/0
+OK  1920x1080 · aucune erreur de page, aucune boîte système
+BILAN : 50 vérifications, 50 OK, 0 échec(s)

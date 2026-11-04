@@ -3720,3 +3720,20 @@ MEMO
   > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **16:06 — Paul, mot pour mot :**
+
+  > pourquoi une maquette?
+
+- **16:07 — message à Paul, mot pour mot :**
+
+  > 647. Parce que trois des cinq points du minuteur se jugent à l'œil : où il se place pour ne jamais couvrir le texte, son allure (celle du site), et la place de son panneau. Ta règle : ce qui se juge à l'œil se valide sur une maquette faite du fichier en ligne, avant tout code, pour ne pas recoder. C'était ma proposition en 364 ; tu ne l'avais pas commentée.
+  >
+  > 648. Je propose de la garder pour ces trois points seulement. Les deux autres (le minuteur dans « Ce que voit la classe », la même horloge pour tous les appareils) n'en ont pas besoin : ils se codent et se prouvent directement.
+  >
+  > À tester : 534, le test 2 (« Relire l'heure » des Dylan, « composé par le site »).
+  >
+  > 04/11/2026 16:07
+  >
+  > À jouer : 534 (le test 2) · en cours : rien · ouvert : 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

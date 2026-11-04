@@ -3014,3 +3014,31 @@ MEMO
   > À jouer : les 6 gestes · en cours : rien · ouvert : 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
   >
   > MEMO
+
+- **07:12 — Paul, mot pour mot** (avec le récit de l'heure rattrapée des 3 DYLAN en pièce jointe — il nomme des élèves par leur prénom : non recopié au sas) :
+
+  > Voilà le récit de la séance dylan complétée d'hier. Va la vérifier au hub et lis le récit.
+- **07:14 — la conscience, au vrai hub par le Chrome de Paul** (un onglet, GET seulement, fermé ensuite ; aucun nom recopié) : `/site/3e/chapitres/1/seances/0/deroule_joue/3_dylan_bob` : `heures` : une seule clé `2026-11-03_10h07-11h02_3_dylan_bob` (`rattrapee: true`, `clos: true`, heure 1 sur 1, `debutReel` 04/11 06:33:34, `finReel` 07:10:56, `minutesJouees` 37, `echeance` 2026-11-06) ; `decisionsParEcran` : 8 « reporter » (11, 12, 13, 14, 15, 16, 17, 18 du plan, enregistrées dans l'ordre 11, 17, 15, 14, 13, 12, 16, 18) ; `recit` : la même clé. Le code (8.83.0) : l'ouverture du bilan tirée au hasard parmi « Au total, », « En fin d'heure, », « Pour résumer, », « En tout, » (l. 22130, 22141). Le récit lu en entier : la date de mardi ; aucun horaire ; début/milieu/fin par le rang des paragraphes (« Les compétences du chapitre » au milieu, l'activité 1 à la fin) ; les 7 non faites dans l'ordre d'enregistrement ; deux réponses à « un élève » (YC, CH).
+- **07:14 — message à Paul, mot pour mot :**
+
+  > 496. Au hub, ça va. Une seule entrée, rangée à la case de mardi 10:07-11:02, marquée « rattrapée », close, heure 1 sur 1. Pas de seconde entrée à la date d'aujourd'hui. 8 diapos reportées (Groupe 2 : l'hypothèse, puis 12 à 18, jusqu'au bilan). L'échéance du travail : vendredi 6, à venir. Le récit est rangé sous la même entrée.
+  >
+  > 497. Le récit, lu en entier. Ça va : la date de mardi, aucun horaire, aucun « a commencé à … ». Mais trois choses ne vont pas.
+  >
+  > 498. « Au début / au milieu / à la fin » est réparti selon le rang des paragraphes, et ça ment : « Les compétences du chapitre » se retrouve « au milieu de l'heure » et l'Analyse d'images « à la fin de l'heure ». Je propose de placer chaque paragraphe selon les durées prévues dans ton plan : les diapos courtes d'ouverture au début, l'activité longue au milieu, la mise en commun à la fin.
+  >
+  > 499. La liste des « 7 activités » non faites : ce sont des diapos, et elles sont dans le désordre (Groupe 5, 4, 4, 3, 3, 5, le bilan). Je propose : « 7 diapos », dans l'ordre de ton plan.
+  >
+  > 500. « En fin d'heure, on a observé 2 documents » : « En fin d'heure » est une des quatre façons, tirées au hasard, de commencer ce bilan ; ici, elle se lit comme un moment de l'heure. Je propose de la retirer et de garder « Au total », « Pour résumer », « En tout ».
+  >
+  > 501. Enfin, deux réponses sont attribuées à « un élève » : celles tapées « YC » et « CH ». Ces initiales ne correspondent à aucun élève de la classe (vu en 495).
+  >
+  > 502. 498 à 500 : un petit morceau, 30 minutes au plus, puis la vérification courte. Je le lance ?
+  >
+  > À tester : les gestes 5 et 6 de 06:23.
+  >
+  > 04/11/2026 07:14
+  >
+  > À jouer : 502 · en cours : rien · ouvert : 498 à 500, 342, lots 3 à 5 (363 à 366), ㉚ ; ⑯ (le retard du tableau) sur ton mot
+  >
+  > MEMO

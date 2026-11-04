@@ -4011,3 +4011,18 @@ MEMO
   > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les trois rouges du banc (fin vers 21:35), puis mon banc · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
   >
   > MEMO
+- **21:28 — l'exécutant des rouges (message)** : aucun code du lot changé ; commit `e0d281387` sur `chrono/integration` (deux preuves, `LIVRAISONS/DEROULE-01-11/MINUTEUR-BANC/`) ; assemblé inchangé `c781672e`. (1) K11 : la sonde lit l'ancienne vue ; sur la base, l'ancienne vue est bonne et il n'y a pas de cadre ; sur le candidat, le cadre (`?vignette=1`, `#mur2`) dit « page 1 / 2 » puis « page 2 / 2 » avec les mêmes lignes ["1.3"] que le mur ; `preuve-k11-cadre.mjs` 1/1. (2) La sonde de la ⑩ tape dans `#dr-minut-in`, caché au v3 ; rejouée au geste v3 : A, A1, A2, A3 16/16 ; A4 lit l'ancien chrono (`#dr-minut-pause`, `m-pret`, `m-court`, `m-jaune`, le fond noir, « minuteur ») ; la durée au tableau distant en 97 ms. (3) Les sessions : un aléa : la partie H 3/3 sur le candidat (23/0, 47/0, 47/0), 2/2 sur la base ; le cadre : page tableau locale, ne lit ni n'écrit au hub, n'écoute pas « mjpc-heure », ne parle qu'à sa page mère. Reste : K11 à réécrire dans le cadre ; A4 de sonde-10 au v3 ; sonde-10 à rejouer entière. 160 927 jetons.
+- **21:29 — la conscience** : audit : seuls deux fichiers de preuve ; ça va. Mandat `MANDATS/DEROULE-01-11/MANDAT-SONDES-CHRONO-V3.md` (`b462c5ec6`) ; un exécutant neuf lancé à 21:29, 30 minutes au plus, base `0ff3d8ffd`, branche `banc/chrono-v3` (K11 en patch, appliqué ensuite par la conscience).
+- **21:30 — message à Paul, mot pour mot :**
+
+  > 689. Les trois rouges sont expliqués, et aucun ne vient du code du chrono ni de « Ce que voit la classe ». Le contrôle du compteur de page lisait l'ancienne vue : le cadre, lui, dit « page 1 / 2 » puis « page 2 / 2 » avec les mêmes lignes que le tableau. La sonde de la ⑩ cherchait l'ancien chrono (son champ de durée, son bouton pause, ses couleurs) : au geste du nouveau, la durée paraît au tableau distant en un dixième de seconde. Les sessions : un aléa de la sonde (3 fois sur 3 vertes ensuite, et la version en ligne pareille) ; le cadre ne lit ni n'écrit rien au hub et ne parle qu'à ton pilote.
+  >
+  > 690. Ces deux sondes se mettent au nouveau chrono, sans perdre ce qu'elles prouvaient : un exécutant, lancé à 21:29, 30 minutes au plus. Puis je repasse le banc entier (environ 1 h) ; s'il est vert, je te demande « promeus ».
+  >
+  > À tester : rien.
+  >
+  > 04/11/2026 21:30
+  >
+  > À jouer : 685 ; 666 ; 534 (le test 2) · en cours : les deux sondes (fin vers 22:00), puis mon banc (fin vers 23:00) · ouvert : le « promeus » du chrono ; puis 612 à 637 (ordre de 638), puis 639 à 645 (sur ton mot)
+  >
+  > MEMO

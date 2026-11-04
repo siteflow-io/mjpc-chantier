@@ -240,7 +240,7 @@ const horloge = pg => pg.evaluate(() => { const vis = id => { const x = document
     temoinsTest: [vis('dr-hcase') ? 'horloge de la case' : '', vis('dr-t5') ? 'aller à T-5' : ''].filter(Boolean), cle: _drCleHeure() }; });
 const mot = x => 'lancée ' + x.lancee + (x.r ? ' (rattrapée)' : '') + ' · paliers partis ' + JSON.stringify(x.paliers) + ' · fin ouverte ' + x.finOuverte + ' · reste jusqu’au cahier ' + x.resteMin + ' min · heure affichée ' + x.heure + ' · chrono ' + x.chr + (x.chrC ? ' (' + x.chrC + ')' : '') + ' · témoins classe test ' + JSON.stringify(x.temoinsTest);
 const avancer = async (pg, min) => { await pg.clock.fastForward(min * 60000); await p(2500); };
-const partieM = async () => { let o, pg, x; if (!process.env.MJPC_M5SEUL) {   /* MJPC_M5SEUL : la seule observation M5 (base / après) */
+const partieM = async () => { let o, pg, x; if (!process.env.MJPC_M5SEUL) {   /* MJPC_M5SEUL : les seules reprises M5-M7 (base / après) */
   /* M1 : l'heure rattrapée jouée APRÈS son créneau (jeudi 17/09 17:30, la case du lundi 15:07-16:02) — au lancement, puis à +40 min, puis à +46 min */
   hubAvec(); o = await ouvrir({ h: '17:30', jour: '2026-09-17' }); pg = o.pg; const R1 = await rattraper(pg, '2026-09-14', '15:07-16:02'); await p(3000);
   x = await horloge(pg); dire('  [M1] rattrapée, lancée jeudi 17:30 (case lundi 15:07-16:02) · au lancement : ' + mot(x));
@@ -267,11 +267,22 @@ const partieM = async () => { let o, pg, x; if (!process.env.MJPC_M5SEUL) {   /*
   verif('M4a', rp && i2 && la && i2.eid === la.eid, '« ▶ Reprendre l’heure » le lendemain : la diapo où l’on s’était arrêté', [la, i2]);
   verif('M4b', K4.length === 1 && /^2026-09-17_15h07-16h02_CLASSE_TEST/.test(K4[0]), 'une seule clé au hub, celle de la case (la date et le créneau de l’heure reprise)', K4);
   finir('M9', o, 'M4'); await o.ctx.close(); }
-  /* M5 (mesuré, hors du mandat : dit, pas codé) : une heure RATTRAPÉE laissée pas close, reprise le lendemain — ce que dit l'horloge à la reprise */
-  hubAvec(); o = await ouvrir({ h: '17:30', jour: '2026-09-17' }); pg = o.pg; await rattraper(pg, '2026-09-14', '15:07-16:02'); await jouerJusqua(pg, 'aud-g1-img'); await p(2500); await o.ctx.close();
-  o = await ouvrir({ h: '10:00', jour: '2026-09-18' }); pg = o.pg; await caseDe(pg, '2026-09-14', '15:07-16:02', DYL); await clicTexte(pg, '#edt-modale button', 'Reprendre l’heure'); await p(6000); await pg.keyboard.press('Escape').catch(() => {}); await p(600);
-  const h5 = await horloge(pg).catch(() => null); dire('  [M5] (observation) rattrapée jeudi 17:30, reprise vendredi 10:00 : ' + (h5 ? mot(h5) + ' · clé ' + h5.cle : '—') + ' · les clés : ' + clesDyl().join(', '));
-  finir('M9', o, 'M5'); await o.ctx.close(); };
+  /* M5-M7 (complément de la conscience, Paul 03/11 12:42 : « il faut reprendre là où je me serai arrêté ») : l'horloge à la reprise, puis le T-5 quand le temps joué atteint la fin moins 5 */
+  const reprise = async (k, quoi, lancer, jourR, hR, iso, cr, attendu) => { hubAvec(); o = await ouvrir(lancer.o); pg = o.pg; await lancer.f(pg); await jouerJusqua(pg, 'aud-g1-img'); await p(2500); const av = await horloge(pg); await o.ctx.close();
+    o = await ouvrir({ h: hR, jour: jourR }); pg = o.pg; await caseDe(pg, iso, cr, DYL); const rp = await clicTexte(pg, '#edt-modale button', 'Reprendre l’heure'); await p(6000); await pg.keyboard.press('Escape').catch(() => {}); await p(600);
+    const h0 = await horloge(pg); dire('  [' + k + '] ' + quoi + ' · avant fermeture : reste ' + av.resteMin + ' min, heure ' + av.heure + ' · à la reprise (' + rp + ') : ' + mot(h0) + ' · clés ' + clesDyl().join(', '));
+    let h1 = null, h2 = null; if (h0.resteMin > 7) { await avancer(pg, h0.resteMin - 6); h1 = await horloge(pg); await avancer(pg, 3); h2 = await horloge(pg); dire('  [' + k + '] +' + (h0.resteMin - 6) + ' min : ' + mot(h1) + ' · +' + (h0.resteMin - 3) + ' min : ' + mot(h2)); }
+    attendu(av, h0, h1, h2); finir('M9', o, k); await o.ctx.close(); };
+  const hm = t => { const m = /^(\d{2}):(\d{2})/.exec(t || ''); return m ? +m[1] * 60 + +m[2] : -1; };
+  await reprise('M5', 'ordinaire jouée jeudi 15:08, reprise vendredi 10:00', { o: { h: '15:08', jour: '2026-09-17' }, f: pg => lancerIci(pg, '2026-09-17', '15:07-16:02', DYL) }, '2026-09-18', '10:00', '2026-09-17', '15:07-16:02', (av, h0, h1, h2) => {
+    verif('M5a', h0.paliers.length === 0 && !h0.finOuverte && Math.abs(h0.resteMin - av.resteMin) <= 1 && Math.abs(hm(h0.heure) - hm(av.heure)) <= 1, 'reprise le lendemain : rien ne part, l’horloge reprend là où elle s’était arrêtée (le reste et l’heure affichée d’avant la fermeture)', [h0.paliers, h0.finOuverte, av.resteMin, h0.resteMin, av.heure, h0.heure]);
+    verif('M5b', h1 && h2 && h1.paliers.length === 0 && h2.paliers.includes('t5'), 'le T-5 part quand le temps joué atteint la fin moins 5 (pas avant)', [h1 && h1.paliers, h2 && h2.paliers]); });
+  await reprise('M6', 'rattrapée jeudi 17:30 (case lundi), reprise vendredi 10:00', { o: { h: '17:30', jour: '2026-09-17' }, f: pg => rattraper(pg, '2026-09-14', '15:07-16:02') }, '2026-09-18', '10:00', '2026-09-14', '15:07-16:02', (av, h0, h1, h2) => {
+    verif('M6a', h0.paliers.length === 0 && !h0.finOuverte && Math.abs(h0.resteMin - av.resteMin) <= 1 && Math.abs(hm(h0.heure) - hm(av.heure)) <= 1, 'rattrapée reprise le lendemain : rien ne part, l’horloge reprend là où elle s’était arrêtée', [h0.paliers, h0.finOuverte, av.resteMin, h0.resteMin, av.heure, h0.heure]);
+    verif('M6b', h1 && h2 && h1.paliers.length === 0 && h2.paliers.includes('t5'), 'le T-5 part quand le temps joué atteint la fin moins 5', [h1 && h1.paliers, h2 && h2.paliers]); });
+  await reprise('M7', 'ordinaire jouée jeudi 15:08, reprise le même jour 15:20 dans son créneau', { o: { h: '15:08', jour: '2026-09-17' }, f: pg => lancerIci(pg, '2026-09-17', '15:07-16:02', DYL) }, '2026-09-17', '15:20', '2026-09-17', '15:07-16:02', (av, h0, h1, h2) => {
+    verif('M7a', h0.lancee && h0.paliers.length === 0 && !h0.finOuverte && hm(h0.heure) >= hm('15:20') && hm(h0.heure) <= hm('15:24') && Math.abs(hm(h0.heure) + h0.resteMin - hm('15:57')) <= 1, 'reprise le même jour dans son créneau : l’horloge vraie (l’heure affichée + le reste = 15:57, le cahier), rien ne part', [h0.heure, h0.resteMin, h0.paliers]);
+    verif('M7b', h1 && h2 && h1.paliers.length === 0 && h2.paliers.includes('t5'), 'le T-5 à 15:52, comme avant', [h1 && h1.paliers, h2 && h2.paliers]); }); };
 
 dire(''); dire('══ LOT 2c · ' + NOMF + ' · md5 ' + md5(FICHIER) + ' ══');
 for (const [k, f] of [['M', partieM]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }

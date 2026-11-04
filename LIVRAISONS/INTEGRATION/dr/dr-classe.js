@@ -982,6 +982,11 @@ function dr_reprendre(cb){
     /* le temps où la page était fermée est une COUPURE (C1 1.3 bis) : mis à part tant que Paul n'a pas dit que le cours a continué */
     const vivant = Math.max(+etat.maj || 0, +(t && t.maj) || 0) || Date.now();   /* relecteur neuf n°3 (4) : la dernière trace de vie de la page (l'état, battu chaque minute, ou le paquet) — avant : `etat.maj` seul, écrit au dernier geste : le temps passé sur la diapo depuis comptait comme coupure */
     const trou = Date.now() - vivant;
+    /* C16 (lot 2c ; Paul 03/11 12:42 : « il faut reprendre là où je me serai arrêté ») : une heure reprise un AUTRE JOUR que celui de sa case (ordinaire ou rattrapée)
+       reprend son horloge là où elle s'était arrêtée — le temps déjà joué compte, rien ne part à la reprise, l'heure affichée suit ; le même jour : inchangé */
+    { const p2 = n => (n < 10 ? '0' : '') + n, jr = d => d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); const hj = dr_heureJouee(S.heure) || {};
+      const caseJ = /^\d{4}-\d{2}-\d{2}$/.test(String(AT_DR_COURS.iso || '')) ? String(AT_DR_COURS.iso) : jr(new Date(hj.base || Date.now()));
+      if (caseJ !== jr(new Date())) { const h0 = dr_horlogeCase(); S.hcReprise = { h: S.heure, t0: S.debutReel, dec: vivant + (h0 ? h0.dec + h0.saut : 0) - Date.now() }; } }
     if (trou >= 60000) { S.coupures = S.coupures || []; const e = ecran(); S.coupures.push({ debut: vivant, fin: Date.now(), di: S.di, eid: e && e.eid, duree: Math.round(trou / 60000), compte: false, rechargement: true }); journal('coupure', { duree: Math.round(trou / 60000), rechargement: true }); }
     journal('reprise', { depuis: etat.maj || null });
     DR_CL.reprise = true;

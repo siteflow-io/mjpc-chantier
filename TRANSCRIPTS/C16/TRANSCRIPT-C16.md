@@ -5075,3 +5075,21 @@ MEMO
   > À jouer : les cinq tests de 861 ; 847 ; 849 · en cours : la séance suivante dans cette heure (V), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **21:48 — l'exécutant V rend son travail** (20:57 → 21:48) : `deroule/enchainer` `3f4c25bb4`, `23359ecdb` (NOTE) ; assemblé `d81d142b`. Vraie heure 23/23 ; mode test 23/25 (la marque « séance faite » ne se relit pas au stockage du mode test ; 2 erreurs « reading 'actId' » à « Relire cette heure ») ; répétition : rien après le clic en 240 s ; pas de témoin ; étapes 14-16 et bilan B pas joués. Erreurs du mandat signalées : la séance « finie » seulement quand toutes ses heures prévues sont jouées (réglé : marquée « faite » par le bouton) ; le journal de la séance 1 gardé dans la page (réglé) ; la question de la réactivation bloquait (tranché par lui : sautée, à valider par Paul) ; le tableau remis à l'horloge à la clôture (réglé pour l'enchaînement). Mesuré par la conscience : la case dit « Close · 25 diapos jouées · 10 reportées » pour les deux séances. Captures regardées : vh-1 (le bouton), vh-6 (la case ouverte).
+- **21:51 — mandat V2** (sas `fbabd93b0`, après trois corrections du mandat : les commandes des étapes 14-16, les sondes à jour du banc, le worktree de l'exécutant), lancé.
+- **21:51 — envoyé à Paul** : vh-1, vh-6.
+- **21:51 — message à Paul, mot pour mot :**
+
+  > 876. Le premier exécutant a rendu son travail (51 minutes). Il n'est pas encore bon, donc rien ne part en ligne. En vraie heure, le bouton marche de bout en bout, compté par le geste (23/23) : il n'apparaît que sur la dernière diapo, la séance 1 se clôt, la séance 2 démarre sur le même créneau avec l'absent repris, le tableau passe à la séance 2 sans écran d'attente, et « Relire cette heure » montre les deux récits. Les deux captures jointes montrent le bouton et la case du jour. Ça ne va pas encore pour trois choses. En mode test, deux échecs : la séance 1 marquée « faite » ne se relit pas, et la page fait deux erreurs dans « Relire cette heure ». En répétition, la séance 2 ne démarre pas. Et la case du jour additionne les deux séances (« 25 diapos jouées · 10 reportées ») au lieu de dire ce que chacune a fait. Un deuxième exécutant finit tout ça maintenant (45 minutes au plus) ; il vérifie aussi le cas de demain : une séance 1 en deux heures, enchaînée à sa deuxième heure.
+  >
+  > 877. L'exécutant a trouvé deux erreurs de mon mandat, maintenant réglées. Une séance faite en moins d'heures que prévu n'était pas « finie » pour l'emploi du temps ; elle l'est maintenant quand le bouton la clôt. Et la séance 2 racontait aussi tout le journal de la séance 1 ; ce n'est plus le cas.
+  >
+  > 878. Une décision qu'il a prise à ta place, et que je propose de garder. Quand une séance se lance, le site te pose la question de la réactivation (ce qu'on reprend de la séance d'avant). Pour la séance enchaînée, cette question est sautée, puisque la classe sort juste de la séance 1. Si tu veux la garder, dis-le.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 21:51
+  >
+  > À jouer : 878 (la réactivation sautée pour la séance enchaînée : gardée sauf avis contraire) ; les cinq tests de 861 ; 847 ; 849 · en cours : la fin de la séance suivante dans cette heure (V2), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

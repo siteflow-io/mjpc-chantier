@@ -4544,3 +4544,19 @@ MEMO
   > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:24 — Paul, mot pour mot :**
+
+  > l'animation est fixe, ta vidéo montre une anim fixe. par ailleurs mjpc doit être pllus petit que cours de français etc. il faut intervertir leur taille de police. cours de français monsieur meney doit être en or avec un halo contrasté. l'heure doit être en surimpression le reste esrt correct
+
+- **09:29 — mesuré** : la seconde mouture bougeait à peine (différence moyenne 0,5 entre deux images de la vidéo à 3 s d'écart) ; **troisième mouture** (4,8) : `scratchpad/cap-attente/attente-avant-apres-v3.png`, `attente-animation-v3.mp4` ; regardée ; envoyée. Registre (prod).
+- **09:29 — message à Paul, mot pour mot :**
+
+  > 793. Tu avais raison : la seconde mouture bougeait à peine (mesuré : presque rien ne change entre deux images à 3 s d'écart). La troisième, jointe, bouge franchement (dix fois plus) : « MJPC » petit, « Cours de français - M. Meney » grand, en or, avec un halo sombre et or ; l'heure en surimpression sur deux orbites d'or où une lumière court (un tour en 7 s et en 11 s) ; les lueurs du fond dérivent plus vite. Ma lecture de « en surimpression » : l'heure posée par-dessus les orbites ; si tu voulais autre chose, dis-le.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:29
+  >
+  > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

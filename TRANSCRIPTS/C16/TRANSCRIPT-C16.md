@@ -4393,3 +4393,5 @@ MEMO
   > À jouer : les tests 2 à 5 de 749 ; 666 ; 534 (le test 2) ; ta réponse à 768 · en cours : la mesure de 645 · ouvert : P, Q, R (puis un banc, une promotion avec 721), 731 (une capture), 644 (l'audit) ; moins urgent : la fin du récit
   >
   > MEMO
+- **07:43 — l'exécutant O rend son travail** : sas `mesure/retard-tableau` `acb51d7d2` (sonde, deux sorties, NOTE ; rien du site). 3 fois par geste au lieu de 10 (la limite de 20 minutes). Fenêtre puis distant, médiane / plus long : diapo suivante 46/62 et 74/79 ms ; diapo précédente 55/56 et 83/103 ms ; ▶ dévoiler 42/71 et 71/114 ms ; chrono « au tableau » 14/15 et 20/26 ms. Aucun geste mesuré au-delà de 500 ms. Je ne sais pas : ▶ du chrono (un effet vu sur deux ; 479/492 ms au tout premier essai, une seule fois) ; glisser et redimensionner le chrono, geler, dégeler, écrire, surligner, une réponse validée, PageDown/PageUp (la sonde ne voyait pas leur effet).
+- **07:43 — lancé : l'exécutant du mandat P** (`deroule/suite` depuis `1a60c142b`), 20 minutes au plus.

@@ -4526,3 +4526,21 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (792, 793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:20 — Paul, mot pour mot :**
+
+  > je précise pour 794: j'ai tout déplié avec les flèches. Donc ce qui manque c'est un filtre en haut, et une barre de recherche par mot clef: un "tout déplier" "tout replier" déjà, des coches aussi, et un champ de recherche qui permet de chercher un mot contenu dans un intitulé et d'y aller (comme ce que fait ctrl F en somme). Pour 793 j'attends la nouvelle mouture et il faut que l'animation soit plus franche et plus classy. Le CSS doit être moderner
+
+- **09:22 — la seconde mouture de l'écran d'attente** (la vraie page du tableau, le réseau coupé) : `scratchpad/cap-attente/attente-avant-apres-v2.png`, `attente-animation-v2.mp4` ; regardée ; envoyée. Registre (prod).
+- **09:22 — message à Paul, mot pour mot :**
+
+  > 793. La nouvelle mouture, jointe (l'image et une vidéo de 12 s), toujours sur la vraie page du tableau : « MJPC » en or dégradé, « Cours de français - M. Meney » dessous ; l'heure plus grande, avec une lueur ; sous la date, une fine ligne d'or qui se remplit en une minute ; la classe attendue dans une pastille de verre qui respire ; deux anneaux d'or très fins qui tournent lentement autour de l'heure ; au fond, des lueurs ambre et cuivre qui dérivent ; « monsieurjaipascompris » en bas au milieu.
+  >
+  > 794. Précisé au registre : « tout déplier » et « tout replier », des coches, un filtre en haut, et un champ de recherche qui trouve un mot dans les intitulés et y va, comme Ctrl F. Samedi soir.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:22
+  >
+  > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

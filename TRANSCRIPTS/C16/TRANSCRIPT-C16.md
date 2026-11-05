@@ -4709,3 +4709,22 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:37 — Paul, mot pour mot :**
+
+  > ok et du coup l'attestation du bilan peut se cocher automatiquement une fois tous les mots clefs intégrés. Tout est ok. Combien de temps pour coder ça?
+
+- **10:37 — message à Paul, mot pour mot :**
+
+  > 802. Noté : l'attestation « Les élèves ont écrit le bilan » se coche d'elle-même quand tous les points du bilan sont marqués, et reste décochable.
+  >
+  > 811. Le temps, estimé (je ne l'ai pas mesuré) : trois morceaux d'une demi-heure chacun au plus, l'un après l'autre, soit environ une heure et demie. Le premier : la diapo « Mise en commun du bilan » elle-même (posée après chaque bilan, sa question, ses pages de suite, pas de gel, l'attestation). Le deuxième : Alt + B, la liste numérotée, la marque B et sa pastille, les coches, le compteur, l'attestation automatique, « Annuler » et 0. Le troisième : 🅱️ derrière les « … », et G et S au pilotage avec les mêmes boutons de mise en forme qu'à l'atelier (809). Puis le banc complet, une heure, commun à tout ce qui part samedi.
+  >
+  > 812. Samedi 22:30, je propose cet ordre : le récit (783, 534, 782), puis la mise en commun du bilan (811), puis 790, 791, 794, 768, 772, Q, R, 731, l'écran d'attente ; le banc, et la demande de « promeus » dimanche matin. Si tu veux le bilan en premier, dis-le.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:37
+  >
+  > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), la mise en commun du bilan (796-811), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

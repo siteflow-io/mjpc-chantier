@@ -5032,3 +5032,4 @@ MEMO
   >
   > MEMO
 - **20:21 — incident** : une heure tapée à la main au transcript (20:22) ; corrigée en 20:21.
+- **20:35 — Paul, mot pour mot :** « Pourquoi tu dis qu'il peut rester des diapos à la fin de la séance 1 ? Par ailleurs pour que la mesure soit juste et coûte moins cher en tokens , fais la sur mon ordinateur Claude in chrome »

@@ -4827,3 +4827,15 @@ MEMO
   >
   > MEMO
 - **16:09 — Paul, mot pour mot :** « Montre moi le 833 que l'exécutant a fait »
+- **16:10 — envoyé à Paul** : `scratchpad/c833/833-le-compteur-dessin-et-fait.png` (le coin haut droit du dessin de 10:32 ; les captures S6 de la diapo des consignes et de la mise en commun, réduites à la même échelle que la diapo du dessin).
+- **16:10 — message à Paul, mot pour mot :**
+
+  > 839. L'image jointe montre le compteur à la même échelle. À gauche, ton dessin validé : « 0 / 5 » en petit texte or, sans fond. Au milieu et à droite, ce que l'exécutant a fait : « 4 / 4 » dans une étiquette or, la même sur la diapo des consignes et sur la mise en commun. Sur l'image, c'est un peu plus grand que le dessin et ça se voit mieux de loin. Si tu le veux comme le dessin, dis-le ; sinon c'est acquis, et 838 attend ton « promeus ».
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 16:10
+  >
+  > À jouer : 833 (le compteur : étiquette or ou comme le dessin) ; « promeus » (838) · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

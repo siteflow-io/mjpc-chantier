@@ -4397,3 +4397,18 @@ MEMO
 - **07:43 — lancé : l'exécutant du mandat P** (`deroule/suite` depuis `1a60c142b`), 20 minutes au plus.
 - **07:57 — l'exécutant P rend son travail** : sas `deroule/suite` `ca28da1f3` (dr.css ; la sonde `P-RELECTURE/sonde-p.mjs`) ; assemblé md5 `a88e89def9ea172c0192915fd644e0c5`. Mesuré : la page du tableau seule (hors mode test) écrit 2 fois en 35 s, seulement `/site/cle_vue` ; dans un cadre, jamais ; le pilote lit `/site/cle_vue` toutes les 15 s et à « Revérifier » (la garde des fichiers de la clé USB) : gardé. Ouvrir « Ce que voit la classe » dans la Relecture faisait écrire au pilote vif, journal et état de la classe (sans geste : 1 état), le tableau distant inchangé (il ne prend pas le tableau). Fait : dans la Relecture, les quatre boutons 4 → 0 ; au pilotage 4 → 4 ; dans l'atelier 1 → 1. Le parcours vert ; D 11/0 ; la Relecture 17/0. Reste : la phrase « Il n'écrit jamais rien » (fenêtre « Adresse du tableau ») est fausse (`/site/cle_vue`) : à Paul.
 - **07:57 — lancé : l'exécutant du mandat Q** (`deroule/suite` depuis `ca28da1f3`), 30 minutes au plus.
+- **07:58 — message à Paul, mot pour mot :**
+
+  > 771. P est fait et prouvé au faux hub : dans la Relecture, les quatre boutons du tableau ne sont plus là (4 → 0) ; au pilotage et dans l'atelier, rien ne change. Ta question : non, « Ce que voit la classe » ne prenait pas le tableau (le tableau distant ne changeait pas) ; mais l'ouvrir dans la Relecture faisait écrire au pilote l'état de la classe (4 écritures en 20 s au lieu d'une). Ce n'est plus possible, le bouton n'y est plus.
+  >
+  > 772. La fenêtre « Adresse du tableau » dit du tableau distant : « Il n'écrit jamais rien. » C'est faux : il écrit au hub, toutes les quinze secondes environ, si la clé USB est branchée sur l'ordinateur de la classe ; le pilote le lit pour savoir où trouver tes fichiers. Ce que je propose : garder cette écriture, et dire vrai : « Il n'écrit rien de tes classes ; il dit seulement au pilote si ta clé USB y est branchée. » Sans réponse de ta part, je le fais ainsi.
+  >
+  > 773. Q tourne (une session à la fois, avec les informations sur la session qui tient le tableau) ; puis R (« une autre séance… »).
+  >
+  > À tester, quand tu peux et hors de la classe : les tests 2 à 5 de 749.
+  >
+  > 05/11/2026 07:58
+  >
+  > À jouer : les tests 2 à 5 de 749 ; 666 ; 534 (le test 2) ; tes réponses à 768, 770, 772 · en cours : Q (une session à la fois) · ouvert : R, puis un banc et une promotion (avec 721 et P) ; 731 (une capture), 644 (l'audit) ; moins urgent : la fin du récit
+  >
+  > MEMO

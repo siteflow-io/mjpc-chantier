@@ -5166,3 +5166,4 @@ MEMO
   > À jouer : 894 (samedi) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : reprendre l'heure enchaînée (V6), puis le banc court, puis la mise en ligne 8.89.0-㉒ si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **23:40 — redémarrage de la machine** : l'exécutant V6 arrêté en cours ; repris par message (son worktree intact, rien de poussé depuis `447fd83f5`).

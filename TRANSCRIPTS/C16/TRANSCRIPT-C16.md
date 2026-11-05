@@ -4733,3 +4733,4 @@ MEMO
   > il me reste 9 pourcent d'utilisation, je suis en forfait ultra. j'ai cours demain sur le bilan avec les 3e. il faut que ce soit codé aujourd'hui. je te préviendrai pour l'utilisation. fais au plus économique.
 
 - **10:40 — mandat S** (la mise en commun du bilan, un seul exécutant, 45 minutes au plus, sur la 8.86.0-⑲ en ligne ; `deroule/bilan`), puis lancé. 809 (G et S, les boutons uniformes) reste à samedi.
+- **10:41 — préparé** : `scratchpad/banc-bilan.sh` (le banc complet sans témoin, sondes de `banc/nuit` `da55ba0c2`, les sondes de la nuit avec leurs réglages : le réseau lent `MJPC_Q4=normal,devoiler`, le chrono `MJPC_COURT=1` et les montres décalées ; la sonde du bilan ajoutée au retour de S).

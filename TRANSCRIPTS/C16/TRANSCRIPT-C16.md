@@ -4331,3 +4331,5 @@ MEMO
   > À jouer : les cinq tests de 749 et 617 ; 666 ; 534 (le test 2) · en cours : 721 (« Fermer l'atelier » pendant le lancement) · ouvert : 640 (la mesure), 639 (l'audit), 645, 731 (une capture), 644 (l'audit)
   >
   > MEMO
+- **06:34 — l'exécutant K rend son travail** : sas `deroule/fermer-lancement` `619f714be` (dr-classe.js seul) ; assemblé md5 `fd014e54…`. Compté au faux hub ralenti : « Fermer l'atelier » à 8 s de l'attente : 1 lancement, 11 écritures, une heure partie sans pilote → 0 lancement, 0 écriture, aucun ▶ joué ; « normal » : l'heure part ; « devoiler » : 3 ▶ joués ; le parcours, le gel, la case verts. Reste, d'après lui : l'infobulle pendant l'attente non lue par le geste ; fermer dans les dernières secondes (après les premières écritures) non mesuré ; « normal » 9 écritures contre 14 à la base, sans savoir pourquoi.
+- **06:34 — mandat K2** (ce que K n'a pas prouvé), 15 minutes au plus, puis lancé.

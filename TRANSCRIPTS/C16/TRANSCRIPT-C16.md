@@ -5167,3 +5167,18 @@ MEMO
   >
   > MEMO
 - **23:40 — redémarrage de la machine** : l'exécutant V6 arrêté en cours ; repris par message (son worktree intact, rien de poussé depuis `447fd83f5`).
+- **00:01 — l'exécutant V6 rend son travail** (1 211 s) : `71ba6be8c`, `0d7211bba` ; assemblé `86e8a269`. Cause confirmée : deux traces sur le créneau, la case prenait la première (la séance 1 close) et le pilote répondait « Cette heure a été close : elle ne se reprend pas. » ; les 2 erreurs 'ecrans' venaient de la sonde. Correction : `dr_edtReprendre` prend la dernière trace non close du créneau. `MJPC_ROUV=1` vh : 23/34 → 34/34. Heure ordinaire reprise par la case : 23/23 identiques base → après. Rejoués : une heure vh 27/27, test 29/29, parcours vert. Pas rejoués : deux heures, répétition, témoin, T-5 (le banc court les joue).
+- **00:01 — lancé : le banc court** sur `0d7211bba` (`scratchpad/banc-court.sh`, sortie `banc-enchainer-out`, base la 8.88.0-㉑), avec la reprise (`MJPC_ROUV=1`).
+- **00:01 — message à Paul, mot pour mot :**
+
+  > 896. 893 est réglé et prouvé par le geste en vraie heure (34/34). La reprise prenait la séance 1, close, au lieu de la séance 2 qui tourne ; elle prend maintenant l'heure qui tourne. Tu fermes la page pendant la séance 2, tu cliques « ▶ Reprendre l'heure », et tu retrouves la séance 2 à la même diapo, avec ce qui était dévoilé et les réponses tapées. La séance 1 reste intacte. Comparaison : une heure ordinaire se reprenait déjà bien avant ; le défaut venait donc bien de l'enchaînement.
+  >
+  > 897. Le banc court tourne depuis 00:01 (environ 1 h 30, estimé, avec toute la sonde de l'enchaînement). S'il est vert, je mets la 8.89.0-㉒ en ligne sous ton « promeus si le banc est vert », avec la vérification bit à bit et les documents, et je t'écris les tests pour demain matin. S'il est rouge, rien ne part, et tu passes par la répétition (863).
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 06/11/2026 00:01
+  >
+  > À jouer : 894 (samedi) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : le banc court, puis la mise en ligne 8.89.0-㉒ si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

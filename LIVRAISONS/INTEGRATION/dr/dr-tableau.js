@@ -206,7 +206,8 @@ function dr_ttDebut(quoi, p){
   if (rj && rj.p && rj.p.quoi === quoi && String(rj.p.seance) === String(p.seance) && (quoi !== 'heure' || (rj.p.classeSlug || '') === (p.classeSlug || ''))) {   /* la répétition joue avec la classe de cet appareil : la séance suffit */ DR_SES.rejoindre = null; DR_TT.quoi = quoi; DR_TT.sig = rj.sig; DR_TT.emis = ''; DR_TT.trame = ''; DR_TT.T = setInterval(dr_ttEmettre, 250); return; }
   const ptr = Object.assign({}, p, { seance: String(p.seance), test: true, quoi, chemin: DR_TT.chemin, ts: Date.now() });
   DR_TT.quoi = quoi; DR_TT.sig = ptr.ts + '|' + ptr.seance; DR_TT.emis = ''; DR_TT.trame = '';
-  dr_ttEcrire('/scene', null); dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);
+  if (!(typeof DR_ENCH === 'object' && DR_ENCH.sansReact != null)) dr_ttEcrire('/scene', null);   /* C16 mandat V : la séance suivante dans cette heure — l'image d'avant reste jusqu'à la première de la nouvelle */
+  dr_ttTrame(true); dr_ttEcrire('/pointeur', ptr);
   DR_TT.T = setInterval(dr_ttEmettre, 250);
 }
 function dr_ttTrame(force){ try { const E = JSON.parse(JSON.stringify(seance().ecrans)); const em = JSON.stringify(E); if (!force && em === DR_TT.trame) return false; DR_TT.trame = em; DR_TT.trameMaj = Date.now(); dr_ttEcrire('/ecrans', dr_clesVersHub(E)); return true; } catch (e) { return false; } }

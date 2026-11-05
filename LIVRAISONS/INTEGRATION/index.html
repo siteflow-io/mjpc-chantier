@@ -18744,7 +18744,10 @@ function edtSeanceEtat(seance,nomClasse){
   Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return; Object.keys(b.heures||{}).forEach(function(k){ hs.push({cle:k,H:b.heures[k]||{}}); }); });   /* lot 1 (359) */
   hs.sort(function(a,b){ return String(a.cle).localeCompare(String(b.cle)); });
   var sur=edtHeuresPour(seance,null), n=hs.length, der=hs[n-1]||null, rep=der?edtReportees(der.H,['reporter']):[];
-  return {jouees:n, sur:sur, reportees:rep, derniere:der?der.cle:null, finie:n>=sur&&!rep.length, suite:n>=sur&&rep.length>0};
+  /* C16 mandat V (« ▶ Séance suivante dans cette heure ») : une séance entièrement faite avant ses heures prévues est finie — sa dernière heure porte `seanceFaite`
+     (écrit au clic) ; `EDT_FAITE_ICI` : la séance qui tourne, comptée faite le temps de lire la file (le bouton cherche la séance suivante avant la clôture) */
+  var faite=(typeof window!=='undefined'&&window.EDT_FAITE_ICI===seance)||!!(der&&der.H&&der.H.seanceFaite);
+  return {jouees:n, sur:sur, reportees:rep, derniere:der?der.cle:null, finie:(n>=sur||faite)&&!rep.length, suite:(n>=sur||faite)&&rep.length>0, faite:faite};
 }
 function edtSeanceJouee(seance,nomClasse){
   /* [E2] une séance est JOUÉE quand toutes ses heures prévues le sont (`faites >= sur`, `sur` = edtHeuresPour, le quotient de la case) ;
@@ -18803,6 +18806,16 @@ function edtChercherTrace(nomClasse,iso,creneau){
     for(var k=0;k<se.length&&!res;k++) res=edtTraceDe(se[k],nomClasse,iso,creneau);
   }
   return res;
+}
+/* C16 mandat V : TOUTES les séances jouées sur une même case (la séance 1, puis la suivante dans cette heure), dans l'ordre du jeu (le début réel de chaque trace) */
+function edtSeancesDeTrace(nomClasse,iso,creneau){
+  var niv=edtNiveauDe(nomClasse); if(!niv)return []; var l=EDT_CHAP[niv]||[], cles=edtClesHeureTrace(iso,creneau,nomClasse), out=[];
+  for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);
+    for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};
+      Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return; var kk=edtHeureTrouvee(b.heures,cles); if(!kk)return;
+        var H=b.heures[kk]||{}; out.push({titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i, trace:H, debut:+H.debutReel||+H.lanceA||0,
+          chemin:'/site/'+niv+'/chapitres/'+l[i].__cle+'/seances/'+se[k].__i+'/deroule_joue/'+sl+'/heures/'+kk}); }); } }
+  return out.sort(function(a,b){ return a.debut-b.debut; });
 }
 function edtSeanceDeTrace(nomClasse,iso,creneau){   /* [E2] la séance d'une heure jouée (son titre) : où edtTraceDe la trouve (réveil n°5, A4-4) */
   var niv=edtNiveauDe(nomClasse); if(!niv)return null; var l=EDT_CHAP[niv]||[], cles=edtClesHeureTrace(iso,creneau,nomClasse);   /* E1 (1 ter) */
@@ -18928,7 +18941,12 @@ function edtProjeter(isoDebut,nbJours){
       if(trouvee){
         cel.nature='jouee'; cel.activites=(trouvee.activites||[]).length;   /* ㊳ (C16) : les DIAPOS jouées (une ligne par diapo montrée) — la case dit « n diapos jouées » */
         cel.reportees=edtReportees(trouvee,['reporter','suivante']).length;   /* ㊳ : les diapos non faites que l'heure a reportées (avant : `reel === 0`, jamais vrai) */
-        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau); if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null;
+        cel.clos=!!trouvee.clos; var edtOu=edtSeanceDeTrace(nom,iso,c.creneau);
+        var edtTous=edtSeancesDeTrace(nom,iso,c.creneau); if(edtTous.length>1){ var edtDer=edtTous[edtTous.length-1];   /* C16 mandat V : « Séance 1 puis Séance 2 » ; la case porte la dernière (sa suite, « pas finie ») */
+          cel.seances=edtTous.map(function(x){return {titre:x.titre,chapitre:x.chapitre,seance:x.seance,chemin:x.chemin,heure:+x.trace.heure||null,clos:!!x.trace.clos};});
+          cel.clos=edtTous.every(function(x){return !!x.trace.clos;}); cel.activites=edtTous.reduce(function(n,x){return n+(x.trace.activites||[]).length;},0); cel.reportees=edtReportees(edtDer.trace,['reporter','suivante']).length;
+          edtOu={titre:edtTous.map(function(x){return x.titre;}).join(' puis '),chapitre:edtDer.chapitre,seance:edtDer.seance}; }
+        if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null;
           try{ var edtCh=(EDT_CHAP[edtNiveauDe(nom)]||[]).filter(function(x){return x&&String(x.__cle)===cel.chCle;})[0], edtSe=edtCh?edtListe(edtCh.seances).filter(function(x){return x&&String(x.__i)===cel.snum;})[0]:null;
             if(edtSe&&cel.clos){ var edtEt=edtSeanceEtat(edtSe,nom); cel.pasFinie=!!(edtEt.suite&&edtEt.derniere&&edtClesHeureTrace(iso,c.creneau,nom).indexOf(edtEt.derniere)>=0); } }catch(e){}   /* ㊲ : la case de l'heure qui a laissé la séance ouverte dit « séance pas finie » */ }   /* E1 (§12.39-1) : la case jouée porte aussi la clé de sa séance */ /* [E2] la case close garde le titre de sa séance (réveil n°5, A4-4) */ cellules[cle]=cel; continue;
       }
@@ -19706,7 +19724,7 @@ function edtPeindreModale(){
       h+='<p class="edt-p edt-mini-t">Elle a laissé sa trace : elle ne se déplace plus.</p>';
       h+='<p class="edt-p">'+(c.clos?edtJoueeTexte(c)+'.':'Heure jouée \u2014 '+edtJoueeTexte(c)+'. Pas encore close.')+'</p>'
         +(c.clos?'':'<button class="edt-btn edt-btn-prim edt-large" data-reprendre="1" title="L\u2019heure est en cours, pas close (l\u2019onglet s\u2019est fermé ?) : rouvre l\u2019heure de cette classe là où elle en était \u2014 la diapo, sa page, les lignes dévoilées, le chrono, les paroles, les notes, l\u2019appel" onclick="dr_edtReprendre('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">\u25b6 Reprendre l\u2019heure</button>')   /* [E2] mandat 6 ; §12.29 (4) S4 : « Reprendre » = reprendre une heure — avant : « ▶ Reprendre le cours » */
-        +(c.titre?'<p class="edt-p">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':'')+(c.clos?'<button class="edt-btn edt-large" data-relire="1" title="Ouvre la Relecture de cette heure : son récit, ce qui s\u2019est passé, le papier \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */
+        +(c.seances&&c.seances.length>1?'<p class="edt-p">Séances : '+c.seances.map(function(x){return '<b>'+escapeHtml(x.titre)+'</b>';}).join(' puis ')+'</p>':(c.titre?'<p class="edt-p">Séance : <b>'+escapeHtml(c.titre)+'</b></p>':''))+(c.clos&&c.seances&&c.seances.length>1?'<button class="edt-btn edt-large" data-relire="1" title="Relire cette heure : le récit de chaque séance jouée dans l\u2019heure, l\u2019un après l\u2019autre (« ▶ La suite de cette heure » passe au suivant) \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* C16 mandat V */+(c.clos&&!(c.seances&&c.seances.length>1)?'<button class="edt-btn edt-large" data-relire="1" title="Ouvre la Relecture de cette heure : son récit, ce qui s\u2019est passé, le papier \u2014 rien ne se rejoue, rien ne s\u2019écrit" onclick="dr_edtRelire('+JSON.stringify(cle).replace(/"/g,'&quot;')+')">Relire cette heure</button>':'')/* [E2] réveil n°5, A4-4 — avant : « La relecture de cette heure arrive avec le profil de classe. » */
         +edtAbsencesHtml(cle,c);
     } else if(c.nature==='deplacee'){
       var edtQ=String(c.deplaceeVers||'').split('|');

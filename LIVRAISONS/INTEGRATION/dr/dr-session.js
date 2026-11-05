@@ -378,9 +378,10 @@ if (!(typeof dr_estTableau === 'function' && dr_estTableau())) {
 (function(){ const f = window.dr_cloreFin; if (typeof f !== 'function' || f.__ses) return;
   const g = function () { const ici = dr_sesIci() || DR_SES.ici; if (ici) { DR_SES.ici = ici; try { dr_sesEnvoyerMaintenant(true); } catch (e) {} }
     const r = f.apply(this, arguments);
+    /* C16 mandat V : sauf quand la séance suivante se lance dans cette heure (DR_ENCH.en) — le tableau garde son image jusqu'à elle */
     /* l'heure de classe close : le tableau distant revient à l'horloge (la scène « close », plus récente que toute autre) — l'essai retire déjà son pointeur et sa scène (dr_ttFin) ;
        fermer l'onglet sans clore ne l'écrit jamais : l'heure reste déclarée et le tableau garde son image (LOT B ③) */
-    if (ici && ici.sorte === 'heure') { try { const ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1, DR_SES.vu + 1); DR_TAB.dernierTs = ts; dr_ecrire(ici.base + '/scene', { clos: true, ts, origine: (typeof SES === 'object' && SES && SES.id) || 'pilote' }, 'Heure close : le tableau distant revient à l’horloge', () => {}); } catch (e) {} }
+    if (ici && ici.sorte === 'heure' && !(typeof DR_ENCH === 'object' && DR_ENCH.en)) { try { const ts = Math.max(Date.now(), (DR_TAB.dernierTs || 0) + 1, DR_SES.vu + 1); DR_TAB.dernierTs = ts; dr_ecrire(ici.base + '/scene', { clos: true, ts, origine: (typeof SES === 'object' && SES && SES.id) || 'pilote' }, 'Heure close : le tableau distant revient à l’horloge', () => {}); } catch (e) {} }
     if (ici) { DR_SES.closVu[ici.sig] = true; dr_sesSuivreFin(); } return r; };
   g.__ses = true; window.dr_cloreFin = g; })();
 
@@ -404,7 +405,7 @@ function dr_sesReprendreEssai(p, fini){
     dr_reprendreCours(c); if (fini) fini(true);
   }));
 }
-/* relancer la même séance ailleurs la rejoint ; une autre séance qui joue : le site le dit avant, Paul choisit */
+/* relancer la même séance ailleurs la rejoint ; une autre séance qui joue : le site le dit avant, Paul choisit — C16 mandat V : l'essai de CET appareil (son pointeur, `DR_TT.sig`), gardé pour la séance suivante dans cette heure, n'est pas « un autre appareil » */
 (function(){ const f = window.dr_lancer; if (typeof f !== 'function' || f.__ses) return;
   const g = function (classeSlug, creneau, debut, heure, sur) { const args = arguments, self = this;
     const ec = AT.edChap || {}; const ici = { niveau: ec.level, chapitre: ec.chnum, seance: ATVUES.snum, classeSlug: classeSlug };
@@ -413,7 +414,7 @@ function dr_sesReprendreEssai(p, fini){
     if (dr_sesTest()) {
       dr_sesLireHub(DR_TT.chemin + '/pointeur', p => {
         if (dr_sesFrais(p) && p.quoi === 'heure' && meme(p) && !(DR_TT.sig && DR_TT.sig === p.ts + '|' + p.seance)) { dr_sesReprendreEssai(p); return; }   /* le même essai joue ailleurs : on le rejoint */
-        if (dr_sesFrais(p) && p.quoi === 'heure' && !meme(p)) { dr_sesDemander('Un essai (mode test) joue déjà sur un autre appareil : ' + (p.classeNom || p.classeSlug || '') + ' · séance ' + p.seance + '.', () => dr_sesReprendreEssai(p), suite,
+        if (dr_sesFrais(p) && p.quoi === 'heure' && !meme(p) && !(DR_TT.sig && DR_TT.sig === p.ts + '|' + p.seance)) { dr_sesDemander('Un essai (mode test) joue déjà sur un autre appareil : ' + (p.classeNom || p.classeSlug || '') + ' · séance ' + p.seance + '.', () => dr_sesReprendreEssai(p), suite,
           { rejoindre: 'Cet appareil pilote l’essai qui joue (mode test), là où il en est : rien n’est créé, rien n’est arrêté', lancer: 'Lance ici l’essai que tu as choisi (mode test) ; le tableau distant le suit. L’essai de l’autre appareil continue, sans le tableau distant' }); return; }
         suite(); });
       return; }

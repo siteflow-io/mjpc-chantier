@@ -4412,3 +4412,8 @@ MEMO
   > À jouer : les tests 2 à 5 de 749 ; 666 ; 534 (le test 2) ; tes réponses à 768, 770, 772 · en cours : Q (une session à la fois) · ouvert : R, puis un banc et une promotion (avec 721 et P) ; 731 (une capture), 644 (l'audit) ; moins urgent : la fin du récit
   >
   > MEMO
+- **08:11 — Paul, mot pour mot :**
+
+  > ok 772. 749: 2 fait. 3. fait. 4. ok. 5. fait . En revanche, tu dis que je peux corriger le journal "sali" mais ce n'est pas le cas (à part en faisant "modifier avec ma version"). il me reste 10 pourcent d'utilisation.
+
+- **08:11 — registre** (prod) : le texte sali d'une heure jouée ne se corrige pas ; C16 768 se trompait. Décision de la conscience : plus rien n'est lancé après Q (qui se termine, la règle du 05/10) ; R, la phrase de 772, le banc et la promotion attendent le mot de Paul.

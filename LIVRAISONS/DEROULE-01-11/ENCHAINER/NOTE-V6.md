@@ -11,7 +11,8 @@
 - Sonde : le bloc R écrit la pile des erreurs de la page rouverte (`MJPC_PILE`) ; avec `MJPC_DIAG`, il écrit aussi la trace que rend `edtCheminTrace` et les messages au pilote.
 - Assemblé : `86e8a269cf1b57b04e2e436f9cc6caa5` (avant : `f1840ad7`).
 
+- **Rejoué sur l'assemblé `86e8a269`** : la sonde une heure, vraie heure **27/27** (`sorties/v6-vh-une-heure.txt`), mode test **29/29** (`v6-test-une-heure.txt`) ; le parcours P0-P12 **vert**, 30 contrôles, 0 échec (`v6-parcours.txt`).
+
 ## 2 · Ce qui reste (30 minutes atteintes)
-- La sonde rejouée en entier sur l'assemblé `86e8a269` : vh et test une heure lancés à 23:58, résultat au commit suivant s'il arrive ; non rejoués : deux heures, répétition, témoin, T-5.
-- Le parcours P0-P12 sur `86e8a269` : non rejoué.
+- Pas rejoués sur `86e8a269` : deux heures (`MJPC_DEUX`), répétition, témoin, T-5 (`MJPC_T5`). La correction ne touche que « ▶ Reprendre l'heure » depuis la case, quand le créneau porte plusieurs traces.
 - Le mode test : pas touché (NOTE-V5 §0.1, décision de Paul).

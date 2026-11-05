@@ -1,0 +1,32 @@
+parcours du déroulé dans le site · 2026-11-05 00:09 UTC · fichier md5 89b20483cd87c0bbb8fad5484bf14634 · 3104561 o · faux hub /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/wt-f/AUDITS/INTEGRATION-DEROULE/hub
+  ok     P0 · panneau ouvert
+  ok     P1 · la grille réelle (semaine du 14/09)
+  ok     P2 · la case 3E Charles de Gaulle, bouton « lancer » — ▶ Ouvrir le pilotage et lancer — appel fait : tous présents | ✎ Préparer
+  ok     P2 · « Préparer » sur la case (E2)
+  ok     P3 · la porte — Éditer dans l’atelier
+  ok     P3 · la barre fusionnée Structure · Atelier · Pilotage · Relecture (E1) — structure atelier pilotage relecture
+  ok     P3 · le déroulé p8 dans la page (#mur, #volet), sans iframe
+  ok     P3 · plus d'iframe at-dr-iframe
+  ok     P3 · la diapo 1 de la séance 0 au mur, avec ses lignes — 2 lignes
+  ok     P4 · menu ouvert (voir la capture)
+  ok     P5 · l'Atelier ne lance plus (aucun « ▶ Lancer » visible hors de l'écran de la classe, §12.28 (3a))
+  ok     P5 · lancée par la case de l'emploi du temps (§12.28 (3a)) — la case de l'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28)
+  ok     P5 · l'heure se joue dans l'écran « la classe en cours » (§12.28 (3a), E1)
+  ok     P5 · lancée par la case de l'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28) — 8 écritures
+  ok     P5 · écrit au lancement : deroule_joue\/[^/]+$
+  ok     P5 · écrit au lancement : cours_actif$
+  ok     P6 · voir la capture
+  ok     P7 · voir la capture
+  ok     P8 · fenêtre ouverte — file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/f-out/ap
+  ok     P8 · la fenêtre est la page elle-même (?vue=tableau&local=1, E3)
+  ok     P8 · le tableau rend quelque chose — TABLEAU 3 Le Radeau de la Méduse, Théodore Géricault, 1818-1819
+  ok     P9 · les sept étapes de la maquette (#fin, E2)
+  ok     P10 · Relecture ouverte — Le récit · heure 2 | Ce qui s'est passé · heure 2 | Papier · heure 2 | Le chapitre
+  ok     P10 · les faces de la maquette (E4)
+  ok     P11 · la face Papier de la Relecture (E4)
+  ok     P12 · clôture demandée (voir la capture) — étape 7 : « Clore l’heure » — garde passée
+  ok     P12 · au hub, H.clos et H.finReel après la clôture (E2) — {"clos":true,"finReel":true}
+  ok     K15 · 28 écritures, toutes sur des chemins permis
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système
+PARCOURS VERT

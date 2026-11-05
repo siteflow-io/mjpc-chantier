@@ -725,3 +725,6 @@ body.vue-atelier :is(#dr-zone,#ses-tab,.at-som-volet) .mur .ouv-sombre [contente
 #dr-rel-ia-repli{width:100%;height:160px;font-size:12px}
 :is(#dr-zone,#ses-tab,.at-som-volet) .chap-regle{margin:0 0 8px;font-style:italic;color:var(--texte2)}
 :is(#dr-zone,#ses-tab,.at-som-volet) .chap-manque{color:var(--texte2)}
+/* mandat F (nuit du 04/11) : « L'heure se lance… » — par-dessus tout, sans rien bloquer (les clics passent dessous) */
+#dr-lance{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:2147483000;pointer-events:none;background:#241e17;color:#e4b45c;border:1px solid #4a3d2f;border-radius:999px;padding:8px 18px;font:600 1rem/1.3 system-ui,sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.45);max-width:calc(100vw - 32px);text-align:center;animation:drLancePouls 1.6s ease-in-out infinite}
+@keyframes drLancePouls{50%{opacity:.7}}

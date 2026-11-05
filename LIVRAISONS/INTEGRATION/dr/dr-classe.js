@@ -1921,3 +1921,45 @@ function dr_annulerHeure(){
   try { if (typeof atClasseFermer === 'function') atClasseFermer(); else if (typeof edtOuvrir === 'function') edtOuvrir(); } catch (e) {}
   try { dr_closConfPoser({ classe: nom, h: '', chemin: null, heure: null, annulee: true }); } catch (e) {}
 }
+
+/* ─── mandat F (nuit du 04/11, C16 365 · 642) : LE RÉSEAU LENT — « L'heure se lance… » à l'écran, aucun ▶ perdu.
+   Mesuré (audit I §4) : de « ▶ Ouvrir le pilotage et lancer » au départ de l'heure, 30 à 36 s sans aucun signe (« aucune session »,
+   un écran noir, « aucune heure lancée ») ; un ▶ pressé pendant l'attente était défait au départ de l'heure. Ici : du clic au départ
+   (`lancerHeure`, ou la reprise d'une heure qui tourne), une bande « L'heure se lance… » par-dessus tout ; un ▶ (bouton, touche,
+   télécommande) pendant l'attente est GARDÉ et joué une seule fois, dès que l'heure est partie. La bande s'efface si l'écran
+   « Où en est la classe » demande la décision du professeur (heure 2 et suivantes), ou si le lancement est refusé (son message le dit).
+   « Fermer l'atelier » : inchangé (la conscience pose la question à Paul). ─── */
+var DR_LANCE = null;
+function dr_lanceBande(){ let b = document.getElementById('dr-lance'); if (!DR_LANCE) { if (b) b.remove(); return; }
+  const n = DR_LANCE.gardes, vue = DR_LANCE.attente && (n > 0 || Date.now() - DR_LANCE.t0 > 1500);   /* un réseau normal (l'heure part en moins d'une seconde, mesuré) : rien ne clignote à l'écran */
+  if (!vue) { if (b) b.style.display = 'none'; return; }
+  if (!b) { b = document.createElement('div'); b.id = 'dr-lance'; b.setAttribute('role', 'status');
+    b.title = 'Le réseau répond lentement : l’heure part dès qu’il a répondu, tu n’as rien à refaire. Ce que tu dévoiles pendant ce temps (▶, la flèche, la télécommande) est gardé et se fait une seule fois, dès que l’heure est partie.';
+    document.body.appendChild(b); }
+  const t = 'L’heure se lance…' + (n ? ' · ' + (n === 1 ? '1 ▶ gardé : il se fera' : n + ' ▶ gardés : ils se feront') + ' dès que l’heure sera partie' : '');
+  if (b.textContent !== t) b.textContent = t; b.style.display = '';
+  const ho = document.getElementById('hou'); if (ho && /^aucune heure lancée$/.test(ho.textContent)) { ho.textContent = 'L’heure se lance…'; DR_LANCE.hou = true; } }
+function dr_lanceFin(raison){ const L = DR_LANCE; if (!L || !L.attente) return; L.attente = false; clearInterval(L.tic);
+  try { const ho = document.getElementById('hou'); if (L.hou && ho && ho.textContent === 'L’heure se lance…') ho.textContent = raison === 'partie' && S.heure ? dr_entete(S.heure) : 'aucune heure lancée'; } catch (e) {}
+  if (raison === 'partie') dr_lanceJouer(); else if (raison === 'decision') L.tDec = Date.now(); else { L.gardes = 0; DR_LANCE = null; }   /* refusé : son message le dit ; rien n'est joué */
+  dr_lanceBande(); }
+function dr_lanceJouer(){ const L = DR_LANCE; if (!L) return; let n = L.gardes; L.gardes = 0; DR_LANCE = null;
+  const un = () => { if (n-- <= 0) return; try { const b = document.getElementById('bdev'); if (b && b.offsetParent) b.click(); else devoiler(); } catch (e) {} setTimeout(un, 150); };
+  setTimeout(un, 400); }   /* le geste même du professeur, après le départ : la diapo de l'heure partie */
+function dr_lanceTic(){ const L = DR_LANCE; if (!L || !L.attente) return;
+  try { const enCours = !!(S.lancee && !S.close); if (L.avant && !enCours) L.avant = false; if (!L.avant && enCours && AT_DR_REGIME === 'classe') { dr_lanceFin('partie'); return; } } catch (e) {}
+  try { const o = document.getElementById('o-lancer'); if (o && o.offsetParent) { dr_lanceFin('decision'); return; } } catch (e) {}
+  if (Date.now() - L.t0 > 180000) { try { atInfo('Le lancement n’a pas abouti en 3 minutes' + (L.gardes ? ' : ' + L.gardes + ' ▶ gardé' + (L.gardes > 1 ? 's' : '') + ' ne se feront pas' : '') + '. Rouvre l’emploi du temps et relance l’heure.'); } catch (e) {} dr_lanceFin('refus'); return; }
+  dr_lanceBande(); }
+function dr_lanceGarder(){ if (!DR_LANCE || !DR_LANCE.attente) return false; DR_LANCE.gardes++; dr_lanceBande(); return true; }
+document.addEventListener('click', ev => { try { if (DR_LANCE && DR_LANCE.attente && ev.target && ev.target.closest && ev.target.closest('#bdev')) { ev.stopPropagation(); ev.preventDefault(); dr_lanceGarder(); } } catch (e) {} }, true);
+window.addEventListener('DOMContentLoaded', () => { try {
+  if (typeof edtLancer === 'function' && !edtLancer._drLance) { const e0 = edtLancer; edtLancer = function(cle, preparer){ if (preparer) return e0.apply(this, arguments);
+      const f0 = window.edtFermer; let passe = false; if (typeof f0 === 'function') window.edtFermer = function(){ passe = true; return f0.apply(this, arguments); };
+      try { return e0.apply(this, arguments); } finally { if (typeof f0 === 'function') window.edtFermer = f0;
+        if (passe) { if (DR_LANCE) clearInterval(DR_LANCE.tic); let av = false; try { av = !!(S.lancee && !S.close); } catch (e) {} DR_LANCE = { t0: Date.now(), attente: true, gardes: 0, avant: av, hou: false }; DR_LANCE.tic = setInterval(dr_lanceTic, 250); } } };
+    edtLancer._drLance = true; }
+  if (typeof lancerHeure === 'function' && !lancerHeure._drLance) { const l0 = lancerHeure; lancerHeure = function(){ const r = l0.apply(this, arguments); if (DR_LANCE) { DR_LANCE.avant = false; if (DR_LANCE.attente) dr_lanceFin('partie'); else if (Date.now() - (DR_LANCE.tDec || 0) < 600000) dr_lanceJouer(); else DR_LANCE = null; }   /* après « Où en est la classe » : les ▶ gardés se font au départ, s'il suit (10 min au plus) */ return r; }; lancerHeure._drLance = true; }
+  if (typeof devoiler === 'function' && !devoiler._drLance) { const d0 = devoiler; devoiler = function(){ if (dr_lanceGarder()) return; return d0.apply(this, arguments); }; devoiler._drLance = true; }
+  if (typeof atInfo === 'function' && !atInfo._drLance) { const a0 = atInfo; atInfo = function(m){ try { if (DR_LANCE && DR_LANCE.attente && /échoué|ne s’ouvre pas|ne s'ouvre pas|déjà close|Aucune classe pour ce niveau/.test(String(m))) dr_lanceFin('refus'); } catch (e) {} return a0.apply(this, arguments); }; atInfo._drLance = true; }
+} catch (e) {} });

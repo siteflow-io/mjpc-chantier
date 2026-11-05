@@ -4482,3 +4482,29 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 768, 772, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:09 — Paul, mot pour mot (deux captures jointes : l'Atelier des 3 FRANKLIN, « Diapo null sur 0 » ; le tableau en attente) :**
+
+  > dette trouvée: quand je suis en mode test, que je gèle une diapo, que je vais sur une autre et que je dégèle sur cette autre, après, je peux passer toutes les diapos sans plus avoir de garde. Je ne sais pas si c'est pareil en classe normale, sachant que je répète encore une fois: le mode test doit fonctionner AVEC les mêmes fonctions de la classe normale, sauf ses spécificités définies par le fait d'être un mode test. Par ailleurs, voici un écran bizarre. Enfin, 731 (arrête de me refaire des numéros sur d'autres numéros, on reprend toujours les numéros dans les messages!!), il faudra voir si le fait d'avoir été en win k hier me bloquait dans mon redimensionnement. enfin, autre chose: le tableau, en attendant une heure, montre ce qu'il y a sur ma deuxième capture. le "monsieurjaipascompris" doit passer en bas au milieu, en plus petit, et à sa place, il faut mettre MJPC, et agrandir l'heure, la date et le nom de la classe attendue ainsi que l'horaire. Enfin, que coûterait le fait de faire une animation comme dans evaluation qcm? Montre moi une capture construite de ce que ça donnerait.
+
+- **09:13 — incident déclaré** : en 785-789, j'ai donné de nouveaux numéros à des points déjà numérotés (731, 772, 768…) ; règle de Paul : un point garde son numéro. **Capture construite** de l'écran d'attente (la vraie page du tableau, `index.html?vue=tableau`, le réseau coupé, EB Garamond local) : `scratchpad/cap-attente/attente-avant-apres.png`, `attente-animation.mp4` ; regardée ; envoyée. Registre (prod `e216665`).
+- **09:13 — message à Paul, mot pour mot :**
+
+  > Compris : un point déjà numéroté garde son numéro dans mes messages.
+  >
+  > 790. Le gel, une autre diapo, le dégel, puis plus de garde : au registre, pas mesuré. Je le mesure samedi en mode test et en vraie heure ; le mode test garde toutes les fonctions de la classe.
+  >
+  > 791. « Diapo null sur 0 » dans l'entête de l'Atelier, sur la diapo « Où en sommes-nous ? » de l'heure 1 : au registre, pas mesuré ; samedi.
+  >
+  > 731. Win + K : je ne peux pas le mesurer d'ici ; à voir sur l'ordinateur de la classe. Au registre.
+  >
+  > 792. L'écran d'attente du tableau : la capture construite et la vidéo jointes, faites sur la vraie page du tableau. « MJPC » en haut, l'heure, la date et la classe attendue agrandies, « monsieurjaipascompris » en bas au milieu, petit ; l'animation, sur le modèle de l'attente de l'évaluation QCM, mais or sur brun et calme : une onde qui glisse sous la classe attendue, des points qui flottent, une lueur qui passe lentement.
+  >
+  > 793. Ce que ça coûterait : peu. Rien au hub, rien d'écrit, seulement du dessin dans la page du tableau ; un exécutant court, et une preuve par captures. Ce que je ne sais pas : ce que l'animation demande à l'ordinateur de la classe, s'il est ancien ; on le verrait sur place. Si l'animation te plaît, je l'ajoute à samedi avec le reste de l'écran d'attente ; sinon, seulement MJPC et les tailles.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:13
+  >
+  > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 768, 772, Q (777, 778), R, 731, l'écran d'attente (792), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

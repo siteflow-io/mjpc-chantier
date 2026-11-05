@@ -4353,3 +4353,4 @@ MEMO
   > À jouer : les cinq tests de 749 et 617 ; 666 ; 534 (le test 2) ; ta réponse à 760 · en cours : rien · ouvert : 639 (l'audit), 645, 731 (une capture), 644 (l'audit) ; 721 prêt pour la prochaine promotion
   >
   > MEMO
+- **07:20 — mandat N** (639 : l'audit d'« une autre séance… »), 20 minutes au plus, puis lancé.

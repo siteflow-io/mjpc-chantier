@@ -4693,3 +4693,19 @@ MEMO
   > À jouer : ton choix pour 810 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:31 — Paul, mot pour mot :**
+
+  > B est bien. Par ailleurs montre la diapo des consignes aussi, au fur et à mesure de la sélection
+
+- **10:32 — dessin** : la mise en commun et la diapo des consignes, 0 à 3 points : `scratchpad/cap-attente/bilan-consignes-au-fur-et-a-mesure.png` ; regardé ; envoyé.
+- **10:32 — message à Paul, mot pour mot :**
+
+  > 810. Noté : B. L'image jointe montre, à gauche, la mise en commun au tableau et, à droite, la diapo des consignes du bilan telle que 🅱️ l'ouvre, à chaque Alt + B : au départ 0 / 5 ; puis le point 1, le 2, le 3 se cochent, avec la même marque et la même pastille que dans la mise en commun, et le compteur suit des deux côtés. C'est encore un dessin pour choisir, pas la page du site.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:32
+  >
+  > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

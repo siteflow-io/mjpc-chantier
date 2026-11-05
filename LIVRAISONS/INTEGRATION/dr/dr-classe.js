@@ -1507,7 +1507,10 @@ function dr_relireTrace(chemin, h){
   return true;
 }
 function dr_edtReprendre(cle){
-  const cel = edtCellule(cle); if (!cel) return; const t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau); if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
+  const cel = edtCellule(cle); if (!cel) return; let t = edtCheminTrace(cel.classeMjpc, cel.iso, cel.creneau);
+  /* C16 mandat V6 : un créneau qui porte deux traces (la séance 1 close, la séance enchaînée qui tourne) — la reprise prend l'heure qui tourne, pas la première trouvée */
+  try { const L = typeof edtSeancesDeTrace === 'function' ? edtSeancesDeTrace(cel.classeMjpc, cel.iso, cel.creneau) : []; if (L.length > 1) { const o = L.filter(x => x && x.trace && !x.trace.clos).pop(); if (o) t = { chemin: o.chemin, trace: o.trace }; } } catch (e) {}
+  if (!t || !t.trace) { atInfo('La trace de cette heure est introuvable.'); return; }
   if (t.trace.clos) { atInfo('Cette heure a été close : elle ne se reprend pas.'); return; }
   const m = /^\/site\/([^/]+)\/chapitres\/([^/]+)\/seances\/([^/]+)\/deroule_joue\/([^/]+)\//.exec(t.chemin); if (!m) return;
   edtFermer(); edtModaleFermer();

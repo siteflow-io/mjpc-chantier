@@ -1,0 +1,46 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M · 2026-11-05 22:53 UTC · md5 730303062ada55cfefcaf1260e0a87ca · images : celle du canon
+
+══ LOT 2c · v6 · md5 730303062ada55cfefcaf1260e0a87ca ══
+
+— partie M
+  [M1] rattrapée, lancée jeudi 17:30 (case lundi 15:07-16:02) · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier -93 min · heure affichée 17:30 · chrono 00:08 · témoins classe test []
+  [M1] +40 min : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier -133 min · heure affichée 18:10 · chrono 00:11 · témoins classe test []
+  [M1] +46 min : lancée true (rattrapée) · paliers partis ["t5"] · fin ouverte true · reste jusqu’au cahier -139 min · heure affichée 18:16 · chrono −3:48 (cr-t5) · témoins classe test []
+  ok     M1a · la case passée : « ▶ Rattraper cette heure » lance l’heure, rattrapée — ["✕","▶ Rattraper cette heure","Banaliser cette heure"]
+  ÉCHEC  M1b · au lancement : aucun palier parti, la fin d’heure fermée, 50 min jusqu’au cahier (l’horloge de sa case) — [[],false,-93]
+  ok     M1c · à +40 min rien ; à +46 min le T-5 part (comme une heure de 55 min commencée au début de son créneau) — [[],["t5"]]
+  ok     M1d · aucun témoin de la classe d’essai (« horloge de la case », « aller à 5 minutes de la fin ») — []
+  ok     M9 · M1 : aucune erreur JS, aucune boîte système
+  [M2] rattrapée, lancée jeudi 10:00 · au lancement : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier 356 min · heure affichée 10:00 · chrono 00:08 · témoins classe test []
+  ÉCHEC  M2a · lancée avant l’horaire de sa case : 50 min jusqu’au cahier, rien de parti — [[],356]
+  ok     M9 · M2 : aucune erreur JS, aucune boîte système
+  [M3] ordinaire, lancée jeudi 15:08 dans son créneau : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 48 min · heure affichée 15:08 · chrono 00:06 · témoins classe test []
+  [M3] +40 min (15:48) : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 8 min · heure affichée 15:48 · chrono 00:09 · témoins classe test []
+  [M3] +46 min (15:54) : lancée true · paliers partis ["t5","t3"] · fin ouverte true · reste jusqu’au cahier 2 min · heure affichée 15:54 · chrono −2:07 (cr-t3) · témoins classe test []
+  ok     M3a · l’heure ordinaire : l’horloge vraie (reste 48 min), rien à +40, le T-5 à 15:52 (+46) — [48,[],["t5","t3"],"15:08"]
+  [M4] jeudi 15:08, ordinaire, jouée jusqu’à « Groupe 1 : Le Radeau de la Méduse », l’onglet fermé sans clore · les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  [M4] vendredi 10:00, la case du jeudi : boutons ["✕","▶ Reprendre l’heure"] · « Reprendre » (true) reprend sur « Groupe 1 : Le Radeau de la Méduse » · lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier -1085 min · heure affichée 10:01 · chrono 00:26 · témoins classe test [] · clé 2026-09-17_15h07-16h02_CLASSE_TEST · une diapo de plus · les clés : 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  ok     M4a · « ▶ Reprendre l’heure » le lendemain : la diapo où l’on s’était arrêté — [{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""},{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""}]
+  ok     M4b · une seule clé au hub, celle de la case (la date et le créneau de l’heure reprise) — ["2026-09-17_15h07-16h02_CLASSE_TEST (pas close)"]
+  ok     M9 · M4 : aucune erreur JS, aucune boîte système
+  [M5] ordinaire jouée jeudi 15:08, reprise vendredi 10:00 · avant fermeture : reste 47 min, heure 15:10 · à la reprise (true) : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier -1085 min · heure affichée 10:02 · chrono 00:26 · témoins classe test [] · clés 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  [M5] le chrono : avant fermeture 00:21 · à la reprise 00:26 · 4 s plus tard 00:30
+  ok     M5c · le chrono repart du temps joué avant la fermeture (à 90 s près), puis il avance — ["00:21","00:26","00:30"]
+  ÉCHEC  M5a · reprise le lendemain : rien ne part, l’horloge reprend là où elle s’était arrêtée (le reste et l’heure affichée d’avant la fermeture) — [[],false,47,-1085,"15:10","10:02"]
+  ÉCHEC  M5b · le T-5 part quand le temps joué atteint la fin moins 5 (pas avant) — [null,null]
+  ok     M9 · M5 : aucune erreur JS, aucune boîte système
+  [M6] rattrapée jeudi 17:30 (case lundi), reprise vendredi 10:00 · avant fermeture : reste -96 min, heure 17:32 · à la reprise (true) : lancée true (rattrapée) · paliers partis [] · fin ouverte false · reste jusqu’au cahier -1086 min · heure affichée 10:03 · chrono 00:27 · témoins classe test [] · clés 2026-09-14_15h07-16h02_CLASSE_TEST (pas close)
+  [M6] le chrono : avant fermeture 00:22 · à la reprise 00:27 · 4 s plus tard 00:31
+  ok     M6c · le chrono repart du temps joué avant la fermeture (à 90 s près), puis il avance — ["00:22","00:27","00:31"]
+  ÉCHEC  M6a · rattrapée reprise le lendemain : rien ne part, l’horloge reprend là où elle s’était arrêtée — [[],false,-96,-1086,"17:32","10:03"]
+  ÉCHEC  M6b · le T-5 part quand le temps joué atteint la fin moins 5 — [null,null]
+  ok     M9 · M6 : aucune erreur JS, aucune boîte système
+  [M7] ordinaire jouée jeudi 15:08, reprise le même jour 15:20 dans son créneau · avant fermeture : reste 45 min, heure 15:11 · à la reprise (true) : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 33 min · heure affichée 15:23 · chrono 12:35 · témoins classe test [] · clés 2026-09-17_15h07-16h02_CLASSE_TEST (pas close)
+  [M7] le chrono : avant fermeture 00:21 · à la reprise 12:35 · 4 s plus tard 12:39
+  ok     M7c · le chrono, reprise le même jour : depuis le lancement (comme à la base, 12:34), et il avance — ["12:35","12:39"]
+  [M7] +27 min : lancée true · paliers partis [] · fin ouverte false · reste jusqu’au cahier 6 min · heure affichée 15:50 · chrono 12:42 · témoins classe test [] · +30 min : lancée true · paliers partis ["t5"] · fin ouverte true · reste jusqu’au cahier 3 min · heure affichée 15:53 · chrono −3:00 (cr-t5) · témoins classe test []
+  ok     M7a · reprise le même jour dans son créneau : l’horloge vraie (l’heure affichée + le reste = 15:57, le cahier), rien ne part — ["15:23",33,[]]
+  ok     M7b · le T-5 à 15:52, comme avant — [[],["t5"]]
+  ok     M9 · M7 : aucune erreur JS, aucune boîte système
+
+--- fin : 23 vérifications, 6 échec(s)

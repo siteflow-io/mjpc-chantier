@@ -388,3 +388,6 @@ chapitre et l'analyse logique. je fais l'évaluation qcm lundi pour les turing, 
 écrite /20, oral /10 et dossier /10 (tout ramassé à la fin du procès, mardi 10/11), QCM chapitre et
 analyse logique (Turing lundi 9/11, Hugo vendredi 13/11). Le calendrier préparé le 1/11 note le
 lundi 9/11 à 13h une « 1/2 journée de la relation » qui touche les Turing à 16:04 : signalé à Paul.
+Paul, 10:38 : « je perds mes heures de l'après midi lundi (dylan et turing). » Le QCM des Turing ne
+peut pas se faire le lundi 9/11 ; proposé (186) : vendredi 13/11 à 8:00, juste avant celui des Hugo
+(8:57).

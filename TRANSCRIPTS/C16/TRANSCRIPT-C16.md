@@ -5033,3 +5033,19 @@ MEMO
   > MEMO
 - **20:21 — incident** : une heure tapée à la main au transcript (20:22) ; corrigée en 20:21.
 - **20:35 — Paul, mot pour mot :** « Pourquoi tu dis qu'il peut rester des diapos à la fin de la séance 1 ? Par ailleurs pour que la mesure soit juste et coûte moins cher en tokens , fais la sur mon ordinateur Claude in chrome »
+- **20:37 — Claude in Chrome injoignable** (Paul écrit depuis son téléphone). Lu dans le code : le récit prend pour début le premier geste du journal de l'heure (`const debut = JH.length ? JH[0].t : now()`, l. 22740-22770) ; le mode test du site n'envoie rien au hub (`dr_temoinTest`, l. 17527), la 3E Charles de Gaulle est la classe du mode test (`dr_classeTest`, l. 17441).
+- **20:37 — message à Paul, mot pour mot :**
+
+  > 871. Tu as raison : à la fin de la séance 1, tout est normalement fait. Il ne reste des diapos que si tu en as sauté par les vignettes, comme dans ton test de cet après-midi (E, F, les activités 6 et 7). Dans ce cas, enchaîner mélangerait tout : les diapos non faites de la séance 1 attendraient la case suivante, avant la séance 2. Je corrige donc 866 : le bouton n'apparaît que si la séance 1 est entièrement faite ; sinon, pas de bouton.
+  >
+  > 872. L'heure de début : le récit prend l'heure du premier geste de l'heure (lu dans le code). Pour la séance 2 enchaînée, ce sera donc l'heure réelle du clic, et il n'y a rien à changer.
+  >
+  > 873. Je n'ai pas pu joindre Claude in Chrome : tu écris depuis ton téléphone. Quand tu seras devant ton ordinateur avec Chrome ouvert, dis-le-moi et je fais la mesure là-bas, en mode test, sur la 3E Charles de Gaulle (« rien n'est enregistré pour la classe ») : la séance 1 jouée jusqu'au bout, puis la séance 2 lancée sur le même créneau, et ce que disent la case et la Relecture.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 20:37
+  >
+  > À jouer : 866 à 868 avec 871 (valider ou corriger) ; 873 (me dire quand Chrome est ouvert) ; 870 (« promeus si le banc est vert », ou après tes tests) ; les cinq tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

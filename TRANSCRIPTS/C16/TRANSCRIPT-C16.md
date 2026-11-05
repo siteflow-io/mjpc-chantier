@@ -4752,3 +4752,14 @@ MEMO
 - **13:51 — reprise, deux parties sur trois vertes** : la sonde du bloc question (celle de `banc/nuit`) 33 ok, 0 échec ; la sonde du bilan, partie W (`MJPC_ANCIEN` = l'assemblé de la 8.86.0-⑲) 6/6. L'étape 16 tourne.
 - **13:51 — préparé, pas en ligne : le candidat 8.87.0-⑳** (`scratchpad/promo-8870/index.html`) : l'assemblé `6c47be89` avec la ligne de version ; md5 `bdc42c4ad02f83947350b51633df7ef0`, 3 135 216 o.
 - **13:51 — incident** : le transcript n'a aucun de mes messages entre 10:37 et 12:12 ; d'après mes notes, les numéros 813 à 829 y ont servi ; je ne peux plus les recopier mot pour mot. La numérotation reprend à 830.
+- **13:52 — message à Paul, mot pour mot :**
+
+  > 830. Le banc du bilan a fini rouge à 13:45, à trois endroits, tous dans les sondes (les programmes qui jouent le site), pas dans le site : la sonde de la fin d'heure comptait encore 9 diapos à reporter, il y en a 10 maintenant (la mise en commun part avec le bilan) ; la sonde du bloc question était l'ancienne ; la sonde du bilan n'avait pas le fichier d'avant. Corrigé, relancé sur le même fichier : le bloc question 33/33, la sonde du bilan 6/6 ; la fin d'heure tourne encore (une vingtaine de minutes, estimé). Ensuite je t'envoie les captures et la demande de « promeus » pour la 8.87.0-⑳. Incidents : ces sondes auraient dû être mises à jour dans le même travail que la mise en commun ; deux heures tapées à la main dans le transcript (corrigées) ; mes messages de 10:37 à 12:12 (813 à 829) ne sont pas dans le transcript.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 13:52
+  >
+  > À jouer : rien · en cours : la fin d'heure du banc, puis la demande de « promeus » (8.87.0-⑳, la mise en commun du bilan) · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

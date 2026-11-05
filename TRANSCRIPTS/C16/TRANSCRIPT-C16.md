@@ -5112,3 +5112,4 @@ MEMO
   > À jouer : 882 (ce que dit la case de demain) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : la répétition (V3), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **22:38 — Paul, mot pour mot :** « Je ne sais pas. Par ailleurs, promeus si le banc est vert. Réponds d'abord à ma question: si je ne finis pas la séance 2 commencée dans la foulée, à t-5 j'ai bien le flux classique? Et je peux à nouveau reporter les diapos restantes et les activités suivantes? »

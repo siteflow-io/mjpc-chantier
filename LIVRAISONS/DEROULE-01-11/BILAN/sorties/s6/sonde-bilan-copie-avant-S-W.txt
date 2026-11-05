@@ -1,0 +1,16 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties W · 2026-11-05 13:14 UTC · md5 23eed7cf29fd3689d550caf1a666b98b · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · s6 · md5 23eed7cf29fd3689d550caf1a666b98b · vraie heure ══
+
+— partie W
+  ok     W0 · W (la copie d’avant S jouée) : aucune erreur JS, aucune boîte système
+  [W] base (3e8a46c9) · « Relire cette heure » true · « Le chapitre » : 783 car., 0 × « bilan », md5 37ca40b1 · le récit : 3827 car., 4 × « bilan », md5 973a28bf · écritures au hub : 0
+  ok     W1 · W (base) : aucune erreur JS, aucune boîte système
+  [W] apres (23eed7cf) · « Relire cette heure » true · « Le chapitre » : 783 car., 0 × « bilan », md5 37ca40b1 · le récit : 3827 car., 4 × « bilan », md5 973a28bf · écritures au hub : 0
+  ok     W2 · W (apres) : aucune erreur JS, aucune boîte système
+  [W] la copie : bilan montré (mur 254 car.), heure close true
+  ok     W3 · « Le chapitre » de la copie d’avant S : inchangé, base → après — 783 → 783 car. · 0 → 0 × « bilan »
+  ok     W4 · le récit de la copie d’avant S : inchangé, base → après — 3827 → 3827 car. · 4 → 4 × « bilan »
+  ok     W5 · relire la copie n’écrit rien au hub — 0 écriture(s)
+
+--- fin : 6 vérifications, 0 échec(s)

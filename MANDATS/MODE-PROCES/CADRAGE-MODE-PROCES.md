@@ -391,3 +391,6 @@ lundi 9/11 à 13h une « 1/2 journée de la relation » qui touche les Turing à
 Paul, 10:38 : « je perds mes heures de l'après midi lundi (dylan et turing). » Le QCM des Turing ne
 peut pas se faire le lundi 9/11 ; proposé (186) : vendredi 13/11 à 8:00, juste avant celui des Hugo
 (8:57).
+Paul, 10:40 : « oui du coup. » — **QCM du chapitre et de l'analyse logique, vendredi 13/11 : Turing
+8:00, Hugo 8:57.** *Le Horla* commence le lundi 16/11 (Hugo 11:04) et le mardi 17/11 (Turing 8:57) ;
+le cadrage du *Horla* (projet, `claude/CADRAGE-chapitre-4e-horla.md`) n'est pas encore mis à jour.

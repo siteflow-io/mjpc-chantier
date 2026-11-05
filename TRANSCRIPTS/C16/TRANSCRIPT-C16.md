@@ -4796,3 +4796,4 @@ MEMO
   > À jouer : ta réponse à 833, si tu veux le compteur comme le dessin · en cours : le banc complet, puis la demande de « promeus » (8.87.0-⑳, la mise en commun du bilan) · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **14:28 — S6, dernier mot** : rien de nouveau (sa surveillance s'est arrêtée après coup ; mêmes résultats, même commit `048be4d1f`).

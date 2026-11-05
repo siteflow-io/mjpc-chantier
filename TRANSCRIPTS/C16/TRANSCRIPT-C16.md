@@ -4318,3 +4318,16 @@ MEMO
   > Pas encore fait les tests. On passe à la suite du plan
 
 - **06:16 — mandat K** (721, « Fermer l'atelier » pendant le lancement ; `MANDATS/DEROULE-01-11/APRES-8860/`), 20 minutes au plus, puis lancé.
+- **06:17 — message à Paul, mot pour mot :**
+
+  > 750. La suite, dans l'ordre que je propose, un exécutant à la fois, court : 721, « Fermer l'atelier » pendant le lancement annule le lancement (ta proposition non commentée, donc acquise) : lancé maintenant, 20 minutes au plus ; puis 640, la mesure de ce que télescope « une session à la fois » (qui libère le tableau tenu par un appareil disparu), et je te présente le choix ; puis 639, l'audit d'« une autre séance… » (ce qu'il télescope), puis son mandat ; puis 645, une mesure courte du retard du tableau sur la 8.86.0 ; puis 731, une capture construite du réglage « le tableau déborde : réduire » avant tout code ; enfin 644, l'audit du cahier de textes en fin d'heure, puis une maquette de sa refonte à te montrer.
+  >
+  > 751. Pour l'usage : les morceaux prêts s'additionnent sur une seule branche, et un seul banc complet passe avant la prochaine promotion. Cette nuit a demandé quinze exécutants et un banc ; où en est ton usage de la semaine, je ne le sais pas. Si tu veux ralentir, dis-moi où m'arrêter.
+  >
+  > À tester, quand tu peux et hors de la classe : les cinq tests de 749.
+  >
+  > 05/11/2026 06:17
+  >
+  > À jouer : les cinq tests de 749 et 617 ; 666 ; 534 (le test 2) · en cours : 721 (« Fermer l'atelier » pendant le lancement) · ouvert : 640 (la mesure), 639 (l'audit), 645, 731 (une capture), 644 (l'audit)
+  >
+  > MEMO

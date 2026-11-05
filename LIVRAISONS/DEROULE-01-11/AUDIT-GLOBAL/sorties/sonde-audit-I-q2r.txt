@@ -1,0 +1,11 @@
+C16 · audit global, partie I · 2026-11-03 13:18 UTC · promo-8812/index.html md5 c21ddbb656b9028cf11b0d70f7b18318 · parties Q2R
+
+— Q2R · le minuteur au tableau, diapo par diapo (heure 1, tout dévoilé, crans 1 et 4) — « Ce que voit la classe » : {"titre":"Le tableau, en ce moment","minuteurDedans":false,"chiffresMMSS":false,"minuteurPilote":"04:58"}
+   26 diapos·crans mesurés ; le minuteur couvre du texte au tableau distant : 7 ; dans la fenêtre du tableau : 7
+   cran 1 · inv-plan-s0 : distant 1 ligne(s), 2825 px² ["Séance 1 sur 9"] · fenêtre 1 ligne(s), 2825 px²
+   cran 1 · emt9v3yqoecf9d : distant 1 ligne(s), 1712 px² ["Observe, discute, fa"] · fenêtre 1 ligne(s), 1712 px²
+   cran 1 · emt9v3yqobbdyt : distant 1 ligne(s), 2681 px² ["Chaque groupe présen"] · fenêtre 1 ligne(s), 2681 px²
+   cran 4 · inv-plan-s0 : distant 1 ligne(s), 2825 px² ["Séance 1 sur 9"] · fenêtre 1 ligne(s), 2825 px²
+   cran 4 · emt9v3yqoecf9d : distant 1 ligne(s), 1928 px² ["Observe, discute, fa"] · fenêtre 1 ligne(s), 1928 px²
+   cran 4 · emt9v3yqobbdyt : distant 1 ligne(s), 1430 px² ["Chaque groupe présen"] · fenêtre 1 ligne(s), 1430 px²
+   cran 4 · fin-h1-s0 : distant 1 ligne(s), 6944 px² ["Cahier de textes — l"] · fenêtre 1 ligne(s), 6944 px²

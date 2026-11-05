@@ -1,0 +1,19 @@
+C16 · audit global, partie I · 2026-11-05 07:10 UTC · q-apres2/index.html md5 523fbb6d2c113cd3c07f62d27629a7f1 · parties Q1D
+
+— Q1D · T·ferme —
+   « A joue (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre ») puis lance (répétition), refusé, clique « L’arrêter et prendre le tableau » et deux ▶ » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente)
+   « pas de pointeur de A au hub à vieillir » → tableau : l’horloge (attente)
+   la modale chez B : « Le tableau est déjà pris. Tu ne peux pas lancer cette répétition : une autre session le tient. Qui le tient : un essai (mode test) Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e) Lancée (ou reprise) : le lundi 14 septembre à 09:00 (il y a 1 min) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · cliqué : L’arrêter et prendre le tableau
+
+— Q1D · R·ferme —
+   « A joue (répétition) » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Répétition en cours Reprendre ») puis lance (vraie heure), refusé, clique « L’arrêter et prendre le tableau » et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « pas de pointeur de A au hub à vieillir » → tableau : l’horloge (attente)
+   la modale chez B : « Le tableau est déjà pris. Tu ne peux pas lancer cette vraie heure de classe : une autre session le tient. Qui le tient : une répétition Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), sans heure de classe Lancée (ou reprise) : le lundi 14 septembre à 09:01 (il y a 1 min) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · cliqué : L’arrêter et prendre le tableau

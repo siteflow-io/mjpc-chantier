@@ -1,0 +1,131 @@
+début Q1D 07:02:47
+C16 · audit global, partie I · 2026-11-05 06:02 UTC · l-base/index.html md5 fd014e542fc12f4f8f99904dc5d36694 · parties Q1D
+
+— Q1D · H·ferme —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Heure en cours avec les 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · B : « · tableau distant pris : 3E Charles de Gaulle est en cours »
+   « B s’arrête » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur vieilli
+
+— Q1D · T·ferme —
+   « A joue (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · R·ferme —
+   « A joue (répétition) » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Répétition en cours Reprendre ») puis lance (vraie heure) et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · RT·ferme —
+   « A joue (répétition en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Répétition en cours (mode test) Reprendre ») puis lance (vraie heure) et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · H·veille —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « A gelé (veille), 20 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Heure en cours avec les 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · B : « · tableau distant pris : 3E Charles de Gaulle est en cours »
+   « B s’arrête » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « A se réveille, deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0] · pointeur vieilli
+navigateurs avant L : 0
+début L 07:09:37
+C16 · audit global, partie I · 2026-11-05 06:09 UTC · l-base/index.html md5 fd014e542fc12f4f8f99904dc5d36694 · parties L
+
+— L · H·reprend —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) · annonce de A : au hub
+   « l’onglet de A fermé, 6 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) · annonce de A : au hub
+   « B ouvre le site (bandeau « Heure en cours avec les 3E Charles de Gaulle Reprendre »), clique « Reprendre », puis deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) · annonce de A : au hub · modale chez B : {"texte":"Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.","boutons":["Compris"]}
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente) · annonce de A : retiré
+   « 4 s après » → tableau : l’horloge (attente) · annonce de A : retiré
+
+— L · T·reprend —
+   « A joue (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) · annonce de A : au hub
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) · annonce de A : au hub
+   « B ouvre le site (bandeau « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre »), clique « Reprendre », puis deux ▶ » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) · annonce de A : au hub · modale chez B : {"texte":"Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.","boutons":["Compris"]}
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente) · annonce de A : retiré
+   « 4 s après » → tableau : l’horloge (attente) · annonce de A : retiré
+
+— L · R·reprend —
+   « A joue (répétition) » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) · annonce de A : au hub
+   « l’onglet de A fermé, 6 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) · annonce de A : au hub
+   « B ouvre le site (bandeau « Répétition en cours Reprendre »), clique « Reprendre », puis deux ▶ » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) · annonce de A : au hub
+   « B s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente) · annonce de A : retiré
+   « 4 s après » → tableau : l’horloge (attente) · annonce de A : retiré
+
+— L · RT·reprend —
+   « A joue (répétition en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) · annonce de A : au hub
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) · annonce de A : au hub
+   « B ouvre le site (bandeau « Répétition en cours (mode test) Reprendre »), clique « Reprendre », puis deux ▶ » → tableau : B (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) · annonce de A : au hub
+   « B s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente) · annonce de A : retiré
+   « 4 s après » → tableau : l’horloge (attente) · annonce de A : retiré
+début Q1 07:12:57
+C16 · audit global, partie I · 2026-11-05 06:12 UTC · l-base/index.html md5 fd014e542fc12f4f8f99904dc5d36694 · parties Q1
+
+— Q1 · H+H —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (vraie heure, même séance, même classe) puis deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « deux ▶ chez A, après l’arrêt de B » → tableau : l’horloge (attente)
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · la modale « Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus. » · boutons ["Compris"] · après un clic sur le 2e : {"texte":"Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.","boutons":["Compris"]} · B ensuite : {"sesId":"ap_mu0w8cuz_0z13c","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:27 08:57 horloge de la case : 08:57 (il est 09:00) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   A ensuite : {"sesId":"ap_mu0w81f9_rrz4x","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"autre","temoin":"● session","repTab":"","mainTxt":"Un autre ordinateur a la main","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:27 08:57 horloge de la case : 08:57 (il est 09:00) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · H+T —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (essai en mode test, même séance, même classe) puis deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « B s’arrête (« Clore l’heure ») » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · la modale « Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus. » · boutons ["Compris"] · après un clic sur le 2e : {"texte":"Heure reprise : la diapo, le chrono, les décisions, les paroles et les notes sont revenus.","boutons":["Compris"]} · B ensuite : {"sesId":"ap_mu0w9jxa_orzvk","lancee":true,"rep":false,"test":true,"ici":"essai /site/tableau_test","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre Mode test 00:26 08:57 horloge de la case : 08:57 (il est 09:01) ⏩ aller à 5 minutes de la fin \ud83d"}
+   A ensuite : {"sesId":"ap_mu0w9890_76lyl","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:25 08:57 horloge de la case : 08:57 (il est 09:01) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · H+R —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (répétition, même séance, même classe) puis deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « B s’arrête (« ■ Arrêter ») » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · pas de modale · B ensuite : {"sesId":"ap_mu0waqjp_pfs4p","lancee":false,"rep":true,"test":false,"ici":null,"main":null,"temoin":"","repTab":"· tableau distant pris : 3E Charles de Gaulle est en cours","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · lun. 14/09 15:07 · répét. 00:10 · diapo 1, dévoilée 2 / 3 · tableau distant pris : 3E Charles de Gaulle est en c"}
+   A ensuite : {"sesId":"ap_mu0waf4f_7qqw3","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:28 08:57 horloge de la case : 08:57 (il est 09:02) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · H+RT —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (répétition en mode test, même séance, même classe) puis deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « B s’arrête (« ■ Arrêter ») » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · pas de modale · B ensuite : {"sesId":"ap_mu0wbyq5_u4ps5","lancee":false,"rep":true,"test":true,"ici":null,"main":null,"temoin":"","repTab":"· tableau distant pris : 3E Charles de Gaulle est en cours","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · lun. 14/09 15:07 Mode test · répét. 00:09 · diapo 1, dévoilée 2 / 3 · tableau distant pris : 3E Charles de Gaull"}
+   A ensuite : {"sesId":"ap_mu0wbnba_8auyb","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:28 08:57 horloge de la case : 08:57 (il est 09:03) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · T+H —
+   « A lance (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « B lance (vraie heure, même séance, même classe) puis deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre » · pas de modale · B ensuite : {"sesId":"ap_mu0wd6wn_ao40v","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:09 08:57 horloge de la case : 08:57 (il est 09:04) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   A ensuite : {"sesId":"ap_mu0wcvft_40zqs","lancee":true,"rep":false,"test":true,"ici":"essai /site/tableau_test","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre Mode test 00:25 08:57 horloge de la case : 08:57 (il est 09:04) ⏩ aller à 5 minutes de la fin \ud83d"}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+arrêté à 07:18:34 (limite des 20 minutes) : 5 combinaisons Q1 sur 26

@@ -1,0 +1,65 @@
+C16 · audit global, partie I · 2026-11-05 07:05 UTC · q-apres2/index.html md5 523fbb6d2c113cd3c07f62d27629a7f1 · parties Q1
+
+— Q1 · H+T —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (essai en mode test, même séance, même classe) puis deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cet essai (mode test) : une autre session le tient. Qui le tient : une vraie heure de classe Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), prévue 09:00-09:52 Lancée (ou reprise) : le lundi 14 septembre à 09:00 (à l’instant) Où elle en est : diapo 1 de la séance Une vraie heure ne s’arrête pas d’ici : reprends-la, puis « Clore l’heure » pour faire la fin d’heure. » · boutons ["Reprendre cette session","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0w8d2s_9yg4a","lancee":false,"rep":false,"test":true,"ici":null,"main":null,"temoin":"","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle aucune heure lancée Mode test — 📝 Notes ⧉ Ce que voit la classe mode test — rien n'est enregistré pour la classe 🖥 Ouvrir le tableau Adre"}
+   A ensuite : {"sesId":"ap_mu0w81g4_5chgv","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:23 08:57 horloge de la case : 08:57 (il est 09:00) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · T+H —
+   « A lance (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « B lance (vraie heure, même séance, même classe) puis deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « deux ▶ chez A, après l’arrêt de B » → tableau : l’horloge (attente)
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cette vraie heure de classe : une autre session le tient. Qui le tient : un essai (mode test) Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e) Lancée (ou reprise) : le lundi 14 septembre à 09:00 (à l’instant) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0w9cbv_vkm4e","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:06 08:57 horloge de la case : 08:57 (il est 09:01) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   A ensuite : {"sesId":"ap_mu0w90ua_zan0w","lancee":false,"rep":false,"test":true,"ici":null,"main":null,"temoin":"● session","repTab":"","mainTxt":"","cle":null,"classe":"3E Charles de Gaulle","entete":"RÉPÉTITION · 3E Charles de Gaulle3E Charles de Gaulle · 08:57-09:52 · heure 1/3● déroulé intègreMode test —horloge de la case : 08:57 (il est 09:01)⏩ aller à 5 "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · R+H —
+   « A lance (répétition) » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (vraie heure, même séance, même classe) puis deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « deux ▶ chez A, après l’arrêt de B » → tableau : l’horloge (attente)
+   « A s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Répétition en cours Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cette vraie heure de classe : une autre session le tient. Qui le tient : une répétition Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), sans heure de classe Lancée (ou reprise) : le lundi 14 septembre à 09:01 (à l’instant) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0wajgx_30nrn","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:06 08:57 horloge de la case : 08:57 (il est 09:02) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   A ensuite : {"sesId":"ap_mu0wa5c0_28i7p","lancee":false,"rep":false,"test":false,"ici":null,"main":null,"temoin":"","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#0","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · heure 1/3 · lun. 14/09 08:57 — Adresse du tableau"}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · RT+R —
+   « A lance (répétition en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2]
+   « B lance (répétition, même séance, même classe) puis deux ▶ » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente)
+   « deux ▶ chez A, après l’arrêt de B » → tableau : l’horloge (attente)
+   « A s’arrête (« ■ Arrêter ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Répétition en cours (mode test) Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cette répétition : une autre session le tient. Qui le tient : une répétition en mode test Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), sans heure de classe Lancée (ou reprise) : le lundi 14 septembre à 09:02 (à l’instant) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0wbpjo_8oj7o","lancee":false,"rep":true,"test":false,"ici":"repetition /site/repetition","main":"moi","temoin":"","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"RÉPÉTITION · 3E Charles de Gaulle · heure 1/3 · lun. 14/09 08:57 · répét. 00:06 · diapo 1, dévoilée 2 / 3 ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse d"}
+   A ensuite : {"sesId":"ap_mu0wbbbg_9s9ef","lancee":false,"rep":false,"test":true,"ici":null,"main":null,"temoin":"","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#0","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · heure 1/3 · lun. 14/09 08:57 Mode test — Adresse du tableau"}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · H+R —
+   « A lance (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B lance (répétition, même séance, même classe) puis deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « deux ▶ chez A, après l’arrêt de B » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-competences-chapitre-s0#0]
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Heure en cours avec les 3E Charles de Gaulle Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cette répétition : une autre session le tient. Qui le tient : une vraie heure de classe Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), prévue 09:03-09:52 Lancée (ou reprise) : le lundi 14 septembre à 09:03 (à l’instant) Où elle en est : diapo 1 de la séance Une vraie heure ne s’arrête pas d’ici : reprends-la, puis « Clore l’heure » pour faire la fin d’heure. » · boutons ["Reprendre cette session","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0wcuc0_82eak","lancee":false,"rep":false,"test":false,"ici":null,"main":null,"temoin":"","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · heure 1/3 · lun. 14/09 15:07 — ⧉ Ce que voit la classe 🖥 Ouvrir le tableau Adresse du tableau Fin de l'heure"}
+   A ensuite : {"sesId":"ap_mu0wcisv_fxcs1","lancee":true,"rep":false,"test":false,"ici":"heure /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"3E Charles de Gaulle","entete":"3E Charles de Gaulle · 08:57-09:52 · heure 1/3 ● déroulé intègre 00:26 08:57 horloge de la case : 08:57 (il est 09:04) ⏩ aller à 5 minutes de la fin 📝 Notes ⧉ "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0
+
+— Q1 · T+T·autre —
+   « A lance (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « B lance (essai en mode test, autre classe) puis deux ▶ » → tableau : B (tableau_test · CLASSE TEST · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « deux ▶ chez A » → tableau : B (tableau_test · CLASSE TEST · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « deux ▶ chez A, après l’arrêt de B » → tableau : l’horloge (attente)
+   « A s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   B : bandeau à l’ouverture « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre » · la modale « Le tableau est déjà pris. Tu ne peux pas lancer cet essai (mode test) : une autre session le tient. Qui le tient : un essai (mode test) Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e) Lancée (ou reprise) : le lundi 14 septembre à 09:04 (à l’instant) Où elle en est : diapo 1 de la séance » · boutons ["Reprendre cette session","L’arrêter et prendre le tableau","Annuler"] · après un clic sur le 2e : null · B ensuite : {"sesId":"ap_mu0wdvsu_onion","lancee":true,"rep":false,"test":true,"ici":"essai /site/tableau_test","main":"moi","temoin":"● session","repTab":"","mainTxt":"","cle":"inv-presentation-chapitre-s0#2","classe":"CLASSE TEST","entete":"CLASSE TEST · 15:07-16:02 · heure 1/3 ● déroulé intègre Mode test 00:06 09:04 📝 Notes ⧉ Ce que voit la classe mode test — rien n'est enregistré pour la classe "}
+   A ensuite : {"sesId":"ap_mu0wdk7d_8oznz","lancee":false,"rep":false,"test":true,"ici":null,"main":null,"temoin":"● session","repTab":"","mainTxt":"","cle":null,"classe":"3E Charles de Gaulle","entete":"RÉPÉTITION · 3E Charles de Gaulle3E Charles de Gaulle · 08:57-09:52 · heure 1/3● déroulé intègreMode test —horloge de la case : 08:57 (il est 09:04)⏩ aller à 5 "}
+   pointeurs restés au hub à la fin : {"cours_actif":false,"repetition":false,"tableau_test":false} · écritures refusées : 0 · erreurs : 0

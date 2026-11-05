@@ -1,0 +1,41 @@
+C16 · audit global, partie I · 2026-11-05 06:02 UTC · l-base/index.html md5 fd014e542fc12f4f8f99904dc5d36694 · parties Q1D
+
+— Q1D · H·ferme —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Heure en cours avec les 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · B : « · tableau distant pris : 3E Charles de Gaulle est en cours »
+   « B s’arrête » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur vieilli
+
+— Q1D · T·ferme —
+   « A joue (essai en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Essai en cours (mode test) — 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : B (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · heure) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · R·ferme —
+   « A joue (répétition) » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Répétition en cours Reprendre ») puis lance (vraie heure) et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (repetition · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · RT·ferme —
+   « A joue (répétition en mode test) » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Répétition en cours (mode test) Reprendre ») puis lance (vraie heure) et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête » → tableau : A (tableau_test · 3E Charles de Gaulle · séance 0 · repetition) [inv-presentation-chapitre-s0#2]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : l’horloge (attente) · pointeur vieilli
+
+— Q1D · H·veille —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « A gelé (veille), 20 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Heure en cours avec les 3E Charles de Gaulle Reprendre ») puis lance (répétition) et deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · B : « · tableau distant pris : 3E Charles de Gaulle est en cours »
+   « B s’arrête » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « A se réveille, deux ▶ » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0]
+   « le pointeur de A vieilli de 4 h 01 (au hub) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-problematique-s0#0] · pointeur vieilli

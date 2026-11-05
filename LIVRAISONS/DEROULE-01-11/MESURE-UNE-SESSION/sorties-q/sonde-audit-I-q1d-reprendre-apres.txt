@@ -1,0 +1,10 @@
+C16 · audit global, partie I · 2026-11-05 07:13 UTC · q-apres2/index.html md5 523fbb6d2c113cd3c07f62d27629a7f1 · parties Q1D
+
+— Q1D · H·ferme —
+   « A joue (vraie heure) » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « l’onglet de A fermé, 6 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « 30 s après » → tableau : A (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2] · pointeur au hub
+   « B ouvre le site (bandeau : « Heure en cours avec les 3E Charles de Gaulle Reprendre ») puis lance (répétition), refusé, clique « Reprendre cette session » et deux ▶ » → tableau : B (cours_actif · 3E Charles de Gaulle · séance 0) [inv-presentation-chapitre-s0#2]
+   « B s’arrête (« Clore l’heure ») » → tableau : l’horloge (attente)
+   « pas de pointeur de A au hub à vieillir » → tableau : l’horloge (attente)
+   la modale chez B : « Le tableau est déjà pris. Tu ne peux pas lancer cette répétition : une autre session le tient. Qui le tient : une vraie heure de classe Classe : 3E Charles de Gaulle Séance : séance 1 du chapitre 0 (3e), prévue 09:00-09:52 Lancée (ou reprise) : le lundi 14 septembre à 09:00 (il y a 1 min) Où elle en est : diapo 1 de la séance Une vraie heure ne s’arrête pas d’ici : reprends-la, puis « Clore l’heure » pour faire la fin d’heure. » · boutons ["Reprendre cette session","Annuler"] · cliqué : Reprendre cette session

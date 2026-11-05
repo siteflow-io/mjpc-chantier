@@ -1,0 +1,47 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 21:55 UTC · fichier md5 bd434b3f4764a6fbae0f714b1383c0c3 · mode vh · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+
+1 — la séance 1 lancée par la case de l'emploi du temps
+  ok     1 · la case du lundi propose la séance 1 — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1/1
+  ok     1 · la séance 1 tourne — {"snum":"0","heure":1,"sur":1,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     1 · un élève marqué absent au clic droit (le 3e de la liste)
+
+2 — ▶ jusqu'à la dernière diapo de la séance 1 : le bouton n'apparaît qu'à la fin
+  ok     2 · avant la dernière diapo, le bouton n'est jamais là — 84 états lus, bouton montré 0 fois
+  ok     2 · sur la dernière diapo, la séance entièrement faite : « ▶ Séance suivante dans cette heure » paraît — {"di":23,"der":23,"faite":true,"bouton":true}
+  ok     2 · son infobulle dit ce qu'il fait et la séance qui suit — Séance suivante dans cette heure : cette séance est entièrement faite. Un clic clôt l’heure comme « ■ Clore l’heure » (son récit entier, rien de reporté ; s’il …
+  ok     2 · une diapo non faite : la séance n'est pas faite (pas de bouton) ; refaite : elle l'est — {"i":5,"sans":false,"avec":true}
+
+3 — le clic : la séance 1 close, la séance 2 lancée dans cette heure
+  la garde de « ■ Clore l'heure » : ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ le mot aux absents (1) (facultatif) — les absents n'auront pas de mot ○ copié pour École Directe — le c
+  ok     3 · la séance 2 tourne, même classe — {"lancee":true,"close":false,"snum":"1","heure":1,"sur":3,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     3 · heure 1 de la séance 2, sur le même créneau (sa clé : le même jour, le même créneau, la même classe) — …/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     3 · la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite — {"cles":1,"clos":true,"seanceFaite":true,"finReel":true,"activites":24}
+  ok     3 · rien de reporté — 0 décision « reporter »
+  ok     3 · la trace de la séance 2 : la classe, le créneau, ouverte — {"classe":"3E Charles de Gaulle","creneau":"08:57-09:52","heure":1,"sur":3,"clos":false}
+  ok     3 · le journal de la séance 2 : rien de la séance 1, un seul lancement (son récit part du lancement, au clic) — {"n":4,"premier":"diapo","hors":0,"lanc":1}
+  ok     3 · l'absent de la séance 1 est absent de la séance 2 (au pilote, et dans l'appel de l'heure) — pilote true · absentsPar 1 élève
+  ok     3 · le tableau distant passe à la séance 2 sans écran d'attente — 55 images lues pendant le passage, attente vue 0 fois · tableau « Le parcours du chapitre Séance 2 sur 9 » · même diapo que le pilote : true
+
+T — la séance 2 enchaînée, pas finie : « aller à 5 minutes de la fin » (l'horloge de la case au T-5 : le cahier de textes à 09:47, la case finit à 09:52), le flux de la fin d'heure, puis « Reporter »
+  (l'heure : plan | presentation-s | problematique | *De la toile au | Écoute et prem | Le e muet dans | Compter les sy | Les rimes | L'enjambement | Les sonorités | fin · horloge de la case 08:57, montre 09:00)
+  ok     T · avant le T-5 : la séance 2 (heure 1) pas finie, rien d'ouvert — {"eid":"emu0w84yhwwdo3","resteAct":1,"resteApres":6,"activitesApres":6}
+  (après « aller à 5 minutes de la fin » : horloge de la case 09:42, montre 09:00)
+  T5 alerte : t5 true · palier t5 · paliers t5 · chrono cr-t5 · journal t5 · panneau ouvert true · préparation false
+  T5 panneau : T-# — le cahier de textes dans # minutes · Fin de l'heure — étape # sur # : l'échéance ❄ Préparer le cahier Plus tard
+  T5 étapes : #:✔ # · l'échéance (proposée : mardi # septembre, # h #) | #:○ # · ce qui n'a pas été fait — # diapos : dis ce qu'elles deviennent | #:○ # · le travail à faire | #:○ # · le récit relu — à relire à la fin de l'heure | #:○ # · le mot aux absents (#) (facultatif) | #:○ # · copié pour École Directe | #:○ # · clore
+  T5 boutons : f-preparer | f-reprendre | f-sans-ech | f-precedente | f-suivante
+  ok     T · au T-5 : l'alerte (« T-5 — le cahier de textes dans 5 minutes », le palier t5), « Préparer le cahier », le panneau de fin d'heure ouvert — T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard
+  T5 étape 2 ouverte : T-# — le cahier de textes dans # minutes · Fin de l'heure — étape # sur # : ce qui n'a pas été fait ❄ Préparer le cahier Plus tard · boutons suivante(hors carte),terminer(hors carte),pastemps(hors carte),reserve(hors carte),nonfait(hors carte),preparer(hors carte)
+  T5 « ce qui n'a pas été fait » : 0 clic(s) sur « À l'heure suivante (si tu ne choisis rien) »
+  T5 au hub : close true · 7 diapos reportées · de l'activité en cours 1/1 · des activités suivantes 6/6 (6 activités)
+  ok     T · « Reporter » puis clore : les diapos restantes de l'activité en cours ET les activités suivantes reportées, rien d'autre — 7 reportées = 1 + 6
+  T5 case du jour : #E Charles de Gaulle SÉANCE puis SÉANCE Close · Séance # : # diapos jouées ; puis Séance # : # diapos jouées · # reportées
+  T5 case suivante : #E Charles de Gaulle SÉANCE heure #/#
+  ok     T · la case suivante continue la séance 2 — 2026-09-15 · 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 2/3
+  T5 la file : {"snum":"1","jouees":1,"sur":3,"finie":false}
+  ok     T · la file : la séance 2 en tête, pas finie (1 heure jouée), son heure suivante reprend ce qui est reporté — {"snum":"1","jouees":1,"sur":3,"finie":false}
+
+écritures du pilote sous /site/3e : 341
+  ok     5 · aucune erreur de page
+
+bilan : 21/21

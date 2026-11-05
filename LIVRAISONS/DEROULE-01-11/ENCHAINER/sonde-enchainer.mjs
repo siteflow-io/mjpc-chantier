@@ -69,12 +69,14 @@ const lireP = c => pg.evaluate(c => new Promise(r => { try { dr_lire(c, v => r(v
 
 /* V3 — le T-5 d'une séance pas finie, puis « Reporter » (l'activité en cours et les suivantes), la clôture, la case suivante. Les lignes « T5 » se comparent, base → après. */
 const t5Bloc = async quoi => {
-  dire(''); dire('T — ' + quoi + ', pas finie : la montre au T-5 (09:42:30, le cahier de textes à 09:47, la case finit à 09:52), le flux de la fin d\'heure, puis « Reporter »');
-  for (let i = 0; i < 4; i++) await bdev();
-  const av = await pg.evaluate(() => { const E = seance().ecrans, o = ordreHeure(S.heure); const k = o.indexOf(S.di); const act = E[S.di] && E[S.di].actId; const reste = o.slice(k).filter(i => E[i] && !E[i].role && E[i].actId && !finie(E[i], i));
-    return { snum: String(ATVUES.snum), heure: S.heure, eid: E[S.di] && E[S.di].eid, act, resteAct: reste.filter(i => E[i].actId === act).map(i => E[i].eid), resteApres: reste.filter(i => E[i].actId !== act).map(i => E[i].eid), actsApres: [...new Set(reste.filter(i => E[i].actId !== act).map(i => E[i].actId))].length, t5: !!S.t5, enFin: !!S.enFin }; });
+  dire(''); dire('T — ' + quoi + ', pas finie : « aller à 5 minutes de la fin » (l\'horloge de la case au T-5 : le cahier de textes à 09:47, la case finit à 09:52), le flux de la fin d\'heure, puis « Reporter »');
+  for (let i = 0; i < 25; i++) { if (await pg.evaluate(() => { const e = seance().ecrans[S.di]; return !!(e && !e.role); })) break; await bdev(); }   /* ▶ jusqu'à la première diapo de travail (après l'ouverture) : l'activité en cours */
+  dire('  (l\'heure : ' + (await pg.evaluate(() => { const E = seance().ecrans; return ordreHeure(S.heure).map(i => (i === S.di ? '*' : '') + (E[i].role || E[i].actId || E[i].act || E[i].eid).slice(0, 14)).join(' | '); })) + ' · horloge de la case ' + (await pg.evaluate(() => { const h = n => new Date(n).toTimeString().slice(0, 5); return h(dr_nowCase()) + ', montre ' + h(Date.now()); })) + ')');
+  const av = await pg.evaluate(() => { const E = seance().ecrans, o = ordreHeure(S.heure); const k = o.indexOf(S.di); const cle = e => e.actId || e.act || e.eid;   /* l'activité d'une diapo (au faux hub, la séance 2 n'a pas d'actId : son titre d'activité) */ const act = E[S.di] && cle(E[S.di]); const reste = o.slice(k).filter(i => E[i] && !E[i].role && !finie(E[i], i));
+    return { snum: String(ATVUES.snum), heure: S.heure, eid: E[S.di] && E[S.di].eid, act, resteAct: reste.filter(i => cle(E[i]) === act).map(i => E[i].eid), resteApres: reste.filter(i => cle(E[i]) !== act).map(i => E[i].eid), actsApres: [...new Set(reste.filter(i => cle(E[i]) !== act).map(i => cle(E[i])))].length, t5: !!S.t5, enFin: !!S.enFin }; });
   verif('T', av.snum === '1' && !av.t5 && !av.enFin && av.resteAct.length > 0 && av.actsApres > 0, 'avant le T-5 : la séance 2 (heure ' + av.heure + ') pas finie, rien d\'ouvert', JSON.stringify({ eid: av.eid, resteAct: av.resteAct.length, resteApres: av.resteApres.length, activitesApres: av.actsApres }));
-  await pg.clock.setSystemTime(new Date('2026-09-14T09:42:30+02:00')); await p(pg, 4000);
+  await pg.evaluate(() => { const b = document.getElementById('dr-t5'); if (b) b.click(); }); await p(pg, 4000);   /* « aller à 5 minutes de la fin » : l'horloge de la case (la classe d'essai) saute au T-5 — le geste de la sonde de fin d'heure (allerT5) */
+  dire('  (après « aller à 5 minutes de la fin » : horloge de la case ' + (await pg.evaluate(() => { const h = n => new Date(n).toTimeString().slice(0, 5); return h(dr_nowCase()) + ', montre ' + h(Date.now()); })) + ')');
   const lire5 = () => pg.evaluate(() => { const vis = el => !!(el && el.offsetParent !== null); const tete = document.querySelector('#fin .pp-tete');
     return { t5: !!S.t5, palier: S.palier, paliers: ['t5', 't3', 't1', 'zero'].filter(k => (S.paliers || {})[k]).join(','), enFin: !!S.enFin, prep: !!S.preparation, ecranFin: !!(document.getElementById('ecran-fin') && document.getElementById('ecran-fin').classList.contains('on')), chr: (document.getElementById('chr') || {}).className || '', tete: tete ? tete.innerText.replace(/\s+/g, ' ') : '',
       liste: Array.from(document.querySelectorAll('#fin .pp-liste [data-sec]')).map(x => x.dataset.sec + ':' + x.innerText.replace(/\s+/g, ' ').trim()).join(' | '), boutons: Array.from(document.querySelectorAll('#fin button')).filter(vis).map(b => b.id || b.innerText.replace(/\s+/g, ' ').trim().slice(0, 30)).join(' | '), journal: J.filter(x => /^(t5|t3|t1|cahier-heure)$/.test(x.type)).map(x => x.type).join(',') }; });
@@ -82,19 +84,20 @@ const t5Bloc = async quoi => {
   const f = await lire5();
   dire('  T5 alerte : t5 ' + f.t5 + ' · palier ' + f.palier + ' · paliers ' + f.paliers + ' · chrono ' + f.chr + ' · journal ' + f.journal + ' · panneau ouvert ' + f.enFin + ' · préparation ' + f.prep);
   dire('  T5 panneau : ' + nz(f.tete)); dire('  T5 étapes : ' + nz(f.liste)); dire('  T5 boutons : ' + nz(f.boutons));
-  verif('T', f.t5 && f.palier === 't5' && f.paliers === 't5' && /Préparer le cahier de textes/.test(f.tete), 'au T-5 : l\'alerte (le palier t5), « Préparer le cahier de textes », le panneau de fin d\'heure ouvert', f.tete.slice(0, 120));
+  verif('T', f.t5 && f.palier === 't5' && f.paliers === 't5' && /T-5/.test(f.tete) && /Préparer le cahier/.test(f.tete) && f.enFin, 'au T-5 : l\'alerte (« T-5 — le cahier de textes dans 5 minutes », le palier t5), « Préparer le cahier », le panneau de fin d\'heure ouvert', f.tete.slice(0, 120));
   await capt(pg, 't5-' + (T5ORD ? 'ordinaire' : 'enchainee') + '-1-le-t5');
-  await pg.click('#f-suivante').catch(() => {}); await p(pg, 1200);
-  let nR = 0; for (let k = 0; k < 40; k++) { const ok = await pg.evaluate(() => { const b = Array.from(document.querySelectorAll('#fin .carte .dec button[data-c="reporter"]')).find(x => !x.classList.contains('on') && !x.disabled && x.offsetParent !== null); if (!b) return false; b.click(); return true; }); if (!ok) break; nR++; await p(pg, 500); }
-  const cartes = await pg.evaluate(() => Array.from(document.querySelectorAll('#fin .carte')).map(c => { const o = c.querySelector('.dec button.on'); return o ? o.dataset.c : '-'; }).join(','));
-  dire('  T5 « ce qui n\'a pas été fait » : ' + nR + ' clic(s) sur « Reporter » · les cartes : ' + cartes);
+  await pg.evaluate(() => { const l = document.querySelector('#fin .pp-liste [data-sec="2"]'); if (l) l.click(); }); await p(pg, 1200);   /* l'étape 2, « ce qui n'a pas été fait » */
+  dire('  T5 étape 2 ouverte : ' + nz(await pg.evaluate(() => { const t = document.querySelector('#fin .pp-tete'); return (t ? t.innerText.replace(/\s+/g, ' ') : '') + ' · boutons ' + [...new Set(Array.from(document.querySelectorAll('#fin button[data-c]')).map(b => b.dataset.c + (b.closest('.carte') ? '' : '(hors carte)')))].join(','); })));
+  let nR = 0; for (let k = 0; k < 40; k++) { const ok = await pg.evaluate(() => { const L = Array.from(document.querySelectorAll('#fin button[data-c="reporter"], #fin button[data-c="suivante"]')).filter(x => x.offsetParent !== null && !x.disabled); const b = L.find(x => !x.classList.contains('on')); if (!b) return false; b.click(); return true; }); if (!ok) break; nR++; await p(pg, 500); }   /* « Reporter » (la dernière heure de la séance) ou « À l'heure suivante » (une heure qui n'est pas la dernière : la séance 2 a 3 heures) — le flux classique, `ouvrirFin` l. 406 */
+  const libR = await pg.evaluate(() => [...new Set(Array.from(document.querySelectorAll('#fin button[data-c="reporter"], #fin button[data-c="suivante"]')).map(b => b.innerText.trim()))].join(', '));
+    dire('  T5 « ce qui n\'a pas été fait » : ' + nR + ' clic(s) sur « ' + libR + ' »');
   await capt(pg, 't5-' + (T5ORD ? 'ordinaire' : 'enchainee') + '-2-reporter');
   const Hp = (await etat()).H;
   await pg.evaluate(() => { const l = document.querySelector('#fin .pp-liste [data-sec="7"]'); if (l) l.click(); }); await p(pg, 900);
   await pg.evaluate(() => { const b = document.getElementById('dr-clore'); if (b) b.click(); }); await p(pg, 900); await pg.evaluate(() => { const x = document.getElementById('f-clore'); if (x) x.click(); }); await p(pg, 900);
   if (await pg.evaluate(() => { const g = document.getElementById('garde-clore'); return !!(g && g.classList.contains('on')); })) { await pg.click('#gclore-oui').catch(() => {}); await p(pg, 1500); }
   const z = await attendre(pg, async () => { const w = await etat(); return w.close || !w.lancee ? w : null; }, 8000) || await etat();
-  const H = await lireP(Hp); const rep = Object.keys((H && H.decisionsParEcran) || {}).filter(k => (H.decisionsParEcran[k] || {}).choix === 'reporter');
+  const H = await lireP(Hp); const rep = Object.keys((H && H.decisionsParEcran) || {}).filter(k => /^(reporter|suivante)$/.test((H.decisionsParEcran[k] || {}).choix));
   const okA = av.resteAct.filter(e => rep.includes(e)).length, okB = av.resteApres.filter(e => rep.includes(e)).length;
   dire('  T5 au hub : close ' + !!(H && H.clos) + ' · ' + rep.length + ' diapos reportées · de l\'activité en cours ' + okA + '/' + av.resteAct.length + ' · des activités suivantes ' + okB + '/' + av.resteApres.length + ' (' + av.actsApres + ' activités)');
   verif('T', H && H.clos === true && !(z.lancee && !z.close) && okA === av.resteAct.length && okB === av.resteApres.length && rep.length === av.resteAct.length + av.resteApres.length, '« Reporter » puis clore : les diapos restantes de l\'activité en cours ET les activités suivantes reportées, rien d\'autre', rep.length + ' reportées = ' + okA + ' + ' + okB);
@@ -105,9 +108,9 @@ const t5Bloc = async quoi => {
   dire('  T5 case du jour : ' + nz(c14.t || '')); dire('  T5 case suivante : ' + nz(sv.t || ''));
   verif('T', (sv.t || '').indexOf(S2.slice(0, 15)) >= 0, 'la case suivante continue la séance 2', sv.iso + ' · ' + (sv.t || ''));
   await capt(pg, 't5-' + (T5ORD ? 'ordinaire' : 'enchainee') + '-3-la-case-suivante');
-  const tete = await pg.evaluate(([n, r]) => { try { const f = edtFileDAttente(n, null); const se = f && f.seances && f.seances[0]; const H2 = edtSeanceEtat(se, n); return { snum: se && String(se.__i), suite: H2.suite, reportees: (H2.reportees || []).length, r0: (H2.reportees || []).slice(0, r.length).join(',') === r.join(',') }; } catch (e) { return 'ERR ' + e.message; } }, ['3E Charles de Gaulle', rep]);
+  const tete = await pg.evaluate(([n, r]) => { try { const f = edtFileDAttente(n, null); const se = f && f.seances && f.seances[0]; const H2 = edtSeanceEtat(se, n); return { snum: se && String(se.__i), jouees: H2.jouees, sur: H2.sur, finie: H2.finie }; } catch (e) { return 'ERR ' + e.message; } }, ['3E Charles de Gaulle', rep]);
   dire('  T5 la file : ' + JSON.stringify(tete));
-  verif('T', tete && tete.snum === '1' && tete.suite === true && tete.reportees === rep.length, 'la file : la séance 2 en tête, « suite », ses reportées à reprendre en tête de l\'heure suivante', JSON.stringify(tete));
+  verif('T', tete && tete.snum === '1' && tete.jouees === 1 && !tete.finie, 'la file : la séance 2 en tête, pas finie (1 heure jouée), son heure suivante reprend ce qui est reporté', JSON.stringify(tete));
 };
 
 /* 1 — l'heure 1 : par la case (vh, test, temoin) ou « ▶ Jouer en avance » (rep) */

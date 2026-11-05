@@ -1,0 +1,30 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 21:59 UTC · fichier md5 bd434b3f4764a6fbae0f714b1383c0c3 · mode vh · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+
+1 — la séance 1 lancée par la case de l'emploi du temps
+  ok     1 · la case du lundi propose la séance 2 (la séance 1 jouée et close le 07/09) — 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1/3
+  ok     1 · la séance 2 tourne — {"snum":"1","heure":1,"sur":3,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     1 · un élève marqué absent au clic droit (le 3e de la liste)
+
+T — l'heure ordinaire (la séance 2 lancée par la case), pas finie : « aller à 5 minutes de la fin » (l'horloge de la case au T-5 : le cahier de textes à 09:47, la case finit à 09:52), le flux de la fin d'heure, puis « Reporter »
+  (l'heure : plan | presentation-s | problematique | *De la toile au | Écoute et prem | Le e muet dans | Compter les sy | Les rimes | L'enjambement | Les sonorités | fin · horloge de la case 08:57, montre 09:00)
+  ok     T · avant le T-5 : la séance 2 (heure 1) pas finie, rien d'ouvert — {"eid":"emu0w84w6i1p3r","resteAct":1,"resteApres":6,"activitesApres":6}
+  (après « aller à 5 minutes de la fin » : horloge de la case 09:42, montre 09:00)
+  T5 alerte : t5 true · palier t5 · paliers t5 · chrono cr-t5 · journal t5 · panneau ouvert true · préparation false
+  T5 panneau : T-# — le cahier de textes dans # minutes · Fin de l'heure — étape # sur # : l'échéance ❄ Préparer le cahier Plus tard
+  T5 étapes : #:✔ # · l'échéance (proposée : mardi # septembre, # h #) | #:○ # · ce qui n'a pas été fait — # diapos : dis ce qu'elles deviennent | #:○ # · le travail à faire | #:○ # · le récit relu — à relire à la fin de l'heure | #:○ # · le mot aux absents (#) (facultatif) | #:○ # · copié pour École Directe | #:○ # · clore
+  T5 boutons : f-preparer | f-reprendre | f-sans-ech | f-precedente | f-suivante
+  ok     T · au T-5 : l'alerte (« T-5 — le cahier de textes dans 5 minutes », le palier t5), « Préparer le cahier », le panneau de fin d'heure ouvert — T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 1 sur 7 : l'échéance ❄ Préparer le cahier Plus tard
+  T5 étape 2 ouverte : T-# — le cahier de textes dans # minutes · Fin de l'heure — étape # sur # : ce qui n'a pas été fait ❄ Préparer le cahier Plus tard · boutons suivante(hors carte),terminer(hors carte),pastemps(hors carte),reserve(hors carte),nonfait(hors carte),preparer(hors carte)
+  T5 « ce qui n'a pas été fait » : 0 clic(s) sur « À l'heure suivante (si tu ne choisis rien) »
+  T5 au hub : close true · 7 diapos reportées · de l'activité en cours 1/1 · des activités suivantes 6/6 (6 activités)
+  ok     T · « Reporter » puis clore : les diapos restantes de l'activité en cours ET les activités suivantes reportées, rien d'autre — 7 reportées = 1 + 6
+  T5 case du jour : #E Charles de Gaulle SÉANCE Close · # diapos jouées · # reportées
+  T5 case suivante : #E Charles de Gaulle SÉANCE heure #/#
+  ok     T · la case suivante continue la séance 2 — 2026-09-15 · 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 2/3
+  T5 la file : {"snum":"1","jouees":1,"sur":3,"finie":false}
+  ok     T · la file : la séance 2 en tête, pas finie (1 heure jouée), son heure suivante reprend ce qui est reporté — {"snum":"1","jouees":1,"sur":3,"finie":false}
+
+écritures du pilote sous /site/3e : 81
+  ok     5 · aucune erreur de page
+
+bilan : 9/9

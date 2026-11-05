@@ -1425,7 +1425,7 @@ function dr_fusionCopie(trame, copie, journalJ){
     if (!c) { res.push(e); return; }                                   /* nouveau dans la trame */
     res.push(sig(e) !== sig(c) && modifie(e.eid) ? c : e); });         /* modifié dans la trame : la trame, sauf ce que la classe a modifié */
   (copie || []).forEach((c, i) => { if (!c || vus.has(c.eid) || !(joue(c.eid) || c.role === 'reactivation')) return;   /* retiré de la trame mais joué : il reste, à sa place ; §12.26-2 : la réactivation construite ne vit que dans la copie — gardée même pas encore montrée (construite à la clôture) */
-    const prec = (copie[i - 1] || {}).eid; const k = res.findIndex(x => x && x.eid === prec); res.splice(k >= 0 ? k + 1 : res.length, 0, c); });
+    const prec = (copie[i - 1] || {}).eid; const k = res.findIndex(x => x && x.eid === prec); res.splice(k >= 0 ? k + 1 : res.length, 0, (c.role === 'reactivation' && !joue(c.eid) && typeof dr_reactNumsActuels === 'function') ? dr_reactNumsActuels(c) : c); });   /* (mandat G, C16 366) « Où en sommes-nous ? » pas encore montrée : les numéros de la trame d'aujourd'hui ; montrée, ceux d'alors */
   return res;
 }
 

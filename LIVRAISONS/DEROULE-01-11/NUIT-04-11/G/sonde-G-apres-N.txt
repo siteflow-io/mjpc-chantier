@@ -1,0 +1,23 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties N · 2026-11-05 00:24 UTC · md5 897da54e64259c8c540eb5adb6563a0e · images : celle du canon
+
+══ AUDIT GLOBAL II · apres · md5 897da54e64259c8c540eb5adb6563a0e ══
+
+— partie N · 00:24 UTC
+  [N] activités numérotées 3 et 4 (comme une numérotation du chapitre) · la fin d’heure, étape 2 : « Diapo 10 — Groupe 2 : Le lac · pas montrée · activité 4 · 3 min » | « Diapo 11 — Groupe 2 : l’hypothèse · pas montrée · activité 4 · 3 min » | « Diapo 12 — Groupe 3 : Pêcheurs en mer · pas montrée · activité 4 · 3 min »
+  [N] la Relecture (le récit), avant la renumérotation : ["activité 3 — Analyse d’images et enfin l'activité ","Activité 3 — Analyse d’images À 08 h 57, la consig","Activité 4 — Mise en commun À 08 h 57, on a observ"]
+  [N] au hub, ce que l’heure range : decisionsParActivite ["act2"] (par identité) · decisionsParEcran 9 (par eid) · parActivite ["0","1"] · les textes rangés qui portent un numéro : ["Activité 3 — Analyse d’images","Activité 4 — Mise en commun","Activité 4 — Mise en commun","Activité 3 — Analyse d’images","Activité 4 — Mise en commun","Activité 4 — Mise en commun"]
+  [N] renuméroté au hub (trame) : ["act1=1","act2=2"] · la copie de la classe a-t-elle ses propres activités ? ["classe","demarreLe","ecrans","etat","heures","journal","scene","vif"]
+  [N] après : la case du mardi : « mardi 15 septembre · 15:07-16:02 ✕ 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 2 · suite de la séance : elle commence par les 9 diapos reportées L’appel — absents (0 sur  »
+  [N] après : la réactivation de la suite (« La dernière fois », « À reprendre ») : ["Activité 1 — Analyse d’images\",\"Activité 2 — Mise ","Activité 2 — Mise en commun\",\"Le bilan\"],\"id\":\"b12"]
+  [N] après : le volet du pilote : ["1 OÙ EN SOMMES-NOUS ? La dernière fois Activité 1 — Analyse d’images Activité 2 — Mise en commun À reprendre Activité 2 — Mise en commun Le bilan H2 réactivation","2 ACTIVITÉ 2 — GROUPE 2 : LE LAC Le lac, Albert Bierstadt, 1863 ↩ H1","3 ACTIVITÉ 2 — GROUPE 2 : L’HYPOTHÈSE Quelle hypothèse le groupe 2 tire-t-il de son tableau ? ↩ H1","4 ACTIVITÉ 2 — GROUPE 3 : PÊCHEURS EN MER Pêcheurs en mer, William Turner, 1796 ↩ H1"]
+  [N] après : la fin d’heure de la suite, étape 2 : « Diapo 2 — Groupe 2 : Le lac · pas montrée · activité 2 · 3 min » | « Diapo 3 — Groupe 2 : l’hypothèse · pas montrée · activité 2 · 3 min » | « Diapo 4 — Groupe 3 : Pêcheurs en mer · pas montrée · activité 2 · 3 min »
+  [N] après : la Relecture de l’heure du lundi : ["activité 3 — Analyse d’images et enfin l'activité ","Activité 3 — Analyse d’images À 08 h 57, la consig","Activité 4 — Mise en commun À 08 h 57, on a observ"]
+  [G] la Relecture, le récit de l’heure 1 : {"3":2,"4":2}
+  [G] « Ce qui s’est passé » : {} · [] · ses lignes qui nomment une activité : []
+  [G] le Papier : {"3":2,"4":2} · ["activité 3 — Analyse d’images et enfin l'activité "]
+  [G] « Le chapitre » : {"4":1} · ["A4 · Mise en commun — reportée · 30 min pr"]
+  [G] « copier la relecture pour analyse IA » : (sans bouton à l’écran de la case : le texte qu’il copierait) {"3":2,"4":2} · ["activité A3 — Analyse d’images","activité A3 — Analyse d’images","activité A4 — Mise en commun"]
+  ok     N9 · N : aucune erreur JS, aucune boîte système
+  [G] « Où en sommes-nous ? » de la suite, au volet du pilote après le lancement : {"1":1,"2":5} · la réactivation rangée (blocs) : {"1":1,"2":2}
+
+--- fin : 1 vérifications, 0 échec(s)

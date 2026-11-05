@@ -1,0 +1,19 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties M · 2026-11-03 12:30 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812-v8800 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie M · 12:30 UTC
+  [M] 8.80.0 · mode test : clic sur la pastille « mode test » (#tprof-testpill) → m8TestOn() = true
+  [M]   essai lancé (true), 7 diapos : écritures au hub hors de /site/tableau_test : aucune
+  [M]   PENDANT l’heure, le mode test quitté : m8BasculerModeTest() (la pastille n’est pas visible à cet écran) → m8TestOn() = false
+  [M]   ensuite, 3 diapos et 20 s : 5 chemins écrits au vrai hub : PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/vif, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/<clé>
+  [M]   clôture ({"garde":"Il manque, avant de clore ○ ce qui n'a pas été fait — 1 activité : dis ce qu'elle devient — une activité restante sans décision glissera à l'heure sui) · au total 9 chemins hors /site/tableau_test depuis la sortie du mode test
+  [M]   le faux hub (le « vrai ») porte : séance 1 · paquet « 3E Charles de Gaulle » {etat, heures, journal, scene, vif} SANS classe · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (close, 9 diapos, 0 décisions)
+  [M]   puis la prochaine case de CLASSE TEST : 2026-09-14 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 · de 3E Charles de Gaulle : 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  ok     M1 · 8.80.0 : un essai lancé en mode test, puis le mode test quitté pendant l’heure → le paquet de la classe est écrit au vrai hub SANS `classe` (mesuré : etat, heures, journal, scene, vif) — ["séance 1 · paquet « 3E Charles de Gaulle » {etat, heures, journal, scene, vif} SANS classe · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (close, 9 diapos, 0 décisions)"]
+  ok     M9 · 8.80.0 pastille : aucune erreur JS, aucune boîte système
+  [M]   8.80.0 · un essai en mode test, page RECHARGÉE : m8TestOn() après = false · la reprise proposée : true (« Essai en cours (mode test) — 3E Charles de Gaulle ») · écritures hors /site/tableau_test en 12 s : aucune
+  [M]   « Reprendre » cliqué : m8TestOn() = true · écritures hors /site/tableau_test en 8 s : aucune · paquets : aucun
+  ok     M9 · 8.80.0 rechargée : aucune erreur JS, aucune boîte système
+
+--- fin : 3 vérifications, 0 échec(s)

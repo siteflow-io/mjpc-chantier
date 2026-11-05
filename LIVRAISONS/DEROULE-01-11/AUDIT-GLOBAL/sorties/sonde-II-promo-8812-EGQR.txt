@@ -1,0 +1,108 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties E G Q R · 2026-11-03 12:16 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie E · 12:16 UTC
+  [E] la grille ouverte le 2026-09-22 à 10:07 (la case du matin en cours), laissée ouverte jusqu’à 12:37 : la case 16:04-16:59 disait « CLASSE TEST Étude de texte accompagnée : « L'Albatros » heure 1/3 », elle dit « CLASSE TEST Étude de texte accompagnée : « L'Albatros » heure 1/3 » · sa cellule : {"nature":"prevu","titre":"Étude de texte accompagnée : « L'Albatros »","snum":"1","heure":1,"sur":3} = séance 2
+  [E] la case cliquée (sans rouvrir la grille) : « mardi 22 septembre · 16:04-16:59 ✕ CLASSE TEST Étude de texte accompagnée : « L'Albatros » heure 1 sur 3 L’appel — absents (0 sur 4) D’abord l’appel : un clic m »
+  [E] « ▶ Ouvrir le pilotage et lancer » (true) : la séance lancée : {"t":"Étude de texte accompagnée : « L'Albatros »","snum":"1"} = séance 2
+  [D] D2c · CLASSE TEST : la grille ouverte pendant la case du matin et laissée ouverte, la case de l’après-midi cliquée et lancée (la séance lancée) → la case : 2026-09-22 16:04-16:59 · lancée « Étude de texte accompagnée : « L'Albatros » » (séance 2) ⇒ SÉANCE 2 : REPRODUIT
+  [E] la même case, grille rouverte à 12:40 (sans le lancement ci-dessus, un autre appareil) : 2026-09-22 16:04-16:59 · jouee « Étude de texte accompagnée : « L'Albatros » » (séance 2) — 1 diapos, pas close
+  ok     E9 · E : aucune erreur JS, aucune boîte système
+  ok     E9 · E bis : aucune erreur JS, aucune boîte système
+
+— partie G · 12:17 UTC
+  [G] production 8.81.1 · pendant l’essai : « 🛠 Panneau prof » visible false ; la pastille : {"visible":false,"texte":"Mode test actif — rien n’est enregistré","bulle":""} ; cliquée → m8TestOn() = true ; une boîte ou un avertissement : aucun · 2 diapos, 15 s : 0 chemins au « vrai » hub : 
+  [G]   le paquet : aucun
+  ÉCHEC  G1 · production 8.81.1 : pendant un essai, le Panneau prof s’ouvre, la pastille se clique, le mode test s’éteint sans un mot, et l’heure écrit au vrai deroule_joue — {"vb":false,"pill":{"visible":false,"texte":"Mode test actif — rien n’est enregistré","bulle":""},"t":true,"w":[]}
+  ok     G9 · production 8.81.1 : aucune erreur JS, aucune boîte système
+  [G] 8.78.2 · pendant l’essai : « 🛠 Panneau prof » visible false ; la pastille : {"visible":false,"texte":"Mode test actif — rien n’est enregistré","bulle":""} ; cliquée → m8TestOn() = true ; une boîte ou un avertissement : aucun · 2 diapos, 15 s : 0 chemins au « vrai » hub : 
+  [G]   le paquet : aucun
+  ÉCHEC  G1 · 8.78.2 : pendant un essai, le Panneau prof s’ouvre, la pastille se clique, le mode test s’éteint sans un mot, et l’heure écrit au vrai deroule_joue — {"vb":false,"pill":{"visible":false,"texte":"Mode test actif — rien n’est enregistré","bulle":""},"t":true,"w":[]}
+  ok     G9 · 8.78.2 : aucune erreur JS, aucune boîte système
+
+— partie Q · 12:18 UTC
+  [Q] une heure jouée dans son créneau (lundi 08:57, lancée à 09:00), 3 réponses, 9 diapos reportées, close · le texte de « Copier pour École Directe » : 2604 signes, 8 phrases avec une heure ou un jour :
+        le Romantisme en question · lundi 14 septembre 2026 · heure 1 Cette heure a commencé à 08 h 57 et s'est terminée à 09 h 02.   ⟵ lundi, 14 septembre, 08 h 57, 09 h 02
+        Présentation du chapitre À 08 h 57, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 08 h 57
+        Notre problématique À 08 h 57, on a lu notre problématique :   ⟵ 08 h 57
+        Les compétences du chapitre À 08 h 57, on a regardé les compétences que le chapitre va travailler.   ⟵ 08 h 57
+        Le parcours du chapitre À 08 h 57, on a regardé le parcours du chapitre (séance 1 sur 9).   ⟵ 08 h 57
+        le Romantisme en question À 08 h 57, on a lu l’objectif de la séance :   ⟵ 08 h 57
+        Activité 1 — Analyse d’images À 08 h 57, la consigne était :   ⟵ 08 h 57
+        Activité 2 — Mise en commun À 08 h 57, on a observé Le Radeau de la Méduse, Théodore Géricault, 1819.   ⟵ 08 h 57
+  [Q] le mot aux absents : Relecture — 3E Charles de Gaulle · heure 1 (lundi 14 septembre 2026) · Poésie et peinture :   ⟵ lundi, 14 septembre | le Romantisme en question 08:57:00 → 09:42:08 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre 3E Charles de Gaulle Ce qu'on a fait aujourd'hui 3E Charles de Gaulle · Poésie et p   ⟵ 08:57, 09:42 | le Romantisme en question · lundi 14 septembre 2026 · heure 1 Cette heure a commencé à 08 h 57 et s'est terminée à 09 h 02.   ⟵ lundi, 14 septembre, 08 h 57, 09 h 02 | Présentation du chapitre À 08 h 57, on a ouvert le chapitre Poésie et peinture au XIXe siècle (proposition).   ⟵ 08 h 57 | Notre problématique À 08 h 57, on a lu notre problématique :   ⟵ 08 h 57 | Les compétences du chapitre À 08 h 57, on a regardé les compétences que le chapitre va travailler.   ⟵ 08 h 57 | Le parcours du chapitre À 08 h 57, on a regardé le parcours du chapitre (séance 1 sur 9).   ⟵ 08 h 57 | le Romantisme en question À 08 h 57, on a lu l’objectif de la séance :   ⟵ 08 h 57 | Activité 1 — Analyse d’images À 08 h 57, la consigne était :   ⟵ 08 h 57 | Activité 2 — Mise en commun À 08 h 57, on a observé Le Radeau de la Méduse, Théodore Géricault, 1819.   ⟵ 08 h 57 | (bilan de la séance non attesté) Copier pour École Directe — contenu de séance Copier — travail à faire composé par le site ma version (modifier) LE MOT POUR CHAQUE ABSENT un élève, tu n'étais pas là lundi à 08 h 57.   ⟵ lundi, 08 h 57
+  ok     Q9 · Q : aucune erreur JS, aucune boîte système
+
+— partie R · 12:19 UTC
+  [R] jeudi 17/09 14:00, la semaine de CLASSE TEST : 2026-09-14 15:07-16:02 · passee ‖ 2026-09-15 10:07-11:02 · passee ‖ 2026-09-16 11:04-11:59 · passee ‖ 2026-09-17 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-18 11:04-11:59 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3
+  [R] la case passée 2026-09-14 15:07-16:02 : boutons ["✕","Banaliser cette heure"]
+  [R] « jeu 17/9 · 16:04-16:59  — créneau libre, heure ajoutée » choisi depuis la case passée
+  [R] lancée à 14:03 (montre du navigateur), la case de 16:04-16:59 : la clé au hub : 
+  [R] la fin d’heure : 8 phrases avec une heure ou un jour :
+        étape 1 : aucune jeudi 17 septembre, 15 h 07 vendredi 18 septembre, 11 h 04 mardi 22 septembre, 10 h 07 — la prochaine heure de la classe est proposée en premier Sans échéance ◀ Étape précédente Étape suivante ▶ (ce qui n'a pas ét   ⟵ jeudi, 17 septembre, 15 h 07, vendredi, 18 septembre, 11 h 04, mardi, 22 septembre, 10 h 07
+        étape 1 : jeudi 17 septembre, 15 h 07) ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ○ 4 · le récit relu ○ 5 · le mot aux absents (1) (facultatif)   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 2 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ○ 4 · le récit relu ○ 5 · le mot aux absents (1   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 3 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire ○ 4 · le récit relu ○ 5 · le mot aux absents (1) (facultatif) ○ 6 · copié pour Écol   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 4 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ▶ 4 · le récit relu ○ 5 · le mo   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 5 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ○ 4 · le récit relu ▶ 5 · le mo   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 6 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ○ 4 · le récit relu ○ 5 · le mo   ⟵ jeudi, 17 septembre, 15 h 07
+        étape 7 : jeudi 17 septembre, 15 h 07) ✔ jeudi 17 septembre, 15 h 07 ✔ 2 · ce qui n'a pas été fait — rien rien ne restait ✔ 3 · le travail à faire Pour la prochaine séance (jeudi 17 septembre) — Ap… ○ 4 · le récit relu ○ 5 · le mo   ⟵ jeudi, 17 septembre, 15 h 07
+  [R]   « Le récit · heure 1 » : 15 phrases avec une heure ou un jour
+        Relecture — CLASSE TEST · heure 1 (jeudi 17 septembre 2026) · Étude de texte accompagnée :   ⟵ jeudi, 17 septembre
+        14:03:23 → 14:04:01 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre CLASSE TEST Ce qu'on a fait aujourd'hui CLASSE TEST · Poésie et peinture au XIXe siècle, Étude de texte accom   ⟵ 14:03, 14:04
+        · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 14 h 03 et s'est terminée à 14 h 04.   ⟵ jeudi, 17 septembre, 14 h 03, 14 h 04
+        Le parcours du chapitre À 14 h 03, on a regardé le parcours du chapitre (séance 2 sur 9).   ⟵ 14 h 03
+        À 14 h 03, on a lu l’objectif de la séance :   ⟵ 14 h 03
+        Notre problématique À 14 h 03, on a lu notre problématique :   ⟵ 14 h 03
+        Activité 1 — De la toile au poème À 14 h 03, on a observé Pêcheurs en mer, J.   ⟵ 14 h 03
+        Activité 2 — Écoute et premières impressions À 14 h 03, la consigne était :   ⟵ 14 h 03
+        Activité 3 — Le e muet dans le vers À 14 h 03, la consigne était :   ⟵ 14 h 03
+        le e muet À 14 h 03, la consigne était :   ⟵ 14 h 03
+        Activité 5 — Les rimes À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Activité 6 — L'enjambement À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Activité 7 — Les sonorités À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Pour la prochaine séance (jeudi 17 septembre) — Apprendre :   ⟵ jeudi, 17 septembre
+  [R]   « Ce qui s'est passé · heure 1 » : 5 phrases avec une heure ou un jour
+        Relecture — CLASSE TEST · heure 1 (jeudi 17 septembre 2026) · Étude de texte accompagnée :   ⟵ jeudi, 17 septembre
+        14:03:23 → 14:04:01 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre CLASSE TEST LE FIL DE L'HEURE — CE QUE LA CLASSE A VU, ET CE QUE TU AS SAISI 14:03:23La classe est sur la dia   ⟵ 14:03, 14:04
+        « L'Albatros »3 s 14:03:31 — élément 1 dévoilé 14:03:31 — élément 2 dévoilé 14:03:31 — élément 3 dévoilé 14:03:32 — élément 4 dévoilé 14:03:32 — élément 5 dévoilé 14:03:33 — élément 6 dévoilé 14:03:33 — élément 7 dévoilé   ⟵ 14:03
+        le e muet1 s 14:03:38 — élément 1 dévoilé 14:03:39 — élément 2 dévoilé 14:03:39La classe passe à la diapo 8 — Les rimes1 s 14:03:39 — élément 1 dévoilé 14:03:40 — élément 2 dévoilé 14:03:40La classe passe à la diapo 9 —    ⟵ 14:03
+        PARTICIPATION personne encore L'APPEL un élève — absent 14:03 (appel au lancement) NOTES AU FIL DE L'EAU aucune   ⟵ 14:03
+  [R]   « Papier · heure 1 » : 14 phrases avec une heure ou un jour
+        Papier — CLASSE TEST · heure 1 (jeudi 17 septembre 2026) · Étude de texte accompagnée :   ⟵ jeudi, 17 septembre
+        14:03:23 → 14:04:01 · heure close Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre CLASSE TEST 🖨 Imprimer le papier Le papier découle du récit :   ⟵ 14:03, 14:04
+        DATEjeudi 17 septembre 2026 Ce qu'on a fait aujourd'hui À relire — vendredi 18 septembre Cette heure a commencé à 14 h 03 et s'est terminée à 14 h 04.   ⟵ 17 septembre, vendredi, 18 septembre, 14 h 03, 14 h 04
+        LE PARCOURS DU CHAPITRE À 14 h 03, on a regardé le parcours du chapitre (séance 2 sur 9).   ⟵ 14 h 03
+        À 14 h 03, on a lu l’objectif de la séance :   ⟵ 14 h 03
+        NOTRE PROBLÉMATIQUE À 14 h 03, on a lu notre problématique :   ⟵ 14 h 03
+        ACTIVITÉ 1 — DE LA TOILE AU POÈME À 14 h 03, on a observé Pêcheurs en mer, J.   ⟵ 14 h 03
+        ACTIVITÉ 2 — ÉCOUTE ET PREMIÈRES IMPRESSIONS À 14 h 03, la consigne était :   ⟵ 14 h 03
+        ACTIVITÉ 3 — LE E MUET DANS LE VERS À 14 h 03, la consigne était :   ⟵ 14 h 03
+        LE E MUET À 14 h 03, la consigne était :   ⟵ 14 h 03
+        ACTIVITÉ 5 — LES RIMES À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        ACTIVITÉ 6 — L'ENJAMBEMENT À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        ACTIVITÉ 7 — LES SONORITÉS À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Pour la prochaine séance (jeudi 17 septembre) — Apprendre :   ⟵ jeudi, 17 septembre
+  [R]   « Le chapitre » : 3 phrases avec une heure ou un jour
+        1 heure(s) close(s) · aucune heure en cours · les heures à venir lues dans la trame Le récit · heure 1 Ce qui s'est passé · heure 1 Papier · heure 1 Le chapitre CLASSE TEST 1 · LE TRACÉ DES TRAVAUX À FAIRE Heure 1 — donn   ⟵ jeudi, 17 septembre, 15 h 07
+        Copier pour École Directe Heure 2 — jeudi 17 septembre 2026 · à venir :   ⟵ jeudi, 17 septembre
+        la trame prévoit Avant de se quitter, Où en sommes-nous ?, Le portrait de l'oiseau, Le champ lexical… Heure 3 — jeudi 17 septembre 2026 · à venir :   ⟵ jeudi, 17 septembre
+  [R] le texte de « Copier pour École Directe » (récit) : 11 phrases avec une heure ou un jour :
+        · jeudi 17 septembre 2026 · heure 1 Cette heure a commencé à 14 h 03 et s'est terminée à 14 h 04.   ⟵ jeudi, 17 septembre, 14 h 03, 14 h 04
+        Le parcours du chapitre À 14 h 03, on a regardé le parcours du chapitre (séance 2 sur 9).   ⟵ 14 h 03
+        À 14 h 03, on a lu l’objectif de la séance :   ⟵ 14 h 03
+        Notre problématique À 14 h 03, on a lu notre problématique :   ⟵ 14 h 03
+        Activité 1 — De la toile au poème À 14 h 03, on a observé Pêcheurs en mer, J.   ⟵ 14 h 03
+        Activité 2 — Écoute et premières impressions À 14 h 03, la consigne était :   ⟵ 14 h 03
+        Activité 3 — Le e muet dans le vers À 14 h 03, la consigne était :   ⟵ 14 h 03
+        le e muet À 14 h 03, la consigne était :   ⟵ 14 h 03
+        Activité 5 — Les rimes À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Activité 6 — L'enjambement À 14 h 03, on a posé la question :   ⟵ 14 h 03
+        Activité 7 — Les sonorités À 14 h 03, on a posé la question :   ⟵ 14 h 03
+  [R] après : 2026-09-14 15:07-16:02 · passee ‖ 2026-09-15 10:07-11:02 · passee ‖ 2026-09-16 11:04-11:59 · passee ‖ 2026-09-17 15:07-16:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h1/1 ‖ 2026-09-17 16:04-16:59 · jouee « Étude de texte accompagnée : « L'Albatros » » (séance 2) — 11 diapos, close · ajoutée ‖ 2026-09-18 11:04-11:59 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h2/3 ‖ 2026-09-22 10:07-11:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h3/3 ‖ 2026-09-22 16:04-16:59 · prevu « Interro de cours et analyse logique — les bases  » (séance 3) h1/3
+  ok     R9 · R : aucune erreur JS, aucune boîte système
+  ok     R9 · R : aucune écriture refusée par le hub (HTTP 400) — 182 écritures — []
+  ok     R9 · R : aucune écriture hors des chemins permis (K15) — []
+
+--- fin : 10 vérifications, 2 échec(s)

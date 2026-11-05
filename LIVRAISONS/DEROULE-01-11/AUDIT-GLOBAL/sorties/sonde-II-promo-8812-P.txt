@@ -1,0 +1,22 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P · 2026-11-03 12:10 UTC · md5 c21ddbb656b9028cf11b0d70f7b18318 · images de 3e : un dossier local
+
+══ AUDIT GLOBAL II · promo-8812 · md5 c21ddbb656b9028cf11b0d70f7b18318 ══
+
+— partie P · 12:10 UTC
+  [P] P1 lundi 09:00, l’heure lancée, jouée jusqu’à « Groupe 1 : Le Radeau de la Méduse », puis l’onglet fermé sans clore · séance 1 · paquet « 3E Charles de Gaulle » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E Charles de Gaulle » · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (pas close, 8 diapos, 0 décisions)
+  [P] P1 lundi 09:20 (rouvert) : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 8 diapos, pas close ‖ 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-16 10:07-11:02 · rienDePret
+  [P] P1 la case du lundi : « lundi 14 septembre · 08:57-09:52 ✕ 3E Charles de Gaulle Elle a laissé sa trace : elle ne se déplace plus. Heure jouée — 8 diapos jouées. Pas encore close. ▶ Reprendre l’heure Séance : Poésie et peinture : le Romantisme en question Absents de cette heure (0 sur » · boutons ["✕","▶ Reprendre l’heure"]
+  [D] P1 · 3E Charles de Gaulle : l’heure de la séance 1 lancée, PAS close (onglet fermé) — la case d’après → la case : 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ⇒ SÉANCE 2 : REPRODUIT
+  [P] P1 « ▶ Reprendre l’heure » (true) : l’heure reprend sur « Groupe 1 : Le Radeau de la Méduse » (on s’était arrêté sur « Groupe 1 : Le Radeau de la Méduse »)
+  ok     P1 · « Reprendre l’heure » reprend sur la diapo où l’on s’était arrêté — [{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""},{"di":7,"eid":"aud-g1-img","act":"Groupe 1 : Le Radeau de la Méduse","role":""}]
+  ok     P9 · P1 : aucune erreur JS, aucune boîte système
+  [P] P1 le lendemain, mardi 14:00, l’heure toujours pas close : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 8 diapos, pas close ‖ 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-16 10:07-11:02 · rienDePret
+  [P] P1 le lendemain, « ▶ Reprendre l’heure » sur la case du lundi (true) : reprend sur « Groupe 1 : Le Radeau de la Méduse » ; une diapo de plus · les heures au hub : séance 1 · paquet « 3E Charles de Gaulle » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E Charles de Gaulle » · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (pas close, 8 diapos, 0 décisions) ; 2026-09-15_08h57-09h52_3E_Charles_de_Gaulle (pas close, 9 diapos, 0 décisions)
+  [P] P1 puis : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 8 diapos, pas close ‖ 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-16 10:07-11:02 · rienDePret
+  ok     P9 · P1 lendemain : aucune erreur JS, aucune boîte système
+  [P] P2 étape 2 : 9 diapos non faites, laissées sans décision · la garde : « Il manque, avant de clore ○ ce qui n'a pas été fait — 9 diapos : dis ce qu'elles deviennent — une diapo non faite sans décision ne revient pas : la séance sera tenue pour finie ○ le travail à faire — rien dans École Directe ni dans l'historique pour la prochaine fois ○ le récit relu — il partira tel » · séance 1 · paquet « 3E Charles de Gaulle » {classe, demarreLe, ecrans, etat, heures, journal, scene, vif} classe « 3E Charles de Gaulle » · heures : 2026-09-14_08h57-09h52_3E_Charles_de_Gaulle (close, 9 diapos, 0 décisions)
+  [P] P2 après : 2026-09-14 08:57-09:52 · jouee « Poésie et peinture : le Romantisme en question » (séance 1) — 9 diapos, close ‖ 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ‖ 2026-09-16 10:07-11:02 · rienDePret
+  [D] P2 · 3E Charles de Gaulle : séance 1 jouée jusqu’à « Groupe 1 : l’hypothèse », 9 diapos non faites SANS décision, close (« Clore quand même ») → la case : 2026-09-15 15:07-16:02 · prevu « Étude de texte accompagnée : « L'Albatros » » (séance 2) h1/3 ⇒ SÉANCE 2 : REPRODUIT
+  ok     P9 · P2 : aucune erreur JS, aucune boîte système
+
+--- fin : 4 vérifications, 0 échec(s)

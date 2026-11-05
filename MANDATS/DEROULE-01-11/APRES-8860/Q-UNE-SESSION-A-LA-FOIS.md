@@ -1,5 +1,5 @@
 # MANDAT Q — LE TABLEAU DISTANT, UNE SESSION À LA FOIS, SANS JAMAIS BLOQUER PAUL (㊶, C16 640, 759)
-*Les règles communes : `MANDATS/DEROULE-01-11/NUIT-04-11/REGLES-COMMUNES.md`. Branche : `deroule/suite`, depuis son dernier commit (la conscience te le donne). **30 minutes au plus** ; à la limite, tu pousses ce qui est prouvé et tu dis ce qui reste.*
+*Les règles communes : `MANDATS/DEROULE-01-11/NUIT-04-11/REGLES-COMMUNES.md`. Branche : `deroule/suite`, depuis `ca28da1f3` (le mandat P ; base : la 8.86.0-⑲ en ligne + 721). **30 minutes au plus** ; à la limite, tu pousses ce qui est prouvé et tu dis ce qui reste.*
 
 ## 0 · CE QUE PAUL A DIT (ses mots)
 - 03/11 12:26 : « l'adresse du tableau distant, quand elle est occupée, ne peut JAMAIS être utilisée par une autre session ou autre chose. C'est une session à la fois, que ce soit répétition, séance en mode test ou séance en vraie classe. »

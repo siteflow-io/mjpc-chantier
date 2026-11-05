@@ -4954,3 +4954,15 @@ MEMO
 - **17:56 — Paul, mot pour mot (une capture : la Relecture, 3E Charles de Gaulle en mode test, la fiche « La compréhension de texte » dans le papier « À coller dans le cahier », les balises <p> visibles) :** « 850. en fait ce n'est pas une vraie contradiction: en faisant retour, puis en revenant, il a bien pris le bilan et c'est passé en vert. 851 c'est ce problème que je voulais te montrer. le récit est celui d'une séance de de gaulle en mode test. de plus regarde comment s'affiche une fiche (en tout cas celle qui est dans le déroulé des de gaulle) dans le papier de l'heure 1. toutes ces dettes et mesures doivent partir dans le morceau de samedi. là maintenant, tu livres la vue tableau. »
 - **17:56 — l'exécutant U arrêté** (les mesures partent samedi) ; il attendait la machine, rien de joué ; son worktree supprimé.
 - **17:57 — registre** (prod `df27d3b`, docs seulement) : 850 (le panneau ne se redessine pas), 851 (une marque sur cinq dans le récit), 852 (la fin à l'heure réelle en mode test), 853 (« À 08 h 00 »), 854 (le compte des questions), 855 (déjà 782/783), la fiche aux balises brutes dans le papier de l'heure — pour le morceau de samedi.
+- **17:57 — candidat 8.88.0-㉑** (`scratchpad/promo-8880/index.html`) : l'assemblé `73030306` (`deroule/attente` `46ce703a1`) avec la seule ligne de version changée (vérifié) ; md5 `0491ac06d716f03f24e2b30f314eed71`, 3 144 079 o.
+- **17:57 — message à Paul, mot pour mot :**
+
+  > 857. Compris : 850 à 855 et la fiche aux balises visibles dans le papier de l'heure sont au registre pour samedi, avec tes mots ; la mesure est arrêtée. La vue tableau : le candidat 8.88.0-㉑ est prêt ; le banc court finit (la partie du tableau, puis la sonde de l'écran d'attente) ; s'il est vert, je la mets en ligne sans attendre, sous ton « promeus » de 16:31.
+  >
+  > À tester : les dix tests de la 8.87.0-⑳ (841), avant demain.
+  >
+  > 05/11/2026 17:57
+  >
+  > À jouer : 849 (le banc court pour toujours, ou seulement ce soir) · en cours : la fin du banc court, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

@@ -4766,3 +4766,15 @@ MEMO
 - **13:58 — reprise finie, verte** : l'étape 16, 56 vérifications, 0 échec (avant : 43 + 13 échecs, le même total). Le banc du bilan est vert partout. La sonde corrigée poussée sur `banc/bilan` (`a57d67268`, depuis `banc/nuit`).
 - **14:00 — les quatre captures refaites sur le candidat 8.87.0-⑳ lui-même** (`scratchpad/BILAN-captures-8870/`, sonde du bilan partie B, 29/29) ; regardées toutes les quatre, et le dessin acquis de 10:32 à côté. **Ça ne va pas** : la diapo des consignes du bilan, ouverte par 🅱️, montre des ☑ simples ; le dessin acquis (810, « Tout est ok » à 10:37) y montre la même marque or, la même pastille et le compteur « n / N ». Le mandat S ne l'avait pas écrit en clair (il citait le dessin pour la marque seulement) : faute de la conscience. Pas de demande de « promeus » sur cette dette.
 - **14:02 — mandat S6** (`MANDATS/DEROULE-01-11/APRES-8860/S6-LA-DIAPO-DES-CONSIGNES-COMME-LE-DESSIN.md`, le dessin joint ; `60e2dd08f`), 20 minutes au plus, puis lancé. Le banc du bilan préparé pour la suite : il prend la sonde du bloc question de `banc/nuit`, la sonde de la fin d'heure de `banc/bilan`, et `MJPC_ANCIEN` pour la partie W.
+- **14:03 — registre** : l'écart de la diapo des consignes inscrit (prod `5d3210f`, docs seulement ; `index.html` inchangé, md5 `f5da6abe`).
+- **14:03 — message à Paul, mot pour mot :**
+
+  > 831. Le banc est vert partout (la fin d'heure 56/56). Mais en regardant les quatre captures refaites sur le candidat, à côté du dessin que tu as validé à 10:37, j'ai trouvé un écart : quand 🅱️ ouvre la diapo des consignes du bilan, les points cochés n'ont ni la marque or, ni la pastille verte, ni le compteur « n / N » du dessin ; seulement des cases cochées. Ça ne va pas. C'est ma faute : mon mandat ne l'avait pas écrit en clair. Un exécutant le corrige (20 minutes au plus), puis je repasse le banc complet (environ une heure et demie, estimé), puis je t'envoie les captures et la demande de « promeus ». C'est noté au registre.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 14:03
+  >
+  > À jouer : rien · en cours : la diapo des consignes comme le dessin (S6), puis le banc complet, puis la demande de « promeus » (8.87.0-⑳, la mise en commun du bilan) · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

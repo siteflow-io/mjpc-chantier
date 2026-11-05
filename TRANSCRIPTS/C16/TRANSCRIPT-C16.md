@@ -4866,3 +4866,17 @@ MEMO
   >
   > MEMO
 - **16:31 — Paul, mot pour mot :** « Promeus la nouvelle vue tableau aussi »
+- **16:32 — lecture prise** : « la nouvelle vue tableau » = le tableau en attendant une heure, la maquette v3 validée à 09:30 (793). Mandat T (sas `f1b058766`, la maquette jointe), lancé ; branche `deroule/attente` depuis `048be4d1f` (la 8.87.0-⑳). Le « promeus » vaut après le banc complet vert, comme toujours.
+- **16:32 — message à Paul, mot pour mot :**
+
+  > 842. Je comprends « la nouvelle vue tableau » comme le tableau en attendant une heure, la maquette que tu as validée à 09:30 (793) : MJPC en petit, « Cours de français - M. Meney » en or avec son halo, l'heure en grand en surimpression sur l'animation, « monsieurjaipascompris » en bas au milieu. Si c'est autre chose, dis-le. Elle n'était pas encore dans le site : un exécutant l'écrit maintenant, à l'identique de la maquette (30 minutes au plus). Ensuite viennent le banc complet (environ une heure et demie, estimé), puis la mise en ligne sous ton « promeus », en 8.88.0-㉑.
+  >
+  > 843. Ce que je ne sais pas : si l'animation reste fluide sur ton ordi distant qui projette au vidéoprojecteur. Le test le montrera.
+  >
+  > À tester : les dix tests de la 8.87.0-⑳ (841), avant demain.
+  >
+  > 05/11/2026 16:32
+  >
+  > À jouer : les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc complet, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

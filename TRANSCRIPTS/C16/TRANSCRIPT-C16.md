@@ -4260,3 +4260,17 @@ MEMO
 - **01:53 — incident** : une heure tapée à la main et fausse (« 01:55 » pour le candidat, alors qu'il était 01:53) ; corrigée.
 - **03:23 — le banc de la nuit est rouge** (fini à 03:22) : vert : l'étape 14, l'étape 16, les contrôles K et le parcours, la sonde §12.66, sonde-10 (55/55), les diapos d'ouverture, R base contre candidat ×3, et les sondes de la nuit (la Relecture 17/0 et avec l'oral 17/0, la case 34/0, la correction 19/0, D 11/0 — le bouton de la copie trouvé, en bas, son infobulle mot pour mot —, le gel 4/0, le récit 6/0, les numéros N, le banc 1255 16/0). Rouge : banc 1-12, la sonde du bloc question (Q4, S1 à S4 : « pas de ligne libre ») ; l'étape 13, la frappe au tableau (163 lettres sur 244 jamais vues, 1 réponse sur 3 entière) ; l'étape 15, l'appel (5 contrôles : écritures à `/site/horloge` hors des chemins permis). À éclaircir : le réseau lent (le ▶ pendant l'attente pas pressé dans le banc) ; le chrono (00:00 vu sur aucun écran ; écart 0 s pendant la course). Supposition : les sondes tapent une réponse sans élève (717 l'interdit) et ne connaissent pas `/site/horloge` — ma faute : je n'ai pas fait mettre ces sondes à jour avec C2 et H (la leçon de 691).
 - **03:23 — mandat I** (les sondes du banc qui lisent l'ancien geste ; les parties rouges rejouées), 30 minutes au plus, puis lancé.
+- **03:24 — lancé : l'exécutant du mandat I**, 30 minutes au plus.
+- **03:24 — message à Paul, mot pour mot :**
+
+  > 740. Le banc complet de la nuit est rouge : ça ne va pas, pas encore. Vert : presque tout, dont toutes les vérifications des morceaux de la nuit (la Relecture, la case, la correction, D avec le bouton de la copie trouvé en bas, le gel, le récit, les numéros, le banc 1255), le chrono (sonde-10), le parcours, les contrôles. Rouge, trois parties : la sonde du bloc question et celle de la frappe au tableau tapent une réponse sans élève, ce que 717 interdit désormais (Entrée ne la valide plus) ; la sonde de l'appel refuse la petite écriture de l'heure du hub (㊵), qu'elle ne connaît pas.
+  >
+  > 741. C'est ma faute : je n'ai pas fait mettre ces sondes à jour avec les morceaux qui changent ce qu'elles lisent, la même leçon que le chrono hier soir. Un exécutant les met à jour (taper les initiales avant la réponse, comme toi ; permettre l'heure du hub, avec la vérification que rien n'y reste), puis rejoue seulement ces parties rouges sur le même candidat, sans rien affaiblir. Il éclaircit aussi deux mesures du banc : le ▶ pendant l'attente pas pressé par la sonde du réseau lent, et la fin du chrono pas vue. Le résultat avant 7 h.
+  >
+  > À tester : rien de nouveau cette nuit ; les sept tests de 701 restent valables.
+  >
+  > 05/11/2026 03:24
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : la reprise des parties rouges du banc · ouvert : ton « promeus » à 7 h si tout est vert ; à cadrer : 640 (720), 721, 731, 639, 644, 645
+  >
+  > MEMO

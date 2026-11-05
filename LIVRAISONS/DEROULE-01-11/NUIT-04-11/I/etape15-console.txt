@@ -1,0 +1,90 @@
+C16 · sonde de l’appel (㊱) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P2H Q X Z RPH · 2026-11-05 02:34 UTC · md5 3e8a46c998bfdb456542fe648b19452f · images de 3e : un dossier local
+
+— P2H · pendant l’heure, sur chaque appareil (vraie heure) —
+  ok     P2H · l’heure lancée ; la télécommande (QR) et le second ordinateur (« Reprendre ») sur la séance ; la case de l’heure ouverte sur un troisième — {"lance":true,"tl":true,"rep":true}
+      « Reprendre » au second ordinateur (3,5 s, sans autre touche) : la télécommande « Télécommande désactivée : l’ordinateur a repris la main », commandes grisées true ; qui a la main : {"ordinateur":"second","second":"second","télécommande":"second"}
+  ok     P2H · « Reprendre » au second ordinateur est un geste : il a la main sur chaque pilote ; la télécommande désactivée le dit (« Télécommande désactivée : l’ordinateur a repris la main »), ses commandes grisées, « Reprendre avec la télécommande » à l’écran — {"d":{"t":"Télécommande désactivée : l’ordinateur a repris la main","grises":true,"(prénom)":true},"mains":{"ordinateur":"second","second":"second","télécommande":"second"}}
+      « Reprendre avec la télécommande » : la main à la télécommande sur chaque pilote en 311 ms
+  ok     P2H · « Reprendre avec la télécommande » : la télécommande a la main sur chaque pilote, la phrase partie, ses commandes rendues (≤ 2 s) — {"t":311,"mains":{"ordinateur":"télécommande","second":"télécommande","télécommande":"télécommande"}}
+  ok     P2H · la télécommande : le (prénom) « Appel » (son infobulle) ouvre la liste de la classe, les 29 noms en entier — {"bt":{"t":"Appel · tous présents","title":"L’appel : ouvre la liste de la classe ; un appui marque un absent, un second appui le défait. La même liste que la case de l’emploi du temps et que le pilote ; jamais montrée à la classe"},"nbNoms":29}
+      a · à la télécommande, un élève marqué absent : l’ordinateur 140 ms, le second ordinateur 88 ms, la télécommande 82 ms, la case du troisième 82 ms ; son (prénom) marqué absent (3 ms après les appareils) ; l’ordinateur « 0 SUR 28 PRÉSENTS »
+  ok     P2H · a · marqué à la télécommande : chaque appareil le dit en moins de 2 s, le compteur « … sur 28 présents » — {"case":82,"télécommande":82,"second":88,"ordinateur":140}
+      b · au second ordinateur, clic droit → « Absent » (fait) : l’ordinateur 269 ms, la télécommande 45 ms, la case 18 ms ; la télécommande « Télécommande désactivée : l’ordinateur a repris la main », l’appel grisé avec sa raison : true ; un appui grisé sans effet
+  ok     P2H · b · marqué au clic droit d’un second ordinateur : chaque appareil le dit en moins de 2 s — {"case":18,"télécommande":45,"second":97,"ordinateur":269}
+  ok     P2H · b · qui a la main : la télécommande désactivée, chaque nom de l’appel grisé dit pourquoi, un appui n’y fait rien — {"desact":true,"grises":true,"cSans":true}
+      c · dans la case du troisième ordinateur, le premier absent retiré : l’ordinateur 271 ms, le second 13 ms, la télécommande 127 ms, la case 13 ms ; « 0 SUR 28 PRÉSENTS »
+  ok     P2H · c · retiré dans la case : chaque appareil le dit en moins de 2 s, le compteur suit — {"case":13,"second":13,"télécommande":127,"ordinateur":271}
+      d · au hub, la liste de l’heure : 1 élève(s) (celui du second ordinateur) ; 14 écritures du paquet
+  ok     P2H · d · au hub, une seule liste : celle que disent tous les appareils (après les écritures du paquet) — 1
+      f · le second ordinateur tape une réponse ; pendant la frappe, un élève coché dans la case : le champ garde le focus, sa frappe « Le paysage romantique » ; le champ quitté : l’ordinateur 222 ms, le second 155 ms, la télécommande 274 ms
+  ok     P2H · f · une saisie en cours n’est jamais touchée par un appel fait ailleurs ; le champ quitté, chaque appareil le dit en moins de 2 s — {"garde1":{"ed":true,"t":"Le paysage romantique"},"rf":{"case":5,"second":155,"ordinateur":222,"télécommande":274}}
+      e · au tableau distant : 0 occurrence(s) de l’appel ; à la fenêtre du tableau : 0
+  ok     P2H · e · rien de l’appel au tableau (le tableau distant, la fenêtre du tableau) : 0 nom, 0 « absent », 0 « présents » — {"tp":{"n":0,"vus":[]},"fp":{"n":0,"vus":[]}}
+  ok     P2H · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 200 écritures) — []
+  ok     P2H · rien ne reste à /site/horloge — ㊵ : écrite, relue, effacée par chaque appareil (4 écriture(s) ; la dernière de chaque appareil : telephone DELETE)
+  ok     P2H · aucune écriture refusée par le faux hub (0) — []
+  ok     P2H · tous les appareils : aucune erreur JS, aucune boîte système
+
+— Q · la télécommande : la diapo du pilote, « Texte au tableau » (vraie heure) —
+  ok     Q · l’heure lancée ; la télécommande (QR) sur la séance — {"lance":true,"tl":true}
+      la diapo de la télécommande : le dessin du pilote, 390 × 219 px sur un écran de 390 px, 2 élément(s) en gris (opacité 0.45) — au pilote de l’ordinateur : 2 ; le rendu de la classe retiré ; les gestes sur la diapo : none
+  ok     Q · la diapo de la télécommande est dessinée comme au pilote : toute la diapo, les éléments pas encore dévoilés en gris (comptés, comme au pilote), toute la largeur du téléphone — {"l":390,"vw":390,"gris":2,"pilote":2}
+      ▶ à la télécommande : 1 en gris (13 ms)
+  ok     Q · ▶ : un gris de moins sur la diapo de la télécommande — {"avant":2,"apres":1}
+      trois appuis sur la diapo de la télécommande : l’ordinateur inchangé, plein écran false
+  ok     Q · aucun geste sur la diapo de la télécommande (ni appui, ni loupe, ni plein écran) — {"av":"{\"n\":2,\"di\":0,\"loupe\":false}","ap":"{\"n\":2,\"di\":0,\"loupe\":false}","pe":false}
+  ok     Q · sous la diapo, la ligne « A− · la taille · A+ » : l’étiquette du pilote, chaque (prénom) son infobulle — {"c0":{"l":"32 pt","moins":{"dis":false,"title":"A− : le texte au tableau d’un cran plus petit (les cinq crans du curseur « Texte au tableau » du pilote) ; la classe le voit aussitôt"},"plus":{"dis":false,"title":"A+ : le texte au tableau d’un cran plus grand (les cinq crans du curseur « Texte au tableau » du pilote) ; une diapo pleine peut passer en pages ; la classe le voit aussitôt"},"haut":290,"basDiapo":281},"t0":{"t":1,"l":"32 pt"}}
+      A+ : le pilote « 32 pt » → « 38 pt » en 120 ms, le tableau en 2 ms, la télécommande dit « 38 pt » ; A− : le pilote en 53 ms, le tableau en 1 ms, la télécommande « 32 pt »
+  ok     Q · A+ puis A− : un cran du curseur du pilote, au pilote et au tableau en moins de 0,5 s ; la télécommande dit la taille — {"tp1":120,"tt1":2,"tp2":53,"tt2":1}
+      l’ordinateur reprend la main : A− A+ grisés (« Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « … ») ; un appui sur A+ grisé : la taille inchangée
+  ok     Q · qui a la main : A− et A+ grisés quand l’ordinateur a la main, leur infobulle dit pourquoi, un appui n’y fait rien — {"g":true}
+  ok     Q · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 68 écritures) — []
+  ok     Q · rien ne reste à /site/horloge — ㊵ : écrite, relue, effacée par chaque appareil (4 écriture(s) ; la dernière de chaque appareil : telephone DELETE)
+  ok     Q · aucune écriture refusée par le faux hub (0) — []
+  ok     Q · l’ordinateur, la télécommande, le tableau distant : aucune erreur JS, aucune boîte système
+
+— X · deux gestes d’appel croisés, à moins de 100 ms (vraie heure) —
+      avant l’heure, deux élèves dans deux cases, à 50 ms l’un de l’autre : le premier ordinateur true, le second true ; au hub 2 élève(s)
+  ok     X · avant l’heure : deux élèves cochés dans deux cases à moins de 100 ms — aucun ne se perd (les deux cases, le hub) — {"ecart":50,"r1":{"o":true,"o2":true},"hub":2}
+      avant l’heure, le même élève dans deux cases, à 40 ms (le dernier : le second ordinateur) : le dernier geste voulait « absent » ; les deux cases {"o":true,"o2":true}, le hub true
+  ok     X · avant l’heure : le même élève dans deux cases à moins de 100 ms — le dernier geste compte (les deux cases, le hub) — {"ecart":40,"voulu":true,"r2":{"o":true,"o2":true},"hubC":true}
+  ok     X · l’heure lancée ; la télécommande et le second ordinateur sur la séance ; la case ouverte sur un troisième — {"lance":true,"tl":true,"rep2":true}
+  ok     X · « Reprendre » au second ordinateur est un geste : il a la main sur chaque pilote ; la télécommande désactivée le dit — {"d":{"t":"Télécommande désactivée : l’ordinateur a repris la main","grises":true,"(prénom)":true},"mains":{"ordinateur":"second","second":"second","télécommande":"second"}}
+      « Reprendre avec la télécommande » : la main en 244 ms ; l’appel rouvert : {"noms":29,"grises":0}
+  ok     X · « Reprendre avec la télécommande » : la télécommande a la main sur chaque pilote ; l’appel rouvert, ses 29 noms actifs — {"rtX":{"t":244,"mains":{"ordinateur":"télécommande","second":"télécommande","télécommande":"télécommande"}},"nomsX":{"noms":29,"grises":0}}
+      pendant l’heure, la télécommande et le clic droit de l’ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande et le clic droit de l’ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la case du troisième et le clic droit du second ordinateur, deux élèves à 40 ms : {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la case du troisième et le clic droit du second ordinateur sur deux élèves à moins de 100 ms — aucun ne se perd (chaque appareil, le hub) — {"ecart":40,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, la télécommande puis la case du troisième, le même élève à 53 ms (le dernier : la case du troisième) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : la télécommande puis la case du troisième sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":53,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+      pendant l’heure, le clic droit de l’ordinateur puis le clic droit du second ordinateur, le même élève à 40 ms (le dernier : le clic droit du second ordinateur) : le dernier geste voulait « absent » ; {"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}
+  ok     X · pendant l’heure : le clic droit de l’ordinateur puis le clic droit du second ordinateur sur le même élève à moins de 100 ms — le dernier geste compte (chaque appareil, le hub) — {"ecart":40,"voulu":true,"r":{"ordinateur":true,"second":true,"télécommande":true,"case":true,"hub":true}}
+  ok     X · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 151 écritures) — []
+  ok     X · rien ne reste à /site/horloge — ㊵ : écrite, relue, effacée par chaque appareil (4 écriture(s) ; la dernière de chaque appareil : telephone DELETE)
+  ok     X · aucune écriture refusée par le faux hub (0) — []
+  ok     X · tous les appareils : aucune erreur JS, aucune boîte système
+
+— RPH · « Reprendre » sur un second ordinateur (la vraie heure), 1 fois —
+      1 · avant : {"ordinateur":"télécommande","second":"personne","télécommande":"télécommande"} ; « Reprendre » au second (le bandeau « Heure en cours avec les 3E Charles de Gaulle Reprendre ») : en 1583 ms, la télécommande « Télécommande désactivée : l’ordinateur a repris la main », commandes grisées true, qui a la main : {"ordinateur":"second","second":"second","télécommande":"second"} ; « Reprendre avec la télécommande » : 187 ms ; son ▶ (inv-presentation-chapitre-s0#1#0 → inv-presentation-chapitre-s0#2#0) : l’ordinateur 65 ms, le second 80 ms
+  ok     RPH · 1 · « Reprendre » au second ordinateur : il a la main sur chaque pilote ; la télécommande se désactive et le dit (« Télécommande désactivée : l’ordinateur a repris la main »), ses commandes grisées — {"m0":{"ordinateur":"télécommande","second":"personne","télécommande":"télécommande"},"tD":1583,"d":"Télécommande désactivée : l’ordinateur a repris la main","grises":true,"m1":{"ordinateur":"second","second":"second","télécommande":"second"}}
+  ok     RPH · 1 · « Reprendre avec la télécommande » : elle a la main sur chaque pilote (≤ 2 s) ; son ▶ : l’ordinateur et le second suivent — {"rt":187,"k0":"inv-presentation-chapitre-s0#1#0","cible":"inv-presentation-chapitre-s0#2#0","r":{"ordinateur":65,"second":80}}
+  ok     RPH · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 60 écritures) — []
+  ok     RPH · rien ne reste à /site/horloge — ㊵ : écrite, relue, effacée par chaque appareil (4 écriture(s) ; la dernière de chaque appareil : telephone DELETE)
+  ok     RPH · aucune écriture refusée par le faux hub (0) — []
+  ok     RPH · 1 · l’ordinateur, le second, la télécommande : aucune erreur JS, aucune boîte système
+      RPH · bilan : 1 sur 1 (la télécommande désactivée, sa phrase, puis réactivée).
+
+— Z · des montres d’appareils décalées de 3 minutes (vraie heure) —
+      les montres, comparées à l’ordinateur qui lance : le téléphone 180 s, l’ordinateur de la case -180 s
+  ok     Z · l’heure lancée ; un appareil en avance de 3 min, un autre en retard de 3 min — {"lance":true}
+      (1) le téléphone en avance marque un élève : {"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true} ; puis la case de l’ordinateur en retard le démarque : {"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true}
+  ok     Z · l’appareil en retard de 3 min démarque après l’appareil en avance : le démarquage compte, partout et au hub — {"r1a":{"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true},"r1":{"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true}}
+      (2) la case de l’ordinateur en retard marque un élève : {"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true} ; puis le téléphone en avance le démarque : {"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true}
+  ok     Z · l’appareil en avance de 3 min démarque après l’appareil en retard : le démarquage compte, partout et au hub — {"r2a":{"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true},"r2":{"ordinateur":true,"téléphone en avance":true,"case (en retard)":true,"hub":true}}
+  ok     Z · aucune écriture hors des chemins permis — K15, plus ceux de ㉞ et /site/edt/appel/… (0 hors, 78 écritures) — []
+  ok     Z · rien ne reste à /site/horloge — ㊵ : écrite, relue, effacée par chaque appareil (4 écriture(s) ; la dernière de chaque appareil : telephone DELETE)
+  ok     Z · aucune écriture refusée par le faux hub (0) — []
+  ok     Z · tous les appareils : aucune erreur JS, aucune boîte système
+
+52 vérifications, 0 échec(s)

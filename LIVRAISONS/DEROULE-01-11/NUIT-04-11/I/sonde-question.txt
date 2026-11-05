@@ -1,0 +1,93 @@
+parcours du déroulé dans le site · 2026-11-05 02:31 UTC · fichier md5 3e8a46c998bfdb456542fe648b19452f · 3112270 o · faux hub /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/wt-banc/AUDITS/INTEGRATION-DEROULE/hub · MODE TEST
+
+P0 — le panneau prof
+  ok     P0 · panneau ouvert, mode test posé
+
+P1 — l'emploi du temps
+  ok     P1 · la grille réelle (semaine du 14/09)
+
+P2 — la case de l'heure
+  ok     P2 · la case 3E Charles de Gaulle, (prénom) « lancer » — ▶ Ouvrir le pilotage et lancer — appel fait : tous présents | ✎ Préparer
+  ok     P2 · « Préparer » sur la case (E2)
+
+P3 — l'Atelier (préparation) depuis « Mes chapitres »
+  ok     P3 · la porte — Éditer dans l’atelier
+  ok     P3 · la barre fusionnée Structure · Atelier · Pilotage · Relecture (E1) — structure atelier pilotage relecture
+  ok     P3 · le déroulé p8 dans la page (#mur, #volet), sans iframe
+  ok     P3 · plus d'iframe at-dr-iframe
+  ok     P3 · la diapo 1 de la séance 0 au mur, avec ses lignes — 2 lignes
+
+P4 — le clic droit sur une étape
+  ok     P4 · menu ouvert (voir la capture)
+
+A0 — Atelier : + bloc → Question
+  ok     A0 · formulaire
+
+P5 — lancer la séance (la classe)
+  ok     P5 · l'Atelier ne lance plus (aucun « ▶ Lancer » visible hors de l'écran de la classe, §12.28 (3a))
+  ok     P5 · lancée par la case de l'emploi du temps (§12.28 (3a)) — la case de l'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28)
+  ok     P5 · l'heure se joue dans l'écran « la classe en cours » (§12.28 (3a), E1)
+  ok     P5 · lancée par la case de l'emploi du temps → « ▶ Ouvrir le pilotage et lancer » (§12.28) — 10 écritures au magasin (mode test)
+      MAGASIN /site/3e/chapitres
+      MAGASIN /site/cle_vue
+      MAGASIN /site/cours_actif
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle
+      MAGASIN /site/edt/appel/2026-2027/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/ecrans
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/journal
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/etat
+      MAGASIN /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     P5 · écrit au lancement : deroule_joue\/[^/]+$
+  ok     P5 · écrit au lancement : cours_actif$
+heure 2 · diapos 9::Tableau 3 / 10::Tableau 4 / 11::Tableau 5 / 12::Les hypothèses de la classe / 14::Où en sommes-nous ? / 15::Les règles héritées / 13::Question-bilan / 16:fin:Fin d'heure · cible 14
+
+Q1 — aller à la diapo de la question, à la flèche
+  ok     Q1 · la diapo 14 atteinte en 7 flèches
+
+Q2 — la fenêtre du tableau
+  ok     Q2 · fenêtre ouverte
+
+Q3 — ▶ : la question
+  ok     Q3 · tableau : OÙ EN SOMMES-NOUS ? Quel mot-bilan avons-nous écrit sur les cinq tableaux ?
+
+Q4 — trois élèves participent
+      élève EA — sa réponse validée à son nom : oui
+      élève GA — sa réponse validée à son nom : oui
+      élève EB — sa réponse validée à son nom : oui
+  ok     Q4 · ordre au pilote : question → élève → élève → élève → ligne libre → réponse préparée
+  ok     Q4 · tableau : OÙ EN SOMMES-NOUS ? Quel mot-bilan avons-nous écrit sur les cinq tableaux ? (prénom) A. Le romantisme. (prénom) A. Que l'émotion passe avant les règles. (prénom) B. L'homme est tout petit devant la nature.
+
+Q5 — ▶ : la réponse préparée
+  ok     Q5 · tableau : OÙ EN SOMMES-NOUS ? Quel mot-bilan avons-nous écrit sur les cinq tableaux ? (prénom) A. Le romantisme. (prénom) A. Que l'émotion passe avant les règles. (prénom) B. L'homme est tout petit devant la nature. Le Romantisme : l'émotion, la nature, l'homme petit.
+
+S1 — après Q5 : l'ordre au tableau et au pilote
+  ok     S1 · tableau : Q E E E PREP — Q E E E PREP
+      sonde : mur2 [P.q:block/1, DIV.rep:flex/1, DIV.rep:flex/1, DIV.rep:flex/1, LI.   neuf-vu:list-item/1]
+  ok     S1 · pilote : Q E E E libre PREP — Q E E E libre PREP
+
+S2 — une quatrième réponse tapée après la réponse préparée
+      élève CB — sa réponse validée à son nom : oui
+  ok     S2 · tableau : Q E E E E PREP — Q E E E E PREP
+  ok     S2 · pilote : Q E E E E libre PREP — Q E E E E libre PREP
+
+S3 — ◀ revoile la réponse préparée
+  ok     S3 · tableau : Q E E E E (la réponse préparée revoilée) — Q E E E E
+
+S4 — le bloc déborde : la réponse préparée sur la dernière page
+      élève TB — sa réponse validée à son nom : oui
+      élève TC — sa réponse validée à son nom : oui
+      élève JC — sa réponse validée à son nom : oui
+      élève AC — sa réponse validée à son nom : oui
+      élève PC — sa réponse validée à son nom : oui
+      élève BC — sa réponse validée à son nom : oui
+      élève AD — sa réponse validée à son nom : oui
+      élève LD — sa réponse validée à son nom : oui
+      élève CH — sa réponse validée à son nom : oui
+  ok     S4 · le bloc a plusieurs pages (sinon le cas n'est pas joué) — {"pages":[[0,1,2,3,4,5,6,7,8,9],[10,11,12,13,14]],"page":1} → {"pages":[[0,1,2,3,4,5,6,7,8,9],[10,11,12,13,14]],"page":1}
+  ok     S4 · le tableau montre la page de la réponse préparée, dévoilée — Q E E E PREP
+
+S5 — le récit de l'heure (à comparer entre la production et la maquette)
+  ok     S5 · relecture écrite dans S5-relecture.txt — 4102 caractères
+  ok     JS · aucune erreur JS
+  ok     JS · aucune boîte système

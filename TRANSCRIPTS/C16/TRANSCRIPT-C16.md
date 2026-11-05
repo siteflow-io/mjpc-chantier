@@ -4419,3 +4419,23 @@ MEMO
 - **08:11 — registre** (prod) : le texte sali d'une heure jouée ne se corrige pas ; C16 768 se trompait. Décision de la conscience : plus rien n'est lancé après Q (qui se termine, la règle du 05/10) ; R, la phrase de 772, le banc et la promotion attendent le mot de Paul.
 - **08:19 — l'exécutant Q rend son travail** : sas `deroule/suite` `4e95252e8` ; assemblé md5 `523fbb6d2c113cd3c07f62d27629a7f1` (NOTE : `UNE-SESSION/NOTE.md` ; sorties : `MESURE-UNE-SESSION/sorties-q`). Une session lancée ailleurs pendant qu'une autre tient le tableau est refusée ; le refus dit sa sorte, sa classe, sa séance, l'heure prévue, le jour et l'heure du lancement, depuis combien de temps, sa diapo ; « Reprendre cette session », « L'arrêter et prendre le tableau » (répétition, essai), « Annuler ». Compté sur 9 cas : avant, 0 refus sauf H+R, 6 prises sans rien dire ; après, 9 refusés, 0 erreur, 0 annonce restée au hub ; l'heure abandonnée : « Reprendre » puis « Clore l'heure » ; l'essai et la répétition abandonnés : « L'arrêter et prendre » ; le parcours vert, normal et en mode test. Reste : le banc 1255 et la sonde de l'appel pas joués ; d'autres combinaisons, « Reprendre » d'un essai ou d'une répétition, la répétition en mode test abandonnée, la veille : pas rejoués ; la diapo comptée sur toute la séance (pas « n sur N » de l'heure) ; « lancée » donne l'heure de la dernière reprise (le premier lancement n'est pas gardé au hub). Plus rien n'est lancé (Paul : 10 % d'usage).
 - **08:19 — Q, un détail de son rapport final** : si le hub ne répond pas en 2,5 s, le lancement part quand même (pour ne jamais bloquer Paul) ; sur un réseau lent (jusqu'à 30 s, mandat F), la vérification peut donc être sautée : à mesurer avec le reste de Q (777).
+- **08:37 — Paul, mot pour mot :**
+
+  > mesure le "et on l'a terminée" au récit de l'heure 1 de franklin, et la raison pour laquelle on a la phrase "Enfin, à la fin de l'heure, on a continué l'activité 2 — Mise en commun."
+
+- **08:38 — lu dans le code par la conscience** (sans exécutant, pour l'usage ; index.html de la 8.86.0-⑲ l. 22592, 22594, 18014) ; registre complété (prod).
+- **08:38 — message à Paul, mot pour mot :**
+
+  > 779. « Et on l'a terminée. » (lu dans le code, sans exécutant, pour l'usage) : la dernière phrase du récit regarde si toutes les diapos de l'activité en cours à la fin de l'heure sont « finies ». Mais « finie » lit ce que la classe a vu aujourd'hui, pas ce qu'elle avait vu à la fin de cette heure-là. L'activité 2 a été reportée à la fin de l'heure 1, puis finie à l'heure 2 : relue aujourd'hui, l'heure 1 dit donc « Et on l'a terminée. » C'est faux pour l'heure 1 : ça ne va pas.
+  >
+  > 780. « Enfin, à la fin de l'heure, on a continué l'activité 2 — Mise en commun. » : le récit coupe l'heure en tranches (début, milieu, fin). Dans la dernière tranche, une activité commencée plus tôt et toujours en cours donne un paragraphe « on a continué » dès qu'il s'y passe quelque chose (une réponse tapée, un dévoilement), même sans aucune diapo nouvelle. Il n'ajoute alors rien, d'où la répétition.
+  >
+  > 781. Ce que je ne sais pas : je ne l'ai pas vérifié sur les données des Franklin (le hub ne se lit que par ton Chrome, et je n'y touche pas pendant tes heures de cours). Ce que je propose, pour plus tard (« moins urgent ») : le verdict lit ce que la classe avait vu à la fin de cette heure-là ; « on a continué » seulement quand une diapo nouvelle a été vue. C'est au registre.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 08:38
+  >
+  > À jouer : 666 ; 534 (le test 2) ; tes réponses à 768 (la diapo en grand) et 770 (645) · en cours : rien · ouvert : ce qui manque à Q (777, 778), R, la phrase de 772, le banc et la promotion (721, P, Q, R) ; 731, 644 ; moins urgent : la fin du récit (779-781)
+  >
+  > MEMO

@@ -4614,3 +4614,20 @@ MEMO
   > À jouer : ta réponse à 800 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-804), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:03 — Paul, mot pour mot :**
+
+  > 796. c n'apparait que quand je suis sur les diapos mise en commun bilan évidemment. il n'encombre pas la ligne des boutons rapides (peut être rangé derrière les ... et sortir lorsqu'on est sur les diapos bilan). 800. le souligné c'est bien, mais il faut un compteur du coup, à voir où on le met. Par ailleurs, le souligné ça fonctionnerait comment? sachant qu'il me semble que dans le pilotage en classe, le souligné n'est pas dans les fonctions en bas de l'écran central (on a que surligné et mettre en couleur). il me faut quelque chose de facile à faire tout en tapant la mise en commun. ça reste à cadrer, ce n'est pas encore abouti là. pour le reste c'est ok.
+
+- **10:04 — message à Paul, mot pour mot :**
+
+  > 801. Compris : © vit derrière les « … » et ne sort dans la ligne des boutons rapides que sur les diapos de la mise en commun du bilan.
+  >
+  > 800. Tu as raison, le souligné n'est pas dans les fonctions du pilotage en classe (surligner et la couleur seulement). Ce que je propose, sans lâcher le clavier pendant que tu tapes : tu entoures le mot-clé de deux tirets bas, « _nature démesurée_ » ; au second tiret, les tirets disparaissent, les mots sont soulignés, et le point du bilan qui leur correspond se coche. Si aucun point ou plusieurs correspondent, la liste numérotée des points du bilan s'ouvre, comme pour les initiales : un chiffre choisit, Échap laisse souligné sans rien cocher. Pour la souris, le même geste par un bouton S, qui ne sort lui aussi que sur la mise en commun. Le compteur : dans le bouton © lui-même (« © 3/5 ») au pilotage, et au tableau en haut à droite de la mise en commun, discret, en or (« 3 / 5 »), pour que la classe voie où elle en est. Les deux à valider : les tirets bas, et le compteur aussi au tableau ou seulement au pilotage.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:04
+  >
+  > À jouer : ta réponse à 800 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-804), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

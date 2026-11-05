@@ -899,24 +899,26 @@ function dr_lancer(classeSlug, creneau, debut, heure, sur, isoCase){
   if (!classeSlug) { try { atInfo('Aucune classe pour ce niveau : ajoute-la dans le panneau des classes, puis lance.'); } catch (e) {} return; }
   /* R8 : on avertit, on ne bloque jamais (le professeur a tous les droits) */
   if (dr_tempsUtile(creneau, debut) <= 0) { try { atInfo('Attention : ce début ne laisse aucun temps utile avant ' + fin + ' — la séance se lance quand même.'); } catch (e) {} }
-  dr_lire('/site/cours_actif', c => {
+  if (DR_LANCE_ANNULES[DR_LANCE_GEN]) return;   /* mandat K : ce lancement a été annulé par « Fermer l'atelier » pendant l'attente (son numéro vient de `edtLancer`) */
+  dr_lire('/site/cours_actif', dr_lanceGarde(c => {
     const ici = { niveau: (AT.edChap || {}).level, chapitre: (AT.edChap || {}).chnum, seance: ATVUES.snum, classeSlug, debut, fin };
     const meme = c && c.ts && (Date.now() - c.ts) < 4 * 3600 * 1000 && c.classeSlug === classeSlug && String(c.seance) === String(ici.seance) && String(c.chapitre) === String(ici.chapitre) && c.fin === fin
       && new Date(c.ts).toDateString() === new Date().toDateString();
     if (meme) { /* cette heure tourne déjà : on la REPREND, on ne la recopie pas (audit C6) */
       AT_DR_COURS = Object.assign({ debut: c.debut, fin: c.fin, classeSlug, classeNom: nom }, DR_CL.rat || {}); AT_DR_REGIME = 'classe';
+      try { if (DR_LANCE) DR_LANCE.reprise = true; } catch (e) {}   /* une heure déjà partie : « Fermer l'atelier » reste ce qu'il est */
       dr_reprendre(ok => { if (!ok) dr_lancerNeuf(classeSlug, nom, creneau, c.debut, heure, c); }); return; }
     dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c);
-  });
+  }));
 }
 function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   /* une heure close ne se reprend plus, par aucun chemin (C1 12 ; `_drHeureCloseAu`) : la même clé (jour + créneau + classe) n'est jamais réécrite */
   if (!DR_CL.cleVerifiee) { const fin0 = String(creneau).split('-')[1]; const ch0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug + '/heures/' + _drCleHeureDe(Object.assign({ classeSlug, debut, fin: fin0 }, DR_CL.rat || {}));
-    dr_lire(ch0, t0 => { const clos = !!(t0 && t0.clos); /* le paquet entier, pas `…/clos` : en mode test le magasin est rangé par chemin, une lecture de `…/clos` mise en cache cacherait la clôture écrite ensuite sur `H` */ if (clos === true) { try { atInfo('L’heure de ' + escapeHtml(nom) + ' sur le créneau ' + escapeHtml(creneau) + ' est déjà close aujourd’hui : elle ne se rouvre pas. Lance l’heure suivante depuis sa case de l’emploi du temps (son créneau à elle).'); } catch (e) {} return; }
+    dr_lire(ch0, dr_lanceGarde(t0 => { const clos = !!(t0 && t0.clos); /* le paquet entier, pas `…/clos` : en mode test le magasin est rangé par chemin, une lecture de `…/clos` mise en cache cacherait la clôture écrite ensuite sur `H` */ if (clos === true) { try { atInfo('L’heure de ' + escapeHtml(nom) + ' sur le créneau ' + escapeHtml(creneau) + ' est déjà close aujourd’hui : elle ne se rouvre pas. Lance l’heure suivante depuis sa case de l’emploi du temps (son créneau à elle).'); } catch (e) {} return; }
       /* §12.68 : ce que la copie de la classe était AVANT ce lancement (lu, jamais écrit) — « Annuler cette heure » la remettra telle quelle */
       const C0 = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug;
-      dr_lire(C0, v0 => { DR_CL.avant = { C: C0, hub: v0 === undefined ? undefined : (v0 == null ? null : JSON.parse(JSON.stringify(v0))) };
-        DR_CL.cleVerifiee = true; try { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } finally { DR_CL.cleVerifiee = false; } }); }); return; }
+      dr_lire(C0, dr_lanceGarde(v0 => { DR_CL.avant = { C: C0, hub: v0 === undefined ? undefined : (v0 == null ? null : JSON.parse(JSON.stringify(v0))) };
+        DR_CL.cleVerifiee = true; try { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } finally { DR_CL.cleVerifiee = false; } })); })); return; }
   const fin = String(creneau).split('-')[1];
   if (!suite) DR_CL.etatRestaure = false;   /* un nouveau lancement : l'état relu de la classe le redira s'il y en a un */
   if (!suite) try { dr_cloreHeureRestee(classeSlug, nom, c); } catch (e) {}
@@ -930,16 +932,16 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
      maquette (« Où en est la classe », 6.5-6.7) — il dit l'heure d'avant, ce qui glisse, le faisceau ; « Lancer l'heure n » passe par
      `dr_lancerSuite`. La copie de la classe n'est PAS recopiée depuis la trame (C1 8.1 : ce qui a été vu est immuable ; audit C6). */
   if (heure > 1 && !suite) {
-    dr_lireJoue(j => {
+    dr_lireJoue(dr_lanceGarde(j => {
       if (j && j.S && j.S.lancee && dr_adopterIdentites(j.ecrans) > 0) { dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); return; }   /* les identités adoptées : on relit, pour que les rangs se refassent dessus */
       if (j && j.S && j.S.lancee) { if (Array.isArray(j.ecrans)) { const E = seance().ecrans; const f = dr_fusionCopie(E.slice(), j.ecrans, j.J); E.splice(0, E.length, ...f); }   /* la copie de la classe fusionnée avec la trame du jour */
         dr_restaurer(j); if (!(j.heures && Object.keys(j.heures).length)) dr_partagerHeures(dr_utileCreneau(creneau)); else dr_appliquerHeures(j.heures, j.heuresParDurees, j.reactivations); dr_heureContinue(heure);   /* les frontières de la veille, puis la séance continue */ S.heure = heure - 1; S.close = true; S.lancee = true; DR_CL.suite = { classeSlug, nom, creneau, debut, heure, garder: true }; dr_heurePoser(heure, Object.assign({ debut, fin, classeSlug, classeNom: nom }, DR_CL.rat || {}));
         try { $('ecran-edt').classList.remove('on'); } catch (e) {} try { voir('pilotage'); } catch (e) {} DR_CL.reactC = (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug; dr_reactOuvertureAssurer(heure, DR_CL.reactC, () => ouvrirOuverture()); return; }   /* §12.26 (7) : la construite de la copie, ou construite maintenant (clôture manquée) et écrite ; le chemin C pour l'écriture de Paul avant le lancement */
       dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, true);
-    }, (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
+    }), (typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue/' + classeSlug);
     return; }
   /* §12.25 (2) : l'écran d'ouverture paraît aussi à l'heure 1, ou à une heure n sans état relu, quand E4 a quelque chose à réactiver — le même bouton ; sinon « Lancer » reste direct */
-  if (!DR_CL.react.decide[heure] && !dr_reactDejaLa(heure) && !DR_CL.react.enCours) { DR_CL.react.enCours = true; dr_reactPreparerAsync(heure, e => { DR_CL.react.enCours = false; if (e) { DR_CL.suite = (suite && DR_CL.suite) ? DR_CL.suite : { classeSlug, nom, creneau, debut, heure, garder: false }; dr_ouvertureLegere(heure); } else { DR_CL.react.decide[heure] = true; dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } }); return; }
+  if (!DR_CL.react.decide[heure] && !dr_reactDejaLa(heure) && !DR_CL.react.enCours) { DR_CL.react.enCours = true; dr_reactPreparerAsync(heure, dr_lanceGarde(e => { DR_CL.react.enCours = false; if (e) { DR_CL.suite = (suite && DR_CL.suite) ? DR_CL.suite : { classeSlug, nom, creneau, debut, heure, garder: false }; dr_ouvertureLegere(heure); } else { DR_CL.react.decide[heure] = true; dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite); } })); return; }
   const garder = suite && DR_CL.suite && DR_CL.suite.garder; DR_CL.suite = null;
   try { DR_CL.avantMem = dr_annulInstantane(); } catch (e) { DR_CL.avantMem = null; }   /* §12.68 : la page telle qu'avant le lancement */
   const copie = garder ? null : ((typeof atDrJouer === 'function') ? atDrJouer(classeSlug, nom) : null);
@@ -952,13 +954,13 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   try { $('ecran-edt').classList.remove('on'); } catch (e) {}   /* la porte se referme (le clic de l'EDT simulé le faisait) */
   dr_coursEcrire();   /* le pointeur d'abord : la bannière de reprise et le tableau distant en dépendent, même si le rendu bute */
   /* la barre du site se redessine pendant les lectures du hub (ouverture du chapitre) : on attend ses onglets, borné à 4 s (relecteur neuf n°1 : `voir` levait) */
-  const go = n => { if (!['ong-pilotage', 'ong-relecture', 'ong-atelier'].every(id => document.getElementById(id)) && n < 40) { setTimeout(() => go(n + 1), 100); return; }
+  const go = dr_lanceGarde(n => { if (!['ong-pilotage', 'ong-relecture', 'ong-atelier'].every(id => document.getElementById(id)) && n < 40) { setTimeout(() => go(n + 1), 100); return; }
     try { lancerHeure(heure); } catch (e) { try { atInfo('Le Pilotage ne s’est pas affiché entièrement (' + e.message + ') : l’heure est lancée et s’enregistre ; rouvre l’onglet Pilotage.'); } catch (x) {} }
-    dr_traceReprendre(() => { dr_absentsDeLaCase(true); dr_copieAuto(true); }); };
+    dr_traceReprendre(() => { dr_absentsDeLaCase(true); dr_copieAuto(true); }); });
   const placer = () => { dr_partagerHeures(dr_utileCreneau(creneau)); dr_heureContinue(heure); dr_reactInserer(heure); dr_edtAssurer(); go(0); };   /* §12.22 : la réactivation construite, une fois, si Paul a dit oui */
   /* réveil n°4, point 2 : l'heure n > 1 commence là où la classe s'est arrêtée — les paquets des heures d'avant (toutes les clés de
      cette classe, comme l'EDT les compte) disent ce qui a été joué ; ces diapos sont marquées jouées, la suivante ouvre l'heure */
-  if (heure > 1) dr_lire((typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue', dj => { try { dr_marquerJoues(dj, classeSlug, nom, DR_CL.ouverte && DR_CL.ouverte.H); } catch (e) {} placer(); });
+  if (heure > 1) dr_lire((typeof dr_cheminB === 'function' ? dr_cheminB() : '') + '/deroule_joue', dr_lanceGarde(dj => { try { dr_marquerJoues(dj, classeSlug, nom, DR_CL.ouverte && DR_CL.ouverte.H); } catch (e) {} placer(); }));
   else placer();
 }
 /* ce que les heures d'avant ont joué (réveil n°4, point 2) : un paquet écrit par ce module porte l'`eid` de chaque diapo jouée ; un paquet
@@ -1945,9 +1947,32 @@ function dr_annulerHeure(){
    (`lancerHeure`, ou la reprise d'une heure qui tourne), une bande « L'heure se lance… » par-dessus tout ; un ▶ (bouton, touche,
    télécommande) pendant l'attente est GARDÉ et joué une seule fois, dès que l'heure est partie. La bande s'efface si l'écran
    « Où en est la classe » demande la décision du professeur (heure 2 et suivantes), ou si le lancement est refusé (son message le dit).
-   « Fermer l'atelier » : inchangé (la conscience pose la question à Paul). ─── */
+   « Fermer l'atelier » : mandat K (C16 721), ci-dessous. ─── */
 var DR_LANCE = null;
-function dr_lanceBande(){ let b = document.getElementById('dr-lance'); if (!DR_LANCE) { if (b) b.remove(); return; }
+/* ─── mandat K (C16 721) : « fermer l'atelier pendant le lancement annule le lancement ; aucune heure ne part sans pilote. »
+   Chaque lancement (`edtLancer`, la case de l'emploi du temps) a son numéro ; ses étapes qui attendent le hub passent par `dr_lanceGarde` : un lancement annulé ne
+   va pas plus loin. Ce qu'il a déjà écrit (la trace, la copie de la classe, le pointeur) est remis comme avant ; les ▶ gardés sont oubliés.
+   Une heure déjà partie (la reprise d'une heure qui tourne) se ferme comme avant. ─── */
+var DR_LANCE_GEN = 0, DR_LANCE_ANNULES = {};
+function dr_lanceGarde(cb){ const g = DR_LANCE_GEN; return function(){ if (DR_LANCE_ANNULES[g]) return; return cb.apply(this, arguments); }; }
+const DR_LANCE_TITRE = 'L’heure est en train de se lancer : fermer l’atelier maintenant annule le lancement. Aucune heure ne part, rien de ce lancement ne reste, et les ▶ gardés ne se feront pas.';
+function dr_lanceTitres(on){ try { document.querySelectorAll('button[onclick^="atelierFermer"]').forEach(b => {
+  if (on) { if (b.dataset.drTitre === undefined) b.dataset.drTitre = b.title || ''; if (b.title !== DR_LANCE_TITRE) b.title = DR_LANCE_TITRE; }
+  else if (b.dataset.drTitre !== undefined) { b.title = b.dataset.drTitre; delete b.dataset.drTitre; } }); } catch (e) {} }
+function dr_lanceAnnuler(){ const L = DR_LANCE; if (!L || !L.attente || L.reprise) return false;
+  DR_LANCE_ANNULES[DR_LANCE_GEN] = true; L.attente = false; clearInterval(L.tic); const n = L.gardes; L.gardes = 0; DR_LANCE = null;
+  try { const ho = document.getElementById('hou'); if (L.hou && ho && ho.textContent === 'L’heure se lance…') ho.textContent = 'aucune heure lancée'; } catch (e) {}
+  try { const o = DR_CL.ouverte; if (o && o !== L.ouverte0) {   /* le lancement avait déjà écrit : tout revient comme avant (la règle de « Annuler cette heure ») */
+      let sig = ''; try { sig = _drSignatureCours(dr_coursIci()); } catch (e) {}
+      const cle = o.H ? String(o.H).split('/').pop() : null; const av = (DR_CL.avant && DR_CL.avant.C === o.C && DR_CL.avant.hub !== undefined) ? (DR_CL.avant.hub || {}) : null;
+      if (av) { const x = { C: o.C, avant: av, cle }; dr_annulRemettre(x); setTimeout(() => dr_annulRemettre(x), 2500); } else if (o.H) dr_ecrire(o.H, null, 'Lancement annulé — sa trace est oubliée', () => {});
+      try { dr_coursActifEffacerSi(sig); } catch (e) {} try { SES.actif = false; } catch (e) {} try { if (typeof dr_ttHeureFin === 'function') dr_ttHeureFin(); } catch (e) {}
+      dr_joueeOublier(o.H); DR_CL.ouverte = L.ouverte0 || null; } } catch (e) {}
+  try { AT_DR_COURS = L.cours0; AT_DR_REGIME = L.regime0; } catch (e) {}
+  dr_lanceBande(); try { atInfo('L’atelier est fermé pendant le lancement : l’heure n’est pas partie' + (n ? ' et ' + (n === 1 ? 'le ▶ gardé ne se fera pas' : 'les ' + n + ' ▶ gardés ne se feront pas') : '') + '. Relance-la depuis l’emploi du temps.'); } catch (e) {}
+  return true; }
+document.addEventListener('click', ev => { try { if (DR_LANCE && DR_LANCE.attente && ev.target && ev.target.closest && ev.target.closest('button[onclick^="atelierFermer"]')) dr_lanceAnnuler(); } catch (e) {} }, true);
+function dr_lanceBande(){ dr_lanceTitres(!!(DR_LANCE && DR_LANCE.attente && !DR_LANCE.reprise)); let b = document.getElementById('dr-lance'); if (!DR_LANCE) { if (b) b.remove(); return; }
   const n = DR_LANCE.gardes, vue = DR_LANCE.attente && (n > 0 || Date.now() - DR_LANCE.t0 > 1500);   /* un réseau normal (l'heure part en moins d'une seconde, mesuré) : rien ne clignote à l'écran */
   if (!vue) { if (b) b.style.display = 'none'; return; }
   if (!b) { b = document.createElement('div'); b.id = 'dr-lance'; b.setAttribute('role', 'status');
@@ -1971,10 +1996,10 @@ function dr_lanceTic(){ const L = DR_LANCE; if (!L || !L.attente) return;
 function dr_lanceGarder(){ if (!DR_LANCE || !DR_LANCE.attente) return false; DR_LANCE.gardes++; dr_lanceBande(); return true; }
 document.addEventListener('click', ev => { try { if (DR_LANCE && DR_LANCE.attente && ev.target && ev.target.closest && ev.target.closest('#bdev')) { ev.stopPropagation(); ev.preventDefault(); dr_lanceGarder(); } } catch (e) {} }, true);
 window.addEventListener('DOMContentLoaded', () => { try {
-  if (typeof edtLancer === 'function' && !edtLancer._drLance) { const e0 = edtLancer; edtLancer = function(cle, preparer){ if (preparer) return e0.apply(this, arguments);
+  if (typeof edtLancer === 'function' && !edtLancer._drLance) { const e0 = edtLancer; edtLancer = function(cle, preparer){ DR_LANCE_GEN++; if (preparer) return e0.apply(this, arguments);
       const f0 = window.edtFermer; let passe = false; if (typeof f0 === 'function') window.edtFermer = function(){ passe = true; return f0.apply(this, arguments); };
       try { return e0.apply(this, arguments); } finally { if (typeof f0 === 'function') window.edtFermer = f0;
-        if (passe) { if (DR_LANCE) clearInterval(DR_LANCE.tic); let av = false; try { av = !!(S.lancee && !S.close); } catch (e) {} DR_LANCE = { t0: Date.now(), attente: true, gardes: 0, avant: av, hou: false }; DR_LANCE.tic = setInterval(dr_lanceTic, 250); } } };
+        if (passe) { if (DR_LANCE) clearInterval(DR_LANCE.tic); let av = false; try { av = !!(S.lancee && !S.close); } catch (e) {} DR_LANCE = { t0: Date.now(), attente: true, gardes: 0, avant: av, hou: false }; try { DR_LANCE.ouverte0 = DR_CL.ouverte; DR_LANCE.cours0 = AT_DR_COURS; DR_LANCE.regime0 = AT_DR_REGIME; } catch (e) {} dr_lanceBande(); DR_LANCE.tic = setInterval(dr_lanceTic, 250); } } };
     edtLancer._drLance = true; }
   if (typeof lancerHeure === 'function' && !lancerHeure._drLance) { const l0 = lancerHeure; lancerHeure = function(){ const r = l0.apply(this, arguments); if (DR_LANCE) { DR_LANCE.avant = false; if (DR_LANCE.attente) dr_lanceFin('partie'); else if (Date.now() - (DR_LANCE.tDec || 0) < 600000) dr_lanceJouer(); else DR_LANCE = null; }   /* après « Où en est la classe » : les ▶ gardés se font au départ, s'il suit (10 min au plus) */ return r; }; lancerHeure._drLance = true; }
   if (typeof devoiler === 'function' && !devoiler._drLance) { const d0 = devoiler; devoiler = function(){ if (dr_lanceGarder()) return; return d0.apply(this, arguments); }; devoiler._drLance = true; }

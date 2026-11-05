@@ -1,0 +1,77 @@
+sonde ⑩ · 2026-11-05 15:54 UTC · fichier md5 730303062ada55cfefcaf1260e0a87ca · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · la feuille « Fiche méthode : le paragraphe citation-justification » liée aux séances
+
+A · le mode test (la pastille du panneau prof) : rien n’est écrit pour la classe ; l’image du tableau part à /site/tableau_test
+  ok     A · le mode test est posé par la pastille du panneau prof
+
+A1 — la répétition (« ▶ Jouer en avance ») : l’étiquette d’activité se corrige en direct
+  ok     A1 · en répétition, le tableau distant (mode test) montre la diapo et son étiquette entière — « Activité 1 — Analyse d'images : la routine »
+  ok     A1 · au pilote, en répétition, l’étiquette est un champ qui s’écrit, au clic — {"ed":{"ce":true},"ed2":{"ce":true,"focus":false}}
+  ok     A1 · la correction paraît aussitôt au tableau distant, le numéro gardé (« Activité n — Observer le tableau en silence ») — 2 ms · « Activité 1 — Observer le tableau en silence »
+  ok     A1 · « ■ Arrêter » : le tableau distant revient à l’horloge — {"attente":true}
+
+A2 — l’heure des De Gaulle, lancée par la case, en mode test
+  ok     A2 · la case de l’emploi du temps lance l’heure — {"lancee":true,"cours":"3E Charles de Gaulle"}
+  ok     A2 · le tableau distant suit l’heure — {"pilote":"emt9v3yqoqmqnf","tableau":"emt9v3yqoqmqnf"}
+  ok     A2 · le tableau distant écoute le hub (le flux de la scène), il ne le relit plus toutes les 0,9 s — {"flux":["/site/tableau_test/scene"],"envois":6,"lecture":false}
+  ok     A2 · « Documents de la séance » : la feuille du site se projette (plus de « n’a pas d’adresse », bouton actif) — « Fiche méthode : le paragraphe citation-justification Structure · Séance 1 · feuille du site Projeter au tableau » · Montre ce document au tableau, dans l’écran — la classe le voit tel que Structure le garde
+  ok     A2 · la feuille du site paraît au tableau distant, rendue comme dans Structure (en 233 ms), et au pilote — « Fiche méthode : le paragraphe citation-justification À retrouver toute l'année au rayon Fi… »
+  ok     A2 · « ✕ Fermer » : le tableau distant revient à la diapo — 2 ms
+
+A3 — l’étiquette d’activité au tableau distant
+  ok     A3 · au tableau distant, l’étiquette porte « Activité n — » et le titre, celle du pilote — tableau « Activité 2 — Tableau 3 » · pilote « Activité 2 — Tableau 3 »
+  ok     A3 · fond plein, texte gras, au-dessus de tout autre élément — {"fond":"rgb(15, 143, 83)","gras":700,"z":"8"}
+  ok     A3 · l’en-tête du pilote ne montre aucun nom interne de rôle
+
+A4 — le minuteur au chrono v3 (20 s) : réglé au geste ; au tableau avant ▶, immobile ; ▶ il court ; les crans ; ⏸ et la reprise sur le même bouton ; le rectangle or sur brun dans un coin sans texte ; le son ; la fin
+  ok     A4 · le ⏱ sous la diapo ouvre LE minuteur (les quatre chiffres de la durée et leurs + −, ▶/⏸, au tableau, ■), chaque geste avec son infobulle ; plus de ⏱ dans l’en-tête — {"ouvert":true,"titres":true,"chiffres":4,"plusMoins":8,"haut":false,"bchrono":"Le chrono : ouvre son réglage sous la diapo — la durée par les + et −, « au tableau » allumé pour que la classe le voie aussitôt (immobile), puis ▶. ⏸ le met en pause ici et au tableau ; ■ le retire. Il ne change pas l’heure. Il sonne sur ton ordinateur : cinq bips discrets à la fin, un ding à 0."}
+  ok     A4 · la durée réglée par le geste du chrono v3 : un clic sur le premier chiffre, « 0020 » au clavier ; après le quatrième chiffre, plus rien n’est désigné — {"val":"00:20","chiffres":"0020","sel":null}
+  ok     A4 · « au tableau » allumé avant ▶ : la durée paraît aussitôt au tableau distant, l’anneau plein, au vert — 97 ms · {"t":"00:20","coul":"#4f9d5d","da":"402.1 402.1","e":"pret","anim":"none"}
+  ok     A4 · le rectangle or sur brun (trois fois plus large que haut), dans un coin de la diapo, sur aucun des textes de la diapo ; aucun mot — {"coin":true,"marges":[984,16,16,611],"textes":2,"touche":0,"fond":"rgb(58, 44, 20)","chif":"rgb(228, 180, 92)","txt":"00:20","mots":"","rapport":3}
+  ok     A4 · avant ▶, immobile (1,3 s plus tard : les mêmes chiffres, le même anneau) — {"t":"00:20","coul":"#4f9d5d","da":"402.1 402.1","e":"pret","anim":"none"}
+  ok     A4 · ▶ : il court au tableau distant (l’anneau se vide, puis 00:19) ; au pilote, le réglage se cache derrière le ⏱ et le même bouton devient ⏸ — 91 ms · 00:19 à 1002 ms · bouton « ▶ » → « ⏸ » · réglage caché
+  ok     A4 · il passe au jaune à la moitié (10 s sur 20) — 9994 ms après ▶
+  ok     A4 · le pilote et le tableau distant comptent ensemble (horloge recalée sur le pilote) — écart 11 ms
+  ok     A4 · ⏱ rouvre le réglage, ⏸ (#dr-minut-go) : les chiffres et l’anneau s’arrêtent au tableau distant (1,5 s plus tard, les mêmes) ; le même bouton redevient ▶ — 80 ms · 00:10 → 00:10 · pilote 00:10
+  ok     A4 · ▶ (le même bouton) : il repart au tableau distant, là où il était — 219 ms · 00:10 → 00:09 · écart 5 ms
+  ok     A4 · l’orange au quart, puis le rouge sur le dernier dixième, pendant qu’il court — orange vu à 00:05 · rouge vu à 00:02 · clignotement : drMinutClig
+  ok     A4 · le son sort du pilote : cinq bips sur les cinq dernières secondes, un ding à 0 — {"sons":6,"m":"fini"}
+  ok     A4 · à 0, le tableau distant montre 00:00 au rouge — {"t":"00:00","coul":"#e8484c","da":"0.0 402.1","e":"fini","anim":"none"}
+  ok     A4 · fini, il quitte le tableau distant (4 s après 0) — 3999 ms
+  ok     A4 · les crans du v3 au tableau distant : les 21 chiffres (00:20 à 00:00) vus, chacun à son cran — vert plus de la moitié, jaune jusqu’au quart, orange jusqu’au dixième, rouge le dernier dixième — 24 relevés · 21 chiffres · 0 faux · vert→jaune à 00:10, jaune→orange à 00:05, orange→rouge à 00:02
+
+A5 — « 👥 » : la participation à 0 élève au tableau distant
+  ok     A5 · « 0 élève sur N ont participé » paraît au tableau distant — 102 ms · « 0 élève sur 29 ont participé »
+
+A6 — « Annuler cette heure » en mode test
+  ok     A6 · « Annuler cette heure » est au Pilotage, avec son infobulle — « Annuler cette heure : pour une heure lancée par erreur (pas la bonne classe, pas le bon mo… »
+  ok     A6 · la confirmation dit ce qui sera oublié — « Annuler l’heure des 3E Charles de Gaulle (08:57-09:52) ? Le site oublie tout ce que cette heure a écrit : ce que la clas… »
+  ok     A6 · l’heure est annulée : l’emploi du temps, « L’heure des … est annulée », sans « Relire » — {"lancee":false,"regime":"prep","edt":true,"bande":"L’heure des 3E Charles de Gaulle est annulée : le site n’en garde rien","relire":"none"}
+  ok     A6 · le tableau distant revient à l’horloge — {"attente":true}
+  ok     A6 · au faux hub : rien de l’heure (le pilote n’a écrit qu’à /site/tableau_test, et l’image du mode test est retirée) — {"ptr":null,"sc":null} · 
+
+B · l’heure réelle, sur le faux hub (il reçoit tout)
+  ok     B · le mode test n’est pas posé
+  ok     B · la case lance l’heure ; le cours est annoncé au hub — {"lancee":true,"cours":"3E Charles de Gaulle"}
+  ok     B · le tableau distant suit, par le flux de la scène de la classe — {"flux":["/site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/scene"]}
+  ok     B · « Documents de la séance » : la feuille du site se projette (plus de « n’a pas d’adresse », bouton actif) — « Fiche méthode : le paragraphe citation-justification Structure · Séance 1 · feuille du site Projeter au tableau » · Montre ce document au tableau, dans l’écran — la classe le voit tel que Structure le garde
+  ok     B · la feuille du site paraît au tableau distant, rendue comme dans Structure (en 154 ms), et au pilote — « Fiche méthode : le paragraphe citation-justification À retrouver toute l'année au rayon Fi… »
+  ok     B · « ✕ Fermer » : le tableau distant revient à la diapo — 1 ms
+  ok     B · au tableau distant, l’étiquette porte « Activité n — » et le titre, celle du pilote — tableau « Activité 2 — Tableau 3 » · pilote « Activité 2 — Tableau 3 »
+  ok     B · fond plein, texte gras, au-dessus de tout autre élément — {"fond":"rgb(15, 143, 83)","gras":700,"z":"8"}
+  ok     B · l’en-tête du pilote ne montre aucun nom interne de rôle
+  ok     B · le ⏱ sous la diapo ouvre LE minuteur (les quatre chiffres de la durée et leurs + −, ▶/⏸, au tableau, ■), chaque geste avec son infobulle ; plus de ⏱ dans l’en-tête — {"ouvert":true,"titres":true,"chiffres":4,"plusMoins":8,"haut":false,"bchrono":"Le chrono : ouvre son réglage sous la diapo — la durée par les + et −, « au tableau » allumé pour que la classe le voie aussitôt (immobile), puis ▶. ⏸ le met en pause ici et au tableau ; ■ le retire. Il ne change pas l’heure. Il sonne sur ton ordinateur : cinq bips discrets à la fin, un ding à 0."}
+  ok     B · la durée réglée par le geste du chrono v3 : un clic sur le premier chiffre, « 0030 » au clavier ; après le quatrième chiffre, plus rien n’est désigné — {"val":"00:30","chiffres":"0030","sel":null}
+  ok     B · « au tableau » : la durée paraît au tableau distant avant « Départ » — 82 ms
+  ok     B · « Départ » puis « ⏸ Pause » arrivent au tableau distant ; les deux comptes ensemble — 99 ms · 74 ms · écart 14 ms
+  ok     B · « ■ » : le minuteur quitte le tableau distant — 85 ms
+  ok     B · la participation à 0 arrive au tableau distant, alors que le hub ne garde pas la liste vide (le drapeau la porte) — 155 ms · scène au hub : quiOn true, qui undefined
+  info   B · l’heure a écrit au hub : C · /site/cours_actif · C/ecrans · C/journal · C/etat · C/heures/<clé> · C/scene · C/vif · /site/horloge
+  ok     B · « Annuler cette heure » : le faux hub est celui d’avant le lancement — rien de ce que l’heure avait écrit ne reste (copie, journal, état, récit, scène, trace de l’heure, cours annoncé) — 9 adresse(s) écrite(s) pendant l’heure, toutes revenues
+  ok     B · le tableau distant revient à l’horloge — {"attente":true}
+
+  info   retards pilote → tableau distant (le clic compris) : feuille 233 ms · au tableau 97 ms · ▶ 91 ms · ⏸ 80 ms · ▶ reprise 219 ms · participation 102 ms · feuille 154 ms · au tableau 82 ms · ▶ (heure réelle) 99 ms · ⏸ (heure réelle) 74 ms · ■ (heure réelle) 85 ms · participation (heure réelle) 155 ms
+  ok     Δ · le retard pilote → tableau distant, mesuré à chaque geste, reste sous 0,5 s — le plus long : 233 ms
+  ok     JS · aucune erreur JS (pilote A, pilote B, tableau distant)
+  ok     JS · aucune boîte système
+
+sonde ⑩ · 55 vérifications · 0 échec · VERT

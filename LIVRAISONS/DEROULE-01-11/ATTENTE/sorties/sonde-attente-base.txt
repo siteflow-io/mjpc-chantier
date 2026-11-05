@@ -1,0 +1,30 @@
+sonde de l'écran d'attente (mandat T) · 2026-11-05 15:51 UTC · fichier md5 23eed7cf29fd3689d550caf1a666b98b · la montre à 09:00:50 (lundi 14/09) · 1920×1080
+écritures du tableau au chargement (avant l'attente mesurée) : tableau PUT /site/cle_vue
+
+1 — le tableau ouvert, aucune heure lancée
+  lu : {"vis":true,"n":"monsieurjaipascompris","sous":null,"h":"09:00","d":"lundi 14 septembre 2026","c":"Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52","bas":null,"fsN":25.92,"fsSous":null,"fsH":151.2,"coulSous":null,"an":[],"cleClic":true,"centre":"ses-tab-h","ligneS":null,"nAnim":0,"W":1920,"H":1080}
+  ÉCHEC  1 · l'écran d'attente : « MJPC », « Cours de français - M. Meney », « monsieurjaipascompris » en bas — monsieurjaipascompris |  | 
+  ÉCHEC  1 · « MJPC » plus petit que « Cours de français - M. Meney », l'heure la plus grande — polices 25.9 < 0.0 < 151.2 px
+  ok     1 · l'heure et la date — 09:00 · lundi 14 septembre 2026 · classe : Classe attendue : 3E Charles de Gaulle · 08:57 – 09:52
+  ÉCHEC  1 · les deux anneaux sur le centre de l'heure — écart  px
+  ok     1 · la ligne de la clé USB reste cliquable (rien ne la couvre) — true
+  ok     1 · l'heure au centre de l'écran — ses-tab-h
+  (la maquette v3 telle quelle, « monsieurjaipascompris » prenant les clics : au centre de la ligne de la clé, null — d'où #mjpc-bas{pointer-events:none})
+  ÉCHEC  1 · la ligne de la minute suit les secondes de la montre (09:00:50) — remplie à null s sur 60
+
+2 — l'animation bouge (écart moyen entre images, 6 images à 1 s, écran entier en 960×540)
+  ÉCHEC  2 · l'animation bouge — écart moyen entre images : 0 (la v3 : 4,8 ; un écran fixe : 0)
+
+3 — l'heure change à la minute
+  ok     3 · la montre passe 09:01 : l'heure du tableau suit — 09:00 → 09:01
+  ÉCHEC  3 · la ligne de la minute repart avec la nouvelle minute (09:01:02) — remplie à null s sur 60
+
+4 — les écritures au hub pendant l'attente
+  ok     4 · l'écran d'attente n'écrit rien au hub — 0 écriture(s) en 31 s
+  (à part, comme avant : la clé USB du tableau dit ce qu'elle voit toutes les 15 s, /site/cle_vue, §12.44 — 2 fois en 31 s ; jamais en mode test)
+
+5 — la fenêtre réduite puis agrandie : les anneaux restent sur l'heure
+  ÉCHEC  5 · les anneaux sur le centre de l'heure, réduite et agrandie — 1280×720 :  px · 1920×1080 :  px
+  ok     5 · aucune erreur de la page
+
+--- fin : 13 vérifications, 7 échec(s)

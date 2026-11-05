@@ -1,0 +1,59 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties B · 2026-11-05 16:00 UTC · md5 730303062ada55cfefcaf1260e0a87ca · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · scratchpad · md5 730303062ada55cfefcaf1260e0a87ca · vraie heure ══
+
+— partie B
+  [B] lancée en répétition (#at-jouer true, S.repetition true) · vraie heure
+  [B] sur le bilan : aud-bilan · l’ordre de la fin de l’heure : aud-g5-hyp → bilan → bilan-commun → fin
+  ok     B1 · la mise en commun posée d’elle-même juste après le bilan (séance déjà préparée) — aud-g5-hyp → bilan → bilan-commun → fin
+  ok     B2 · la coche « Les élèves ont écrit le bilan » n’est plus sur le bilan — (cachée)
+  ok     B31 · la diapo du bilan avant la mise en commun (les élèves rédigent) : quatre cases vides, ni marque ni compteur, au pilotage et au tableau — pilotage 0000 [] «  » · tableau 0000 [] «  »
+  ok     B3 · du bilan à la mise en commun par ▶ : sans gel, sans garde — Mise en commun du bilan · gel false · garde false
+  ok     B4 · au tableau : « Mise en commun du bilan » et la question du bilan, reprise d’elle-même — MISE EN COMMUN DU BILAN Qu’est-ce que le Romantisme, d’après nos cinq hypothèses ? 0 / 4
+  ok     B5 · la coche d’attestation est sur la mise en commun — ☐ Les élèves ont écrit le bilan
+  ok     B6 · 🅱️ sorti dans la ligne du bas avec son compteur, le compteur au tableau — 🅱️ 0/4 · tableau « 0 / 4 »
+  ok     B32 · 🅱️ au départ : la diapo du bilan, cases vides, sans marque, « 0 / 4 » en haut à droite, au pilotage et au tableau — pilotage 0000 marques [] « 0 / 4 » · tableau 0000 marques [] « 0 / 4 »
+  [B7.1] clic (+338 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert — · tableau : 1/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.1] « z » (+485 ms) · curseur .ini[0.i.0] <span> · case des initiales « Z » · la ligne : élève personne, i « Z », r «  » · vert — · tableau : 1/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.1] « a » (+630 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert — · tableau : 1/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.1] +500 ms sans frapper (+10423 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » · vert — · tableau : 66/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.1] Entrée (valider) (+10621 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 66/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.1] +900 ms (+11527 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 66/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] clic (+328 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales «  » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 0/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] « a » (+479 ms) · curseur .ini[0.i.1] <span> · case des initiales « A » · la ligne : élève personne, i « A », r «  » · vert — · tableau : 0/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] « j » (+621 ms) · curseur .dit[0.r.1] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r «  » · vert — · tableau : 0/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] +500 ms sans frapper (+8044 ms) · curseur .dit[0.r.1] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » · vert — · tableau : 49/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] Entrée (valider) (+8240 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » validée · vert — · tableau : 49/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [B7.2] +900 ms (+9145 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » validée · vert — · tableau : 49/49 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  ok     B7 · deux réponses validées, chacune avec son élève — [{"el":true,"v":true},{"el":true,"v":true}]
+  ok     B9 · un passage glissé à la souris, Alt + B : la liste numérotée des quatre points — « l’exaltation des sentiments » · 1,2,3,4
+  ok     B10 · la liste au pilotage seulement, jamais au tableau
+  ok     B11 · Échap : la liste se ferme, rien ne change — 🅱️ 0/4
+  ok     B12 · le chiffre 1 : le passage marqué B, pastille 1, au pilotage et au tableau — 1:l’exaltation des sentiments · tableau 1:l’exaltation des sentiments
+  ok     B13 · le compteur : 🅱️ 1/4 au pilotage, 1 / 4 au tableau — 🅱️ 1/4 · 1 / 4
+  ok     B33 · 🅱️ après le point 1 : le point 1 coché, marqué B, pastille 1, « 1 / 4 », au pilotage et au tableau — pilotage 1000 marques [1] « 1 / 4 » · tableau 1000 marques [1] « 1 / 4 »
+  ok     B14 · la réponse de l’élève ne change pas (la pastille n’est pas du texte) — Les romantiques expriment l’exaltation des sentiments, la passion.
+  ok     B15 · Alt + B dans un passage marqué : la liste rouvre, son point en évidence, et le 0 — 1*,2,3,4,0
+  ok     B16 · 0 : la marque enlevée, le point décoché (0 / 4) — 🅱️ 0/4 · 0 / 4
+  ok     B34 · 🅱️ après 0 : le point 1 décoché, sa marque et sa pastille parties, « 0 / 4 » — pilotage 0000 marques [] « 0 / 4 » · tableau 0000 marques [] « 0 / 4 »
+  ok     B17 · Ctrl + Z : la marque et la coche reviennent ensemble — 🅱️ 1/4 · 1:l’exaltation des sentiments
+  ok     B18 · un 2e point marqué : 2/4 — 🅱️ 2/4
+  ok     B19 · « Annuler » : la dernière marque et sa coche défaites ensemble — 🅱️ 1/4
+  ok     B35 · 🅱️ après « Annuler » : le point 2 décoché, sa marque et sa pastille parties ; le point 1 marqué, « 1 / 4 » — pilotage 1000 marques [1] « 1 / 4 » · tableau 1000 marques [1] « 1 / 4 »
+  ok     B20 · un point marqué deux fois reste coché une fois : le compteur compte les points — 🅱️ 2/4 · 3 marques
+  ok     B21 · trois points sur quatre : l’attestation pas encore cochée — 🅱️ 3/4 · ☐ Les élèves ont écrit le bilan
+  ok     B22 · le dernier point marqué : 4/4, l’attestation cochée d’elle-même — 🅱️ 4/4 · ☑ Les élèves ont écrit le bilan · tableau 4 / 4
+  ok     B8 · 14 réponses : la mise en commun passe en pages d’elle-même, sans gel ni garde — 14 réponses · 2 pages · page 1 · gel false
+  ok     B23 · 🅱️ : la diapo du bilan au tableau et au pilotage, ses quatre points cochés, sans gel ni garde — pilotage 1111 · tableau 1111 · 🅱️ 4/4
+  ok     B36 · 🅱️ à 4/4 : les quatre points marqués B avec leur pastille 1 à 4, « 4 / 4 », au pilotage et au tableau — pilotage [1,2,3,4] « 4 / 4 » · tableau [1,2,3,4] « 4 / 4 »
+  ok     B24 · un second clic : retour à la mise en commun, même page, le curseur où il était — page 1 → 1 · curseur {"p":"0.r.13","off":10} → {"p":"0.r.13","off":10}
+  ok     B25 · Échap : retour à la mise en commun — Mise en commun du bilan
+  ok     B26 · un clic sur la case du point 3 : décoché à la main, au pilotage et au tableau ; le compteur suit — 1101 · 1101 · 🅱️ 3/4
+  ok     B37 · décoché à la main : la marque et la pastille 3 parties, « 3 / 4 » sur la diapo, au pilotage et au tableau — pilotage [1,2,4] « 3 / 4 » · tableau [1,2,4] « 3 / 4 »
+  ok     B27 · recoché à la main, puis Échap : la mise en commun, 4/4 — 🅱️ 4/4
+  ok     B28 · sur une autre diapo : 🅱️ rangé derrière les « … », grisé, sa raison dite — (caché) · {"off":true,"t":"seulement sur la mise en commun du bilan (la diapo qui suit le bilan)"}
+  [B] répétition true · écrit au hub par le pilotage pendant la partie : 499 écriture(s) · PUT /site/repetition/scene | PUT /site/repetition/ecrans | PUT /site/repetition/pointeur | PUT /site/repetition/vif
+  ok     B30 · en répétition : aucune écriture pour la classe (ni copie jouée, ni journal, ni participation, ni récit) — 499 écriture(s)
+  ok     B29 · B : aucune erreur JS, aucune boîte système
+
+--- fin : 37 vérifications, 0 échec(s)

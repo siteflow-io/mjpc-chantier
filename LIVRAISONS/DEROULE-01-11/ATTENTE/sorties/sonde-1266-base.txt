@@ -1,0 +1,40 @@
+sonde §12.66 · 2026-11-05 16:02 UTC · fichier md5 23eed7cf29fd3689d550caf1a666b98b · la montre à 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52
+
+1 — l'écran d'attente du tableau distant (la clé USB, l'horloge)
+  ok     1 · la ligne de la clé est là, sur l'écran d'attente — « Clé USB des vidéos : désigner son dossier (une fois sur cet ordi) »
+  ok     1 · elle est en bas à droite — boîte 971,688,1268,710 sur 1280×720
+  ok     1 · petite et pâle — police 10.8 px (avant : 2,2 vh = 15.8 px), opacité 0.42
+  ok     1 · toujours cliquable (rien ne la couvre) — pointer-events auto
+  ok     1 · l'horloge seule au centre (la date dessous) ; la clé n'est plus dans la colonne du centre — au centre : ses-tab-h · colonne : n ses-tab-h ses-tab-d ses-tab-c
+  ok     1 · avant l'heure, l'horloge d'attente est celle de la montre — 09:00
+
+2 — l'heure des De Gaulle en mode test : le tableau distant suit, rien n'est écrit pour la classe
+  ok     2 · le mode test est posé par la pastille du panneau prof — pastille true, m8TestOn true
+  ok     2 · la case de l'emploi du temps lance l'heure des De Gaulle, dans l'écran de la classe — {"lancee":true,"cours":"3E Charles de Gaulle","enClasse":true}
+  ok     2 · le témoin de l'en-tête — « mode test — rien n'est enregistré pour la classe » · horloge de la case : 08:57 (il est 09:00)
+  ok     2 · le tableau distant montre la diapo de l'heure (la même diapo, le même dévoilement) — pilote {"eid":"emt9v3yqoqmqnf","di":9,"nDev":0} · tableau {"eid":"emt9v3yqoqmqnf","nDev":0,"att":false} « TABLEAU 3 Le Radeau de la Méduse, Théodore Géricau »
+  ok     2 · pendant l'heure, l'horloge du tableau distant est celle de la case (08:57), pas la montre (09:00) — 08:57
+  ok     2 · ▶ : le tableau distant suit le dévoilement — pilote {"eid":"emt9v3yqobbdyt","di":12,"nDev":1} · tableau {"eid":"emt9v3yqobbdyt","nDev":1}
+  ok     2 · ▶ encore : une ligne de plus au tableau distant — pilote 1 → 2 · tableau 2
+  ok     2 · la diapo suivante : le tableau distant suit — pilote {"eid":"emt9v3yqon4gew","di":14,"nDev":0} · tableau {"eid":"emt9v3yqon4gew","nDev":0}
+  ok     2 · rien n'est écrit pour la classe : le pilote n'écrit au hub qu'à /site/tableau_test (l'image du tableau) — 21 écriture(s), dont 0 ailleurs — pilote PUT /site/tableau_test/scene · pilote PUT /site/tableau_test/ecrans · pilote PUT /site/tableau_test/pointeur · pilote PUT /site/tableau_test/vif · tableau PUT /site/cle_vue
+  ok     2 · au hub : le pointeur du mode test ; /site/cours_actif et le niveau 3e (copies, journaux, récits) inchangés — {"pointeur":{"test":true,"classe":"3E Charles de Gaulle","quoi":"heure"},"cours_actif_inchange":true,"site_3e_inchange":true}
+
+3 — la clôture : l'emploi du temps, la confirmation, « close · », « Relire l'heure », le tableau distant à l'horloge
+  ok     3 · l'heure est close et le site emmène à l'emploi du temps — {"close":true,"edt":true,"ecranDeLaClasse":false}
+  ok     3 · en haut, la confirmation, à l'heure de la case — « L’heure des 3E Charles de Gaulle est close à 08:57 » · bande en haut 0 px, emploi du temps dessous à 46 px
+  ok     3 · « Relire l’heure » dans la confirmation, avec son infobulle (et « ✕ ») — « Ouvre la Relecture de cette heure : son récit, ce qui s’est passé, le papier — rien ne se rejoue, rien ne s’écrit »
+  ok     3 · « close · » donne l'heure de la case (08:57), pas la montre (09:00) — « close · 08:57 »
+  ok     3 · sur l'heure close, « Relire l’heure » remplace « Fin de l’heure » (plus de bouton grisé) — {"t":"Relire l’heure","dis":false,"title":"L’heure est close : ouvre sa Relecture — son récit, ce qui s’est passé, le papier. Rien ne se rejoue, rien ne s’écrit."}
+  ok     3 · le tableau distant revient à l'horloge (celle de la montre, l'heure finie) — {"attente":true,"mur":"","horloge":"09:00"}
+  ok     3 · à la clôture, le pointeur et la scène du mode test sont retirés ; toujours rien d'écrit pour la classe — {"ptr":null,"sc":null} · pilote PUT /site/tableau_test/vif ; pilote PUT /site/tableau_test/vif ; pilote PUT /site/tableau_test/pointeur ; pilote PUT /site/tableau_test/scene ; pilote PUT /site/tableau_test/vif ; pilote PUT /site/tableau_test/ecrans
+
+4 — « Relire l’heure » ouvre la Relecture de cette heure
+  ok     4 · la Relecture de l'heure close s'ouvre (son récit) ; l'emploi du temps et la confirmation se referment — {"vue":"relecture","relecture":true,"face":"recit","faceH":2,"edt":false,"bande":false,"texte":"Relecture — 3E Charles de Gaulle · heure 2 (lundi 14 septembre 2026) · Poésie et peinture ","heure":2}
+  ok     4 · sur tout le parcours, le pilote n'a rien écrit au hub hors de /site/tableau_test (niveau 3e et cours_actif inchangés)
+  info   4 · le tableau distant, lui, n'écrit que l'état de sa clé USB (§12.44) : PUT /site/cle_vue
+
+  ok     JS · aucune erreur JS (pilote, tableau distant)
+  ok     JS · aucune boîte système
+
+sonde §12.66 · 27 vérifications · 0 échec · VERT

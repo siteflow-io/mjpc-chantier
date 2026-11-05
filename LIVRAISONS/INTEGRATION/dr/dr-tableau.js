@@ -335,9 +335,12 @@ function dr_tabPoser(){
   /* (relecteur 1, n° 5 : la vider faisait planter `tick` du socle, qui cherche #fin) — on ne retire que l'id du mur caché */
   try { const m = document.querySelector('#dr-zone #mur'); if (m) m.id = 'dr-mur-gare'; } catch (e) {}
   const z = document.createElement('div'); z.id = 'ses-tab'; z.className = 'ses-tab';
+  /* C16 mandat T (Paul 05/11 09:09-09:30, maquette v3 validée, T-maquette/cap-attente-v3.mjs) : le fond animé (#anim-calme), « MJPC » petit, « Cours de français - M. Meney »
+     en or, l'heure en surimpression, la ligne de la minute, la classe attendue, « monsieurjaipascompris » en bas au milieu ; le style est dans dr.css (« le tableau en attendant une heure ») */
   z.innerHTML = '<div class="ses-tab-attente" id="ses-tab-att">'
-    + '<div class="n">monsieurjaipascompris</div><div class="h" id="ses-tab-h">--:--</div>'
-    + '<div class="d" id="ses-tab-d"></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle"></button>') + '</div>'
+    + '<div id="anim-calme"><div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div><div class="anneau"></div><div class="anneau anneau2"></div><div class="grain"></div></div>'
+    + '<div class="n">MJPC</div><div class="sous">Cours de français - M. Meney</div><div class="h" id="ses-tab-h">--:--</div>'
+    + '<div class="d" id="ses-tab-d"></div><div class="ligne"><i></i></div><div class="c" id="ses-tab-c" style="display:none"></div>' + (dr_tabLocal() ? '' : '<button class="c" id="ses-tab-cle"></button>') + '<div id="mjpc-bas">monsieurjaipascompris</div></div>'
     + '<div class="mur tableau" id="mur2"></div>'
     + '<div class="ses-tab-perdu" id="ses-tab-perdu"></div>'
     + '<div class="dr-tab-minut" id="dr-tab-minut" style="display:none"></div>';   /* §12.70 (1) : le minuteur, en haut à droite du tableau, hors du mur (le redessin du mur n'y touche jamais) */
@@ -361,11 +364,24 @@ function dr_tabPoser(){
   const horloge = () => { const d = new Date(Date.now() + ((SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), J = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'], M = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
     const h = document.getElementById('ses-tab-h'), dd = document.getElementById('ses-tab-d');
     const th = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2), td = J[d.getDay()] + ' ' + d.getDate() + ' ' + M[d.getMonth()] + ' ' + d.getFullYear();
-    if (h && h.textContent !== th) h.textContent = th; if (dd && dd.textContent !== td) dd.textContent = td; };   /* §12.56 (1)(d) : seulement le chiffre qui change */
+    if (h && h.textContent !== th) h.textContent = th; if (dd && dd.textContent !== td) dd.textContent = td; dr_tabAttenteSuit(d); };   /* §12.56 (1)(d) : seulement le chiffre qui change */
   DR_TAB.horloge = horloge; horloge(); setInterval(horloge, 1000);
+  window.addEventListener('resize', () => dr_tabAttenteSuit()); try { document.fonts.ready.then(() => dr_tabAttenteSuit()); } catch (e) {}
   if (!dr_tabLocal()) { dr_tabCleMaj(); setInterval(dr_tabCleMaj, 3000); const bc = document.getElementById('ses-tab-cle'); if (bc) bc.onclick = async () => { const e = DR_CLE.etat; if (e === 'a-autoriser') await dr_cleAutoriser(); else if (e === 'vu') await dr_cleScanner(); else await dr_cleDesigner(); dr_tabCleMaj(); }; }
   window.addEventListener('resize', () => { if (DR_TAB.montre) dr_rendreMur(DR_TAB.montre); });
 }
+
+/* C16 mandat T : les anneaux suivent le centre de l'heure (comme la maquette : left/top au centre, marges de la demi-taille), aussi quand la fenêtre change
+   de taille, quand la classe attendue apparaît ou quand l'écran d'attente revient ; la ligne de la minute suit les secondes de l'horloge (elle se remplit
+   pendant la minute et repart quand l'heure change). Rien n'est écrit si rien ne bouge ; jamais d'écriture au hub. */
+function dr_tabAttenteSuit(d){ try {
+  const att = document.getElementById('ses-tab-att'), h = document.getElementById('ses-tab-h'), a = document.getElementById('anim-calme'); if (!att || !h || !a) return;
+  const hr = h.getBoundingClientRect(), ar = att.getBoundingClientRect(); if (!hr.width || !hr.height) return;   /* l'écran d'attente caché (une heure lancée) : rien */
+  const cx = hr.left - ar.left + hr.width / 2, cy = hr.top - ar.top + hr.height / 2;
+  a.querySelectorAll('.anneau').forEach(r => { const v = { left: cx + 'px', top: cy + 'px', marginLeft: (-r.offsetWidth / 2) + 'px', marginTop: (-r.offsetHeight / 2) + 'px' }; for (const k in v) if (r.style[k] !== v[k]) r.style[k] = v[k]; });
+  const i = att.querySelector('.ligne i'), an = i && i.getAnimations ? i.getAnimations()[0] : null;
+  if (an) { const t = d || new Date(Date.now() + ((typeof SES !== 'undefined' && SES && SES.ctx && isFinite(DR_TAB.hdec)) ? DR_TAB.hdec : 0)), cible = t.getSeconds() * 1000 + t.getMilliseconds(), pr = an.effect && an.effect.getComputedTiming ? an.effect.getComputedTiming().progress : null; if (pr !== null && isFinite(pr)) { const ecart = cible - pr * 60000; if (Math.abs(ecart) > 1500 && Math.abs(ecart) < 58500) { let nt = (+an.currentTime || 0) + ecart; while (nt < 0) nt += 60000; an.currentTime = nt; } }   /* un temps négatif sortirait l'animation de sa boucle : on reste dans la même seconde, un tour plus loin */ }
+} catch (e) {} }
 
 /* E1 (§12.44, 4 bis) : sur l'ordi de classe (la vue du tableau, sur l'écran d'attente seulement — jamais devant la classe pendant l'heure), la clé USB des vidéos :
    la désigner une fois, l'autoriser à chaque ouverture (le navigateur redemande l'accord), la voir. L'état part au site par `dr_cleRapporter` (la seule écriture de la vue). */

@@ -4904,3 +4904,21 @@ MEMO
   > À jouer : 844 (banc court ou complet ; sans réponse, complet) ; les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **17:08 — l'exécutant T rend son travail** (16:32 → 17:08, au-delà des 30 minutes) : sas `deroule/attente` `46ce703a1` (dr-tableau.js, dr.css, + sa sonde `LIVRAISONS/DEROULE-01-11/ATTENTE/sonde-attente.mjs`) ; assemblé md5 `730303062ada55cfefcaf1260e0a87ca`. Sonde de l'attente 13/13 (l'écran comme la v3, l'heure au centre, les anneaux sur l'heure à 0 px même fenêtre réduite puis agrandie, l'animation bouge, 09:00 → 09:01, la ligne de la minute, la clé USB cliquable, aucune erreur) ; parcours vert ; sonde 10 55/55 ; bilan B 36/36/37. Erreurs de mon mandat signalées : la maquette v3 couvrait la ligne de la clé USB (« monsieurjaipascompris » en bas, toute la largeur) → `pointer-events:none`, rien ne change à l'écran ; « 0 écriture » faux tel quel : le tableau écrit `/site/cle_vue` toutes les 15 s, déjà avant (l'écran d'attente lui-même : 0) ; le 4,8 ne se refait pas (même mesure partout : v3 2,1, site 3,3, fixe 0) ; la ligne de la minute, figée en maquette (décalage de −36 s pour la capture), calée sur les secondes de l'horloge : ajout à valider. Reste : sonde 1266 26/27 sur l'assemblé final (l'horloge de la case lue 09:00 au lieu de 08:57), 27/27 sur l'assemblé d'avant ; à rejouer (le banc le rejoue).
+- **17:07 — lancé : le banc complet** sur `46ce703a1` (`banc-bilan.sh`, sortie `banc-attente-out`, base la 8.87.0-⑳ ; + la sonde de l'attente) : pas de réponse à 844, donc complet.
+- **17:08 — envoyé à Paul** : `scratchpad/ATTENTE-captures-T/attente-v3-et-site.png`, regardée.
+- **17:08 — message à Paul, mot pour mot :**
+
+  > 846. L'image jointe : à gauche ta maquette v3 validée, à droite le site avec le code de l'exécutant (faux hub, écran entier). C'est la même chose.
+  >
+  > 847. L'exécutant a trouvé deux erreurs dans ma maquette. 1 : « monsieurjaipascompris », en bas, prenait toute la largeur et couvrait la ligne de la clé USB des vidéos, qui n'était plus cliquable ; c'est corrigé, et rien ne change à l'écran. 2 : la petite ligne or sous la date, qui se remplit en une minute, tournait au hasard ; elle est maintenant calée sur l'horloge : elle se remplit pendant la minute et repart quand l'heure change. C'est un ajout : je propose de le garder ; si tu n'en veux pas, dis-le.
+  >
+  > 848. Le banc complet tourne depuis 17:07, puisque tu n'as pas répondu à 844 (environ une heure et demie, estimé). Une sonde a raté 1 point sur 27 chez l'exécutant (l'heure de la case pendant l'heure, lue à la seconde près) ; elle passait juste avant. Je ne sais pas si c'est le code ou le hasard de l'horloge : le banc la rejoue. Vert, je mets en ligne la 8.88.0-㉑ sous ton « promeus » ; rouge, je te dis pourquoi.
+  >
+  > À tester : les dix tests de la 8.87.0-⑳ (841), avant demain.
+  >
+  > 05/11/2026 17:08
+  >
+  > À jouer : 847 (la ligne calée sur l'horloge) ; les dix tests de 841 · en cours : le banc complet, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

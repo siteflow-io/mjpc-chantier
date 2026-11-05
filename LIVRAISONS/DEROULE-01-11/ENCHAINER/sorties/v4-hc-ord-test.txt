@@ -1,0 +1,19 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 22:09 UTC · fichier md5 f1840ad732cbf3138d29c234d1b57b22 · mode test · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+  ok     0 · le mode test est posé par la pastille du panneau prof
+
+1 — la séance 1 lancée par la case de l'emploi du temps
+  ok     1 · la case du lundi propose la séance 2 (la séance 1 jouée et close le 07/09) — 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 1/3
+  ok     1 · la séance 2 tourne — {"snum":"1","heure":1,"sur":3,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     1 · un élève marqué absent au clic droit (le 3e de la liste)
+
+H — l'heure ordinaire (la séance 2 lancée par la case) : sans « aller à 5 minutes de la fin », la montre avance seule jusqu'au T-5
+  ok     H · avant : pas de T-5 ; horloge de la case 08:57:04, le cahier de textes à 09:47, le T-5 attendu à 09:42:00 (sur l'horloge de la case) — montre 09:00:14 · décalage de référence -190 s · décalage de cette heure -190 s
+  ok     H · 30 s avant le T-5 : pas encore d'alerte — horloge de la case 09:41:31
+  ok     H · le T-5 arrive à 09:42:02 sur l'horloge de la case (attendu 09:42:00, 5 minutes avant le cahier de textes) — palier t5 · chrono cr-t5 · journal t5 à 09:42:00
+  ok     H · à la montre, il arrive là où l'horloge de cette heure le met : 09:45:12 (attendu 09:45:10, écart 3 s)
+
+écritures du pilote sous /site/3e : 0 (attendu : 0)
+  ok     5 · mode test : rien n'est écrit pour la classe au hub
+  ok     5 · aucune erreur de page
+
+bilan : 10/10

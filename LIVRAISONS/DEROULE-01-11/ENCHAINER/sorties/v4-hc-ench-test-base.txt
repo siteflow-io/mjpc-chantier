@@ -1,0 +1,38 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 22:07 UTC · fichier md5 bd434b3f4764a6fbae0f714b1383c0c3 · mode test · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+  ok     0 · le mode test est posé par la pastille du panneau prof
+
+1 — la séance 1 lancée par la case de l'emploi du temps
+  ok     1 · la case du lundi propose la séance 1 — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1/1
+  ok     1 · la séance 1 tourne — {"snum":"0","heure":1,"sur":1,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     1 · un élève marqué absent au clic droit (le 3e de la liste)
+
+2 — ▶ jusqu'à la dernière diapo de la séance 1 : le bouton n'apparaît qu'à la fin
+  ok     2 · avant la dernière diapo, le bouton n'est jamais là — 84 états lus, bouton montré 0 fois
+  ok     2 · sur la dernière diapo, la séance entièrement faite : « ▶ Séance suivante dans cette heure » paraît — {"di":23,"der":23,"faite":true,"bouton":true}
+  ok     2 · son infobulle dit ce qu'il fait et la séance qui suit — Séance suivante dans cette heure : cette séance est entièrement faite. Un clic clôt l’heure comme « ■ Clore l’heure » (son récit entier, rien de reporté ; s’il …
+  ok     2 · une diapo non faite : la séance n'est pas faite (pas de bouton) ; refaite : elle l'est — {"i":5,"sans":false,"avec":true}
+
+3 — le clic : la séance 1 close, la séance 2 lancée dans cette heure
+  (V4, réaliste : la séance 1 a duré ; la montre avance de 25 min avant le clic — horloge de la case 09:22:28, bouton ▶ présent : true)
+  la garde de « ■ Clore l'heure » : ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ le mot aux absents (1) (facultatif) — les absents n'auront pas de mot ○ copié pour École Directe — le c
+  ok     3 · la séance 2 tourne, même classe — {"lancee":true,"close":false,"snum":"1","heure":1,"sur":3,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     3 · heure 1 de la séance 2, sur le même créneau (sa clé : le même jour, le même créneau, la même classe) — …/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     3 · la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite — {"cles":1,"clos":true,"seanceFaite":true,"finReel":true,"activites":24}
+  ok     3 · rien de reporté — 0 décision « reporter »
+  ÉCHEC  3 · l'horloge de la case continue (V4) : 09:22:28 juste avant le clic, 08:57:00 juste après (écart -1528 s ; ne repart pas au début du créneau) — montre 09:25:38 → 09:25:41 · décalage -190 s → -1721 s
+  ok     3 · la trace de la séance 2 : la classe, le créneau, ouverte — {"classe":"3E Charles de Gaulle","creneau":"08:57-09:52","heure":1,"sur":3,"clos":false}
+  ok     3 · le journal de la séance 2 : rien de la séance 1, un seul lancement (son récit part du lancement, au clic) — {"n":4,"premier":"diapo","hors":0,"lanc":1}
+  ok     3 · l'absent de la séance 1 est absent de la séance 2 (au pilote, et dans l'appel de l'heure) — pilote true · absentsPar 1 élève
+  ok     3 · le tableau distant passe à la séance 2 sans écran d'attente — 67 images lues pendant le passage, attente vue 0 fois · tableau « Le parcours du chapitre Séance 2 sur 9 » · même diapo que le pilote : true
+
+H — la séance 2 enchaînée : sans « aller à 5 minutes de la fin », la montre avance seule jusqu'au T-5
+  ok     H · avant : pas de T-5 ; horloge de la case 08:57:04, le cahier de textes à 09:47, le T-5 attendu à 09:42:00 (sur l'horloge de la case) — montre 09:25:45 · décalage de référence -190 s · décalage de cette heure -1721 s
+  ok     H · 30 s avant le T-5 : pas encore d'alerte — horloge de la case 09:41:31
+  ok     H · le T-5 arrive à 09:42:02 sur l'horloge de la case (attendu 09:42:00, 5 minutes avant le cahier de textes) — palier t5 · chrono cr-t5 · journal t5 à 09:42:00
+  ÉCHEC  H · à la montre, il arrive là où l'horloge de la séance d'avant le met : 10:10:43 (attendu 09:45:10, écart 1533 s)
+
+écritures du pilote sous /site/3e : 0 (attendu : 0)
+  ok     5 · mode test : rien n'est écrit pour la classe au hub
+  ok     5 · aucune erreur de page
+
+bilan : 21/23 — 2 échec(s)

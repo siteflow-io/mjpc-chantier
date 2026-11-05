@@ -956,6 +956,7 @@ function dr_lancerNeuf(classeSlug, nom, creneau, debut, heure, c, suite){
   dr_heurePoser(heure, AT_DR_COURS);
   DR_CL.ouverte = { C: dr_cheminC(), H: dr_cheminH(), creneau }; dr_joueeIci(DR_CL.ouverte.H, false);   /* l'adresse de CETTE heure, gardée pour sa clôture (même si la page change de séance ou de jour) */
   S.closPar = null; S.finReel = null; S.debutReel = Date.now();
+  S.hcEnch = (typeof DR_ENCH === 'object' && DR_ENCH && DR_ENCH.hc != null) ? { h: +heure, t0: S.debutReel, dec: DR_ENCH.hc } : null; try { DR_ENCH.hc = null; } catch (e) {}   /* C16 mandat V4 : la séance enchaînée, l'horloge de la case continue (dr_horlogeCase) ; tout autre lancement : rien */
   try { $('ecran-edt').classList.remove('on'); } catch (e) {}   /* la porte se referme (le clic de l'EDT simulé le faisait) */
   dr_coursEcrire();   /* le pointeur d'abord : la bannière de reprise et le tableau distant en dépendent, même si le rendu bute */
   /* la barre du site se redessine pendant les lectures du hub (ouverture du chapitre) : on attend ses onglets, borné à 4 s (relecteur neuf n°1 : `voir` levait) */
@@ -1381,7 +1382,8 @@ function dr_enchainer(){
   const v = dr_enchVisible() ? dr_enchSuivante() : null; if (!v) return;
   if (S.repetition) { dr_enchRepetition(v); return; }
   const ab = (typeof ELEVES !== 'undefined' ? ELEVES : []).filter(e => dr_apAbsentDeLHeure(e, S.heure));
-  DR_ENCH.en = { H: dr_cheminH(), v, ab, cours: Object.assign({}, AT_DR_COURS), creneau: dr_creneauDuCours(AT_DR_COURS) };
+  const h0 = typeof dr_horlogeCase === 'function' ? dr_horlogeCase() : null;   /* C16 mandat V4 : l'horloge de la case au clic (la classe d'essai) — la séance suivante la continue */
+  DR_ENCH.en = { H: dr_cheminH(), v, ab, cours: Object.assign({}, AT_DR_COURS), creneau: dr_creneauDuCours(AT_DR_COURS), hc: h0 && h0.test ? h0.dec + h0.saut : null };
   S.finSection = 7; ouvrirFin(true); const fc = document.getElementById('f-clore');
   if (!fc) { DR_ENCH.en = null; try { atInfo('La clôture ne s’ouvre pas : clos l’heure par « ■ Clore l’heure », puis lance la séance suivante depuis l’emploi du temps.'); } catch (e) {} return; }
   fc.click();
@@ -1394,7 +1396,7 @@ function dr_enchLancer(x){
   if (x.H && typeof mjpcEcrireRest === 'function') try { mjpcEcrireRest(FIREBASE_BASE + x.H + '.json', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ seanceFaite: true }) }, () => {}); } catch (e) {}   /* en PATCH sur la trace (en mode test, le magasin la fusionne) */
   try { atInfo('« ' + escapeHtml(v.titre1 || 'La séance') + ' » est close ; « ' + escapeHtml(v.titre) + ' » commence dans cette heure.'); } catch (e) {}
   dr_enchPageNeuve();
-  DR_ENCH.sansReact = v.heure;
+  DR_ENCH.sansReact = v.heure; DR_ENCH.hc = x.hc != null && isFinite(+x.hc) ? +x.hc : null;   /* C16 mandat V4 : posé dans S au lancement (dr_lancerNeuf) */
   dr_ouvrirLaClasse(v.niv, v.chCle, v.snum, () => {
     try { dr_lancer(c.classeSlug, x.creneau, c.debut, v.heure, v.sur, c.rattrapee ? c.iso : null); } catch (e) { try { atInfo('La séance suivante ne se lance pas : ' + e.message + ' — lance-la depuis l’emploi du temps.'); } catch (x2) {} return; }
     dr_enchAbsents(x, 0);

@@ -67,6 +67,23 @@ const etat = () => pg.evaluate(() => ({ lancee: !!S.lancee, close: !!S.close, re
 const bdev = async () => { await pg.click('#bdev', { timeout: 2000 }).catch(() => pg.evaluate(() => document.getElementById('bdev').click())); await p(pg, 160); await gardes(pg); };
 const lireP = c => pg.evaluate(c => new Promise(r => { try { dr_lire(c, v => r(v === undefined ? null : v)); } catch (e) { r('?'); } setTimeout(() => r('délai'), 4000); }), c);
 
+/* V4 (mandat V4) — l'horloge de la case : sans « aller à 5 minutes de la fin », la montre avance seule (pg.clock) jusqu'au T-5. HC_REF : le décalage horloge de la case − montre
+   de la séance d'avant au clic (enchaînée), ou celui de l'heure elle-même (l'heure ordinaire) — le T-5 doit tomber, à la montre, là où cette horloge-là dit « cahier − 5 min ». */
+const HC = !!process.env.MJPC_HC; let HC_REF = null; const hms = n => new Date(n).toTimeString().slice(0, 8);
+const hcBloc = async quoi => {
+  dire(''); dire('H — ' + quoi + ' : sans « aller à 5 minutes de la fin », la montre avance seule jusqu\'au T-5');
+  const c0 = await pg.evaluate(() => ({ c: dr_nowCase(), m: Date.now(), cahier: heureCahier(), t5: !!S.t5, hc: !!dr_horlogeCase() }));
+  if (HC_REF == null) HC_REF = c0.c - c0.m; const cible = c0.cahier - 5 * 60000;
+  verif('H', c0.hc && !c0.t5 && cible > c0.c, 'avant : pas de T-5 ; horloge de la case ' + hms(c0.c) + ', le cahier de textes à ' + hms(c0.cahier).slice(0, 5) + ', le T-5 attendu à ' + hms(cible) + ' (sur l\'horloge de la case)', 'montre ' + hms(c0.m) + ' · décalage de référence ' + Math.round(HC_REF / 1000) + ' s · décalage de cette heure ' + Math.round((c0.c - c0.m) / 1000) + ' s');
+  await pg.clock.fastForward(Math.max(0, cible - c0.c - 30000)); await p(pg, 1500);
+  const c1 = await pg.evaluate(() => ({ c: dr_nowCase(), t5: !!S.t5 })); verif('H', !c1.t5, '30 s avant le T-5 : pas encore d\'alerte', 'horloge de la case ' + hms(c1.c));
+  let n = 0; for (; n < 24; n++) { await pg.clock.runFor(5000); await p(pg, 200); if (await pg.evaluate(() => !!S.t5)) break; }
+  const c2 = await pg.evaluate(() => { const j = J.find(x => x.type === 't5'); return { c: dr_nowCase(), m: Date.now(), t5: !!S.t5, palier: S.palier, chr: (document.getElementById('chr') || {}).className || '', j: j ? j.t : null }; });
+  const mAttendue = cible - HC_REF;
+  verif('H', c2.t5 && c2.c >= cible && c2.c - cible <= 10000, 'le T-5 arrive à ' + hms(c2.c) + ' sur l\'horloge de la case (attendu ' + hms(cible) + ', 5 minutes avant le cahier de textes)', 'palier ' + c2.palier + ' · chrono ' + c2.chr + ' · journal t5 à ' + (c2.j ? hms(c2.j) : '-'));
+  verif('H', c2.t5 && Math.abs(c2.m - mAttendue) <= 10000, 'à la montre, il arrive là où l\'horloge de ' + (T5ORD ? 'cette heure' : 'la séance d\'avant') + ' le met : ' + hms(c2.m) + ' (attendu ' + hms(mAttendue) + ', écart ' + Math.round((c2.m - mAttendue) / 1000) + ' s)');
+  await capt(pg, 'hc-' + (T5ORD ? 'ordinaire' : 'enchainee') + '-le-t5');
+};
 /* V3 — le T-5 d'une séance pas finie, puis « Reporter » (l'activité en cours et les suivantes), la clôture, la case suivante. Les lignes « T5 » se comparent, base → après. */
 const t5Bloc = async quoi => {
   dire(''); dire('T — ' + quoi + ', pas finie : « aller à 5 minutes de la fin » (l\'horloge de la case au T-5 : le cahier de textes à 09:47, la case finit à 09:52), le flux de la fin d\'heure, puis « Reporter »');
@@ -136,7 +153,7 @@ if (MODE !== 'rep') { absent = await pg.evaluate(() => (typeof ELEVES !== 'undef
   const sel = '#part [data-e="' + String(absent).replace(/"/g, '\\"') + '"]'; await pg.click(sel, { button: 'right', timeout: 2500 }).catch(() => {}); await p(pg, 300); await pg.click('#menu [data-a="absent"]', { timeout: 1500 }).catch(() => {}); await p(pg, 400);
   verif('1', await pg.evaluate(n => { try { return dr_apAbsentDeLHeure(n, S.heure); } catch (e) { return null; } }, absent), 'un élève marqué absent au clic droit (le 3e de la liste)'); }
 
-if (T5ORD) { await t5Bloc('l\'heure ordinaire (la séance 2 lancée par la case)'); await terminer(); }
+if (T5ORD) { if (HC) await hcBloc('l\'heure ordinaire (la séance 2 lancée par la case)'); else await t5Bloc('l\'heure ordinaire (la séance 2 lancée par la case)'); await terminer(); }
 /* 2 — ▶ jusqu'au bout : le bouton absent tant qu'une diapo n'est pas faite */
 dire(''); dire('2 — ▶ jusqu\'à la dernière diapo de la séance 1 : le bouton n\'apparaît qu\'à la fin');
 let vusAvant = 0, montresAvant = 0, n = 0, x = await etat();
@@ -184,10 +201,13 @@ if (MODE === 'temoin') {
   const H1path = (await etat()).H;
   await pg.evaluate(() => { window.__tClic = Date.now(); window.__infos = []; const f = window.atInfo; if (typeof f === 'function') window.atInfo = function (m) { window.__infos.push(String(m).replace(/<[^>]+>/g, '').slice(0, 160)); return f.apply(this, arguments); }; if (window.MJPC_TRACER) {} ['dr_lancer', 'dr_lancerNeuf', 'dr_lancerSuite', 'lancerHeure', 'dr_ouvertureLegere', 'ouvrirOuverture', 'dr_reprendre', 'dr_cloreHeureRestee', 'dr_reactPreparerAsync', 'dr_enchRepetition', 'arreterRepetition', 'lancerRepetition', 'atVuesAller', 'atEditerChapitre'].forEach(n => { const g = window[n]; if (typeof g === 'function') window[n] = function () { if (n === 'dr_lancer') { const L = window.dr_lire; window.dr_lire = function (c, cb) { window.__infos.push('lire ' + c.slice(-60)); return L.call(this, c, v => { window.__infos.push('lu ' + c.slice(-40) + ' = ' + JSON.stringify(v === undefined ? 'undef' : v).slice(0, 80)); try { cb(v); } catch (e) { window.__infos.push('ERREUR ' + e.message); throw e; } }); }; } window.__infos.push(n + '(' + Array.from(arguments).map(x => typeof x === 'function' ? 'fn' : JSON.stringify(x)).join(',').slice(0, 120) + ')'); try { const r = g.apply(this, arguments); if (n === 'lancerRepetition' || n === 'atVuesAller') { window.__infos.push(n + ' → S.repetition ' + !!S.repetition); [50, 300, 1000, 2000].forEach(t => setTimeout(() => window.__infos.push('+' + t + 'ms S.repetition ' + !!S.repetition + ' vue ' + (ATVUES && ATVUES.vue)), t)); } return r; } catch (e) { window.__infos.push('ERREUR ' + n + ' : ' + e.message); throw e; } }; }); const M0 = window.M8_TEST_STORE; window.M8_TEST_STORE = new Proxy(M0, { set(t, k, v) { if (/seances\/0\/deroule_joue/.test(k)) window.__m8.push('PROXY ' + k.replace(/^.*deroule_joue/, '') + ' ' + (v && typeof v === 'object' ? Object.keys(v).join(',').slice(0, 80) : JSON.stringify(v)) + ' @' + (new Error().stack.split('\n')[2] || '').replace(/^.*html[^:]*:/, '').slice(0, 30)); M0[k] = v; return true; }, deleteProperty(t, k) { if (/seances\/0\/deroule_joue/.test(k)) window.__m8.push('PROXYDEL ' + k); delete M0[k]; return true; } }); });
   if (process.env.MJPC_DIAG) await pg.evaluate(() => { window.__m8 = []; ['ecrire', 'patch', 'suppr'].forEach(n => { const g = M8T[n]; M8T[n] = function (c, v) { if (/seances\/0\/deroule_joue/.test(c)) window.__m8.push(n + ' ' + c.replace(/^.*deroule_joue/, '') + ' ' + (v && typeof v === 'object' ? Object.keys(v).join(',').slice(0, 120) : JSON.stringify(v))); return g.apply(this, arguments); }; }); });
+  if (HC && MODE !== 'rep') { await pg.clock.fastForward(25 * 60000); await p(pg, 2000); await gardes(pg); dire('  (V4, réaliste : la séance 1 a duré ; la montre avance de 25 min avant le clic — horloge de la case ' + hms(await pg.evaluate(() => dr_nowCase())) + ', bouton ▶ présent : ' + (await pg.evaluate(() => { const b = document.getElementById('dr-ench'); return !!(b && b.offsetParent !== null); })) + ')'); }
+  const hcAv = MODE !== 'rep' ? await pg.evaluate(() => ({ c: dr_nowCase(), m: Date.now(), hc: !!dr_horlogeCase() })) : null; if (hcAv) HC_REF = hcAv.c - hcAv.m;   /* V4 : l'horloge de la case juste avant le clic */
   const kc = ECR.length; await pg.click('#dr-ench', { timeout: 8000 }).catch(() => dire('  (le bouton ne se clique pas)')); await p(pg, 900);
   const garde = await pg.evaluate(() => { const g = document.getElementById('garde-clore'); return g && g.classList.contains('on') ? (document.getElementById('gclore-corps') || {}).innerText || '' : null; });
   if (garde != null) { dire('  la garde de « ■ Clore l\'heure » : ' + garde.replace(/\s+/g, ' ').slice(0, 200)); await capt(pg, MODE + '-2-la-garde'); await pg.click('#gclore-oui').catch(() => {}); }
   const y = await attendre(pg, async () => { const z = await etat(); return (MODE === 'rep' ? z.rep : z.lancee) && !z.close && z.snum === '1' ? z : null; }, 20000) || await etat();
+  const hcAp = MODE !== 'rep' ? await pg.evaluate(() => ({ c: dr_nowCase(), m: Date.now(), hc: !!dr_horlogeCase(), s2: !!(S.hcEnch) })) : null;   /* V4 : et juste après (la séance 2 lancée) */
   await p(pg, 2500); await gardes(pg); const y2 = await etat();
   if (process.env.MJPC_INFOS) dire('  (messages au pilote après le clic : ' + (await pg.evaluate(() => (window.__infos || []).filter(x => !/^lu? /.test(x)).join(' | ').slice(0, 1500))) + ' · S.repetition ' + (await pg.evaluate(() => !!S.repetition)) + ')');
   verif('3', (MODE === 'rep' ? y2.rep : y2.lancee) && !y2.close && y2.snum === '1' && (MODE === 'rep' ? y2.rep :   /* V3 : en répétition, « tourne » = S.repetition */ /Charles de Gaulle/.test(y2.cours || '')), 'la séance 2 tourne, même classe' + (MODE === 'rep' ? ' (en répétition)' : ''), JSON.stringify({ lancee: y2.lancee, close: y2.close, snum: y2.snum, heure: y2.heure, sur: y2.sur, rep: y2.rep, cours: y2.cours }));
@@ -198,6 +218,7 @@ if (MODE === 'temoin') {
     verif('3', k1.indexOf(H1path.slice(H1path.lastIndexOf('/') + 1)) >= 0 && k1.length <= (DEUX ? 2 : 1) && h1.clos === true && h1.seanceFaite === true && !!h1.finReel, 'la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite', JSON.stringify({ cles: k1.length, clos: h1.clos, seanceFaite: h1.seanceFaite, finReel: !!h1.finReel, activites: (h1.activites || []).length }));
     if (process.env.MJPC_DIAG) dire('  (M8T : ' + (await pg.evaluate(() => (window.__m8 || []).join(' | '))) + ')');
     verif('3', dec === 0, 'rien de reporté', dec + ' décision « reporter »');
+    verif('3', hcAv.hc && hcAp.hc && hcAp.c >= hcAv.c && hcAp.c - hcAv.c <= 60000 && Math.abs((hcAp.c - hcAp.m) - (hcAv.c - hcAv.m)) <= 1000, 'l\'horloge de la case continue (V4) : ' + hms(hcAv.c) + ' juste avant le clic, ' + hms(hcAp.c) + ' juste après (écart ' + Math.round((hcAp.c - hcAv.c) / 1000) + ' s ; ne repart pas au début du créneau)', 'montre ' + hms(hcAv.m) + ' → ' + hms(hcAp.m) + ' · décalage ' + Math.round((hcAv.c - hcAv.m) / 1000) + ' s → ' + Math.round((hcAp.c - hcAp.m) / 1000) + ' s');
     H2path = y2.H; const H2 = await lireP(y2.H); verif('3', H2 && H2.classe === '3E Charles de Gaulle' && H2.creneau === '08:57-09:52' && !H2.clos, 'la trace de la séance 2 : la classe, le créneau, ouverte', JSON.stringify({ classe: H2 && H2.classe, creneau: H2 && H2.creneau, heure: H2 && H2.heure, sur: H2 && H2.sur, clos: H2 && H2.clos }));
     const jv = await pg.evaluate(() => { const E = seance().ecrans; return { n: J.length, premier: J[0] && J[0].type, hors: J.filter(x => x.type === 'diapo' && (x.di >= E.length || x.si !== S.si)).length, lanc: J.filter(x => x.type === 'lancement').length }; });
     verif('3', jv.hors === 0 && jv.lanc === 1, 'le journal de la séance 2 : rien de la séance 1, un seul lancement (son récit part du lancement, au clic)', JSON.stringify(jv));
@@ -218,6 +239,7 @@ if (MODE === 'temoin') {
 
   /* 4 — la séance 2 close à la fin du créneau (« ■ Clore l'heure »), puis l'emploi du temps */
   if (T5) await t5Bloc('la séance 2 enchaînée');
+  else if (HC && MODE !== 'rep') await hcBloc('la séance 2 enchaînée');
   else if (MODE !== 'rep') {
     dire(''); dire('4 — la séance 2 close, la case du jour, « Relire cette heure », la case suivante');
     await bdev(); await bdev();

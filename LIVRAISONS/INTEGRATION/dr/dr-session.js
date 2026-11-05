@@ -492,7 +492,7 @@ function dr_sesReprendreRepetition(p){
 }
 /* relancer la même répétition ailleurs la rejoint ; une autre répétition joue : le site le dit avant */
 (function(){ const f = window.lancerRepetition; if (typeof f !== 'function' || f.__ses) return;
-  const g = function () { const self = this, args = arguments; if (S.repetition || DR_SES.rejoindre) return f.apply(self, args);
+  const g = function () { const self = this, args = arguments; if (S.repetition || DR_SES.rejoindre || (typeof DR_ENCH === 'object' && DR_ENCH && DR_ENCH.rep)) return f.apply(self, args);   /* C16 mandat V3 : la répétition de la séance suivante remplace celle de cet appareil — pas de question */
     const ec = (typeof AT !== 'undefined' && AT && AT.edChap) || {}; const sn = String(typeof ATVUES !== 'undefined' ? ATVUES.snum : '');
     const meme = x => dr_sesFrais(x) && String(x.niveau) === String(ec.level) && String(x.chapitre) === String(ec.chnum) && String(x.seance) === sn;
     const test = dr_sesTest(); const ch = test ? DR_TT.chemin + '/pointeur' : DR_REP.chemin + '/pointeur'; let fait = false;

@@ -1340,10 +1340,13 @@ setInterval(() => { try { if (typeof S === 'object' && S) dr_clorePoser(); } cat
    tableau garde son image jusqu'à la nouvelle séance (pas d'écran d'attente). En répétition : la répétition de la séance suivante, rien d'écrit. ─── */
 var DR_ENCH = { en: null, vise: null, relire: null };
 function dr_enchSeanceFaite(){ const E = seance().ecrans; if (!E || !E.length) return false; let o = []; try { o = ordreHeure(S.heure); } catch (e) {}
-  return E.every((e, i) => { if (!e || e.role === 'fin' || e.role === 'reactivation' || dr_masqueeCachee(e) || finie(e, i)) return true; const d = decisionDe(e); if (d && d.choix === 'passee') return true;
+  return E.every((e, i) => { if (!e || e.role === 'fin' || e.role === 'reactivation' || dr_masqueeCachee(e) || finie(e, i) || dr_enchRepVue(e, i)) return true; const d = decisionDe(e); if (d && d.choix === 'passee') return true;
     return (+e.heure || 1) < (+S.heure || 1) && o.indexOf(i) < 0; }); }   /* C16 mandat V2 : une diapo d'une heure d'avant, close avec elle et pas reportée dans celle-ci (sa décision prise à la clôture), est derrière la classe — la séance 1 en deux heures, enchaînée à sa 2e heure (le vuMax de cette page ne connaît que l'heure qui tourne) */
+/* C16 mandat V3 : en répétition, rien n'est marqué vu (vuMax, p6) : la diapo est faite si la répétition l'a montrée en entier (S.repVu, posé par `pousser`) — la même règle que `finie` */
+function dr_enchRepVue(e, i){ if (!S.repetition || !S.repVu) return false; const v = S.repVu[K(i)]; if (v == null) return false; const n = elements(e).length;
+  return n ? v >= n : (e.blocs && e.blocs[0] && e.blocs[0].t === 'video' ? ((S.videoPos || {})[e.eid] || 0) >= e.blocs[0].duree : true); }
 function dr_enchVisible(){
-  if (typeof S !== 'object' || !S || !S.lancee || S.close || S.atelier || S.preparation || S.enFin) return false;
+  if (typeof S !== 'object' || !S || !(S.repetition || (S.lancee && !S.close)) || S.atelier || S.preparation || S.enFin) return false;   /* V3 : la répétition ne pose pas S.lancee (l'heure de classe) */
   if (!S.repetition && (typeof AT_DR_COURS === 'undefined' || !AT_DR_COURS || AT_DR_REGIME !== 'classe')) return false;
   const o = ordreHeure(S.heure); if (!o.length || S.di !== o[o.length - 1]) return false;
   return dr_enchSeanceFaite();
@@ -1355,7 +1358,8 @@ function dr_enchSuivante(){
     const ch = l.filter(x => x && String(x.__cle) === String(ec.chnum))[0]; if (!ch) return null;
     const se = edtListe(ch.seances).filter(x => x && String(x.__i) === String(ATVUES.snum))[0]; if (!se) return null;
     let chS = null, s2 = null;
-    if (nom && edtNiveauDe(nom)) { window.EDT_FAITE_ICI = se; let f = null; try { f = edtFileDAttente(nom, ch.fil || null); } finally { window.EDT_FAITE_ICI = null; } if (f && f.seances && f.seances[0] && f.seances[0] !== se) { chS = f.chapitre; s2 = f.seances[0]; } }
+    if (nom && edtNiveauDe(nom)) { window.EDT_FAITE_ICI = se; let f = null; try { f = edtFileDAttente(nom, ch.fil || null); } finally { window.EDT_FAITE_ICI = null; } if (f && f.seances && f.seances[0] && f.seances[0] !== se) { chS = f.chapitre; s2 = f.seances[0]; }
+      else if (S.repetition && f && f.seances && f.seances[0] === se && f.seances[1]) { chS = f.chapitre; s2 = f.seances[1]; } }   /* C16 mandat V3 : en répétition, rien n'est écrit — la séance répétée n'a aucune heure jouée, la file la garde en tête (`edtSeanceJouee` rend 0 sans heure) : la suivante est celle d'après dans la file */
     else if (S.repetition) { const L = edtListe(ch.seances).filter(Boolean).sort((a, b) => (Number(a.ordre) || 0) - (Number(b.ordre) || 0)); const k = L.indexOf(se); if (k >= 0 && L[k + 1]) { chS = ch; s2 = L[k + 1]; } }   /* une répétition sans classe du niveau : la séance d'après dans l'ordre */
     if (!s2 || s2.__i == null) return null;
     return { niv, chCle: String(chS.__cle), snum: String(s2.__i), titre: s2.titre || s2.title || ('Séance ' + s2.__i), titre1: se.titre || se.title || '', heure: (nom && edtNiveauDe(nom) ? edtHeuresJouees(s2, nom) : 0) + 1, sur: edtHeuresPour(s2, creneau) || 1 };
@@ -1413,11 +1417,14 @@ function dr_enchAbsents(x, n){
   let k = 0; (x.ab || []).forEach(e => { dr_apPoser(e, true, 'absent à la séance d’avant, dans cette heure'); dr_apGeste(e); k++; });
   if (k) { try { participation(); } catch (e) {} dr_tout(); }
 }
+/* C16 mandat V3 : le passage se fait sur CET appareil, la répétition de la suivante remplace la sienne — `DR_ENCH.rep` le temps du passage : le pointeur du tableau
+   n'est pas retiré à l'arrêt (le nouveau le remplace : pas d'écran d'attente), et le site ne demande pas « une répétition joue déjà sur un autre appareil » (c'est la sienne) */
 function dr_enchRepetition(v){
-  const ec = AT.edChap || {}; try { arreterRepetition(); } catch (e) {}
+  DR_ENCH.rep = true; const fin = () => { DR_ENCH.rep = false; };
+  try { arreterRepetition(); } catch (e) {}
   atChargerChapitres(v.niv, () => { try { atEditerChapitre(v.niv, v.chCle); } catch (e) {} ATVUES.snum = String(v.snum);
-    edtQuandPilotagePret(manque => { if (manque) { try { atInfo('La répétition de la séance suivante ne s’ouvre pas (manque : ' + manque + ').'); } catch (e) {} return; }
-      try { atVuesAller('pilotage'); } catch (e) {} if (S.repetition) return; try { lancerRepetition(); } catch (e) {} }); });
+    edtQuandPilotagePret(manque => { if (manque) { fin(); try { atInfo('La répétition de la séance suivante ne s’ouvre pas (manque : ' + manque + ').'); } catch (e) {} return; }
+      try { atVuesAller('pilotage'); } catch (e) {} if (S.repetition) { fin(); return; } try { lancerRepetition(); } catch (e) {} fin(); }); });
 }
 /* « Relire cette heure » d'une case jouée par deux séances : le premier récit, puis « ▶ La suite de cette heure » ouvre le suivant */
 function dr_enchRelireSuite(){

@@ -1,0 +1,25 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 21:40 UTC · fichier md5 bd434b3f4764a6fbae0f714b1383c0c3 · mode rep · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+
+1 — la séance 1 lancée en répétition
+  ok     1 · la case du lundi propose la séance 1 — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1/1
+  « Préparer » true · « ▶ Jouer en avance » visible true · S.repetition true
+  ok     1 · la séance 1 tourne — {"snum":"0","heure":1,"rep":true,"cours":null}
+
+2 — ▶ jusqu'à la dernière diapo de la séance 1 : le bouton n'apparaît qu'à la fin
+  ok     2 · avant la dernière diapo, le bouton n'est jamais là — 84 états lus, bouton montré 0 fois
+  ok     2 · sur la dernière diapo, la séance entièrement faite : « ▶ Séance suivante dans cette heure » paraît — {"di":23,"der":23,"faite":true,"bouton":true}
+  ok     2 · son infobulle dit ce qu'il fait et la séance qui suit — Séance suivante dans cette heure (répétition) : la répétition de « Étude de texte accompagnée : « L'Albatros » » commence ici, rien n’est écrit — comme « ▶ Joue…
+  ok     2 · une diapo non faite : la séance n'est pas faite (pas de bouton) ; refaite : elle l'est — {"i":5,"sans":false,"avec":true}
+
+3 — le clic : la séance 1 close, la séance 2 lancée dans cette heure
+  ok     3 · la séance 2 tourne, même classe (en répétition) — {"lancee":false,"close":false,"snum":"1","heure":1,"rep":true,"cours":null}
+  ok     3 · en répétition, rien n'est écrit pour la classe (/site/3e inchangé)
+  ok     3 · le tableau distant passe à la séance 2 sans écran d'attente — 45 images lues pendant le passage, attente vue 0 fois · tableau « Le parcours du chapitre Séance 2 sur 9 » · même diapo que le pilote : true
+
+écritures du pilote sous /site/3e : 0 (attendu : 0)
+  ok     5 · mode rep : rien n'est écrit pour la classe au hub
+  écritures du pilote pendant la répétition : 182 (PUT /site/repetition/scene | PUT /site/repetition/ecrans | PUT /site/repetition/pointeur | PUT /site/repetition/vif | PUT /presence/prof)
+  ok     5 · en répétition : aucune écriture pour la classe (ni copie jouée, ni journal, ni participation, ni récit, ni appel) — 0 écriture(s) pour la classe sur 182
+  ok     5 · aucune erreur de page
+
+bilan : 12/12

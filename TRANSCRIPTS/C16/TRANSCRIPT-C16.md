@@ -5050,3 +5050,15 @@ MEMO
   >
   > MEMO
 - **20:56 — Paul, mot pour mot :** « Ok. Laisse tomber 873. »
+- **20:57 — lecture prise** : « Ok » = 871-872 acquis ; 866 (corrigé par 871), 867, 868 non commentés = acquis ; 870 sans « promeus si le banc est vert » = la branche « sinon » : demain la répétition (863), la mise en ligne après les tests de Paul. **Mandat V** (sas `636c8ff05`), lancé : branche `deroule/enchainer` depuis `46ce703a1` (la 8.88.0-㉑), 60 minutes au plus.
+- **20:57 — message à Paul, mot pour mot :**
+
+  > 874. 873 abandonné. Je prends 866 (corrigé par 871), 867 et 868 comme acquis. Un exécutant code « ▶ Séance suivante dans cette heure » maintenant, en une heure au plus. Ensuite viennent le banc court et les captures, puis la demande de « promeus ». Tu n'as pas dit « promeus si le banc est vert » : rien ne part en ligne cette nuit. Demain, tu passes par la répétition (863), et la mise en ligne vient après tes tests.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 20:57
+  >
+  > À jouer : les cinq tests de 861 ; 847 ; 849 · en cours : la séance suivante dans cette heure (V), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

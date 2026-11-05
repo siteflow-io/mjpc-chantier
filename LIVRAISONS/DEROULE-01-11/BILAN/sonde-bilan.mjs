@@ -277,7 +277,9 @@ const ligneDe = (e, txt) => (e.lig || []).find(r => r.r && txt && r.r.indexOf(tx
 const resume = (k, e, txt, n, t0) => { const l = ligneDe(e, txt); const iniDom = (e.dom.find(x => x.dit && txt && x.dit.indexOf(txt.slice(0, 3)) === 0) || e.dom.find(x => x.libre) || e.dom.slice(-1)[0] || {}).ini;
   return k + ' (+' + (e.t - t0) + ' ms) · curseur ' + e.foc + ' · case des initiales « ' + iniDom + ' » · la ligne : élève ' + rang(l.eleve) + ', i « ' + (l.i || '') + ' », r « ' + String(l.r || '').slice(0, 30) + ' »' + (l.v ? ' validée' : '') + ' · vert ' + (n ? e.vert.includes(n) : '—') + ' · tableau : ' + auTableau(e.tb, txt || '§§') + '/' + (txt || '').length + ' lettres, ' + quiAuTableau(e.tb, n) + ' · journal « reponse » ' + e.jr.length + (e.gel ? ' · GEL' : '') + ' · ' + e.compte + ' · titre de l’activité « ' + String(e.act || '').slice(0, 34) + ' »'; };
 /* une réponse « comme Paul » : clic dans la case des initiales de la ligne libre, les initiales lettre à lettre, [Entrée|Tab|rien], la réponse lettre à lettre, Entrée */
-const ligneLibre = async pg => { const xs = await pg.$$('#mur .rep .ini[contenteditable]'); const x = xs.pop(); if (!x) return false; await x.click(); await p(250); return true; };
+const ligneLibre = async pg => { const xs = await pg.$$('#mur .rep .ini[contenteditable]'); const x = xs.pop(); if (!x) return false;
+  if (!(await x.isVisible())) { const d = await pg.evaluate(() => { const I = Array.from(document.querySelectorAll('#mur .rep .ini[contenteditable]')); const l = I[I.length - 1]; const r = l.getBoundingClientRect(); const st = getComputedStyle(l); const rep = l.closest('.rep'); return { n: I.length, vis: I.filter(y => y.offsetParent).length, page: S.page, pages: (S.pagesCourantes || []).length, rep: rep ? rep.className + ' ' + getComputedStyle(rep).display : '', r: Math.round(r.width) + 'x' + Math.round(r.height), disp: st.display + '/' + st.visibility, rep2: S.repetition }; }); dire('  (mesure S4) la ligne libre pas visible : ' + JSON.stringify(d)); throw new Error('ligne libre pas visible'); }
+  await x.click(); await p(250); return true; };
 const jouerLigne = async (o, T, tag, ini, txt, n, opts = {}) => { const { sep = 'Enter', parLettre = true, valider = true } = opts; const pg = o.pg; const tr = []; const t0 = Date.now();
   if (!(await ligneLibre(pg))) { dire('  [' + tag + '] pas de ligne libre'); return null; }
   tr.push(resume('clic', await etatI(o, T), txt, n, t0));
@@ -305,12 +307,14 @@ const RB = [['za', 'Les romantiques expriment l’exaltation des sentiments, la 
   ['li', 'Victor Hugo parle de sa fille morte, c’est très triste.'], ['rk', 'Lamartine regarde le lac et pense au temps qui passe.'], ['sl', 'Le poète se sent seul et incompris.'],
   ['za', 'Il y a souvent la nuit, la lune, les ruines.'], ['aj', 'Musset dit que la souffrance rend grand.'], ['lc', 'Les romantiques refusent les règles trop strictes.']];
 const TESTB = process.env.MJPC_BTEST === '1';
+const REPB = process.env.MJPC_BREP === '1';   /* C16 mandat S4 (2) : la partie B jouée en répétition (la case de la classe → « Préparer » → « Jouer en avance » de l'Atelier) ; rien n'est écrit pour la classe */
 const partieB = async () => {
   hubAvec(AJOUT, BIL);
   const T = await ouvrir({ qui: 'tableau', q: '?vue=tableau', W: 1920, H: 1080, prof: false, h: '15:08', jour: '2026-09-15' }); await p(1000);
   const o = await ouvrir({ h: '15:08', jour: '2026-09-15', W: 1920, H: 1080, test: TESTB }); const pg = o.pg;
   if (TESTB) await pilule(pg);
-  const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); const L = await lancerIci(pg, fc.iso, fc.cr, FRA); dire('  [B] lancée ' + L.l + (TESTB ? ' · mode test ' + (await pg.evaluate(() => { try { return !!(window.M8 && M8.test) || /test/i.test((document.getElementById('tprof-testpill') || {}).textContent || ''); } catch (e) { return '?'; } })) : ' · vraie heure'));
+  const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); const e0 = ECR.length;
+  const L = REPB ? await (async () => { await caseDe(pg, fc.iso, fc.cr, FRA); await clicTexte(pg, '#edt-modale button', 'Préparer'); await p(4000); const v = await pg.isVisible('#at-jouer').catch(() => false); if (v) await pg.click('#at-jouer'); await p(2500); return { l: 'en répétition (#at-jouer ' + v + ', S.repetition ' + (await pg.evaluate(() => !!S.repetition)) + ')' }; })() : await lancerIci(pg, fc.iso, fc.cr, FRA); dire('  [B] lancée ' + L.l + (TESTB ? ' · mode test ' + (await pg.evaluate(() => { try { return !!(window.M8 && M8.test) || /test/i.test((document.getElementById('tprof-testpill') || {}).textContent || ''); } catch (e) { return '?'; } })) : ' · vraie heure'));
   const etat = () => pg.evaluate(() => { const E = seance().ecrans; const e = E[S.di]; const d = etatDiapo(); const L = document.getElementById('dr-bilan-liste'); const bb = document.getElementById('dr-bb-btn'); const bc = document.getElementById('bcoche');
     return { eid: e.eid, role: e.role || '', act: e.act, gel: !!S.gel, garde: document.getElementById('garde').classList.contains('on'), pages: (S.pagesCourantes || []).length, page: S.page,
       ordre: ordreHeure(S.heure).map(i => E[i].role || E[i].eid).slice(-4), marques: (d.surl || []).filter(x => x.couleur === 'B').map(x => x.pt + 1 + ':' + x.txt),
@@ -374,6 +378,9 @@ const partieB = async () => {
   await pg.keyboard.press('Alt+ArrowLeft').catch(() => {}); await pg.evaluate(() => { const E = seance().ecrans; S.di = E.findIndex(x => x.eid === 'aud-g1-hyp'); dr_tout(); }); await p(600); e = await etat();
   const mp = await pg.evaluate(() => { document.getElementById('bplus').click(); const b = Array.from(document.querySelectorAll('#menuplus [data-a="bilanB"]'))[0]; const r = b ? { off: !!b.disabled || b.classList.contains('off'), t: b.title || b.getAttribute('title') || '' } : null; document.getElementById('menuplus').classList.remove('on'); return r; });
   verif('B28', e.bb === '(caché)' && mp && mp.off && /seulement sur la mise en commun/.test(mp.t), 'sur une autre diapo : 🅱️ rangé derrière les « … », grisé, sa raison dite', e.bb + ' · ' + JSON.stringify(mp));
+  if (REPB) { const W = ECR.slice(e0).filter(x => x.qui !== 'tableau'); const ch = [...new Set(W.map(x => x.m + ' ' + x.c.split('/').slice(0, 8).join('/')))]; const rp = await pg.evaluate(() => !!S.repetition);
+    dire('  [B] répétition ' + rp + ' · écrit au hub par le pilotage pendant la partie : ' + W.length + ' écriture(s) · ' + (ch.join(' | ') || 'rien').slice(0, 900));
+    verif('B30', rp && !W.some(x => /deroule_joue|journal|parts|\/recit|reponses|participation/.test(x.c)), 'en répétition : aucune écriture pour la classe (ni copie jouée, ni journal, ni participation, ni récit)', W.length + ' écriture(s)'); }
   finir('B29', o, 'B'); await o.ctx.close(); await T.ctx.close(); };
 
 /* ══ I · C16 mandat S2 (5, et 1 mesuré) — l'import d'un chapitre en JSON qui porte sa mise en commun du bilan (un chapitre exporté avec elle) ;

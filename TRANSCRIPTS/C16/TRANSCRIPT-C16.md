@@ -4677,3 +4677,19 @@ MEMO
   > À jouer : ta réponse à 810 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:24 — Paul, mot pour mot :**
+
+  > ok, en revanche le surligné or pâle je ne vois pas ce que ça donnerait. il faut quelque chose de flashy quand même pour que l'élève imprime bien les mots clefs.
+
+- **10:25 — nuancier** des marques du bilan (A à D) : `scratchpad/cap-attente/marque-bilan-4-propositions.png` ; regardé ; envoyé (un échantillon, pas la page du site).
+- **10:25 — message à Paul, mot pour mot :**
+
+  > 810. Tu as raison, l'or pâle ne se verrait pas assez. Voici quatre marques franches, sur la même mise en commun (un nuancier pour choisir, pas encore la page du site) : A, un surligneur jaune ; B, or vif avec un trait plus foncé dessous ; C, vert fluo et le mot en gras ; D, rose fluo, comme un coup de feutre. Chaque passage porte le numéro de son point dans une pastille, et le compteur « 3 / 5 » est en haut à droite. Laquelle ? Ton surligné ordinaire gardera ses couleurs, pour ne jamais les confondre.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:25
+  >
+  > À jouer : ton choix pour 810 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

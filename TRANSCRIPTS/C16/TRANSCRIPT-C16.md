@@ -4582,3 +4582,35 @@ MEMO
   > À jouer : ta réponse à 796-797 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:51 — Paul, mot pour mot (une capture jointe : l'Atelier des 3 FRANKLIN, la diapo « Le bilan » et sa tentative « Le bilan prise de notes ») :**
+
+  > 795 et 796 ça c'est une faute, ça veut dire que le transcript et le registre n'ont pas été tenus correctement par toi. pour 796. attention à "quand elle est pleine", on a déjà tout un fonctionnement automatique de diapos de suite, on reprend exactement cette fonctionnalité. Pour le titre: mise en commun du bilan. elle est toujours avec question et réponses élèves. dans la diapo de bilan il y a des choses: quand elles sont faites dans la mise en commun, elles se cochent automatiquement dans la diapo du bilan (décochables si besoin). Enfin, aucun gel entre la diapo des consignes du bilan, et celles de la mise en commun (qui peuvent être sur plusieurs pages en fonction de la quantité à écrire, du zoom, etc). de plus, il faudrait un petit bouton ©️(pour consigne bilan) qui apparaisse dans mes controle rapides en bas au pilotage, qui permettrait d'afficher au tableau et au pilotage la diapo de consignes du bilan,  pendant que je suis sur l'écriture de la mise en commun du bilan. un autre clic sur ©️ ferait disparaitre la diapo. Ce serait comme un raccourci, tu comprends? la raison est que lorsqu'on écrit le bilan, on doit pouvoir revoir au fur et à mesure si tout entre au bilan (les coches au fur et à mesure nous permettent de controler très vite à l'oeil). Il y a des trous dans le flux, pose moi tes questions ou fait des propositions. sur ma capture, tu vois que j'essaye de "tordre" le site pour mettre cette diapo mais c'est pas satisfaisant (diapo "bilan prise de notes"). je vais effacer.
+
+- **09:52 — incident déclaré** : la demande antérieure de Paul (une diapo après le bilan pour le taper) n'a été portée ni au transcript ni au registre. Registre (prod) : ses mots de 09:51.
+- **09:52 — message à Paul, mot pour mot :**
+
+  > 795. Oui, c'est une faute : ta demande n'est entrée ni au transcript ni au registre, et les tenir, c'était à moi. Elle y est maintenant, avec tes mots de ce matin, et l'incident est déclaré.
+  >
+  > 796. Compris : la suite reprend exactement les diapos de suite automatiques qui existent déjà ; le titre est « Mise en commun du bilan » ; toujours la question et les réponses des élèves ; aucun gel entre la diapo des consignes du bilan et la mise en commun, ni entre ses pages ; les points du bilan se cochent tout seuls quand ils sont faits dans la mise en commun, décochables ; le bouton © dans tes contrôles rapides.
+  >
+  > 798. La question de la mise en commun : celle de la diapo du bilan (ici « Qu'est-ce que le Romantisme ? »), reprise d'elle-même, et qui suit si tu la changes.
+  >
+  > 799. Où elle existe : dans chaque séance qui a un bilan, posée d'elle-même juste après lui, les séances déjà préparées comprises ; une heure déjà jouée ne change pas ; si le bilan est reporté, elle part avec lui ; sa durée, 5 min par défaut, modifiable.
+  >
+  > 800. Le vrai trou : comment le site sait-il qu'un point du bilan est fait ? Deux façons : soit un point se coche quand ses mots-clés (ceux avant les deux-points, sans les petits mots ; « nature démesurée ») sont écrits dans la mise en commun, sans tenir compte des majuscules ni des accents ; soit il se coche quand tu soulignes (S) son mot-clé dans la mise en commun, comme les élèves sur leur brouillon. Laquelle ?
+  >
+  > 801. Le bouton © : seulement sur la mise en commun et ses pages ; un clic montre la diapo des consignes du bilan, avec ses coches à jour, au tableau et au pilotage, à la place de la mise en commun ; un second clic, ou Échap, te ramène à la mise en commun, à la même page, le curseur où il était ; son infobulle le dit.
+  >
+  > 802. La coche « Les élèves ont écrit le bilan » : sur la mise en commun (796).
+  >
+  > 803. Ce qui ne change pas : la Relecture et le récit lisent la mise en commun comme toute question (réponses, participation) ; le cahier de textes reste après.
+  >
+  > 804. Ensuite : une capture construite avant le code, puis le mandat, samedi avec le reste (ton usage). Ta réponse à 800 ; le reste, sans commentaire de ta part, est acquis.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:52
+  >
+  > À jouer : ta réponse à 800 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-804), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

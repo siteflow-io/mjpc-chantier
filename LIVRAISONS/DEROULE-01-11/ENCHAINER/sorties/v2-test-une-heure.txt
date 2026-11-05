@@ -1,0 +1,42 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 21:09 UTC · fichier md5 d2533e752457390f2ed29e1136898f72 · mode test · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+  ok     0 · le mode test est posé par la pastille du panneau prof
+
+1 — la séance 1 lancée par la case de l'emploi du temps
+  ok     1 · la case du lundi propose la séance 1 — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question heure 1/1
+  ok     1 · la séance 1 tourne — {"snum":"0","heure":1,"sur":1,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     1 · un élève marqué absent au clic droit (le 3e de la liste)
+
+2 — ▶ jusqu'à la dernière diapo de la séance 1 : le bouton n'apparaît qu'à la fin
+  ok     2 · avant la dernière diapo, le bouton n'est jamais là — 84 états lus, bouton montré 0 fois
+  ok     2 · sur la dernière diapo, la séance entièrement faite : « ▶ Séance suivante dans cette heure » paraît — {"di":23,"der":23,"faite":true,"bouton":true}
+  ok     2 · son infobulle dit ce qu'il fait et la séance qui suit — Séance suivante dans cette heure : cette séance est entièrement faite. Un clic clôt l’heure comme « ■ Clore l’heure » (son récit entier, rien de reporté ; s’il …
+  ok     2 · une diapo non faite : la séance n'est pas faite (pas de bouton) ; refaite : elle l'est — {"i":5,"sans":false,"avec":true}
+
+3 — le clic : la séance 1 close, la séance 2 lancée dans cette heure
+  la garde de « ■ Clore l'heure » : ○ le récit relu — il partira tel quel dans l'historique (et dans École Directe s'il est copié) ○ le mot aux absents (1) (facultatif) — les absents n'auront pas de mot ○ copié pour École Directe — le c
+  ok     3 · la séance 2 tourne, même classe — {"lancee":true,"close":false,"snum":"1","heure":1,"sur":3,"rep":false,"cours":"3E Charles de Gaulle"}
+  ok     3 · heure 1 de la séance 2, sur le même créneau (sa clé : le même jour, le même créneau, la même classe) — …/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle
+  ok     3 · la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite — {"cles":1,"clos":true,"seanceFaite":true,"finReel":true,"activites":24}
+  ok     3 · rien de reporté — 0 décision « reporter »
+  ok     3 · la trace de la séance 2 : la classe, le créneau, ouverte — {"classe":"3E Charles de Gaulle","creneau":"08:57-09:52","heure":1,"sur":3,"clos":false}
+  ok     3 · le journal de la séance 2 : rien de la séance 1, un seul lancement (son récit part du lancement, au clic) — {"n":4,"premier":"diapo","hors":0,"lanc":1}
+  ok     3 · l'absent de la séance 1 est absent de la séance 2 (au pilote, et dans l'appel de l'heure) — pilote true · absentsPar 1 élève
+  ok     3 · le tableau distant passe à la séance 2 sans écran d'attente — 48 images lues pendant le passage, attente vue 0 fois · tableau « Le parcours du chapitre Séance 2 sur 9 » · même diapo que le pilote : true
+
+4 — la séance 2 close, la case du jour, « Relire cette heure », la case suivante
+  ok     4 · la trace de la séance 2 close ne compte que ses diapos — 1 lignes · la séance 2 a 17 diapos
+  ok     4 · la séance 2 close — {"lancee":true,"close":true}
+  ok     4 · la case du jour : « séance 1 puis séance 2 » — 3E Charles de Gaulle Poésie et peinture : le Romantisme en question puis Étude de texte accompagnée : « L'Albatros » Close · Séance 1 : 24 diapos jouées ; puis Séance 2 : 1 diapo jouée · 10 reportées
+  ok     4 · la case du jour dit ce que chaque séance a fait, ses vrais nombres (« Séance 1 : … ; puis Séance 2 : … ») — Séance 1 : 24 diapos jouées ; puis Séance 2 : 1 diapo jouée · 10 reportées · au hub : séance 1 24 diapos, 0 reportée ; séance 2 1 diapos, 10 reportée(s)
+  ok     4 · la case suivante : la séance 2 qui continue — 2026-09-15 · 3E Charles de Gaulle Étude de texte accompagnée : « L'Albatros » heure 2/3
+  ok     4 · la case ouverte : « Séances : … puis … » — Séances : Poésie et peinture : le Romantisme en question puis Étude de texte accompagnée : « L'Albatros » Relire cette heure Absents de cette heure (1 sur 29) U
+  ok     4 · « Relire cette heure » : le récit de la séance 1, puis « ▶ La suite de cette heure » — {"vue":"relecture","snum":"0","suite":"▶ La suite de cette heure : « Étude de texte accompagnée : « L'Albatros » »"}
+  ok     4 · le récit relu est celui de la séance 1 (son titre, pas celui de la séance 2) — Ce qu'on a fait aujourd'hui 3E Charles de Gaulle · Poésie et peinture au XIXe siècle, Poésie et peinture : le Romantisme en question · lundi
+  ok     4 · puis le récit de la séance 2 (son titre) — Ce qu'on a fait aujourd'hui 3E Charles de Gaulle · Poésie et peinture au XIXe siècle, Étude de texte accompagnée : « L'Albatros » · lundi 14
+  ok     4 · « ▶ La suite de cette heure » : le récit de la séance 2 (chacun sous sa séance) — {"vue":"relecture","snum":"1"}
+
+écritures du pilote sous /site/3e : 0 (attendu : 0)
+  ok     5 · mode test : rien n'est écrit pour la classe au hub
+  ok     5 · aucune erreur de page
+
+bilan : 28/28

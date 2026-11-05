@@ -42,18 +42,20 @@ const clicTexte = (pg, sel, txt) => pg.evaluate(({ s, t }) => { const el = Array
 const gardes = pg => pg.evaluate(() => { const m = document.getElementById('at-modale'); if (m && m.getBoundingClientRect().height > 0) m.querySelectorAll('button').forEach(x => { if (/^(Compris|OK)$/.test(x.textContent.trim())) x.click(); }); const g = document.getElementById('garde'); if (g && g.classList.contains('on')) { const d = document.getElementById('garde-devant'); if (d) d.click(); } }).catch(() => {});
 const capt = async (pg, nom) => { if (CAPT) await pg.screenshot({ path: path.join(CAPT, nom + '.png') }).catch(() => {}); };
 const ecritsDepuis = k => ECR.slice(k).map(e => e.qui + ' ' + e.m + ' ' + e.c);
-const MODE = process.env.MJPC_MODE || 'vh'; let H2path = null; const DSF = +process.env.MJPC_DSF || 1;
+const MODE = process.env.MJPC_MODE || 'vh'; let H2path = null, nS1 = null, nS2 = null, rS2 = null; const DSF = +process.env.MJPC_DSF || 1;
 /* la retouche du faux hub : la séance 1 (index 0) d'une heure, rien de joué */
-{ const se = HUBN.site['3e'].chapitres[0].seances[0]; delete se.deroule_joue; (se.deroule.ecrans || []).forEach(e => { if (e && e.role !== 'fin') e.dur = 2; }); }
+const DEUX = !!process.env.MJPC_DEUX;   /* V2 : la séance 1 prévue en deux heures (ses durées × 0,5 : 110 → 55 min ; au faux hub, 110 min = 3 heures), son heure 1 jouée le 07/09 (la trace du faux hub, gardée) : la case du 14/09 la propose heure 2/2 (le cas de Paul : 3E, séance 1 heure 2/2, puis la séance 2) */
+if (DEUX) { const se = HUBN.site['3e'].chapitres[0].seances[0]; (se.deroule.ecrans || []).forEach(e => { if (e && e.role !== 'fin') e.dur = Math.max(1, Math.round((+e.dur || 0) * 0.5)); }); }
+if (!DEUX) { const se = HUBN.site['3e'].chapitres[0].seances[0]; delete se.deroule_joue; (se.deroule.ecrans || []).forEach(e => { if (e && e.role !== 'fin') e.dur = 2; }); }
 const S1 = String(HUBN.site['3e'].chapitres[0].seances[0].titre || HUBN.site['3e'].chapitres[0].seances[0].title), S2 = String(HUBN.site['3e'].chapitres[0].seances[1].titre || HUBN.site['3e'].chapitres[0].seances[1].title);
-dire('sonde de l\'enchaînement (mandat V) · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · fichier md5 ' + MD5 + ' · mode ' + MODE + ' · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « ' + S1 + ' », séance 2 « ' + S2 + ' »');
+dire('sonde de l\'enchaînement (mandat V) · ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC · fichier md5 ' + MD5 + ' · mode ' + MODE + (DEUX ? ' · la séance 1 en deux heures, enchaînée à sa 2e heure' : '') + ' · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « ' + S1 + ' », séance 2 « ' + S2 + ' »');
 
 /* le tableau distant, puis le pilote (1920×1080) */
 const T = await ouvrir('tableau', 1280, 720, '?vue=tableau'); const tb = T.pg; await p(tb, 2000);
 const ctxP = await nav.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: DSF, timezoneId: 'Europe/Paris' }); const errsP = [];
 await ctxP.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort());
 await ctxP.exposeFunction('__hubN', (m, c, corps) => hubRepondre('pilote', m, c, corps)); await ctxP.addInitScript(fauxFetch);
-const pg = await ctxP.newPage(); pg.on('pageerror', e => errsP.push('[après « ' + String(R[R.length - 1] || '').trim().slice(0, 50) + ' »] ' + String(e.message).slice(0, 120) + (process.env.MJPC_PILE ? ' @ ' + String(e.stack || '').split('\n').slice(1, 3).join(' ').replace(/file:[^ )]*index.html:/g, 'l.').slice(0, 160) : ''))); pg.on('dialog', d => d.dismiss().catch(() => {})); await pg.clock.install({ time: HORLOGE });
+const pg = await ctxP.newPage(); pg.on('pageerror', e => errsP.push('[après « ' + String(R[R.length - 1] || '').trim().slice(0, 50) + ' »] ' + String(e.message).slice(0, 120) + (process.env.MJPC_PILE ? ' @ ' + String(e.stack || '').split('\n').slice(1, +(process.env.MJPC_PILE) > 1 ? +process.env.MJPC_PILE : 3).join(' ').replace(/file:[^ )]*html[^:]*:/g, 'l.').slice(0, +(process.env.MJPC_PILE) > 3 ? 900 : 160) : ''))); pg.on('dialog', d => d.dismiss().catch(() => {})); await pg.clock.install({ time: HORLOGE });
 await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(pg, 1800);
 await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg);
 if (MODE === 'test') { await pg.evaluate(() => { try { openProfPanel(); } catch (e) {} }); await p(pg, 800); await pg.evaluate(() => { const b = document.getElementById('tprof-testpill'); if (b) b.click(); }); await p(pg, 800);
@@ -73,7 +75,7 @@ if (MODE === 'rep') {
 } else {
   await pg.evaluate(() => { try { edtFermer(); } catch (e) {} edtOuvrir(); }); await p(pg, 2000);
   const cs = await pg.evaluate(() => { const cs = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')); const c = cs.find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0) || cs[0]; if (!c) return null; const t = (c.innerText || '').replace(/\s+/g, ' '); c.click(); return t; });
-  verif('1', cs && cs.indexOf(S1.slice(0, 20)) >= 0, 'la case du lundi propose la séance 1', cs);
+  verif('1', cs && cs.indexOf(S1.slice(0, 20)) >= 0 && (!DEUX || /heure 2\/2/.test(cs)), 'la case du lundi propose la séance 1' + (DEUX ? ', heure 2/2' : ''), cs);
   await p(pg, 900); await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer'); await p(pg, 4000); await gardes(pg); await p(pg, 600);
 }
 let e1 = await attendre(pg, async () => { const x = await etat(); return x.lancee && !x.close ? x : null; }, 15000) || await etat();
@@ -92,31 +94,45 @@ verif('2', vusAvant > 10 && montresAvant === 0, 'avant la dernière diapo, le bo
 /* sur la dernière diapo (le cahier de textes) : une diapo laissée non faite (on revient sur la précédente sans tout dévoiler ? non : on lit la règle) */
 x = await attendre(pg, async () => { const y = await etat(); return y.bouton ? y : null; }, 3000) || await etat();
 const faite = await pg.evaluate(() => { try { return dr_enchSeanceFaite(); } catch (e) { return null; } });
+if (faite === false) dire('  (pas faites : ' + JSON.stringify(await pg.evaluate(() => { const E = seance().ecrans, o = ordreHeure(S.heure); return E.map((e, i) => ({ i, h: e && e.heure, role: e && e.role, dans: o.indexOf(i) >= 0, finie: !!(e && finie(e, i)), d: e && (decisionDe(e) || {}).choix, n: e ? elements(e).length : 0, vu: vuMax[K(i)] })).filter(x => !(x.role === 'fin' || x.role === 'reactivation' || x.finie || x.d === 'passee' || (+x.h || 1) < S.heure && !x.dans)); })) + ' · heure ' + (await pg.evaluate(() => S.heure)) + ')');
 verif('2', x.di === x.der && faite === true && x.bouton, 'sur la dernière diapo, la séance entièrement faite : « ▶ Séance suivante dans cette heure » paraît', JSON.stringify({ di: x.di, der: x.der, faite, bouton: x.bouton }));
 const bulle = await pg.evaluate(() => { const b = document.getElementById('dr-ench'); return b ? b.title : ''; });
 verif('2', bulle.indexOf(S2.slice(0, 20)) >= 0 && /Clore l’heure/.test(bulle), 'son infobulle dit ce qu\'il fait et la séance qui suit', bulle.slice(0, 160) + '…');
 /* la règle « une diapo pas faite → pas de bouton » : une diapo remise non faite en mémoire (vuMax), relue, puis rendue */
-const regle = await pg.evaluate(() => { const E = seance().ecrans; const i = E.findIndex((e, k) => e && !e.role && elements(e).length > 0); const k = K(i); const v0 = vuMax[k]; vuMax[k] = 0; const f = dr_enchSeanceFaite(); vuMax[k] = v0; return { i, sans: f, avec: dr_enchSeanceFaite() }; });
+const regle = await pg.evaluate(() => { if (typeof dr_enchSeanceFaite !== 'function') return { base: 'pas de bouton dans cette version' }; const E = seance().ecrans; const o = ordreHeure(S.heure); const i = E.findIndex((e, k) => e && !e.role && elements(e).length > 0 && o.indexOf(k) >= 0);   /* V2 : une diapo de l'heure qui tourne */ const k = K(i); const v0 = vuMax[k]; vuMax[k] = 0; const f = dr_enchSeanceFaite(); vuMax[k] = v0; return { i, sans: f, avec: dr_enchSeanceFaite() }; });
 await p(pg, 700); verif('2', regle.sans === false && regle.avec === true, 'une diapo non faite : la séance n\'est pas faite (pas de bouton) ; refaite : elle l\'est', JSON.stringify(regle));
 await capt(pg, MODE + '-1-le-bouton');
 
 /* 3 — le clic */
 if (MODE === 'temoin') {
   dire(''); dire('3 — le témoin : on clôt par « ■ Clore l\'heure », sans enchaîner');
+  const Ht = (await etat()).H;
   await pg.click('#dr-clore').catch(() => {}); await p(pg, 1200); await pg.click('#f-clore').catch(() => {}); await p(pg, 800);
   if (await pg.evaluate(() => { const g = document.getElementById('garde-clore'); return !!(g && g.classList.contains('on')); })) { await pg.click('#gclore-oui').catch(() => {}); await p(pg, 1500); }
   const y = await attendre(pg, async () => { const z = await etat(); return z.close || !z.lancee ? z : null; }, 8000) || await etat();
   verif('3', !(y.lancee && !y.close), 'l\'heure est close, rien ne se lance', JSON.stringify({ lancee: y.lancee, close: y.close, snum: y.snum }));
-  const H1 = lire('/site/3e/chapitres/0/seances/0/deroule_joue/3e_charles_de_gaulle/heures'); const k1 = H1 ? Object.keys(H1) : [];
-  verif('3', k1.length === 1 && H1[k1[0]].clos === true && !('seanceFaite' in H1[k1[0]]), 'la trace de la séance 1 : close, sans `seanceFaite`', k1.join(','));
+  const H1 = Ht ? lire(Ht.slice(0, Ht.lastIndexOf('/'))) : null;   /* V2 : le chemin de l'heure jouée (avant : un slug écrit en dur, qui ne la trouvait pas) */ const k1 = H1 ? Object.keys(H1) : [];
+  verif('3', k1.length === 1 && H1[k1[0]].clos === true && !H1[k1[0]].seanceFaite, 'la trace de la séance 1 : close, sans `seanceFaite`', k1.join(',') + ' · ' + JSON.stringify({ clos: k1.length && H1[k1[0]].clos, seanceFaite: k1.length ? H1[k1[0]].seanceFaite : '-' }));
   verif('3', !lire('/site/3e/chapitres/0/seances/1/deroule_joue'), 'la séance 2 : rien d\'écrit');
+  /* V2 : le témoin, base → après — ce que Paul voit, imprimé tel quel pour la comparaison (« TÉMOIN ») : la case du jour, la case suivante, la case ouverte, le récit relu */
+  await pg.evaluate(() => { try { edtFermer(); } catch (e) {} edtOuvrir(); }); await p(pg, 2500);
+  const tc = await pg.evaluate(() => Array.from(document.querySelectorAll('.edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')).map(e => ({ o: (e.getAttribute('onclick') || '').match(/\d{4}-\d{2}-\d{2}/), t: (e.innerText || '').replace(/\s+/g, ' ') })).map(c => ({ iso: c.o ? c.o[0] : '', t: c.t })).sort((a, b) => a.iso.localeCompare(b.iso)));
+  const t14 = tc.find(c => c.iso === '2026-09-14') || {}, tsv = tc.find(c => c.iso > '2026-09-14') || {};
+  dire('  TÉMOIN case du jour : ' + t14.t); dire('  TÉMOIN case suivante : ' + tsv.iso + ' · ' + tsv.t);
+  await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0); if (c) c.click(); }); await p(pg, 900);
+  dire('  TÉMOIN case ouverte : ' + (await pg.evaluate(() => (document.querySelector('.edt-modale, #edt-modale') || document.body).innerText.replace(/\s+/g, ' ').replace(/\d{2}:\d{2}:\d{2}/g, '').replace(/(Absents de cette heure \(\d+ sur \d+\)).*$/, '$1 [la liste des élèves retirée]').slice(0, 400))));   /* aucun nom d'élève dans la sortie */
+  await clicTexte(pg, 'button', 'Relire cette heure'); await p(pg, 5000);
+  const tr = await pg.evaluate(() => ({ vue: ATVUES.vue, snum: String(ATVUES.snum), t: ((document.getElementById('rel') || {}).innerText || '').replace(/\s+/g, ' '), suite: !!document.getElementById('dr-ench-suite') && document.getElementById('dr-ench-suite').style.display !== 'none' }));
+  dire('  TÉMOIN Relecture : vue ' + tr.vue + ' · séance ' + tr.snum + ' · ' + tr.t.length + ' car. · md5 ' + createHash('md5').update(tr.t).digest('hex') + ' · « La suite de cette heure » : ' + tr.suite);
+  verif('3', tr.vue === 'relecture' && tr.snum === '0' && tr.t.length > 200 && !tr.suite, 'le témoin : « Relire cette heure » ouvre le récit de la séance 1, seul');
 } else {
   dire(''); dire('3 — le clic : la séance 1 close, la séance 2 lancée dans cette heure');
   const tabEtats = []; const tabT = setInterval(() => { tb.evaluate(() => { const a = document.getElementById('ses-tab-att'); const m = (typeof DR_TAB !== 'undefined' && DR_TAB.montre) || null; return { att: !!(a && a.style.display !== 'none' && a.getBoundingClientRect().height > 0), eid: m && m.eid, seance: (typeof SES === 'object' && SES && SES.ctx && SES.ctx.seance) || null }; }).then(v => tabEtats.push(v)).catch(() => {}); }, 120);
   const tab0 = await tb.evaluate(() => { const m = (typeof DR_TAB !== 'undefined' && DR_TAB.montre) || null; return m && m.eid; });
   const H1path = (await etat()).H;
-  await pg.evaluate(() => { window.__tClic = Date.now(); window.__infos = []; const f = window.atInfo; if (typeof f === 'function') window.atInfo = function (m) { window.__infos.push(String(m).replace(/<[^>]+>/g, '').slice(0, 160)); return f.apply(this, arguments); }; if (window.MJPC_TRACER) {} ['dr_lancer', 'dr_lancerNeuf', 'dr_lancerSuite', 'lancerHeure', 'dr_ouvertureLegere', 'ouvrirOuverture', 'dr_reprendre', 'dr_cloreHeureRestee', 'dr_reactPreparerAsync'].forEach(n => { const g = window[n]; if (typeof g === 'function') window[n] = function () { if (n === 'dr_lancer') { const L = window.dr_lire; window.dr_lire = function (c, cb) { window.__infos.push('lire ' + c.slice(-60)); return L.call(this, c, v => { window.__infos.push('lu ' + c.slice(-40) + ' = ' + JSON.stringify(v === undefined ? 'undef' : v).slice(0, 80)); try { cb(v); } catch (e) { window.__infos.push('ERREUR ' + e.message); throw e; } }); }; } window.__infos.push(n + '(' + Array.from(arguments).map(x => typeof x === 'function' ? 'fn' : JSON.stringify(x)).join(',').slice(0, 120) + ')'); return g.apply(this, arguments); }; }); });
-  const kc = ECR.length; await pg.click('#dr-ench'); await p(pg, 900);
+  await pg.evaluate(() => { window.__tClic = Date.now(); window.__infos = []; const f = window.atInfo; if (typeof f === 'function') window.atInfo = function (m) { window.__infos.push(String(m).replace(/<[^>]+>/g, '').slice(0, 160)); return f.apply(this, arguments); }; if (window.MJPC_TRACER) {} ['dr_lancer', 'dr_lancerNeuf', 'dr_lancerSuite', 'lancerHeure', 'dr_ouvertureLegere', 'ouvrirOuverture', 'dr_reprendre', 'dr_cloreHeureRestee', 'dr_reactPreparerAsync'].forEach(n => { const g = window[n]; if (typeof g === 'function') window[n] = function () { if (n === 'dr_lancer') { const L = window.dr_lire; window.dr_lire = function (c, cb) { window.__infos.push('lire ' + c.slice(-60)); return L.call(this, c, v => { window.__infos.push('lu ' + c.slice(-40) + ' = ' + JSON.stringify(v === undefined ? 'undef' : v).slice(0, 80)); try { cb(v); } catch (e) { window.__infos.push('ERREUR ' + e.message); throw e; } }); }; } window.__infos.push(n + '(' + Array.from(arguments).map(x => typeof x === 'function' ? 'fn' : JSON.stringify(x)).join(',').slice(0, 120) + ')'); return g.apply(this, arguments); }; }); const M0 = window.M8_TEST_STORE; window.M8_TEST_STORE = new Proxy(M0, { set(t, k, v) { if (/seances\/0\/deroule_joue/.test(k)) window.__m8.push('PROXY ' + k.replace(/^.*deroule_joue/, '') + ' ' + (v && typeof v === 'object' ? Object.keys(v).join(',').slice(0, 80) : JSON.stringify(v)) + ' @' + (new Error().stack.split('\n')[2] || '').replace(/^.*html[^:]*:/, '').slice(0, 30)); M0[k] = v; return true; }, deleteProperty(t, k) { if (/seances\/0\/deroule_joue/.test(k)) window.__m8.push('PROXYDEL ' + k); delete M0[k]; return true; } }); });
+  if (process.env.MJPC_DIAG) await pg.evaluate(() => { window.__m8 = []; ['ecrire', 'patch', 'suppr'].forEach(n => { const g = M8T[n]; M8T[n] = function (c, v) { if (/seances\/0\/deroule_joue/.test(c)) window.__m8.push(n + ' ' + c.replace(/^.*deroule_joue/, '') + ' ' + (v && typeof v === 'object' ? Object.keys(v).join(',').slice(0, 120) : JSON.stringify(v))); return g.apply(this, arguments); }; }); });
+  const kc = ECR.length; await pg.click('#dr-ench', { timeout: 8000 }).catch(() => dire('  (le bouton ne se clique pas)')); await p(pg, 900);
   const garde = await pg.evaluate(() => { const g = document.getElementById('garde-clore'); return g && g.classList.contains('on') ? (document.getElementById('gclore-corps') || {}).innerText || '' : null; });
   if (garde != null) { dire('  la garde de « ■ Clore l\'heure » : ' + garde.replace(/\s+/g, ' ').slice(0, 200)); await capt(pg, MODE + '-2-la-garde'); await pg.click('#gclore-oui').catch(() => {}); }
   const y = await attendre(pg, async () => { const z = await etat(); return z.lancee && !z.close && z.snum === '1' ? z : null; }, 20000) || await etat();
@@ -125,9 +141,10 @@ if (MODE === 'temoin') {
   verif('3', y2.lancee && !y2.close && y2.snum === '1' && (MODE === 'rep' ? y2.rep : /Charles de Gaulle/.test(y2.cours || '')), 'la séance 2 tourne, même classe' + (MODE === 'rep' ? ' (en répétition)' : ''), JSON.stringify({ lancee: y2.lancee, close: y2.close, snum: y2.snum, heure: y2.heure, sur: y2.sur, rep: y2.rep, cours: y2.cours }));
   if (MODE !== 'rep') {
     verif('3', y2.heure === 1 && /\/seances\/1\/deroule_joue\/[^/]+\/heures\/2026-09-14_08h57-09h52_/.test(y2.H || ''), 'heure 1 de la séance 2, sur le même créneau (sa clé : le même jour, le même créneau, la même classe)', (y2.H || '').replace(/^.*\/heures\//, '…/heures/'));
-    const ch1 = H1path.slice(0, H1path.lastIndexOf('/')); const H1 = await lireP(ch1); const k1 = H1 && typeof H1 === 'object' ? Object.keys(H1) : []; const h1 = k1.length ? H1[k1[0]] : {};
+    const ch1 = H1path.slice(0, H1path.lastIndexOf('/')); const H1 = await lireP(ch1); const k1 = H1 && typeof H1 === 'object' ? Object.keys(H1) : []; const h1 = (H1 && H1[H1path.slice(H1path.lastIndexOf('/') + 1)]) || {}; nS1 = (h1.activites || []).length;
     const dec = Object.values(h1.decisionsParEcran || {}).filter(d => d && d.choix === 'reporter').length;
-    verif('3', k1.length === 1 && h1.clos === true && h1.seanceFaite === true && !!h1.finReel, 'la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite', JSON.stringify({ cles: k1.length, clos: h1.clos, seanceFaite: h1.seanceFaite, finReel: !!h1.finReel, activites: (h1.activites || []).length }));
+    verif('3', k1.indexOf(H1path.slice(H1path.lastIndexOf('/') + 1)) >= 0 && k1.length <= (DEUX ? 2 : 1) && h1.clos === true && h1.seanceFaite === true && !!h1.finReel, 'la séance 1 close (son paquet entier : clos, fin réelle) et marquée faite', JSON.stringify({ cles: k1.length, clos: h1.clos, seanceFaite: h1.seanceFaite, finReel: !!h1.finReel, activites: (h1.activites || []).length }));
+    if (process.env.MJPC_DIAG) dire('  (M8T : ' + (await pg.evaluate(() => (window.__m8 || []).join(' | '))) + ')');
     verif('3', dec === 0, 'rien de reporté', dec + ' décision « reporter »');
     H2path = y2.H; const H2 = await lireP(y2.H); verif('3', H2 && H2.classe === '3E Charles de Gaulle' && H2.creneau === '08:57-09:52' && !H2.clos, 'la trace de la séance 2 : la classe, le créneau, ouverte', JSON.stringify({ classe: H2 && H2.classe, creneau: H2 && H2.creneau, heure: H2 && H2.heure, sur: H2 && H2.sur, clos: H2 && H2.clos }));
     const jv = await pg.evaluate(() => { const E = seance().ecrans; return { n: J.length, premier: J[0] && J[0].type, hors: J.filter(x => x.type === 'diapo' && (x.di >= E.length || x.si !== S.si)).length, lanc: J.filter(x => x.type === 'lancement').length }; });
@@ -154,12 +171,14 @@ if (MODE === 'temoin') {
     await pg.click('#dr-clore').catch(() => {}); await p(pg, 1200); await pg.click('#f-clore').catch(() => {}); await p(pg, 900);
     if (await pg.evaluate(() => { const g = document.getElementById('garde-clore'); return !!(g && g.classList.contains('on')); })) { await pg.click('#gclore-oui').catch(() => {}); await p(pg, 1500); }
     const z = await attendre(pg, async () => { const w = await etat(); return w.close || !w.lancee ? w : null; }, 8000) || await etat();
-    { const H2c = await lireP(H2path); const a2 = (H2c && H2c.activites) || []; const nE2 = (HUBN.site['3e'].chapitres[0].seances[1].deroule.ecrans || []).length; verif('4', H2c && H2c.clos === true && a2.length > 0 && a2.length <= nE2, 'la trace de la séance 2 close ne compte que ses diapos', (a2.length) + ' lignes · la séance 2 a ' + nE2 + ' diapos'); }
+    { const H2c = await lireP(H2path); const a2 = (H2c && H2c.activites) || []; const nE2 = (HUBN.site['3e'].chapitres[0].seances[1].deroule.ecrans || []).length; nS2 = a2.length; rS2 = Object.values((H2c && H2c.decisionsParEcran) || {}).filter(d => d && /^(reporter|suivante)$/.test(d.choix)).length; verif('4', H2c && H2c.clos === true && a2.length > 0 && a2.length <= nE2, 'la trace de la séance 2 close ne compte que ses diapos', (a2.length) + ' lignes · la séance 2 a ' + nE2 + ' diapos'); }
     verif('4', !(z.lancee && !z.close), 'la séance 2 close', JSON.stringify({ lancee: z.lancee, close: z.close }));
     await pg.evaluate(() => { try { edtFermer(); } catch (e) {} edtOuvrir(); }); await p(pg, 2500);
     const cases = await pg.evaluate(() => Array.from(document.querySelectorAll('.edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')).map(e => ({ o: (e.getAttribute('onclick') || '').match(/\d{4}-\d{2}-\d{2}/), t: (e.innerText || '').replace(/\s+/g, ' ') })).map(c => ({ iso: c.o ? c.o[0] : '', t: c.t })).sort((a, b) => a.iso.localeCompare(b.iso)));
     const c14 = cases.find(c => c.iso === '2026-09-14') || {}; const suiv = cases.find(c => c.iso > '2026-09-14') || {};
     verif('4', c14.t && c14.t.indexOf(S1.slice(0, 15)) >= 0 && c14.t.indexOf(' puis ') >= 0 && c14.t.indexOf(S2.slice(0, 15)) > c14.t.indexOf(' puis '), 'la case du jour : « séance 1 puis séance 2 »', c14.t);
+    { const m = (c14.t || '').match(/Séance (\d+) : (\d+) diapos? jouées?( · (\d+) reportées?)? ; puis Séance (\d+) : (\d+) diapos? jouées?( · (\d+) reportées?)?/);
+      verif('4', !!m && m[1] === '1' && +m[2] === nS1 && !m[4] && m[5] === '2' && +m[6] === nS2 && (+m[8] || 0) === rS2, 'la case du jour dit ce que chaque séance a fait, ses vrais nombres (« Séance 1 : … ; puis Séance 2 : … »)', (m ? m[0] : 'absent') + ' · au hub : séance 1 ' + nS1 + ' diapos, 0 reportée ; séance 2 ' + nS2 + ' diapos, ' + rS2 + ' reportée(s)'); }
     verif('4', suiv.t && suiv.t.indexOf(S2.slice(0, 15)) >= 0, 'la case suivante : la séance 2 qui continue', suiv.iso + ' · ' + (suiv.t || ''));
     await capt(pg, MODE + '-5-la-case');
     await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-clic')).find(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '') && (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0); if (c) c.click(); }); await p(pg, 900);
@@ -169,9 +188,11 @@ if (MODE === 'temoin') {
     const r1 = await clicTexte(pg, 'button', 'Relire cette heure'); await p(pg, 5000);
     const v1 = await pg.evaluate(() => ({ vue: ATVUES.vue, snum: String(ATVUES.snum), suite: (() => { const b = document.getElementById('dr-ench-suite'); return b && b.style.display !== 'none' ? b.textContent : null; })() }));
     verif('4', r1 && v1.vue === 'relecture' && v1.snum === '0' && v1.suite && v1.suite.indexOf(S2.slice(0, 15)) >= 0, '« Relire cette heure » : le récit de la séance 1, puis « ▶ La suite de cette heure »', JSON.stringify(v1));
+    { const t1 = await pg.evaluate(() => ((document.getElementById('rel') || {}).innerText || '').replace(/\s+/g, ' ')); const n1 = (t1.match(/<h2|Ce qu'on a fait aujourd'hui/g) || []).length; verif('4', t1.indexOf(S1.slice(0, 20)) >= 0 && t1.indexOf(S2.slice(0, 20)) < 0, 'le récit relu est celui de la séance 1 (son titre, pas celui de la séance 2)', t1.slice(0, 140)); }
     await capt(pg, MODE + '-7-relire-seance-1');
     await pg.click('#dr-ench-suite').catch(() => {}); await p(pg, 5000);
     const v2 = await pg.evaluate(() => ({ vue: ATVUES.vue, snum: String(ATVUES.snum) }));
+    { const t2 = await pg.evaluate(() => ((document.getElementById('rel') || {}).innerText || '').replace(/\s+/g, ' ')); verif('4', t2.indexOf(S2.slice(0, 20)) >= 0 && t2.indexOf(S1.slice(0, 20)) < 0, 'puis le récit de la séance 2 (son titre)', t2.slice(0, 140)); }
     verif('4', v2.vue === 'relecture' && v2.snum === '1', '« ▶ La suite de cette heure » : le récit de la séance 2 (chacun sous sa séance)', JSON.stringify(v2));
     await capt(pg, MODE + '-8-relire-seance-2');
   }

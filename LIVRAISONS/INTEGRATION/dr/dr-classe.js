@@ -1339,8 +1339,9 @@ setInterval(() => { try { if (typeof S === 'object' && S) dr_clorePoser(); } cat
    compte finie, même avant ses heures prévues) ; puis la séance suivante se lance sur le même créneau, même classe, ses absents repris ; le
    tableau garde son image jusqu'à la nouvelle séance (pas d'écran d'attente). En répétition : la répétition de la séance suivante, rien d'écrit. ─── */
 var DR_ENCH = { en: null, vise: null, relire: null };
-function dr_enchSeanceFaite(){ const E = seance().ecrans; if (!E || !E.length) return false;
-  return E.every((e, i) => { if (!e || e.role === 'fin' || e.role === 'reactivation' || dr_masqueeCachee(e) || finie(e, i)) return true; const d = decisionDe(e); return !!(d && d.choix === 'passee'); }); }
+function dr_enchSeanceFaite(){ const E = seance().ecrans; if (!E || !E.length) return false; let o = []; try { o = ordreHeure(S.heure); } catch (e) {}
+  return E.every((e, i) => { if (!e || e.role === 'fin' || e.role === 'reactivation' || dr_masqueeCachee(e) || finie(e, i)) return true; const d = decisionDe(e); if (d && d.choix === 'passee') return true;
+    return (+e.heure || 1) < (+S.heure || 1) && o.indexOf(i) < 0; }); }   /* C16 mandat V2 : une diapo d'une heure d'avant, close avec elle et pas reportée dans celle-ci (sa décision prise à la clôture), est derrière la classe — la séance 1 en deux heures, enchaînée à sa 2e heure (le vuMax de cette page ne connaît que l'heure qui tourne) */
 function dr_enchVisible(){
   if (typeof S !== 'object' || !S || !S.lancee || S.close || S.atelier || S.preparation || S.enFin) return false;
   if (!S.repetition && (typeof AT_DR_COURS === 'undefined' || !AT_DR_COURS || AT_DR_REGIME !== 'classe')) return false;
@@ -1760,7 +1761,7 @@ function dr_paquetPatch(ch, p, libelle){
   if (!ch || !p || (typeof S !== 'undefined' && S.repetition) || typeof mjpcEcrireRest !== 'function') return;
   /* en mode test, le magasin de CETTE page (aucun autre appareil n'y écrit : la course du hub n'existe pas ici) : le paquet s'écrit entier, comme avant,
      `H/absents` relu au magasin et recopié — le paquet reste une clé du magasin (mesuré : le parcours K15-test lit le magasin par ses clés) */
-  if (typeof m8TestOn === 'function' && m8TestOn()) { dr_lire(ch, H0 => { const q = Object.assign({}, p); delete q.absents; delete q.absentsPar; if (H0 && H0.absents) q.absents = H0.absents; if (H0 && H0.absentsPar) q.absentsPar = H0.absentsPar; dr_ecrire(ch, q, libelle, () => {}); }); return; }
+  if (typeof m8TestOn === 'function' && m8TestOn()) { dr_lire(ch, H0 => { const q = Object.assign({}, p); delete q.absents; delete q.absentsPar; if (H0 && H0.absents) q.absents = H0.absents; if (H0 && H0.absentsPar) q.absentsPar = H0.absentsPar; if (H0 && H0.seanceFaite) q.seanceFaite = H0.seanceFaite; /* C16 mandat V2 : la marque « séance faite » (« ▶ Séance suivante dans cette heure ») reste, comme les absents */ dr_ecrire(ch, q, libelle, () => {}); }); return; }
   const corps = {}; DR_PAQUET_CLES.forEach(k => { corps[k] = null; }); Object.keys(p).forEach(k => { if (k !== 'absents' && k !== 'absentsPar') corps[k] = p[k] === undefined ? null : p[k]; });
   const url = FIREBASE_BASE + ch + '.json'; const moi = () => dr_paquetPatch(ch, p, libelle);
   mjpcEcrireRest(url, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corps) }, issue => {

@@ -1,0 +1,18 @@
+sonde de l'enchaînement (mandat V) · 2026-11-05 21:17 UTC · fichier md5 d2533e752457390f2ed29e1136898f72 · mode rep · la montre part de 09:00 (lundi 14/09), la case des De Gaulle 08:57-09:52 · séance 1 « Poésie et peinture : le Romantisme en question », séance 2 « Étude de texte accompagnée : « L'Albatros » »
+
+1 — la séance 1 lancée en répétition
+  ÉCHEC  1 · la séance 1 tourne — {"snum":"0","heure":1,"rep":true,"cours":null}
+
+2 — ▶ jusqu'à la dernière diapo de la séance 1 : le bouton n'apparaît qu'à la fin
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Target page, context or browser has been closed
+    at /tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/ex-v2/LIVRAISONS/DEROULE-01-11/ENCHAINER/sonde-enchainer.mjs:65:86
+    at async bdev (/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/ex-v2/LIVRAISONS/DEROULE-01-11/ENCHAINER/sonde-enchainer.mjs:65:28)
+    at async file:///tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/ex-v2/LIVRAISONS/DEROULE-01-11/ENCHAINER/sonde-enchainer.mjs:92:106 {
+  log: []
+}
+
+Node.js v22.23.4

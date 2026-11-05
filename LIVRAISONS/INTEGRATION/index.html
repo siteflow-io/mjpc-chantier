@@ -18810,10 +18810,10 @@ function edtChercherTrace(nomClasse,iso,creneau){
 /* C16 mandat V : TOUTES les séances jouées sur une même case (la séance 1, puis la suivante dans cette heure), dans l'ordre du jeu (le début réel de chaque trace) */
 function edtSeancesDeTrace(nomClasse,iso,creneau){
   var niv=edtNiveauDe(nomClasse); if(!niv)return []; var l=EDT_CHAP[niv]||[], cles=edtClesHeureTrace(iso,creneau,nomClasse), out=[];
-  for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances);
+  for(var i=0;i<l.length;i++){ var se=edtListe(l[i]&&l[i].seances), rangs=se.filter(Boolean).slice().sort(function(a,b){return (Number(a.ordre)||0)-(Number(b.ordre)||0);});   /* C16 mandat V2 : le rang de la séance dans son chapitre (« Séance 1 », « Séance 2 ») */
     for(var k=0;k<se.length;k++){ var d=(se[k]&&se[k].deroule_joue)||{};
       Object.keys(d).forEach(function(sl){ var b=d[sl]; if(!edtPaquetPour(sl,b,nomClasse))return; var kk=edtHeureTrouvee(b.heures,cles); if(!kk)return;
-        var H=b.heures[kk]||{}; out.push({titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i, trace:H, debut:+H.debutReel||+H.lanceA||0,
+        var H=b.heures[kk]||{}; out.push({titre:se[k].titre||se[k].title||'', chapitre:l[i].__cle, seance:se[k].__i, rang:rangs.indexOf(se[k])+1, trace:H, debut:+H.debutReel||+H.lanceA||0,
           chemin:'/site/'+niv+'/chapitres/'+l[i].__cle+'/seances/'+se[k].__i+'/deroule_joue/'+sl+'/heures/'+kk}); }); } }
   return out.sort(function(a,b){ return a.debut-b.debut; });
 }
@@ -18945,6 +18945,7 @@ function edtProjeter(isoDebut,nbJours){
         var edtTous=edtSeancesDeTrace(nom,iso,c.creneau); if(edtTous.length>1){ var edtDer=edtTous[edtTous.length-1];   /* C16 mandat V : « Séance 1 puis Séance 2 » ; la case porte la dernière (sa suite, « pas finie ») */
           cel.seances=edtTous.map(function(x){return {titre:x.titre,chapitre:x.chapitre,seance:x.seance,chemin:x.chemin,heure:+x.trace.heure||null,clos:!!x.trace.clos};});
           cel.clos=edtTous.every(function(x){return !!x.trace.clos;}); cel.activites=edtTous.reduce(function(n,x){return n+(x.trace.activites||[]).length;},0); cel.reportees=edtReportees(edtDer.trace,['reporter','suivante']).length;
+          cel.parSeance=edtTous.map(function(x){return {rang:x.rang,n:(x.trace.activites||[]).length,r:edtReportees(x.trace,['reporter','suivante']).length};});   /* C16 mandat V2 : ce que chaque séance a fait, ses vrais nombres */
           edtOu={titre:edtTous.map(function(x){return x.titre;}).join(' puis '),chapitre:edtDer.chapitre,seance:edtDer.seance}; }
         if(edtOu){ cel.titre=edtOu.titre; cel.chCle=edtOu.chapitre!=null?String(edtOu.chapitre):null; cel.snum=edtOu.seance!=null?String(edtOu.seance):null;
           try{ var edtCh=(EDT_CHAP[edtNiveauDe(nom)]||[]).filter(function(x){return x&&String(x.__cle)===cel.chCle;})[0], edtSe=edtCh?edtListe(edtCh.seances).filter(function(x){return x&&String(x.__i)===cel.snum;})[0]:null;
@@ -19099,6 +19100,8 @@ function edtCelluleHtml(c){
 /* ㊳ (C16) : ce que dit une case jouée — la case de la semaine et sa fenêtre, les mêmes mots */
 function edtJoueeTexte(c,sansFin){
   var n=+c.activites||0, r=+c.reportees||0;
+  var pl=function(k,m){return k+' '+m+(k>1?'s':'');};
+  if(c.parSeance&&c.parSeance.length>1)return (c.clos?'Close · ':'')+c.parSeance.map(function(x,k){return (k?'puis ':'')+'Séance '+x.rang+' : '+x.n+' '+(x.n>1?'diapos jouées':'diapo jouée')+(x.r?' · '+pl(x.r,'reportée'):'');}).join(' ; ')+(c.pasFinie&&!sansFin?' — séance pas finie':'');   /* C16 mandat V2 : « Séance 1 : n diapos jouées ; puis Séance 2 : … » (avant : les deux séances additionnées) */
   return (c.clos?'Close · ':'')+n+' diapo'+(n>1?'s':'')+' jouée'+(n>1?'s':'')+(r?' · '+r+' reportée'+(r>1?'s':''):'')+(c.pasFinie&&!sansFin?' — séance pas finie':'');
 }
 function edtCelluleCorps(c){

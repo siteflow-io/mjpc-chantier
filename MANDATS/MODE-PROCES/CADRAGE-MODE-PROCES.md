@@ -381,3 +381,10 @@ restant). Points 154 et 155 appliqués (Paul s'est engagé à donner les niveaux
 pré-remplie depuis les fichiers du point (3 ou 4 = 1 ; 2 = 0,5) ; sans niveau, cases ☐ 0 ☐ 0,5 ☐ 1
 pour les 15 Hugo des groupes 6 à 10, Lylou, Bellynda, Margaux et Pauline. Fiche : groupe /9, puis
 une note sur 10 par élève.
+
+**Les notes du chapitre (5/11, 10:23-10:31).** Paul : « je ramasse tout à la fin. qcm pas fait sur le
+chapitre et l'analyse logique. je fais l'évaluation qcm lundi pour les turing, et vendredi prochain le
+13 pour les hugo. on a pris du retard et des cours sautent... » Quatre notes par élève : plaidoirie
+écrite /20, oral /10 et dossier /10 (tout ramassé à la fin du procès, mardi 10/11), QCM chapitre et
+analyse logique (Turing lundi 9/11, Hugo vendredi 13/11). Le calendrier préparé le 1/11 note le
+lundi 9/11 à 13h une « 1/2 journée de la relation » qui touche les Turing à 16:04 : signalé à Paul.

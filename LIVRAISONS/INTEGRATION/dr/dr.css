@@ -28,6 +28,8 @@
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet{grid-column:1}:is(#dr-zone,#ses-tab,.at-som-volet) .scene{grid-column:2}:is(#dr-zone,#ses-tab,.at-som-volet) .droite{grid-column:3}
 :is(#dr-zone,#ses-tab,.at-som-volet) .poignee{position:absolute;top:0;bottom:0;width:8px;background:transparent;cursor:col-resize;z-index:5;user-select:none}:is(#dr-zone,#ses-tab,.at-som-volet) .poignee::after{content:'';position:absolute;left:3px;top:50%;height:60px;width:2px;background:var(--bord2);transform:translateY(-50%);border-radius:2px}:is(#dr-zone,#ses-tab,.at-som-volet) .poignee:hover::after,:is(#dr-zone,#ses-tab,.at-som-volet) .poignee.tire::after{background:var(--or)}:is(#dr-zone,#ses-tab,.at-som-volet) .poignee.dr-g{left:var(--lg,186px);margin-left:-4px}:is(#dr-zone,#ses-tab,.at-som-volet) .poignee.dr-d{right:var(--ld,336px);margin-right:-4px}
 body.vue-relecture :is(#dr-zone,#ses-tab,.at-som-volet) .corps{display:none}
+/* mandat P (Paul, 05/11 07:35) : la Relecture n'a rien à faire du tableau — ni « Ce que voit la classe », ni « Ouvrir le tableau », ni « Adresse du tableau », ni « Fin de l'heure » ; au pilotage et dans l'atelier, rien ne change */
+body.vue-relecture :is(#btableau,#bvideoproj,#dr-tab-adr,#bfin){display:none!important}
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet{background:#131009;border-right:1px solid #262019;padding:8px 8px;overflow:auto;min-height:0}
 :is(#dr-zone,#ses-tab,.at-som-volet) .volet h5{margin:0 0 6px;color:var(--sourd);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;display:flex;justify-content:space-between}
 :is(#dr-zone,#ses-tab,.at-som-volet) .vig{display:flex;gap:6px;padding:6px 5px;border-radius:7px;cursor:pointer;position:relative;align-items:flex-start}

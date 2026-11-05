@@ -1,0 +1,21 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties P · 2026-11-05 06:50 UTC · md5 a88e89def9ea172c0192915fd644e0c5 · images : celle du canon
+
+══ MANDAT P · p-apres · md5 a88e89def9ea172c0192915fd644e0c5 ══
+
+— partie P
+  [P1] la page du tableau seule (`?vue=tableau`, hors mode test), 35 s : 2 écriture(s) — PUT /site/cle_vue ×2
+  [P2] au pilotage (heure lancée true) : 4 des quatre boutons visibles — btableau, bvideoproj, dr-tab-adr, bfin
+  ok     P2-pilotage · au pilotage, les quatre boutons sont là — btableau,bvideoproj,dr-tab-adr,bfin
+  [P2] dans l’atelier : 1 visibles — dr-tab-adr
+  [P2] dans la Relecture (vue-relecture true) : 0 des quatre boutons visibles — aucun
+  ok     P2-relecture · dans la Relecture, aucun des quatre boutons
+  [P3] témoin : 20 s dans la Relecture, sans toucher à rien : la page du pilote écrit 1 — PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat ×1
+  [P3] « Ce que voit la classe » ouvert dans la Relecture (bouton caché : clic par la page) : cadre(s) ?vue=tableau&local=1&vignette=1 · 20 s : la page du pilote écrit 4 — PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif ×1, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal ×1, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat ×1, PATCH /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/heures/2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha ×1 · le tableau distant écrit 1 — PUT /site/cle_vue ×1
+  [P3] le tableau distant avant « Chapitre 1 — 3e » ‖ après « Chapitre 1 — 3e »
+  ok     P3-cadre · le tableau dans un cadre n’écrit pas `/site/cle_vue` — PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/vif ×1, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/journal ×1, PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/etat ×1, PATCH /site/3e/chapitres/0/seances/0/deroule_joue/3E FRANKLIN Aretha/heures/2026-09-15_15h07-16h02_3E_FRANKLIN_Aretha ×1
+  [P4] `/site/cle_vue` : écrit 7 fois depuis le début, par tableau  ×7 · relu par le pilote : {"distant":true,"etat":"aucun","ou":"classe"}
+  ok     P4-lu · le pilote lit `/site/cle_vue` (dr_cleLireDistant → dr_cleOu, la garde des fichiers de la clé) — {"distant":true,"etat":"aucun","ou":"classe"}
+  ok     P · pilote : aucune erreur JS, aucune boîte système
+  ok     P · tableau : aucune erreur JS, aucune boîte système
+
+--- fin : 6 vérifications, 0 échec(s)

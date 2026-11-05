@@ -16319,7 +16319,7 @@ function atP2ValiderDeroule(o,V,taxo){
         V.cite(r2,': rôle « reactivation » ou « fin » — le site pose ces diapos lui-même, retire-les.');
       else if(['presentation-chapitre','competences-chapitre','plan','presentation-seance','problematique','competences-bilan'].indexOf(e.role)>=0)   /* EX (§12.62 (3)) ; C16 : les diapos d'ouverture au canon, le site les pose lui-même depuis le chapitre */
         V.cite(r2,': rôle « '+e.role+' » — le site pose lui-même les diapos d’ouverture (la présentation et les compétences du chapitre, le parcours, le début de séance, la problématique, le bilan des compétences) depuis le chapitre, retire-la ; écris plutôt la phrase de chaque séance (« objectif »), sa majeure en premier et « evaluee ».');
-      else if(e.role!==undefined&&e.role!=='bilan')V.cite(r2,': rôle « '+e.role+' » inconnu — seul « bilan » s’écrit.');
+      else if(e.role!==undefined&&e.role!=='bilan'&&e.role!=='bilan-commun')V.cite(r2,': rôle « '+e.role+' » inconnu — seuls « bilan » et « bilan-commun » (la mise en commun du bilan, que le site pose lui-même) s’écrivent.');   /* C16 mandat S2 (5) : un chapitre exporté avec sa mise en commun du bilan se réimporte */
       var bil=atP2EstBilan(e); if(bil)bilans.push(n);
       /* §12.24 (prompt v0.7 §1.2, §1.3) : la diapo du bilan — trois blocs dans l'ordre, des mots-clés, ses notes présentateur ; rien « copie de classe » sous les yeux des élèves */
       /* E1 (§12.33-5) : « notes » est accepté sur toute diapo (les notes présentateur que le prompt d'injection 1.0 rédige pour chacune) — le refus « pas le bilan » tombe */
@@ -16340,7 +16340,7 @@ function atP2ValiderDeroule(o,V,taxo){
       }
       var vus=[e.act].concat.apply([e.act],bl.map(function(b){ return b?[b.txt,b.q].concat(Array.isArray(b.el)?b.el:[],Array.isArray(b.etapes)?b.etapes:[]):[]; }));
       if(vus.some(function(x){return /copie de (la )?classe/i.test(String(x==null?'':x));}))V.cite(r2,': un texte vu par les élèves dit « copie de classe ».');
-      if(!bil&&e.role!=='reactivation'&&e.role!=='fin'&&e.horsActivite!==true){   /* EX (§12.62 (1)) : « hors activité » voulu (horsActivite: true) n'est pas refusé */
+      if(!bil&&e.role!=='reactivation'&&e.role!=='fin'&&e.role!=='bilan-commun'&&e.horsActivite!==true){   /* EX (§12.62 (1)) : « hors activité » voulu (horsActivite: true) n'est pas refusé */
         if(!String(e.actId||'').trim()||!acts[String(e.actId)])V.cite(r2,': une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis).');
         if(!Array.isArray(e.remob))V.cite(r2,': « remob » manque sur une diapo d’activité.');
       }
@@ -16359,7 +16359,7 @@ function atP2ValiderDeroule(o,V,taxo){
         if(!b||!AT_P2_TYPES[b.t]){V.cite(r2,bk+'type inconnu (« '+((b&&b.t)||'')+' ») — les dix types : '+AT_P2_DIX+'.');return;}
         if(b.t==='question'){   /* §12.23 (Paul, 17:33) : la question du bilan n'a pas de réponse attendue — elle s'écrit en classe, dans la copie */
           if(!String(b.q||'').trim())V.cite(r2,bk+'la question est vide (« q »).');
-          else if(e.role!=='bilan'&&!(Array.isArray(b.reps)&&b.reps.some(function(x){return x&&String(x.r||'').trim();})))V.cite(r2,bk+'Refus : la réponse attendue manque — elle vit à part, c’est le contrat.');
+          else if(e.role!=='bilan'&&e.role!=='bilan-commun'&&!(Array.isArray(b.reps)&&b.reps.some(function(x){return x&&String(x.r||'').trim();})))V.cite(r2,bk+'Refus : la réponse attendue manque — elle vit à part, c’est le contrat.');
         }
         if(b.t==='fiche'){
           if(!String(b.titre||'').trim())V.cite(r2,bk+'Refus : une fiche a un titre.');
@@ -16383,7 +16383,7 @@ function atP2ValiderDeroule(o,V,taxo){
       });
     });
     if(bilans.length>1)V.cite(ref,': deux bilans — le bilan est unique et dernier.');
-    else if(bilans.length===1&&bilans[0]!==dr.ecrans.length-1)V.cite(ref,': le bilan n’est pas la dernière diapo de la séance.');
+    else if(bilans.length===1&&bilans[0]!==dr.ecrans.length-1&&!(bilans[0]===dr.ecrans.length-2&&dr.ecrans[dr.ecrans.length-1]&&dr.ecrans[dr.ecrans.length-1].role==='bilan-commun'))V.cite(ref,': le bilan n’est pas la dernière diapo de la séance.');
     Object.keys(parHeure).forEach(function(h){ if(parHeure[h]>50)V.cite(ref,': l’heure '+h+' dépasse 50 minutes ('+parHeure[h]+' min).'); });
   });
   if(nums.length&&!nums.every(function(n,i){return Number.isInteger(n)&&nums.slice().sort(function(a,b){return a-b;})[i]===i+1;}))
@@ -16415,7 +16415,7 @@ function atP2DerouleNormalise(se,avant){
     if(parseInt(e.heure,10)>0)x.heure=parseInt(e.heure,10);
     if(String(e.actId||'').trim())x.actId=String(e.actId); else if(e.horsActivite===true)x.horsActivite=true;   /* EX (§12.62 (1)) */
     if(e.legende&&typeof e.legende==='object'&&!Array.isArray(e.legende))x.legende=JSON.parse(JSON.stringify(e.legende));
-    if(e.role==='bilan')x.role='bilan';
+    if(e.role==='bilan')x.role='bilan'; else if(e.role==='bilan-commun')x.role='bilan-commun';   /* C16 mandat S2 (5) : la mise en commun garde son rôle (sinon le site en poserait une seconde) */
     if(typeof e.notes==='string'&&e.notes.trim())Object.defineProperty(x,'_notes',{value:e.notes,enumerable:false});   /* §12.24, §12.33-5 (E1) : sur toute diapo, rangées en notes présentateur à l'eid, plus bas */
     return x;
   });

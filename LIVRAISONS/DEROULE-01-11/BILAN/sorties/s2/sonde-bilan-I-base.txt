@@ -1,0 +1,12 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties I · 2026-11-05 10:14 UTC · md5 3e39253e941e7c0b6332c80db5cf7c7d · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · base · md5 3e39253e941e7c0b6332c80db5cf7c7d · vraie heure ══
+
+— partie I
+  [I] motifs de l’import : « Séance sonde · écran 3 » : rôle « bilan-commun » inconnu — seul « bilan » s’écrit. | « Séance sonde · écran 3 » : une diapo d’activité sans activité (« actId ») — un chapitre dont les activités ne sont pas toutes numérotées est refusé (3.2 bis). | « Séance sonde · écran 3 » : « remob » manque sur une diapo d’activité. | « Séance sonde · écran 3 » bloc 1 : Refus : la réponse attendue manque — elle vit à part, c’est le contrat. | « Séance sonde » : le bilan n’est pas la dernière diapo de la séance.
+  ÉCHEC  I1 · l’import d’un chapitre JSON qui porte sa mise en commun du bilan (rôle « bilan-commun », après le bilan) : accepté — 5 motif(s) de refus
+  ÉCHEC  I2 · la séance importée garde sa mise en commun, une seule, juste après le bilan (pas de seconde posée par le site ; le cahier de textes après) — -,bilan,bilan-commun,-,fin
+  [I] mesure (1) : une copie de classe d’avant S, relue : 2 → 4 diapos (1 mise en commun)
+  ok     I3 · I : aucune erreur JS, aucune boîte système
+
+--- fin : 3 vérifications, 2 échec(s)

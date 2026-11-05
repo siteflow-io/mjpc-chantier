@@ -376,8 +376,32 @@ const partieB = async () => {
   verif('B28', e.bb === '(caché)' && mp && mp.off && /seulement sur la mise en commun/.test(mp.t), 'sur une autre diapo : 🅱️ rangé derrière les « … », grisé, sa raison dite', e.bb + ' · ' + JSON.stringify(mp));
   finir('B29', o, 'B'); await o.ctx.close(); await T.ctx.close(); };
 
+/* ══ I · C16 mandat S2 (5, et 1 mesuré) — l'import d'un chapitre en JSON qui porte sa mise en commun du bilan (un chapitre exporté avec elle) ;
+   puis ce que la pose de la mise en commun fait à une copie de classe d'avant S (un bilan, pas de mise en commun). Au faux hub, la classe inventée. ══ */
+const partieI = async () => {
+  hubAvec(AJOUT, BIL);
+  const o = await ouvrir({ W: 1536, H: 864 }); const pg = o.pg; await p(1500);
+  const r = await pg.evaluate(([QB, PTS]) => {
+    const se = { title: 'Séance sonde', type: 'etude_texte', cle: 'sonde-s2', deroule: { activites: [{ id: 'a1', num: 1, titre: 'Lire le poème' }], ecrans: [
+      { act: 'Lire le poème', dur: 10, actId: 'a1', remob: [], comp: [], blocs: [{ t: 'question', q: 'Que dit le poète de lui-même ?', reps: [{ i: '', r: 'Il parle de ses peines.' }] }] },
+      { act: 'Le bilan', dur: 5, role: 'bilan', comp: [], blocs: [{ t: 'question', q: QB, reps: [] }, { t: 'texte', txt: 'À mettre dans le bilan', el: PTS }, { t: 'consigne', txt: 'Rédige le bilan au brouillon', etapes: ['Cinq lignes au moins'] }] },
+      { act: 'Mise en commun du bilan', dur: 5, role: 'bilan-commun', comp: [], blocs: [{ t: 'question', q: QB, reps: [] }] }] } };
+    const o = { produit: 'chapitre', niveau: '3e', chapitre: { title: 'Chapitre sonde S2', seances: [se] } };
+    const V = chValiderChapitre(o, (typeof CH !== 'undefined' && CH.taxo) || null); const mot = V.motifs();
+    let norm = null; try { const d = atP2DerouleNormalise(se, null); const E = d.ecrans; dr_normaliserTrame(E, 'sonde-s2'); norm = E.map(e => e.role || '-').join(','); } catch (x) { norm = 'levé : ' + x.message; }
+    /* une copie de classe d'avant S (son activité, son bilan, pas de mise en commun), relue comme le pilotage relit la copie d'une classe */
+    const C = JSON.parse(JSON.stringify(se.deroule.ecrans)).filter(e => e && e.role !== 'bilan-commun'); const n0 = C.length;
+    try { (typeof dr_reactNormaliserCopie === 'function' ? dr_reactNormaliserCopie : dr_normaliserTrame)(C, 'sonde'); } catch (x) {}
+    return { mot, norm, copie: n0 + ' → ' + C.length + ' diapos (' + C.filter(e => e && e.role === 'bilan-commun').length + ' mise en commun)' };
+  }, [QB, PTS]);
+  dire('  [I] motifs de l’import : ' + (r.mot.length ? r.mot.join(' | ') : 'aucun'));
+  verif('I1', r.mot.length === 0, 'l’import d’un chapitre JSON qui porte sa mise en commun du bilan (rôle « bilan-commun », après le bilan) : accepté', r.mot.length + ' motif(s) de refus');
+  verif('I2', r.norm === '-,bilan,bilan-commun,fin', 'la séance importée garde sa mise en commun, une seule, juste après le bilan (pas de seconde posée par le site ; le cahier de textes après)', r.norm);
+  dire('  [I] mesure (1) : une copie de classe d’avant S, relue : ' + r.copie);
+  finir('I3', o, 'I'); await o.ctx.close(); };
+
 dire(''); dire('══ MISE EN COMMUN DU BILAN · ' + NOMF + ' · md5 ' + md5(FICHIER) + (TESTB ? ' · mode test' : ' · vraie heure') + ' ══');
-for (const [k, f] of [['B', partieB]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
+for (const [k, f] of [['B', partieB], ['I', partieI]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-bilan-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

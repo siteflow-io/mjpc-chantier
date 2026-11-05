@@ -1,0 +1,12 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties I · 2026-11-05 10:14 UTC · md5 1de31418f1f0e9fb7098cb68efe85583 · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · apres · md5 1de31418f1f0e9fb7098cb68efe85583 · vraie heure ══
+
+— partie I
+  [I] motifs de l’import : aucun
+  ok     I1 · l’import d’un chapitre JSON qui porte sa mise en commun du bilan (rôle « bilan-commun », après le bilan) : accepté — 0 motif(s) de refus
+  ok     I2 · la séance importée garde sa mise en commun, une seule, juste après le bilan (pas de seconde posée par le site ; le cahier de textes après) — -,bilan,bilan-commun,fin
+  [I] mesure (1) : une copie de classe d’avant S, relue : 2 → 4 diapos (1 mise en commun)
+  ok     I3 · I : aucune erreur JS, aucune boîte système
+
+--- fin : 3 vérifications, 0 échec(s)

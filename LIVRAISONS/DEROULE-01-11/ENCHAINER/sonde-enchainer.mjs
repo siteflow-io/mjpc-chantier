@@ -57,7 +57,7 @@ const T = await ouvrir('tableau', 1280, 720, '?vue=tableau'); const tb = T.pg; a
 const ctxP = await nav.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: DSF, timezoneId: 'Europe/Paris' }); const errsP = [];
 await ctxP.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => r.abort());
 await ctxP.exposeFunction('__hubN', (m, c, corps) => hubRepondre('pilote', m, c, corps)); await ctxP.addInitScript(fauxFetch);
-const pg = await ctxP.newPage(); pg.on('pageerror', e => errsP.push('[après « ' + String(R[R.length - 1] || '').trim().slice(0, 50) + ' »] ' + String(e.message).slice(0, 120) + (process.env.MJPC_PILE ? ' @ ' + String(e.stack || '').split('\n').slice(1, +(process.env.MJPC_PILE) > 1 ? +process.env.MJPC_PILE : 3).join(' ').replace(/file:[^ )]*html[^:]*:/g, 'l.').slice(0, +(process.env.MJPC_PILE) > 3 ? 900 : 160) : ''))); pg.on('dialog', d => d.dismiss().catch(() => {})); await pg.clock.install({ time: HORLOGE });
+let pg = await ctxP.newPage(); pg.on('pageerror', e => errsP.push('[après « ' + String(R[R.length - 1] || '').trim().slice(0, 50) + ' »] ' + String(e.message).slice(0, 120) + (process.env.MJPC_PILE ? ' @ ' + String(e.stack || '').split('\n').slice(1, +(process.env.MJPC_PILE) > 1 ? +process.env.MJPC_PILE : 3).join(' ').replace(/file:[^ )]*html[^:]*:/g, 'l.').slice(0, +(process.env.MJPC_PILE) > 3 ? 900 : 160) : ''))); pg.on('dialog', d => d.dismiss().catch(() => {})); await pg.clock.install({ time: HORLOGE });
 await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(pg, 1800);
 await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg);
 if (MODE === 'test') { await pg.evaluate(() => { try { openProfPanel(); } catch (e) {} }); await p(pg, 800); await pg.evaluate(() => { const b = document.getElementById('tprof-testpill'); if (b) b.click(); }); await p(pg, 800);
@@ -128,6 +128,54 @@ const t5Bloc = async quoi => {
   const tete = await pg.evaluate(([n, r]) => { try { const f = edtFileDAttente(n, null); const se = f && f.seances && f.seances[0]; const H2 = edtSeanceEtat(se, n); return { snum: se && String(se.__i), jouees: H2.jouees, sur: H2.sur, finie: H2.finie }; } catch (e) { return 'ERR ' + e.message; } }, ['3E Charles de Gaulle', rep]);
   dire('  T5 la file : ' + JSON.stringify(tete));
   verif('T', tete && tete.snum === '1' && tete.jouees === 1 && !tete.finie, 'la file : la séance 2 en tête, pas finie (1 heure jouée), son heure suivante reprend ce qui est reporté', JSON.stringify(tete));
+};
+
+/* V5 (mandat V5) — ROUVRIR LA PAGE PENDANT LA SÉANCE ENCHAÎNÉE (MJPC_ROUV=1) : deux réponses tapées, une diapo dévoilée ; l'onglet du pilotage fermé (ses gardes
+   de départ jouées, comme Paul ferme l'onglet), un onglet neuf du même navigateur, la montre 20 s plus loin ; la case relancée comme Paul le fait. Ensuite, la sonde continue (4). */
+const ROUV = !!process.env.MJPC_ROUV;
+const rouvBloc = async () => {
+  dire(''); dire('R — la séance 2 enchaînée : deux réponses tapées, une diapo dévoilée, puis l\'onglet du pilotage fermé et rouvert, la case relancée');
+  const s2e = (HUBN.site['3e'].chapitres[0].seances[1].deroule.ecrans || []).map(e => e && e.eid), ch1 = '/site/3e/chapitres/0/seances/0/deroule_joue';
+  const md = v => createHash('md5').update(JSON.stringify(v == null ? null : v)).digest('hex').slice(0, 8);
+  const s1 = async () => { const v = await lireP(ch1); const H = v && typeof v === 'object' ? Object.values(v).flatMap(b => Object.values((b && b.heures) || {})) : []; return { md: md(v), heures: H.length, closes: H.filter(h => h && h.clos).length, faites: H.filter(h => h && h.seanceFaite).length, acts: H.reduce((n, h) => n + ((h && h.activites) || []).length, 0) }; };
+  const pos = () => pg.evaluate(() => { let eid = null; try { eid = seance().ecrans[S.di].eid; } catch (e) {} const c = document.getElementById('compte'); const cp = JSON.stringify(S.copie || {});
+    return { lancee: !!S.lancee, close: !!S.close, snum: String(ATVUES.snum), heure: S.heure, H: (() => { try { return dr_cheminH(); } catch (e) { return null; } })(), di: S.di, eid, compte: c ? c.innerText.replace(/\s+/g, ' ').trim() : null,
+      rA: cp.indexOf('(réponse A)') >= 0, rB: cp.indexOf('(réponse B)') >= 0, test: typeof m8TestOn === 'function' && m8TestOn(), hc: (() => { try { const h = dr_horlogeCase(); return h ? { c: dr_nowCase(), m: Date.now() } : null; } catch (e) { return null; } })() }; });
+  const tabEid = () => tb.evaluate(() => { const a = document.getElementById('ses-tab-att'); const m = (typeof DR_TAB !== 'undefined' && DR_TAB.montre) || null; return { eid: m && m.eid, att: !!(a && a.style.display !== 'none' && a.getBoundingClientRect().height > 0) }; });
+  const s1av = await s1();
+  const tape = []; for (let k = 0; k < 12 && tape.length < 2; k++) { const L = await pg.$$eval('#mur [data-p]', xs => xs.filter(x => x.offsetParent !== null).map(x => x.getAttribute('data-p')));
+    if (L.length >= 2) { for (const dp of L.slice(0, 2)) { const el = await pg.$('#mur [data-p="' + dp + '"]'); if (!el) continue; await el.click(); await p(pg, 300); await pg.keyboard.press('Control+End'); await pg.keyboard.type(' (réponse ' + 'AB'[tape.length] + ')', { delay: 15 }); await pg.keyboard.press('Escape'); await p(pg, 900); tape.push(dp); } break; } await bdev(); }
+  const c0 = (await pos()).compte; await bdev(); await p(pg, 3000);   /* une diapo dévoilée (▶), puis 3 s : l'état part au hub (≤ 2 s) */
+  const av = await pos(); const tAv = await tabEid();
+  dire('  avant : séance ' + (+av.snum + 1) + ' · heure ' + av.heure + ' · diapo ' + av.di + ' (' + av.eid + ') · compteur « ' + c0 + ' » → « ' + av.compte + ' » · réponses tapées ' + tape.join(', ') + ' (A ' + av.rA + ', B ' + av.rB + ') · horloge de la case ' + (av.hc ? hms(av.hc.c) + ' (décalage ' + Math.round((av.hc.c - av.hc.m) / 1000) + ' s)' : 'aucune') + ' · tableau ' + tAv.eid + ' · séance 1 au hub ' + JSON.stringify(s1av));
+  verif('R', av.snum === '1' && av.lancee && !av.close && tape.length === 2 && av.rA && av.rB && av.compte !== c0, 'avant : la séance 2 tourne, deux réponses tapées, une diapo dévoilée', JSON.stringify({ tape, compte: [c0, av.compte] }));
+  await capt(pg, MODE + '-R1-avant-fermeture');
+  const mNow = await pg.evaluate(() => Date.now()); pg.removeAllListeners('dialog'); let bu = 0; pg.on('dialog', d => { bu++; d.accept().catch(() => {}); });
+  await pg.close({ runBeforeUnload: true }); for (let k = 0; k < 30 && !pg.isClosed(); k++) await p(tb, 200);
+  dire('  l\'onglet du pilotage fermé : ' + pg.isClosed() + ' (la question du navigateur « quitter la page ? » : ' + bu + ' fois, acceptée)'); await p(tb, 2000);
+  const tMil = await tabEid();
+  pg = await ctxP.newPage(); pg.on('pageerror', e => errsP.push('[rouvert] ' + String(e.message).slice(0, 140))); pg.on('dialog', d => d.dismiss().catch(() => {}));
+  await pg.clock.install({ time: mNow + 20000 }); await pg.goto(URL0 + '?n=3e', { waitUntil: 'load' }); await p(pg, 1800);
+  await pg.evaluate(() => { try { if (!(TRACK.eleve && TRACK.eleve.is_prof)) loginAsProf(); } catch (e) {} }); await p(pg, 2200); await sansVoiles(pg);
+  const ro = await pg.evaluate(() => ({ test: typeof m8TestOn === 'function' && m8TestOn(), band: (() => { const b = document.getElementById('ses-reprise'); return b && b.offsetParent !== null ? b.innerText.replace(/\s+/g, ' ').trim().slice(0, 120) : null; })() }));
+  dire('  rouvert : mode test ' + ro.test + ' · bandeau « ' + (ro.band || 'aucun') + ' »');
+  if (MODE === 'test' && !ro.test) { await pg.evaluate(() => { try { openProfPanel(); } catch (e) {} }); await p(pg, 800); await pg.evaluate(() => { const b = document.getElementById('tprof-testpill'); if (b) b.click(); }); await p(pg, 800); await pg.evaluate(() => { try { closeProfPanel(); } catch (e) {} }); await sansVoiles(pg);
+    dire('  (mode test remis par la pastille, comme au départ : ' + (await pg.evaluate(() => m8TestOn())) + ')'); }
+  await pg.evaluate(() => { try { edtFermer(); } catch (e) {} edtOuvrir(); }); await p(pg, 2000);
+  const cs = await pg.evaluate(() => { const c = Array.from(document.querySelectorAll('.edt-case .edt-clic, .edt-clic')).filter(e => e.offsetParent !== null && /Charles/i.test(e.innerText || '')).find(e => (e.getAttribute('onclick') || '').indexOf('2026-09-14') >= 0); if (!c) return null; const t = c.innerText.replace(/\s+/g, ' ').trim(); c.click(); return t; });
+  await p(pg, 900); const bm = await pg.evaluate(() => Array.from(document.querySelectorAll('#edt-modale button')).filter(b => b.offsetParent !== null).map(b => b.innerText.replace(/\s+/g, ' ').trim()).filter(t => t && !/^[A-ZÀ-Ý' -]{2,} /.test(t)).join(' | ').slice(0, 300));   /* sans les noms d'élèves (les boutons de l'appel) */
+  dire('  la case du jour, rouverte : « ' + String(cs || 'absente').slice(0, 200) + ' » · ses boutons : ' + bm);
+  const lan = (await clicTexte(pg, '#edt-modale button', 'Reprendre l’heure')) ? '▶ Reprendre l’heure' : (await clicTexte(pg, 'button', 'Ouvrir le pilotage et lancer')) ? 'Ouvrir le pilotage et lancer' : 'aucun';   /* le bouton que la case montre (mesuré : « ▶ Reprendre l’heure ») */ await p(pg, 4000); await gardes(pg); await p(pg, 600);
+  const ap = await attendre(pg, async () => { const x = await pos(); return x.lancee && !x.close ? x : null; }, 15000) || await pos(); await p(pg, 1500);
+  await attendre(tb, async () => { const t = await tabEid(); return t.eid === ap.eid ? t : null; }, 9000); const tAp = await tabEid();
+  dire('  après : « ' + lan + ' »' + ' · séance ' + (+ap.snum + 1) + ' · heure ' + ap.heure + ' · diapo ' + ap.di + ' (' + ap.eid + ') · compteur « ' + ap.compte + ' » · réponses A ' + ap.rA + ', B ' + ap.rB + ' · horloge de la case ' + (ap.hc ? hms(ap.hc.c) + ' (décalage ' + Math.round((ap.hc.c - ap.hc.m) / 1000) + ' s)' : 'aucune') + ' · tableau ' + tAp.eid + ' (pendant la fermeture ' + tMil.eid + ', attente ' + tMil.att + ')');
+  verif('R', ap.lancee && !ap.close && ap.snum === '1' && ap.H === av.H, 'le pilotage reprend la séance 2 (la même heure, la même trace)', JSON.stringify({ snum: ap.snum, H: (ap.H || '').replace(/^.*deroule_joue/, '') }));
+  verif('R', ap.di === av.di && ap.eid === av.eid && ap.compte === av.compte, 'à la même diapo, le dévoilement là (le même compteur)', JSON.stringify({ avant: [av.di, av.compte], apres: [ap.di, ap.compte] }));
+  verif('R', ap.rA && ap.rB, 'les deux réponses tapées sont là');
+  verif('R', !!(av.hc && ap.hc) && ap.hc.c >= av.hc.c && Math.abs((ap.hc.c - ap.hc.m) - (av.hc.c - av.hc.m)) <= 1000, 'l\'horloge de la case continue (le même décalage)', av.hc && ap.hc ? hms(av.hc.c) + ' → ' + hms(ap.hc.c) : 'absente');
+  verif('R', tAp.eid === ap.eid && tAp.eid === av.eid && tAv.eid === av.eid && !tAp.att && !tMil.att && tMil.eid === av.eid, 'le tableau reste sur la séance 2 (pendant la fermeture et après)', JSON.stringify({ milieu: tMil, apres: tAp }));
+  const s1ap = await s1(); verif('R', s1ap.md === s1av.md && s1ap.closes === s1ap.heures && s1ap.faites >= 1, 'la séance 1 reste close, intacte (son paquet au hub identique, compté)', JSON.stringify({ avant: s1av, apres: s1ap }));
+  await capt(pg, MODE + '-R2-rouvert'); await capt(tb, MODE + '-R3-tableau-rouvert');
 };
 
 /* 1 — l'heure 1 : par la case (vh, test, temoin) ou « ▶ Jouer en avance » (rep) */
@@ -238,6 +286,7 @@ if (MODE === 'temoin') {
   await capt(pg, MODE + '-3-la-seance-2'); await capt(tb, MODE + '-4-le-tableau-seance-2');
 
   /* 4 — la séance 2 close à la fin du créneau (« ■ Clore l'heure »), puis l'emploi du temps */
+  if (ROUV && MODE !== 'rep') await rouvBloc();
   if (T5) await t5Bloc('la séance 2 enchaînée');
   else if (HC && MODE !== 'rep') await hcBloc('la séance 2 enchaînée');
   else if (MODE !== 'rep') {

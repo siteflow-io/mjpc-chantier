@@ -1,0 +1,15 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties R · 2026-11-05 10:33 UTC · md5 f7ecf63dc1a1c620e1135a4e6ffba7f4 · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · apres-R · md5 f7ecf63dc1a1c620e1135a4e6ffba7f4 · vraie heure ══
+
+— partie R
+  [R] heure close true (T-5 : à la suivante, tout)
+  [R] la case suivante : 2026-09-18 10:07-11:02 · prevu « Poésie et peinture : le Romantisme en question » (séance 1) h2 suite
+  [R] la case dit : vendredi 18 septembre · 10:07-11:02 ✕ 3E FRANKLIN Aretha Poésie et peinture : le Romantisme en question heure 2 · suite de la séance : elle commence par les 2 diapos reportées 
+  ok     R0 · R : aucune erreur JS, aucune boîte système
+  [R] l’heure suivante lancée true : reactivation → bilan → bilan-commun → fin
+  ok     R1 · la case suivante propose le bilan et sa mise en commun ensemble (« les 2 diapos reportées ») — vendredi 18 septembre · 10:07-11:02 ✕ 3E FRANKLIN Aretha Poésie et peinture : le Romantisme en question heure 2 · suite de la séance : elle commence par les 2 diapos reportées 
+  ok     R2 · l’heure suivante : le bilan reporté, sa mise en commun juste après lui — reactivation → bilan → bilan-commun → fin
+  ok     R3 · R : aucune erreur JS, aucune boîte système
+
+--- fin : 4 vérifications, 0 échec(s)

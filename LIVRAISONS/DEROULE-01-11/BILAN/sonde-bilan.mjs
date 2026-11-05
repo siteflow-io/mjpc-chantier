@@ -421,8 +421,24 @@ const partieH = async () => {
     else { const R = r.roles.split(','); const ib = R.indexOf('bilan'); verif('H2', rp && r.n === avS.length + 1 && R[ib + 1] === 'bilan-commun' && /bilan → bilan-commun/.test(r.ordre), 'le bilan pas encore montré : la mise en commun posée juste après lui, dans l’heure', avS.length + ' → ' + r.n + ' diapos · ' + r.ordre); }
     o2.errs.push(...errs1); finir(tag + 'e', o2, tag); await o2.ctx.close(); } };
 
+/* ══ R · C16 mandat S3 (2) — le bilan reporté à la fin de l'heure (T-5 : « à la suivante », tout) : la mise en commun part avec lui ; la case suivante de la classe
+   les propose ensemble, et l'heure lancée les joue l'un après l'autre. La classe inventée (Franklin), par le geste. ══ */
+const partieR = async () => { hubAvec(AJOUT, BIL);
+  const o = await ouvrir({ h: '15:08', jour: '2026-09-15', W: 1536, H: 864 }); const pg = o.pg;
+  const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); await lancerIci(pg, fc.iso, fc.cr, FRA);
+  await jouerJusqua(pg, 'aud-g5-hyp'); await toutDevoiler(pg, 'aud-g5-hyp'); const cl = await finReporter(pg); dire('  [R] heure close ' + cl.close + ' (T-5 : à la suivante, tout)');
+  const P2 = await projeter(pg, '2026-09-15', 14); const nx = P2.find(x => FRA.test(x.classe) && x.iso > '2026-09-15' && x.nature === 'prevu'); dire('  [R] la case suivante : ' + dirCase(nx));
+  const c = nx ? await caseDe(pg, nx.iso, nx.cr, FRA) : { t: '' }; c.t = c.t.split('L’appel')[0]; const propose = /les 2 diapos reportées/.test(c.t);   /* le bilan et sa mise en commun : deux diapos reportées */
+  dire('  [R] la case dit : ' + c.t.slice(0, 600)); finir('R0', o, 'R'); await o.ctx.close();
+  const hh = (String(nx && nx.cr || '').match(/(\d{1,2})[:h](\d{2})/) || [0, '08', '00']); const o2 = await ouvrir({ h: String(hh[1]).padStart(2, '0') + ':' + String(Math.min(59, +hh[2] + 3)).padStart(2, '0'), jour: nx.iso, W: 1536, H: 864 });
+  await lancerIci(o2.pg, nx.iso, nx.cr, FRA); const r = await o2.pg.evaluate(() => { const E = seance().ecrans; const O = ordreHeure(S.heure).map(i => E[i].role || E[i].eid); return { ordre: O.join(' → '), lancee: !!S.lancee }; });
+  dire('  [R] l’heure suivante lancée ' + r.lancee + ' : ' + r.ordre);
+  verif('R1', propose, 'la case suivante propose le bilan et sa mise en commun ensemble (« les 2 diapos reportées »)', c.t.replace(/\s+/g, ' ').slice(0, 300));
+  verif('R2', r.lancee && /bilan → bilan-commun/.test(r.ordre), 'l’heure suivante : le bilan reporté, sa mise en commun juste après lui', r.ordre.split(' → ').slice(-4).join(' → '));
+  finir('R3', o2, 'R'); await o2.ctx.close(); };
+
 dire(''); dire('══ MISE EN COMMUN DU BILAN · ' + NOMF + ' · md5 ' + md5(FICHIER) + (TESTB ? ' · mode test' : ' · vraie heure') + ' ══');
-for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
+for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH], ['R', partieR]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-bilan-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

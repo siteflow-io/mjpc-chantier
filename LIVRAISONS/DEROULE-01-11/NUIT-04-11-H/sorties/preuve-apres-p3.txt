@@ -1,0 +1,10 @@
+C16 · audit global, partie I · 2026-11-05 00:40 UTC · scratchpad/asm-h.html md5 c9089ce745d1342bb63c3a05c0ffe244 · parties Q2D
+   (H) la fin : 00:00 vu à (ms) {"pilote":23918,"telecommande":24176,"tableauDistant":23918,"fenetre":23918} · plus grand écart des chiffres affichés pendant la course : 1 s (95 lectures) · « fin » au journal du pilote : 0
+— Q2 · le minuteur, répétition (montre du téléphone 3 s, du tableau distant -3 s) —
+   0 s (1,5 s après Départ) : pilote 04:59 · télécommande 04:59 · tableau distant 04:59 · fenêtre 04:59 — reste (ms) {"pilote":298408,"telecommande":298421,"tableauDistant":298423}
+   20 s : pilote 04:39 · télécommande 04:39 · tableau distant 04:39 · fenêtre 04:39 — reste (ms) {"pilote":278359,"telecommande":278365,"tableauDistant":278369}
+   Pause + 1,5 s : pilote 04:39 · télécommande 04:39 · tableau distant 04:39 · fenêtre 04:39 — reste (ms) {"pilote":278304,"telecommande":278304,"tableauDistant":278304}
+   Pause + 9,5 s : pilote 04:39 · télécommande 04:39 · tableau distant 04:39 · fenêtre 04:39 — reste (ms) {"pilote":278304,"telecommande":278304,"tableauDistant":278304}
+   Reprendre + 1,5 s : pilote 04:37 · télécommande 04:37 · tableau distant 04:37 · fenêtre 04:37 — reste (ms) {"pilote":276776,"telecommande":276785,"tableauDistant":276787}
+   Reprendre + 11,5 s : pilote 04:27 · télécommande 04:27 · tableau distant 04:27 · fenêtre 04:27 — reste (ms) {"pilote":266764,"telecommande":266773,"tableauDistant":266776}
+   4 × − + 2,8 s : pilote 00:24 · télécommande 00:24 · tableau distant 00:24 · fenêtre 00:24 — reste (ms) {"pilote":23648,"telecommande":23655,"tableauDistant":23658}

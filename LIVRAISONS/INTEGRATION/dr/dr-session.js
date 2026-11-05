@@ -639,7 +639,7 @@ function dr_tcDemarrer(){
 function dr_tcReseau(n){ DR_TC.etat = 'reseau'; dr_tcAccueil('<div class="rien">Le téléphone n’arrive pas à joindre le site : le réseau ne répond pas.<br>La télécommande réessaie d’elle-même' + (n > 1 ? ' (essai ' + n + ')' : '') + '…</div>'); }
 function dr_tcLire(ch, cb, n){ n = n || 0; dr_sesLireHub(ch, v => { if (v === undefined) { dr_tcReseau(n + 1); clearTimeout(DR_TC.lireT); DR_TC.lireT = setTimeout(() => dr_tcLire(ch, cb, n + 1), Math.min(4000, 700 * (n + 1))); return; } if (DR_TC.etat === 'reseau') DR_TC.etat = 'ouvre'; cb(v); }); }
 function dr_tcRejoindre(){
-  if (DR_SES.ici || !DR_TC.rec) return; DR_TC.etat = 'ouvre'; const s = DR_TC.rec.sorte;
+  if (DR_SES.ici || !DR_TC.rec) return; DR_TC.etat = 'ouvre'; const s = DR_TC.rec.sorte; try { if (typeof dr_hhVoir === 'function') dr_hhVoir(); } catch (e) {}   /* ㊵ : la télécommande mesure son écart au hub dès qu'elle rejoint (son « Départ » pose la fin à l'heure du hub) */
   const rien = () => { DR_TC.etat = 'rien'; dr_tcMaj(); };
   if (s === 'essai') { dr_tcLire(DR_TT.chemin + '/pointeur', p => { if (dr_sesFrais(p) && p.quoi === 'heure') dr_sesReprendreEssai(p, ok => { if (!ok) rien(); }); else rien(); }); return; }
   if (s === 'repetition') { dr_tcLire((DR_TC.test ? DR_TT.chemin : DR_REP.chemin) + '/pointeur', p => { if (dr_sesFrais(p) && (!DR_TC.test || p.quoi === 'repetition')) dr_sesReprendreRepetition(Object.assign({}, p, { test: DR_TC.test })); else rien(); }); return; }
@@ -696,7 +696,7 @@ function dr_tcMaj(){
   /* sans la main : chaque commande grisée dit sa raison (son infobulle) ; seul « Reprendre avec la télécommande » reste */
   const OFF = 'Télécommande désactivée : l’ordinateur a repris la main. Appuie sur « Reprendre avec la télécommande » pour piloter d’ici.';
   DR_TC.bas.querySelectorAll('button[data-a]').forEach(b => { if (b.dataset.a === 'main' || b.dataset.a === 'appel-x') return; const off = !tient || b.dataset.borne === '1'; if (b.disabled !== off) b.disabled = off; if (!tient) { if (b.title !== OFF) { if (b.dataset.t0 == null) b.dataset.t0 = b.title; b.title = OFF; } b.style.opacity = '.4'; } else { if (b.dataset.t0 != null) { b.title = b.dataset.t0; delete b.dataset.t0; } const op = off ? '.4' : ''; if (b.style.opacity !== op) b.style.opacity = op; } });
-  const reste = m ? (m.etat === 'pret' ? m.duree : m.etat === 'court' ? Math.max(0, m.fin - Date.now()) : Math.max(0, m.reste || 0)) : (typeof dr_minutDuree === 'function' ? (dr_minutDuree() || 300000) : 300000);
+  const reste = m ? (m.etat === 'pret' ? m.duree : m.etat === 'court' ? Math.max(0, m.fin - dr_minutMaintenant(m)) : Math.max(0, m.reste || 0)) : (typeof dr_minutDuree === 'function' ? (dr_minutDuree() || 300000) : 300000);
   const tt = DR_TC.bas.querySelector('.minut .t'); const txt = typeof dr_mmss === 'function' ? dr_mmss(reste) : String(Math.ceil(reste / 1000)); if (tt && tt.textContent !== txt) tt.textContent = txt;   /* l'horloge ne pose que ses chiffres */
 }
 /* C16 (㊱, Paul 258) : la liste de l'appel à la télécommande — les noms en entier (c'est Paul qui lit, jamais la classe), l'allure de « QUI A PARLÉ » */
@@ -734,7 +734,7 @@ function dr_tcMinut(a){
   if (a === 'pause') { dr_minuteurPause(); return; }
   if (a === 'stop') { dr_minuteurArret(); return; }
   const d = a === 'plus' ? 60000 : -60000;
-  if (m && m.etat === 'court') { m.fin = Math.max(Date.now() + 1000, m.fin + d); m.duree = Math.max(60000, m.duree + d); }
+  if (m && m.etat === 'court') { m.fin = Math.max(dr_minutMaintenant(m) + 1000, m.fin + d); m.duree = Math.max(60000, m.duree + d); }
   else if (m && m.etat === 'pause') { m.reste = Math.max(1000, (m.reste || 0) + d); m.duree = Math.max(60000, m.duree + d); }
   else { const nv = Math.max(60000, (dr_minutDuree() || 300000) + d); if (inp) inp.value = dr_mmss(nv); if (m && m.etat === 'pret') { m.duree = nv; m.reste = nv; } }
   dr_minuteurEnvoyer(); dr_minuteurAfficher(); try { dr_minuteurBoucle(); } catch (e) {}

@@ -555,9 +555,14 @@ function dr_tabSceneOubliee(o, c){ if (!DR_TAB.vuCours || !c) return false; cons
    pendant le cours — celui que le trajet a le moins retardé. Seuls le chiffre et sa classe changent ; la boucle ne tourne que quand il court. */
 function dr_tabMinutRecevoir(m, tsPilote, local){
   if (m && typeof m === 'object' && isFinite(tsPilote)) { const ech = local ? 0 : (+tsPilote - Date.now()); DR_TAB.decal = (DR_TAB.decal == null || ech > DR_TAB.decal) ? ech : DR_TAB.decal; }
-  DR_TAB.minut = (m && typeof m === 'object' && isFinite(m.d)) ? m : null; DR_TAB.minutRecu = Date.now();
+  DR_TAB.minut = (m && typeof m === 'object' && isFinite(m.d)) ? m : null; DR_TAB.minutRecu = Date.now(); DR_TAB.minutLocal = !!local;
+  if (DR_TAB.minut && DR_TAB.minut.h && !local) { try { if (typeof dr_hhVoir === 'function') dr_hhVoir(); } catch (e) {} }   /* ㊵ : la fin à l'heure du hub — le tableau distant mesure son écart au hub */
   dr_tabMinutTic(); clearInterval(DR_TAB.minutT); DR_TAB.minutT = (DR_TAB.minut && DR_TAB.minut.e === 'court') ? setInterval(dr_tabMinutTic, 100) : null; }
-function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.e === 'court' && isFinite(m.f)) return Math.max(0, m.f - (Date.now() + (DR_TAB.decal || 0))); return Math.max(0, +m.r || 0); }
+/* ㊵ : l'heure à laquelle compter la fin reçue — avec h (la fin à l'heure du hub) : la fenêtre locale prend l'écart du pilote (même montre), le tableau distant
+   le sien, mesuré au hub (pas encore mesuré : la montre du pilote recalée, plus l'écart du pilote) ; sans h : la montre du pilote recalée, comme avant */
+function dr_tabMaintenant(m){ if (m && m.h) { if (DR_TAB.minutLocal) return Date.now() + (+m.hd || 0); if (typeof DR_HH !== 'undefined' && DR_HH.dec != null) return Date.now() + DR_HH.dec; return Date.now() + (DR_TAB.decal || 0) + (+m.hd || 0); }
+  return Date.now() + (DR_TAB.decal || 0); }
+function dr_tabMinutReste(){ const m = DR_TAB.minut; if (!m) return null; if (m.e === 'court' && isFinite(m.f)) return Math.max(0, m.f - dr_tabMaintenant(m)); return Math.max(0, +m.r || 0); }
 /* §12.70 bis : la pastille, à la place et à la taille que Paul lui donne sur sa diapo (parts de la diapo, mesurées sur #mur2) */
 function dr_tabMinutPastille(el, m, reste, txt){ const mur = document.getElementById('mur2'); const r = mur ? mur.getBoundingClientRect() : null; if (!r || !r.width) return;
   if (!el.querySelector('.dr-pp-chif')) el.innerHTML = dr_minutPastilleHTML(); const cl = 'dr-tab-minut dr-pp dr-tab-pp' + (el.classList.contains('dr-pp-clig') ? ' dr-pp-clig' : ''); if (el.className !== cl) el.className = cl;

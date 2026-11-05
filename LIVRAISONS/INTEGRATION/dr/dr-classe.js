@@ -1102,12 +1102,29 @@ const dr_mmss = ms => { const s = Math.max(0, Math.ceil(ms / 1000 - 1e-9)); retu
 const DR_MINUT_BULLE = 'Le chrono : ouvre son réglage sous la diapo — la durée par les + et −, « au tableau » allumé pour que la classe le voie aussitôt (immobile), puis ▶. '
   + '⏸ le met en pause ici et au tableau ; ■ le retire. Il ne change pas l’heure. Il sonne sur ton ordinateur : cinq bips discrets à la fin, un ding à 0.';
 /* la phase de couleur, selon la part écoulée du temps donné (§12.70 (7)) */
+/* ㊵ (mandat H, nuit du 04/11) : une seule horloge pour le chrono, celle du hub. Chaque appareil (pilote, télécommande, second pilote, tableau) mesure l'écart
+   entre sa montre et l'heure du hub : un PUT de `{".sv":"timestamp"}` à /site/horloge, que le hub remplace par son heure et renvoie (effacé après la mesure) ; l'écart est pris au milieu
+   de l'aller-retour, le plus court de trois essais gardé (l'erreur : la moitié du trajet), remesuré après 5 minutes. La fin du chrono se pose alors à l'heure
+   du hub (`hm`) : chaque appareil compte fin − (sa montre + son écart), à la même seconde partout, même quand les montres diffèrent. Le mode test (rien n'est
+   écrit pour la classe) et un appareil pas encore mesuré gardent leur montre (`hm` absent : comme avant). */
+var DR_HH = { dec: null, rtt: Infinity, quand: 0, enCours: false, essai: 0 };
+function dr_hhVoir(){ if (DR_HH.enCours || (DR_HH.dec != null && Date.now() - DR_HH.quand < 300000) || (DR_HH.essai && Date.now() - DR_HH.essai < 20000)) return;
+  try { if (typeof dr_sesTest === 'function' && dr_sesTest()) return; } catch (e) {} dr_hhEssai(3, { rtt: Infinity }); }
+function dr_hhEssai(n, tour){ if (typeof FIREBASE_BASE === 'undefined' || typeof fetch !== 'function') return; DR_HH.enCours = true; DR_HH.essai = Date.now(); const t0 = Date.now();
+  const fin = () => { if (n > 1) { dr_hhEssai(n - 1, tour); return; } DR_HH.enCours = false; try { fetch(FIREBASE_BASE + '/site/horloge.json', { method: 'DELETE' }).catch(() => {}); } catch (e) {} };   /* la mesure ne laisse rien au hub */
+  try { fetch(FIREBASE_BASE + '/site/horloge.json', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: '{".sv":"timestamp"}' }).then(r => (r && r.ok) ? r.json() : null).then(v => { const t1 = Date.now(); v = +v;
+    if (isFinite(v) && v > 1e12 && t1 - t0 < tour.rtt) { tour.rtt = t1 - t0; DR_HH.dec = Math.round(v - (t0 + t1) / 2); DR_HH.rtt = t1 - t0; DR_HH.quand = t1; dr_hhConvertir(); } fin(); }, () => { DR_HH.enCours = false; }); } catch (e) { DR_HH.enCours = false; } }
+/* un chrono parti ICI avant la première mesure (sa fin à la montre d'ici) : la même fin, passée à l'heure du hub dès la mesure, et renvoyée aux autres */
+function dr_hhConvertir(){ const m = DR_CL.minut, a = DR_HH.aConvertir; DR_HH.aConvertir = null; if (!m || !a || m.etat !== 'court' || m.hm || m.fin !== a || DR_HH.dec == null) return; m.fin += DR_HH.dec; m.hm = true; try { dr_minuteurEnvoyer(); } catch (e) {} }
+function dr_hhMaintenant(){ return Date.now() + (DR_HH.dec || 0); }
+function dr_minutMaintenant(m){ dr_hhVoir(); return (m && m.hm) ? dr_hhMaintenant() : Date.now(); }   /* l'heure à laquelle cette fin a été posée : celle du hub (`hm`), sinon la montre */
+function dr_minutFinPoser(m, reste){ const hm = DR_HH.dec != null; m.fin = (hm ? dr_hhMaintenant() : Date.now()) + reste; if (hm) m.hm = true; else { delete m.hm; DR_HH.aConvertir = m.fin; dr_hhVoir(); } }
 function dr_minutPhase(reste, duree, etat){ if (etat === 'pret') return 'pret'; if (!(duree > 0)) return 'vert'; const f = Math.ceil(Math.max(0, reste) / 1000 - 1e-9) * 1000 / duree;
   return f > 0.5 ? 'vert' : f > 0.25 ? 'jaune' : f > 0.1 ? 'orange' : 'rouge'; }   /* C16 671 (acceptée) : les crans comptés sur la durée donnée, au chiffre affiché — vert plus de la moitié, jaune jusqu'au quart, orange jusqu'au dixième, rouge le dernier dixième */
-function dr_minutReste(m){ m = m || DR_CL.minut; if (!m) return 0; return m.etat === 'court' ? Math.max(0, m.fin - Date.now()) : Math.max(0, m.reste || 0); }
+function dr_minutReste(m){ m = m || DR_CL.minut; if (!m) return 0; return m.etat === 'court' ? Math.max(0, m.fin - dr_minutMaintenant(m)) : Math.max(0, m.reste || 0); }
 function dr_minutDuree(){ const i = document.getElementById('dr-minut-in'); const v = String(i ? i.value : '05:00').trim().split(':'); const ms = v.length > 1 ? ((+v[0] || 0) * 60 + (+v[1] || 0)) * 1000 : (+v[0] || 0) * 60000; return ms > 0 ? ms : 0; }
-/* ce qui part au tableau (rien si « au tableau » n'est pas coché) : d durée, e état, f fin (horloge du pilote), r reste */
-function dr_minuteurEtat(){ const m = DR_CL.minut; if (!m || !m.tableau) return null; const o = { d: m.duree, e: m.etat }; if (m.etat === 'court') o.f = m.fin; else o.r = Math.max(0, m.reste || 0);
+/* ce qui part au tableau (rien si « au tableau » n'est pas coché) : d durée, e état, f fin (horloge du pilote ; avec h, l'heure du hub, hd l'écart du pilote), r reste */
+function dr_minuteurEtat(){ const m = DR_CL.minut; if (!m || !m.tableau) return null; const o = { d: m.duree, e: m.etat }; if (m.etat === 'court') { o.f = m.fin; if (m.hm) { o.h = 1; o.hd = DR_HH.dec || 0; } } else o.r = Math.max(0, m.reste || 0);
   const ps = dr_minutPos(); if (ps) { o.x = ps.x; o.y = ps.y; o.s = dr_minutTaille(); } return o; }   /* §12.70 bis : la place et la taille de la pastille, en parts de la diapo */
 function dr_minuteurPoser(){
   const bc = document.getElementById('bchrono'); if (!bc) return;
@@ -1138,7 +1155,7 @@ function dr_minuteurPoser(){
   dr_minuteurAfficher();
 }
 /* le panneau s'ouvre sous la main, au-dessus du ⏱ (position fixe, calculée à l'ouverture seulement) */
-function dr_minuteurPanneau(ouvrir){ dr_minuteurPoser(); const p = document.getElementById('dr-minut-p'), bc = document.getElementById('bchrono'); if (!p || !bc) return;
+function dr_minuteurPanneau(ouvrir){ dr_minuteurPoser(); try { dr_hhVoir(); } catch (e) {} const p = document.getElementById('dr-minut-p'), bc = document.getElementById('bchrono'); if (!p || !bc) return;
   if (ouvrir === undefined) ouvrir = p.style.display === 'none';
   if (!ouvrir) { p.style.display = 'none'; return; }
   p.style.display = 'flex';   /* §12.70 bis : en rangée sous la barre, à sa place dans la page (plus de position calculée) */
@@ -1146,12 +1163,12 @@ function dr_minuteurPanneau(ouvrir){ dr_minuteurPoser(); const p = document.getE
 function dr_minuteurBasculer(){ dr_minuteurPanneau(); }
 function dr_minuteurDepart(){ DR_CL.minutSel = null; if (document.getElementById('dr-minut-in') && !dr_minutDuree()) { dr_minuteurAfficher(); return; } const d = (DR_CL.minut && DR_CL.minut.etat === 'pret') ? (dr_minutDuree() || DR_CL.minut.duree) : dr_minutDuree(); if (!d) return;
   const tab = !!(document.getElementById('dr-minut-tab') || {}).checked;
-  DR_CL.minut = { etat: 'court', duree: d, fin: Date.now() + d, tableau: tab, eid: (ecran() || {}).eid, bips: {} };
+  DR_CL.minut = { etat: 'court', duree: d, tableau: tab, eid: (ecran() || {}).eid, bips: {} }; dr_minutFinPoser(DR_CL.minut, d);
   dr_sonPreparer(); try { journal('minuteur', { action: 'depart', duree: Math.round(d / 1000), tableau: tab }); } catch (e) {}
   dr_minuteurEnvoyer(); dr_minuteurAfficher(); dr_minuteurBoucle(); dr_minuteurPanneau(false); }   /* §12.70 bis : lancé, le réglage se cache derrière le ⏱ */
 function dr_minuteurPause(){ const m = DR_CL.minut; if (!m) return;
-  if (m.etat === 'court') { m.reste = Math.max(0, m.fin - Date.now()); m.etat = 'pause'; delete m.fin; try { journal('minuteur', { action: 'pause', reste: Math.round(m.reste / 1000) }); } catch (e) {} }
-  else if (m.etat === 'pause') { m.fin = Date.now() + m.reste; m.etat = 'court'; delete m.reste; dr_sonPreparer(); try { journal('minuteur', { action: 'reprise' }); } catch (e) {} }
+  if (m.etat === 'court') { m.reste = Math.max(0, m.fin - dr_minutMaintenant(m)); m.etat = 'pause'; delete m.fin; delete m.hm; try { journal('minuteur', { action: 'pause', reste: Math.round(m.reste / 1000) }); } catch (e) {} }
+  else if (m.etat === 'pause') { dr_minutFinPoser(m, m.reste); m.etat = 'court'; delete m.reste; dr_sonPreparer(); try { journal('minuteur', { action: 'reprise' }); } catch (e) {} }
   else return;
   dr_minuteurEnvoyer(); dr_minuteurAfficher(); dr_minuteurBoucle(); }
 function dr_minuteurArret(){ const m = DR_CL.minut; if (m && m.etat !== 'pret') { try { journal('minuteur', { action: 'arret', reste: Math.round(dr_minutReste(m) / 1000) }); } catch (e) {} } dr_minuteurFin(); dr_minuteurPanneau(false); }
@@ -1174,9 +1191,9 @@ function dr_minuteurAfficher(){ const m = DR_CL.minut; const a = document.getEle
 /* la boucle du pilote : seulement quand le minuteur court ; elle ne pose que le chiffre et joue le son */
 function dr_minuteurBoucle(){ const m = DR_CL.minut; const court = !!(m && m.etat === 'court');
   if (court && !DR_CL.minutT) DR_CL.minutT = setInterval(dr_minuteurTic, 100); else if (!court && DR_CL.minutT) { clearInterval(DR_CL.minutT); DR_CL.minutT = null; } }
-function dr_minuteurTic(){ const m = DR_CL.minut; if (!m || m.etat !== 'court') { dr_minuteurBoucle(); return; } const reste = m.fin - Date.now();
+function dr_minuteurTic(){ const m = DR_CL.minut; if (!m || m.etat !== 'court') { dr_minuteurBoucle(); return; } const reste = m.fin - dr_minutMaintenant(m);
   const sec = Math.ceil(reste / 1000 - 1e-9); if (sec >= 1 && sec <= 5 && !m.bips[sec]) { m.bips[sec] = true; if (reste > (sec - 1) * 1000 + 600) dr_son('bip'); }   /* cinq bips discrets, un par seconde (pas de rattrapage d'un bip manqué de plus d'une demi-seconde) */
-  if (reste <= 0) { m.etat = 'fini'; m.reste = 0; delete m.fin; dr_son('ding'); try { journal('minuteur', { action: 'fin' }); } catch (e) {} dr_minuteurEnvoyer(); clearTimeout(DR_CL.minutFinT); DR_CL.minutFinT = setTimeout(() => { if (DR_CL.minut && DR_CL.minut.etat === 'fini') dr_minuteurFin(); }, 4000); }
+  if (reste <= 0) { m.etat = 'fini'; m.reste = 0; delete m.fin; delete m.hm; dr_son('ding'); try { journal('minuteur', { action: 'fin' }); } catch (e) {} dr_minuteurEnvoyer(); clearTimeout(DR_CL.minutFinT); DR_CL.minutFinT = setTimeout(() => { if (DR_CL.minut && DR_CL.minut.etat === 'fini') dr_minuteurFin(); }, 4000); }
   dr_minuteurAfficher(); dr_minuteurBoucle(); }
 /* le son, du pilote (Paul, 10:36 : « si, de mon pilote ») — Web Audio, préparé au geste de « Départ » (le navigateur l'exige) */
 function dr_sonPreparer(){ try { const C = window.AudioContext || window.webkitAudioContext; if (!C) return; if (!DR_CL.son) DR_CL.son = new C(); if (DR_CL.son.state === 'suspended') DR_CL.son.resume(); } catch (e) {} }

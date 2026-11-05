@@ -1,0 +1,89 @@
+— E0 · base, rien de joué (aujourd’hui 2026-11-09 07:00)
+   case 11-09 prevu « Séance 1 » h1/1
+   case 11-10 prevu « Séance 2 » h1/1
+   case 11-12 prevu « Séance 3 » h1/1
+   case 11-16 prevu « Séance 4 » h1/1
+   case 11-17 prevu « Séance 5 » h1/1
+   case 11-19 rienDePret
+   seanceFinie : 1:0 2:0 3:0 4:0 5:0
+   etat4 : {"jouees":0,"sur":1,"reportees":[],"derniere":null,"finie":false,"suite":false}
+   file : 1,2,3,4,5 faites(tête)=0
+   parcoursFaite : 1:false 2:false 3:false 4:false 5:false
+   heuresJouees : 1:0 2:0 3:0 4:0 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:[] 4:[]
+   echeanceProposee : []
+— E1 · lundi 09 : la séance 4 jouée dans la case de la séance 1 (aujourd’hui 2026-11-09 10:00)
+   case 11-09 jouee « Séance 4 »
+   case 11-10 prevu « Séance 1 » h1/1
+   case 11-12 prevu « Séance 2 » h1/1
+   case 11-16 prevu « Séance 3 » h1/1
+   case 11-17 prevu « Séance 5 » h1/1
+   case 11-19 rienDePret
+   seanceFinie : 1:0 2:0 3:0 4:1 5:0
+   etat4 : {"jouees":1,"sur":1,"reportees":[],"derniere":"2026-11-09_08h00-09h00_5_essai","finie":true,"suite":false}
+   file : 1,2,3,5 faites(tête)=0
+   parcoursFaite : 1:false 2:false 3:false 4:true 5:false
+   heuresJouees : 1:0 2:0 3:0 4:1 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:[] 4:["5_essai"]
+   echeanceProposee : []
+— E1b · mardi 10 passé sans heure jouée (aujourd’hui 2026-11-10 10:00)
+   case 11-10 passee rattraper « Séance 1 »
+   case 11-12 prevu « Séance 1 » h1/1
+   case 11-16 prevu « Séance 2 » h1/1
+   case 11-17 prevu « Séance 3 » h1/1
+   case 11-19 prevu « Séance 5 » h1/1
+   seanceFinie : 1:0 2:0 3:0 4:1 5:0
+   etat4 : {"jouees":1,"sur":1,"reportees":[],"derniere":"2026-11-09_08h00-09h00_5_essai","finie":true,"suite":false}
+   file : 1,2,3,5 faites(tête)=0
+   parcoursFaite : 1:false 2:false 3:false 4:true 5:false
+   heuresJouees : 1:0 2:0 3:0 4:1 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:[] 4:["5_essai"]
+   echeanceProposee : []
+— E2 · mardi 10 : la séance 1 jouée à la fois suivante (aujourd’hui 2026-11-10 10:00)
+   case 11-10 jouee « Séance 1 »
+   case 11-12 prevu « Séance 2 » h1/1
+   case 11-16 prevu « Séance 3 » h1/1
+   case 11-17 prevu « Séance 5 » h1/1
+   case 11-19 rienDePret
+   seanceFinie : 1:1 2:0 3:0 4:1 5:0
+   etat4 : {"jouees":1,"sur":1,"reportees":[],"derniere":"2026-11-09_08h00-09h00_5_essai","finie":true,"suite":false}
+   file : 2,3,5 faites(tête)=0
+   parcoursFaite : 1:true 2:false 3:false 4:true 5:false
+   heuresJouees : 1:1 2:0 3:0 4:1 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:["5_essai"] 4:["5_essai"]
+   echeanceProposee : []
+— E3 · séance 4 en DEUX heures : son heure 1 jouée lundi 09 à la place de la 1 (aujourd’hui 2026-11-09 10:00)
+   case 11-09 jouee « Séance 4 »
+   case 11-10 prevu « Séance 1 » h1/1
+   case 11-12 prevu « Séance 2 » h1/1
+   case 11-16 prevu « Séance 3 » h1/1
+   case 11-17 prevu « Séance 4 » h2/2
+   case 11-19 prevu « Séance 5 » h1/1
+   seanceFinie : 1:0 2:0 3:0 4:0 5:0
+   etat4 : {"jouees":1,"sur":2,"reportees":[],"derniere":"2026-11-09_08h00-09h00_5_essai","finie":false,"suite":false}
+   file : 1,2,3,4,5 faites(tête)=0
+   parcoursFaite : 1:false 2:false 3:false 4:false 5:false
+   heuresJouees : 1:0 2:0 3:0 4:1 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:[] 4:["5_essai"]
+   echeanceProposee : []
+— E4 · séance 4 (une heure) jouée lundi 09, une diapo reportée (aujourd’hui 2026-11-09 10:00)
+   case 11-09 jouee « Séance 4 » pasFinie
+   case 11-10 prevu « Séance 1 » h1/1
+   case 11-12 prevu « Séance 2 » h1/1
+   case 11-16 prevu « Séance 3 » h1/1
+   case 11-17 prevu « Séance 4 » h2/1 suite(reste 1)
+   case 11-19 prevu « Séance 5 » h1/1
+   seanceFinie : 1:0 2:0 3:0 4:0 5:0
+   etat4 : {"jouees":1,"sur":1,"reportees":["e1"],"derniere":"2026-11-09_08h00-09h00_5_essai","finie":false,"suite":true}
+   file : 1,2,3,4,5 faites(tête)=0
+   parcoursFaite : 1:false 2:false 3:false 4:false 5:false
+   heuresJouees : 1:0 2:0 3:0 4:1 5:0
+   ouEnSommesNous : 1←null · 2←B(séance 1)/deroule_joue/5_essai · 4←B(séance 3)/deroule_joue/5_essai · 5←B(séance 4)/deroule_joue/5_essai
+   relectureClasses : 1:[] 4:["5_essai"]
+   echeanceProposee : []
+requêtes coupées (aucune n’est partie) : 15

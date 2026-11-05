@@ -4508,3 +4508,21 @@ MEMO
   > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 768, 772, Q (777, 778), R, 731, l'écran d'attente (792), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:15 — Paul, mot pour mot (une capture jointe : l'Atelier des 3 FRANKLIN, la fenêtre « Quelle notion ? ») :**
+
+  > OK c'est bien. Mets en dessous de MJPC "Cours de français - M. Meney ". De plus, je suis en train d'essayer d'ajouter une notion à remobiliser, mais dans la modale, je ne vois aucun contenu, juste la numérotation. de plus, il faut que je puisse cocher plusieurs notions à intégrer, et que la modale ne se ferme pas à chaque fois. à mettre au registre pour samedi soir.
+
+- **09:15 — registre** (prod) : l'écran d'attente accepté, avec « Cours de français - M. Meney » ; la fenêtre « Quelle notion ? ».
+- **09:15 — message à Paul, mot pour mot :**
+
+  > 793. Noté : l'écran d'attente avec l'animation, et sous « MJPC », « Cours de français - M. Meney ». Samedi.
+  >
+  > 794. La fenêtre « Quelle notion ? » de « Remobilise » : au registre pour samedi soir, avec ta capture. Les familles du programme n'ont pas de nom (seulement « ▶ · (4) », « ▶ · (10) »…), et parmi les notions du chapitre, des codes paraissent au lieu des noms (« c4-lire-02 », « tr-personne-02 »…). À faire : les noms partout, cocher plusieurs notions, et la fenêtre qui reste ouverte jusqu'à ce que tu la fermes. Pas mesuré.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:15
+  >
+  > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (792, 793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

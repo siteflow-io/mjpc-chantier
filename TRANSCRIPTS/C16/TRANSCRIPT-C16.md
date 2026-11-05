@@ -4656,3 +4656,24 @@ MEMO
   > À jouer : ta réponse à 805 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-808), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:21 — Paul, mot pour mot :**
+
+  > 805 oui alt B plutot. comme ça si je veux supprimer un gros morceau avec la sélection de texte, je ne suis pas gêné. 806 pas compris. 807. ok. 808 ok. en revanche, le souligné: encore une fois, il faudra s'assurer que les boutons G et S soit bien intégrés dans le pilotage. tu pourras d'ailleurs uniformiser les boutons de mise en forme du texte (ils sont différents entre le pilotage et l'atelier). et le souligné ne me semble pas très intéressant visuellement. peut-être du surligné plutot?
+
+- **10:22 — message à Paul, mot pour mot :**
+
+  > 805. Noté : Alt + B.
+  >
+  > 806. Plus simplement : si tu t'es trompé de point, « Annuler » (ou Ctrl + Z) enlève la marque et décoche le point. Et si tu refais Alt + B sur un texte déjà marqué, la liste s'ouvre avec son point mis en évidence : un autre numéro change de point, 0 enlève la marque et décoche.
+  >
+  > 809. G et S au pilotage, et les mêmes boutons de mise en forme, dans le même ordre et avec les mêmes infobulles, au pilotage et dans l'atelier : noté. Samedi, je mesure d'abord ce que chacun a aujourd'hui, puis on aligne.
+  >
+  > 810. La marque du bilan en surligné : je propose un surligné or pâle, la couleur du bilan, avec en petit, à la fin du passage, le numéro du point (« ¹ », « ² »…), pour que l'œil voie tout de suite quel point est fait ; ton surligné ordinaire garde ses couleurs, pour ne jamais confondre les deux.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:22
+  >
+  > À jouer : ta réponse à 810 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-810), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

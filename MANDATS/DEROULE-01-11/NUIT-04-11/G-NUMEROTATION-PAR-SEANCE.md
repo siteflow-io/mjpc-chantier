@@ -1,5 +1,5 @@
 # MANDAT G — LA NUMÉROTATION PAR SÉANCE (C16 366, 643)
-*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/g`, depuis le dernier commit de la nuit (la conscience te le donne). 30 minutes au plus.*
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/g`, depuis `7154ad47c` (le dernier commit de `nuit/f` : toute la nuit). 30 minutes au plus.*
 
 ## 0 · CE QUI EST DIT
 - C16 366 (accepté par Paul), rappelé en C16 643, lancé par Paul (22:22, « maintenant tout le reste ») et C16 710 (sans réponse : acquis) : « La numérotation par séance : ce qui est déjà joué garde ses numéros d'alors, Relecture comprise ; ce qui reste à jouer prend les nouveaux, « Où en sommes-nous ? » compris. »

@@ -4237,3 +4237,5 @@ MEMO
   > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : F (642, le réseau lent) · ouvert : 643, ㊵, puis le banc complet ; à cadrer : 640 (720), 721, 731, 639, 644, 645
   >
   > MEMO
+- **01:10 — l'exécutant F rend son travail** : sas `nuit/f` `7154ad47c` ; assemblé md5 `89b20483cd87c0bbb8fad5484bf14634` (dr-classe.js, dr.css). Compté, au faux hub ralenti (3 s par lecture) : rien à l'écran → la bande « L'heure se lance… » de 2 s à 30 s, et l'entête du pilote dit « L'heure se lance… » ; 3 ▶ pendant l'attente : 0 sur 3 dévoilés → 3 sur 3, 3 au journal, un seul lancement ; une heure sans lenteur inchangée (14 écritures, aucune bande) ; le parcours vert (30 ok). « Fermer l'atelier » pendant l'attente, mesuré avant et après : l'heure part quand même sans pilote à l'écran (1 lancement, 11 écritures) ; pas changé (721 attend Paul).
+- **01:10 — lancé : l'exécutant du mandat G** (366, 643 : la numérotation par séance ; `nuit/g` depuis `7154ad47c`), 30 minutes au plus.

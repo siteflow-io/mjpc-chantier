@@ -468,8 +468,28 @@ const partieV = async () => { hubAvec(AJOUT, BIL);
   verif('V4', av.part >= 2, 'la participation : les deux élèves comptés', av.part + ' en vert');
   finir('V5', o, 'V'); await o.ctx.close(); };
 
+/* C16 mandat S5 (3) : une copie d'avant S dont le bilan a été montré — jouée jusqu'au bilan, tout dévoilé, close par l'assemblé d'avant (MJPC_ANCIEN), puis relue le lendemain (« Relire cette heure ») par l'assemblé d'avant et par le fichier : « Le chapitre » et le récit, comptés, inchangés */
+const partieW = async () => { if (!ANCIEN) { verif('W!', false, 'MJPC_ANCIEN manque (l’assemblé d’avant S)'); return; } hubAvec(AJOUT, BIL);
+  const o = await ouvrir({ fichier: ANCIEN, h: '15:08', jour: '2026-09-15', W: 1536, H: 864 }); const pg = o.pg;
+  const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); await lancerIci(pg, fc.iso, fc.cr, FRA);
+  await jouerJusqua(pg, 'aud-bilan'); await toutDevoiler(pg, 'aud-bilan'); const bilVu = await pg.evaluate(() => (document.getElementById('mur') || document.body).innerText.replace(/\s+/g, ' ').length);
+  const cl = await clore(pg); await p(1500); finir('W0', o, 'W (la copie d’avant S jouée)'); await o.ctx.close();
+  const lireF = async (pg2, f) => { await pg2.evaluate(f => { const b = document.querySelector('#ecran-relecture [data-f="' + f + '"]'); if (b) b.click(); }, f); await p(1800); const t = await pg2.evaluate(() => { const z = document.getElementById('ecran-relecture') || document.body; return (z.innerText || '').replace(/\s+/g, ' '); }); return { n: t.length, h: createHash('md5').update(t).digest('hex').slice(0, 8), bil: (t.match(/bilan/gi) || []).length, t }; };
+  const M = {};
+  for (const [nom, fich] of [['base', ANCIEN], ['apres', FICHIER]]) {
+    const o2 = await ouvrir({ fichier: fich, h: '09:10', jour: '2026-09-16' }); const pg2 = o2.pg; await projeter(pg2, '2026-09-14', 7); await caseDe(pg2, fc.iso, fc.cr, FRA); await p(1200); const ecr0 = ECR.length;
+    const rl = await clicTexte(pg2, '#edt-modale button', 'Relire cette heure'); await p(3500); await garde(pg2);
+    const ch = await lireF(pg2, 'chapitre'); const rc = await lireF(pg2, 'recit'); const ecr = ECR.slice(ecr0).filter(e => !e.refus).length;
+    M[nom] = { ch, rc, ecr, rl };
+    dire('  [W] ' + nom + ' (' + md5(fich).slice(0, 8) + ') · « Relire cette heure » ' + rl + ' · « Le chapitre » : ' + ch.n + ' car., ' + ch.bil + ' × « bilan », md5 ' + ch.h + ' · le récit : ' + rc.n + ' car., ' + rc.bil + ' × « bilan », md5 ' + rc.h + ' · écritures au hub : ' + ecr);
+    finir('W' + (nom === 'base' ? '1' : '2'), o2, 'W (' + nom + ')'); await o2.ctx.close(); }
+  dire('  [W] la copie : bilan montré (mur ' + bilVu + ' car.), heure close ' + (cl && cl.close));
+  const ec = (a, b) => { let i = 0; while (i < a.length && a[i] === b[i]) i++; return i < Math.max(a.length, b.length) ? ' · 1re différence au car. ' + i + ' : « ' + a.slice(Math.max(0, i - 30), i + 60) + ' » → « ' + b.slice(Math.max(0, i - 30), i + 60) + ' »' : ''; };
+  verif('W3', M.base.ch.n > 0 && M.base.ch.t === M.apres.ch.t, '« Le chapitre » de la copie d’avant S : inchangé, base → après', M.base.ch.n + ' → ' + M.apres.ch.n + ' car. · ' + M.base.ch.bil + ' → ' + M.apres.ch.bil + ' × « bilan »' + ec(M.base.ch.t, M.apres.ch.t));
+  verif('W4', M.base.rc.n > 0 && M.base.rc.t === M.apres.rc.t, 'le récit de la copie d’avant S : inchangé, base → après', M.base.rc.n + ' → ' + M.apres.rc.n + ' car. · ' + M.base.rc.bil + ' → ' + M.apres.rc.bil + ' × « bilan »' + ec(M.base.rc.t, M.apres.rc.t));
+  verif('W5', M.apres.ecr === 0, 'relire la copie n’écrit rien au hub', M.apres.ecr + ' écriture(s)'); };
 dire(''); dire('══ MISE EN COMMUN DU BILAN · ' + NOMF + ' · md5 ' + md5(FICHIER) + (TESTB ? ' · mode test' : ' · vraie heure') + ' ══');
-for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH], ['R', partieR], ['V', partieV]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
+for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH], ['R', partieR], ['V', partieV], ['W', partieW]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-bilan-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

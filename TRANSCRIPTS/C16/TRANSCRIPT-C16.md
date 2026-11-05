@@ -5131,3 +5131,20 @@ MEMO
   > À jouer : 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : la répétition et la fin d'heure de la séance enchaînée (V3), puis le banc court, puis la mise en ligne si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **22:50 environ — l'exécutant V3 rend son travail** (22:13 → 22:50 environ ; 2 223 s) : `deroule/enchainer` `abfef3c48` (répétition), `948d09b50` (T-5) ; assemblé `bd434b3f`. Répétition 12/12 (avant 7/11 ; l'erreur dans la sonde et dans le site) ; rejoués : vh 26/26, test 28/28, deux heures 26/26 et 28/28, témoin 12/12, parcours vert ; T-5 de la séance enchaînée pas finie : 9 lignes sur 10 identiques à une heure ordinaire de la base, vh 21/21, test 23/23 ; ce qui reste part à l'heure suivante (1/1, 6/6) ; sur une heure 1/3, « À l'heure suivante » déjà choisi. Reste : étapes 14-16, bilan B ; la dette V2 §0.3 ; la répétition en mode test pas jouée ; dette nouvelle : l'horloge de la case (classe d'essai) repart du début du créneau à la séance enchaînée.
+- **23:01 — mandat V4** (sas `32da3a946`), lancé ; `scratchpad/banc-court.sh` préparé (14, 15, 16, banc 1-12, 13, session ×3 ; la sonde de l'enchaînement en vh, test, rép., deux heures, T-5 vh et test ; l'attente ; la Relecture F ; le récit R ; le bilan B en vraie heure et en répétition).
+- **23:01 — message à Paul, mot pour mot :**
+
+  > 887. Le troisième exécutant a fini. La répétition marche, prouvée par le geste (12/12). Le tableau ne passe jamais par l'écran d'attente, rien n'est écrit pour la classe, et il n'y a aucune erreur. L'erreur était à la fois dans la sonde et dans le site.
+  >
+  > 888. Ta question de 22:38 est mesurée. À 5 minutes de la fin, la séance 2 enchaînée et pas finie a exactement le flux d'une heure ordinaire : 9 lignes sur 10 identiques, en vraie heure (21/21) et en mode test (23/23). La 10e ligne est la case du jour, qui dit « … puis … ». Ce qui reste part à l'heure suivante : l'activité en cours et les 6 activités suivantes. Une précision : sur une heure qui n'est pas la dernière de la séance, le bouton s'appelle « À l'heure suivante » (et il est déjà choisi) ; « Reporter » n'existe qu'à la dernière heure d'une séance, comme aujourd'hui. La case suivante dit « L'Albatros heure 2/3 ».
+  >
+  > 889. Un défaut trouvé en route, en mode test seulement (ta classe d'essai) : à la séance enchaînée, l'horloge de la case repart du début du créneau, donc l'alerte des 5 minutes viendrait trop tard. Comme c'est le mode test que tu utiliseras demain matin pour tes tests, un quatrième exécutant le corrige maintenant, en 20 minutes au plus. Ensuite viendra le banc court (environ 1 h 15, estimé), puis la mise en ligne si le banc est vert, vers 00:45 (estimé).
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 23:01
+  >
+  > À jouer : 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : l'horloge de la case en mode test (V4), puis le banc court, puis la mise en ligne 8.89.0-㉒ si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

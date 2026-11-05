@@ -4243,3 +4243,17 @@ MEMO
 - **01:28 — lancé : l'exécutant du mandat H** (㊵ ; `nuit/h` depuis `ba8d94797`), 30 minutes au plus.
 - **01:52 — l'exécutant H rend son travail** (01:28 → 01:52) : sas `nuit/h` `cd88b59f9` (dr-classe.js, dr-session.js, dr-tableau.js) ; assemblé md5 `3e8a46c998bfdb456542fe648b19452f`. Chaque appareil mesure l'écart entre sa montre et l'heure du hub (une écriture de l'heure du hub à `/site/horloge`, relue, puis effacée) ; la fin du chrono se compte à l'heure du hub ; en mode test, chaque appareil garde sa montre (rien hors de `/site/tableau_test`) ; si la mesure échoue, l'appareil garde sa montre. Compté en répétition (pilote, télécommande, tableau distant, fenêtre du tableau ; ±3 s) : 3 s d'écart → les 4 chiffres identiques (moins de 15 ms) au départ, à 20 s, à la pause, à 00:24 ; pendant la course au plus 4 s → au plus 1 s (une lecture à cheval sur la seconde) ; deux fins à 3,1 s → une seule fin (la télécommande 0,26 s après) ; sonde-10 55/55 ; le parcours vert. Non mesuré : deux pilotes ordinateurs ; si le vrai hub accepte une écriture à `/site/horloge` ; le compte des « fin » au journal (0 avant comme après).
 - **01:52 — lancé : le banc de la nuit** (`scratchpad/banc-nuit.sh`) sur `cd88b59f9` : le banc complet sans témoin à la vraie horloge (les sondes de `banc/vraie-horloge`, sonde-10 v3 et la sonde de session de `banc/chrono-v3`, K11 de main), R base (la 8.85.0-⑱ en ligne) contre candidat ×3 ; puis les sondes de la nuit (la Relecture F, avec et sans l'oral ; la case L ; la correction B ; D ; le gel J, K ; le récit R ; le réseau lent Q4 ; les numéros N ; le banc 1255 ; le chrono à l'heure du hub Q2D, Q2R).
+- **01:55 — le candidat 8.86.0-⑲ préparé** : `scratchpad/promo-8860/index.html` = l'assemblé `3e8a46c9` de `cd88b59f9` avec la seule ligne de version ; md5 `f5da6abe6ce87298fb669ad7876628fa`, 3 112 270 o.
+- **01:53 — message à Paul, mot pour mot :**
+
+  > 738. ㊵ est fait et prouvé au faux hub : chaque appareil mesure l'écart entre sa montre et l'heure du hub, et le chrono compte à l'heure du hub. En répétition, la télécommande en avance de 3 s et le tableau en retard de 3 s : avant, 3 s d'écart au départ et deux fins à 3 s l'une de l'autre ; après, les quatre écrans montrent le même chiffre, et une seule fin. En mode test, chaque appareil garde sa montre, comme avant. Je ne sais pas si le vrai hub accepte cette petite écriture de l'heure ; s'il la refuse, le chrono garde la montre de l'appareil, comme aujourd'hui.
+  >
+  > 739. Tout ce qui était prévu est fait et poussé : A, C, B, D (avec 609), 717, le résumé de l'heure, 636, les mesures 633 et 634, 642, 643, ㊵. Le banc complet tourne depuis 01:53 sur le candidat 8.86.0-⑲, puis les vérifications de chaque morceau de la nuit. Le résultat avant 7 h.
+  >
+  > À tester : rien de nouveau cette nuit ; les sept tests de 701 restent valables.
+  >
+  > 05/11/2026 01:53
+  >
+  > À jouer : les sept tests de 701 ; 666 ; 534 (le test 2) · en cours : le banc complet de la nuit · ouvert : ton « promeus » à 7 h si le banc est vert ; à cadrer : 640 (720), 721, 731, 639, 644, 645
+  >
+  > MEMO

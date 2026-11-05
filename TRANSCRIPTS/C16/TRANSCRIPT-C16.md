@@ -4880,3 +4880,15 @@ MEMO
   > À jouer : les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc complet, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **16:58 — Paul, mot pour mot :** « pourquoi une heure et demie de banc? C'est juste de l'uix non? »
+- **16:58 — message à Paul, mot pour mot :**
+
+  > 844. Oui, c'est de l'affichage, seulement l'écran d'attente du tableau. L'heure et demie vient de ta règle : avant chaque mise en ligne, le banc rejoue tout (la séance, l'appel, la fin d'heure, la Relecture, le récit, le bilan…), et il échoue si une seule chose échoue. C'est du temps de machine : il tourne seul, et il ne prend presque rien sur ton utilisation, puisque je ne lis que son verdict. Le risque réel de ce morceau est ailleurs : une erreur dans le script de l'écran d'attente pourrait gêner le tableau quand il passe de l'attente à la diapo. Je propose donc un banc court, environ 40 minutes (estimé), sur ce qui touche au tableau : le parcours, l'ouverture, la séance, la frappe au tableau, le retour sûr, la session, et la sonde de l'exécutant (l'attente, l'animation, 0 écriture). Si tu dis oui, ta règle ne vaut pas pour ce morceau-là seulement ; sans réponse, je garde le banc complet.
+  >
+  > À tester : les dix tests de la 8.87.0-⑳ (841), avant demain.
+  >
+  > 05/11/2026 16:58
+  >
+  > À jouer : 844 (banc court ou complet) ; les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

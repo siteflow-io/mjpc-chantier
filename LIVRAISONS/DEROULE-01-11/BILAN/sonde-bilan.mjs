@@ -437,8 +437,28 @@ const partieR = async () => { hubAvec(AJOUT, BIL);
   verif('R2', r.lancee && /bilan → bilan-commun/.test(r.ordre), 'l’heure suivante : le bilan reporté, sa mise en commun juste après lui', r.ordre.split(' → ').slice(-4).join(' → '));
   finir('R3', o2, 'R'); await o2.ctx.close(); };
 
+/* ══ V · C16 mandat S3 (4) — la Relecture et le récit d'une heure dont la mise en commun est marquée : les réponses, la participation, la marque. ══ */
+const partieV = async () => { hubAvec(AJOUT, BIL);
+  const o = await ouvrir({ h: '15:08', jour: '2026-09-15', W: 1536, H: 864 }); const pg = o.pg;
+  const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); await lancerIci(pg, fc.iso, fc.cr, FRA);
+  await jouerJusqua(pg, 'aud-bilan'); await toutDevoiler(pg, 'aud-bilan'); await pg.keyboard.press('ArrowRight'); await p(1200); await pg.keyboard.press('ArrowRight'); await p(900);
+  for (const [k, [ini, txt]] of RB.slice(0, 2).entries()) await jouerLigne(o, null, 'V' + (k + 1), ini, txt, null, { parLettre: false, quiet: true });
+  await pg.evaluate(() => { const el = document.querySelector('#mur .dit[data-p="0.r.0"]'); const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const i = n.data.indexOf('l’exaltation des sentiments'); if (i >= 0) { el.focus(); const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + 27); const s = getSelection(); s.removeAllRanges(); s.addRange(r); break; } } });
+  await pg.keyboard.press('Alt+b'); await p(400); await pg.keyboard.press('1'); await p(900);
+  const av = await pg.evaluate(() => ({ m: document.querySelectorAll('#mur mark.dr-bm').length, part: document.querySelectorAll('#part span.dr-ok').length }));
+  const cl = await clore(pg); await p(1500); await pg.evaluate(() => { const b = document.getElementById('dr-clos-relire'); if (b) b.click(); }); await p(3500); await garde(pg);
+  const lire = () => pg.evaluate(() => { const z = document.getElementById('ecran-relecture') || document.body; return { t: (z.innerText || '').replace(/\s+/g, ' '), m: Array.from(z.querySelectorAll('mark.dr-bm')).map(x => x.dataset.pt + ':' + x.textContent) }; });
+  const rel = await lire(); await pg.evaluate(() => { const b = document.querySelector('#ecran-relecture [data-f="recit"]'); if (b) b.click(); }); await p(1800); const rec = await lire();
+  dire('  [V] au pilotage : ' + av.m + ' marque, ' + av.part + ' élève(s) en vert · heure close ' + cl.close + ' · Relecture : ' + rel.m.length + ' marque(s) ' + rel.m.join('|') + ' · récit : ' + rec.m.length + ' marque(s)');
+  const rep = t => RB.slice(0, 2).filter(([, x]) => t.indexOf(x.slice(0, 40)) >= 0).length;
+  verif('V1', rep(rel.t) === 2 && /Mise en commun du bilan/.test(rel.t), 'la Relecture : la mise en commun et ses deux réponses', rep(rel.t) + '/2 réponses');
+  verif('V2', rel.m.length >= 1 && rel.m[0] === '1:l’exaltation des sentiments', 'la Relecture garde la marque B (point 1)', rel.m.join('|') || 'aucune');
+  verif('V3', rep(rec.t) === 2, 'le récit : les deux réponses de la mise en commun', rep(rec.t) + '/2 · marques au récit ' + rec.m.length);
+  verif('V4', av.part >= 2, 'la participation : les deux élèves comptés', av.part + ' en vert');
+  finir('V5', o, 'V'); await o.ctx.close(); };
+
 dire(''); dire('══ MISE EN COMMUN DU BILAN · ' + NOMF + ' · md5 ' + md5(FICHIER) + (TESTB ? ' · mode test' : ' · vraie heure') + ' ══');
-for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH], ['R', partieR]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
+for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH], ['R', partieR], ['V', partieV]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-bilan-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

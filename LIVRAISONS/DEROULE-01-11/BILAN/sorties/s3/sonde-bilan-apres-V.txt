@@ -1,0 +1,27 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties V · 2026-11-05 10:35 UTC · md5 f7ecf63dc1a1c620e1135a4e6ffba7f4 · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · apres-V · md5 f7ecf63dc1a1c620e1135a4e6ffba7f4 · vraie heure ══
+
+— partie V
+  [V1] clic (+330 ms) · curseur .ini.vide[0.i.0] <span> · case des initiales «  » · la ligne : élève personne, i «  », r «  » · vert — · tableau : 0/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] « z » (+479 ms) · curseur .ini[0.i.0] <span> · case des initiales « Z » · la ligne : élève personne, i « Z », r «  » · vert — · tableau : 0/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] « a » (+626 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r «  » · vert — · tableau : 0/66 lettres, — · journal « reponse » 0 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] lettre 1 « L » (+941 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « L » · vert — · tableau : 0/66 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] +500 ms sans frapper (+10386 ms) · curseur .dit[0.r.0] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » · vert — · tableau : 0/66 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] Entrée (valider) (+10559 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 0/66 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V1] +900 ms (+11463 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales « ZA » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 0/66 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] clic (+316 ms) · curseur .ini.vide[0.i.1] <span> · case des initiales «  » · la ligne : élève élève 1, i « ZA », r « Les romantiques expriment l’ex » validée · vert — · tableau : 0/49 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] « a » (+458 ms) · curseur .ini[0.i.1] <span> · case des initiales « A » · la ligne : élève personne, i « A », r «  » · vert — · tableau : 0/49 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] « j » (+597 ms) · curseur .dit[0.r.1] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r «  » · vert — · tableau : 0/49 lettres, — · journal « reponse » 1 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] lettre 1 « P » (+876 ms) · curseur .dit[0.r.1] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « P » · vert — · tableau : 0/49 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] +500 ms sans frapper (+7945 ms) · curseur .dit[0.r.1] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » · vert — · tableau : 0/49 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] Entrée (valider) (+8104 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » validée · vert — · tableau : 0/49 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V2] +900 ms (+9009 ms) · curseur .ini.vide[0.i.2] <span> · case des initiales « AJ » · la ligne : élève élève 11, i « AJ », r « Pour eux la nature comme refug » validée · vert — · tableau : 0/49 lettres, — · journal « reponse » 2 · 1 / 1 dévoilés · titre de l’activité « Mise en commun du bilan »
+  [V] au pilotage : 1 marque, 2 élève(s) en vert · heure close true · Relecture : 0 marque(s)  · récit : 0 marque(s)
+  ok     V1 · la Relecture : la mise en commun et ses deux réponses — 2/2 réponses
+  ÉCHEC  V2 · la Relecture garde la marque B (point 1) — aucune
+  ok     V3 · le récit : les deux réponses de la mise en commun — 2/2 · marques au récit 0
+  ok     V4 · la participation : les deux élèves comptés — 2 en vert
+  ok     V5 · V : aucune erreur JS, aucune boîte système
+
+--- fin : 5 vérifications, 1 échec(s)

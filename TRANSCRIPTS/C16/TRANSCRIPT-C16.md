@@ -5093,3 +5093,22 @@ MEMO
   > À jouer : 878 (la réactivation sautée pour la séance enchaînée : gardée sauf avis contraire) ; les cinq tests de 861 ; 847 ; 849 · en cours : la fin de la séance suivante dans cette heure (V2), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **22:22 — l'exécutant V2 rend son travail** (21:51 → 22:22) : `deroule/enchainer` `9e60faa55`, assemblé `d2533e75`. Séance 1 en deux heures enchaînée à sa 2e heure : vraie heure 26/26, mode test 28/28 ; la marque « séance faite » se relit en mode test (le paquet réécrit après la marque l'effaçait) ; « Relire cette heure » 0 erreur ; la case : « Close · Séance 1 : 16 diapos jouées ; puis Séance 2 : 1 diapo jouée · 10 reportées » ; séance en une heure 26/26 et 28/28 ; témoin 12/12 ; parcours vert. Erreurs du mandat signalées : la preuve du point 1 ne prouvait pas la marque (prouvée autrement) ; la règle « entièrement faite » ne regardait que l'heure en cours (changée : une diapo d'une heure d'avant, close et pas reportée, compte faite) ; le faux hub n'a pas de séance 1 en deux heures (durées réduites) — trouvé : à 77 min, la case dit « heure 2/2 », le pilotage prévoit une 3e heure, le bouton ne paraît pas ; les étapes 14-16 ne tiennent pas en 45 min. Reste : la répétition (sonde ou site, je ne sais pas), les étapes 14-16, le bilan B.
+- **22:24 — mandat V3** (sas `24b8df1ed`) lancé : la répétition. **Registre** (prod `eb7ad80`) : la case et le pilotage qui comptent les heures autrement, pour samedi.
+- **22:24 — message à Paul, mot pour mot :**
+
+  > 879. Le deuxième exécutant a rendu son travail (21:51 → 22:22). Ton cas de demain est prouvé par le geste : une séance 1 en deux heures, enchaînée à sa deuxième heure. Vraie heure 26/26, mode test 28/28. La case du jour dit maintenant ce que chaque séance a fait, avec ses vrais nombres. « Relire cette heure » ne fait plus d'erreur. Une classe qui n'enchaîne pas ne voit rien changer (12/12). Le parcours est vert.
+  >
+  > 880. Il a corrigé une règle qui t'aurait privé du bouton demain. Pour « la séance 1 entièrement faite », le site ne regardait que l'heure en cours ; les diapos faites à l'heure 1 et closes sans report comptent maintenant comme faites.
+  >
+  > 881. Ce qui reste : la répétition ne démarre toujours pas, et on ne sait pas si c'est le site ou la sonde. Un troisième exécutant s'en occupe maintenant (30 minutes au plus). Ensuite viendront le banc court (environ une heure, estimé), puis les captures et la demande de « promeus », pas avant minuit. Pour demain matin, sans « promeus », tu passes par la répétition (863).
+  >
+  > 882. Trouvé en route, et mis au registre pour samedi : avec certaines durées, la case dit « heure 2/2 » alors que le pilotage prévoit une troisième heure. Dans ce cas, le bouton ne paraît pas. Je ne sais pas si ta séance de demain est touchée : la case de tes 3e dit-elle « heure 2/2 » pour la séance 1 ?
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 22:24
+  >
+  > À jouer : 882 (ce que dit la case de demain) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : la répétition (V3), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

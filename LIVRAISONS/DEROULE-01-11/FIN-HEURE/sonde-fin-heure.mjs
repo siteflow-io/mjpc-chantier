@@ -219,33 +219,33 @@ const partieF = async (fichier, tag) => { neuf(null); const e0 = CHEMINS0();
   dire('  [F] étape ' + A.n + ' · la phrase du haut : « ' + A.quoi + ' »'); dire('  [F] le bouton : ' + JSON.stringify(A.tous)); dire('  [F] ' + A.lignes.length + ' lignes (cartes d’avant : ' + A.cartes + ') :'); A.lignes.forEach(l => dire('        [' + l.kind + ' · ' + l.n + '] ' + l.t + ' — ' + l.choix.join(' │ ')));
   dire('  [F] la liste des sept : ' + A.liste.join(' ‖ '));
   const attendu = ['Groupe 2 : Le lac', 'Groupe 2 : l’hypothèse', 'Groupe 3 : Pêcheurs en mer', 'Groupe 3 : l’hypothèse', 'Groupe 4 : Cathédrale gothique au bord de l’eau', 'Groupe 4 : l’hypothèse', 'Groupe 5 : Le Voyageur contemplant une mer de nuages', 'Groupe 5 : l’hypothèse', 'Le bilan'];
-  verif('F1', A.lignes.length === 9 && attendu.every((t, i) => A.lignes[i] && A.lignes[i].t.indexOf(t) >= 0 && A.lignes[i].kind === 'diapo'), 'étape 2 : les 8 diapos non faites de l’activité en cours, une par ligne, puis « Le bilan », dans l’ordre', A.lignes.map(l => l.t.slice(0, 50)));
+  verif('F1', A.lignes.length === 10 && /Mise en commun du bilan/.test(A.lignes[9].t) && A.lignes[9].kind === 'diapo' && attendu.every((t, i) => A.lignes[i] && A.lignes[i].t.indexOf(t) >= 0 && A.lignes[i].kind === 'diapo'), 'étape 2 : les 8 diapos non faites de l’activité en cours, une par ligne, puis « Le bilan », puis « Mise en commun du bilan » (C16, la diapo après le bilan), dans l’ordre', A.lignes.map(l => l.t.slice(0, 50)));
   verif('F1', !A.lignes.some(l => /Fin d.heure|Où en sommes/.test(l.t)), 'ni « Fin d’heure », ni la réactivation');
-  verif('F1', A.tous && A.tous.visible && /^Reporter les 9 diapos non faites au début de la prochaine heure de cette classe$/.test(A.tous.t), 'le bouton du haut, visible sans défiler (1536 × 864), dit « Reporter les 9 diapos non faites au début de la prochaine heure de cette classe »', A.tous);
-  verif('F1', /9 diapos : dis ce qu.elles deviennent/.test(A.liste.join(' ')), 'la liste des étapes dit « 9 diapos : dis ce qu’elles deviennent »', A.liste[1]);
+  verif('F1', A.tous && A.tous.visible && /^Reporter les 10 diapos non faites au début de la prochaine heure de cette classe$/.test(A.tous.t), 'le bouton du haut, visible sans défiler (1536 × 864), dit « Reporter les 9 diapos non faites au début de la prochaine heure de cette classe »', A.tous);
+  verif('F1', /10 diapos : dis ce qu.elles deviennent/.test(A.liste.join(' ')), 'la liste des étapes dit « 9 diapos : dis ce qu’elles deviennent »', A.liste[1]);
   verif('F1', /reporter/.test(A.quoi) && /non fait/.test(A.quoi) && !/en réserve/.test(A.quoi), 'la phrase du haut cite les choix réellement proposés (dernière heure : pas « en réserve »)', A.quoi);
   const ec = ECR.length; await clic(pg, '#f-tous'); const B = await lignesFin(pg); await capt(pg, tag + '-F2-etape2-apres-un-clic');
   dire('  [F] après UN clic : le bouton ' + JSON.stringify(B.tous && B.tous.t) + ' · ' + B.lignes.map(l => l.choix.filter(c => /posé/.test(c)).join('')).join(', ') + ' · la liste : ' + B.liste[1]);
-  verif('F1', B.lignes.length === 9 && B.lignes.every(l => l.choix.some(c => /^Reporter \[posé\]$/.test(c))), 'un clic : les 9 lignes portent « Reporter »', B.lignes.map(l => l.choix.filter(c => /posé/.test(c)).join('')));
+  verif('F1', B.lignes.length === 10 && B.lignes.every(l => l.choix.some(c => /^Reporter \[posé\]$/.test(c))), 'un clic : les 9 lignes portent « Reporter »', B.lignes.map(l => l.choix.filter(c => /posé/.test(c)).join('')));
   verif('F1', /tout est décidé/.test(B.liste[1] || ''), 'l’étape 2 se coche : « tout est décidé »', B.liste[1]);
   /* les autres étapes, puis clore */
   for (let n = 3; n <= 6; n++) { await ouvrirEtape(pg, n); if (n === 3) await clic(pg, '#f-rien'); }
   const cl = await clore(pg); dire('  [F] clôture : ' + JSON.stringify(cl).slice(0, 400)); await p(1500);
   const HS = heureHub(); const H = (HS[0] || {}).h || {}; const D = decisionsDe(H);
   dire('  [F] au hub, l’heure : clos ' + !!H.clos + ' · ' + (H.activites || []).length + ' diapos jouées · decisionsParEcran (' + D.length + ') : ' + D.map(x => '« ' + x.titre + ' » ' + x.choix).join(' ; ') + ' · decisionsParActivite : ' + JSON.stringify(Object.keys(H.decisionsParActivite || {}).map(k => k + '→' + H.decisionsParActivite[k].choix)));
-  verif('F1', D.length === 9 && D.every(x => x.choix === 'reporter') && D.some(x => x.eid === 'aud-bilan') && attendu.every(t => D.some(x => x.titre === t)), 'au hub : une décision « reporter » par diapo non faite (9), « Le bilan » compris', D.map(x => x.titre + ' ' + x.choix));
+  verif('F1', D.length === 10 && D.every(x => x.choix === 'reporter') && D.some(x => x.eid === 'aud-bilan') && D.some(x => /^bmc-/.test(x.eid)) && attendu.every(t => D.some(x => x.titre === t)), 'au hub : une décision « reporter » par diapo non faite (9), « Le bilan » compris', D.map(x => x.titre + ' ' + x.choix));
   /* la Relecture, « Diapo par diapo » (§3.8) */
   await pg.evaluate(() => { const b = document.getElementById('dr-clos-relire'); if (b) b.click(); }).catch(() => {}); await p(3500); await garde(pg);
   await pg.evaluate(() => { const b = document.querySelector('#ecran-relecture [data-f="passe"]'); if (b) b.click(); }); await p(1500); await capt(pg, tag + '-F3-relecture-diapo-par-diapo');
   const rows = await pg.evaluate(() => Array.from(document.querySelectorAll('#ecran-relecture tr')).map(tr => (tr.innerText || '').replace(/\s+/g, ' ').trim()).filter(t => /reportée/.test(t)));
   dire('  [F] Relecture, « Diapo par diapo » : ' + rows.length + ' lignes disent « reportée » : ' + rows.map(r => r.slice(0, 60)).join(' ‖ '));
-  verif('F8', rows.length === 9 && !rows.some(r => /Radeau|Groupe 1 : l’hypothèse/.test(r)), 'la Relecture ne dit « reportée » que pour les 9 diapos qui portent la décision, jamais pour une diapo jouée', rows.map(r => r.slice(0, 50)));
+  verif('F8', rows.length === 10 && !rows.some(r => /Radeau|Groupe 1 : l’hypothèse/.test(r)), 'la Relecture ne dit « reportée » que pour les 9 diapos qui portent la décision, jamais pour une diapo jouée', rows.map(r => r.slice(0, 50)));
   await pg.keyboard.press('Escape').catch(() => {}); await p(500);
   /* l'emploi du temps après la clôture (preuve 2) */
   const c2 = await caseEdt(pg, '2026-09-14'); await capt(pg, tag + '-F4-case-lundi-close'); dire('  [F] la case du lundi : « ' + c2.t.slice(0, 400) + ' »'); await fermerEdt(pg);
-  verif('F2', /Close · 9 diapos jouées · 9 reportées — séance pas finie/.test(c2.t), 'la case close dit « Close · 9 diapos jouées · 9 reportées — séance pas finie »', c2.t.slice(0, 300));
+  verif('F2', /Close · 9 diapos jouées · 10 reportées — séance pas finie/.test(c2.t), 'la case close dit « Close · 9 diapos jouées · 9 reportées — séance pas finie »', c2.t.slice(0, 300));
   const g2 = await caseSemaine(pg, '2026-09-14'); await capt(pg, tag + '-F4b-semaine-case-lundi'); await fermerEdt(pg); dire('  [F] la case du lundi dans la semaine : ' + JSON.stringify(g2));
-  verif('F2', g2 && g2.some(l => l.t === 'Close · 9 diapos jouées · 9 reportées' && !l.coupee) && g2.some(l => l.t === 'séance pas finie' && !l.coupee), 'dans la semaine aussi, la case le dit, sans rien de coupé : « Close · 9 diapos jouées · 9 reportées », puis « séance pas finie »', g2);
+  verif('F2', g2 && g2.some(l => l.t === 'Close · 9 diapos jouées · 10 reportées' && !l.coupee) && g2.some(l => l.t === 'séance pas finie' && !l.coupee), 'dans la semaine aussi, la case le dit, sans rien de coupé : « Close · 9 diapos jouées · 9 reportées », puis « séance pas finie »', g2);
   const P1 = await projection(pg); dire('  [F] la semaine APRÈS : ' + semaineCharles(P1).join(' ‖ ')); await pg.evaluate(() => edtOuvrir()); await p(2400); await capt(pg, tag + '-F5-semaine-apres');
   const c3 = await caseEdt(pg, '2026-09-15'); await capt(pg, tag + '-F6-case-mardi-suite'); dire('  [F] la case du mardi : « ' + c3.t.slice(0, 400) + ' »'); await fermerEdt(pg);
   verif('F2', /heure 2 · suite de la séance/.test(c3.t) && /Poésie et peinture/.test(c3.t), 'la case suivante de la classe propose la suite de la séance 1 (« heure 2 · suite »)', c3.t.slice(0, 300));
@@ -264,10 +264,10 @@ const partieG = async (fichier, tag) => { neuf('act3'); const e0 = CHEMINS0(); c
   dire('  [G] ' + A.lignes.length + ' lignes : ' + A.lignes.map(l => '[' + l.kind + ' · ' + l.n + '] ' + l.t.slice(0, 70)).join(' ‖ ')); dire('  [G] le bouton : ' + JSON.stringify(A.tous));
   const a3 = A.lignes.filter(l => /Le Romantisme en une phrase/.test(l.t));
   verif('G1', a3.length === 1 && a3[0].kind === 'activite' && a3[0].n === 2 && /2 diapos/.test(a3[0].t) && !A.lignes.some(l => /Nos définitions/.test(l.t)), 'l’activité suivante, pas commencée, en une seule ligne (son titre, ses 2 diapos)', a3);
-  verif('G1', A.lignes.length === 10 && /Le bilan/.test(A.lignes[9].t) && A.tous && A.tous.visible && /Reporter les 11 diapos non faites/.test(A.tous.t), '8 diapos, 1 activité (2 diapos), « Le bilan » : 10 lignes, le bouton dit 11 diapos, visible', A.tous);
+  verif('G1', A.lignes.length === 11 && /Le bilan/.test(A.lignes[9].t) && /Mise en commun du bilan/.test(A.lignes[10].t) && A.tous && A.tous.visible && /Reporter les 12 diapos non faites/.test(A.tous.t), '8 diapos, 1 activité (2 diapos), « Le bilan » : 10 lignes, le bouton dit 11 diapos, visible', A.tous);
   await clic(pg, '#f-tous'); await ouvrirEtape(pg, 7); const cl = await clore(pg); await p(1500); const H = (heureHub()[0] || {}).h || {}; const D = decisionsDe(H);
   dire('  [G] au hub : decisionsParEcran (' + D.length + ') : ' + D.map(x => '« ' + x.titre + ' » ' + x.choix).join(' ; ') + ' · decisionsParActivite : ' + JSON.stringify(Object.keys(H.decisionsParActivite || {})));
-  verif('G1', D.length === 11 && D.every(x => x.choix === 'reporter') && D.some(x => x.eid === 'fh-a3-lecture') && D.some(x => x.eid === 'aud-bilan'), 'au hub : une décision par diapo (11), l’activité 3 diapo par diapo, « Le bilan » compris', D.map(x => x.titre));
+  verif('G1', D.length === 12 && D.some(x => /^bmc-/.test(x.eid)) && D.every(x => x.choix === 'reporter') && D.some(x => x.eid === 'fh-a3-lecture') && D.some(x => x.eid === 'aud-bilan'), 'au hub : une décision par diapo (11), l’activité 3 diapo par diapo, « Le bilan » compris', D.map(x => x.titre));
   finir('G7', o, 'partie G'); k15('G7', e0, 'partie G'); await o.ctx.close(); };
 
 /* ══ S · l'heure de la suite (preuve 3), sur le hub laissé par F ══ */
@@ -278,7 +278,7 @@ const partieS = async (fichier, tag) => { if (!HUB_F) { dire('  [S] pas de hub d
   const lh = await pg.evaluate(() => { const b = document.getElementById('o-lancer'); if (!b || b.disabled) return false; b.click(); return true; }); await p(3500); await capt(pg, tag + '-S2-heure-suite-lancee');
   const inf = await pg.evaluate(() => { const E = seance().ecrans; return { heure: S.heure, entete: (document.getElementById('hou') || {}).textContent || '', ordre: ordreHeure(S.heure).map(i => ({ eid: E[i].eid, t: E[i].act, role: E[i].role || '' })), react: (E.find(e => e.role === 'reactivation' && +e.heure === S.heure) || {}).blocs || null }; });
   const ord = inf.ordre.map(x => x.t); dire('  [S] « Lancer l’heure 2 » : ' + lh + ' · l’entête : « ' + inf.entete + ' » · l’ordre (' + ord.length + ') : ' + ord.join(' → ')); dire('  [S] la réactivation : ' + JSON.stringify(inf.react).slice(0, 700));
-  const att = ['Où en sommes-nous ?', 'Groupe 2 : Le lac', 'Groupe 2 : l’hypothèse', 'Groupe 3 : Pêcheurs en mer', 'Groupe 3 : l’hypothèse', 'Groupe 4 : Cathédrale gothique au bord de l’eau', 'Groupe 4 : l’hypothèse', 'Groupe 5 : Le Voyageur contemplant une mer de nuages', 'Groupe 5 : l’hypothèse', 'Le bilan', 'Fin d\'heure'];
+  const att = ['Où en sommes-nous ?', 'Groupe 2 : Le lac', 'Groupe 2 : l’hypothèse', 'Groupe 3 : Pêcheurs en mer', 'Groupe 3 : l’hypothèse', 'Groupe 4 : Cathédrale gothique au bord de l’eau', 'Groupe 4 : l’hypothèse', 'Groupe 5 : Le Voyageur contemplant une mer de nuages', 'Groupe 5 : l’hypothèse', 'Le bilan', 'Mise en commun du bilan', 'Fin d\'heure'];
   verif('S3', JSON.stringify(ord) === JSON.stringify(att), 'l’ordre de la suite : la réactivation, les 8 reportées dans l’ordre du plan, « Le bilan », « Fin d’heure »', ord);
   const rep = (inf.react || []).find(b => b && b.txt === 'À reprendre'); verif('S3', !!rep && (rep.el || []).length >= 1, 'la réactivation a son bloc « À reprendre »', rep);
   /* jouer toute l'heure, puis clore sans report */
@@ -314,7 +314,7 @@ const partieP = async (fichier, tag) => { if (!ANCIEN) { dire('  [P] MJPC_ANCIEN
   const inf = await pg3.evaluate(() => { const E = seance().ecrans; return { ordre: ordreHeure(S.heure).map(i => E[i].act), react: (E.find(e => e.role === 'reactivation' && +e.heure === S.heure) || {}).blocs || null }; });
   dire('  [P] la suite lancée (' + lh + ') : ' + inf.ordre.join(' → ')); dire('  [P] la réactivation : ' + JSON.stringify(inf.react).slice(0, 600));
   const o4 = inf.ordre.filter(t => t !== 'Où en sommes-nous ?' && t !== 'Fin d\'heure');
-  verif('P4', o4[0] === 'Groupe 1 : l’hypothèse' && o4[o4.length - 1] === 'Le bilan' && o4.length === 10 && inf.ordre[0] === 'Où en sommes-nous ?' && inf.ordre[inf.ordre.length - 1] === 'Fin d\'heure', 'la suite commence (après la réactivation) par « Groupe 1 : l’hypothèse » et finit par « Le bilan » (puis « Fin d’heure ») : 10 diapos', inf.ordre);
+  verif('P4', o4[0] === 'Groupe 1 : l’hypothèse' && o4[o4.length - 2] === 'Le bilan' && o4[o4.length - 1] === 'Mise en commun du bilan' && o4.length === 11 && inf.ordre[0] === 'Où en sommes-nous ?' && inf.ordre[inf.ordre.length - 1] === 'Fin d\'heure', 'la suite commence (après la réactivation) par « Groupe 1 : l’hypothèse » et finit par « Le bilan » (puis « Fin d’heure ») : 10 diapos', inf.ordre);
   finir('P7', o3, 'partie P, la suite'); k15('P7', e1, 'partie P (le nouveau fichier)'); await o3.ctx.close(); };
 
 /* ══ D · une séance de deux heures (preuve 5) ══ */
@@ -353,7 +353,7 @@ const partieT = async (fichier, tag) => { neuf(null); const o = await ouvrir({ f
   await jouerJusqua(pg, 'aud-g1-hyp'); await pg.keyboard.press('ArrowRight'); await p(500); await allerT5(pg); await clic(pg, '#f-suivante'); const A = await lignesFin(pg); await capt(pg, tag + '-T1-mode-test-etape2');
   await clic(pg, '#f-tous'); const B = await lignesFin(pg); await ouvrirEtape(pg, 7); const cl = await clore(pg); await p(1500);
   dire('  [T] mode test : ' + A.lignes.length + ' lignes, le bouton « ' + (A.tous || {}).t + ' » (haut ' + (A.tous || {}).haut + ') · après un clic : ' + B.lignes.filter(l => l.choix.some(c => /posé/.test(c))).length + ' décidées · clos ' + cl.close);
-  verif('T1', A.lignes.length === 9 && A.tous && A.tous.visible && B.lignes.every(l => l.choix.some(c => /^Reporter \[posé\]$/.test(c))), 'mode test : les 9 lignes, le bouton visible, un clic les décide', A.tous);
+  verif('T1', A.lignes.length === 10 && A.tous && A.tous.visible && B.lignes.every(l => l.choix.some(c => /^Reporter \[posé\]$/.test(c))), 'mode test : les 9 lignes, le bouton visible, un clic les décide', A.tous);
   k15test('T7', e0, 'partie T'); finir('T7', o, 'partie T'); await o.ctx.close(); };
 
 dire(''); dire('══ LA FIN D’HEURE · ' + NOMF + ' · md5 ' + md5(FICHIER) + (ANCIEN ? ' · ancien ' + md5(ANCIEN) : '') + ' ══');

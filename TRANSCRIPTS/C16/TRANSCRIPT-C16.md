@@ -4313,3 +4313,8 @@ MEMO
   > À jouer : les cinq tests ci-dessus et 617 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 640 (720), 721, 731 ; à cadrer : 639, 644, 645
   >
   > MEMO
+- **06:15 — Paul, mot pour mot :**
+
+  > Pas encore fait les tests. On passe à la suite du plan
+
+- **06:16 — mandat K** (721, « Fermer l'atelier » pendant le lancement ; `MANDATS/DEROULE-01-11/APRES-8860/`), 20 minutes au plus, puis lancé.

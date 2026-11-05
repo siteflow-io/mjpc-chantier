@@ -4991,3 +4991,20 @@ MEMO
   > À jouer : les cinq tests ci-dessus ; 847 (la ligne de la minute calée sur l'horloge : gardée sauf avis contraire) ; 849 (le banc court pour toujours, ou seulement ce soir) · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **20:14 — Paul, mot pour mot :** « Il y a une chose dont je viens de me rendre compte. Demain, j'aurai terminé le bilan avec les 3e avant la fin de l'heure. Le problème c'est que je dois pouvoir commencer la séance 2 après. Comment faire avec l'existant? »
+- **20:16 — mesuré dans le code (prod 8.88.0-㉑, md5 `0491ac06`)** : « Rien ne passe après le bilan » sauf sa mise en commun (l. 19047-19675) ; une heure se lance par la case seulement (l. 21240, « toujours edt ») ; « ▶ Lancer » ne repropose pas l'heure close (l. 20870) ; `edtLancer` (l. 27717) : la séance que la case nomme ; le tableau suit l'heure lancée, sinon la répétition (l. 22338).
+- **20:16 — message à Paul, mot pour mot :**
+
+  > 862. Avec l'existant, il n'y a pas de façon propre de continuer sur la séance 2 dans la même heure. C'est mesuré dans le code (8.88.0-㉑). Rien ne passe après le bilan d'une séance, sauf sa mise en commun. Une heure se lance seulement par la case de l'emploi du temps, et une case close ne se relance pas.
+  >
+  > 863. Ce qui marche quand même, lu dans le code mais pas joué : la répétition. Tu finis la mise en commun du bilan et tu clos l'heure ; la séance 1 est finie, rien n'est reporté. Ensuite tu lances une répétition de la séance 2. Le tableau la suit tout seul, puisqu'il suit l'heure lancée et, sans heure, la répétition ; entre les deux, il montre l'écran d'attente. Le prix à payer : rien de la séance 2 n'est enregistré pour la classe (ni le récit, ni le journal, ni les réponses). À la prochaine case des 3e, la séance 2 repart de sa première diapo, et tu dévoiles vite jusqu'où vous étiez allés.
+  >
+  > 864. Pour plus tard, je propose ceci : à la fin d'une séance jouée en classe (le bilan et sa mise en commun faits), quand il reste du temps, un bouton « ▶ Commencer la séance suivante dans cette heure ». L'heure continue sur la séance 2 et tout est enregistré comme d'habitude ; la case suivante reprend là où tu t'es arrêté. Cela touche le cœur de l'heure (la case, le journal, le récit, le cahier de textes, « Où en sommes-nous ? »). Je ne te conseille pas de le coder ce soir pour demain : je le mettrais au registre pour samedi, à cadrer d'abord.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 20:16
+  >
+  > À jouer : 863 (la répétition pour demain : ça te va ?) ; 864 (au registre pour samedi ?) ; les cinq tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

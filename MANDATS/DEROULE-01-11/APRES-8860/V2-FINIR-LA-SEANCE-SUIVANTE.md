@@ -9,5 +9,11 @@ Le mandat V, §0 et §1 (les mots de Paul et les propositions acquises), sans ri
 2. **Répétition** : « la sonde arrive au bouton, puis dépasse 240 s après le clic sans résultat » : la séance 2 démarre en répétition, rien d'écrit pour la classe (compté), le tableau la suit.
 3. **La case du jour** : V mesure « Close · 25 diapos jouées · 10 reportées » pour les deux séances ensemble (la séance 1 : 24 diapos, rien reporté). La case dit ce que chaque séance a fait, avec ses vrais nombres (« Séance 1 : … ; puis Séance 2 : … ») — en vraie heure et en mode test.
 4. **Le témoin** : une classe qui n'enchaîne pas : rien ne change (compté, base `46ce703a1` → après), la case, la Relecture, la case suivante.
-5. **Les sondes du banc qui lisent ce que V et toi changez** (cherche `dr_lancer`, la clôture, `edtSeanceEtat`, `edtSeanceDeTrace`, la case ouverte, « Relire cette heure ») : à jour dans la branche ; la séance (`AUDITS/INTEGRATION-DEROULE/banc.sh` étape 14 : `LIVRAISONS/DEROULE-01-11/…`, comme le banc les lance), l'appel (15), la fin d'heure (16), le parcours P0-P12, la sonde du bilan partie B : verts.
+5. **Les sondes du banc qui lisent ce que V et toi changez** (cherche `dr_lancer`, la clôture, `edtSeanceEtat`, `edtSeanceDeTrace`, la case ouverte, « Relire cette heure ») : à jour dans la branche ; la séance (étape 14), l'appel (15), la fin d'heure (16) — lancées comme le banc de la conscience les lance (`$W` = ton worktree, `$A` = ton assemblé, `$S` = le scratchpad, `$O` = ta sortie ; `MJPC_HORLOGE=date` exporté) :
+```
+cd $W/LIVRAISONS/DEROULE-01-11/SESSION-PARTOUT && MJPC_PARTIES=T,H,QH,QT,R,RT,A MJPC_NOM=banc MJPC_PYQR=$S/pyqr MJPC_MEDIAS=$S/medias MJPC_CAPT=$O/capt14 timeout 1500 node sonde-session.mjs $A $O/etape14 > $O/etape14-console.txt 2>&1
+cd $W/LIVRAISONS/DEROULE-01-11/APPEL && MJPC_NOM=banc MJPC_V879=$S/c16-appel/v879/index.html MJPC_PYQR=$S/pyqr MJPC_MEDIAS=$S/medias MJPC_CAPT=$O/capt15 timeout 1800 node sonde-appel.mjs $A $O/etape15 > $O/etape15-console.txt 2>&1
+cd $W/LIVRAISONS/DEROULE-01-11/FIN-HEURE && MJPC_ANCIEN=$ANC MJPC_PYQR=$S/pyqr MJPC_MEDIAS=$S/medias MJPC_CAPT=$O/capt16 timeout 1800 node sonde-fin-heure.mjs $A $O/etape16 > $O/etape16-console.txt 2>&1
+```
+, le parcours P0-P12, la sonde du bilan partie B : verts.
 Captures refaites pour Paul (écran entier) : la case du jour ouverte, en vraie heure ; le bouton en mode test.

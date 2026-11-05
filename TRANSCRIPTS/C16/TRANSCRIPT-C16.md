@@ -4778,3 +4778,21 @@ MEMO
   > À jouer : rien · en cours : la diapo des consignes comme le dessin (S6), puis le banc complet, puis la demande de « promeus » (8.87.0-⑳, la mise en commun du bilan) · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **14:19 — l'exécutant S6 rend son travail** (14:02 → 14:19) : sas `deroule/bilan` `048be4d1f` ; assemblé md5 `23eed7cf29fd3689d550caf1a666b98b`. La diapo du bilan : avant la mise en commun, cases vides, ni marque ni compteur ; la mise en commun atteinte, « 0 / 4 » ; un point coché prend la marque or et sa pastille, le compteur suit ; décoché (0, « Annuler », à la main), elles partent ; les cases comme le dessin. Sonde B31-B37 : vraie heure 36/36, mode test 36/36, répétition 37/37 ; W 6/6 ; parcours vert ; case et gel 36/36. En route : un clic sur la case laissait la marque au pilotage (B37), corrigé. Un écart avec le dessin : le compteur reprend l'étiquette or de la mise en commun ; le dessin le montrait sans fond. Captures `scratchpad/BILAN-captures-S6/`, regardées (1, 3, 4).
+- **14:20 — lancé : le banc complet du bilan** sur `048be4d1f` (`scratchpad/banc-bilan.sh`, sortie `banc-bilan-out2`, base la 8.86.0-⑲).
+- **14:20 — envoyé à Paul** : les quatre captures S6.
+- **14:20 — message à Paul, mot pour mot :**
+
+  > 832. Les quatre captures jointes montrent l'état corrigé. 1 : la mise en commun au tableau, quatre points marqués, « 4 / 4 ». 2 : Alt + B au pilotage, la liste des points. 3 : avec 🅱️, la diapo des consignes au tableau, comme ton dessin : chaque point coché porte la marque or et sa pastille, et le compteur suit. 4 : le pilotage, l'attestation « Les élèves ont écrit le bilan » cochée d'elle-même à 4 / 4.
+  >
+  > 833. Une seule différence avec le dessin : le compteur « 4 / 4 » est dans une étiquette or, la même des deux côtés ; le dessin le montrait en petit texte or, sans fond. Je propose de le garder ainsi, parce qu'il se lit de loin. Si tu le veux comme le dessin, dis-le.
+  >
+  > 834. Le banc complet tourne sur cet état depuis 14:20 (environ une heure et demie, estimé). S'il est vert, je t'envoie la demande de « promeus » avec les tests geste par geste.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 14:20
+  >
+  > À jouer : ta réponse à 833, si tu veux le compteur comme le dessin · en cours : le banc complet, puis la demande de « promeus » (8.87.0-⑳, la mise en commun du bilan) · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

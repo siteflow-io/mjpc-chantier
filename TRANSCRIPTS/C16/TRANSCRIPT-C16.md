@@ -5062,3 +5062,16 @@ MEMO
   > À jouer : les cinq tests de 861 ; 847 ; 849 · en cours : la séance suivante dans cette heure (V), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **21:33 — Paul, mot pour mot :** « Ça en est où ? »
+- **21:34 — mesuré** : rien encore poussé sur `deroule/enchainer` ; le dossier des captures de l'exécutant a deux sous-dossiers (vraie heure, mode test).
+- **21:34 — message à Paul, mot pour mot :**
+
+  > 875. L'exécutant travaille encore : il a commencé à 20:57 et il a jusqu'à 21:57 au plus. Il n'a encore rien poussé, mais il fait déjà ses captures en vraie heure et en mode test. Je ne sais pas encore si c'est vert. Dès qu'il rend son travail, je lance le banc court (environ 40 minutes, estimé), puis je t'envoie les captures et la demande de « promeus ».
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 21:34
+  >
+  > À jouer : les cinq tests de 861 ; 847 ; 849 · en cours : la séance suivante dans cette heure (V), puis le banc court et les captures · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

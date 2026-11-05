@@ -4631,3 +4631,28 @@ MEMO
   > À jouer : ta réponse à 800 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-804), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:10 — Paul, mot pour mot :**
+
+  > 🅱️en fait ça doit être ça l'émoji du bouton "consignes bilan". et pour le mot clef à valider, je pourrais par exemple sélectionner le texte du point que je veux, taper B au clavier, et là j'ai la liste numérotée des mots clefs qui s'affiche, et je tape son numéro ou je clique (si au delà de 9)? avec infobulle tout ça bien sûr.  et un échap oui, pour sortir sans rien faire bien sûr. télescopages? ok pour le compteur. pour tes trois autres points de 800, non.
+
+- **10:10 — message à Paul, mot pour mot :**
+
+  > 801. Compris : le bouton des consignes du bilan, c'est 🅱️, et le compteur est dedans (« 🅱️ 3/5 ») au pilotage, et au tableau en haut à droite de la mise en commun.
+  >
+  > 800. Compris : tu sélectionnes le texte dans la mise en commun, tu tapes B, la liste numérotée des points du bilan s'ouvre au pilotage (jamais au tableau), un chiffre ou un clic choisit, Échap sort sans rien faire ; le texte choisi est souligné, le point se coche, le compteur avance ; chaque geste avec son infobulle. Pas de tirets bas, pas de cochage tout seul, pas de bouton S.
+  >
+  > 805. Le télescopage principal : B est une lettre. Sur un texte sélectionné, taper une lettre le remplace ; avec ta règle, taper B sur une sélection ouvre la liste au lieu d'écrire « b ». Ce que je propose : B n'ouvre la liste que si un texte est sélectionné dans une ligne de la mise en commun ; sans sélection, B s'écrit comme toujours ; pour remplacer une sélection par un mot qui commence par b, tu effaces d'abord (ou Échap, puis tu tapes). Ou bien Alt + B, qui ne gêne jamais l'écriture. B seul ou Alt + B ?
+  >
+  > 806. Revenir en arrière : « Annuler » défait le souligné et la coche ensemble ; et B sur un texte déjà souligné rouvre la liste avec son point marqué, où « 0 » retire le souligné et décoche.
+  >
+  > 807. Un même point choisi deux fois (deux passages qui le disent) : il reste coché une fois, le compteur ne compte que les points ; les deux passages restent soulignés.
+  >
+  > 808. Partout pareil : en classe, en mode test et en répétition ; sur toutes les pages de la mise en commun ; la Relecture et le récit gardent le souligné.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 10:10
+  >
+  > À jouer : ta réponse à 805 · en cours : rien · ouvert, samedi 22:30 : la mise en commun du bilan (796-808), le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

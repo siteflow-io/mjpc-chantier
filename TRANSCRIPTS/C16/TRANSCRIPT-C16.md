@@ -5149,3 +5149,5 @@ MEMO
   >
   > MEMO
 - **23:01 — incident** : une heure estimée à la main au transcript (« 22:50 environ ») ; corrigée par la durée rendue (2 223 s depuis le lancement de 22:23).
+- **23:18 — l'exécutant V4 rend son travail** (23:01 → 23:18) : `deroule/enchainer` `14cc6d0db`, assemblé `f1840ad7` (`dr-socle.js`, `dr-classe.js`). En mode test, l'horloge de la case : 09:22:29 avant le clic, 09:22:31 après (base : 08:57:00) ; l'alerte des 5 minutes à 09:42:02 comme une heure ordinaire (base : 1 533 s trop tard). Rejoués : une heure vh 27/27, test 29/29 ; deux heures 27/27, 29/29 ; répétition 12/12 ; témoin 12/12 ; T-5 vh 22/22, test 24/24 ; parcours vert. Erreurs du mandat signalées : l'alerte tombe 5 minutes avant le cahier de textes (09:47), pas avant la fin du créneau — pareil pour une heure ordinaire ; une heure rattrapée puis enchaînée revient au début du créneau (pas réglé, pas mesuré). Pas mesuré : la réouverture de la page pendant la séance enchaînée.
+- **23:19 — mandat V5** (sas `5c57f95f8`) lancé : rouvrir la page pendant la séance enchaînée. **Registre** (prod `14f8896`) : l'heure rattrapée puis enchaînée, pour samedi.

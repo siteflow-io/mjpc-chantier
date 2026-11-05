@@ -1,0 +1,27 @@
+O · sonde du retard du tableau · faux hub rangé comme le vrai, avec son flux · vraie heure · 3 fois chaque geste · attente 2200 ms · 2026-11-05 06:40 UTC · md5 fd014e542fc12f4f8f99904dc5d36694
+      l’heure lancée : true · fenêtre du tableau ouverte : true
+      écart des montres au pilote : fenêtre 0 ms · distant 0 ms (recalé)
+      ici : {"eid":"inv-presentation-chapitre-s0","di":0,"compte":"0 / 3 dévoilés"}
+      ici : {"eid":"inv-presentation-chapitre-s0","di":0,"compte":"0 / 3 dévoilés"}
+      surlignés au pilote : 0
+diapo suivante (vignette 2 du volet) │ fenêtre : médiane 46 ms, plus long 62 ms (3 vus) │ distant : médiane 74 ms, plus long 79 ms (3 vus)
+      détail fenêtre [62,46,45] · distant [74,74,79]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×3 │ distant : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×3
+diapo précédente (vignette 1 du volet) │ fenêtre : médiane 55 ms, plus long 56 ms (3 vus) │ distant : médiane 83 ms, plus long 103 ms (3 vus)
+      détail fenêtre [56,55,46] · distant [83,103,80]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×3 │ distant : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×3
+▶ dévoiler (#bdev)                 │ fenêtre : médiane 42 ms, plus long 71 ms (3 vus) │ distant : médiane 71 ms, plus long 114 ms (3 vus)
+      détail fenêtre [71,35,42] · distant [114,70,71]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×3 │ distant : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×3
+chrono « au tableau »              │ fenêtre : médiane 14 ms, plus long 15 ms (2 vus) │ distant : médiane 20 ms, plus long 26 ms (2 vus)
+      détail fenêtre [15,14] · distant [26,20]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 ; DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 ; DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style + DIV#mur2.mur.tableau|attributes|class ×1
+chrono ▶ lancer                    │ fenêtre : médiane 138 ms, plus long 138 ms (1 vus, 1 NON VUS) │ distant : médiane 51 ms, plus long 51 ms (1 vus, 1 NON VUS)
+      détail fenêtre [138,null] · distant [51,null]
+      ce qui change en premier — fenêtre : circle|attributes|stroke-dasharray ×1 │ distant : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×1
+chrono glisser                     │ fenêtre : médiane null ms, plus long null ms (0 vus, 2 NON VUS) │ distant : médiane 28 ms, plus long 28 ms (1 vus, 1 NON VUS)
+      détail fenêtre [null,null] · distant [28,null]
+      ce qui change en premier — fenêtre : — │ distant : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style + DIV#mur2.mur.tableau|attributes|class ×1
+chrono redimensionner              │ fenêtre : médiane null ms, plus long null ms (0 vus, 2 NON VUS) │ distant : médiane 28 ms, plus long 28 ms (1 vus, 1 NON VUS)
+      détail fenêtre [null,null] · distant [28,null]
+      ce qui change en premier — fenêtre : — │ distant : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style + DIV#mur2.mur.tableau|attributes|class ×1

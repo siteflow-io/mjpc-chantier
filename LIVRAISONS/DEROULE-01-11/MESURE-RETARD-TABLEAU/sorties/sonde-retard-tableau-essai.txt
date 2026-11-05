@@ -1,0 +1,81 @@
+O · sonde du retard du tableau · faux hub rangé comme le vrai, avec son flux · vraie heure · 1 fois chaque geste · attente 2600 ms · 2026-11-05 06:30 UTC · md5 fd014e542fc12f4f8f99904dc5d36694
+      l’heure lancée : true · fenêtre du tableau ouverte : true
+      écart des montres au pilote : fenêtre 1 ms · distant 0 ms (recalé)
+      ici : {"eid":"inv-presentation-chapitre-s0","di":0,"compte":"0 / 3 dévoilés"}
+      ici : {"eid":"inv-presentation-chapitre-s0","di":0,"compte":"0 / 3 dévoilés"}
+      surlignés au pilote : 0
+
+— les écritures au hub pendant la sonde : 134 · refusées : 0 · erreurs JS : 0 
+
+diapo suivante (PageDown)          │ fenêtre : médiane 72 ms, plus long 72 ms (1 vus) │ distant : médiane 86 ms, plus long 86 ms (1 vus)
+      détail fenêtre [72] · distant [86]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+diapo précédente (PageUp)          │ fenêtre : médiane 49 ms, plus long 49 ms (1 vus) │ distant : médiane 77 ms, plus long 77 ms (1 vus)
+      détail fenêtre [49] · distant [77]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+▶ dévoiler (#bdev)                 │ fenêtre : médiane 41 ms, plus long 41 ms (1 vus) │ distant : médiane 99 ms, plus long 99 ms (1 vus)
+      détail fenêtre [41] · distant [99]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+geler (#bgel)                      │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane 1212 ms, plus long 1212 ms (1 vus)
+      détail fenêtre [null] · distant [1212]
+      ce qui change en premier — fenêtre : — │ distant : BUTTON#ses-tab-cle.c|attributes|title ×1
+dégeler (#bgel)                    │ fenêtre : médiane 32 ms, plus long 32 ms (1 vus) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [32] · distant [null]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×1 │ distant : —
+écrire un mot (dernière lettre)    │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —
+surligner (ab → jaune)             │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —
+chrono « au tableau »              │ fenêtre : médiane 14 ms, plus long 14 ms (1 vus) │ distant : médiane 23 ms, plus long 23 ms (1 vus)
+      détail fenêtre [14] · distant [23]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class ×1
+chrono ▶ lancer                    │ fenêtre : médiane 479 ms, plus long 479 ms (1 vus) │ distant : médiane 492 ms, plus long 492 ms (1 vus)
+      détail fenêtre [479] · distant [492]
+      ce qui change en premier — fenêtre : circle|attributes|stroke-dasharray ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + circle|attributes|stroke-dasharray ×1
+chrono glisser                     │ fenêtre : médiane 21 ms, plus long 21 ms (1 vus) │ distant : médiane 28 ms, plus long 28 ms (1 vus)
+      détail fenêtre [21] · distant [28]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1
+chrono redimensionner              │ fenêtre : médiane 6 ms, plus long 6 ms (1 vus) │ distant : médiane 13 ms, plus long 13 ms (1 vus)
+      détail fenêtre [6] · distant [13]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1
+une réponse validée (Entrée)       │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —
+diapo suivante (PageDown)          │ fenêtre : médiane 72 ms, plus long 72 ms (1 vus) │ distant : médiane 86 ms, plus long 86 ms (1 vus)
+      détail fenêtre [72] · distant [86]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+diapo précédente (PageUp)          │ fenêtre : médiane 49 ms, plus long 49 ms (1 vus) │ distant : médiane 77 ms, plus long 77 ms (1 vus)
+      détail fenêtre [49] · distant [77]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.dr-fil.dr-fil-sombre|attributes|data-fil ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+▶ dévoiler (#bdev)                 │ fenêtre : médiane 41 ms, plus long 41 ms (1 vus) │ distant : médiane 99 ms, plus long 99 ms (1 vus)
+      détail fenêtre [41] · distant [99]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#mur2.mur.tableau|attributes|class ×1
+geler (#bgel)                      │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane 1212 ms, plus long 1212 ms (1 vus)
+      détail fenêtre [null] · distant [1212]
+      ce qui change en premier — fenêtre : — │ distant : BUTTON#ses-tab-cle.c|attributes|title ×1
+dégeler (#bgel)                    │ fenêtre : médiane 32 ms, plus long 32 ms (1 vus) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [32] · distant [null]
+      ce qui change en premier — fenêtre : DIV#mur2.mur.tableau|attributes|class + DIV.ouv.ouv-pres|attributes|style ×1 │ distant : —
+écrire un mot (dernière lettre)    │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —
+surligner (ab → jaune)             │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —
+chrono « au tableau »              │ fenêtre : médiane 14 ms, plus long 14 ms (1 vus) │ distant : médiane 23 ms, plus long 23 ms (1 vus)
+      détail fenêtre [14] · distant [23]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|class ×1
+chrono ▶ lancer                    │ fenêtre : médiane 479 ms, plus long 479 ms (1 vus) │ distant : médiane 492 ms, plus long 492 ms (1 vus)
+      détail fenêtre [479] · distant [492]
+      ce qui change en premier — fenêtre : circle|attributes|stroke-dasharray ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + circle|attributes|stroke-dasharray ×1
+chrono glisser                     │ fenêtre : médiane 21 ms, plus long 21 ms (1 vus) │ distant : médiane 28 ms, plus long 28 ms (1 vus)
+      détail fenêtre [21] · distant [28]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1
+chrono redimensionner              │ fenêtre : médiane 6 ms, plus long 6 ms (1 vus) │ distant : médiane 13 ms, plus long 13 ms (1 vus)
+      détail fenêtre [6] · distant [13]
+      ce qui change en premier — fenêtre : DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1 │ distant : DIV#ses-tab-perdu.ses-tab-perdu|attributes|class + DIV#dr-tab-minut.dr-tab-minut.dr-pp|attributes|style ×1
+une réponse validée (Entrée)       │ fenêtre : médiane null ms, plus long null ms (0 vus, 1 NON VUS) │ distant : médiane null ms, plus long null ms (0 vus, 1 NON VUS)
+      détail fenêtre [null] · distant [null]
+      ce qui change en premier — fenêtre : — │ distant : —

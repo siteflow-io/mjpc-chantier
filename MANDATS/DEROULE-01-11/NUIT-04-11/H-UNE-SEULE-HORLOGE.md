@@ -1,5 +1,5 @@
 # MANDAT H — LES CHRONOS DE PLUSIEURS APPAREILS, À LA MÊME SECONDE (㊵)
-*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/h`, depuis le dernier commit de la nuit (la conscience te le donne). 30 minutes au plus.*
+*Les règles communes : `REGLES-COMMUNES.md` (ce dossier). Branche : `nuit/h`, depuis `ba8d94797` (le dernier commit de `nuit/g` : toute la nuit). 30 minutes au plus.*
 
 ## 0 · CE QUI EST DIT
 - ㊵ (Paul, 04/11 matin, rappelé en C16 347) : « à la télécommande, en répétition, un décalage entre les minuteurs. » ; registre : reste ouvert après la 8.85.0-⑱ ; lancé par Paul (22:22) et C16 710 (sans réponse : acquis).

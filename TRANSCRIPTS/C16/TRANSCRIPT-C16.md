@@ -5009,3 +5009,25 @@ MEMO
   >
   > MEMO
 - **20:19 — Paul, mot pour mot :** « Ok. Mesure le chantier que ce serait. Je peux te faire tourner cette nuit. »
+- **20:22 — mesuré dans le code (prod 8.88.0-㉑)** : la trace d'une heure est rangée dans SA séance (`seances[k].deroule_joue[classe].heures[jour_créneau_classe]`, `edtSeanceDeTrace` l. 26985 ; la garde « heure close » lit le chemin de la séance ouverte, `dr_cheminB`, l. 20729) : deux séances sur un même créneau ne se heurtent pas ; `dr_lancer` (l. 20707) passe à S.heure+1 si rien n'est donné (à fixer) ; l'heure qui tourne se clôt d'abord (l. 20738) ; `edtSeanceDeTrace` rend la première séance trouvée (la case n'en dirait qu'une) ; l'appel de la case ne part qu'avec une case « prévue » (l. 27717 ; `DR_AP_LANCE`) ; la base de l'heure = le début du créneau (`dr_heureDe`). Le mandat N (`mesure/autre-seance` `e13df3cb6`) relu.
+- **20:21 — message à Paul, mot pour mot :**
+
+  > 865. La mesure, lue dans le code de la 8.88.0-㉑ (pas jouée au geste). Le site range la trace de chaque heure dans sa séance. La séance 1 et la séance 2 peuvent donc avoir chacune leur heure sur le même créneau, sans se marcher dessus. Aujourd'hui, une seule chose bloque : le lancement, parce qu'une case close ne se relance pas. Le reste existe déjà : le lancement d'une séance quelconque, l'heure qui tournait et qui se clôt d'abord, les diapos reportées au début de l'heure suivante. Le chantier est donc moyen, pas lourd.
+  >
+  > 866. Ce que je propose. Sur la dernière diapo de la séance 1 (après le bilan, sa mise en commun et le cahier de textes), un bouton « ▶ Séance suivante dans cette heure » dans les contrôles rapides, avec son infobulle. Un clic clôt l'heure de la séance 1 comme « Clore l'heure » ; s'il reste des diapos non faites, la question habituelle vient d'abord. Puis la séance 2 démarre sur le même créneau, pour la même classe, avec le même appel (les absents suivent). Son récit commence à l'heure réelle du clic, et le tableau passe directement à la séance 2, sans écran d'attente.
+  >
+  > 867. Ensuite, la case suivante des 3e continue la séance 2 là où tu t'es arrêté, avec les diapos reportées en tête, comme aujourd'hui. La case de demain dit « Séance 1 puis Séance 2 », et son « Relire l'heure » montre les deux récits l'un après l'autre. Dans la Relecture, chaque partie est sous sa séance.
+  >
+  > 868. Ce sera pareil en mode test et en répétition (en répétition, rien n'est écrit, comme aujourd'hui).
+  >
+  > 869. L'estimation : un exécutant, environ une heure, puis le banc court, environ 40 minutes (estimé). Ce serait prêt vers 23 h si tu valides 866 à 868 maintenant. Ce que je ne sais pas encore, et que l'exécutant mesure d'abord : comment la case affiche deux séances (aujourd'hui, elle n'en trouve qu'une), et l'heure de début dans le récit.
+  >
+  > 870. La mise en ligne. Si tu la veux pour demain, tu peux dire maintenant « promeus si le banc est vert » : je la mets en ligne cette nuit et tu fais les tests demain avant ton cours. Sinon, demain tu passes par la répétition (863), et la mise en ligne vient après tes tests.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 20:21
+  >
+  > À jouer : 866 à 868 (valider ou corriger) ; 870 (« promeus si le banc est vert », ou après tes tests) ; les cinq tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

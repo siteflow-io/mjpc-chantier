@@ -1,0 +1,29 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties B · 2026-11-05 10:01 UTC · md5 3e8a46c998bfdb456542fe648b19452f · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · base · md5 3e8a46c998bfdb456542fe648b19452f · vraie heure ══
+
+— partie B
+  [B] lancée true · vraie heure
+  [B] sur le bilan : aud-bilan · l’ordre de la fin de l’heure : aud-g5-img → aud-g5-hyp → bilan → fin
+  ÉCHEC  B1 · la mise en commun posée d’elle-même juste après le bilan (séance déjà préparée) — aud-g5-img → aud-g5-hyp → bilan → fin
+  ÉCHEC  B2 · la coche « Les élèves ont écrit le bilan » n’est plus sur le bilan — ☐ Les élèves ont écrit le bilan
+  ÉCHEC  B3 · du bilan à la mise en commun par ▶ : sans gel, sans garde — Fin d'heure · gel false · garde false
+  ÉCHEC  B4 · au tableau : « Mise en commun du bilan » et la question du bilan, reprise d’elle-même — FIN D'HEURE
+  ÉCHEC  B5 · la coche d’attestation est sur la mise en commun — (cachée)
+  ÉCHEC  B6 · 🅱️ sorti dans la ligne du bas avec son compteur, le compteur au tableau — (caché) · tableau «  »
+  [B7.1] pas de ligne libre
+  [B7.2] pas de ligne libre
+  ÉCHEC  B7 · deux réponses validées, chacune avec son élève — []
+  ÉCHEC  B9 · un passage glissé à la souris, Alt + B : la liste numérotée des quatre points — « false » · 
+  ok     B10 · la liste au pilotage seulement, jamais au tableau
+  ÉCHEC  B11 · Échap : la liste se ferme, rien ne change — (caché)
+  ÉCHEC  B12 · le chiffre 1 : le passage marqué B, pastille 1, au pilotage et au tableau —  · tableau 
+  ÉCHEC  B13 · le compteur : 🅱️ 1/4 au pilotage, 1 / 4 au tableau — (caché) · 
+  ÉCHEC  B! · la partie B a levé — page.evaluate: TypeError: Cannot read properties of undefined (reading '0')
+    at eval (eval at evaluate (:311:30), <anonymous>:1:26)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at partieB (/tmp/claude-0/-home-claude/5386bee0-0c20-5c03-b624-b1f4dfc9a259/scratchpad/wt-s/LIVRAISONS/DEROULE-01-11/BILAN/sonde-bilan.mjs:346:27)
+    at asyn
+
+--- fin : 13 vérifications, 12 échec(s)

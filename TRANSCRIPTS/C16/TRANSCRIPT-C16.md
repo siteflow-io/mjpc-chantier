@@ -4797,3 +4797,32 @@ MEMO
   >
   > MEMO
 - **14:28 — S6, dernier mot** : rien de nouveau (sa surveillance s'est arrêtée après coup ; mêmes résultats, même commit `048be4d1f`).
+- **15:56 — le banc complet du bilan est VERT** (`048be4d1f`, assemblé `23eed7cf`, 14:20 → 15:56) : contrôles 106/0, parcours, séance 105/0, appel 155/0, fin d'heure 56/0, frappe 14/0, retour sûr 61/0, R base/cand ×3 (8/0), case 34/0, corriger 19/0, récit 6/0, gel 4/0, Relecture, bilan 60/0, bilan en répétition 37/0 ; aucun échec dans aucune sortie.
+- **15:56 — candidat 8.87.0-⑳** (`scratchpad/promo-8870/index.html`) : l'assemblé `23eed7cf` avec la seule ligne de version changée (vérifié) ; md5 `16569d87666acb7fb623a1b2b0e55631`, 3 136 807 o.
+- **15:57 — message à Paul, mot pour mot :**
+
+  > 835. Le banc complet est vert, sans témoin, de 14:20 à 15:56, sur le fichier corrigé : les contrôles 106/106, le parcours, la séance 105/105, l'appel 155/155, la fin d'heure 56/56, la frappe au tableau 14/14, le retour sûr 61/61, la session trois fois avant et après, la case des initiales 34/34, corriger après l'heure 19/19, le récit, le gel, la Relecture, et le bilan : 60/60 en vraie heure et en mode test, 37/37 en répétition. Aucun échec.
+  >
+  > 836. Le candidat est la 8.87.0-⑳. C'est la 8.86.0-⑲ en ligne, plus la mise en commun du bilan, c'est-à-dire tout ce que tu as dit de 09:51 à 10:37. Rien d'autre.
+  >
+  > 837. Ce que je ne sais pas : comment ça se passe sur ton ordi distant en Win + K au vidéoprojecteur, et avec ta vraie séance des 3e. Les points de Alt + B viennent de la liste « À mettre dans le bilan » de ta diapo du bilan : je ne sais pas si celle de demain en a une. Le test 2 ci-dessous le montre.
+  >
+  > 838. Tu peux dire « promeus ». Après, dans le même tour : la mise en ligne, la vérification bit à bit, le journal, le registre, le point de retour et l'adresse.
+  >
+  > À tester (après la mise en ligne, en mode test, pas pendant un cours), à l'adresse https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.87.0 :
+  > 1. La version affichée est 8.87.0-⑳.
+  > 2. Ta séance de demain des 3e en mode test : après « Le bilan » vient « Mise en commun du bilan », avec la question du bilan ; sur la diapo du bilan, la liste « À mettre dans le bilan ».
+  > 3. Du bilan à la mise en commun : pas de gel.
+  > 4. Tape deux ou trois réponses d'élèves.
+  > 5. Sélectionne un mot-clé, Alt + B : la liste numérotée des points ; tape le chiffre ou clique : le mot devient or avec sa pastille verte ; le compteur passe à 1 au pilotage et au tableau.
+  > 6. Alt + B puis Échap : rien ne change. Alt + B puis 0 sur un mot marqué : la marque part. « Annuler » : elle revient.
+  > 7. « … » puis 🅱️ : la diapo des consignes au tableau et au pilotage, les points marqués cochés, avec leur marque, leur pastille et le compteur. 🅱️ ou Échap : retour à la mise en commun, à ta ligne.
+  > 8. Marque tous les points : « Les élèves ont écrit le bilan » se coche tout seul.
+  > 9. Tape beaucoup de réponses : la page suivante vient seule, sans gel.
+  > 10. Clos l'heure de test ; dans la Relecture, les marques sont là.
+  >
+  > 05/11/2026 15:57
+  >
+  > À jouer : « promeus » (838) ; ta réponse à 833 si tu veux le compteur comme le dessin · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

@@ -4458,3 +4458,27 @@ MEMO
   > À jouer : ta réponse à 784 ; 666 ; 534 (le test 2) ; tes réponses à 768 (la diapo en grand) et 770 (645) · en cours : rien · ouvert : ce qui manque à Q (777, 778), R, la phrase de 772, le banc et la promotion (721, P, Q, R) ; 731, 644 ; moins urgent : 783
   >
   > MEMO
+- **09:00 — Paul, mot pour mot :**
+
+  > ok. pour 784. 666 à fermer, c'est oui. 534. Le récit semble correct, à la seule différence qu'il y a des répétitions de 'au milieu de l'heure', "à la fin de l'heure". ces trois temps ne doivent apparaître qu'une fois chacun: au début, au milieu, à la fin. C'est tout. La fin doit être vraiment la toute fin, les 10 dernières minutes. Donc la phrase en bleu. 768. oui, le prénom corrigé dans la diapo en grand, et d'ailleurs il faut que je puisse télécharger un html des diapos jouées pendant une heure (la copie de classe). à mettre au registre pour plus tard. Ce html me servira à le mettre en pièce jointe sur école directe, comme ça les élèves pourront voir en direct ce qu'on a fait en classe. 770. Pour moi ça y est, le lag est correct. 772. cette phrase apparaît dans l'infobulle?. 731 ok mais caché dans les ... c'est un réglage occasionnel. Ceci dit là je viens de retester sur mon ordi distant (qui projette lui en win k au vidéo proj) et la fenetre semble bien redimensionnable cette fois ci. Tu l'as fait le 731 en fait? 644. à faire la semaine prochaine, pour l'instant je m'en débrouille. D'ailleurs ce cahier de texte il lui faudra un journal à lui, consultable au fil des séances (un onglet dans la relecture, à coté de "le chapitre") pour voir le travail donné au fur et à mesure et si le prévu a bien été fait, et voir ce qui a été ajouté. à consigner au registre en moins urgent. 783. oui à faire après ma réinitialisation de samedi (première chose à planifier pour samedi 22H30). Je viens de répondre à tout ton "à jouer" de fin de message.
+
+- **09:02 — registre** (prod `0208c89` et suivant) : 534 (les trois temps), 768, le HTML des diapos jouées, le journal du cahier de textes, 731 ; ⑯ fermé. **Tâche planifiée** pour le 07/11 à 22:30 (dans cette session) : le récit (783, 534, 782), puis la suite.
+- **09:02 — message à Paul, mot pour mot :**
+
+  > 785. 784 : ta règle de 534 (au début, au milieu, à la fin, une fois chacun ; la fin = les 10 dernières minutes) change le même morceau du récit que 782 et 783. Plutôt que le micro maintenant puis une reprise samedi, je réunis les trois en un seul mandat samedi à 22:30 : une seule preuve, une seule mise en ligne, moins d'usage. C'est planifié. Si tu veux quand même le micro avant, dis-le.
+  >
+  > 786. 772 : la phrase n'est pas dans une infobulle : elle est dans la fenêtre « Le tableau sur un autre appareil », qu'ouvre « Adresse du tableau ». C'est là que la nouvelle phrase ira.
+  >
+  > 787. 731 : non, je n'ai rien changé. Ce qui est mesuré : chaque clic ou chaque touche sur la page du tableau redemande le plein écran ; si tu redimensionnes sans cliquer dans la page, ça tient. Le réglage « le tableau déborde : réduire » ira dans le menu « … », comme tu dis.
+  >
+  > 788. Au registre : 666 fermé ; ⑯ (le lag) fermé ; 768, le prénom corrigé dans la diapo en grand ; le HTML des diapos jouées d'une heure, pour École Directe (pour plus tard) ; le journal du cahier de textes, un onglet à côté de « Le chapitre » (moins urgent) ; 644 la semaine prochaine.
+  >
+  > 789. Samedi 22:30, dans l'ordre : le récit (783, 534, 782) ; puis 768, la phrase de 772, ce qui manque à Q, R, 731 ; puis le banc et la demande de « promeus ». D'ici là, rien ne tourne.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:02
+  >
+  > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 768, 772, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

@@ -5113,3 +5113,21 @@ MEMO
   >
   > MEMO
 - **22:38 — Paul, mot pour mot :** « Je ne sais pas. Par ailleurs, promeus si le banc est vert. Réponds d'abord à ma question: si je ne finis pas la séance 2 commencée dans la foulée, à t-5 j'ai bien le flux classique? Et je peux à nouveau reporter les diapos restantes et les activités suivantes? »
+- **22:39 — sorties de V2 relues** (`deroule/enchainer` `9e60faa55`, `v2-vh-deux-heures.txt`) : la séance 2 close avec 10 diapos reportées ; « la case suivante : la séance 2 qui continue — 2026-09-15 · … heure 2/3 » ; l'alerte des 5 minutes pas jouée pour la séance enchaînée. **Ajout à V3** (par message) : la fin d'heure de la séance enchaînée pas finie (alerte des 5 minutes, cahier de textes, panneau, reporter les diapos restantes et les activités suivantes), comparée à une heure ordinaire, en vraie heure et en mode test.
+- **22:39 — message à Paul, mot pour mot :**
+
+  > 883. Reporter : oui, c'est mesuré. Dans la preuve, la séance 2 enchaînée est close avec ses 10 diapos non faites reportées, et la case suivante continue la séance 2 (heure 2 sur 3). C'est le flux de fin d'heure habituel : la séance 2 enchaînée est une heure ordinaire, qui finit à la fin du même créneau.
+  >
+  > 884. À 5 minutes de la fin : ce n'est pas mesuré pour la séance enchaînée. Elle finit comme une heure normale, donc je m'attends au flux classique (l'alerte des 5 minutes, « Préparer le cahier de textes », le panneau de fin d'heure), mais je ne le sais pas. L'exécutant en cours le vérifie maintenant par le geste, en vraie heure et en mode test : la séance 2 pas finie, l'alerte à 5 minutes, puis le report des diapos restantes et des activités suivantes, comparé à une heure ordinaire.
+  >
+  > 885. « Promeus si le banc est vert » : noté. Quand l'exécutant aura fini (la répétition et 884), je lance le banc court. S'il est vert, je mets la 8.89.0-㉒ en ligne cette nuit, avec la vérification bit à bit et les documents, et tu fais les tests demain matin avant ton cours. S'il est rouge, rien ne part, et tu passes par la répétition (863).
+  >
+  > 886. Pour 882 (la case qui dit « heure 2/2 » alors que le pilotage prévoit une troisième heure) : le premier test de demain matin le montrera. Si le bouton paraît sur la dernière diapo de ta séance 1 en mode test, tu n'es pas touché.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 22:39
+  >
+  > À jouer : 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : la répétition et la fin d'heure de la séance enchaînée (V3), puis le banc court, puis la mise en ligne si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

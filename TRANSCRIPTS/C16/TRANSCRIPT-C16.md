@@ -4840,3 +4840,28 @@ MEMO
   >
   > MEMO
 - **16:13 — Paul, mot pour mot :** « C'est très bien. Promeus »
+- **16:13:54 — mis en ligne** : prod `637ef5a`, blob `dc244ac63073`, md5 `16569d87666acb7fb623a1b2b0e55631`, 3 136 807 o. **16:15:33 — bit à bit** à l'adresse publique.
+- **16:17 — docs** (prod `4883a1f`) : journal, registre ✔ (la diapo après le bilan ; l'écart de la diapo des consignes), point de retour (blob `fd0281793b9e`, la 8.86.0-⑲), index des fonctions (2 450), où trouver quoi, l'adresse avec `&v=8.87.0`. Public encore bit à bit à 16:17 (16569d87).
+- **16:17 — message à Paul, mot pour mot :**
+
+  > 840. La 8.87.0-⑳ est en ligne : l'adresse publique rend le fichier bit à bit depuis 16:15:33 (vérifié encore à 16:17). Le journal, le registre (deux ✔), le point de retour (la 8.86.0-⑲), l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 841. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.87.0
+  >
+  > À tester (avant demain, en mode test, pas pendant un cours) :
+  > 1. La version affichée est 8.87.0-⑳.
+  > 2. Ta séance de demain des 3e en mode test : après « Le bilan » vient « Mise en commun du bilan », avec la question du bilan ; sur la diapo du bilan, la liste « À mettre dans le bilan ».
+  > 3. Du bilan à la mise en commun : pas de gel.
+  > 4. Tape deux ou trois réponses d'élèves.
+  > 5. Sélectionne un mot-clé, Alt + B : la liste numérotée des points ; tape le chiffre ou clique : le mot devient or avec sa pastille verte ; le compteur passe à 1 au pilotage et au tableau.
+  > 6. Alt + B puis Échap : rien ne change. Alt + B puis 0 sur un mot marqué : la marque part. « Annuler » : elle revient.
+  > 7. « … » puis 🅱️ : la diapo des consignes au tableau et au pilotage, les points marqués cochés, avec leur marque, leur pastille et le compteur. 🅱️ ou Échap : retour à la mise en commun, à ta ligne.
+  > 8. Marque tous les points : « Les élèves ont écrit le bilan » se coche tout seul.
+  > 9. Tape beaucoup de réponses : la page suivante vient seule, sans gel.
+  > 10. Clos l'heure de test ; dans la Relecture, les marques sont là.
+  >
+  > 05/11/2026 16:17
+  >
+  > À jouer : les dix tests, avant demain · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

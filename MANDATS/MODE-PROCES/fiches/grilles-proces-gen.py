@@ -8,19 +8,33 @@ OUT = os.path.dirname(os.path.abspath(__file__))
 FONTS = "/tmp/claude-0/-home-claude/bba5caa8-ef11-5d6d-b339-0c3da0ce644c/scratchpad/banc/node_modules/@fontsource/eb-garamond/files/"
 
 CAMPS = {
-    "Hugo":   {1: "L", 2: "L", 3: "L", 4: "O", 5: "L", 6: "L", 7: "O", 8: "O", 9: "O", 10: "O"},
+    # Hugo 6 à 10 : Paul ne connaît plus leurs numéros (5/11) ; camp laissé en blanc
+    "Hugo":   {1: "L", 2: "L", 3: "L", 4: "O", 5: "L", 6: None, 7: None, 8: None, 9: None, 10: None},
     "Turing": {1: "L", 2: "O", 3: "L", 4: "O", 5: "L", 6: "O", 7: "O", 8: "O", 9: "L", 10: "L"},
 }
-CAMP_MOT = {"L": "Défense", "O": "Accusation"}
+CAMP_MOT = {"L": "Défense", "O": "Accusation", None: "Camp : …………"}
 
-def groupes(fichier):
+AUTO = {}
+def groupes(fichier, classe):
     d = json.load(open(UP + fichier, encoding="utf-8"))
-    return {g["numero"]: [e["prenom"] for e in g["eleves"]] for g in d["groupes"]}
+    for g in d["groupes"]:
+        for el in g["eleves"]:
+            AUTO[(classe, el["prenom"])] = None if el.get("absent") else el.get("autonomie")
+    return {g["numero"]: [el["prenom"] for el in g["eleves"]] for g in d["groupes"]}
+
+def point_autonomie(niveau):
+    # niveau 3 ou 4 : 1 point ; 2 : 0,5 ; 1 ou 0 : 0 (point 154, 4/11)
+    if niveau is None: return None
+    return "1" if niveau >= 3 else ("0,5" if niveau == 2 else "0")
 
 G = {
-    "Turing": groupes("Point-groupes-4e-Turing-2026-10-13-11h19.json"),
-    "Hugo": groupes("Point-groupes-4e-Hugo-2026-10-14-08h09.json"),
+    "Turing": groupes("Point-groupes-4e-Turing-2026-10-13-11h19.json", "Turing"),
+    "Hugo": groupes("Point-groupes-4e-Hugo-2026-10-14-08h09.json", "Hugo"),
 }
+# Hugo, groupes 6 à 10 : donnés de tête par Paul le 5/11 (09:29 et 09:33), numérotés dans son ordre
+for n, noms in zip(range(6, 11), [["Amauri", "Jules P.", "Gabin"], ["Anna", "Elya", "Candice"],
+                                   ["Axel", "Nawel", "Lucas"], ["Evan", "Maël", "Nolan"], ["Camille", "Jules G.", "Tom"]]):
+    G["Hugo"][n] = noms
 LISTE_HUGO = ['Adèle','Amauri','Anna','Avah','Axel','Camille','Candice','Chloé','Elya','Evan','Gabin','Heidi',
               'Hortense','Jules G.','Jules P.','Lisa B.','Lisa O.','Lola','Lou','Lucas','Maël','Mélinda','Nawel',
               'Nina','Nolan','Philippine','Thais','Tom','Zoé','Zélie']
@@ -47,10 +61,10 @@ DOSSIER = [
     ("", "Au moins deux preuves (P) sont complètes."),
     ("", "La n°3 a son tableau rempli : trois arguments, leurs preuves, leurs connecteurs."),
     ("", "La n°3 a ses trois cases de vérification cochées."),
-    ("Tenue du dossier", "La carte du parcours (page 6) est cochée."),
-    ("", "Toutes les pièces faites sont dans l’enveloppe."),
+    ("Tenue du dossier", "Toutes les pièces faites sont dans l’enveloppe."),
     ("Niveau général", "Langue"),
     ("", "Qualité des réponses"),
+    ("Point en classe", "Autonomie de chacun"),
 ]
 
 def e(s): return html.escape(s)
@@ -94,7 +108,7 @@ def page_oral(classe):
     ent2 = "".join(f'<th class="c">{i+1}<br><span>{e(o[1])}</span></th>' for i, o in enumerate(ORAL))
     legende = " · ".join(f"<b>{i+1}</b> {e(o[2])}" for i, o in enumerate(ORAL))
     np = ""
-    if classe == "Hugo":
+    if classe == "Hugo" and NON_PLACES_HUGO:
         np = (f'<p class="np">Groupes 6 à 10 à compléter. Élèves à placer : '
               f'{e(", ".join(NON_PLACES_HUGO))}.</p>')
     return f"""<section class="page">
@@ -108,19 +122,29 @@ def fiche_dossier(classe, n):
     camps = CAMPS[classe]
     noms = G[classe].get(n)
     noms_txt = e(", ".join(noms)) if noms else "……………………………………………………………………"
+    ROWSPAN = {"Pièces": 6, "Tenue du dossier": 1, "Niveau général": 2, "Point en classe": 1}
+    NIV = '<span class="niv">☐ 0</span><span class="niv">☐ 0,5</span><span class="niv">☐ 1</span>'
     lignes = []
     for i, (bloc, fait) in enumerate(DOSSIER):
-        b = f'<td class="bloc" rowspan="{6 if bloc=="Pièces" else 2}">{bloc}</td>' if bloc else ""
-        if i >= 8:
-            niv = '<span class="niv">☐ 0</span><span class="niv">☐ 0,5</span><span class="niv">☐ 1</span>'
-            lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait"><b class="lab">{e(fait)}</b>{niv}</td><td class="pt"></td></tr>')
+        b = f'<td class="bloc" rowspan="{ROWSPAN[bloc]}">{bloc}</td>' if bloc else ""
+        if bloc == "Point en classe":
+            elts = []
+            for nom in (noms or ["…………", "…………", "…………"]):
+                pt = point_autonomie(AUTO.get((classe, nom)))
+                elts.append(f'<span class="el"><b>{e(nom)}</b> {pt}</span>' if pt is not None
+                            else f'<span class="el"><b>{e(nom)}</b> ☐ 0 ☐ 0,5 ☐ 1</span>')
+            lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait"><b class="lab">{e(fait)}</b><br>{"".join(elts)}</td><td class="pt">par élève</td></tr>')
+        elif i >= 7:
+            lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait"><b class="lab">{e(fait)}</b>{NIV}</td><td class="pt"></td></tr>')
         else:
             lignes.append(f'<tr>{b}<td class="n">{i+1}</td><td class="fait">{e(fait)}</td><td class="pt"></td></tr>')
+    notes = "".join(f'<span class="nel">{e(nom)} : ……… / 10</span>' for nom in (noms or ["…………", "…………", "…………"]))
     return f"""<div class="fiche">
-<div class="tete"><h1>Paris à la barre — le dossier</h1><div class="note">……… / 10</div></div>
+<div class="tete"><h1>Paris à la barre — le dossier</h1><div class="note">Groupe ……… / 9</div></div>
 <p class="id"><b>4e {classe} · groupe {n}</b> · {CAMP_MOT[camps[n]]} · {noms_txt}</p>
 <table class="dos"><thead><tr><th></th><th></th><th class="fait">Ce qui est vérifié</th><th class="pt">Points</th></tr></thead>
 <tbody>{''.join(lignes)}</tbody></table>
+<p class="notes">{notes}</p>
 </div>"""
 
 def doc_oral():
@@ -160,6 +184,9 @@ def doc_dossier():
 .note{font-size:15pt;font-weight:700}
 .id{font-size:11pt;margin-bottom:1mm}
 .lab{display:inline-block;width:42mm}
+.el{display:inline-block;margin-right:7mm;margin-top:1mm}
+.notes{margin-top:3mm;font-size:11pt}
+.nel{display:inline-block;margin-right:9mm}
 .niv{display:inline-block;width:22mm;font-size:11pt}
 .id{margin-bottom:2.5mm !important}
 table.dos{font-size:10.5pt}
@@ -177,5 +204,7 @@ th.pt,td.pt{width:13mm;text-align:center}
 
 open(os.path.join(OUT, "grille-oral-plaidoirie-4e.html"), "w", encoding="utf-8").write(doc_oral())
 open(os.path.join(OUT, "fiches-dossier-4e.html"), "w", encoding="utf-8").write(doc_dossier())
-print("Hugo non placés :", NON_PLACES_HUGO, len(NON_PLACES_HUGO))
+places = {p for g in G["Hugo"].values() for p in g}
+print("Hugo non placés :", [p for p in LISTE_HUGO if p not in places])
+print("Sans niveau :", sorted(k for k in [(c, p) for c in G for g in G[c].values() for p in g] if AUTO.get(k) is None))
 print("Turing :", sum(len(v) for v in G["Turing"].values()), "élèves ; Hugo placés :", len(places))

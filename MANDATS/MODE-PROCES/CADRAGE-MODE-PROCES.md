@@ -371,3 +371,13 @@ Paul a joint ensuite (18:52 et 19:26) : les copies de secours de l'autre Chrome 
 Turing 10, 3, 1, 4 le 15/10), deux exports Turing du 12/10 (l'un vide, l'autre avec le seul groupe 3,
 jamais clos) et les copies de secours du QCM des Turing du 15/10. Aucun ne contient les groupes 6 à 10
 des Hugo ni l'autonomie du groupe 2 des Turing.
+
+**Les groupes 6 à 10 des Hugo et le point d'autonomie (5/11, 09:29-09:33).** Paul : « c'est perdu.
+Pour la composition je la connais, mais je ne sais plus leurs numéros. » Groupes donnés de tête,
+numérotés 6 à 10 dans son ordre, camp laissé en blanc : Amauri, Jules P., Gabin · Anna, Elya,
+Candice · Axel, Nawel, Lucas · Evan, Maël, Nolan · Camille, Jules G., Tom (Tom déduit : seul élève
+restant). Points 154 et 155 appliqués (Paul s'est engagé à donner les niveaux de tête) : la case
+« carte du parcours » est remplacée par « Autonomie de chacun » (point en classe), sur 1, par élève,
+pré-remplie depuis les fichiers du point (3 ou 4 = 1 ; 2 = 0,5) ; sans niveau, cases ☐ 0 ☐ 0,5 ☐ 1
+pour les 15 Hugo des groupes 6 à 10, Lylou, Bellynda, Margaux et Pauline. Fiche : groupe /9, puis
+une note sur 10 par élève.

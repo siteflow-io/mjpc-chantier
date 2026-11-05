@@ -5151,3 +5151,18 @@ MEMO
 - **23:01 — incident** : une heure estimée à la main au transcript (« 22:50 environ ») ; corrigée par la durée rendue (2 223 s depuis le lancement de 22:23).
 - **23:18 — l'exécutant V4 rend son travail** (23:01 → 23:18) : `deroule/enchainer` `14cc6d0db`, assemblé `f1840ad7` (`dr-socle.js`, `dr-classe.js`). En mode test, l'horloge de la case : 09:22:29 avant le clic, 09:22:31 après (base : 08:57:00) ; l'alerte des 5 minutes à 09:42:02 comme une heure ordinaire (base : 1 533 s trop tard). Rejoués : une heure vh 27/27, test 29/29 ; deux heures 27/27, 29/29 ; répétition 12/12 ; témoin 12/12 ; T-5 vh 22/22, test 24/24 ; parcours vert. Erreurs du mandat signalées : l'alerte tombe 5 minutes avant le cahier de textes (09:47), pas avant la fin du créneau — pareil pour une heure ordinaire ; une heure rattrapée puis enchaînée revient au début du créneau (pas réglé, pas mesuré). Pas mesuré : la réouverture de la page pendant la séance enchaînée.
 - **23:19 — mandat V5** (sas `5c57f95f8`) lancé : rouvrir la page pendant la séance enchaînée. **Registre** (prod `14f8896`) : l'heure rattrapée puis enchaînée, pour samedi.
+- **23:33 — l'exécutant V5 rend son travail** (23:19 → 23:33 ; 870 s) : `447fd83f5` (sonde, `MJPC_ROUV=1`, NOTE-V5) ; site inchangé (`f1840ad7`). Vraie heure : la séance 2 enchaînée, deux réponses, une ligne dévoilée, l'onglet fermé puis rouvert, la case, « ▶ Reprendre l'heure » : rien de repris, 2 erreurs « reading 'ecrans' » ; 23/34. Ce qui va : la case, le tableau, la séance 1 intacte. Erreurs du mandat signalées : le mode test ne se reprend pas après fermeture (lu dans le code, toute heure) ; l'horloge de la case est celle de la classe d'essai ; le geste est « ▶ Reprendre l'heure ».
+- **23:34 — mandat V6** (sas `cce1e84f8`) lancé. **Registre** (prod `a626121`) : le mode test qui ne se reprend pas, à décider par Paul.
+- **23:34 — message à Paul, mot pour mot :**
+
+  > 893. La vérification 891 a trouvé un vrai défaut, mesuré par le geste en vraie heure. Pendant la séance enchaînée, si tu fermes la page puis cliques « ▶ Reprendre l'heure » dans la case, le pilotage ne reprend rien : aucune diapo, et les réponses tapées n'apparaissent pas. Ça ne va pas. Ce qui va : la séance 1 reste close et intacte, la case dit les deux séances, et le tableau reste sur la séance 2. Ma supposition, pas encore vérifiée : la reprise prend la première heure du créneau (la séance 1, close) au lieu de celle qui tourne. Un sixième exécutant compare avec une heure ordinaire et corrige, en 30 minutes au plus. Tant que ce n'est pas réglé, rien ne part en ligne.
+  >
+  > 894. Mis au registre, à toi de décider samedi : en mode test, une heure ne se reprend pas après fermeture de la page, pour toute heure. Ce qui est joué en mode test n'est gardé qu'en mémoire, et la page rouverte n'est plus en mode test.
+  >
+  > À tester : les cinq tests de la 8.88.0-㉑ (861).
+  >
+  > 05/11/2026 23:34
+  >
+  > À jouer : 894 (samedi) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : reprendre l'heure enchaînée (V6), puis le banc court, puis la mise en ligne 8.89.0-㉒ si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

@@ -5049,3 +5049,4 @@ MEMO
   > À jouer : 866 à 868 avec 871 (valider ou corriger) ; 873 (me dire quand Chrome est ouvert) ; 870 (« promeus si le banc est vert », ou après tes tests) ; les cinq tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **20:56 — Paul, mot pour mot :** « Ok. Laisse tomber 873. »

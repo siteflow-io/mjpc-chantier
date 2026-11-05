@@ -4439,3 +4439,22 @@ MEMO
   > À jouer : 666 ; 534 (le test 2) ; tes réponses à 768 (la diapo en grand) et 770 (645) · en cours : rien · ouvert : ce qui manque à Q (777, 778), R, la phrase de 772, le banc et la promotion (721, P, Q, R) ; 731, 644 ; moins urgent : la fin du récit (779-781)
   >
   > MEMO
+- **08:40 — Paul, mot pour mot :**
+
+  > ok la correction peut se faire en micro?
+
+- **08:40 — message à Paul, mot pour mot :**
+
+  > 782. « on a continué » sans rien de nouveau : oui, c'est un micro. Une seule condition à changer : le paragraphe ne vient que si une diapo nouvelle a été vue dans cette tranche. Je le fais moi-même, sans exécutant, sur la 8.86.0-⑲ en ligne ; la preuve : la sonde du récit, plus un cas compté (une réponse tapée en fin d'heure sans diapo nouvelle : plus de « on a continué »).
+  >
+  > 783. « Et on l'a terminée. » : non, pas un micro. Il faut que le récit retrouve, dans le journal de l'heure, ce que la classe avait vu à la fin de cette heure-là, au lieu de ce qu'elle a vu à ce jour. C'est un mandat court, avec une preuve par le geste (une activité reportée puis finie l'heure suivante).
+  >
+  > 784. Avec ton usage : le micro de 782 maintenant, si tu dis oui (en 8.86.1-⑲-micro, mis en ligne sur ton « promeus », jamais pendant tes heures de cours) ; 783 quand ton usage repart.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 08:40
+  >
+  > À jouer : ta réponse à 784 ; 666 ; 534 (le test 2) ; tes réponses à 768 (la diapo en grand) et 770 (645) · en cours : rien · ouvert : ce qui manque à Q (777, 778), R, la phrase de 772, le banc et la promotion (721, P, Q, R) ; 731, 644 ; moins urgent : 783
+  >
+  > MEMO

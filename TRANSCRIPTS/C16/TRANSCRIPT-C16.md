@@ -4354,3 +4354,22 @@ MEMO
   >
   > MEMO
 - **07:20 — mandat N** (639 : l'audit d'« une autre séance… »), 20 minutes au plus, puis lancé.
+- **07:25 — l'exécutant N rend son travail** : sas `mesure/autre-seance` `e13df3cb6` (NOTE, sonde, sorties ; le vrai code appelé dans la page, sans réseau, sans clic ; aucune ligne du site changée). Une séance est finie quand ses heures prévues sont jouées et que la dernière n'a rien reporté (18742-18755), quel que soit l'ordre ; la file = les séances non finies dans l'ordre du chapitre (18814) ; une case à venir prend la tête de la file (18959-18965). La séance 4 jouée à la place de la 1 : les cases donnent ensuite 1, 2, 3, 5 ; la 1 jamais marquée « non jouée ». Télescopages : une 4 pas finie voit sa suite rangée après la 3 ; « Où en sommes-nous ? » lit la séance d'avant dans l'ordre (dr-recit.js 588) ; le lancement transmet le numéro d'heure de la case (19565 ; lu, pas joué). L'existant : `edtLancer` (19539-19566) et `dr_lancer` lancent déjà n'importe quelle séance ; le rattrapage ㊷ ; la répétition ; « Préparer ». Non mesurés : la preuve par le geste ; l'échéance du travail à faire ; les numéros d'alors.
+- **07:25 — mandat O** (645 : la mesure du retard du tableau), 20 minutes au plus, puis lancé.
+- **07:25 — message à Paul, mot pour mot :**
+
+  > 762. 639 mesuré (dans le code, au faux hub, sans clic) : ce que tu craignais n'arrive pas. Jouer la séance 4 à la place de la 1 ne marque jamais la 1 « non jouée » ni « non faite » : elle reste en tête des séances à jouer, et la case suivante la propose. Une séance est finie quand ses heures sont jouées sans rien reporté, dans n'importe quel ordre. Et le lancement sait déjà lancer n'importe quelle séance ; seul le choix manque dans la case.
+  >
+  > 763. Deux télescopages mesurés : si la séance jouée hors de l'ordre n'est pas finie (deux heures, ou une diapo reportée), sa suite ne vient pas à la case suivante : elle est rangée après la séance 3 ; et « Où en sommes-nous ? » d'une séance jouée hors de l'ordre lit la séance d'avant dans l'ordre (la 3, jamais jouée), pas ce que la classe a vraiment fait la dernière fois.
+  >
+  > 764. Ce que je propose : dans la case, sous « ▶ Ouvrir le pilotage et lancer », un lien « une autre séance… » qui liste les séances du chapitre avec leur état (finie, commencée, à jouer) ; celle que tu choisis se lance comme une vraie heure. Une séance commencée et pas finie passe en tête : la case suivante la continue, là où tu t'es arrêté (ta règle du 03/11). « Où en sommes-nous ? » lit la dernière heure que la classe a vraiment jouée, quel que soit son numéro ; quand on joue dans l'ordre, rien ne change. Sans réponse de ta part, je le fais ainsi, prouvé par le geste, et je te le montre en captures avant la promotion.
+  >
+  > 765. Pendant ce temps : la mesure du retard du tableau (645), geste par geste, sans rien changer.
+  >
+  > À tester, quand tu peux et hors de la classe : les cinq tests de 749.
+  >
+  > 05/11/2026 07:25
+  >
+  > À jouer : les cinq tests de 749 et 617 ; 666 ; 534 (le test 2) ; ta réponse à 760 · en cours : la mesure de 645 · ouvert : 639 (764), 731 (une capture), 644 (l'audit) ; 721 prêt pour la prochaine promotion
+  >
+  > MEMO

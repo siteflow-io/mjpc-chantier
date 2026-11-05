@@ -4373,3 +4373,8 @@ MEMO
   > À jouer : les cinq tests de 749 et 617 ; 666 ; 534 (le test 2) ; ta réponse à 760 · en cours : la mesure de 645 · ouvert : 639 (764), 731 (une capture), 644 (l'audit) ; 721 prêt pour la prochaine promotion
   >
   > MEMO
+- **07:35 — Paul, mot pour mot (une vidéo jointe, 68 s, sans son : la Relecture des 3 FRANKLIN, « Le chapitre », le récit, une diapo en grand, la fenêtre « Adresse du tableau » ; regardée en 12 images) :**
+
+  > oui pour 764 et 759 ok ça me va. Ce qu'il faudrait c'est des informations supplémentaires sur la session qui a le tableau au moment où je veux le prendre pour une vraie séance, car ça me permettrait de savoir de quelle session il s'agit (des infos telles que le type de session lancée, à quelle heure, quel jour, sur quelle séance et quelle classe, etc). pour les cinq tests, voici déjà celui du récit. J'ai corrigé les noms d'élèves, c'est bon. dans ma capture vidéo, tu verras aussi que je te montre les 4 boutons en haut à droite qui n'ont en fait rien à faire dans la relecture (la vue tableau, qui génère d'ailleurs peut-être une des prises du tableau? ) . pour la rédaction du récit, il reste encore une amélioration sur la fin (répétition on a continué l'activité etc). ce point est à mettre dans la liste des dettes avec le "moins urgent".
+
+- **07:38 — registre** (prod `109dd1f`) : les quatre boutons de la Relecture ; la fin du récit qui se répète (moins urgent). **Mandats P** (la Relecture sans les quatre boutons ; la vue tableau n'écrit rien), **Q** (640, 759 et les informations sur la session qui tient le tableau), **R** (639, 764), sur une seule branche `deroule/suite` ; lancés l'un après l'autre, après la mesure de 645 en cours.

@@ -4378,3 +4378,18 @@ MEMO
   > oui pour 764 et 759 ok ça me va. Ce qu'il faudrait c'est des informations supplémentaires sur la session qui a le tableau au moment où je veux le prendre pour une vraie séance, car ça me permettrait de savoir de quelle session il s'agit (des infos telles que le type de session lancée, à quelle heure, quel jour, sur quelle séance et quelle classe, etc). pour les cinq tests, voici déjà celui du récit. J'ai corrigé les noms d'élèves, c'est bon. dans ma capture vidéo, tu verras aussi que je te montre les 4 boutons en haut à droite qui n'ont en fait rien à faire dans la relecture (la vue tableau, qui génère d'ailleurs peut-être une des prises du tableau? ) . pour la rédaction du récit, il reste encore une amélioration sur la fin (répétition on a continué l'activité etc). ce point est à mettre dans la liste des dettes avec le "moins urgent".
 
 - **07:38 — registre** (prod `109dd1f`) : les quatre boutons de la Relecture ; la fin du récit qui se répète (moins urgent). **Mandats P** (la Relecture sans les quatre boutons ; la vue tableau n'écrit rien), **Q** (640, 759 et les informations sur la session qui tient le tableau), **R** (639, 764), sur une seule branche `deroule/suite` ; lancés l'un après l'autre, après la mesure de 645 en cours.
+- **07:38 — message à Paul, mot pour mot :**
+
+  > 766. Test 1 noté : le récit des Franklin va, les noms corrigés par toi. Au registre : les quatre boutons du haut à droite dans la Relecture ; la fin du récit qui se répète (« on a continué l'activité… »), avec « moins urgent ».
+  >
+  > 767. Dans l'ordre, un exécutant à la fois, sur une seule branche pour une seule promotion : P, la Relecture sans « Ce que voit la classe », « Ouvrir le tableau », « Adresse du tableau », « Fin de l'heure » ; il mesure d'abord si la vue tableau écrit au hub ou prend le tableau (une mesure de cette nuit l'a vue écrire, alors que le site dit « Il n'écrit jamais rien ») ; puis Q, 759 avec ce que tu demandes : le refus dit le type de session, la classe, la séance, le jour et l'heure du lancement, depuis combien de temps, et la diapo où elle en est ; puis R, 764. Ils partent dès que la mesure du retard du tableau (645) a fini.
+  >
+  > 768. Deux choses vues dans ta vidéo, sans rien changer : la question de la diapo du groupe 1, dans la copie des Franklin, contient encore « BLOC 1 · QUESTION · 1 ÉLÉM » (le texte sali de 633 ; « À régler » le signale, tu peux l'effacer dans la diapo) ; et dans la diapo en grand, les réponses que tu as corrigées gardent les initiales tapées en classe (ELF, MBMAR, NL), parce que la correction ne réécrit pas les diapos (581). Veux-tu que la diapo en grand montre le prénom corrigé ?
+  >
+  > À tester, quand tu peux et hors de la classe : les tests 2 à 5 de 749.
+  >
+  > 05/11/2026 07:38
+  >
+  > À jouer : les tests 2 à 5 de 749 ; 666 ; 534 (le test 2) ; ta réponse à 768 · en cours : la mesure de 645 · ouvert : P, Q, R (puis un banc, une promotion avec 721), 731 (une capture), 644 (l'audit) ; moins urgent : la fin du récit
+  >
+  > MEMO

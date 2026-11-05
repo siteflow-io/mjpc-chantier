@@ -1,0 +1,13 @@
+# MANDAT V2 — FINIR « ▶ SÉANCE SUIVANTE DANS CETTE HEURE » (mode test, répétition, témoin, la case)
+*Les règles communes : `MANDATS/DEROULE-01-11/NUIT-04-11/REGLES-COMMUNES.md`, sauf la base et la durée. Branche : `deroule/enchainer`, tu continues `23359ecdb`. **45 minutes au plus** ; à la limite, tu pousses ce qui est prouvé et tu dis ce qui reste. Le mandat V (`V-LA-SEANCE-SUIVANTE-DANS-CETTE-HEURE.md`) et la NOTE de l'exécutant V (`LIVRAISONS/DEROULE-01-11/ENCHAINER/NOTE.md`) d'abord, en entier.*
+
+## 0 · CE QUI EST DIT
+Le mandat V, §0 et §1 (les mots de Paul et les propositions acquises), sans rien changer. La vraie heure est prouvée par V (23/23, sa sonde `sonde-enchainer.mjs`). Le choix de V « la séance suivante dans cette heure part sans la question de la réactivation » est posé à Paul (C16) : garde-le tel quel ; s'il le refuse, la conscience te le dira.
+
+## 1 · CE QUE TU FAIS (ce que V a laissé, ses mots)
+1. **Mode test** : « la marque « séance faite » ne se relit pas au stockage du mode test » (V, échec 3) : elle se relit ; prouve-le avec une séance 1 prévue en **deux** heures, enchaînée à sa 2e heure (le cas de Paul demain : 3E, séance 1 heure 2/2, puis la séance 2) — la case suivante dit la séance 2. Et « 2 erreurs de page (« reading 'actId' ») à « Relire cette heure » » (V, échec 5) : 0 erreur.
+2. **Répétition** : « la sonde arrive au bouton, puis dépasse 240 s après le clic sans résultat » : la séance 2 démarre en répétition, rien d'écrit pour la classe (compté), le tableau la suit.
+3. **La case du jour** : V mesure « Close · 25 diapos jouées · 10 reportées » pour les deux séances ensemble (la séance 1 : 24 diapos, rien reporté). La case dit ce que chaque séance a fait, avec ses vrais nombres (« Séance 1 : … ; puis Séance 2 : … ») — en vraie heure et en mode test.
+4. **Le témoin** : une classe qui n'enchaîne pas : rien ne change (compté, base `46ce703a1` → après), la case, la Relecture, la case suivante.
+5. **Les sondes du banc qui lisent ce que V et toi changez** (cherche `dr_lancer`, la clôture, `edtSeanceEtat`, `edtSeanceDeTrace`, la case ouverte, « Relire cette heure ») : à jour dans la branche ; la séance (`AUDITS/INTEGRATION-DEROULE/banc.sh` étape 14 : `LIVRAISONS/DEROULE-01-11/…`, comme le banc les lance), l'appel (15), la fin d'heure (16), le parcours P0-P12, la sonde du bilan partie B : verts.
+Captures refaites pour Paul (écran entier) : la case du jour ouverte, en vraie heure ; le bouton en mode test.

@@ -4966,3 +4966,28 @@ MEMO
   > À jouer : 849 (le banc court pour toujours, ou seulement ce soir) · en cours : la fin du banc court, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **18:13 — Paul, mot pour mot :** « pour les tests de 841: tout va sauf le passage de la diapo 2/2 à la diapo 1/2  en mode test (attention, en mode test, je n'ai pas testé sur une vraie classe, même si normalement le mode test doit faire exactement comme une vraie classe). le passage me fait la garde gel une fois, puis après le passage entre les diapos passe tout seul (défaut déjà mesuré auparavant, je ne me souviens plus du numéro normalement c'est consigné). »
+- **18:12 → 18:17 — banc court** : 1-12 VERT (contrôles 106/0, parcours, ouverture 126/0, fil 100/0, retour sûr 61/0, ⑩ 55/0, §12.62 53/0, §12.66 27/0, question 33/0), 13 14/0, session ×3 8/0 ; 14, 15, 16 verts avant. Ma surveillance s'est tuée elle-même (`pkill -f chrom` visait aussi sa propre ligne) : incident ; la relecture F de la nuit, commencée, coupée (1 échec d'interruption, hors banc court). Sonde de l'attente rejouée à la main : 12/13, 12/13, 13/13 — la vérification de la ligne de la minute (tolérance 2 s) lit après 3 s d'attente sur une horloge figée (`setFixedTime`) pendant que l'animation court en temps réel : la sonde, pas le site.
+- **18:19:42 — mis en ligne 8.88.0-㉑** : prod `ff450c6`, blob `1ac9e85ce718`, md5 `0491ac06d716f03f24e2b30f314eed71`, 3 144 079 o ; **18:21:06 — bit à bit**. Docs (prod `d1ee571`) : journal, registre ✔ (l'écran d'attente) + le test de 18:13 ajouté à la dette du gel de 09:09 (et le gel entre les pages de la mise en commun), point de retour (blob `dc244ac63073`), index des fonctions, où trouver quoi, l'adresse `&v=8.88.0`.
+- **18:22 — message à Paul, mot pour mot :**
+
+  > 858. Tests de 841 : noté. Le retour de la page 2/2 à la page 1/2 de la mise en commun, c'est la dette de 09:09 (geler, aller sur une autre diapo, dégeler : plus de garde) ; ton test est ajouté à sa ligne au registre. Il y a une dette de plus : ton cadrage de 09:51 dit « aucun gel » entre les pages de la mise en commun, or la garde est apparue une fois. Ça ne va pas. Les deux sont pour samedi. En vraie heure : je ne sais pas.
+  >
+  > 859. La vue tableau est en ligne : 8.88.0-㉑, bit à bit depuis 18:21:06. Le banc court est vert : les contrôles, le parcours, l'ouverture, le fil, le retour sûr, la séance, l'appel, la fin d'heure, la frappe au tableau, la session. La sonde de l'écran d'attente a passé 13/13 une fois sur trois. Les deux autres fois, 12/13 : elle lit la ligne de la minute 2,5 s trop tard, parce que la ligne a continué de courir entre-temps ; c'est la sonde, pas le site. Le journal, le registre, le point de retour, l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 860. Incident : ma surveillance du banc s'est arrêtée elle-même. J'ai rejoué la sonde de l'écran d'attente à la main.
+  >
+  > 861. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.88.0
+  >
+  > À tester (pas pendant un cours) :
+  > 1. La version affichée est 8.88.0-㉑.
+  > 2. Sur ton ordi distant qui projette, ouvre le tableau sans heure lancée : l'écran d'attente est comme la maquette, l'animation est fluide, l'heure change à la minute, et la petite ligne or se remplit pendant la minute.
+  > 3. Clique la ligne de la clé USB en bas à droite : elle répond.
+  > 4. Réduis puis agrandis la fenêtre du tableau : les anneaux restent autour de l'heure.
+  > 5. Lance une heure en mode test : l'écran d'attente s'en va et la diapo vient.
+  >
+  > 05/11/2026 18:22
+  >
+  > À jouer : les cinq tests ci-dessus ; 847 (la ligne de la minute calée sur l'horloge : gardée sauf avis contraire) ; 849 (le banc court pour toujours, ou seulement ce soir) · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

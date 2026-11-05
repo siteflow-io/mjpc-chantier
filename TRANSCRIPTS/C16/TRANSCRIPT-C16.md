@@ -4839,3 +4839,4 @@ MEMO
   > À jouer : 833 (le compteur : étiquette or ou comme le dessin) ; « promeus » (838) · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **16:13 — Paul, mot pour mot :** « C'est très bien. Promeus »

@@ -131,7 +131,7 @@ const jouerK = async (fichier, mode) => { HUBN = ranger(store()) || {}; ECR = []
   const T = await ouvrir({ fichier, qui: 'tableau', q: '?vue=tableau', W: 1280, H: 720, prof: false }); await p(1200);
   const o = await ouvrir({ fichier, test }); const lance = await lancerClasse(o); const fen = await ouvrirTableau(o); await allerA(o.pg, QB); await toutDevoiler(o.pg, QB); await p(1500);
   await corriger(o.pg, 'p.q[data-p$=".t"]', ' Pensez au Romantisme.'); await p(2500);
-  await o.pg.evaluate(() => { window.__KD = []; document.addEventListener('keydown', e => { if (e.key.length === 1) window.__KD.push(performance.timeOrigin + e.timeStamp); }, true); });
+  await o.pg.evaluate(() => { window.__KD = []; document.addEventListener('keydown', e => { if (e.key.length === 1 && !(e.target && e.target.closest && e.target.closest('.ini'))) window.__KD.push(performance.timeOrigin + e.timeStamp); }, true); });   /* C16 nuit, mandat I : les touches des initiales (la case de l'élève) ne sont pas des lettres de réponse — seules les lettres tapées dans la réponse sont chronométrées, toutes */
   for (const x of [o.pg, fen, T.pg]) if (x) await x.evaluate(ph => { window.__PH = ph; }, PHRASES);
   await sondeFrappe(o.pg, '#mur'); if (fen) await sondeFrappe(fen, '#mur2'); await sondeFrappe(T.pg, 'body');
   /* L'HORLOGE DE CHAQUE PAGE : chaque contexte du navigateur a sa montre réglée par la sonde (`clock`) au moment où il s'ouvre — `performance` compris ; le tableau

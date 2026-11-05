@@ -4728,3 +4728,8 @@ MEMO
   > À jouer : rien · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), la mise en commun du bilan (796-811), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **10:39 — Paul, mot pour mot :**
+
+  > il me reste 9 pourcent d'utilisation, je suis en forfait ultra. j'ai cours demain sur le bilan avec les 3e. il faut que ce soit codé aujourd'hui. je te préviendrai pour l'utilisation. fais au plus économique.
+
+- **10:40 — mandat S** (la mise en commun du bilan, un seul exécutant, 45 minutes au plus, sur la 8.86.0-⑲ en ligne ; `deroule/bilan`), puis lancé. 809 (G et S, les boutons uniformes) reste à samedi.

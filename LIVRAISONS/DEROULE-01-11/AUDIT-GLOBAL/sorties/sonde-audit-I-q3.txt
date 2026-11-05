@@ -1,0 +1,34 @@
+C16 · audit global, partie I · 2026-11-03 12:02 UTC · promo-8812/index.html md5 c21ddbb656b9028cf11b0d70f7b18318 · parties Q3
+
+— Q3 · répétition — la liste : 29 élèves (« 0 sur 29 présents »), celle de ["3E Charles de Gaulle"] ; en-tête « 3E Charles de Gaulle »
+   les élèves des autres classes du faux hub, leurs initiales passées à `dr_candidats` (ce que fait Entrée) : {"4E BANKSY":{"eleves":29,"attribues":5},"4E PYTHAGORE":{"eleves":28,"attribues":10},"5e HERGÉ":{"eleves":31,"attribues":8},"CLASSE TEST":{"eleves":4,"attribues":3},"_TEST":{"eleves":0,"attribues":0},"_test_pilotage_debat_s3":{"eleves":6,"attribues":5}}
+   (a) les initiales d’un élève de la liste « EB », Entrée : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : ÉLÈVE 3 (EB) ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (a) les initiales d’un élève de la liste « EB », clic dans la réponse : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : ÉLÈVE 1 (EA) ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », clic dans la réponse : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », clic dans la réponse : gardée comme « EL », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », Entrée : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », clic dans la réponse : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+
+— Q3 · essai en mode test — la liste : 29 élèves (« 0 sur 29 présents »), celle de ["3E Charles de Gaulle"] ; en-tête « 3E Charles de Gaulle »
+   les élèves des autres classes du faux hub, leurs initiales passées à `dr_candidats` (ce que fait Entrée) : {"4E BANKSY":{"eleves":29,"attribues":5},"4E PYTHAGORE":{"eleves":28,"attribues":10},"5e HERGÉ":{"eleves":31,"attribues":8},"CLASSE TEST":{"eleves":4,"attribues":3},"_TEST":{"eleves":0,"attribues":0},"_test_pilotage_debat_s3":{"eleves":6,"attribues":5}}
+   (a) les initiales d’un élève de la liste « EB », Entrée : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : ÉLÈVE 3 (EB) ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (a) les initiales d’un élève de la liste « EB », clic dans la réponse : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : ÉLÈVE 1 (EA) ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », clic dans la réponse : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », clic dans la réponse : gardée comme « EL », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », Entrée : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », clic dans la réponse : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+
+— Q3 · vraie heure — la liste : 29 élèves (« 0 sur 29 présents »), celle de ["3E Charles de Gaulle"] ; en-tête « 3E Charles de Gaulle »
+   les élèves des autres classes du faux hub, leurs initiales passées à `dr_candidats` (ce que fait Entrée) : {"4E BANKSY":{"eleves":29,"attribues":5},"4E PYTHAGORE":{"eleves":28,"attribues":10},"5e HERGÉ":{"eleves":31,"attribues":8},"CLASSE TEST":{"eleves":4,"attribues":3},"_TEST":{"eleves":0,"attribues":0},"_test_pilotage_debat_s3":{"eleves":6,"attribues":5}}
+   (a) les initiales d’un élève de la liste « EB », Entrée : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : ÉLÈVE 3 (EB) ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (a) les initiales d’un élève de la liste « EB », clic dans la réponse : gardée comme « EB », attribuée à ÉLÈVE 3 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 1 ; « 1 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : ÉLÈVE 1 (EA) ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (b) l’anagramme d’initiales de la liste (celles de personne) « AE », clic dans la réponse : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », Entrée : gardée comme « EA », attribuée à ÉLÈVE 1 de la liste ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (c) le début d’un prénom de la liste (initiales de personne) « EL », clic dans la réponse : gardée comme « EL », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », Entrée : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »
+   (d) des initiales de personne, début d’aucun prénom « AA », clic dans la réponse : gardée comme « AA », attribuée à personne ; passe(nt) au vert : aucune ; pastilles vertes : 2 ; « 2 sur 29 présents »

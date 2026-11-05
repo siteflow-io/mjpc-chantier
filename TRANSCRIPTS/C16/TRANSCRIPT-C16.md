@@ -4295,3 +4295,21 @@ MEMO
   > À jouer : ton « promeus », puis les cinq tests ci-dessus et 617 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 640 (720), 721, 731 ; à cadrer : 639, 644, 645
   >
   > MEMO
+- **05:49 — Paul, mot pour mot :**
+
+  > Promeus
+
+- **05:49 → 05:53 — la promotion 8.86.0-⑲** : le candidat `promo-8860/index.html` (md5 `f5da6abe6ce87298fb669ad7876628fa`, 3 112 270 o) copié en production ; commit `4d30679` ; blob `fd0281793b9e` ; l'adresse publique : l'ancien à 05:50:07, le nouveau bit à bit à 05:50:58. Après : production `b8612ef` : registre (✔ : la participation et les initiales d'aucun élève, l'heure des Franklin avec 633, la Relecture et sa copie pour l'IA, les classes pas étanches, « Heure 0 », le nom en deux mots, ㊵ ; en partie : le réseau lent — « Fermer l'atelier » ouvert —, les numéros, les Dylan ; mesuré et ouvert : le tableau qui déborde ; ㊶ pas cadré ; une entrée nouvelle : ce qui n'est pas mesuré, et le banc), journal, point de retour (blob `e8eedf658e6e`), index des fonctions (2 428), où trouver quoi.
+- **05:54 — message à Paul, mot pour mot :**
+
+  > 748. La 8.86.0-⑲ est en ligne : l'adresse publique rend le fichier bit à bit depuis 05:50:58. Point de retour : la 8.85.0-⑱. Journal, registre (réglés : les classes pas étanches, « Heure 0 », les initiales, les noms en deux mots, l'heure des Franklin, la Relecture et sa copie pour l'IA, ㊵ ; en partie : le réseau lent, sans « Fermer l'atelier » ; les numéros), index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 749. Le site sans le cache : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.86.0
+  >
+  > À tester, hors de la classe : 1. le calendrier, la case passée des 3 DYLAN, leur Relecture : « Qui a répondu » ne propose que les Dylan, aucun menu des classes, « Le chapitre » dit 1 heure close, sans « Heure 0 » ; 2. la Relecture des Franklin du 04/11 : les réponses tapées pendant le gel sont dans le récit ; « à corriger » sur une réponse d'un MB, tape MB puis le chiffre (617, à finir par toi pour toutes) ; 3. en répétition : « m » dans la case, la liste numérotée, le chiffre ; Entrée sans élève : « Qui a répondu ? » ; au tableau, « Prénom N. » ; 4. dans la Relecture, un clic sur une vignette, puis le bouton en bas « copier la relecture pour analyse IA », colle-le ici ; 5. un chrono lancé au pilote, regardé aussi sur ton téléphone : le même chiffre.
+  >
+  > 05/11/2026 05:54
+  >
+  > À jouer : les cinq tests ci-dessus et 617 ; 666 ; 534 (le test 2) · en cours : rien · ouvert : 640 (720), 721, 731 ; à cadrer : 639, 644, 645
+  >
+  > MEMO

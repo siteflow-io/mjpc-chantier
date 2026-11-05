@@ -4892,3 +4892,15 @@ MEMO
   > À jouer : 844 (banc court ou complet) ; les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **17:01 — Paul, mot pour mot :** « Oui mais le banc tourne où en fait? »
+- **17:01 — message à Paul, mot pour mot :**
+
+  > 845. Le banc tourne ici, dans ma machine de travail : un ordinateur Linux dans le cloud d'Anthropic, réservé à cette conversation. Il y ouvre des navigateurs invisibles (Chromium, sans écran) qui jouent le site par les gestes, avec un faux hub rangé comme le vrai. Il ne touche ni ton ordinateur, ni le vrai hub, ni le site en ligne, ni tes classes. À ma connaissance, ton utilisation compte ce que je lis et ce que j'écris, pas le temps où la machine tourne seule ; je ne sais pas exactement comment ton forfait compte ce temps-là.
+  >
+  > À tester : les dix tests de la 8.87.0-⑳ (841), avant demain.
+  >
+  > 05/11/2026 17:01
+  >
+  > À jouer : 844 (banc court ou complet ; sans réponse, complet) ; les dix tests de 841 · en cours : l'écran d'attente du tableau (T), puis le banc, puis la mise en ligne 8.88.0-㉑ · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

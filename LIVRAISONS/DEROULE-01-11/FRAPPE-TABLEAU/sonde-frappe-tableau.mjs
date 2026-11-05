@@ -140,7 +140,15 @@ const jouerK = async (fichier, mode) => { HUBN = ranger(store()) || {}; ECR = []
   const decalDe = async pg => { if (!pg) return 0; let m = null; for (let k = 0; k < 5; k++) { const a = Date.now(); const tp = await pg.evaluate(() => performance.timeOrigin + performance.now()); const b = Date.now(); if (!m || b - a < m.rt) m = { rt: b - a, d: tp - (a + b) / 2 }; } return m.d; };
   const D0 = { p: await decalDe(o.pg), f: await decalDe(fen), t: await decalDe(T.pg) }; const DECAL = D0.p;
   const debuts = []; const ecr0 = ECR.length; let ok = true;
-  for (let k = 0; k < PHRASES.length; k++) { const dit = await o.pg.$('#mur .rep:last-of-type .dit[contenteditable]') || (await o.pg.$$('#mur .rep .dit[contenteditable]')).pop(); if (!dit) { ok = false; break; }
+  /* C16 nuit, mandat I : comme Paul en classe (C16 717 : une réponse ne se valide qu'avec son élève), chaque réponse part de la ligne libre : les initiales d'un
+     élève DE LA CLASSE pilotée (prises à la classe affichée, distinctes, sans chiffre ; jamais un nom), puis la réponse, puis Entrée. Avant : la frappe directe dans
+     la réponse, sans élève — Entrée ne validait pas, les trois phrases tombaient dans la même ligne (une seule réponse entière, 163 lettres jamais vues).
+     La mesure des lettres commence, comme avant, à la première lettre de la réponse ; toutes les vérifications restent. */
+  const INIS = await o.pg.evaluate(() => ELEVES.filter(n => INI[n] && !/\d/.test(INI[n]) && dr_caseSeul(INI[n], true) === n).map(n => INI[n])).catch(() => []);
+  for (let k = 0; k < PHRASES.length; k++) { const ini = await o.pg.$('#mur .rep.libre .ini[contenteditable]'); if (!ini || !INIS.length) { ok = false; break; }
+    await ini.click(); await p(200); await o.pg.keyboard.type(INIS[k % INIS.length], { delay: 80 }); await p(300);
+    if (await o.pg.evaluate(() => !!(document.activeElement && document.activeElement.classList.contains('ini')))) { await o.pg.keyboard.press('Enter'); await p(250); }   /* des initiales début d'autres : Entrée choisit l'élève, comme Paul */
+    const dit = await o.pg.$('#mur .rep.libre .dit[contenteditable]'); if (!dit) { ok = false; break; }
     await dit.click(); await p(250); debuts.push(Date.now()); await o.pg.keyboard.type(PHRASES[k], { delay: 80 }); await p(400); await o.pg.keyboard.press('Enter'); await p(900); }
   await p(3500); for (const x of [o.pg, fen, T.pg]) if (x) await x.evaluate(() => { window.__Fon = false; });
   const D1 = { p: await decalDe(o.pg), f: await decalDe(fen), t: await decalDe(T.pg) }; const BRUT = !!process.env.MJPC_HORLOGE_BRUTE;

@@ -400,8 +400,29 @@ const partieI = async () => {
   dire('  [I] mesure (1) : une copie de classe d’avant S, relue : ' + r.copie);
   finir('I3', o, 'I'); await o.ctx.close(); };
 
+/* ══ H · C16 mandat S3 (1, 2) — une copie de classe d'avant S (le bilan, pas de mise en commun) relue à la reprise de l'heure : le bilan déjà montré, elle ne change pas ;
+   pas encore montré, la mise en commun posée juste après lui. La classe inventée (Franklin), sa vraie heure du 15/09 ; la copie d'avant S faite au faux hub
+   (la mise en commun retirée de la copie et de l'ordre des heures), puis la page rouverte et « Reprendre l'heure », par le geste. ══ */
+const partieH = async () => {
+  for (const vu of [true, false]) { const tag = vu ? 'H1' : 'H2'; hubAvec(AJOUT, BIL);
+    const o = await ouvrir({ h: '15:08', jour: '2026-09-15', W: 1536, H: 864 }); const pg = o.pg;
+    const P = await projeter(pg, '2026-09-14', 7); const fc = P.find(x => FRA.test(x.classe) && x.iso === '2026-09-15'); await lancerIci(pg, fc.iso, fc.cr, FRA);
+    const cible = vu ? 'aud-bilan' : 'aud-g5-hyp'; await jouerJusqua(pg, cible); await toutDevoiler(pg, cible); await p(2500); const errs1 = o.errs.concat(o.boites); await o.ctx.close();
+    const k = sk0(HUBN)[0]; const sl = Object.keys(djDe(k)).find(x => /franklin/i.test(x)) || Object.keys(djDe(k))[0]; const C = SE(k) + '/deroule_joue/' + sl;
+    const liste = v => Array.isArray(v) ? v : Object.values(v || {}); const ec0 = liste(lireH(C + '/ecrans')).filter(Boolean); const avS = ec0.filter(e => e.role !== 'bilan-commun'); posH(C + '/ecrans', avS);
+    const et = lireH(C + '/etat'); if (et && et.S && et.S.ordresEid) { Object.keys(et.S.ordresEid).forEach(h => { const a = et.S.ordresEid[h]; if (Array.isArray(a)) et.S.ordresEid[h] = a.filter(x => !/^bmc-/.test(String(x))); }); posH(C + '/etat', et); }
+    const jvu = liste(lireH(C + '/journal')).filter(x => x && x.type === 'diapo' && /bilan/.test(String(x.eid))).map(x => x.eid);
+    const rolesHub = avS.map(e => e.role || '-').join(','); dire('  [' + tag + '] la copie d’avant S au faux hub (« ' + sl + ' ») : ' + avS.length + ' diapos (' + ec0.length + ' avant le retrait) · le bilan au journal : ' + (jvu.join(',') || 'non') + ' · ' + rolesHub.split(',').slice(-4).join(' → '));
+    const o2 = await ouvrir({ h: '15:20', jour: '2026-09-15', W: 1536, H: 864 }); const rp = await reprendre(o2); await p(2500);
+    const r = await o2.pg.evaluate(() => { const E = seance().ecrans; return { n: E.length, roles: E.map(e => e.role || '-').join(','), ordre: ordreHeure(S.heure).map(i => E[i].role || '-').slice(-4).join(' → ') }; });
+    const hubApres = liste(lireH(C + '/ecrans')).filter(Boolean); const nbHub = hubApres.filter(e => e.role === 'bilan-commun').length;
+    dire('  [' + tag + '] reprise ' + rp + ' · au pilotage : ' + r.n + ' diapos · la fin de l’heure : ' + r.ordre + ' · au hub, la copie : ' + hubApres.length + ' diapos, ' + nbHub + ' mise(s) en commun');
+    if (vu) verif('H1', rp && r.n === avS.length && r.roles === rolesHub && nbHub === 0, 'le bilan déjà montré : la copie d’avant S relue ne change pas (pas de mise en commun posée ; rien de réécrit au hub)', avS.length + ' → ' + r.n + ' diapos · hub ' + hubApres.length + ' diapos, ' + nbHub + ' mise en commun');
+    else { const R = r.roles.split(','); const ib = R.indexOf('bilan'); verif('H2', rp && r.n === avS.length + 1 && R[ib + 1] === 'bilan-commun' && /bilan → bilan-commun/.test(r.ordre), 'le bilan pas encore montré : la mise en commun posée juste après lui, dans l’heure', avS.length + ' → ' + r.n + ' diapos · ' + r.ordre); }
+    o2.errs.push(...errs1); finir(tag + 'e', o2, tag); await o2.ctx.close(); } };
+
 dire(''); dire('══ MISE EN COMMUN DU BILAN · ' + NOMF + ' · md5 ' + md5(FICHIER) + (TESTB ? ' · mode test' : ' · vraie heure') + ' ══');
-for (const [k, f] of [['B', partieB], ['I', partieI]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
+for (const [k, f] of [['B', partieB], ['I', partieI], ['H', partieH]]) { if (!joue(k)) continue; dire(''); dire('— partie ' + k); try { await f(); } catch (e) { verif(k + '!', false, 'la partie ' + k + ' a levé', String(e.stack || e).slice(0, 400)); } }
 dire(''); dire('--- fin : ' + nb + ' vérifications, ' + echecs + ' échec(s)');
 fs.writeFileSync(path.join(OUT, 'sonde-bilan-' + NOMF + '.txt'), anon(R.join('\n')) + '\n');
 await nav.close(); process.exit(0);

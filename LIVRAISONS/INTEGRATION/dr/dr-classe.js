@@ -725,8 +725,14 @@ function dr_etatHeure(){
 }
 /* `dr_normaliserTrame` du socle retire les écrans `reactivation` (E1, §12.26-2 : jamais dans la trame du chapitre) — appliquée ici à la COPIE de la classe en mémoire
    (les fins d'heure, l'heure par défaut), elle en retirerait la construite : on la met de côté et on la remet à sa place */
-function dr_reactNormaliserCopie(E, sk){ if (typeof dr_normaliserTrame !== 'function') return; const mis = []; for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') mis.unshift({ i, e: E[i], apres: (E[i - 1] || {}).eid });
-  dr_normaliserTrame(E, sk); mis.forEach(m => { if (E.includes(m.e)) return; let k = m.apres != null ? E.findIndex(x => x && x.eid === m.apres) : -1; k = k >= 0 ? k + 1 : Math.min(m.i, E.length); E.splice(k, 0, m.e); }); }
+/* C16 mandat S3 (1) : une copie d'avant S (un bilan, pas de mise en commun) dont le bilan a déjà été montré à la classe ne change pas — la mise en commun n'y est
+   pas posée ; un bilan pas encore montré (reporté compris : il glisse avec elle, `ordreHeureCalc0`) la reçoit, juste après lui. Montré : une diapo du journal
+   (après un lancement) ou dévoilé (vuMax). */
+function dr_bilanDejaVu(E, JJ){ try { const b = (E || []).find(e => e && e.role === 'bilan'); if (!b || b.eid == null) return false; const R = DR_CL.jRelu; const L = JJ || (R && R.J) || J; const i0 = L.findIndex(x => x && x.type === 'lancement');
+  if (i0 >= 0 && L.slice(i0).some(x => x && x.type === 'diapo' && x.eid === b.eid)) return true; return (((JJ ? null : R && R.vuMax) || vuMax)[S.si + '|' + b.eid] || 0) > 0; } catch (x) { return false; } }
+const dr_copieSansBmc = (E, JJ) => !!(E || []).some(e => e && e.role === 'bilan') && !(E || []).some(e => e && e.role === 'bilan-commun') && dr_bilanDejaVu(E, JJ);
+function dr_reactNormaliserCopie(E, sk){ if (typeof dr_normaliserTrame !== 'function') return; const mis = []; const sansBmc = dr_copieSansBmc(E); for (let i = E.length - 1; i >= 0; i--) if (E[i] && E[i].role === 'reactivation') mis.unshift({ i, e: E[i], apres: (E[i - 1] || {}).eid });
+  dr_normaliserTrame(E, sk); if (sansBmc) { const k = E.findIndex(e => e && e.role === 'bilan-commun'); if (k >= 0) E.splice(k, 1); } mis.forEach(m => { if (E.includes(m.e)) return; let k = m.apres != null ? E.findIndex(x => x && x.eid === m.apres) : -1; k = k >= 0 ? k + 1 : Math.min(m.i, E.length); E.splice(k, 0, m.e); }); }
 /* les frontières d'heure de la trame en mémoire : {eid: heure}, sans les « Cahier de textes » (le socle les place) */
 /* C16 (les correctifs, ㉘) — LE VRAI HUB REFUSE (HTTP 400) TOUTE CLÉ QUI PORTE . # $ [ ] / : la scène du tableau (`C/scene`, `/site/repetition/scene`,
    `/site/tableau_test/scene`) copiait `S.mur`, dont les textes corrigés en direct sont rangés par position (« 0.t », « 2.1 », « -1.act ») ; elle partait sans
@@ -997,7 +1003,8 @@ function dr_reprendre(cb){
     dr_copieDuHub(copie);   /* C16 (retour sûr) : les diapos d'ouverture reprennent leur canon (écrites lisibles pour la 8.77.1-⑩) */
     dr_adopterIdentites(copie); if (Array.isArray(copie) && copie.length && copie.every(x => x && typeof x === 'object')) { const E0 = seance().ecrans; E0.splice(0, E0.length, ...copie); try { reindexer(); } catch (e) {} }   /* réveil n°6 (E4 ligne 110, ma part) : la reprise relit la copie de la classe (C/ecrans) telle qu'elle est au hub, sans recalcul — ce qui a été écrit en classe revient */
     dr_finAvecCahier();
-    if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS)));   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
+    DR_CL.jRelu = { J: (Array.isArray(jr) ? jr : []).map(dr_duHub), vuMax: dr_duHub(etat.vuMax || {}) };   /* C16 mandat S3 (1) : le journal relu de la classe, pour la copie normalisée avant dr_restaurer (le bilan déjà montré) */
+    if (!dr_appliquerHeures(dr_duHub(etat.heures || {}), etat.heuresParDurees, dr_duHub(etat.reactivations || {})) && !(etat.heures && Object.keys(etat.heures).length)) dr_partagerHeures(dr_utileCreneau(dr_creneauDuCours(AT_DR_COURS))); DR_CL.jRelu = null;   /* réveil n°4, 3 : les frontières de l'heure telles qu'elles étaient (avant : recalculées, la diapo 7 repassait à l'heure 1) */
     if (t && (t.clos || (t.classe && t.classe !== AT_DR_COURS.classeNom) || (t.creneau && t.creneau !== dr_creneauDuCours(AT_DR_COURS)))) { if (cb) cb(false); return; }
     dr_restaurer({ S: dr_copieEtatDuHub(dr_etatRempli(dr_duHub(etat.S)), seance().ecrans), parDiapo: dr_parDiapoRempli(dr_duHub(etat.parDiapo || {})), vuMax: dr_duHub(etat.vuMax || {}), J: (Array.isArray(jr) ? jr : []).map(dr_duHub) });
     try { if (typeof dr_invConvertirCopie === 'function') dr_invConvertirCopie(); } catch (e) {}   /* C16 (§4.11) : le journal relu, une ancienne diapo d'ouverture jamais montrée prend le canon ; une montrée ne change pas */
@@ -1028,7 +1035,7 @@ function dr_reprendre(cb){
   });
 }
 /* remettre dans la page l'état d'une heure jouée, décodé (`dr_lireJoue`) : S, les dévoilements, le journal ; les rangs refaits */
-function dr_restaurer(j){ DR_CL.etatRestaure = true;   /* réveil n°8 : l'état relu prime sur les paquets (`dr_marquerJoues`) */
+function dr_restaurer(j){ DR_CL.etatRestaure = true; DR_CL.jRelu = null;   /* réveil n°8 : l'état relu prime sur les paquets (`dr_marquerJoues`) */
   Object.keys(j.S || {}).forEach(k => { S[k] = j.S[k]; });
   [[parDiapo, j.parDiapo], [vuMax, j.vuMax]].forEach(([o, v]) => { Object.keys(o).forEach(k => delete o[k]); Object.assign(o, v || {}); });
   J.length = 0; (j.J || []).forEach(o => J.push(o));
@@ -1438,8 +1445,9 @@ function dr_fusionCopie(trame, copie, journalJ){
   const JJ = journalJ || J; const modifie = eid => JJ.some(x => x.eid === eid && /^(ecrire|reponse|copie)/.test(x.type)); const joue = eid => JJ.some(x => x.eid === eid && x.type === 'diapo');
   const sig = e => dr_empreinte({ act: e.act || '', blocs: e.blocs || [] });
   const res = [], vus = new Set();
+  const sansBmc = dr_copieSansBmc(copie, JJ);   /* C16 mandat S3 (1) : la copie d'avant S dont le bilan a été montré ne reçoit pas la mise en commun de la trame */
   (trame || []).forEach(e => { const c = e && parEid[e.eid]; vus.add(e && e.eid);
-    if (!c) { res.push(e); return; }                                   /* nouveau dans la trame */
+    if (!c) { if (!(sansBmc && e && e.role === 'bilan-commun')) res.push(e); return; }                                   /* nouveau dans la trame */
     res.push(sig(e) !== sig(c) && modifie(e.eid) ? c : e); });         /* modifié dans la trame : la trame, sauf ce que la classe a modifié */
   (copie || []).forEach((c, i) => { if (!c || vus.has(c.eid) || !(joue(c.eid) || c.role === 'reactivation')) return;   /* retiré de la trame mais joué : il reste, à sa place ; §12.26-2 : la réactivation construite ne vit que dans la copie — gardée même pas encore montrée (construite à la clôture) */
     const prec = (copie[i - 1] || {}).eid; const k = res.findIndex(x => x && x.eid === prec); res.splice(k >= 0 ? k + 1 : res.length, 0, (c.role === 'reactivation' && !joue(c.eid) && typeof dr_reactNumsActuels === 'function') ? dr_reactNumsActuels(c) : c); });   /* (mandat G, C16 366) « Où en sommes-nous ? » pas encore montrée : les numéros de la trame d'aujourd'hui ; montrée, ceux d'alors */

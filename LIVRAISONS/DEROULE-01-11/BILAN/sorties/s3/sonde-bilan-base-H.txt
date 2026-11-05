@@ -1,0 +1,15 @@
+C16 · audit global, partie II (les séances dans l’emploi du temps) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties H · 2026-11-05 10:26 UTC · md5 1de31418f1f0e9fb7098cb68efe85583 · images : celle du canon
+
+══ MISE EN COMMUN DU BILAN · base-H · md5 1de31418f1f0e9fb7098cb68efe85583 · vraie heure ══
+
+— partie H
+  [H1] la copie d’avant S au faux hub (« 3E FRANKLIN Aretha ») : 19 diapos (20 avant le retrait) · le bilan au journal : aud-bilan · - → - → bilan → fin
+  [H1] reprise true · au pilotage : 20 diapos · la fin de l’heure : - → bilan → bilan-commun → fin · au hub, la copie : 20 diapos, 1 mise(s) en commun
+  ÉCHEC  H1 · le bilan déjà montré : la copie d’avant S relue ne change pas (pas de mise en commun posée ; rien de réécrit au hub) — 19 → 20 diapos · hub 20 diapos, 1 mise en commun
+  ok     H1e · H1 : aucune erreur JS, aucune boîte système
+  [H2] la copie d’avant S au faux hub (« 3E FRANKLIN Aretha ») : 19 diapos (20 avant le retrait) · le bilan au journal : non · - → - → bilan → fin
+  [H2] reprise true · au pilotage : 20 diapos · la fin de l’heure : - → bilan → bilan-commun → fin · au hub, la copie : 20 diapos, 1 mise(s) en commun
+  ok     H2 · le bilan pas encore montré : la mise en commun posée juste après lui, dans l’heure — 19 → 20 diapos · - → bilan → bilan-commun → fin
+  ok     H2e · H2 : aucune erreur JS, aucune boîte système
+
+--- fin : 4 vérifications, 1 échec(s)

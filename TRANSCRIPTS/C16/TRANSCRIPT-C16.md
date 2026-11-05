@@ -4560,3 +4560,25 @@ MEMO
   > À jouer : ta réponse à 793 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:30 — Paul, mot pour mot :**
+
+  > C'est bon je valide. cout à coder? par ailleurs quelque chose à coder maintenant pour le coup: j'avais demandé la diapo après le bilan (avec suite possible évidemment) afin de pouvoir taper le bilan. pourquoi ce n'est pas codé?
+
+- **09:32 — cherché** : la demande d'une diapo après le bilan, introuvable dans les transcripts C12 à C16, le registre et l'historique des conversations ; le code suit le cadrage C12 6.4 (25/09) : « Rien ne s'insère après le bilan » (index.html l. 18986, 18989, 19007, 19058, 19068, 19108, 19277, 19296).
+- **09:32 — message à Paul, mot pour mot :**
+
+  > 793. Validé, noté. Le coût : un exécutant court (seulement du dessin dans la page du tableau, rien au hub), prouvé par captures, et ce que je ne sais pas, la charge pour un vieil ordinateur de classe. Vu ton usage, je le mets à samedi avec le reste.
+  >
+  > 795. La diapo après le bilan : je ne retrouve ta demande ni dans les transcripts (C12 à C16), ni au registre. Ce qui est codé suit le cadrage du 25/09 (C12, 6.4) : « le bilan est toujours dernier ; rien ne s'insère, ne se colle ni ne se déplace après lui » ; le site le refuse en toutes lettres (« Rien ne s'insère après le bilan »). C'est pour ça. Si tu l'as demandée, elle s'est perdue entre deux consciences sans entrer au registre : c'est ma faute.
+  >
+  > 796. Ce que je propose : dans chaque séance, juste après « Le bilan », une diapo vide où tu tapes le bilan avec la classe ; quand elle est pleine, « ▸ suite » en ajoute une autre juste après ; elles restent avant le cahier de textes ; la coche « Les élèves ont écrit le bilan » vient sur elle ; son titre, c'est toi qui l'écris (rien au tableau que tu n'as pas donné). La règle devient : rien après le bilan, sauf sa diapo pour le taper et ses suites.
+  >
+  > 797. Le coût : un exécutant court, prouvé par le geste (préparation, classe, mode test, la Relecture et le récit). Avec 10 % d'usage, c'est faisable maintenant, mais ce sera une bonne part de ce qui te reste. Si 796 te va, dis « lance » et je le fais tout de suite ; sinon, samedi.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 05/11/2026 09:32
+  >
+  > À jouer : ta réponse à 796-797 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782), 790, 791, 794, 768, 772, Q (777, 778), R, 731, l'écran d'attente (793), le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

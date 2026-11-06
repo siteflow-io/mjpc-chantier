@@ -5310,3 +5310,21 @@ MEMO
   >
   > MEMO
 - **06:58 — Paul, mot pour mot (une capture : la participation, des initiales barrées et d'autres avec leurs pastilles) :** « pourquoi dans "pas dans cette heure" après l'heure 3 de séance 1, dans la colonne de gauche, j'ai le début de la séance 1? (grisé, même si je peux quand même y aller, ce qui me va parce que ça me permet de remontrer aux élèves ce qu'on avait écrit etc). Par ailleurs, est ce que c'est ça que ça va jouer si je clique sur séance suivante? enfin, un test fait: si je reviens sur une diapo en fisant "devant la classe" alors que j'étais sur le cahier de texte, puis que je reviens au cahier de texte, le bouton séance suivante a disparu et le cahier de textes est vidé. A mesurer. Pour les absents, il faudrait voir si c'est possible de faire ça en micro pour ce matin: ça m'embêterait que les élèves soient marqués absents alors qu'ils sont bien là. »
+- **07:00 — lu dans le code (8.89.1)** : « Pas dans cette heure » = les diapos de la séance hors de l'ordre de l'heure (`volet`, l. 19728, vignettes « hors ») ; `absentA` (l. 18007) parcourt tous les segments de l'appel de la séance ; le mot aux absents (l. 20302) et l. 20124 : `ELEVES.filter(e => (S.appel[e] || []).length)`. **Mandat W** (sas `a4756aae6`), lancé : la mesure du retour au cahier de textes, puis le micro des absents de l'heure, branche `deroule/absents-heure` depuis `f22d321ae`.
+- **07:00 — message à Paul, mot pour mot :**
+
+  > 916. « Pas dans cette heure » : c'est voulu, et c'est lu dans le code. La colonne de gauche montre toute la séance 1. Les diapos de l'heure 3 viennent en premier ; dessous, en gris, celles qui ne sont pas dans cette heure, c'est-à-dire celles des heures 1 et 2. On peut y aller pour les remontrer, comme tu le fais.
+  >
+  > 917. Non, le bouton ne rejoue pas ces diapos grises. Il lance la séance suivante, « L'Albatros », depuis le début de sa première heure. La colonne montre alors les diapos de « L'Albatros ».
+  >
+  > 918. Un exécutant mesure ton test maintenant, en 10 minutes, sans rien changer : depuis le cahier de textes, aller sur une diapo « devant la classe », revenir, et le bouton a disparu et le cahier est vidé. Il dira la cause et si le contenu du cahier est perdu ou seulement plus affiché. Tu auras la mesure avant ton cours.
+  >
+  > 919. Les absents : c'est faisable en micro ce matin. Dans le code, un élève absent à une heure de la séance reste « absent » aux heures suivantes, tant qu'on ne le marque pas « arrivé ». Il est barré dans la participation, et il entre dans « Un mot pour les absents ». C'est très probablement ce que montre ta capture. Le même exécutant le corrige juste après la mesure : un élève n'est absent que s'il l'est à l'heure en cours, et le mot aux absents suit les absents de l'heure. Ensuite viennent les sondes de l'appel et de la séance, et le parcours, puis la demande de « promeus », vers 08:30 (estimé).
+  >
+  > À tester : les cinq tests de 915 (la 8.89.1-㉓).
+  >
+  > 06/11/2026 07:00
+  >
+  > À jouer : les tests de 915 · en cours : la mesure du retour au cahier de textes, puis le micro des absents (W) · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

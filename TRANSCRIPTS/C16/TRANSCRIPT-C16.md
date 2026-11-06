@@ -5403,3 +5403,23 @@ MEMO
   > À jouer : rien · en cours : le micro des absents (W), puis ses sondes, la mise en ligne si vert, et les tests dans ton Chrome · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:55 — Paul, mot pour mot :** « Sors moi ici les fiches dont j'ai besoin pour la séance 2 »
+- **07:56 → 07:59 — lu au hub (GET, depuis le Chrome de Paul)** : `/site/3e/chapitres/1/seances/1/items` = 4 fiches de l'Atelier (`feuille_1793133989973`, `feuille_1793134101130`, `feuille_1793134041915`, `feuille_1793133843088`) ; leurs documents `/site/atelier/documents/<ref>` (3 964, 4 644, 2 514, 1 510 caractères) recopiés par morceaux dans le scratchpad (`fiches-s2/`), longueurs identiques ; rendus par `atelierPageHTML` de la production 8.89.1 dans Chromium (HTML identiques en longueur à ceux du Chrome de Paul : 11 103, 13 067, 9 881, 9 824), PDF A4 ; regardés (aperçu). Envoyés à Paul.
+- **07:59 — message à Paul, mot pour mot :**
+
+  > 929. Voici les quatre fiches de la séance 2, « Lecture analytique accompagnée : « L'Albatros » », en PDF A4, avec la mise en page d'impression de l'Atelier. Je les ai lues au hub (en lecture seule) et rendues avec le code du site : le texte est exactement celui du hub.
+  > 1 : Fiche méthode, « La compréhension de texte » (2 pages ; la seconde ne porte que le dernier encadré « Attention »).
+  > 2 : Fiche notion, « Les différents registres » (2 pages).
+  > 3 : Fiche notion, « Rappel sur la versification (1) » (1 page).
+  > 4 : Fiche texte, « Doc 1 – « L'Albatros », Charles Baudelaire », avec le lexique et les vers numérotés (1 page).
+  > Une limite : je n'ai pas la police des petites étiquettes (« Chapitre », « Définition ») ; elles sortent dans une police voisine.
+  >
+  > 930. Le micro des absents est toujours en cours chez l'exécutant.
+  >
+  > À tester : rien de nouveau.
+  >
+  > 06/11/2026 07:59
+  >
+  > À jouer : rien · en cours : le micro des absents (W), puis ses sondes, la mise en ligne si vert, et les tests dans ton Chrome · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

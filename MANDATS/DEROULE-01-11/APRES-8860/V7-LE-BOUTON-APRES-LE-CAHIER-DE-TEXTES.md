@@ -1,0 +1,11 @@
+# MANDAT V7 — LE BOUTON « ▶ SÉANCE SUIVANTE DANS CETTE HEURE » APRÈS LE CAHIER DE TEXTES (la vraie séance des 3e)
+*Les règles communes : `MANDATS/DEROULE-01-11/NUIT-04-11/REGLES-COMMUNES.md`, sauf la base et la durée. Branche : `deroule/enchainer`, tu continues `0d7211bba` (= la production 8.89.0-㉒). **25 minutes au plus.** Lis d'abord le mandat V (§0, §1) et la NOTE-V6.*
+
+## 0 · CE QUI EST DIT
+- Acquis 866 (corrigé par 871) : « sur la dernière diapo de la séance 1 (après le bilan, sa mise en commun et le cahier de textes), un bouton « ▶ Séance suivante dans cette heure » ».
+- Paul, 06/11 04:37 : « Fais les tests de 900 ». Mesuré par la conscience dans le Chrome de Paul, en mode test, sur la vraie case de demain (3 FRANKLIN ARETHA, vendredi 10:07-11:02, heure 3 · suite : 1. Le bilan, 2. Mise en commun du bilan, 3. Cahier de textes) : les trois diapos jouées, tout dévoilé (9/9, 1/1, 4/4) ; `dr_enchSeanceFaite()` = vrai ; `dr_enchSuivante()` = « Lecture analytique accompagnée : « L'Albatros » », heure 1 sur 2 ; **le bouton ne paraît pas** : `dr_enchVisible()` = faux parce que `S.enFin` = vrai — arriver sur la diapo « Cahier de textes » ouvre la fin de l'heure (`ouvrirFin`, l. 20198-20238 de la 8.89.0), et `dr_enchVisible` (l. 21158) rend faux dès `S.enFin`. Ça ne va pas : c'est exactement là que Paul en a besoin.
+- La règle de Paul (27/10) : « un exemple pour le banc doit toujours etre réaliste » — la séance 1 de la sonde doit finir comme la vraie : le bilan, la mise en commun du bilan, puis la diapo « Cahier de textes ».
+
+## 1 · CE QUE TU FAIS
+1. Le bouton paraît sur la dernière diapo de la séance entièrement faite, **aussi quand la fin de l'heure est ouverte** (la diapo « Cahier de textes ») ; le clic fait ce qu'il fait déjà (la garde de « Clore l'heure », la séance 1 close et marquée faite, la séance 2 lancée). Rien d'autre ne change.
+2. `sonde-enchainer.mjs` : la séance 1 du faux hub finit comme la vraie (le bilan, la mise en commun du bilan, le cahier de textes) ; par le geste, le bouton paraît sur le cahier de textes, fin d'heure ouverte. La sonde rejouée en entier (vh, test, rép., deux heures, T-5, reprise), verte ; le parcours P0-P12 vert ; la fin d'heure (`FIN-HEURE/sonde-fin-heure.mjs`, comme le banc la lance, avec les sondes à jour du banc) verte.

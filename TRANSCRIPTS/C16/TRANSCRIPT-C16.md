@@ -5207,3 +5207,17 @@ MEMO
   >
   > MEMO
 - **04:37 — Paul, mot pour mot :** « Fais les tests de 900 j'ai ouvert le site en onglet sur Chrome sur mon ordi »
+- **04:40 — Claude in Chrome** : l'onglet de Paul hors de portée (pas de groupe de cette session) ; un onglet ouvert dans le groupe de Claude, l'adresse `…?n=3e&v=8.89.0` ; lu par script : `APP_VERSION` = « 8.89.0-㉒ », mode test éteint, la page d'entrée (Nom, Prénom, code prérempli par Chrome). Pas d'entrée : pas de code tapé ni validé par Claude.
+- **04:40 — message à Paul, mot pour mot :**
+
+  > 901. Je ne peux pas utiliser ton onglet : Claude in Chrome ne me donne accès qu'aux onglets de son propre groupe. J'ai donc ouvert le site dans un nouvel onglet de ton Chrome, dans le groupe de Claude. Test 1 : la version affichée est 8.89.0-㉒. Ça va.
+  >
+  > 902. Pour la suite, il faut entrer comme professeur. La page demande le nom, le prénom et le code, et je n'ai pas le droit de taper ni de valider un mot de passe ou un code d'accès à ta place. Va dans cet onglet (groupe de Claude, adresse se terminant par « &v=8.89.0 »), entre comme professeur, puis dis-le-moi : je ferai les tests 2 à 5 en mode test, sur la 3E Charles de Gaulle, sans rien écrire pour une classe.
+  >
+  > À tester : 902 (entrer comme professeur dans l'onglet de Claude).
+  >
+  > 06/11/2026 04:40
+  >
+  > À jouer : 902 · en cours : les tests de 900 (1 fait) · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

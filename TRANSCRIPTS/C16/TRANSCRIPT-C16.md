@@ -5499,3 +5499,15 @@ MEMO
   > À jouer : la mise en ligne du micro à 12:00 · en cours : rien · ouvert : la liste de 934, inchangée
   >
   > MEMO
+- **10:27 — rappel posé pour moi-même** : 12:00 (Paris), « Micro des absents à 12:00 » — d'abord vérifier au hub qu'aucune heure n'est en cours, puis la mise en ligne, la routine, les tests en mode test, « Annuler l'heure », la sortie du mode test.
+- **10:27 — message à Paul, mot pour mot :**
+
+  > 939. Je reviens tout seul à 12:00. D'ici là, je ne touche à rien.
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 10:27
+  >
+  > À jouer : la mise en ligne du micro à 12:00 · en cours : rien · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

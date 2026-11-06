@@ -5423,3 +5423,20 @@ MEMO
   > À jouer : rien · en cours : le micro des absents (W), puis ses sondes, la mise en ligne si vert, et les tests dans ton Chrome · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **09:52 — Paul, mot pour mot :** « On en est où? Il est bientôt 10h »
+- **09:52 — mesuré** : `deroule/absents-heure` `093e4c5f3` (07:25) : `absentA` lit les segments de `S.heure` (un segment sans heure compte comme celle-ci) ; le mot aux absents et l'étape 5 : les absents de l'heure ; base `179766c8` → `be78a5a7` : 29/29, enchaînement vh 29/29 ; l'appel, la séance, le parcours pas rejoués. Le compte rendu de l'exécutant W n'est jamais arrivé ; aucun processus ne tourne. **Incident** : pas de vérification de W pendant deux heures.
+- **09:53 — message à Paul, mot pour mot :**
+
+  > 931. Le micro des absents n'est pas en ligne, et il ne le sera pas avant ton cours de 10:07. L'exécutant a poussé sa correction à 07:25, mais son compte rendu ne m'est jamais arrivé, et je n'ai pas vérifié pendant deux heures. C'est ma faute, je le déclare comme incident. Sa preuve à lui est verte : à l'heure 2, l'absent de l'heure 1 n'est plus barré, sa parole se pose, et le mot aux absents ne garde que ceux de l'heure, en vraie heure et en mode test. Mais l'appel, la séance et le parcours n'ont pas été rejoués. Et rien ne part en ligne pendant un cours.
+  >
+  > 932. Pour ce matin, la 8.89.1 reste en ligne, avec le bouton de la séance suivante. Seule la séance 1 est touchée par le défaut des absents. Un élève absent le lundi ou le mercredi peut apparaître barré à l'heure 3. Si c'est le cas, un clic droit sur sa pastille propose « Présent, arrivé à … ». Attention, cela note une arrivée à cette heure-là, et je ne sais pas comment le récit la raconte. Si tu enchaînes sur « L'Albatros », la séance 2 ne part qu'avec les absents de ton appel de ce matin.
+  >
+  > 933. Je lance maintenant les sondes des absents et des élèves (l'appel, la séance, le parcours, l'enchaînement), sans rien mettre en ligne. Si elles sont vertes, je mets en ligne sous ton « promeus si banc vert », mais jamais pendant une heure de cours : je lis ton emploi du temps pour trouver le premier creux.
+  >
+  > À tester : rien avant ton cours.
+  >
+  > 06/11/2026 09:53
+  >
+  > À jouer : rien · en cours : les sondes du micro des absents, puis la mise en ligne hors cours si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

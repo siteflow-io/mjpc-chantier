@@ -5531,3 +5531,26 @@ MEMO
 - **12:21 — lu au hub (GET, onglet de Claude)** : `/site/cours_actif` vide ; chez Claude `S.lancee` faux, mode test éteint.
 - **12:21:47 — mis en ligne 8.89.2-㉓-micro** (sur « promeus si banc vert », Paul 07:35 ; banc court vert 10:23) : prod `cea34c5`, blob `587543f54181`, md5 `7ad449baaad0807eade4061288c03a86`, 3 165 933 o. Le déploiement de GitHub a duré 10 min (l'étape « Deploy to GitHub Pages » de 11:22:57 UTC) ; **12:31:35 — bit à bit**.
 - **12:32:12 — docs** (prod `7c64d7d`) [heure corrigée : d'abord écrite 12:33 sans l'avoir lue ; lue sur le commit] : registre ✔ (le mot aux absents, 914), journal, point de retour (blob `eae83db7e941`, la 8.89.1-㉓), index des fonctions (2 464 fonctions, `dr_segDeLHeure` en plus), où trouver quoi, journal des micros (entrée 4, AVEC BANC COURT), l'adresse `&v=8.89.2`.
+- **12:33 → 12:38 — les tests de la 8.89.2 dans le Chrome de Paul (onglet de Claude), en mode test** : page rechargée `&v=8.89.2`, `APP_VERSION` 8.89.2-㉓-micro ; Panneau prof → « Mode test » (actif) ; l'emploi du temps, semaine suivante, la case de mardi 10/11 10:07 des 3 Dylan Bob (« heure 3 · suite ») ; à l'appel de la case, un élève marqué absent (initiales M. A.) ; « Ouvrir le pilotage et lancer » → « Où en est la 3 DYLAN BOB — vendredi 6 novembre 2026, 10:07-11:02 · heure 3 » → « Lancer l'heure 3 » : `S.heure` 3, 26 élèves, 25 présents, l'appel `absent@3`, 1 pastille barrée ; l'étape 5 « le mot aux absents (1) », « Un mot pour les absents (M.) » ; « Reporter les 2 diapos non faites… » ; « Clore l'heure » → la garde « le mot aux absents (1) » → « Clore quand même » : « L'heure des 3 DYLAN BOB est close à 12:37 ». La case de mardi dit ensuite « heure 4 · suite » ; son appel montre encore l'absent (l'appel est celui de la case, la même) ; défait d'un clic ; « Ouvrir le pilotage et lancer » → « L'heure de 3 DYLAN BOB sur le créneau 10:07-11:02 est déjà close aujourd'hui : elle ne se rouvre pas. » → l'absent d'une heure d'avant à l'heure suivante : pas mesurable ici.
+- **12:38 — fermé** : pilotage fermé, emploi du temps fermé, Panneau prof → mode test quitté (`m8TestOn` faux, le magasin 0), page rechargée : 8.89.2, `S.lancee` faux. « Annuler l'heure » pas cliqué : l'heure d'essai a été close (en mode test) pour essayer l'heure suivante. **Lu au hub (GET)** : `/site/cours_actif` vide ; les heures des Dylan Bob (séance 0) : `2026-11-03_10h07…` et `2026-11-06_11h04…` seulement ; leur appel vide ; la séance 1 sans déroulé joué ; `/site/edt/appel/2026-2027/2026-11-10_10h07-11h02_3_DYLAN_BOB/absentsPar` vide.
+- **12:39 — message à Paul, mot pour mot :**
+
+  > 941. La 8.89.2-㉓-micro est en ligne. L'adresse publique la sert bit à bit depuis 12:31:35 ; GitHub a mis 10 minutes à la servir. J'ai attendu que ton heure des Dylan Bob soit close : à 12:21, le hub ne montrait plus aucune heure en cours. Sont à jour : le registre (le mot aux absents ✔), le journal, le point de retour (la 8.89.1), l'index des fonctions, « où trouver quoi » et le journal des micros (entrée 4, avec banc court).
+  >
+  > 942. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.89.2
+  >
+  > 943. Les tests, faits dans ton Chrome en mode test, sur les 3 Dylan Bob (la case de mardi 10/11 10:07, « heure 3 · suite ») :
+  > - Test 1 : la version affichée est 8.89.2-㉓-micro. Ça va.
+  > - Test 2 : j'ai marqué un élève absent à l'appel de la case. Il est barré dans la participation (25 présents sur 26). L'étape 5 dit « le mot aux absents (1) » et « Un mot pour les absents » ne nomme que lui. La garde de clôture dit aussi « le mot aux absents (1) ». Ça va.
+  > - Test 3 : après la clôture de cette heure (les 2 diapos reportées), la case suivante dit « heure 4 · suite ». Ça va.
+  > - Un absent d'une heure d'avant, non barré à l'heure suivante : je ne sais pas ici. Le site joue une heure à venir sur le créneau d'aujourd'hui, et le 10:07 était déjà clos par mon heure 3 : « elle ne se rouvre pas ». C'est prouvé sur le faux hub (41/0).
+  >
+  > 944. Tout est fermé. Cette fois, je n'ai pas cliqué « Annuler l'heure ». J'ai clos l'heure d'essai pour pouvoir essayer l'heure suivante, et tout cela restait en mode test. J'ai ensuite quitté le mode test, ce qui vide sa mémoire, puis rechargé la page : version 8.89.2, rien de lancé. Vérifié au hub (en lecture) : aucune heure en cours. Les traces des Dylan Bob sont les deux vraies (03/11 et 06/11 11:04), et leur appel est vide. Aucun appel n'a été écrit pour la case de mardi.
+  >
+  > À tester : mardi 10/11 à 15:07, avec les 3 Franklin Aretha (« L'Albatros », heure 2). Un élève absent lundi et présent mardi n'est pas barré, et le mot aux absents ne compte que les absents de mardi.
+  >
+  > 06/11/2026 12:39
+  >
+  > À jouer : le test ci-dessus, mardi · en cours : rien · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

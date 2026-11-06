@@ -394,3 +394,7 @@ peut pas se faire le lundi 9/11 ; proposé (186) : vendredi 13/11 à 8:00, juste
 Paul, 10:40 : « oui du coup. » — **QCM du chapitre et de l'analyse logique, vendredi 13/11 : Turing
 8:00, Hugo 8:57.** *Le Horla* commence le lundi 16/11 (Hugo 11:04) et le mardi 17/11 (Turing 8:57) ;
 le cadrage du *Horla* (projet, `claude/CADRAGE-chapitre-4e-horla.md`) n'est pas encore mis à jour.
+
+**Les Turing passent plus tôt (6/11, 07:04).** Paul : « finalement les turing font leur oral ce matin »
+— vendredi 6/11, 8:00. La page Turing de la grille d'oral porte « Vendredi 6 novembre » ; les Hugo
+restent au mardi 10/11.

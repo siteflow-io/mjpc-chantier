@@ -113,7 +113,7 @@ def page_oral(classe):
               f'{e(", ".join(NON_PLACES_HUGO))}.</p>')
     return f"""<section class="page">
 <h1>Paris à la barre — l’oral de la plaidoirie — 4e {classe}</h1>
-<p class="sous">Mardi 10 novembre</p>
+<p class="sous">{"Vendredi 6 novembre" if classe == "Turing" else "Mardi 10 novembre"}</p>
 <table class="oral"><thead><tr>{ent1}</tr><tr>{ent2}</tr></thead><tbody>{''.join(lignes)}</tbody></table>
 <p class="leg">{legende}</p>{np}
 </section>"""

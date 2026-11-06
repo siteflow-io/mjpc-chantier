@@ -5466,3 +5466,16 @@ MEMO
   > À jouer : rien · en cours : les sondes du micro des absents · ouvert : la liste de 934, inchangée
   >
   > MEMO
+- **10:05 — Paul, mot pour mot :** « Et n'oublie pas de fermer si tu as lancé le mode test ou une séance ou autre »
+- **10:05 — vérifié dans l'onglet de Claude et au hub (lecture)** : mode test éteint, aucun essai, aucune heure lancée (`S.lancee` faux), `/site/cours_actif` vide ; l'onglet sur l'accueil.
+- **10:05 — message à Paul, mot pour mot :**
+
+  > 937. C'est vérifié à l'instant : rien ne tourne de mon côté. Le mode test est éteint, aucune heure n'est lancée dans mon onglet, et au hub aucune heure n'est en cours. L'heure d'essai de ce matin a été annulée à 07:31. L'onglet reste ouvert sur l'accueil, connecté, sans rien de lancé, pour les tests d'après la mise en ligne. Tu as le champ libre pour ton cours.
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 10:05
+  >
+  > À jouer : rien · en cours : les sondes du micro des absents · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

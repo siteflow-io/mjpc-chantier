@@ -90,13 +90,21 @@ const imageDe = u => { const m = /mjpc-medias\/(.*\/)?([^/?]+\.(png|jpe?g|webp))
 const typeDe = f => /\.webp$/i.test(f) ? 'image/webp' : /\.png$/i.test(f) ? 'image/png' : 'image/jpeg';
 
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'] });
+/* C16 (la frappe au tableau) : MJPC_HORLOGE=date — seule la date des appareils est décalée (le 14/09, 09:00 au lancement de la sonde, elle avance, la même pour tous) ;
+   les minuteries, les images (`requestAnimationFrame`) et `performance` restent ceux du navigateur. L'horloge simulée de Playwright (`page.clock`) remplace aussi
+   setTimeout, setInterval, requestAnimationFrame et performance, et exécute toutes les minuteries échues d'une page à la suite dans une seule tâche (playwright-core,
+   clockSource : `_runTo`) : mesuré, elle donne deux régimes au même code (FRAPPE-TABLEAU/NOTE.md). Sans la variable : inchangé. */
+const fauxDate = off => { const RD = Date; function FD(...a) { if (!(this instanceof FD)) return new RD(RD.now() + off).toString(); return a.length ? new RD(...a) : new RD(RD.now() + off); }
+  FD.prototype = RD.prototype; FD.now = () => RD.now() + off; FD.parse = RD.parse; FD.UTC = RD.UTC; try { Object.defineProperty(FD, 'name', { value: 'Date' }); } catch (e) {} window.Date = FD; };
+const T0DATE = Date.now();
 const ouvrir = async ({ qui = 'pilote', fichier = FICHIER, W = 1536, H = 864, q = '?n=3e', test = false, prof = true, h = '09:00', jour = '2026-09-14' }) => {
   const ctx = await nav.newContext({ viewport: { width: W, height: H }, timezoneId: 'Europe/Paris' }); const errs = [], boites = [];
   await ctx.route(u => !String(u).startsWith('file:') && !String(u).startsWith('about:'), r => { const u = r.request().url(); const f = imageDe(u); if (f) return r.fulfill({ path: f, contentType: typeDe(f) }); return r.abort(); });
   await ctx.exposeFunction('__hubN', (m, c, corps) => hubRepondre(qui, m, c, corps)); await ctx.addInitScript(fauxFetch);
   await ctx.addInitScript(() => { const st = document.createElement('style'); st.textContent = '#fi-overlay{display:none!important}'; document.addEventListener('DOMContentLoaded', () => document.head.appendChild(st)); });
   ctx.on('page', pg => { pg.on('pageerror', e => errs.push(String(e.message).slice(0, 200))); pg.on('dialog', d => { if (d.type() === 'beforeunload') { d.accept().catch(() => {}); return; } boites.push(d.type() + ' : ' + d.message().slice(0, 100)); d.dismiss().catch(() => {}); }); });
-  const pg = await ctx.newPage(); await pg.clock.setFixedTime(new Date(jour + 'T' + h + ':00+02:00'));
+  if (process.env.MJPC_HORLOGE === 'date') await ctx.addInitScript(fauxDate, new Date(jour + 'T' + h + ':00+02:00').getTime() - T0DATE);
+  const pg = await ctx.newPage(); if (process.env.MJPC_HORLOGE !== 'date') await pg.clock.setFixedTime(new Date(jour + 'T' + h + ':00+02:00'));
   await pg.goto('file://' + fichier + q, { waitUntil: 'load' }); await p(1800);
   if (prof) { await pg.evaluate(() => { document.body.classList.add('admin-mode'); if (window.SECU) SECU.valide = true; ['fi-overlay', 'm8-regles-overlay'].forEach(i => { const o = document.getElementById(i); if (o) o.remove(); }); }); await p(300);
     await pg.click('#tprof-btn'); await p(600); if (test) await pg.evaluate(() => { window.M8_TEST = true; }); }
@@ -198,7 +206,7 @@ const glisse = async (o, fen) => { if (process.env.MJPC_PROFIL) { await profiler
     const arr = L.find(x => Math.abs(x[1] - z) < 0.01); return { depart: Math.round(a * 10) / 10, arrivee: Math.round(z * 10) / 10, images: L.length, premier: prem ? Math.round(prem[0] - kd) : null, entre: entre.length, fin: arr ? Math.round(arr[0] - kd) : null, a90: (L.filter(x => x[0] - kd <= 90).pop() || [0, a])[1] }; };
   if (process.env.MJPC_PROFIL) { const r2 = x => Object.entries(x || {}).filter(([, v]) => v[0] >= 2).sort((a, b) => a[1][2] - b[1][2]).map(([k, v]) => k + ' ' + Math.round(v[0]) + ' ms ×' + v[1] + ' [' + Math.round(v[2] - kd) + '→' + Math.round(v[3] - kd) + ']').join(', '); dire('        profil pilote : ' + r2(await o.pg.evaluate(() => window.__PR))); if (fen) dire('        profil tableau : ' + r2(await fen.evaluate(() => window.__PR))); }
   return { t: lire(await fen.evaluate(() => window.__GL)), p: lire(await o.pg.evaluate(() => window.__GL)) }; };
-const jouerD = async (fichier, fois) => { HUBN = storeFil(); ECR = []; const o = await ouvrir({ fichier, test: true }); await lancerClasse(o); const fen = await ouvrirTableau(o, 1536, 864);
+const jouerD = async (fichier, fois) => { HUBN = storeFil(); ECR = []; const o = await ouvrir({ fichier, test: process.env.MJPC_D_VRAIE !== '1' });   /* C16 (la frappe au tableau) : MJPC_D_VRAIE=1, une vraie heure (faux hub) ; sans elle, le mode test, inchangé */ await lancerClasse(o); const fen = await ouvrirTableau(o, 1536, 864);
   const L = await eidsDe(o.pg); const h1 = L.filter(e => e.heure === 1 || e.heure == null); const iT = L.findIndex(e => e.act === 'Les cinq tableaux');
   const ordre = await o.pg.evaluate(() => ordreHeure(S.heure)); const passages = [['l’étape 11 (2e → 3e diapo de l’heure : ' + L[ordre[1]].act + ' → ' + L[ordre[2]].act + ')', L[ordre[1]].eid], ['la diapo d’avant → le tableau des cinq œuvres (' + L[ordre[ordre.indexOf(iT) - 1]].act + ' → ' + L[iT].act + ')', L[ordre[ordre.indexOf(iT) - 1]].eid], ['le tableau → la diapo suivante, sans tableau (' + L[iT].act + ' → ' + L[ordre[ordre.indexOf(iT) + 1]].act + ')', L[iT].eid]];
   const out = []; for (const [nom, eid] of passages) { const r = []; for (let k = 0; k < fois; k++) { await allerA(o.pg, eid); await toutDevoiler(o.pg, eid); await p(1200); const s = await ici_(o.pg); if (s.eid !== eid) { k--; continue; } r.push(await glisse(o, fen)); } out.push({ nom, r }); }

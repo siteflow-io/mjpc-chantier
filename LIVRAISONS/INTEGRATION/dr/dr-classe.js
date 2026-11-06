@@ -1347,7 +1347,7 @@ function dr_enchSeanceFaite(){ const E = seance().ecrans; if (!E || !E.length) r
 function dr_enchRepVue(e, i){ if (!S.repetition || !S.repVu) return false; const v = S.repVu[K(i)]; if (v == null) return false; const n = elements(e).length;
   return n ? v >= n : (e.blocs && e.blocs[0] && e.blocs[0].t === 'video' ? ((S.videoPos || {})[e.eid] || 0) >= e.blocs[0].duree : true); }
 function dr_enchVisible(){
-  if (typeof S !== 'object' || !S || !(S.repetition || (S.lancee && !S.close)) || S.atelier || S.preparation || S.enFin) return false;   /* V3 : la répétition ne pose pas S.lancee (l'heure de classe) */
+  if (typeof S !== 'object' || !S || !(S.repetition || (S.lancee && !S.close)) || S.atelier || S.preparation) return false;   /* V3 : la répétition ne pose pas S.lancee (l'heure de classe) ; V7 (C16, Paul 06/11 04:37) : la fin de l'heure ouverte (S.enFin, le cahier de textes) ne cache plus le bouton — c'est là que Paul en a besoin */
   if (!S.repetition && (typeof AT_DR_COURS === 'undefined' || !AT_DR_COURS || AT_DR_REGIME !== 'classe')) return false;
   const o = ordreHeure(S.heure); if (!o.length || S.di !== o[o.length - 1]) return false;
   return dr_enchSeanceFaite();

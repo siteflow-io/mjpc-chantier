@@ -18,7 +18,7 @@ const J = f => JSON.parse(fs.readFileSync(path.join(HUB, f), 'utf8'));
 const store = { classes: J('classes.json'), taxonomie: fs.existsSync(path.join(HUB, 'taxonomie.json')) ? J('taxonomie.json') : null,
   site: { '3e': J('site_3e.json'), config: J('site_config.json'), edt: { grille: { '2026-2027': J('grille-appariee.json') }, calendrier: { '2026-2027': J('calendrier.json') }, creneaux: { '2026-2027': J('creneaux.json') } } } };
 try { store.classes['3E Charles de Gaulle'].ed = { espace: 2, lien: 'https://www.ecoledirecte.com/P/94/EspacesTravail/2/cloud' }; } catch (e) {}
-const PERMIS = [/^\/site\/3e\/chapitres\/\d+\/seances\/\d+\/deroule(_joue)?(\/|$)/, /^\/site\/cours_actif$/, /^\/site\/edt\//, /^\/corbeille\//, /^\/classes\//];
+const PERMIS = [/^\/site\/3e\/chapitres\/\d+\/seances\/\d+\/deroule(_joue)?(\/|$)/, /^\/site\/cours_actif$/, /^\/site\/edt\//, /^\/corbeille\//, /^\/classes\//, /^\/site\/telecommande\/[^\/]+(\/|$)/, /^\/site\/repetition\/vif(\/|$)/];   /* C16, 02/11 : les chemins de ㉞ (la télécommande par le QR, l'état vivant de la répétition) ; l'appel d'avant l'heure (㊱) est sous /site/edt/ */
 const R = []; let echecs = 0; const dire = s => { R.push(s); console.log(s); };
 const pas = (k, etat, quoi, detail) => { if (etat === 'ÉCHEC') echecs++; dire('  ' + (etat === 'ok' ? 'ok     ' : etat === 'absent' ? 'absent ' : 'ÉCHEC  ') + k + ' · ' + quoi + (detail ? ' — ' + detail : '')); };
 const nav = await pw.chromium.launch({ executablePath: process.env.MJPC_CHROMIUM || undefined, args: ['--no-sandbox', '--allow-file-access-from-files'], headless: true });

@@ -5479,3 +5479,23 @@ MEMO
   > À jouer : rien · en cours : les sondes du micro des absents · ouvert : la liste de 934, inchangée
   >
   > MEMO
+- **10:23 — le banc court des absents fini** (`093e4c5f3`, l'assemblé md5 `be78a5a7`, 09:55 → 10:23) : étape 14 105/0, étape 15 155/0, parcours 30/0, parcours en mode test 30/0, enchaînement vh 29/29, absents 41/0 — VERT.
+- **10:25 — lu au hub, dans l'onglet de Claude (GET)** : `/site/edt/grille`, les cases du vendredi : 08:00 Turing, 08:57 Hugo, 10:07 Franklin, 11:04 Dylan Bob ; rien l'après-midi. La mise en ligne attend donc 12:00 (rien en ligne pendant un cours).
+- **10:26 — le candidat préparé, non poussé** : l'assemblé `be78a5a7` + `APP_VERSION="8.89.2-㉓-micro"` (seule ligne changée, `cmp`), md5 `7ad449ba`, 3 165 933 o. Écart avec la prod : la version, `dr_segDeLHeure` + `absentA` (l. 18007), le mot aux absents (l. 20304) ; la ligne 20126 ne diffère que par la fin de ligne (rien d'autre).
+- **10:26 — message à Paul, mot pour mot :**
+
+  > 938. Le banc court des absents est vert (09:55 → 10:23) : étape 14 105/0, étape 15 155/0, le parcours 30/0, le parcours en mode test 30/0, l'enchaînement 29/29, les absents 41/0.
+  >
+  > Ton vendredi, lu au hub : Franklin 10:07–11:02, puis Dylan Bob 11:04–11:59, rien l'après-midi. Je ne mets rien en ligne pendant un cours. La mise en ligne se fera donc à 12:00, sous le nom 8.89.2-㉓-micro. Ensuite viendront les tests dans mon onglet, en mode test, puis « Annuler l'heure » et la sortie du mode test.
+  >
+  > Le fichier est prêt. Il ne change que la ligne de version et les absents, à trois endroits : qui est barré, le mot aux absents, l'étape 5.
+  >
+  > Avec les Dylan Bob, c'est encore la 8.89.1 : un absent d'une heure d'avant reste barré, et le clic droit (936) le remet présent.
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 10:26
+  >
+  > À jouer : la mise en ligne du micro à 12:00 · en cours : rien · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

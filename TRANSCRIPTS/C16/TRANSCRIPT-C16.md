@@ -5328,3 +5328,18 @@ MEMO
   > À jouer : les tests de 915 · en cours : la mesure du retour au cahier de textes, puis le micro des absents (W) · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:04 — Paul, mot pour mot (une capture : 3 FRANKLIN ARETHA, heure 3/3, mode test, « Hors de l'heure 3 · activité 2 (11/11) · Groupe 5 : l'hypothèse », page 2 / 2) :** « il faut faire uniquement la modif des absents et pour ce que tu dis sur le fait de mettre l'élève en "arrivé", je n'ai aucun moyen de le déclarer arriver, à part en faisant l'appel de manière normale (ce qui pour moi correspond à arrivé: si je ne clique pas sur un nom d'élève, il est là, par définition). Par ailleurs, à ajouter à samedi sans mesure immédiate, dans les diapos grisées, voilà ce qui se passe: je clique sur la diapo qui a une suite, mais je ne peux jamais afficher la première des deux diapos alors qu'elle apparait bien en miniature dans la colonne de gauche. »
+- **07:05 — à l'exécutant W, par message** : seulement les absents (la partie 1 arrêtée), avec la règle de Paul. **Registre** (prod `af70d9e`) : le retour au cahier de textes ; la diapo grisée à deux pages.
+- **07:05 — message à Paul, mot pour mot :**
+
+  > 920. Compris. L'exécutant ne fait plus que les absents : la mesure du retour au cahier de textes est arrêtée et va au registre pour samedi. Je lui ai transmis ta règle : à chaque heure, un élève est présent par défaut ; il n'est absent que si tu cliques sur son nom à l'appel de cette heure (ou si tu le marques absent pendant cette heure) ; un absent d'une heure d'avant ne compte plus. Tu n'auras donc jamais à marquer quelqu'un « arrivé ».
+  >
+  > 921. La diapo grisée à deux pages, dont la première page ne s'affiche jamais, est au registre pour samedi, avec tes mots et sans mesure.
+  >
+  > À tester : les cinq tests de 915 (la 8.89.1-㉓).
+  >
+  > 06/11/2026 07:05
+  >
+  > À jouer : les tests de 915 · en cours : le micro des absents (W), puis la demande de « promeus » · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

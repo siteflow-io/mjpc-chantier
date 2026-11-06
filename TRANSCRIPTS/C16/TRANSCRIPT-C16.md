@@ -5258,3 +5258,4 @@ MEMO
   > À jouer : 905 (« promeus si le banc est vert » pour la 8.89.1 ?) ; 906 · en cours : le banc court · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **06:04 — Paul, mot pour mot :** « Promeus si le banc est vert »

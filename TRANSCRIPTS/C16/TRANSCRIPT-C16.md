@@ -5206,3 +5206,4 @@ MEMO
   > À jouer : les cinq tests ci-dessus ; 894 (samedi) ; 878 ; les tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **04:37 — Paul, mot pour mot :** « Fais les tests de 900 j'ai ouvert le site en onglet sur Chrome sur mon ordi »

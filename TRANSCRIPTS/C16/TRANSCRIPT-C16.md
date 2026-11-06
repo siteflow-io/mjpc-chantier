@@ -5343,3 +5343,15 @@ MEMO
   > À jouer : les tests de 915 · en cours : le micro des absents (W), puis la demande de « promeus » · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:18 — Paul, mot pour mot :** « En revanche ne repasse le banc que pour ce qui touche aux absents et aux élèves de  manière générale ( participation etc). Pas le temps de passer le banc complet, la séance est à 10h, sauf si tu me dis que ça sera bon. »
+- **07:18 — message à Paul, mot pour mot :**
+
+  > 922. Compris : pour ce micro, le banc ne repasse que ce qui touche aux absents et aux élèves. Cela tombe bien : c'est déjà ce que l'exécutant joue dans sa preuve. Il y a l'appel (155 contrôles), la séance avec la participation et les trois pilotes, le parcours, et l'enchaînement en vraie heure. Pas de banc complet. Je t'envoie la demande de « promeus » dès qu'il a fini, vers 08:15 (estimé), avec les tests à faire avant 10:00.
+  >
+  > À tester : les cinq tests de 915 (la 8.89.1-㉓).
+  >
+  > 06/11/2026 07:18
+  >
+  > À jouer : les tests de 915 · en cours : le micro des absents (W) et ses sondes · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

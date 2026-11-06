@@ -5369,3 +5369,21 @@ MEMO
   > À jouer : entrer dans l'onglet · en cours : le micro des absents (W) et ses sondes · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:29 — Paul, mot pour mot :** « c'est bon je t'ai connecté »
+- **07:30 — Paul, mot pour mot (pendant un clic de Claude, arrêté) :** « tu cliqueras bien sur annuler l'heure une fois les tests finis pour ne pas télescoper quand je lancerai la séance au collège »
+- **07:29 → 07:33 — les tests de 915 dans le Chrome de Paul** : `APP_VERSION` 8.89.1-㉓ ; mode test ; la case de vendredi 10:07 des 3 Franklin Aretha, « Lancer l'heure 3 » (ordre 17, 18, 20) ; tout dévoilé (16 clics) : le bouton présent sur le cahier de textes, `S.enFin` vrai ; le clic (l'appel arrêté par Paul en cours) : la séance « L'Albatros » heure 1/2 lancée, diapo 1 sur 18, le tableau sur « Notre problématique… » ; « aller à 5 minutes de la fin » absent sur cette case ; « Annuler cette heure » → « Annuler l'heure » ; mode test quitté (`M8T.vider`) ; page rechargée (accueil, mode normal).
+- **07:33 — message à Paul, mot pour mot :**
+
+  > 924. Les tests de 915, faits dans ton Chrome en mode test, sur la case de 10:07 des 3 Franklin Aretha. Test 1 : la version est 8.89.1-㉓. Ça va. Test 2 : après le bilan, la mise en commun et le cahier de textes dévoilés en entier, « ▶ Séance suivante dans cette heure » paraît sur le cahier de textes, avec la fin de l'heure ouverte, et son infobulle. Ça va. Test 3 : au clic, la séance 1 se clôt et « L'Albatros » démarre en heure 1 sur 2 (diapo 1 sur 18, « parcours du chapitre ») ; le tableau montre sa première diapo (« Notre problématique… ») sans écran d'attente. Ça va. Test 4 : je ne sais pas ici, parce que « aller à 5 minutes de la fin » n'existe pas sur cette case ; il faudrait attendre 10:57. C'est prouvé sur le faux hub (24/24 et 26/26). Test 5 : pas joué, car il fallait clore la séance 2 par toute la fin d'heure ; c'est prouvé sur le faux hub.
+  >
+  > 925. Comme tu l'as demandé, j'ai cliqué « Annuler l'heure » (« Annuler l'heure des 3 FRANKLIN ARETHA (10:07-11:02) ? » → « Annuler l'heure »). Puis j'ai quitté le mode test, ce qui vide sa mémoire, et rechargé la page : l'onglet est sur l'accueil, en mode normal. D'après le code, rien n'a été écrit pour la classe, parce qu'en mode test toute écriture reste dans la page. Je ne l'ai pas vérifié au hub.
+  >
+  > 926. Le micro des absents est toujours en cours chez l'exécutant.
+  >
+  > À tester : rien de plus pour la 8.89.1.
+  >
+  > 06/11/2026 07:33
+  >
+  > À jouer : rien · en cours : le micro des absents (W) et ses sondes, puis la demande de « promeus » · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

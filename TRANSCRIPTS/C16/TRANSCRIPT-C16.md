@@ -5271,3 +5271,19 @@ MEMO
   > À jouer : 906 · en cours : le banc court, puis la partie « trois pilotes » rejouée, puis la mise en ligne 8.89.1 si tout est vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **06:33 — banc court fini** (`f22d321ae`, assemblé `179766c8`, 05:12 → 06:33) : 14 104/1 (H, trois pilotes), 15 155/0, 16 56/0, 1-12 VERT, 13 14/0, session ×3 8/0 ; enchaînement vh 29/29, test 31/31, rép. 14/14, deux heures 29/29 et 31/31, T-5 24/24 et 26/26, reprise 36/36 ; attente 13/13 ; Relecture F 17/0 ; récit R 6/0 ; bilan B 36/0, rép. 37/0. **Étape 14 partie H rejouée** (`scratchpad/banc-v7-h`) : candidat 23/23 ×3, base (`86e8a269`, la 8.89.0) 23/23.
+- **06:36 — Paul, mot pour mot (une capture : l'écran « Où en est la 3 FRANKLIN ARETHA », vendredi 10:07-11:02, heure 3 · suite, en mode test, dans l'onglet du groupe de Claude) :** « dette pour samedi soir: cet écran. 0 élèves ayant pris la parole? et le bouton "voir la relecture de l'heure 2" en bas fait revenir à la relecture mais après, aucun moyen de revenir à cet écran là. Par ailleurs, la diapo de réactivation devrait s'afficher pour que je voie son contenu, et que je puisse aussi le modifier bien sûr (si des éléments expliqués à l'oral, etc). A mettre au registre, pas de mesure pour l'instant. »
+- **06:40 — registre** (prod `dd2ce40`).
+- **06:40 — message à Paul, mot pour mot :**
+
+  > 911. Ta dette de 06:36 est au registre pour samedi, avec tes mots et sans mesure. Elle a trois points : « 0 élève ayant pris la parole » à l'heure 2 ; « Voir la relecture de l'heure 2 » sans moyen de revenir à cet écran ; la diapo de réactivation à afficher sur cet écran, visible et modifiable.
+  >
+  > 912. Le banc court a fini (05:12 → 06:33). Tout est vert, sauf le seul échec de 910 : les trois pilotes, au moment où l'ordinateur dévoile. Je l'ai rejoué à part : 23/23 trois fois de suite sur la 8.89.1, et 23/23 sur la 8.89.0. C'est donc un hasard de temps de la sonde (le téléphone lu un instant trop tard), pas un défaut du site ni de la correction. Mais ta règle dit qu'un banc échoue si un seul contrôle échoue, alors je ne mets pas en ligne sans ton mot : je mets en ligne la 8.89.1 ? Je te le conseille : sans elle, le bouton ne paraît pas quand la fin de l'heure est ouverte.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 06/11/2026 06:40
+  >
+  > À jouer : 912 (mettre en ligne la 8.89.1 ?) ; 906 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

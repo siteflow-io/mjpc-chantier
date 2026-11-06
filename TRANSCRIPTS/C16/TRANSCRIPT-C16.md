@@ -5454,3 +5454,15 @@ MEMO
   > À jouer : rien · en cours : les sondes du micro des absents, puis la mise en ligne hors cours si vert · ouvert, samedi 22:30 : (inchangé, voir 934)
   >
   > MEMO
+- **10:04 — Paul, mot pour mot :** « Pour le clic droit cest dans l'appel en début d'heure ou en bas a droite pendant l'heure ? »
+- **10:04 — message à Paul, mot pour mot :**
+
+  > 936. En bas à droite, pendant l'heure : dans « Participation », clic droit sur la pastille barrée, puis « Présent, arrivé à … » (lu dans le code : le menu est posé sur les pastilles de la participation).
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 10:04
+  >
+  > À jouer : rien · en cours : les sondes du micro des absents · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

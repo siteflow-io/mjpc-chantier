@@ -5182,3 +5182,27 @@ MEMO
   > À jouer : 894 (samedi) ; 878 ; les cinq tests de 861 ; 847 ; 849 · en cours : le banc court, puis la mise en ligne 8.89.0-㉒ si vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **01:23 — le banc court est VERT** (`0d7211bba`, assemblé `86e8a269`, 00:01 → 01:23) : 14 105/0, 15 155/0, 16 56/0, 1-12 VERT (contrôles 106/0, parcours 30/0 et en mode test 30/0, ouverture 126/0, fil 100/0, retour sûr 61/0, ⑩ 55/0, §12.62 53/0, §12.66 27/0, question 33/0), 13 14/0, session ×3 8/0 ; enchaînement vh 27/27, test 29/29, rép. 12/12, deux heures 27/27 et 29/29, T-5 22/22 et 24/24, reprise 34/34 ; attente 13/13 ; Relecture F 17/0 ; récit R 6/0 ; bilan B 36/0, en répétition 37/0.
+- **01:24:00 — mis en ligne 8.89.0-㉒** (sous « promeus si le banc est vert », Paul 22:38) : prod `844a215`, blob `3a2b8eba6042`, md5 `5af41f3dd114e294ed9dca37f9c6df36`, 3 164 982 o ; **01:25:13 — bit à bit**. Docs (prod `2db7349`) : registre ✔, journal, point de retour (blob `1ac9e85ce718`), index des fonctions (2 479 lignes), où trouver quoi, l'adresse `&v=8.89.0` ; public encore bit à bit à 01:26.
+- **01:26 — message à Paul, mot pour mot :**
+
+  > 898. Le banc court est vert (00:01 → 01:23) : la séance, l'appel, la fin d'heure, le parcours (aussi en mode test), l'ouverture, le retour sûr, la session, la Relecture, le récit, le bilan, l'écran d'attente, et toute la sonde de l'enchaînement (vraie heure, mode test, répétition, deux heures, à 5 minutes de la fin, la reprise). Aucun échec.
+  >
+  > 899. Sous ton « promeus si le banc est vert », la 8.89.0-㉒ est en ligne, bit à bit depuis 01:25:13. Le registre, le journal, le point de retour (la 8.88.0-㉑), l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 900. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.89.0
+  >
+  > À tester demain matin, avant ton cours, en mode test (3E Charles de Gaulle) :
+  > 1. La version affichée est 8.89.0-㉒.
+  > 2. Joue la séance 1 jusqu'à sa dernière diapo (après la mise en commun du bilan et le cahier de textes) : « ▶ Séance suivante dans cette heure » paraît là, et pas avant. S'il ne paraît pas, c'est 882 : passe par la répétition (863).
+  > 3. Clique dessus (et « Clore quand même » si la garde le demande) : la séance 2 démarre, le tableau passe à la séance 2 sans écran d'attente, et l'horloge de la case continue.
+  > 4. Dévoile, tape une réponse, puis « aller à 5 minutes de la fin » : le flux habituel arrive (cahier de textes, fin d'heure). Reporte ce qui reste, puis clos.
+  > 5. La case du jour dit « Séance 1 : … ; puis Séance 2 : … », et « Relire cette heure » montre les deux récits.
+  >
+  > En classe, si la page se ferme pendant la séance 2 : ouvre la case et clique « ▶ Reprendre l'heure ». C'est prouvé en vraie heure ; ça ne se teste pas en mode test (894).
+  >
+  > 06/11/2026 01:26
+  >
+  > À jouer : les cinq tests ci-dessus ; 894 (samedi) ; 878 ; les tests de 861 ; 847 ; 849 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

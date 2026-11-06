@@ -5481,7 +5481,7 @@ MEMO
   > MEMO
 - **10:23 — le banc court des absents fini** (`093e4c5f3`, l'assemblé md5 `be78a5a7`, 09:55 → 10:23) : étape 14 105/0, étape 15 155/0, parcours 30/0, parcours en mode test 30/0, enchaînement vh 29/29, absents 41/0 — VERT.
 - **10:25 — lu au hub, dans l'onglet de Claude (GET)** : `/site/edt/grille`, les cases du vendredi : 08:00 Turing, 08:57 Hugo, 10:07 Franklin, 11:04 Dylan Bob ; rien l'après-midi. La mise en ligne attend donc 12:00 (rien en ligne pendant un cours).
-- **10:26 — le candidat préparé, non poussé** : l'assemblé `be78a5a7` + `APP_VERSION="8.89.2-㉓-micro"` (seule ligne changée, `cmp`), md5 `7ad449ba`, 3 165 933 o. Écart avec la prod : la version, `dr_segDeLHeure` + `absentA` (l. 18007), le mot aux absents (l. 20304) ; la ligne 20126 ne diffère que par la fin de ligne (rien d'autre).
+- **10:26 — le candidat préparé, non poussé** : l'assemblé `be78a5a7` + `APP_VERSION="8.89.2-㉓-micro"` (seule ligne changée, `cmp`), md5 `7ad449ba`, 3 165 933 o. Écart avec la prod : la version, `dr_segDeLHeure` + `absentA` (l. 18007), le mot aux absents (l. 20304), l'étape 5 dans `controleCahier` (l. 20126 : les absents de l'heure). [Corrigé à 10:28 : j'avais d'abord écrit que la ligne 20126 ne différait que par la fin de ligne, sans l'avoir lue en entier ; lue, c'est l'étape 5.]
 - **10:26 — message à Paul, mot pour mot :**
 
   > 938. Le banc court des absents est vert (09:55 → 10:23) : étape 14 105/0, étape 15 155/0, le parcours 30/0, le parcours en mode test 30/0, l'enchaînement 29/29, les absents 41/0.

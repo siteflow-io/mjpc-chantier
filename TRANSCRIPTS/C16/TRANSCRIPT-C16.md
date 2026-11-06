@@ -5287,3 +5287,25 @@ MEMO
   > À jouer : 912 (mettre en ligne la 8.89.1 ?) ; 906 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **06:43 — Paul, mot pour mot :** « pour l'instant de toute façon je n'utilise pas encore le téléphone car ce n'est pas encore assez cadré. Par ailleurs, le mot aux absents: il devrait être indexé sur les absents de l'heure, pas de la séance. Promeus »
+- **06:44:14 — mis en ligne 8.89.1-㉓** : prod `76728d2`, blob `eae83db7e941`, md5 `ab3edae2ee14383c3f429100e9465ad0`, 3 165 118 o ; **06:45:17 — bit à bit**. Docs (prod `cef7bfe`) : registre ✔ (le bouton après le cahier de textes) + le mot aux absents (samedi), journal, point de retour (blob `3a2b8eba6042`), index des fonctions, où trouver quoi, l'adresse `&v=8.89.1` ; public encore bit à bit à 06:46.
+- **06:46 — message à Paul, mot pour mot :**
+
+  > 913. La 8.89.1-㉓ est en ligne, bit à bit depuis 06:45:17. Le registre, le journal, le point de retour (la 8.89.0-㉒), l'index des fonctions et « où trouver quoi » sont à jour.
+  >
+  > 914. Le mot aux absents est au registre pour samedi, avec tes mots : il doit suivre les absents de l'heure, pas ceux de la séance. Noté aussi : tu n'utilises pas encore le téléphone.
+  >
+  > 915. L'adresse : https://siteflow-io.github.io/monsieurjaipascompris/index.html?n=3e&v=8.89.1
+  >
+  > À tester avant ton cours, en mode test, sur la case de vendredi 10:07 des 3 Franklin Aretha (comme cette nuit) :
+  > 1. La version affichée est 8.89.1-㉓.
+  > 2. Lance l'heure 3, puis dévoile tout : le bilan, la mise en commun du bilan, le cahier de textes. Sur le cahier de textes, « ▶ Séance suivante dans cette heure » paraît, même si la fin de l'heure est ouverte.
+  > 3. Clique dessus (et « Clore quand même » si on te le demande) : « L'Albatros » démarre, et le tableau passe à la séance 2 sans écran d'attente.
+  > 4. Dévoile, tape une réponse, puis « aller à 5 minutes de la fin » : la fin d'heure habituelle arrive. Reporte ce qui reste, puis clos.
+  > 5. La case du jour dit « Séance 1 : … ; puis Séance 2 : … », et « Relire cette heure » montre les deux récits.
+  >
+  > 06/11/2026 06:46
+  >
+  > À jouer : les cinq tests ci-dessus ; 906 · en cours : rien · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le mot aux absents (914), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

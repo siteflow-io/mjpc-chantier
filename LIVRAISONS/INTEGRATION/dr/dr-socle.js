@@ -1175,7 +1175,9 @@ const etatDiapo = () => parDiapo[cle()] || (parDiapo[cle()] = { nDev: 0, lum: []
 const eleves = () => ELEVES;
 
 /* C16 (㊱, 00:20) : un « absent » vaut depuis le début de l’heure (le menu le dit), quelle que soit la montre de l’appareil qui l’a marqué — mesuré : un absent marqué par un téléphone en avance de 3 min ne comptait, à l’ordinateur, qu’au bout de 3 min */
-const absentA = (e, t) => { const seg = S.appel[e] || []; let present = true; for (const s of seg) { if (s.type === 'absent' || s.t <= (t || now())) present = (s.type === 'arrive' || s.type === 'revenu') ? true : (s.type === 'absent' || s.type === 'parti') ? false : present; } return !present; };
+/* W (Paul, 06/11 07:04) : à chaque heure, un élève est présent par défaut ; il n'est absent que s'il est marqué absent à CETTE heure (l'appel de la case de l'heure, ou « Absent » dans la participation). Un segment de l'appel compte pour l'heure `h` (par défaut l'heure en cours, S.heure) s'il porte cette heure ; un segment sans `heure` (une ancienne version) compte comme celle-ci. */
+function dr_segDeLHeure(x, h){ if (!x) return false; if (h === undefined) h = (typeof S !== 'undefined' && S) ? S.heure : null; return x.heure == null || String(x.heure) === String(h); }
+const absentA = (e, t) => { const seg = (S.appel[e] || []).filter(s => dr_segDeLHeure(s)); let present = true; for (const s of seg) { if (s.type === 'absent' || s.t <= (t || now())) present = (s.type === 'arrive' || s.type === 'revenu') ? true : (s.type === 'absent' || s.type === 'parti') ? false : present; } return !present; };
 
 const dr_presents = () => ELEVES.filter(e => !absentA(e)).length;
 

@@ -1,0 +1,46 @@
+C16 · sonde de la fin d’heure (㊲ ㊳) · faux hub rangé comme le vrai, qui refuse les clés interdites (HTTP 400), avec son flux (EventSource) · parties W WH WT · 2026-11-06 06:21 UTC · md5 be78a5a79d4150f6445636b9139386fa · images de 3e : un dossier local
+
+══ LA FIN D’HEURE · w-apres · md5 be78a5a79d4150f6445636b9139386fa ══
+
+— partie W
+  [W1] l’heure 1 : ÉLÈVE 3 marqué absent au clic droit (true) · barré true · absent true · présents 28/29 · ses segments absent@1
+  ok     W1 · à l’heure 1, ÉLÈVE 3 marqué absent : barré dans la participation, compté absent — {"heure":1,"aClasse":"  muet abs ","bClasse":"  muet ","aBarre":true,"bBarre":false,"aAbs":true,"bAbs":false,"presents":28,"nb":29,"segA":"absent@1","segB":""}
+  ok     W1 · à l’heure 1, ses initiales disent « absent », rien n’est posé — {"ditAbsent":true,"exact":false,"pose":false}
+  [W1] « Un mot pour les absents » à l’heure 1 : {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard L'activité en cours : Activité 2 — Mise en commun, tu dépasses · +15 min. Le cahier de textes attend — le tableau ne bouge pas tant que tu","sec":"","trouve":true,"n":1,"aDedans":true,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ok     W1 · à l’heure 1, « Un mot pour les absents » : ÉLÈVE 3, seul — {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard L'activité en cours : Activité 2 — Mise en commun, tu dépasses · +15 min. Le cahier de textes attend — le tableau ne bouge pas tant que tu","sec":"","trouve":true,"n":1,"aDedans":true,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ok     W1 · l’heure 1 close ; au hub, son appel : 1 élève — clos true · appel 1
+  [W1] le récit de l’heure 1 : {"relire":true,"h3":"","vue":"relecture","n":2814,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":false,"bTexte":false}
+  ÉCHEC  W1 · le récit de l’heure 1 (« L’appel », « Le mot pour chaque absent ») dit ÉLÈVE 3, pas ÉLÈVE 5 — {"relire":true,"h3":"","vue":"relecture","n":2814,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":false,"bTexte":false}
+  ok     W1 · l’heure 1 : aucune erreur JS, aucune boîte système
+  ÉCHEC  W1 · heure 1 : aucune écriture refusée par le hub (HTTP 400) — 187 écritures — ["PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-14_08h57-09h52_3E_Charles_de_Gaulle/absentsPar/ÉLÈVE/pso306hb58"]
+  ok     W1 · heure 1 : aucune écriture hors des chemins permis (K15) — []
+  [WH] « Lancer l’heure 2 » true · l’heure 2 (mode test false) · ÉLÈVE 3 : barré false, absent false, ses segments absent@1 · présents 29/29
+  ok     WH · l’heure 2 lancée ; l’appel de l’heure 1 relu (ÉLÈVE 3 : absent à l’heure 1) — {"heure":2,"segA":"absent@1"}
+  ok     WH · à l’heure 2, ÉLÈVE 3 n’est pas barré dans la participation ; tous présents — {"classe":"  muet ","presents":"29/29"}
+  [WH] ses initiales à l’heure 2 : {"ditAbsent":false,"exact":true,"pose":true}
+  ok     WH · à l’heure 2, ÉLÈVE 3 prend la parole (ses initiales le désignent, la prise de parole est posée) — {"ditAbsent":false,"exact":true,"pose":true}
+  ok     WH · à l’heure 2, ÉLÈVE 5 marqué absent au clic droit : barré ; ÉLÈVE 3 toujours présent — {"m":true,"bClasse":"  muet abs ","segB":"absent@2","presents":28}
+  [WH] « Un mot pour les absents » à l’heure 2 : {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Les notes à garder, ce qui se verse dans la trame, le mot au","sec":"","trouve":false,"n":null,"aDedans":false,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ÉCHEC  WH · à l’heure 2, « Un mot pour les absents » : ÉLÈVE 5, seul (pas ÉLÈVE 3, absent à l’heure 1) — {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Les notes à garder, ce qui se verse dans la trame, le mot au","sec":"","trouve":false,"n":null,"aDedans":false,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ok     WH · l’étape 5 de la fin d’heure compte 1 absent —  5  le mot aux absents (1) (facultatif)
+  ok     WH · l’heure 2 close au hub — clos true
+  [WH] le récit de l’heure 2 : {"relire":true,"h3":"","vue":"relecture","n":2253,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":true,"bTexte":false}
+  ÉCHEC  WH · le récit de l’heure 2 (« L’appel », « Le mot pour chaque absent ») dit ÉLÈVE 5, pas ÉLÈVE 3 — {"relire":true,"h3":"","vue":"relecture","n":2253,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":true,"bTexte":false}
+  [WH] le récit de l’heure 1, relu après : {"relire":true,"h3":"","vue":"relecture","n":2880,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":false,"bTexte":false}
+  ÉCHEC  WH · le récit de l’heure 1, relu après l’heure 2 : toujours ÉLÈVE 3, pas ÉLÈVE 5 — {"relire":true,"h3":"","vue":"relecture","n":2880,"appel":"","mot":"","section":false,"aDans":false,"bDans":false,"aTexte":false,"bTexte":false}
+  ÉCHEC  WH · heure 2 : aucune écriture refusée par le hub (HTTP 400) — 115 écritures — ["PUT /site/3e/chapitres/0/seances/0/deroule_joue/3E Charles de Gaulle/heures/2026-09-15_15h07-16h02_3E_Charles_de_Gaulle/absentsPar/ÉLÈVE/psv2i1e2ru"]
+  ok     WH · heure 2 : aucune écriture hors des chemins permis (K15) — []
+  ok     WH · l’heure 2 : aucune erreur JS, aucune boîte système
+  [WT] « Lancer l’heure 2 » true · l’heure 2 (mode test true) · ÉLÈVE 3 : barré false, absent false, ses segments absent@1 · présents 29/29
+  ok     WT · l’heure 2 lancée ; l’appel de l’heure 1 relu (ÉLÈVE 3 : absent à l’heure 1) — {"heure":2,"segA":"absent@1"}
+  ok     WT · à l’heure 2, ÉLÈVE 3 n’est pas barré dans la participation ; tous présents — {"classe":"  muet ","presents":"29/29"}
+  [WT] ses initiales à l’heure 2 : {"ditAbsent":false,"exact":true,"pose":true}
+  ok     WT · à l’heure 2, ÉLÈVE 3 prend la parole (ses initiales le désignent, la prise de parole est posée) — {"ditAbsent":false,"exact":true,"pose":true}
+  ok     WT · à l’heure 2, ÉLÈVE 5 marqué absent au clic droit : barré ; ÉLÈVE 3 toujours présent — {"m":true,"bClasse":"  muet abs ","segB":"absent@2","presents":28}
+  [WT] « Un mot pour les absents » à l’heure 2 : {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Les notes à garder, ce qui se verse dans la trame, le mot au","sec":"","trouve":false,"n":null,"aDedans":false,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ÉCHEC  WT · à l’heure 2, « Un mot pour les absents » : ÉLÈVE 5, seul (pas ÉLÈVE 3, absent à l’heure 1) — {"diag":"T-5 — le cahier de textes dans 5 minutes · Fin de l'heure — étape 5 sur 7 : avant de clore ❄ Préparer le cahier Plus tard Le cahier de textes attend — le tableau ne bouge pas tant que tu n'y vas pas. Les notes à garder, ce qui se verse dans la trame, le mot au","sec":"","trouve":false,"n":null,"aDedans":false,"bDedans":false,"etape":"▶ 5 · le mot aux absents (1) (facultatif)"}
+  ok     WT · l’étape 5 de la fin d’heure compte 1 absent —  5  le mot aux absents (1) (facultatif)
+  ok     WT · heure 2 en mode test : mode test, aucune écriture hors de /site/tableau_test (K15-test) — 63 écritures — []
+  ok     WT · l’heure 2 : aucune erreur JS, aucune boîte système
+
+--- fin : 28 vérifications, 7 échec(s) · ROUGE

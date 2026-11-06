@@ -5356,3 +5356,16 @@ MEMO
   >
   > MEMO
 - **07:19 — vu au sas** : un commit `6fefb6311` (07:05, « Mode procès : oral des Turing le vendredi 6/11 », `MANDATS/MODE-PROCES/`) ne vient pas de cette session ; il ne touche ni le site ni les branches du déroulé. Rebasé sans conflit.
+- **07:28 — Paul, mot pour mot :** « jer pars de chez moi, ouvre un onglet avec mjpc, je te connecte afin que tu puisses faire les tests tout à l'heure »
+- **07:28 — Claude in Chrome** : un nouvel onglet dans le groupe de Claude, `…?n=3e&v=8.89.1`.
+- **07:28 — message à Paul, mot pour mot :**
+
+  > 923. L'onglet est ouvert dans ton Chrome, dans le groupe de Claude, sur la page d'entrée du site (adresse se terminant par « &v=8.89.1 »). Tu peux y entrer comme professeur. Ensuite, je ferai les tests en mode test sur la case de 10:07 des 3 Franklin Aretha, sans rien écrire pour la classe : d'abord ceux de 915 (la 8.89.1), puis ceux du micro des absents s'il est en ligne.
+  >
+  > À tester : entrer comme professeur dans l'onglet de Claude.
+  >
+  > 06/11/2026 07:28
+  >
+  > À jouer : entrer dans l'onglet · en cours : le micro des absents (W) et ses sondes · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

@@ -5241,3 +5241,20 @@ MEMO
   >
   > MEMO
 - **04:47 — incident** : une heure tapée à la main au transcript (04:52, en avance) ; corrigée en 04:46.
+- **05:12 — l'exécutant V7 rend son travail** (1 523 s) : `f22d321ae`, assemblé `179766c8`. `dr_enchVisible` : `S.enFin` ne cache plus le bouton ; la sonde finit la séance 1 par le bilan, la mise en commun du bilan, le cahier de textes. Base (`86e8a269`) vh 18/29 ; après : vh 29/29, test 31/31, rép. 14/14, deux heures 29/29, T-5 24/24, reprise 36/36 ; parcours vert. Erreur du mandat signalée : au faux hub, le cahier de textes n'ouvre pas la fin de l'heure (`S.enFin` faux à 0/4 et 4/4) ; la sonde l'ouvre par « Fin de l'heure ». Reste : la fin d'heure coupée à 170 s par la limite (5 échecs, une exception l. 360), pas comparée à la base.
+- **05:12 — lancé : le banc court** sur `f22d321ae` (sortie `banc-v7-out`, base la 8.89.0-㉒).
+- **05:12 — message à Paul, mot pour mot :**
+
+  > 907. Le septième exécutant a fini. Le bouton paraît maintenant aussi quand la fin de l'heure est ouverte, et la sonde finit la séance 1 comme ta vraie séance : le bilan, la mise en commun du bilan, le cahier de textes. Avant la correction, le bouton manquait (18/29). Après, tout passe : vraie heure 29/29, mode test 31/31, répétition 14/14, deux heures 29/29, 5 minutes avant la fin 24/24, reprise 36/36. Le parcours est vert.
+  >
+  > 908. Une précision. Sur le faux hub, arriver sur le cahier de textes n'ouvre pas la fin de l'heure. Dans ton Chrome, elle était ouverte, sans doute parce que l'horloge du test disait 10:53 (la fin de l'heure approchait). Je ne le sais pas pour sûr. En classe, si tu finis tôt, la fin ne serait pas ouverte. Dans les deux cas, le bouton paraît maintenant.
+  >
+  > 909. Le banc court tourne depuis 05:12 (environ 1 h 20, estimé). La fin d'heure a été coupée chez l'exécutant par sa limite de temps, et le banc la rejoue en entier. J'attends ta réponse à 905 pour mettre en ligne.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 06/11/2026 05:12
+  >
+  > À jouer : 905 (« promeus si le banc est vert » pour la 8.89.1 ?) ; 906 · en cours : le banc court · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

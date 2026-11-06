@@ -5355,3 +5355,4 @@ MEMO
   > À jouer : les tests de 915 · en cours : le micro des absents (W) et ses sondes · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:19 — vu au sas** : un commit `6fefb6311` (07:05, « Mode procès : oral des Turing le vendredi 6/11 », `MANDATS/MODE-PROCES/`) ne vient pas de cette session ; il ne touche ni le site ni les branches du déroulé. Rebasé sans conflit.

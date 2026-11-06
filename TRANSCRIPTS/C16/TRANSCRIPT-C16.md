@@ -5441,3 +5441,16 @@ MEMO
   >
   > MEMO
 - **09:55 — lancé : le banc des absents et des élèves** sur `093e4c5f3` (`scratchpad/banc-absents.sh`, sortie `banc-absents-out`) : la séance (14), l'appel (15), le parcours (vraie heure et mode test), l'enchaînement en vraie heure, la sonde des absents de l'heure ; rien en ligne pendant un cours.
+- **10:00 — Paul, mot pour mot :** « Donc je ferai cours avec des absents déclarés ? »
+- **10:01 — lu au hub (GET, Chrome de Paul)** : `/site/3e/chapitres/1/seances/0/deroule_joue/3_franklin_aretha/etat/S/appel` : 6 élèves, chacun un seul segment « absent » à l'heure 2 (initiales seulement ici).
+- **10:01 — message à Paul, mot pour mot :**
+
+  > 935. Oui, pour la séance 1. J'ai vérifié au hub, en lecture : chez les 3 Franklin Aretha, 6 élèves sont notés absents à l'heure 2 de mercredi. Ce sont les initiales barrées de ta capture de ce matin : JC, ED, MD, LJ, EL (Emma) et CMJ. Ils apparaîtront barrés à l'heure 3, même s'ils sont là, et leur prise de parole ne se pose pas tant qu'ils sont barrés. S'ils sont là, fais un clic droit sur leur pastille puis « Présent, arrivé à … » : ils redeviennent présents. Attention, cela note une arrivée à cette heure-là. Si tu enchaînes sur « L'Albatros », la séance 2 ne prend que les absents de ton appel de ce matin.
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 10:01
+  >
+  > À jouer : rien · en cours : les sondes du micro des absents, puis la mise en ligne hors cours si vert · ouvert, samedi 22:30 : (inchangé, voir 934)
+  >
+  > MEMO

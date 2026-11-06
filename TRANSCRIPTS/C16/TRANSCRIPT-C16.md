@@ -5259,3 +5259,15 @@ MEMO
   >
   > MEMO
 - **06:04 — Paul, mot pour mot :** « Promeus si le banc est vert »
+- **06:05 — banc court en cours** : étape 14 104/1 (« H · le dévoilement de l'ordinateur : chez les trois pilotes » : le téléphone `#2#1`, les deux ordinateurs `#1#0`), 15 et 16 code 0, banc 1-12 en cours.
+- **06:05 — message à Paul, mot pour mot :**
+
+  > 910. Noté : « promeus si le banc est vert », pour la 8.89.1. Le banc tourne encore (fin estimée vers 06:40). Il a déjà un échec, à l'étape de la séance : 104 contrôles passent, 1 rate. C'est le contrôle des trois pilotes (l'ordinateur, un second ordinateur et le téléphone) quand l'ordinateur dévoile : au moment de la lecture, le téléphone affichait un dévoilement de plus que les deux autres. Ce contrôle passait cette nuit sur la 8.89.0, et la correction de cette nuit ne touche pas à ça. Je ne sais pas encore si c'est un vrai défaut ou un hasard de temps. Quand le banc aura fini, je rejoue cette partie deux fois sur la 8.89.1, et une fois sur la 8.89.0 pour comparer. Je ne mets en ligne que si tout est vert.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 06/11/2026 06:05
+  >
+  > À jouer : 906 · en cours : le banc court, puis la partie « trois pilotes » rejouée, puis la mise en ligne 8.89.1 si tout est vert · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

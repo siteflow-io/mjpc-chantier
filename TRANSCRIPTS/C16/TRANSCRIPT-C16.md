@@ -5387,3 +5387,19 @@ MEMO
   > À jouer : rien · en cours : le micro des absents (W) et ses sondes, puis la demande de « promeus » · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **07:35 — Paul, mot pour mot :** « fais la vérif au hub pour 925. par ailleurs, je te demandais de faire les tests tout à l'heure, une fois que tu aurais fait la promotion après le banc court (promeus si banc vert) »
+- **07:35 — vérifié au hub, en lecture seule (GET depuis le Chrome de Paul, page en mode normal)** : `/site/3e/chapitres/1/seances` = 0, 1, 2, 3 ; traces des 3 Franklin Aretha : seulement la séance 0, heures `2026-11-02_08h57-09h52_3_franklin_aretha` et `2026-11-04_10h07-11h02_3_franklin_aretha` ; la séance 1 (« L'Albatros ») : aucune `deroule_joue` ; la copie de la séance 0 : `vif` au plus tard 04/11 11:03:12, journal 209 entrées, les trois dernières du 04/11 11:03 (`fin-section`, `clore-quand-meme`, `cloture`) ; `/site/cours_actif` = null.
+- **07:36 — incident** : « tout à l'heure » mal compris (les tests de 915 faits avant le micro au lieu d'après sa mise en ligne).
+- **07:36 — message à Paul, mot pour mot :**
+
+  > 927. Vérifié au hub (lecture seule, depuis ton Chrome, à 07:35). Rien n'a été écrit pour les 3 Franklin Aretha. Dans « Poésie et peinture », leur copie de classe n'a que deux heures, celle du 02/11 et celle du 04/11, et aucune du 06/11. Le dernier geste de son journal date du 04/11 à 11:03:12 (la clôture). Dans « L'Albatros », il n'y a aucune copie pour eux. Aucune heure n'est en cours au hub. Pour 925, ça va.
+  >
+  > 928. J'ai mal compris « tout à l'heure » : tu voulais les tests après la mise en ligne du micro, pas sur la 8.89.1. C'est noté comme incident. Voici la suite. Quand l'exécutant aura fini, je repasse seulement ce qui touche aux absents et aux élèves : l'appel, la séance avec la participation, le parcours, l'enchaînement. S'il est vert, je mets en ligne sous ton « promeus si banc vert ». Ensuite, je fais les tests dans l'onglet de Claude (toujours ouvert et connecté), en mode test, et je clique « Annuler l'heure » à la fin.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 06/11/2026 07:36
+  >
+  > À jouer : rien · en cours : le micro des absents (W), puis ses sondes, la mise en ligne si vert, et les tests dans ton Chrome · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), l'écran « Où en est la classe » (911), le retour au cahier de textes (918), la diapo grisée à deux pages (921), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

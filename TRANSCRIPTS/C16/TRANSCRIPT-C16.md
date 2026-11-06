@@ -5221,3 +5221,22 @@ MEMO
   > À jouer : 902 · en cours : les tests de 900 (1 fait) · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
   >
   > MEMO
+- **04:41 → 04:52 — les tests de 900 dans le Chrome de Paul** (onglet du groupe de Claude ; Paul a entré son code) : `m8BasculerModeTest()` (mode test vrai) ; lu dans le code avant : en mode test, toute écriture au hub passe par `M8T` (l. 14825-14832) ; la case de vendredi 10:07-11:02 des 3 Franklin Aretha (« heure 3 · suite ») ouverte, « ▶ Ouvrir le pilotage et lancer », « Lancer l'heure 3 » (témoin « mode test — rien n'est enregistré pour la classe ») ; l'heure 3 : 1 le bilan, 2 la mise en commun du bilan, 3 le cahier de textes ; dévoilés 9/9, 1/1, 4/4 ; `dr_enchSeanceFaite()` vrai, `dr_enchSuivante()` « L'Albatros » 1/2, `dr_enchVisible()` faux (`S.enFin` vrai) : pas de bouton ; `dr_enchainer()` appelé : rien (il passe par la même garde). L'onglet ne s'est pas fermé (l'outil sans réponse). Les prénoms de la vraie classe vus dans la case ne sont pas recopiés.
+- **04:47 — mandat V7** (sas `bcc4567d8`), lancé. **Registre** (prod `0cc4de4`). **Incident** : la sonde de l'enchaînement n'était pas réaliste (pas de cahier de textes à la fin de la séance 1).
+- **04:47 — message à Paul, mot pour mot :**
+
+  > 903. Les tests de 900, dans ton Chrome, en mode test, sur la vraie case de demain : 3 FRANKLIN ARETHA, vendredi 10:07, heure 3. Elle joue, dans l'ordre, le bilan, la mise en commun du bilan et le cahier de textes. Test 1 : la version est la bonne. Ça va. Test 2 : j'ai tout dévoilé (9/9, 1/1, 4/4), mais le bouton « ▶ Séance suivante dans cette heure » ne paraît pas. Ça ne va pas. Le site voit bien la séance comme faite et trouve la suivante (« L'Albatros », heure 1 sur 2). La cause : arriver sur la diapo « Cahier de textes » ouvre la fin de l'heure, et le bouton se cache dès qu'elle est ouverte. Les tests 3 à 5 ne peuvent donc pas se jouer.
+  >
+  > 904. C'est ma faute. Dans la sonde, la séance 1 ne finissait pas par un cahier de textes : l'exemple n'était pas réaliste, contre ta règle. Un septième exécutant corrige maintenant, en 25 minutes au plus : le bouton paraîtra aussi quand la fin de l'heure est ouverte, et la sonde finira la séance 1 comme ta vraie séance. Ensuite, le banc court (environ 1 h 20, estimé), donc prêt vers 07:00. C'est noté au registre.
+  >
+  > 905. Une nouvelle mise en ligne demande ton mot : « promeus si le banc est vert » vaut-il aussi pour cette correction (8.89.1) ? Sinon, demain tu passes par la répétition (863).
+  >
+  > 906. L'onglet de test ne s'est pas fermé : Chrome attend peut-être une question (« Quitter le site ? »). Tu peux le fermer et quitter ; en mode test, rien n'a été enregistré.
+  >
+  > À tester : rien pour l'instant.
+  >
+  > 06/11/2026 04:47
+  >
+  > À jouer : 905 ; 906 · en cours : le bouton après le cahier de textes (V7), puis le banc court · ouvert, samedi 22:30 : le récit (783, 534, 782, 850-855), la fiche dans le papier de l'heure, 790 et le gel entre les pages de la mise en commun (858), la case et le pilotage qui comptent les heures autrement (882), l'heure rattrapée puis enchaînée (892), le mode test qui ne se reprend pas (894), 791, 794, 768, 772, 809, Q (777, 778), R, 731, le banc et la promotion ; la semaine prochaine : 644 ; pour plus tard : le HTML des diapos jouées, le journal du cahier de textes
+  >
+  > MEMO

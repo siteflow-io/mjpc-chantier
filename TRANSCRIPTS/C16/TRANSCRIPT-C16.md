@@ -5511,3 +5511,19 @@ MEMO
   > À jouer : la mise en ligne du micro à 12:00 · en cours : rien · ouvert : la liste de 934, inchangée
   >
   > MEMO
+- **12:00 — le rappel de 12:00 arrivé** (posé par moi à 10:27 ; ce n'est pas un message de Paul).
+- **12:00 — lu au hub, dans l'onglet de Claude (GET)** : `/site/cours_actif` rempli — les Dylan Bob, chapitre 1, séance 0, `debut` 11:17, `fin` 11:59, écrit à 11:17:25. Dans l'onglet de Claude : `S.lancee` faux, mode test éteint, version 8.89.1-㉓. La prod au dépôt : md5 `ab3edae2`, inchangée.
+- **12:01 — décision** : rien poussé (la règle : rien en ligne pendant une heure en cours). Nouveau rappel posé pour 12:20.
+- **12:01 — message à Paul, mot pour mot :**
+
+  > 940. Je n'ai rien mis en ligne. À 12:01, le hub dit encore qu'une heure est en cours : les Dylan Bob, lancée à 11:17, fin prévue 11:59. Ce n'est pas mon onglet : chez moi, rien n'est lancé et le mode test est éteint.
+  >
+  > Si tu as fini avec eux, ferme l'heure (ou dis-moi « vas-y ») et je mets en ligne tout de suite. Sinon je regarde à nouveau à 12:20, et je ne pousse que si plus rien n'est en cours.
+  >
+  > À tester : rien.
+  >
+  > 06/11/2026 12:01
+  >
+  > À jouer : la mise en ligne du micro dès que l'heure des Dylan Bob est fermée · en cours : rien · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

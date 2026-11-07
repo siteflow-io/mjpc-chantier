@@ -5587,3 +5587,19 @@ MEMO
   > À jouer : trancher 952 · en cours : la carte des chemins (X) · ouvert : la liste de 934, inchangée
   >
   > MEMO
+- **07:16 — X fini** (rapport par message) : `secu/carte` `d9c2ece` (`LIVRAISONS/REGLES-FIREBASE/CARTE.md`, `carte.json`) ; 12 fichiers + le socle sur `mjpc-hub`, 4 sans base, aucun Firebase Auth ; 1 567 sites, 1 282 résolus en 651 gabarits sur 38 nœuds ; les cinq signalements (`_fbReadAll` lit toute la base, 3 appels : sauvegarde, diagnostic, archivage ; `_fbWriteRoot` jamais appelée ; 15 `update` racine dans `correction_dictee`, écran prof ; 10 apps lisent `/codes` ou `/classes` entiers depuis un écran d'élève ; un seul `.indexOn` ; 19 nœuds nominatifs, sans valeur) ; l'émulateur OUI (41 s, 227 Mo + 33 Mo, prêt en 4 s) ; reste : 116 sites non résolus, 121 « qui » inconnus, `redaction.html` seulement compté, `watchClasses` chez l'élève je ne sais pas. **Vérifié par la conscience** : le commit au sas, la structure, aucun nom d'élève (seule clé nominative trouvée : `meney_monsieur`, la clé de test de Paul écrite dans le code).
+- **07:16 — message à Paul, mot pour mot :**
+
+  > 953. La carte est faite. L'exécutant n'a rien changé et n'a rien demandé au vrai hub ; je l'ai vérifiée : ça va. 12 apps et le socle parlent à la base `mjpc-hub`, et aucune ne s'y présente avec une identité. Elles y touchent 38 nœuds, par 651 chemins différents. Le faux hub avec les règles (l'émulateur) tourne ici : il démarre en 4 secondes. Le banc des règles est donc faisable.
+  >
+  > 954. Ce que la carte change à la marche 1 : je ne peux pas fermer la racine en lecture sans casser ta sauvegarde, ton diagnostic et ton archivage du site, qui lisent toute la base d'un coup. La marche 1 laisse donc la lecture telle qu'elle est et ne protège que l'écriture : aucun grand nœud effacé ou remplacé d'un coup, sauf par les gestes qui le font aujourd'hui (purges, restaurations, imports), qui restent permis jusqu'à la marche 2.
+  >
+  > 955. Ce que la carte change à la marche 3 : 10 apps lisent toute la liste `/codes` (les empreintes des codes) ou tout `/classes` (les noms) au moment où l'élève se connecte. Tant que c'est ainsi, un inconnu peut les lire aussi. Fermer les noms demande de refaire la connexion de chaque portail élève, pour que l'élève ne lise que sa propre ligne. C'est bien la plus grosse marche.
+  >
+  > À tester : rien.
+  >
+  > 07/11/2026 07:16
+  >
+  > À jouer : trancher 952 (la connexion Google une fois par appareil) · en cours : rien · ouvert : la liste de 934, inchangée
+  >
+  > MEMO

@@ -5561,3 +5561,29 @@ MEMO
 - **06:58 → 07:02 — lu** : `docs/MJPC6-3-CHANTIER.md` (« M-SÉCU · RÈGLES FIREBASE — CHANTIER NON NÉGOCIABLE AVANT LA RENTRÉE », 18/07 : « `true` partout — aucune protection », les trois voies intégrité / confidentialité par chemin / authentification ; jamais fait ; M-SÉCU-1 à -5 du 31/07 = les codes, pas la base) ; `docs/MJPC6-1-DISPOSITIF.md` point 24 (l'alerte des règles tous les 29 jours) ; `docs/MJPC6-journal.md` (M-ÉCHECS-1 : `_sitePut` rend désormais un refus comme un échec). **Mesuré dans le code de la production** (`7c64d7d`) : la base `mjpc-hub` ; aucune app n'utilise Firebase Auth (les mots trouvés sont dans le SDK embarqué) ; un balayage des chemins écrits en clair : 14 fichiers, 39 nœuds de premier niveau (`classes` 12 fichiers, `manifestes` 12, `codes` 10, `corbeille` 7, `site` 6, `presence` 4…).
 - **07:02 — mandat X** (sas `MANDATS/REGLES-FIREBASE/X-LA-CARTE-DES-CHEMINS.md`) : la carte de ce que chaque app lit et écrit, mesure seule, et l'émulateur au banc oui/non ; branche `secu/carte`.
 - **07:02 — incident de la conscience** : deux heures tapées à la main (« 07:08 ») avant de les lire ; lues par `date` : 07:02 ; corrigées.
+- **07:02 — exécutant X lancé** (en arrière-plan, 45 minutes au plus, mesure seule, worktree `secu/carte`).
+- **07:02 — message à Paul, mot pour mot :**
+
+  > 945. Ce qui existe, d'après le plan de juillet : le chantier « M-SÉCU · règles Firebase » est écrit depuis le 18/07, « non négociable avant la rentrée », mais il n'a jamais été fait. Les M-SÉCU 1 à 5 de fin juillet ont protégé les codes (empreintes, clé prof), pas la base. À ce moment-là, le plan disait « true partout ». Je ne sais pas ce que disent tes règles aujourd'hui : on ne peut les lire que dans ta console Firebase.
+  >
+  > 946. La limite de fond, mesurée dans le code : aucune des 14 apps qui parlent à la base ne s'y présente avec une identité. Pour la base, toi, un élève et un inconnu qui a son adresse (elle est en clair dans chaque page publique) sont donc la même personne. Des règles seules ne bétonnent pas : tout ce que le site peut faire, un inconnu le peut aussi. Elles n'empêchent que les gros dégâts. Bétonner, c'est donner une identité à chacun.
+  >
+  > 947. Ma proposition se fait en trois marches, dans cet ordre, et chacune passe au banc avant d'être publiée. Marche 1 : rien ne s'efface en bloc, et les apps ne changent pas. La racine est fermée, chacun des quelque 40 nœuds est ouvert seulement pour ce à quoi il sert, les grands nœuds (classes, codes, site, taxonomie…) ne peuvent plus être effacés d'un coup, et les formats sont vérifiés.
+  >
+  > 948. Marche 2 : toi seul écris ce qui est à toi. Tu te connectes avec ton compte Google, une fois par appareil, et c'est gratuit. Tes chapitres, classes, emploi du temps, réglages et corrections ne s'écrivent plus qu'avec ton compte. Les élèves n'écrivent que leurs propres travaux.
+  >
+  > 949. Marche 3 : personne d'autre ne lit les noms. Les noms, codes, notes et copies sont fermés aux inconnus. Chaque élève reçoit à la connexion une identité qu'il ne voit pas. C'est la plus grosse marche, car elle touche chaque portail élève.
+  >
+  > 950. Les gardes. Avant chaque marche, tu exportes toute la base depuis ta console (« Exporter en JSON ») : c'est le point de retour. C'est toi qui publies les règles dans ta console ; je te donne le texte exact. Au banc, le faux hub applique les mêmes règles (l'émulateur Firebase) et rejoue les gestes de toutes les apps : un seul refus, et c'est rouge. Aucune règle n'est publiée pendant un cours.
+  >
+  > 951. J'ai lancé un exécutant court (45 minutes au plus) qui ne change rien. Il dresse la carte de ce que chaque app lit et écrit : le chemin, le geste, prof ou élève, ce qui porte des noms. Il vérifie aussi que l'émulateur tourne ici. Cette carte sert aux trois marches.
+  >
+  > 952. À trancher par toi : pour la marche 2, la connexion avec ton compte Google une fois par appareil (ordi portable, téléphone, ordi de classe pour le tableau) te va-t-elle ?
+  >
+  > À tester : rien.
+  >
+  > 07/11/2026 07:02
+  >
+  > À jouer : trancher 952 · en cours : la carte des chemins (X) · ouvert : la liste de 934, inchangée
+  >
+  > MEMO
